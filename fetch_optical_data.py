@@ -6,18 +6,21 @@ Clone the refractiveindex.info YAML database, parse n,k optical data for
 selected soft-matter / substrate materials, and store everything in a
 structured SQLite database (materials.db).
 
-Materials: Water, Gold, SiO2, Polystyrene, DPPC (lipid)
+Materials
+---------
+Water, Gold, SiO2, Polystyrene, DPPC      (original five)
+PMMA, Ethanol, DMSO                        (auto-loaded from RI.info)
+PEG                                        (manual insert — not in RI.info)
 
-Database schema
----------------
-materials  : id, name, formula, material_class, notes
+Schema
+------
+materials  : id, name, formula, material_class, notes, density_g_cm3
 optical_nk : id, material_id (FK), wavelength_nm, n, k, source_ref, temperature_C
 """
 
 import re
 import sqlite3
 import subprocess
-import sys
 from pathlib import Path
 from typing import List, Optional, Tuple
 
@@ -30,18 +33,25 @@ DB_FILE  = "materials.db"
 REPO_URL = "https://github.com/polyanskiy/refractiveindex.info-database.git"
 REPO_DIR = "refractiveindex_db"
 
-WL_MIN_NM = 200.0    # fetch window – ultraviolet
-WL_MAX_NM = 3000.0   # fetch window – near-infrared
-N_FORMULA = 500      # sample points for formula-based dispersion entries
+WL_MIN_NM = 200.0    # fetch window – UV
+WL_MAX_NM = 3000.0   # fetch window – near-IR
+N_FORMULA = 500      # sample points for formula-based entries
 
-# Each entry lists preferred YAML files (relative to the data/ root) in order
-# of preference, then fallback search directories.
+# ─── Materials manifest ───────────────────────────────────────────────────────
+# Keys
+#   candidates   : preferred YAML paths relative to data/ root, tried in order
+#   search_dirs  : fallback dirs to glob *.yml from (skips about.yml)
+#   density_g_cm3: bulk density at ~20 °C for XRR modelling
+#   manual_nk    : list of dicts {wavelength_nm, n, k, source_ref, temperature_C}
+#                  inserted directly when no YAML is found (or to supplement)
+
 MATERIALS: List[dict] = [
     dict(
         name="Water",
         formula="H2O",
         material_class="solvent",
-        notes="Hale & Querry 1973; broad UV–IR coverage; essential solvent reference",
+        notes="Hale & Querry 1973; broad UV–IR; essential solvent reference",
+        density_g_cm3=1.000,
         candidates=[
             "main/H2O/nk/Hale.yml",
             "main/H2O/nk/Segelstein.yml",
@@ -53,7 +63,8 @@ MATERIALS: List[dict] = [
         name="Gold",
         formula="Au",
         material_class="metal",
-        notes="Johnson & Christy 1972; 188–1937 nm; SPR substrate reference",
+        notes="Johnson & Christy 1972; 188–1937 nm; SPR substrate",
+        density_g_cm3=19.32,
         candidates=[
             "main/Au/nk/Johnson.yml",
             "main/Au/nk/McPeak.yml",
@@ -66,6 +77,7 @@ MATERIALS: List[dict] = [
         formula="SiO2",
         material_class="oxide",
         notes="Malitson 1965; fused silica 210–6700 nm; XRR/ellipsometry substrate",
+        density_g_cm3=2.20,
         candidates=[
             "main/SiO2/nk/Malitson.yml",
             "main/SiO2/nk/Philipp.yml",
@@ -78,7 +90,8 @@ MATERIALS: List[dict] = [
         name="Polystyrene",
         formula="(C8H8)n",
         material_class="polymer",
-        notes="Sultanova 2009; visible-range dispersion; common NP / thin-film material",
+        notes="Sultanova 2009; visible; common NP / thin-film material",
+        density_g_cm3=1.05,
         candidates=[
             "organic/(C8H8)n - polystyrene/nk/Sultanova.yml",
             "organic/(C8H8)n - polystyrene/nk/Zhang.yml",
@@ -95,14 +108,77 @@ MATERIALS: List[dict] = [
         material_class="lipid",
         notes=(
             "Dipalmitoylphosphatidylcholine; lipid bilayer model. "
-            "Not in refractiveindex.info — see Chou et al. Biophys J 2010 "
-            "or van der Meer et al. J Phys Chem B 2019 for n,k values."
+            "Not in refractiveindex.info."
         ),
-        candidates=[
-            "organic/lipids/DPPC.yml",
-            "organic/phospholipids/DPPC.yml",
-        ],
+        density_g_cm3=1.01,
+        candidates=["organic/lipids/DPPC.yml", "organic/phospholipids/DPPC.yml"],
         search_dirs=["organic/lipids", "organic/phospholipids"],
+        manual_nk=[
+            dict(
+                wavelength_nm=633.0, n=1.48, k=None,
+                source_ref="Chou et al. Biophys J 2010 doi:10.1016/j.bpj.2010.07.026",
+                temperature_C=25.0,
+            ),
+        ],
+    ),
+    dict(
+        name="PMMA",
+        formula="(C5H8O2)n",
+        material_class="polymer",
+        notes="Beadie et al. 2015; 420–1620 nm; common resist / optical coating",
+        density_g_cm3=1.19,
+        candidates=[
+            "organic/(C5H8O2)n - poly(methyl methacrylate)/nk/Beadie.yml",
+            "organic/(C5H8O2)n - poly(methyl methacrylate)/nk/Sultanova.yml",
+        ],
+        search_dirs=["organic/(C5H8O2)n - poly(methyl methacrylate)/nk"],
+    ),
+    dict(
+        name="Ethanol",
+        formula="C2H6O",
+        material_class="solvent",
+        notes="Sani & Dell'Oro 2016; 185–2800 nm; includes tabulated k",
+        density_g_cm3=0.789,
+        candidates=[
+            "organic/C2H6O - ethanol/nk/Sani-formula.yml",
+            "organic/C2H6O - ethanol/nk/Rheims.yml",
+            "organic/C2H6O - ethanol/nk/Kedenburg.yml",
+        ],
+        search_dirs=["organic/C2H6O - ethanol/nk"],
+    ),
+    dict(
+        name="DMSO",
+        formula="C2H6OS",
+        material_class="solvent",
+        notes="Li et al. 2022; 200–1700 nm; common biochemical solvent",
+        density_g_cm3=1.100,
+        candidates=[
+            "organic/C2H6OS - dimethyl sulfoxide/nk/Li.yml",
+            "organic/C2H6OS - dimethyl sulfoxide/nk/Kozma.yml",
+        ],
+        search_dirs=["organic/C2H6OS - dimethyl sulfoxide/nk"],
+    ),
+    dict(
+        name="PEG",
+        formula="(C2H4O)n",
+        material_class="polymer",
+        notes=(
+            "Polyethylene glycol; not in refractiveindex.info. "
+            "Bulk n from Polymer Handbook (Brandrup et al. 4th ed.)."
+        ),
+        density_g_cm3=1.13,
+        candidates=[
+            "organic/PEG/PEG.yml",
+            "organic/(C2H4O)n - polyethylene glycol/nk/PEG.yml",
+        ],
+        search_dirs=[],
+        manual_nk=[
+            dict(
+                wavelength_nm=589.0, n=1.4570, k=None,
+                source_ref="Brandrup et al. Polymer Handbook 4th ed. (1999)",
+                temperature_C=20.0,
+            ),
+        ],
     ),
 ]
 
@@ -112,7 +188,7 @@ MATERIALS: List[dict] = [
 def clone_repo(repo_dir: str) -> Path:
     """Shallow-clone the database repo (once); return path to data/ directory."""
     if not Path(repo_dir).exists():
-        print(f"Cloning refractiveindex.info-database (shallow, ~200 MB) …")
+        print("Cloning refractiveindex.info-database (shallow, ~200 MB) …")
         subprocess.run(
             ["git", "clone", "--depth=1", REPO_URL, repo_dir],
             check=True,
@@ -143,12 +219,27 @@ def find_yaml(data_root: Path, mat: dict) -> Optional[Path]:
     return None
 
 
+def detect_formula_type(yaml_path: Path) -> str:
+    """Return a compact description of DATA block types (for the summary table)."""
+    with open(yaml_path) as fh:
+        raw = yaml.safe_load(fh)
+    types = [str(b.get("type", "?")).strip() for b in raw.get("DATA", [])]
+    # Collapse duplicates, preserve order
+    seen: dict = {}
+    for t in types:
+        seen[t] = None
+    return " + ".join(seen)
+
+
 # ─── Dispersion formula evaluators ───────────────────────────────────────────
-# Formula reference: https://refractiveindex.info/about
+# Refractiveindex.info formula conventions (current DB format)
 #
-# Convention in the current database: c₀ is an additive offset to n², with
-# c₀ = 0 meaning the standard Sellmeier form  n² = 1 + Σ Bᵢλ²/(λ²−Cᵢ).
-# Hence Formula 1/2 start from  n² = 1 + c₀  (not just c₀).
+# F1 / F2  n² = 1 + c₀ + Σ pairs         c₀ = 0 in current format (1 implicit)
+# F3       n² = c₀ + Σ (B, p) pairs       c₀ is standalone constant
+# F4       n² = c₀ + Σ (B,p,C,q) quads   general B·λ^p/(λ^q−C) + 2-coeff tails
+# F5       n  = c₀ + Σ (B, p) pairs       Cauchy; c₀ is standalone constant
+# F6       n−1 = c₀ + Σ (B, C) pairs      gases; c₀ standalone
+# F7       Herzberger; 6 named coefficients
 
 def _coeffs(block: dict) -> np.ndarray:
     return np.array([float(x) for x in str(block["coefficients"]).split()])
@@ -158,7 +249,7 @@ def eval_formula(
     block: dict, lam: np.ndarray
 ) -> Tuple[np.ndarray, Optional[np.ndarray]]:
     """
-    Evaluate a refractiveindex.info formula block at wavelengths *lam* (µm).
+    Evaluate a dispersion formula block at wavelengths *lam* (µm).
     Returns (n_array, k_array_or_None).
     """
     ftype = block["type"]
@@ -179,23 +270,39 @@ def eval_formula(
         return np.sqrt(np.clip(n2, 1e-30, None)), None
 
     if ftype == "formula 3":
-        # Polynomial in n²:  n² = Σ cᵢ·λ^cᵢ₊₁
-        n2 = np.zeros_like(lam)
-        for i in range(0, len(c) - 1, 2):
+        # Polynomial in n²:  n² = c₀ + Σ cᵢ·λ^cᵢ₊₁
+        # c[0] is a standalone constant; Σ iterates 2-coeff pairs from index 1.
+        n2 = np.full_like(lam, c[0])
+        for i in range(1, len(c) - 1, 2):
             n2 = n2 + c[i] * lam ** c[i + 1]
         return np.sqrt(np.clip(n2, 1e-30, None)), None
 
     if ftype == "formula 4":
-        # Extended Sellmeier (same pair structure as F1)
-        n2 = np.full_like(lam, 1.0 + c[0])
-        for i in range(1, len(c) - 1, 2):
-            n2 = n2 + c[i] * lam**2 / (lam**2 - c[i + 1] ** 2)
+        # General:  n² = c₀ + Σ Bᵢ·λ^pᵢ/(λ^qᵢ−Cᵢ)   [4-coeff groups]
+        #                    + Σ Dⱼ·λ^fⱼ                [2-coeff polynomial tail]
+        # Group layout: [B, p_num, C, q_den] → B·λ^p / (λ^q − C)
+        # Trailing 2-coeff chunk: [D, f] → D·λ^f
+        n2 = np.full_like(lam, c[0])
+        i = 1
+        while i < len(c):
+            if i + 3 < len(c):          # need indices i..i+3 → 4 coefficients
+                B, p, C_val, q = c[i], c[i + 1], c[i + 2], c[i + 3]
+                denom = lam**q - C_val
+                with np.errstate(divide="ignore", invalid="ignore"):
+                    n2 = n2 + np.where(denom != 0.0, B * lam**p / denom, 0.0)
+                i += 4
+            elif i + 1 < len(c):        # 2-coeff polynomial tail
+                n2 = n2 + c[i] * lam ** c[i + 1]
+                i += 2
+            else:
+                break                   # lone orphan coefficient — skip
         return np.sqrt(np.clip(n2, 1e-30, None)), None
 
     if ftype == "formula 5":
-        # Cauchy:  n = Σ cᵢ·λ^cᵢ₊₁
-        n = np.zeros_like(lam)
-        for i in range(0, len(c) - 1, 2):
+        # Cauchy:  n = c₀ + Σ cᵢ·λ^cᵢ₊₁
+        # c[0] is a standalone constant; Σ iterates 2-coeff pairs from index 1.
+        n = np.full_like(lam, c[0])
+        for i in range(1, len(c) - 1, 2):
             n = n + c[i] * lam ** c[i + 1]
         return n, None
 
@@ -207,7 +314,7 @@ def eval_formula(
         return 1.0 + n_m1, None
 
     if ftype == "formula 7":
-        # Herzberger
+        # Herzberger:  n = A + B/L + C/L² + Dλ² + Eλ⁴ + Fλ⁶  (L = λ²−0.028)
         A, B, C, D, E, F = (float(c[i]) if i < len(c) else 0.0 for i in range(6))
         L = lam**2 - 0.028
         n = A + B / L + C / L**2 + D * lam**2 + E * lam**4 + F * lam**6
@@ -241,7 +348,7 @@ def parse_file(
     wavelengths_nm : 1-D array, sorted ascending
     n              : 1-D array (real refractive index)
     k              : 1-D array or None  (extinction coefficient; None → absent)
-    source_ref     : str  (truncated to 512 chars)
+    source_ref     : str  (≤512 chars)
     temperature_C  : float or None
     """
     with open(yaml_path) as fh:
@@ -252,17 +359,16 @@ def parse_file(
         refs = " | ".join(str(r) for r in refs)
     refs = str(refs)[:512]
 
-    # Temperature heuristic from filename, e.g. "Daimon-19.0C.yml"
+    # Temperature: filename heuristic, then CONDITIONS block
     temp: Optional[float] = None
     m = re.search(r"[-_](\d+(?:\.\d+)?)[Cc](?:\b|$)", yaml_path.stem)
     if m:
         temp = float(m.group(1))
-    # Also check the CONDITIONS block
     cond = raw.get("CONDITIONS") or {}
     if isinstance(cond, dict) and "temperature" in cond and temp is None:
         try:
             t_k = float(cond["temperature"])
-            temp = t_k - 273.15 if t_k > 200 else t_k  # assume Kelvin if > 200
+            temp = t_k - 273.15 if t_k > 200 else t_k
         except (ValueError, TypeError):
             pass
 
@@ -325,7 +431,6 @@ def parse_file(
     if not n_wl:
         raise ValueError("No n data found in any DATA block")
 
-    # Sort by wavelength
     n_wl_a = np.array(n_wl)
     n_val_a = np.array(n_val)
     idx = np.argsort(n_wl_a)
@@ -337,7 +442,7 @@ def parse_file(
         k_wl_a = np.array(k_wl)
         k_val_a = np.array(k_val)
         kidx = np.argsort(k_wl_a)
-        # Interpolate k onto the n wavelength grid; NaN outside k range
+        # Interpolate k onto the n wavelength grid; NaN outside k range → NULL
         k_out = np.interp(
             n_wl_a, k_wl_a[kidx], k_val_a[kidx], left=np.nan, right=np.nan
         )
@@ -353,7 +458,8 @@ CREATE TABLE IF NOT EXISTS materials (
     name           TEXT    NOT NULL,
     formula        TEXT,
     material_class TEXT,
-    notes          TEXT
+    notes          TEXT,
+    density_g_cm3  REAL
 );
 
 CREATE TABLE IF NOT EXISTS optical_nk (
@@ -361,7 +467,7 @@ CREATE TABLE IF NOT EXISTS optical_nk (
     material_id    INTEGER NOT NULL REFERENCES materials(id),
     wavelength_nm  REAL    NOT NULL,
     n              REAL    NOT NULL,
-    k              REAL,               -- NULL when k data is absent for this material
+    k              REAL,               -- NULL = absent, never 0 for transparent materials
     source_ref     TEXT,
     temperature_C  REAL
 );
@@ -382,8 +488,12 @@ def setup_db(path: str) -> sqlite3.Connection:
 
 def insert_material(conn: sqlite3.Connection, mat: dict) -> int:
     cur = conn.execute(
-        "INSERT INTO materials (name, formula, material_class, notes) VALUES (?,?,?,?)",
-        (mat["name"], mat["formula"], mat["material_class"], mat["notes"]),
+        "INSERT INTO materials (name, formula, material_class, notes, density_g_cm3) "
+        "VALUES (?,?,?,?,?)",
+        (
+            mat["name"], mat["formula"], mat["material_class"],
+            mat["notes"], mat.get("density_g_cm3"),
+        ),
     )
     conn.commit()
     return cur.lastrowid  # type: ignore[return-value]
@@ -415,55 +525,71 @@ def insert_nk(
     return len(rows)
 
 
+def insert_manual_nk(conn: sqlite3.Connection, mat_id: int, entries: list) -> int:
+    rows = [
+        (
+            mat_id,
+            e["wavelength_nm"], e["n"], e.get("k"),
+            e.get("source_ref"), e.get("temperature_C"),
+        )
+        for e in entries
+    ]
+    conn.executemany(
+        "INSERT INTO optical_nk "
+        "(material_id, wavelength_nm, n, k, source_ref, temperature_C) "
+        "VALUES (?,?,?,?,?,?)",
+        rows,
+    )
+    conn.commit()
+    return len(rows)
+
+
 # ─── Summary ──────────────────────────────────────────────────────────────────
 
-def print_summary(conn: sqlite3.Connection) -> None:
-    W = 90
+def print_summary(rows: list) -> None:
+    """
+    rows: list of (name, formula_type, wl_lo, wl_hi, pts, k_pts, status)
+    """
+    W = 98
     print("\n" + "=" * W)
     print(
-        f"  {'Material':<14}  {'WL range (nm)':<22}  "
-        f"{'Points':>7}  {'k data':>14}  Source (truncated)"
+        f"  {'Material':<13} {'Formula type':<22} {'WL range (nm)':<20} "
+        f"{'Pts':>5}  {'k':>10}  Status"
     )
     print("-" * W)
-    for mat_id, name, notes in conn.execute(
-        "SELECT id, name, notes FROM materials ORDER BY id"
-    ):
-        row = conn.execute(
-            """
-            SELECT MIN(wavelength_nm), MAX(wavelength_nm), COUNT(*),
-                   SUM(CASE WHEN k IS NOT NULL THEN 1 ELSE 0 END),
-                   source_ref
-            FROM optical_nk WHERE material_id=?
-            """,
-            (mat_id,),
-        ).fetchone()
-
-        if row[0] is None:
-            print(f"  {name:<14}  NOT FOUND in refractiveindex.info database")
-            hint = notes[:70] if notes else ""
-            print(f"  {'':14}  Hint: {hint}")
+    for name, ftype, wl_lo, wl_hi, pts, k_pts, status in rows:
+        if wl_lo is None:
+            wl_str = "—"
+        elif wl_lo == wl_hi:
+            wl_str = f"{wl_lo:.0f} nm"
         else:
-            lo, hi, n_pts, k_pts, src = row
-            k_str = f"{k_pts:,}/{n_pts:,}" if k_pts else "NULL (absent)"
-            src_short = (src or "")[:30]
-            print(
-                f"  {name:<14}  {lo:7.1f} – {hi:7.1f} nm  "
-                f"{n_pts:>7,}  {k_str:>14}  {src_short}"
-            )
+            wl_str = f"{wl_lo:.0f}–{wl_hi:.0f} nm"
+
+        k_str = f"{k_pts}/{pts}" if k_pts else "NULL"
+        pts_str = str(pts) if pts else "—"
+
+        print(
+            f"  {name:<13} {ftype:<22} {wl_str:<20} "
+            f"{pts_str:>5}  {k_str:>10}  {status}"
+        )
     print("=" * W + "\n")
 
 
 # ─── Spot-check ───────────────────────────────────────────────────────────────
 
 def spot_check(conn: sqlite3.Connection) -> None:
-    """Print n (and k if available) at a few reference wavelengths for sanity."""
     checks = [
-        ("Water",       633),
-        ("Gold",        532),
+        ("Water",       589),
+        ("Gold",        633),
         ("SiO2",        589),
         ("Polystyrene", 589),
+        ("PMMA",        589),
+        ("Ethanol",     589),
+        ("DMSO",        589),
+        ("DPPC",        633),
+        ("PEG",         589),
     ]
-    print("Spot-check (n, k) at reference wavelengths:")
+    print("Spot-check — nearest stored (n, k) to reference wavelength:")
     for name, wl in checks:
         row = conn.execute(
             """
@@ -471,15 +597,16 @@ def spot_check(conn: sqlite3.Connection) -> None:
             FROM optical_nk o
             JOIN materials m ON m.id = o.material_id
             WHERE m.name = ?
-            ORDER BY ABS(o.wavelength_nm - ?)
-            LIMIT 1
+            ORDER BY ABS(o.wavelength_nm - ?) LIMIT 1
             """,
             (name, wl),
         ).fetchone()
         if row:
-            wl_a, n, k = row
-            k_str = f"{k:.4f}" if k is not None else "NULL"
-            print(f"  {name:<14} @ {wl_a:.1f} nm   n={n:.4f}  k={k_str}")
+            wl_a, nv, kv = row
+            k_str = f"{kv:.4e}" if kv is not None else "NULL"
+            print(f"  {name:<13} @ {wl_a:6.1f} nm   n={nv:.4f}  k={k_str}")
+        else:
+            print(f"  {name:<13}   no optical data")
 
 
 # ─── Main ─────────────────────────────────────────────────────────────────────
@@ -491,36 +618,61 @@ def main() -> None:
     conn = setup_db(DB_FILE)
     print(f"Database  : {DB_FILE}\n")
 
+    summary_rows = []
+
     for mat in MATERIALS:
-        label = f"{mat['name']} ({mat['formula']})"
-        print(f"[{label}]")
+        name = mat["name"]
+        print(f"[{name} ({mat['formula']})]")
 
         mat_id = insert_material(conn, mat)
         yaml_path = find_yaml(data_root, mat)
 
-        if yaml_path is None:
-            print("  ✗  Not found — material record inserted, no optical data.\n")
-            continue
+        if yaml_path is not None:
+            ftype_str = detect_formula_type(yaml_path)
+            print(f"  → {yaml_path.relative_to(data_root)}  [{ftype_str}]")
 
-        print(f"  → {yaml_path.relative_to(data_root)}")
+            try:
+                wl, n, k, ref, temp = parse_file(yaml_path)
+            except Exception as exc:
+                print(f"  ✗  Parse error: {exc}")
+                summary_rows.append((name, ftype_str, None, None, 0, 0, "FAIL"))
+                print()
+                continue
 
-        try:
-            wl, n, k, ref, temp = parse_file(yaml_path)
-        except Exception as exc:
-            print(f"  ✗  Parse error: {exc}\n")
-            continue
+            n_rows = insert_nk(conn, mat_id, wl, n, k, ref, temp)
+            k_finite = int(np.sum(np.isfinite(k) & ~np.isnan(k))) if k is not None else 0
+            k_info = f"k: {k_finite}/{n_rows}" if k is not None else "k: NULL"
+            print(f"  ✓  {n_rows:,} rows  |  {k_info}")
 
-        n_rows = insert_nk(conn, mat_id, wl, n, k, ref, temp)
+            # Insert any supplemental manual points
+            manual = mat.get("manual_nk", [])
+            if manual:
+                insert_manual_nk(conn, mat_id, manual)
+                print(f"  +  {len(manual)} manual point(s) added")
 
-        if k is not None:
-            k_finite = int(np.sum(np.isfinite(k) & ~np.isnan(k)))
-            k_info = f"k: {k_finite:,}/{n_rows:,} finite pts"
+            wl_lo, wl_hi = float(wl.min()), float(wl.max())
+            summary_rows.append(
+                (name, ftype_str, wl_lo, wl_hi, n_rows, k_finite, "LOADED")
+            )
+
         else:
-            k_info = "k: NULL (absent for this material)"
+            # No YAML — fall back to manual inserts if defined
+            manual = mat.get("manual_nk", [])
+            if manual:
+                n_rows = insert_manual_nk(conn, mat_id, manual)
+                wls = [e["wavelength_nm"] for e in manual]
+                k_pts = sum(1 for e in manual if e.get("k") is not None)
+                print(f"  ✗  Not in RI.info — inserted {n_rows} manual point(s)")
+                summary_rows.append(
+                    (name, "manual", min(wls), max(wls), n_rows, k_pts, "MANUAL")
+                )
+            else:
+                print("  ✗  Not found — material record only, no optical data")
+                summary_rows.append((name, "—", None, None, 0, 0, "NOT_FOUND"))
 
-        print(f"  ✓  {n_rows:,} rows inserted  |  {k_info}\n")
+        print()
 
-    print_summary(conn)
+    print_summary(summary_rows)
     spot_check(conn)
     conn.close()
     print(f"\nDone → {DB_FILE}")
