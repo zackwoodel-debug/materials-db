@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+refractiveindex.info-database/
+refractiveindex_db/
+.claude/
