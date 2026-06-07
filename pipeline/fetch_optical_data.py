@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 """
-fetch_optical_data.py
-=====================
+pipeline/fetch_optical_data.py
+==============================
 Clone the refractiveindex.info YAML database, parse n,k optical data for
-selected soft-matter / substrate materials, and store everything in a
-structured SQLite database (materials.db).
+selected soft-matter / substrate materials, and populate materials.db.
 
 Materials
 ---------
@@ -18,6 +17,7 @@ materials  : id, name, formula, material_class, notes, density_g_cm3
 optical_nk : id, material_id (FK), wavelength_nm, n, k, source_ref, temperature_C
 """
 
+import os
 import re
 import sqlite3
 import subprocess
@@ -27,11 +27,14 @@ from typing import List, Optional, Tuple
 import numpy as np
 import yaml
 
-# ─── Configuration ────────────────────────────────────────────────────────────
+# ─── Paths ────────────────────────────────────────────────────────────────────
 
-DB_FILE  = "materials.db"
+_ROOT    = Path(__file__).resolve().parent.parent   # project root
+DB_FILE  = str(_ROOT / "materials.db")
 REPO_URL = "https://github.com/polyanskiy/refractiveindex.info-database.git"
-REPO_DIR = "refractiveindex_db"
+REPO_DIR = str(_ROOT / "refractiveindex_db")
+
+# ─── Configuration ────────────────────────────────────────────────────────────
 
 WL_MIN_NM = 200.0    # fetch window – UV
 WL_MAX_NM = 3000.0   # fetch window – near-IR
@@ -224,7 +227,6 @@ def detect_formula_type(yaml_path: Path) -> str:
     with open(yaml_path) as fh:
         raw = yaml.safe_load(fh)
     types = [str(b.get("type", "?")).strip() for b in raw.get("DATA", [])]
-    # Collapse duplicates, preserve order
     seen: dict = {}
     for t in types:
         seen[t] = None
@@ -281,21 +283,20 @@ def eval_formula(
         # General:  n² = c₀ + Σ Bᵢ·λ^pᵢ/(λ^qᵢ−Cᵢ)   [4-coeff groups]
         #                    + Σ Dⱼ·λ^fⱼ                [2-coeff polynomial tail]
         # Group layout: [B, p_num, C, q_den] → B·λ^p / (λ^q − C)
-        # Trailing 2-coeff chunk: [D, f] → D·λ^f
         n2 = np.full_like(lam, c[0])
         i = 1
         while i < len(c):
-            if i + 3 < len(c):          # need indices i..i+3 → 4 coefficients
+            if i + 3 < len(c):
                 B, p, C_val, q = c[i], c[i + 1], c[i + 2], c[i + 3]
                 denom = lam**q - C_val
                 with np.errstate(divide="ignore", invalid="ignore"):
                     n2 = n2 + np.where(denom != 0.0, B * lam**p / denom, 0.0)
                 i += 4
-            elif i + 1 < len(c):        # 2-coeff polynomial tail
+            elif i + 1 < len(c):
                 n2 = n2 + c[i] * lam ** c[i + 1]
                 i += 2
             else:
-                break                   # lone orphan coefficient — skip
+                break
         return np.sqrt(np.clip(n2, 1e-30, None)), None
 
     if ftype == "formula 5":
@@ -359,7 +360,6 @@ def parse_file(
         refs = " | ".join(str(r) for r in refs)
     refs = str(refs)[:512]
 
-    # Temperature: filename heuristic, then CONDITIONS block
     temp: Optional[float] = None
     m = re.search(r"[-_](\d+(?:\.\d+)?)[Cc](?:\b|$)", yaml_path.stem)
     if m:
@@ -450,7 +450,7 @@ def parse_file(
     return n_wl_a, n_val_a, k_out, refs, temp
 
 
-# ─── Database schema & helpers ────────────────────────────────────────────────
+# ─── Database helpers ─────────────────────────────────────────────────────────
 
 _SCHEMA = """
 CREATE TABLE IF NOT EXISTS materials (
@@ -461,27 +461,26 @@ CREATE TABLE IF NOT EXISTS materials (
     notes          TEXT,
     density_g_cm3  REAL
 );
-
 CREATE TABLE IF NOT EXISTS optical_nk (
     id             INTEGER PRIMARY KEY AUTOINCREMENT,
     material_id    INTEGER NOT NULL REFERENCES materials(id),
     wavelength_nm  REAL    NOT NULL,
     n              REAL    NOT NULL,
-    k              REAL,               -- NULL = absent, never 0 for transparent materials
+    k              REAL,
     source_ref     TEXT,
     temperature_C  REAL
 );
-
 CREATE INDEX IF NOT EXISTS idx_nk_mat ON optical_nk(material_id);
 CREATE INDEX IF NOT EXISTS idx_nk_wl  ON optical_nk(wavelength_nm);
 """
 
 
 def setup_db(path: str) -> sqlite3.Connection:
-    if Path(path).exists():
-        Path(path).unlink()
+    """Open (or create) the DB, ensure schema exists, clear data tables."""
     conn = sqlite3.connect(path)
     conn.executescript(_SCHEMA)
+    conn.execute("DELETE FROM optical_nk")
+    conn.execute("DELETE FROM materials")
     conn.commit()
     return conn
 
@@ -547,9 +546,6 @@ def insert_manual_nk(conn: sqlite3.Connection, mat_id: int, entries: list) -> in
 # ─── Summary ──────────────────────────────────────────────────────────────────
 
 def print_summary(rows: list) -> None:
-    """
-    rows: list of (name, formula_type, wl_lo, wl_hi, pts, k_pts, status)
-    """
     W = 98
     print("\n" + "=" * W)
     print(
@@ -644,7 +640,6 @@ def main() -> None:
             k_info = f"k: {k_finite}/{n_rows}" if k is not None else "k: NULL"
             print(f"  ✓  {n_rows:,} rows  |  {k_info}")
 
-            # Insert any supplemental manual points
             manual = mat.get("manual_nk", [])
             if manual:
                 insert_manual_nk(conn, mat_id, manual)
@@ -656,7 +651,6 @@ def main() -> None:
             )
 
         else:
-            # No YAML — fall back to manual inserts if defined
             manual = mat.get("manual_nk", [])
             if manual:
                 n_rows = insert_manual_nk(conn, mat_id, manual)

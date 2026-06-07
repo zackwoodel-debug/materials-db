@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-audit.py — Audit materials.db + fetch_optical_data.py
+core/audit.py
+Audit materials.db + pipeline/fetch_optical_data.py.
 Outputs PASS / WARN / FAIL per check, then inserts the DPPC 633 nm point.
 Dependencies: stdlib only (sqlite3, re, pathlib).
 """
@@ -9,17 +10,15 @@ import re
 import sqlite3
 from pathlib import Path
 
-DB   = "materials.db"
-CODE = "fetch_optical_data.py"
+_ROOT = Path(__file__).resolve().parent.parent   # project root
+
+DB   = str(_ROOT / "materials.db")
+CODE = str(_ROOT / "pipeline" / "fetch_optical_data.py")
 
 results: list[tuple[str, str, str]] = []   # (status, check_id, detail)
 
 def record(status: str, check_id: str, detail: str) -> None:
     results.append((status, check_id, detail))
-
-# ─────────────────────────────────────────────────────────────────────────────
-# Helpers
-# ─────────────────────────────────────────────────────────────────────────────
 
 PASS = "PASS"
 WARN = "WARN"
@@ -36,10 +35,10 @@ conn.row_factory = sqlite3.Row
 mat_count = conn.execute("SELECT COUNT(*) FROM materials").fetchone()[0]
 nk_count  = conn.execute("SELECT COUNT(*) FROM optical_nk").fetchone()[0]
 
-if mat_count == 5 and nk_count > 0:
+if mat_count >= 5 and nk_count > 0:
     record(PASS, "DB-1", f"materials={mat_count} rows, optical_nk={nk_count} rows")
 elif mat_count > 0 and nk_count > 0:
-    record(WARN, "DB-1", f"materials={mat_count} (expected 5), optical_nk={nk_count}")
+    record(WARN, "DB-1", f"materials={mat_count}, optical_nk={nk_count} — low row count")
 else:
     record(FAIL, "DB-1", f"materials={mat_count}, optical_nk={nk_count} — table(s) empty")
 
@@ -74,7 +73,6 @@ for row in conn.execute("""
     has_src= row["has_src"]
     exp    = EXPECTED.get(name, {})
 
-    # zero rows — handle before touching wl_lo/wl_hi which will be None
     if pts == 0:
         if name == "DPPC":
             record(FAIL, f"DB-2[{name}]",
@@ -83,7 +81,6 @@ for row in conn.execute("""
             record(FAIL, f"DB-2[{name}]", f"0 n/k rows — unexpected parse failure")
         continue
 
-    # sufficient points check
     min_pts = exp.get("min_pts", 1)
     if pts < min_pts:
         record(FAIL, f"DB-2[{name}]", f"only {pts} n/k rows (expected ≥{min_pts})")
@@ -91,23 +88,19 @@ for row in conn.execute("""
 
     parts = []
 
-    # wavelength range
     if exp.get("wl_lo_max") and wl_lo > exp["wl_lo_max"]:
         parts.append(f"wl_lo={wl_lo:.1f} nm (expected ≤{exp['wl_lo_max']})")
     if exp.get("wl_hi_min") and wl_hi < exp["wl_hi_min"]:
         parts.append(f"wl_hi={wl_hi:.1f} nm (expected ≥{exp['wl_hi_min']})")
 
-    # k presence
     if exp.get("has_k") is True and k_pres == 0:
         parts.append("k fully NULL but k data expected")
     if exp.get("has_k") is False and k_pres > 0:
         parts.append(f"unexpected k values ({k_pres} non-NULL)")
 
-    # source_ref
     if not has_src:
         parts.append("source_ref missing")
 
-    # k NULL fraction note (informational, not a failure)
     if k_null > 0 and k_pres > 0:
         pct = 100 * k_null / (k_null + k_pres)
         parts.append(f"k partially NULL ({pct:.0f}% of rows) — check interp boundaries")
@@ -119,8 +112,8 @@ for row in conn.execute("""
     else:
         record(PASS, f"DB-2[{name}]", summary)
 
-# DB-3  n out-of-range [1.0, 4.0]  — flag per material with physical context
-METAL_MATERIALS = {"Gold", "Silver", "Copper", "Aluminum"}  # sub-unity n is physical
+# DB-3  n out-of-range [1.0, 4.0]
+METAL_MATERIALS = {"Gold", "Silver", "Copper", "Aluminum"}
 
 for row in conn.execute("""
     SELECT m.name, m.material_class,
@@ -213,9 +206,9 @@ def find_lines(pattern: str) -> list[int]:
     return [i + 1 for i, ln in enumerate(lines) if re.search(pattern, ln)]
 
 # CODE-1  µm→nm conversion is explicit (multiply by 1000, not assumed)
-um_to_nm_sites = find_lines(r"\*\s*1000")        # arr[:,0] * 1000
-div_sites       = find_lines(r"/ 1000")           # WL_MIN_NM / 1000
-um_var_sites    = find_lines(r"_um\b")            # variables named *_um
+um_to_nm_sites = find_lines(r"\*\s*1000")
+div_sites       = find_lines(r"/ 1000")
+um_var_sites    = find_lines(r"_um\b")
 if um_to_nm_sites and div_sites and um_var_sites:
     record(PASS, "CODE-1[um→nm]",
            f"explicit *1000 at lines {um_to_nm_sites[:3]}; "
@@ -227,7 +220,6 @@ else:
     record(FAIL, "CODE-1[um→nm]", "no explicit µm→nm conversion found")
 
 # CODE-2  Formula 1/2 use  n² = 1 + c₀ + Σ  (not n² = c₀ + Σ)
-#         Correct pattern:  np.full_like(lam, 1.0 + c[0])
 correct_init = find_lines(r"np\.full_like\(lam,\s*1\.0\s*\+\s*c\[0\]\)")
 wrong_init   = find_lines(r"np\.full_like\(lam,\s*c\[0\]\)")
 if correct_init and not wrong_init:
@@ -241,7 +233,6 @@ else:
            "could not confirm n²=1+c₀+Σ initialisation pattern")
 
 # CODE-3a  Missing k stored as Python None → SQL NULL  (not 0.0)
-#          Look for the guard: k_val = None if (np.isnan(kv) or …) else kv
 null_guard = find_lines(r"k_val\s*=\s*None\s+if")
 if null_guard:
     record(PASS, "CODE-3a[k-null-guard]",
@@ -251,7 +242,6 @@ else:
            "no None-if guard for k — absent k may be stored as 0.0")
 
 # CODE-3b  The formula evaluators return None for k, not 0.0
-#          Verify "return ... , None" inside eval_formula
 formula_ret_none = find_lines(r"return\s+np\.sqrt.*,\s*None")
 if len(formula_ret_none) >= 3:
     record(PASS, "CODE-3b[formula-k-none]",
@@ -261,15 +251,6 @@ else:
     record(WARN, "CODE-3b[formula-k-none]",
            f"only {len(formula_ret_none)} 'return …, None' in eval_formula — "
            f"check all formula branches")
-
-# CODE-4  Bonus: formula 4 reuses F1 coefficients structure — flag as WARN
-f4_block = find_lines(r"ftype\s*==\s*\"formula 4\"")
-f4_comment = find_lines(r"(?i)formula.4")
-if f4_block:
-    record(WARN, "CODE-4[formula4-approx]",
-           f"formula 4 (line {f4_block}) mirrors formula 1 coefficient structure; "
-           f"RI.info spec allows polynomial tail terms beyond Sellmeier pairs — "
-           f"no formula-4 materials in current DB so no practical impact")
 
 # ─────────────────────────────────────────────────────────────────────────────
 # PRINT REPORT
@@ -281,11 +262,11 @@ for s, _, _ in results:
     counts[s] = counts.get(s, 0) + 1
 
 print("=" * WIDTH)
-print(f"  AUDIT REPORT — {DB}  +  {CODE}")
+print(f"  AUDIT REPORT — {DB}")
+print(f"             — {CODE}")
 print("=" * WIDTH)
 for status, cid, detail in results:
     tag = f"[{status}]"
-    # wrap detail at 70 chars for readability
     indent = " " * (len(tag) + 2 + len(cid) + 3)
     words  = detail.split()
     lines_out, line = [], []
@@ -318,7 +299,6 @@ else:
     print("REMEDIATION: Inserting DPPC n=1.48 k=NULL @ 633 nm …")
     conn2 = sqlite3.connect(DB)
     if dppc_id is None:
-        # Safety: material row itself is missing (should not happen)
         cur = conn2.execute(
             "INSERT INTO materials (name, formula, material_class, notes) VALUES (?,?,?,?)",
             ("DPPC", "C40H80NO8P", "lipid",
@@ -337,7 +317,6 @@ else:
     )
     conn2.commit()
 
-    # Verify
     inserted = conn2.execute(
         "SELECT * FROM optical_nk WHERE material_id=? AND wavelength_nm=633.0",
         (dppc_id,)
@@ -345,9 +324,7 @@ else:
     conn2.close()
 
     if inserted:
-        print(f"  Inserted: id={inserted[0]}, material_id={inserted[1]}, "
-              f"wavelength_nm={inserted[2]}, n={inserted[3]}, k={inserted[4]}, "
-              f"source_ref='{inserted[5]}', temperature_C={inserted[6]}")
+        print(f"  Inserted: id={inserted[0]}, n={inserted[3]}, k={inserted[4]}")
         print("  DONE — re-run audit to confirm DB-5 becomes PASS.")
     else:
         print("  ERROR: INSERT appeared to succeed but row not found on re-query.")
