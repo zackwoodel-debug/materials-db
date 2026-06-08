@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MatChat — Materials Science Assistant</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #0d1117;
+      --surface:     #161b22;
+      --border:      #30363d;
+      --text:        #c9d1d9;
+      --text-muted:  #8b949e;
+      --user-bg:     #1c2d3f;
+      --user-border: #1f6feb;
+      --agent-bg:    #161b22;
+      --agent-border:#30363d;
+      --sql-bg:      #010409;
+      --sql-border:  #238636;
+      --accent:      #388bfd;
+      --mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', Consolas, monospace;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* ── Header ─────────────────────────────────────────────────────── */
+    header {
+      flex-shrink: 0;
+      padding: 10px 20px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+    header h1 { font-size: 1rem; font-weight: 600; }
+    header .sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-family: var(--mono);
+    }
+    .status-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #3fb950;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+
+    /* ── Chat area ──────────────────────────────────────────────────── */
+    #chat {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .msg { display: flex; flex-direction: column; max-width: 78%; }
+    .msg.user  { align-self: flex-end;   align-items: flex-end; }
+    .msg.agent { align-self: flex-start; align-items: flex-start; }
+
+    .bubble {
+      padding: 9px 14px;
+      border-radius: 8px;
+      line-height: 1.55;
+      font-size: 0.88rem;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .msg.user  .bubble {
+      background: var(--user-bg);
+      border: 1px solid var(--user-border);
+      border-radius: 8px 8px 2px 8px;
+    }
+    .msg.agent .bubble {
+      background: var(--agent-bg);
+      border: 1px solid var(--agent-border);
+      border-radius: 2px 8px 8px 8px;
+    }
+
+    /* ── SQL block ──────────────────────────────────────────────────── */
+    details.sql {
+      margin-top: 6px;
+      border: 1px solid var(--sql-border);
+      border-radius: 4px;
+      background: var(--sql-bg);
+      width: 100%;
+      max-width: 560px;
+    }
+    details.sql summary {
+      padding: 4px 10px;
+      cursor: pointer;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: #3fb950;
+      list-style: none;
+      user-select: none;
+    }
+    details.sql summary::before { content: '▶  SQL'; }
+    details.sql[open] summary::before { content: '▼  SQL'; }
+    details.sql pre {
+      padding: 8px 12px;
+      border-top: 1px solid var(--sql-border);
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      color: #a5d6ff;
+      white-space: pre-wrap;
+      word-break: break-all;
+      line-height: 1.5;
+    }
+
+    /* ── Meta row (badges) ──────────────────────────────────────────── */
+    .meta {
+      display: flex;
+      gap: 5px;
+      margin-top: 5px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .badge {
+      font-size: 0.68rem;
+      padding: 2px 7px;
+      border-radius: 10px;
+      font-family: var(--mono);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+    .badge.exact   { background:#0d2818; color:#3fb950; border:1px solid #238636; }
+    .badge.approx  { background:#2b1d0a; color:#e3b341; border:1px solid #9e6a03; }
+    .badge.no_data { background:#2d0f0f; color:#f85149; border:1px solid #8b1a1a; }
+    .badge.source  {
+      background:#0d1b2e; color:#79c0ff;
+      border:1px solid #1f6feb;
+      font-weight:400;
+      text-transform: none;
+    }
+
+    /* ── Thinking indicator ─────────────────────────────────────────── */
+    .thinking {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-style: italic;
+      padding: 7px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+    }
+    .dot-anim::after {
+      content: '';
+      animation: dots 1.2s steps(3, end) infinite;
+    }
+    @keyframes dots {
+      0%   { content: '.'; }
+      33%  { content: '..'; }
+      66%  { content: '...'; }
+    }
+
+    /* ── Error ──────────────────────────────────────────────────────── */
+    .err {
+      font-size: 0.82rem;
+      color: #f85149;
+      padding: 7px 12px;
+      border: 1px solid #8b1a1a;
+      border-radius: 6px;
+      background: #2d0f0f;
+      margin-top: 4px;
+    }
+
+    /* ── Input bar ──────────────────────────────────────────────────── */
+    #bar {
+      flex-shrink: 0;
+      border-top: 1px solid var(--border);
+      padding: 10px 16px;
+      background: var(--surface);
+      display: flex;
+      gap: 8px;
+      align-items: flex-end;
+    }
+    #inp {
+      flex: 1;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 12px;
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      resize: none;
+      min-height: 38px;
+      max-height: 120px;
+      line-height: 1.4;
+      overflow-y: auto;
+    }
+    #inp:focus { outline: none; border-color: var(--accent); }
+    #inp::placeholder { color: var(--text-muted); }
+    #btn {
+      height: 38px;
+      padding: 0 18px;
+      background: #1f6feb;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.12s;
+      white-space: nowrap;
+    }
+    #btn:hover:not(:disabled) { background: #388bfd; }
+    #btn:disabled { background: #21262d; color: var(--text-muted); cursor: default; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>MatChat</h1>
+  <span class="sub">materials-db · SQL-RAG</span>
+  <span class="status-dot" title="Connected"></span>
+</header>
+
+<div id="chat"></div>
+
+<div id="bar">
+  <textarea id="inp" rows="1" placeholder="Ask a materials science question… (Enter to send)"></textarea>
+  <button id="btn">Send</button>
+</div>
+
+<script>
+  const chat = document.getElementById('chat');
+  const inp  = document.getElementById('inp');
+  const btn  = document.getElementById('btn');
+
+  // Full conversation persisted in JS; sent with every request.
+  let history = [];
+
+  // ── Helpers ───────────────────────────────────────────────────────────────
+
+  function esc(s) {
+    return String(s)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function confClass(c) {
+    return c === 'exact_match' ? 'exact' : c === 'approximate' ? 'approx' : 'no_data';
+  }
+
+  function confLabel(c) {
+    return c === 'exact_match' ? 'exact match'
+         : c === 'approximate' ? 'approximate'
+         : 'no data';
+  }
+
+  function scroll() { chat.scrollTop = chat.scrollHeight; }
+
+  // ── DOM builders ──────────────────────────────────────────────────────────
+
+  function addUser(text) {
+    const el = document.createElement('div');
+    el.className = 'msg user';
+    el.innerHTML = `<div class="bubble">${esc(text)}</div>`;
+    chat.appendChild(el);
+    scroll();
+  }
+
+  function addThinking() {
+    const el = document.createElement('div');
+    el.className = 'msg agent';
+    el.innerHTML = `<div class="thinking dot-anim">querying database</div>`;
+    chat.appendChild(el);
+    scroll();
+    return el;
+  }
+
+  function fillAgent(placeholder, data) {
+    const c   = data.confidence || 'no_data';
+    const sql = data.sql || '';
+    const src = (data.sources || [])
+      .map(s => `<span class="badge source">${esc(s)}</span>`)
+      .join('');
+    const sqlBlock = sql
+      ? `<details class="sql"><summary></summary><pre>${esc(sql)}</pre></details>`
+      : '';
+
+    placeholder.innerHTML = `
+      <div class="bubble">${esc(data.response || 'I do not have data on that.')}</div>
+      ${sqlBlock}
+      <div class="meta">
+        <span class="badge ${confClass(c)}">${confLabel(c)}</span>
+        ${src}
+      </div>`;
+    scroll();
+  }
+
+  function fillError(placeholder, msg) {
+    placeholder.innerHTML = `<div class="err">⚠ ${esc(msg)}</div>`;
+    scroll();
+  }
+
+  // ── Send ──────────────────────────────────────────────────────────────────
+
+  async function send() {
+    const query = inp.value.trim();
+    if (!query) return;
+
+    inp.value = '';
+    inp.style.height = 'auto';
+    btn.disabled = true;
+
+    addUser(query);
+    const placeholder = addThinking();
+
+    // Send history *before* the current turn; backend appends it.
+    const outHistory = [...history];
+
+    try {
+      const res = await fetch('http://127.0.0.1:8000/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query, history: outHistory }),
+      });
+
+      if (!res.ok) {
+        const e = await res.json().catch(() => ({ detail: res.statusText }));
+        fillError(placeholder, e.detail || `HTTP ${res.status}`);
+      } else {
+        const data = await res.json();
+        fillAgent(placeholder, data);
+        history.push({ role: 'user',      content: query });
+        history.push({ role: 'assistant', content: data.response || '' });
+      }
+    } catch (err) {
+      fillError(placeholder, `Network error: ${err.message}`);
+    }
+
+    btn.disabled = false;
+    inp.focus();
+  }
+
+  // ── Event listeners ───────────────────────────────────────────────────────
+
+  btn.addEventListener('click', send);
+
+  inp.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); }
+  });
+
+  // Auto-grow textarea.
+  inp.addEventListener('input', () => {
+    inp.style.height = 'auto';
+    inp.style.height = Math.min(inp.scrollHeight, 120) + 'px';
+  });
+</script>
+</body>
+</html>

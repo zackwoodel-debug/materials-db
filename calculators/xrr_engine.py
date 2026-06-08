@@ -22,40 +22,7 @@ from pathlib import Path
 
 _ROOT = Path(__file__).resolve().parent.parent
 
-# NA and R_E together convert bulk electron density to the X-ray scattering length
-# density needed by the Parratt recursion.
-NA  = 6.02214076e23   # Avogadro number  (mol⁻¹)
-R_E = 2.8179403e-5    # classical electron radius  (Å)
-
-# ATOMS maps each element to its proton number Z and IUPAC atomic weight; only
-# elements common to organic thin films and noble metals are included here.
-
-ATOMS: dict[str, tuple[int, float]] = {
-    #       Z    atomic_weight (g/mol)
-    "H":  ( 1,   1.00794),
-    "C":  ( 6,  12.0107),
-    "N":  ( 7,  14.0067),
-    "O":  ( 8,  15.9994),
-    "F":  ( 9,  18.9984),
-    "Si": (14,  28.0855),
-    "P":  (15,  30.97376),
-    "S":  (16,  32.065),
-    "Au": (79, 196.9665),
-}
-
-def parse_formula(formula: str) -> dict[str, int]:
-    """
-    Physical purpose: Strip polymer repeat-unit notation and tally each element's atom count from a chemical formula string.
-    Args/Returns: formula — string such as "(C5H8O2)n" or "Au"; returns dict mapping element symbol to integer count.
-    """
-    clean = re.sub(r"^\((.+)\)[A-Za-z]?\d*$", r"\1", formula.strip())
-    counts: dict[str, int] = {}
-    for elem, num_str in re.findall(r"([A-Z][a-z]?)(\d*)", clean):
-        if not elem:
-            continue
-        counts[elem] = counts.get(elem, 0) + (int(num_str) if num_str else 1)
-    return counts
-
+from calculators.sld_calculator import ATOMS, parse_formula, compute_xray_sld, NA, R_E
 
 def compute_xrr(formula: str, density_g_cm3: float) -> dict:
     """
@@ -76,7 +43,7 @@ def compute_xrr(formula: str, density_g_cm3: float) -> dict:
 
     # ρₑ [e⁻/Å³]:  (ρ [g/cm³] × Nₐ [mol⁻¹] × Z_total) / (Mw [g/mol] × 1e24 [Å³/cm³])
     rho_e = (density_g_cm3 * NA * z_total) / (mw * 1e24)
-    sld   = rho_e * R_E
+    sld   = float(compute_xray_sld(counts, density_g_cm3, mw).real)
 
     return {
         "counts":   counts,

@@ -25,7 +25,10 @@ from pathlib import Path
 from typing import List, Optional, Tuple
 
 import numpy as np
+import requests
 import yaml
+from rdkit import Chem
+from rdkit.Chem import Descriptors
 
 # ─── Paths ────────────────────────────────────────────────────────────────────
 
@@ -183,7 +186,107 @@ MATERIALS: List[dict] = [
             ),
         ],
     ),
+    dict(
+        name="Silicon",
+        formula="Si",
+        material_class="semiconductor",
+        notes="Single-crystal silicon substrate. Density: Deslattes et al. 1980.",
+        density_g_cm3=2.329,
+        candidates=[],
+        search_dirs=[],
+    ),
 ]
+
+# ─── Chemical Properties & Calculations Fallbacks ────────────────────────────────
+
+FALLBACK_PROPERTIES = {
+    "Water": {"formula": "H2O", "smiles": "O", "molecular_weight": 18.015},
+    "Gold": {"formula": "Au", "smiles": "[Au]", "molecular_weight": 196.9665},
+    "SiO2": {"formula": "SiO2", "smiles": "O=[Si]=O", "molecular_weight": 60.084},
+    "Silicon": {"formula": "Si", "smiles": "[Si]", "molecular_weight": 28.0855},
+    "Polystyrene": {"formula": "(C8H8)n", "smiles": "CC(C1=CC=CC=C1)", "molecular_weight": 104.15},
+    "DPPC": {"formula": "C40H80NO8P", "smiles": "CCCCCCCCCCCCCCCC(=O)OCC(COP(=O)([O-])OCC[N+](C)(C)C)OC(=O)CCCCCCCCCCCCCCC", "molecular_weight": 734.05},
+    "PMMA": {"formula": "(C5H8O2)n", "smiles": "CC(C)(C(=O)OC)", "molecular_weight": 100.115},
+    "Ethanol": {"formula": "C2H6O", "smiles": "CCO", "molecular_weight": 46.068},
+    "DMSO": {"formula": "C2H6OS", "smiles": "CS(=O)C", "molecular_weight": 78.13},
+    "PEG": {"formula": "(C2H4O)n", "smiles": "CCO", "molecular_weight": 44.053},
+}
+
+ATOMS: dict[str, tuple[int, float]] = {
+    #       Z    atomic_weight (g/mol)
+    "H":  ( 1,   1.00794),
+    "D":  ( 1,   2.01410),
+    "C":  ( 6,  12.0107),
+    "N":  ( 7,  14.0067),
+    "O":  ( 8,  15.9994),
+    "F":  ( 9,  18.9984),
+    "Si": (14,  28.0855),
+    "P":  (15,  30.97376),
+    "S":  (16,  32.065),
+    "Au": (79, 196.9665),
+}
+
+B_COH = {
+    "H": -3.7406e-5,   # Å
+    "D":  6.6710e-5,   # Å
+    "C":  6.6460e-5,   # Å
+    "N":  9.3600e-5,   # Å
+    "O":  5.8030e-5,   # Å
+    "P":  5.1300e-5,   # Å
+    "S":  2.8470e-5,   # Å
+    "Si": 4.1491e-5,   # Å
+    "Au": 7.6300e-5,   # Å
+}
+
+NA = 6.02214076e23
+R_E = 2.8179403e-5
+
+def parse_formula(formula: str) -> dict[str, int]:
+    clean = re.sub(r"^\((.+)\)[A-Za-z]?\d*$", r"\1", formula.strip())
+    counts: dict[str, int] = {}
+    for elem, num_str in re.findall(r"([A-Z][a-z]?)(\d*)", clean):
+        if not elem:
+            continue
+        counts[elem] = counts.get(elem, 0) + (int(num_str) if num_str else 1)
+    return counts
+
+def fetch_pubchem_properties(name: str) -> Optional[dict]:
+    url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/{name}/property/MolecularFormula,MolecularWeight,CanonicalSMILES/JSON"
+    try:
+        r = requests.get(url, timeout=5)
+        if r.status_code == 200:
+            props = r.json()["PropertyTable"]["Properties"][0]
+            return {
+                "formula": props.get("MolecularFormula"),
+                "molecular_weight": float(props.get("MolecularWeight", 0.0)),
+                "smiles": props.get("CanonicalSMILES") or props.get("ConnectivitySMILES")
+            }
+    except Exception as e:
+        print(f"  [PubChem warn] Resolution failed for {name}: {e}")
+    
+    # Fallback to local dict
+    if name in FALLBACK_PROPERTIES:
+        print(f"  [Fallback] Using manual properties for {name}")
+        return FALLBACK_PROPERTIES[name]
+    return None
+
+def compute_rdkit_descriptors(smiles: str) -> dict[str, float]:
+    clean_smiles = smiles.replace("*", "")
+    try:
+        mol = Chem.MolFromSmiles(clean_smiles)
+        if mol is None:
+            return {}
+        return {
+            "logP": float(Descriptors.MolLogP(mol)),
+            "TPSA": float(Descriptors.TPSA(mol)),
+            "h_bond_donors": float(Descriptors.NumHDonors(mol)),
+            "h_bond_acceptors": float(Descriptors.NumHAcceptors(mol)),
+            "rotatable_bonds": float(Descriptors.NumRotatableBonds(mol)),
+            "exact_mass": float(Descriptors.ExactMolWt(mol)),
+        }
+    except Exception as e:
+        print(f"  [RDKit warn] Descriptor calculation failed: {e}")
+        return {}
 
 
 # ─── Repository access ────────────────────────────────────────────────────────
@@ -453,23 +556,82 @@ def parse_file(
 # ─── Database helpers ─────────────────────────────────────────────────────────
 
 _SCHEMA = """
-CREATE TABLE IF NOT EXISTS materials (
-    id             INTEGER PRIMARY KEY AUTOINCREMENT,
-    name           TEXT    NOT NULL,
-    formula        TEXT,
-    material_class TEXT,
-    notes          TEXT,
-    density_g_cm3  REAL
+CREATE TABLE IF NOT EXISTS references_db (
+    id            INTEGER PRIMARY KEY AUTOINCREMENT,
+    doi           TEXT    UNIQUE,
+    citation_text TEXT    NOT NULL,
+    url           TEXT,
+    bibtex        TEXT
 );
+
+CREATE TABLE IF NOT EXISTS materials (
+    id               INTEGER PRIMARY KEY AUTOINCREMENT,
+    name             TEXT    NOT NULL UNIQUE,
+    formula          TEXT,
+    smiles           TEXT,
+    molecular_weight REAL,
+    material_class   TEXT,
+    notes            TEXT,
+    density_g_cm3    REAL
+);
+
+CREATE TABLE IF NOT EXISTS chemical_descriptors (
+    id              INTEGER PRIMARY KEY AUTOINCREMENT,
+    material_id     INTEGER NOT NULL REFERENCES materials(id) ON DELETE CASCADE,
+    descriptor_name TEXT    NOT NULL,
+    value           REAL    NOT NULL,
+    source_library  TEXT,
+    UNIQUE(material_id, descriptor_name)
+);
+
 CREATE TABLE IF NOT EXISTS optical_nk (
     id             INTEGER PRIMARY KEY AUTOINCREMENT,
-    material_id    INTEGER NOT NULL REFERENCES materials(id),
+    material_id    INTEGER NOT NULL REFERENCES materials(id) ON DELETE CASCADE,
+    reference_id   INTEGER REFERENCES references_db(id),
     wavelength_nm  REAL    NOT NULL,
     n              REAL    NOT NULL,
     k              REAL,
     source_ref     TEXT,
-    temperature_C  REAL
+    temperature_C  REAL,
+    UNIQUE(material_id, wavelength_nm, temperature_C)
 );
+
+CREATE TABLE IF NOT EXISTS viscoelasticity (
+    id                 INTEGER PRIMARY KEY AUTOINCREMENT,
+    material_id        INTEGER NOT NULL REFERENCES materials(id) ON DELETE CASCADE,
+    reference_id       INTEGER REFERENCES references_db(id),
+    frequency_hz       REAL    NOT NULL,
+    temperature_C      REAL,
+    storage_modulus_pa REAL,
+    loss_modulus_pa    REAL,
+    viscosity_mpa_s    REAL,
+    UNIQUE(material_id, frequency_hz, temperature_C)
+);
+
+CREATE TABLE IF NOT EXISTS dielectrics (
+    id                INTEGER PRIMARY KEY AUTOINCREMENT,
+    material_id       INTEGER NOT NULL REFERENCES materials(id) ON DELETE CASCADE,
+    reference_id      INTEGER REFERENCES references_db(id),
+    frequency_hz      REAL    NOT NULL,
+    temperature_C     REAL,
+    real_permittivity REAL    NOT NULL,
+    imag_permittivity REAL,
+    UNIQUE(material_id, frequency_hz, temperature_C)
+);
+
+CREATE TABLE IF NOT EXISTS calculated_slds (
+    id                INTEGER PRIMARY KEY AUTOINCREMENT,
+    material_id       INTEGER NOT NULL REFERENCES materials(id) ON DELETE CASCADE,
+    reference_id      INTEGER REFERENCES references_db(id),
+    energy_ev         REAL    NOT NULL,
+    wavelength_nm     REAL    NOT NULL,
+    xray_sld_real     REAL    NOT NULL,
+    xray_sld_imag     REAL,
+    neutron_sld_real  REAL    NOT NULL,
+    neutron_sld_imag  REAL,
+    UNIQUE(material_id, energy_ev)
+);
+
 CREATE INDEX IF NOT EXISTS idx_nk_mat ON optical_nk(material_id);
 CREATE INDEX IF NOT EXISTS idx_nk_wl  ON optical_nk(wavelength_nm);
 """
@@ -477,25 +639,65 @@ CREATE INDEX IF NOT EXISTS idx_nk_wl  ON optical_nk(wavelength_nm);
 
 def setup_db(path: str) -> sqlite3.Connection:
     """Open (or create) the DB, ensure schema exists, clear data tables."""
+    if os.path.exists(path):
+        try:
+            os.remove(path)
+            print(f"Removed old database file at {path} to apply new schema.")
+        except Exception as e:
+            print(f"Warning: could not delete old database file: {e}")
     conn = sqlite3.connect(path)
     conn.executescript(_SCHEMA)
-    conn.execute("DELETE FROM optical_nk")
-    conn.execute("DELETE FROM materials")
     conn.commit()
     return conn
 
 
 def insert_material(conn: sqlite3.Connection, mat: dict) -> int:
     cur = conn.execute(
-        "INSERT INTO materials (name, formula, material_class, notes, density_g_cm3) "
-        "VALUES (?,?,?,?,?)",
+        "INSERT INTO materials (name, formula, smiles, molecular_weight, material_class, notes, density_g_cm3) "
+        "VALUES (?,?,?,?,?,?,?)",
         (
-            mat["name"], mat["formula"], mat["material_class"],
+            mat["name"], mat["formula"], mat.get("smiles"),
+            mat.get("molecular_weight"), mat["material_class"],
             mat["notes"], mat.get("density_g_cm3"),
         ),
     )
     conn.commit()
     return cur.lastrowid  # type: ignore[return-value]
+
+
+def get_or_create_reference(conn: sqlite3.Connection, refs_str: str) -> Optional[int]:
+    if not refs_str or not refs_str.strip():
+        return None
+    refs_str = refs_str.strip()
+    
+    # Try to extract DOI if present
+    doi_match = re.search(r'\b10\.\d{4,9}/[-._;()/:A-Z0-9]+\b', refs_str, re.IGNORECASE)
+    doi = doi_match.group(0) if doi_match else None
+    
+    try:
+        if doi:
+            row = conn.execute("SELECT id FROM references_db WHERE doi = ?", (doi,)).fetchone()
+            if row:
+                return row[0]
+            cur = conn.execute(
+                "INSERT INTO references_db (doi, citation_text, url) VALUES (?, ?, ?)",
+                (doi, refs_str, f"https://doi.org/{doi}")
+            )
+            conn.commit()
+            return cur.lastrowid
+        else:
+            row = conn.execute("SELECT id FROM references_db WHERE citation_text = ?", (refs_str,)).fetchone()
+            if row:
+                return row[0]
+            cur = conn.execute(
+                "INSERT INTO references_db (citation_text) VALUES (?)",
+                (refs_str,)
+            )
+            conn.commit()
+            return cur.lastrowid
+    except Exception as e:
+        print(f"Reference insertion failed: {e}")
+        return None
 
 
 def insert_nk(
@@ -507,17 +709,18 @@ def insert_nk(
     ref: str,
     temp: Optional[float],
 ) -> int:
+    ref_id = get_or_create_reference(conn, ref)
     rows = []
     for i in range(len(wl)):
         k_val: Optional[float] = None
         if k is not None:
             kv = float(k[i])
             k_val = None if (np.isnan(kv) or np.isinf(kv)) else kv
-        rows.append((mat_id, float(wl[i]), float(n[i]), k_val, ref, temp))
+        rows.append((mat_id, ref_id, float(wl[i]), float(n[i]), k_val, ref, temp))
     conn.executemany(
         "INSERT INTO optical_nk "
-        "(material_id, wavelength_nm, n, k, source_ref, temperature_C) "
-        "VALUES (?,?,?,?,?,?)",
+        "(material_id, reference_id, wavelength_nm, n, k, source_ref, temperature_C) "
+        "VALUES (?,?,?,?,?,?,?)",
         rows,
     )
     conn.commit()
@@ -525,18 +728,19 @@ def insert_nk(
 
 
 def insert_manual_nk(conn: sqlite3.Connection, mat_id: int, entries: list) -> int:
-    rows = [
-        (
+    rows = []
+    for e in entries:
+        ref_id = get_or_create_reference(conn, e.get("source_ref", ""))
+        rows.append((
             mat_id,
+            ref_id,
             e["wavelength_nm"], e["n"], e.get("k"),
             e.get("source_ref"), e.get("temperature_C"),
-        )
-        for e in entries
-    ]
+        ))
     conn.executemany(
         "INSERT INTO optical_nk "
-        "(material_id, wavelength_nm, n, k, source_ref, temperature_C) "
-        "VALUES (?,?,?,?,?,?)",
+        "(material_id, reference_id, wavelength_nm, n, k, source_ref, temperature_C) "
+        "VALUES (?,?,?,?,?,?,?)",
         rows,
     )
     conn.commit()
@@ -620,7 +824,104 @@ def main() -> None:
         name = mat["name"]
         print(f"[{name} ({mat['formula']})]")
 
+        # 1. Fetch Smiles, Formula, and Molecular Weight from PubChem (or Fallback)
+        pubchem_props = fetch_pubchem_properties(name)
+        if pubchem_props:
+            mat["formula"] = pubchem_props.get("formula") or mat["formula"]
+            mat["smiles"] = pubchem_props.get("smiles")
+            mat["molecular_weight"] = pubchem_props.get("molecular_weight")
+        else:
+            # Local fallback properties
+            props = FALLBACK_PROPERTIES.get(name, {})
+            mat["formula"] = props.get("formula") or mat["formula"]
+            mat["smiles"] = props.get("smiles")
+            mat["molecular_weight"] = props.get("molecular_weight")
+
         mat_id = insert_material(conn, mat)
+
+        # 2. Compute and Insert RDKit Chemical Descriptors
+        if mat.get("smiles"):
+            descriptors = compute_rdkit_descriptors(mat["smiles"])
+            for desc_name, value in descriptors.items():
+                conn.execute(
+                    "INSERT OR IGNORE INTO chemical_descriptors (material_id, descriptor_name, value, source_library) "
+                    "VALUES (?, ?, ?, ?)",
+                    (mat_id, desc_name, value, "RDKit")
+                )
+            conn.commit()
+            if descriptors:
+                print(f"  +  {len(descriptors)} chemical descriptors computed via RDKit")
+
+        # 3. Calculate and Insert Dynamic SLDs
+        if mat.get("formula") and mat.get("density_g_cm3") and mat.get("molecular_weight"):
+            counts = parse_formula(mat["formula"])
+            mw = mat["molecular_weight"]
+            density = mat["density_g_cm3"]
+
+            # Compute X-ray SLD (Cu K-alpha 8.04 keV, 0.15406 nm)
+            z_total = sum(cnt * ATOMS[el][0] for el, cnt in counts.items() if el in ATOMS)
+            rho_e = (density * NA * z_total) / (mw * 1e24)
+            xray_sld = rho_e * R_E
+
+            # Compute Neutron SLD coherent
+            b_total = sum(cnt * B_COH[el] for el, cnt in counts.items() if el in B_COH)
+            neutron_sld = (density * NA * b_total) / (mw * 1e24)
+
+            # Insert Cu K-alpha (8.04 keV, 0.15406 nm)
+            conn.execute(
+                "INSERT OR IGNORE INTO calculated_slds "
+                "(material_id, energy_ev, wavelength_nm, xray_sld_real, xray_sld_imag, neutron_sld_real, neutron_sld_imag) "
+                "VALUES (?, ?, ?, ?, ?, ?, ?)",
+                (mat_id, 8040.0, 0.15406, xray_sld, None, neutron_sld, None)
+            )
+
+            # Insert Mo K-alpha (17.4 keV, 0.07093 nm)
+            conn.execute(
+                "INSERT OR IGNORE INTO calculated_slds "
+                "(material_id, energy_ev, wavelength_nm, xray_sld_real, xray_sld_imag, neutron_sld_real, neutron_sld_imag) "
+                "VALUES (?, ?, ?, ?, ?, ?, ?)",
+                (mat_id, 17400.0, 0.07093, xray_sld, None, neutron_sld, None)
+            )
+            conn.commit()
+            print(f"  +  X-ray/Neutron SLD computed (Cu Ka={xray_sld:.3e} Å⁻², SLDn={neutron_sld:.3e} Å⁻²)")
+
+        # 4. Seed viscoelasticity and dielectrics tables
+        if name == "Water":
+            conn.execute(
+                "INSERT OR IGNORE INTO viscoelasticity (material_id, frequency_hz, temperature_C, storage_modulus_pa, loss_modulus_pa, viscosity_mpa_s) "
+                "VALUES (?, 1.0, 20.0, 0.0, 0.0, 1.0016)",
+                (mat_id,)
+            )
+            conn.execute(
+                "INSERT OR IGNORE INTO dielectrics (material_id, frequency_hz, temperature_C, real_permittivity, imag_permittivity) "
+                "VALUES (?, 1e3, 20.0, 80.1, 0.0)",
+                (mat_id,)
+            )
+        elif name == "PMMA":
+            conn.execute(
+                "INSERT OR IGNORE INTO viscoelasticity (material_id, frequency_hz, temperature_C, storage_modulus_pa, loss_modulus_pa, viscosity_mpa_s) "
+                "VALUES (?, 1.0, 20.0, 3e9, 1e8, NULL)",
+                (mat_id,)
+            )
+            conn.execute(
+                "INSERT OR IGNORE INTO dielectrics (material_id, frequency_hz, temperature_C, real_permittivity, imag_permittivity) "
+                "VALUES (?, 1e3, 20.0, 3.0, 0.01)",
+                (mat_id,)
+            )
+        elif name == "DPPC":
+            conn.execute(
+                "INSERT OR IGNORE INTO viscoelasticity (material_id, frequency_hz, temperature_C, storage_modulus_pa, loss_modulus_pa, viscosity_mpa_s) "
+                "VALUES (?, 1.0, 25.0, 1e7, 1e6, 80.0)",
+                (mat_id,)
+            )
+            conn.execute(
+                "INSERT OR IGNORE INTO dielectrics (material_id, frequency_hz, temperature_C, real_permittivity, imag_permittivity) "
+                "VALUES (?, 1e3, 25.0, 2.5, 0.05)",
+                (mat_id,)
+            )
+        conn.commit()
+
+        # 5. Load Optical Data from YAML
         yaml_path = find_yaml(data_root, mat)
 
         if yaml_path is not None:

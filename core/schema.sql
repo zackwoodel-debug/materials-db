@@ -3,23 +3,79 @@
 -- Idempotent — safe to re-run on an existing database.
 -- Wavelengths stored in nm; k = NULL means no extinction data (never 0).
 
+CREATE TABLE IF NOT EXISTS references_db (
+    id            INTEGER PRIMARY KEY AUTOINCREMENT,
+    doi           TEXT    UNIQUE,
+    citation_text TEXT    NOT NULL,
+    url           TEXT,
+    bibtex        TEXT
+);
+
 CREATE TABLE IF NOT EXISTS materials (
-    id             INTEGER PRIMARY KEY AUTOINCREMENT,
-    name           TEXT    NOT NULL,
-    formula        TEXT,
-    material_class TEXT,
-    notes          TEXT,
-    density_g_cm3  REAL
+    id               INTEGER PRIMARY KEY AUTOINCREMENT,
+    name             TEXT    NOT NULL,
+    formula          TEXT,
+    smiles           TEXT,
+    molecular_weight REAL,
+    material_class   TEXT,
+    notes            TEXT,
+    density_g_cm3    REAL
+);
+
+CREATE TABLE IF NOT EXISTS chemical_descriptors (
+    id              INTEGER PRIMARY KEY AUTOINCREMENT,
+    material_id     INTEGER NOT NULL REFERENCES materials(id) ON DELETE CASCADE,
+    descriptor_name TEXT    NOT NULL,
+    value           REAL    NOT NULL,
+    source_library  TEXT,
+    UNIQUE(material_id, descriptor_name)
 );
 
 CREATE TABLE IF NOT EXISTS optical_nk (
     id             INTEGER PRIMARY KEY AUTOINCREMENT,
-    material_id    INTEGER NOT NULL REFERENCES materials(id),
+    material_id    INTEGER NOT NULL REFERENCES materials(id) ON DELETE CASCADE,
+    reference_id   INTEGER REFERENCES references_db(id),
     wavelength_nm  REAL    NOT NULL,
     n              REAL    NOT NULL,
     k              REAL,
     source_ref     TEXT,
     temperature_C  REAL
+);
+
+CREATE TABLE IF NOT EXISTS viscoelasticity (
+    id                 INTEGER PRIMARY KEY AUTOINCREMENT,
+    material_id        INTEGER NOT NULL REFERENCES materials(id) ON DELETE CASCADE,
+    reference_id       INTEGER REFERENCES references_db(id),
+    frequency_hz       REAL    NOT NULL,
+    temperature_C      REAL,
+    storage_modulus_pa REAL,
+    loss_modulus_pa    REAL,
+    viscosity_mpa_s    REAL,
+    UNIQUE(material_id, frequency_hz, temperature_C)
+);
+
+CREATE TABLE IF NOT EXISTS dielectrics (
+    id                INTEGER PRIMARY KEY AUTOINCREMENT,
+    material_id       INTEGER NOT NULL REFERENCES materials(id) ON DELETE CASCADE,
+    reference_id      INTEGER REFERENCES references_db(id),
+    frequency_hz      REAL    NOT NULL,
+    temperature_C     REAL,
+    real_permittivity REAL    NOT NULL,
+    imag_permittivity REAL,
+    UNIQUE(material_id, frequency_hz, temperature_C)
+);
+
+CREATE TABLE IF NOT EXISTS calculated_slds (
+    id                INTEGER PRIMARY KEY AUTOINCREMENT,
+    material_id       INTEGER NOT NULL REFERENCES materials(id) ON DELETE CASCADE,
+    reference_id      INTEGER REFERENCES references_db(id),
+    energy_ev         REAL    NOT NULL,
+    wavelength_nm     REAL    NOT NULL,
+    xray_sld_real     REAL    NOT NULL,
+    xray_sld_imag     REAL,
+    neutron_sld_real  REAL    NOT NULL,
+    neutron_sld_imag  REAL,
+    UNIQUE(material_id, energy_ev)
 );
 
 CREATE INDEX IF NOT EXISTS idx_nk_mat ON optical_nk(material_id);

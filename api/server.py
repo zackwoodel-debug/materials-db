@@ -53,12 +53,14 @@ def health():
     """
     if _agent is None:
         return JSONResponse(
+            
             status_code=503,
             content={"status": "unavailable", "error": "Agent not initialised."},
         )
 
     try:
         conn = sqlite3.connect(_DB_PATH)
+
         tables = [
             r[0]
             for r in conn.execute(

@@ -57,3 +57,7 @@ def run_audit() -> bool:
     except Exception as exc:
         _con.print(f"[bold red]✗ Audit error:[/bold red] {exc}")
         return False
+
+
+if __name__ == "__main__":
+    run_audit()

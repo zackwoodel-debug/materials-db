@@ -128,6 +128,70 @@ check(
 )
 
 # ---------------------------------------------------------------------------
+# 4. Energy Converter and SLD Calculations Verification
+# ---------------------------------------------------------------------------
+from calculators.sld_calculator import EnergyConverter, compute_xray_sld, compute_neutron_sld, parse_formula
+
+# Energy converter tests
+wl_test = 0.15406  # nm (Cu K-alpha)
+energy_test = EnergyConverter.wl_to_energy(wl_test)
+check("energy_conv_wl_to_E", abs(energy_test - 8047.786) < 0.1)
+check("energy_conv_E_to_wl", abs(EnergyConverter.energy_to_wl(energy_test) - wl_test) < 1e-9)
+
+# SLD computations verification
+# PMMA formula repeating unit: C5H8O2, density 1.19 g/cm3, Mw 100.1158 g/mol, Z=54
+counts_pmma = parse_formula("C5H8O2")
+xray_pmma = compute_xray_sld(counts_pmma, 1.19, 100.1158)
+neutron_pmma = compute_neutron_sld(counts_pmma, 1.19, 100.1158)
+check("sld_pmma_xray", abs(xray_pmma.real - 1.0892e-5) < 1e-7)
+check("sld_pmma_neutron", abs(neutron_pmma - 1.067e-6) < 1e-8)
+
+# Deuterated material check
+counts_dpmma = parse_formula("C5D8O2")
+neutron_dpmma = compute_neutron_sld(counts_dpmma, 1.28, 108.16)
+check("sld_dpmma_neutron", abs(neutron_dpmma - 6.999e-6) < 1e-7)
+
+# ---------------------------------------------------------------------------
+# 5. Database v2 schema verification
+# ---------------------------------------------------------------------------
+ref_id = conn.execute(
+    "INSERT INTO references_db (doi, citation_text) VALUES (?, ?)",
+    ("10.1062/test", "Test Citation 2026")
+).lastrowid
+check("db_insert_reference", ref_id is not None)
+
+conn.execute(
+    "INSERT INTO chemical_descriptors (material_id, descriptor_name, value, source_library) VALUES (?, ?, ?, ?)",
+    (mat_id, "logP", 1.45, "RDKit")
+)
+desc_val = conn.execute(
+    "SELECT value FROM chemical_descriptors WHERE material_id=? AND descriptor_name=?",
+    (mat_id, "logP")
+).fetchone()[0]
+check("db_insert_descriptor", abs(desc_val - 1.45) < 1e-9)
+
+conn.execute(
+    "INSERT INTO dielectrics (material_id, reference_id, frequency_hz, temperature_C, real_permittivity) VALUES (?, ?, ?, ?, ?)",
+    (mat_id, ref_id, 1000.0, 25.0, 2.5)
+)
+diel_val = conn.execute(
+    "SELECT real_permittivity FROM dielectrics WHERE material_id=? AND frequency_hz=?",
+    (mat_id, 1000.0)
+).fetchone()[0]
+check("db_insert_dielectric", abs(diel_val - 2.5) < 1e-9)
+
+conn.execute(
+    "INSERT INTO calculated_slds (material_id, reference_id, energy_ev, wavelength_nm, xray_sld_real, neutron_sld_real) VALUES (?, ?, ?, ?, ?, ?)",
+    (mat_id, ref_id, 8040.0, 0.154, 1.08e-5, 1.06e-6)
+)
+sld_val = conn.execute(
+    "SELECT xray_sld_real, neutron_sld_real FROM calculated_slds WHERE material_id=? AND energy_ev=?",
+    (mat_id, 8040.0)
+).fetchone()
+check("db_insert_calculated_sld_xray", abs(sld_val[0] - 1.08e-5) < 1e-9)
+check("db_insert_calculated_sld_neutron", abs(sld_val[1] - 1.06e-6) < 1e-9)
+
+# ---------------------------------------------------------------------------
 # Report
 # ---------------------------------------------------------------------------
 
