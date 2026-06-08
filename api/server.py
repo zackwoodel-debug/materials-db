@@ -1,103 +1,92 @@
-"""FastAPI server exposing the MatChat RAG pipeline."""
+"""FastAPI SQL-RAG server for materials.db."""
 
 import sqlite3
-import subprocess
+from contextlib import asynccontextmanager
 from pathlib import Path
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
-from src.ml.retriever import retrieve
-from src.ml.chat_engine import answer
+from core.audit import run_audit
+from core.sql_agent import SQLAgent
 
 _ROOT = Path(__file__).resolve().parent.parent
-_DB = str(_ROOT / "data" / "materials.db")
+_DB_PATH = str(_ROOT / "data" / "materials.db")
 
-app = FastAPI(title="MatChat", description="RAG chat over materials-db")
+_agent: SQLAgent | None = None
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Start-up: audit the DB and instantiate the agent; shut-down: close the DB connection."""
+    global _agent
+    if not run_audit():
+        raise RuntimeError("DB audit failed — server will not start.")
+    _agent = SQLAgent(_DB_PATH)
+    yield
+    if _agent is not None:
+        _agent._conn.close()
+
+
+app = FastAPI(title="MatChat SQL-RAG", lifespan=lifespan)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 class ChatRequest(BaseModel):
     query: str
-
-
-class SimulateRequest(BaseModel):
-    material: str
-    thickness_nm: float
-    substrate: str
+    history: list[dict] = []
 
 
 @app.get("/health")
 def health():
     """
-    Physical purpose: Report whether the database is reachable and how many optical rows it contains, letting clients detect an uninitialised deployment before sending chat queries.
-    Args/Returns: no parameters; returns {"status": "ok", "db_rows": int} or HTTP 503 with an error message if data/materials.db is absent.
+    Physical purpose: Report database and server readiness so clients can detect an uninitialised or crashed backend before issuing chat queries.
+    Args/Returns: no parameters; returns {status, db_rows, tables} on success or HTTP 503 if the agent is not ready.
     """
-    if not Path(_DB).exists():
+    if _agent is None:
         return JSONResponse(
             status_code=503,
-            content={"error": "Database not found. Run init_db.py first."},
+            content={"status": "unavailable", "error": "Agent not initialised."},
         )
 
-    conn = sqlite3.connect(_DB)
-    db_rows = conn.execute("SELECT COUNT(*) FROM optical_nk").fetchone()[0]
-    conn.close()
-    return {"status": "ok", "db_rows": db_rows}
+    try:
+        conn = sqlite3.connect(_DB_PATH)
+        tables = [
+            r[0]
+            for r in conn.execute(
+                "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name"
+            ).fetchall()
+        ]
+        db_rows = conn.execute("SELECT COUNT(*) FROM optical_nk").fetchone()[0]
+        conn.close()
+    except Exception as exc:
+        return JSONResponse(status_code=503, content={"status": "error", "error": str(exc)})
+
+    return {"status": "ok", "db_rows": db_rows, "tables": tables}
 
 
 @app.post("/chat")
 def chat(req: ChatRequest):
     """
-    Physical purpose: Accept a natural language query, retrieve matching rows from the database, and return a model response grounded exclusively in those rows.
-    Args/Returns: req.query — user question string; returns {"response": str, "sources": list[str]} where sources are the unique material names whose rows informed the answer.
+    Physical purpose: Accept a natural-language materials science question, run it through the SQL agent, and return a database-grounded answer with the query, source tables, and confidence classification.
+    Args/Returns: req.query — question string; req.history — prior conversation turns; returns {response, sql, sources, confidence}.
     """
-    rows = retrieve(req.query)
-    response = answer(req.query, rows)
+    if _agent is None:
+        raise HTTPException(status_code=503, detail="Agent not initialised.")
 
-    # Collect unique material names in the order they first appear so the
-    # caller knows which materials the model drew on.
-    seen: set[str] = set()
-    sources: list[str] = []
-    for row in rows:
-        name = row.get("material_name", "")
-        if name and name not in seen:
-            seen.add(name)
-            sources.append(name)
+    result = _agent.ask(req.query, req.history)
 
-    return {"response": response, "sources": sources}
-
-
-@app.post("/simulate")
-def simulate(req: SimulateRequest):
-    """
-    Physical purpose: Validate that the requested material exists in the database, then delegate a Parratt XRR simulation to the calculators CLI and return the output path alongside the data sources.
-    Args/Returns: req.material — material name string; req.thickness_nm — film thickness in nm; req.substrate — substrate material name string; returns {"plot_path": str, "sources": list} or HTTP 404 if the material is unknown, HTTP 504 on timeout.
-    """
-    rows = retrieve(req.material)
-    if not rows:
-        return JSONResponse(
-            status_code=404,
-            content={"error": "Material not found in database."},
-        )
-
-    try:
-        result = subprocess.run(
-            [
-                "python", "calculators/simulate_xrr.py",
-                "--material", req.material,
-                "--thickness", str(req.thickness_nm),
-                "--substrate", req.substrate,
-            ],
-            capture_output=True,
-            text=True,
-            timeout=30,
-            cwd=str(_ROOT),
-        )
-    except subprocess.TimeoutExpired:
-        return JSONResponse(
-            status_code=504,
-            content={"error": "Simulation timed out."},
-        )
-
-    sources = [r["source_ref"] for r in rows]
-    return {"plot_path": result.stdout.strip(), "sources": sources}
+    return {
+        "response": result["answer"],
+        "sql": result["sql"],
+        "sources": result["tables_used"],
+        "confidence": result["confidence"],
+    }

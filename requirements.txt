@@ -3,3 +3,4 @@ PyYAML>=6.0
 fastapi>=0.110
 uvicorn>=0.29
 anthropic>=0.26
+rich>=13.0
