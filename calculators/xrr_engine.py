@@ -20,15 +20,15 @@ import re
 import sqlite3
 from pathlib import Path
 
-_ROOT = Path(__file__).resolve().parent.parent   # project root
+_ROOT = Path(__file__).resolve().parent.parent
 
-# ── Physical constants ────────────────────────────────────────────────────────
-
+# NA and R_E together convert bulk electron density to the X-ray scattering length
+# density needed by the Parratt recursion.
 NA  = 6.02214076e23   # Avogadro number  (mol⁻¹)
 R_E = 2.8179403e-5    # classical electron radius  (Å)
 
-# ── Atomic data ───────────────────────────────────────────────────────────────
-# H C N O F Si S P Au only — expand on request.
+# ATOMS maps each element to its proton number Z and IUPAC atomic weight; only
+# elements common to organic thin films and noble metals are included here.
 
 ATOMS: dict[str, tuple[int, float]] = {
     #       Z    atomic_weight (g/mol)
@@ -43,13 +43,10 @@ ATOMS: dict[str, tuple[int, float]] = {
     "Au": (79, 196.9665),
 }
 
-# ── Formula parser ────────────────────────────────────────────────────────────
-
 def parse_formula(formula: str) -> dict[str, int]:
     """
-    Parse a chemical formula string into {element: count}.
-    Handles outer-parenthesis polymer notation: "(C5H8O2)n" → C5H8O2.
-    Does not support nested parentheses or multipliers other than the outer one.
+    Physical purpose: Strip polymer repeat-unit notation and tally each element's atom count from a chemical formula string.
+    Args/Returns: formula — string such as "(C5H8O2)n" or "Au"; returns dict mapping element symbol to integer count.
     """
     clean = re.sub(r"^\((.+)\)[A-Za-z]?\d*$", r"\1", formula.strip())
     counts: dict[str, int] = {}
@@ -60,9 +57,11 @@ def parse_formula(formula: str) -> dict[str, int]:
     return counts
 
 
-# ── XRR computation ───────────────────────────────────────────────────────────
-
 def compute_xrr(formula: str, density_g_cm3: float) -> dict:
+    """
+    Physical purpose: Convert a material's chemical formula and bulk mass density into its X-ray scattering length density and the intermediate quantities (Mw, Z_total, ρₑ) needed for Parratt simulation.
+    Args/Returns: formula — chemical formula string; density_g_cm3 — bulk mass density in g/cm³; returns dict with keys counts, Mw, Z_total, rho_e, SLD.
+    """
     counts = parse_formula(formula)
 
     unknown = [e for e in counts if e not in ATOMS]
@@ -88,9 +87,11 @@ def compute_xrr(formula: str, density_g_cm3: float) -> dict:
     }
 
 
-# ── DB lookup ─────────────────────────────────────────────────────────────────
-
 def read_material(db_path: str, name: str) -> tuple[str, float]:
+    """
+    Physical purpose: Fetch a material's formula and bulk density from materials.db so that compute_xrr can derive its SLD without manual data entry.
+    Args/Returns: db_path — path to the SQLite database; name — material name as stored in the materials table; returns (formula, density_g_cm3) or raises ValueError if the material or either field is absent.
+    """
     conn = sqlite3.connect(db_path)
     row = conn.execute(
         "SELECT formula, density_g_cm3 FROM materials WHERE name = ?", (name,)
@@ -106,9 +107,11 @@ def read_material(db_path: str, name: str) -> tuple[str, float]:
     return formula, density
 
 
-# ── CLI ───────────────────────────────────────────────────────────────────────
-
 def main() -> None:
+    """
+    Physical purpose: Command-line entry point that prints the electron density and SLD for one material looked up from materials.db.
+    Args/Returns: reads --material and --db from sys.argv; writes a formatted report to stdout; exits non-zero if the material is missing or its data is incomplete.
+    """
     ap = argparse.ArgumentParser(description="XRR electron density / SLD from materials.db")
     ap.add_argument("--material", required=True, help="Material name as stored in DB (e.g. PMMA)")
     ap.add_argument("--db", default=str(_ROOT / "materials.db"), help="Path to materials.db")

@@ -18,6 +18,10 @@ CODE = str(_ROOT / "pipeline" / "fetch_optical_data.py")
 results: list[tuple[str, str, str]] = []   # (status, check_id, detail)
 
 def record(status: str, check_id: str, detail: str) -> None:
+    """
+    Physical purpose: Append one audit result to the shared results list so the final report can be printed in order after all checks complete.
+    Args/Returns: status — one of PASS, WARN, FAIL; check_id — short identifier such as "DB-1"; detail — human-readable outcome description; returns None.
+    """
     results.append((status, check_id, detail))
 
 PASS = "PASS"
@@ -202,7 +206,10 @@ src = Path(CODE).read_text()
 lines = src.splitlines()
 
 def find_lines(pattern: str) -> list[int]:
-    """Return 1-based line numbers matching a regex."""
+    """
+    Physical purpose: Locate lines in the pipeline source that match a regex pattern so code checks can report exactly where a convention is or is not satisfied.
+    Args/Returns: pattern — regex string to search for; returns list of 1-based line numbers from the fetch_optical_data.py source.
+    """
     return [i + 1 for i, ln in enumerate(lines) if re.search(pattern, ln)]
 
 # CODE-1  µm→nm conversion is explicit (multiply by 1000, not assumed)

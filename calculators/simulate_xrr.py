@@ -19,9 +19,11 @@ from pathlib import Path
 
 import numpy as np
 
-# ── load xrr_engine from the same directory without mutating sys.path ─────────
 def _import_sibling(name: str):
-    """Import a .py module from the same directory as this script."""
+    """
+    Physical purpose: Load a Python module from the same directory as this file without modifying sys.path, keeping the import isolated to this invocation.
+    Args/Returns: name — stem of the .py file to import (no extension); returns the loaded module object.
+    """
     path = Path(__file__).parent / f"{name}.py"
     spec = _ilu.spec_from_file_location(name, path)
     mod  = _ilu.module_from_spec(spec)
@@ -32,39 +34,16 @@ _xrr         = _import_sibling("xrr_engine")
 compute_xrr  = _xrr.compute_xrr
 read_material = _xrr.read_material
 
-# Default DB path is the project root (parent of this script's directory)
 _PROJECT_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_DB    = str(_PROJECT_ROOT / "materials.db")
 
-
-# ── Parratt recursion ─────────────────────────────────────────────────────────
 
 def parratt(q_arr: np.ndarray,
             slds: np.ndarray,
             thicknesses: np.ndarray) -> np.ndarray:
     """
-    Specular reflectivity via exact Parratt recursion.
-
-    Parameters
-    ----------
-    q_arr       : (M,)   momentum transfer in Å⁻¹
-    slds        : (L,)   SLD of each layer in Å⁻²;
-                         slds[0] = superstrate (semi-∞), slds[-1] = substrate (semi-∞)
-    thicknesses : (L,)   layer thickness in Å;
-                         thicknesses[0] and thicknesses[-1] are ignored by the recursion
-
-    Returns
-    -------
-    R : (M,)   reflectivity ∈ [0, 1]
-
-    Recursion (exactly as specified):
-        q_j   = sqrt(q² − 16π·SLD_j + 0j),   enforce q_j.real ≥ 0
-        r_jk  = (q_j − q_k) / (q_j + q_k)    where k = j + 1
-        init  : X = r_{N-1,N}                 (deepest interface)
-        loop j = N-2 → 0:
-            phase = exp(2i · q_{j+1} · d_{j+1})
-            X_j   = (r_{j,j+1} + X_{j+1}·phase) / (1 + r_{j,j+1}·X_{j+1}·phase)
-        R = |X_0|²   clamped to [0, 1]
+    Physical purpose: Compute specular X-ray reflectivity using exact Parratt recursion in the full-Q convention, propagating reflected amplitude from the substrate interface upward to the superstrate.
+    Args/Returns: q_arr — (M,) momentum transfer in Å⁻¹; slds — (L,) SLD per layer in Å⁻² with slds[0] the superstrate and slds[-1] the substrate; thicknesses — (L,) thickness in Å with boundary entries unused; returns (M,) reflectivity clamped to [0, 1].
     """
     n_media = len(slds)                        # superstrate + films + substrate = N+1
 
@@ -78,17 +57,17 @@ def parratt(q_arr: np.ndarray,
     q_j = np.where(q_j.real < 0.0, -q_j, q_j)
 
     # Fresnel reflection coefficients at each interface; shape (n_media-1, M)
-    # r[j] = (q_j − q_{j+1}) / (q_j + q_{j+1})
+    # The amplitude contrast between adjacent layers determines how much wave is reflected.
     num   = q_j[:-1] - q_j[1:]
     denom = q_j[:-1] + q_j[1:]
     # denom == 0 only if both layers have SLD=0 and q=0 simultaneously
     with np.errstate(divide="ignore", invalid="ignore"):
         r = np.where(denom == 0.0, np.complex128(-1.0), num / denom)
 
-    # Init: X_{N-1} = r_{N-1, N}  →  r[-1]  (substrate interface)
+    # Seed the recursion at the deepest reflecting surface (the substrate interface).
     X = r[-1].copy()
 
-    # Parratt loop: j = N-2 → 0  (interface indices n_media-3 → 0)
+    # Propagate the reflected amplitude upward through the stack, one interface at a time.
     for j in range(n_media - 3, -1, -1):
         phase = np.exp(2j * q_j[j + 1] * thicknesses[j + 1])
         rj    = r[j]
@@ -99,16 +78,10 @@ def parratt(q_arr: np.ndarray,
     return R
 
 
-# ── Stack parser ──────────────────────────────────────────────────────────────
-
 def parse_stack(stack_str: str, db_path: str) -> list[dict]:
     """
-    Parse "Vacuum,PMMA:120,Gold:250,Silicon" into a validated list of layer dicts.
-
-    First and last entries must not carry a thickness token (semi-infinite).
-    All intermediate entries must specify thickness in Å as Name:thickness.
-
-    Raises ValueError immediately if any material lookup fails.
+    Physical purpose: Decode the comma-separated stack string into a validated list of layer dicts (name, thickness, formula, density, SLD), verifying every material exists in the database before any arithmetic begins.
+    Args/Returns: stack_str — comma-separated string such as "Vacuum,PMMA:120,Gold:250,Silicon"; db_path — path to materials.db; returns list of layer dicts or raises ValueError on malformed input or missing material.
     """
     entries = [s.strip() for s in stack_str.split(",")]
     if len(entries) < 2:
@@ -159,9 +132,11 @@ def parse_stack(stack_str: str, db_path: str) -> list[dict]:
     return layers
 
 
-# ── Output helpers ────────────────────────────────────────────────────────────
-
 def print_stack_table(layers: list[dict]) -> None:
+    """
+    Physical purpose: Render the resolved stack as a human-readable table showing layer order, thickness, SLD, and electron density for quick visual verification before simulation.
+    Args/Returns: layers — list of dicts returned by parse_stack; writes a formatted ASCII table to stdout; returns None.
+    """
     col_w = (7, 14, 14, 14, 13)
     header = (
         f"{'Layer #':>{col_w[0]}}  {'Material':<{col_w[1]}}  "
@@ -184,6 +159,10 @@ def print_stack_table(layers: list[dict]) -> None:
 
 
 def save_csv(path: str, q_arr: np.ndarray, R: np.ndarray) -> None:
+    """
+    Physical purpose: Write the simulated Q, R curve to a two-column CSV so it can be imported into plotting software or compared against measured reflectivity.
+    Args/Returns: path — output filename; q_arr — (M,) momentum transfer in Å⁻¹; R — (M,) reflectivity; writes the file and returns None.
+    """
     with open(path, "w", newline="") as f:
         writer = csv.writer(f)
         writer.writerow(["q (1/Ang)", "Reflectivity"])
@@ -191,9 +170,11 @@ def save_csv(path: str, q_arr: np.ndarray, R: np.ndarray) -> None:
             writer.writerow([f"{q_val:.8f}", f"{r_val:.8e}"])
 
 
-# ── CLI ───────────────────────────────────────────────────────────────────────
-
 def main() -> None:
+    """
+    Physical purpose: Command-line entry point that validates the layer stack, runs the Parratt simulation, and writes the Q, R curve to a CSV file.
+    Args/Returns: reads --stack, --db, --qmin, --qmax, --qpts, --output from sys.argv; writes CSV and prints a summary table to stdout; exits non-zero if the database is missing.
+    """
     ap = argparse.ArgumentParser(
         description="Parratt XRR simulation from materials.db"
     )
@@ -221,7 +202,7 @@ def main() -> None:
     if not Path(db).exists():
         sys.exit(f"ERROR: database not found: {db}")
 
-    # ── Validate stack first (all lookups must succeed before any math) ──────
+    # All material lookups must resolve before the simulation starts.
     print(f"\nStack  : {args.stack}")
     print(f"DB     : {db}\n")
 
@@ -232,7 +213,6 @@ def main() -> None:
 
     print_stack_table(layers)
 
-    # ── Simulation ────────────────────────────────────────────────────────────
     slds        = np.array([lay["SLD"]         for lay in layers])
     thicknesses = np.array([lay["thickness_A"] for lay in layers])
 
