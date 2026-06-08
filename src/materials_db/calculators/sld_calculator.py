@@ -52,11 +52,15 @@ class EnergyConverter:
     @classmethod
     def wl_to_energy(cls, wl_nm: float) -> float:
         """Convert wavelength (nm) to photon energy (eV)."""
+        if wl_nm <= 0:
+            raise ValueError(f"Input must be strictly positive, got {wl_nm}")
         return cls.HC_EV_NM / wl_nm
 
     @classmethod
     def energy_to_wl(cls, energy_ev: float) -> float:
         """Convert photon energy (eV) to wavelength (nm)."""
+        if energy_ev <= 0:
+            raise ValueError(f"Input must be strictly positive, got {energy_ev}")
         return cls.HC_EV_NM / energy_ev
 
     @classmethod
@@ -72,11 +76,15 @@ class EnergyConverter:
     @classmethod
     def wl_to_frequency(cls, wl_nm: float) -> float:
         """Convert wavelength (nm) to frequency (Hz)."""
+        if wl_nm <= 0:
+            raise ValueError(f"Input must be strictly positive, got {wl_nm}")
         return cls.C_NM_S / wl_nm
 
     @classmethod
     def frequency_to_wl(cls, freq_hz: float) -> float:
         """Convert frequency (Hz) to wavelength (nm)."""
+        if freq_hz <= 0:
+            raise ValueError(f"Input must be strictly positive, got {freq_hz}")
         return cls.C_NM_S / freq_hz
 
 

@@ -9,10 +9,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
-from core.audit import run_audit
-from core.sql_agent import SQLAgent
+from materials_db.core.audit import run_audit
+from materials_db.core.sql_agent import SQLAgent
 
-_ROOT = Path(__file__).resolve().parent.parent
+_ROOT = Path(__file__).resolve().parents[3]
 _DB_PATH = str(_ROOT / "data" / "materials.db")
 
 _agent: SQLAgent | None = None

@@ -15,8 +15,8 @@ import subprocess
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
-DB   = ROOT / "materials.db"
+ROOT = Path(__file__).resolve().parents[2]
+DB   = ROOT / "data" / "materials.db"
 
 
 def run_sql_file(db_path: Path, sql_path: Path) -> None:

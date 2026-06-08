@@ -81,6 +81,66 @@ CREATE TABLE IF NOT EXISTS calculated_slds (
 CREATE INDEX IF NOT EXISTS idx_nk_mat ON optical_nk(material_id);
 CREATE INDEX IF NOT EXISTS idx_nk_wl  ON optical_nk(wavelength_nm);
 
+-- chemical_descriptors — NOTE: if this table already exists its schema may differ
+-- (earlier pipeline used source_library instead of source/reference_id/notes).
+-- CREATE TABLE IF NOT EXISTS is a no-op when the table is already present.
+CREATE TABLE IF NOT EXISTS chemical_descriptors (
+    id              INTEGER PRIMARY KEY AUTOINCREMENT,
+    material_id     INTEGER NOT NULL REFERENCES materials(id),
+    reference_id    INTEGER REFERENCES references_db(id),
+    descriptor_name TEXT    NOT NULL,
+    value           REAL,
+    source          TEXT,
+    notes           TEXT,
+    UNIQUE(material_id, descriptor_name)
+);
+
+CREATE TABLE IF NOT EXISTS dielectric (
+    id              INTEGER PRIMARY KEY AUTOINCREMENT,
+    material_id     INTEGER NOT NULL REFERENCES materials(id),
+    reference_id    INTEGER REFERENCES references_db(id),
+    wavelength_nm   REAL,
+    frequency_hz    REAL,
+    energy_ev       REAL,
+    dielectric_real REAL,
+    dielectric_imag REAL,
+    temperature_C   REAL,
+    notes           TEXT,
+    UNIQUE(material_id, wavelength_nm, temperature_C)
+);
+
+CREATE TABLE IF NOT EXISTS calculated_sld (
+    id                  INTEGER PRIMARY KEY AUTOINCREMENT,
+    material_id         INTEGER NOT NULL REFERENCES materials(id),
+    reference_id        INTEGER REFERENCES references_db(id),
+    energy_ev           REAL,
+    wavelength_nm       REAL,
+    frequency_hz        REAL,
+    sld_xray_real       REAL,
+    sld_xray_imag       REAL,
+    sld_neutron_real    REAL,
+    sld_neutron_imag    REAL,
+    calculation_method  TEXT,
+    notes               TEXT,
+    UNIQUE(material_id, energy_ev)
+);
+
+CREATE TABLE IF NOT EXISTS lab_measurements_needed (
+    id                  INTEGER PRIMARY KEY AUTOINCREMENT,
+    material_id         INTEGER NOT NULL REFERENCES materials(id),
+    measurement_type    TEXT NOT NULL,
+    instrument          TEXT NOT NULL,
+    parameter           TEXT NOT NULL,
+    frequency_range     TEXT,
+    wavelength_range    TEXT,
+    priority            INTEGER NOT NULL CHECK(priority IN (1,2,3)),
+    reason              TEXT NOT NULL,
+    protocol_notes      TEXT,
+    status              TEXT NOT NULL DEFAULT 'needed'
+                        CHECK(status IN ('needed','in_progress','complete')),
+    UNIQUE(material_id, measurement_type, parameter)
+);
+
 -- spr_data VIEW
 -- Linear interpolation of n,k at SPR instrument wavelengths (633, 785, 980 nm).
 -- Returns NULL when no optical_nk point exists within 10 nm of the target wavelength.

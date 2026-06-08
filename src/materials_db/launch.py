@@ -8,7 +8,7 @@ from pathlib import Path
 import uvicorn
 from rich.console import Console
 
-_ROOT = Path(__file__).resolve().parent
+_ROOT = Path(__file__).resolve().parents[2]
 _DB   = str(_ROOT / "data" / "materials.db")
 _con  = Console()
 
@@ -16,8 +16,8 @@ _con  = Console()
 if str(_ROOT) not in sys.path:
     sys.path.insert(0, str(_ROOT))
 
-from core.audit  import run_audit
-from core.schema import get_schema_summary
+from materials_db.core.audit  import run_audit
+from materials_db.core.schema import get_schema_summary
 
 if not run_audit():
     sys.exit(1)
@@ -30,4 +30,4 @@ _con.print("\n[bold blue]Schema summary[/bold blue]")
 _con.print(schema)
 _con.print("\n[bold green]MatChat running at http://127.0.0.1:8000[/bold green]\n")
 
-uvicorn.run("api.server:app", host="127.0.0.1", port=8000, reload=False)
+uvicorn.run("materials_db.api.server:app", host="127.0.0.1", port=8000, reload=False)

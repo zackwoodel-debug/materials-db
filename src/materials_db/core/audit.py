@@ -6,7 +6,7 @@ from pathlib import Path
 from rich.console import Console
 from rich.table import Table
 
-_ROOT = Path(__file__).resolve().parent.parent
+_ROOT = Path(__file__).resolve().parents[3]
 _DB = _ROOT / "data" / "materials.db"
 _con = Console()
 

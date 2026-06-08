@@ -39,6 +39,9 @@ def parratt(
     Recursion initialised at the deepest interface and propagated toward
     the superstrate; R = |X_0|².
     """
+    if len(sld) < 2:
+        raise ValueError("parratt() requires at least 2 layers (substrate + one film)")
+
     n_layers = len(sld)
 
     # k_z in each layer; shape (N, M)

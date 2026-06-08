@@ -32,16 +32,17 @@ from rdkit.Chem import Descriptors
 
 # ─── Paths ────────────────────────────────────────────────────────────────────
 
-_ROOT    = Path(__file__).resolve().parent.parent   # project root
-DB_FILE  = str(_ROOT / "materials.db")
+_ROOT    = Path(__file__).resolve().parents[3]   # project root
+DB_FILE  = str(_ROOT / "data" / "materials.db")
 REPO_URL = "https://github.com/polyanskiy/refractiveindex.info-database.git"
 REPO_DIR = str(_ROOT / "refractiveindex_db")
 
 # ─── Configuration ────────────────────────────────────────────────────────────
 
-WL_MIN_NM = 200.0    # fetch window – UV
-WL_MAX_NM = 3000.0   # fetch window – near-IR
-N_FORMULA = 500      # sample points for formula-based entries
+WL_MIN_NM  = 200.0    # fetch window – UV
+WL_MAX_NM  = 3000.0   # fetch window – near-IR
+N_FORMULA  = 500      # sample points for formula-based entries
+HC_EV_NM   = 1239.84193  # hc in eV·nm (CODATA 2018)
 
 # ─── Materials manifest ───────────────────────────────────────────────────────
 # Keys
@@ -638,13 +639,7 @@ CREATE INDEX IF NOT EXISTS idx_nk_wl  ON optical_nk(wavelength_nm);
 
 
 def setup_db(path: str) -> sqlite3.Connection:
-    """Open (or create) the DB, ensure schema exists, clear data tables."""
-    if os.path.exists(path):
-        try:
-            os.remove(path)
-            print(f"Removed old database file at {path} to apply new schema.")
-        except Exception as e:
-            print(f"Warning: could not delete old database file: {e}")
+    """Open (or create) the DB and apply any missing schema changes non-destructively."""
     conn = sqlite3.connect(path)
     conn.executescript(_SCHEMA)
     conn.commit()
@@ -872,7 +867,7 @@ def main() -> None:
                 "INSERT OR IGNORE INTO calculated_slds "
                 "(material_id, energy_ev, wavelength_nm, xray_sld_real, xray_sld_imag, neutron_sld_real, neutron_sld_imag) "
                 "VALUES (?, ?, ?, ?, ?, ?, ?)",
-                (mat_id, 8040.0, 0.15406, xray_sld, None, neutron_sld, None)
+                (mat_id, 8040.0, HC_EV_NM / 8040.0, xray_sld, None, neutron_sld, None)
             )
 
             # Insert Mo K-alpha (17.4 keV, 0.07093 nm)
@@ -880,7 +875,7 @@ def main() -> None:
                 "INSERT OR IGNORE INTO calculated_slds "
                 "(material_id, energy_ev, wavelength_nm, xray_sld_real, xray_sld_imag, neutron_sld_real, neutron_sld_imag) "
                 "VALUES (?, ?, ?, ?, ?, ?, ?)",
-                (mat_id, 17400.0, 0.07093, xray_sld, None, neutron_sld, None)
+                (mat_id, 17400.0, HC_EV_NM / 17400.0, xray_sld, None, neutron_sld, None)
             )
             conn.commit()
             print(f"  +  X-ray/Neutron SLD computed (Cu Ka={xray_sld:.3e} Å⁻², SLDn={neutron_sld:.3e} Å⁻²)")

@@ -34,8 +34,8 @@ _xrr         = _import_sibling("xrr_engine")
 compute_xrr  = _xrr.compute_xrr
 read_material = _xrr.read_material
 
-_PROJECT_ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_DB    = str(_PROJECT_ROOT / "materials.db")
+_PROJECT_ROOT = Path(__file__).resolve().parents[3]
+DEFAULT_DB    = str(_PROJECT_ROOT / "data" / "materials.db")
 
 
 def parratt(q_arr: np.ndarray,
@@ -194,7 +194,7 @@ def main() -> None:
                     help="Maximum q in Å⁻¹  [default: %(default)s]")
     ap.add_argument("--qpts",   type=int,   default=500,
                     help="Number of q points  [default: %(default)s]")
-    ap.add_argument("--output", default="xrr_simulation_output.csv",
+    ap.add_argument("--output", default="data/xrr_simulation_output.csv",
                     help="Output CSV filename  [default: %(default)s]")
     args = ap.parse_args()
 

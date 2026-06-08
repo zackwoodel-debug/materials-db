@@ -20,9 +20,9 @@ import re
 import sqlite3
 from pathlib import Path
 
-_ROOT = Path(__file__).resolve().parent.parent
+_ROOT = Path(__file__).resolve().parents[3]
 
-from calculators.sld_calculator import ATOMS, parse_formula, compute_xray_sld, NA, R_E
+from materials_db.calculators.sld_calculator import ATOMS, parse_formula, compute_xray_sld, NA, R_E
 
 def compute_xrr(formula: str, density_g_cm3: float) -> dict:
     """
@@ -81,7 +81,7 @@ def main() -> None:
     """
     ap = argparse.ArgumentParser(description="XRR electron density / SLD from materials.db")
     ap.add_argument("--material", required=True, help="Material name as stored in DB (e.g. PMMA)")
-    ap.add_argument("--db", default=str(_ROOT / "materials.db"), help="Path to materials.db")
+    ap.add_argument("--db", default=str(_ROOT / "data" / "materials.db"), help="Path to materials.db")
     args = ap.parse_args()
 
     db = args.db

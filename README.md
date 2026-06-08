@@ -6,20 +6,53 @@ materials-db is a SQLite database of optical and physical constants for soft-mat
 
 ### Data flow
 
-Raw YAML dispersion files from the refractiveindex.info repository are parsed and converted from micrometres to nanometres, then written into the SQLite database. Manual-entry materials (lipids, polymers, solvents without RI.info entries) are seeded from `core/seed_manual.sql`. The XRR calculators read formula and density from that same database, compute electron density and SLD, and run the Parratt recursion to produce a reflectivity curve as a CSV file.
+Raw YAML dispersion files from the refractiveindex.info repository are parsed and converted from micrometres to nanometres, then written into the SQLite database. Manual-entry materials (lipids, polymers, solvents without RI.info entries) are seeded from `src/materials_db/core/seed_manual.sql`. The XRR calculators read formula and density from that same database, compute electron density and SLD, and run the Parratt recursion to produce a reflectivity curve as a CSV file.
+
+### Layout
+
+```
+materials-db/
+├── .gitignore
+├── README.md
+├── requirements.txt
+├── pyproject.toml
+├── data/
+│   ├── materials.db
+│   └── xrr_simulation_output.csv
+├── docs/
+│   └── database_expansion_plan.md
+├── scripts/
+│   ├── git-ai-commit.sh
+│   ├── run_matchat.sh
+│   └── setup.sh
+└── src/
+    └── materials_db/
+        ├── __init__.py
+        ├── init_db.py
+        ├── launch.py
+        ├── verify.py
+        ├── verify_all.py
+        ├── api/
+        ├── calculators/
+        ├── chat/
+        ├── core/
+        ├── pipeline/
+        └── simulation/
+```
 
 ### Quickstart
 
 ```bash
-python init_db.py
-python calculators/simulate_xrr.py --stack "Vacuum,PMMA:120,Gold:250,Silicon"
-python calculators/xrr_engine.py --material PMMA
+pip install -e .
+python -m materials_db.init_db
+python -m materials_db.calculators.simulate_xrr --stack "Vacuum,PMMA:120,Gold:250,Silicon"
+python -m materials_db.calculators.xrr_engine --material PMMA
 ```
 
 `init_db.py` runs the full four-step pipeline (schema → fetch → seed → audit) and hard-stops on any failure. Subsequent runs are safe because seeding uses `INSERT OR IGNORE` and fetching clears and repopulates the optical tables.
 
 ### Verification checklist
 
-1. `python core/audit.py` — all checks should print PASS or WARN; any FAIL indicates a missing material row or a broken unit-conversion in the fetch pipeline.
-2. `python verify_all.py` — 15 assertions covering DB round-trips, CSV parsing, and Parratt physics (TER plateau, high-Q decay); exits 0 on success.
-3. `sqlite3 materials.db "SELECT * FROM spr_data LIMIT 5;"` — should return n and k values at 633, 785, and 980 nm for at least Water and Gold; NULL means no optical data within 10 nm of the target wavelength.
+1. `python -m materials_db.core.audit` — all checks should print PASS or WARN; any FAIL indicates a missing material row or a broken unit-conversion in the fetch pipeline.
+2. `python -m materials_db.verify_all` — 15 assertions covering DB round-trips, CSV parsing, and Parratt physics (TER plateau, high-Q decay); exits 0 on success.
+3. `sqlite3 data/materials.db "SELECT * FROM spr_data LIMIT 5;"` — should return n and k values at 633, 785, and 980 nm for at least Water and Gold; NULL means no optical data within 10 nm of the target wavelength.

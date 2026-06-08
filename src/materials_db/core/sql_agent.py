@@ -6,7 +6,7 @@ import re
 import sqlite3
 from pathlib import Path
 
-from core.schema import get_schema_summary
+from materials_db.core.schema import get_schema_summary
 
 # ── Prompt templates ──────────────────────────────────────────────────────────
 

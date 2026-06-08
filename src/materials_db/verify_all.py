@@ -11,7 +11,7 @@ import numpy as np
 
 from src.db.schema import init_db, insert_material, insert_optical, insert_mechanical
 from src.pipeline.parser import parse_csv
-from src.simulation.xrr import parratt
+from materials_db.simulation.xrr import parratt
 
 # ---------------------------------------------------------------------------
 # Physical constants for SLD derivation (NIST / CODATA)
@@ -130,7 +130,7 @@ check(
 # ---------------------------------------------------------------------------
 # 4. Energy Converter and SLD Calculations Verification
 # ---------------------------------------------------------------------------
-from calculators.sld_calculator import EnergyConverter, compute_xray_sld, compute_neutron_sld, parse_formula
+from materials_db.calculators.sld_calculator import EnergyConverter, compute_xray_sld, compute_neutron_sld, parse_formula
 
 # Energy converter tests
 wl_test = 0.15406  # nm (Cu K-alpha)
@@ -190,6 +190,66 @@ sld_val = conn.execute(
 ).fetchone()
 check("db_insert_calculated_sld_xray", abs(sld_val[0] - 1.08e-5) < 1e-9)
 check("db_insert_calculated_sld_neutron", abs(sld_val[1] - 1.06e-6) < 1e-9)
+
+# ---------------------------------------------------------------------------
+# 6. Integration test — real init path, on-disk DB, SQLAgent, views
+# ---------------------------------------------------------------------------
+import os
+import sqlite3 as _sqlite3
+import tempfile
+from pathlib import Path as _Path
+
+from materials_db.init_db import run_sql_file as _run_sql_file
+from materials_db.core.sql_agent import SQLAgent as _SQLAgent
+
+_proj_root = _Path(__file__).resolve().parent
+
+_tf = tempfile.NamedTemporaryFile(suffix=".db", delete=False)
+_tf_path = _tf.name
+_tf.close()
+try:
+    _run_sql_file(_Path(_tf_path), _proj_root / "core" / "schema.sql")
+    _run_sql_file(_Path(_tf_path), _proj_root / "core" / "seed_manual.sql")
+
+    _ic = _sqlite3.connect(_tf_path)
+    _ic.execute(
+        "INSERT OR IGNORE INTO materials "
+        "(name, formula, material_class, notes, density_g_cm3) "
+        "VALUES ('IntTestMat', 'H2O', 'solvent', 'integration test row', 1.0)"
+    )
+    _mid = _ic.execute(
+        "SELECT id FROM materials WHERE name='IntTestMat'"
+    ).fetchone()[0]
+    _ic.execute(
+        "INSERT OR IGNORE INTO optical_nk (material_id, wavelength_nm, n) "
+        "VALUES (?, 633.0, 1.33)",
+        (_mid,),
+    )
+    _ic.commit()
+    _ic.close()
+
+    _agent = _SQLAgent(_tf_path)
+
+    _vc = _sqlite3.connect(_tf_path)
+    _views = {r[0] for r in _vc.execute(
+        "SELECT name FROM sqlite_master WHERE type='view'"
+    ).fetchall()}
+    check("integration_materials_flat_exists", "materials_flat" in _views,
+          f"views found: {_views}")
+    check("integration_spr_data_exists", "spr_data" in _views,
+          f"views found: {_views}")
+
+    _mf_rows = _vc.execute("SELECT * FROM materials_flat").fetchall()
+    check("integration_materials_flat_rows", len(_mf_rows) > 0,
+          f"materials_flat returned {len(_mf_rows)} rows")
+
+    _spr_rows = _vc.execute("SELECT * FROM spr_data").fetchall()
+    check("integration_spr_data_rows", len(_spr_rows) > 0,
+          f"spr_data returned {len(_spr_rows)} rows")
+
+    _vc.close()
+finally:
+    os.unlink(_tf_path)
 
 # ---------------------------------------------------------------------------
 # Report

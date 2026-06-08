@@ -4,7 +4,7 @@
 import sys
 from pathlib import Path
 
-_ROOT = Path(__file__).resolve().parent
+_ROOT = Path(__file__).resolve().parents[2]
 if str(_ROOT) not in sys.path:
     sys.path.insert(0, str(_ROOT))
 
@@ -27,7 +27,7 @@ def check(name: str, condition: bool, detail: str = "") -> None:
 
 # ── 1. Audit ──────────────────────────────────────────────────────────────────
 
-from core.audit import run_audit
+from materials_db.core.audit import run_audit
 
 ok = run_audit()
 check("run_audit() returns True", ok)
@@ -42,7 +42,7 @@ if ok:
         print(f"\n{total} check(s): {_passed} PASS, {_failed} FAIL, 1 SKIP")
         sys.exit(0 if _failed == 0 else 1)
 
-    from core.sql_agent import SQLAgent
+    from materials_db.core.sql_agent import SQLAgent
 
     agent  = SQLAgent(_DB)
     result = agent.ask("list all materials", [])

@@ -30,8 +30,7 @@
 CREATE UNIQUE INDEX IF NOT EXISTS uidx_materials_name
     ON materials(name);
 
-CREATE UNIQUE INDEX IF NOT EXISTS uidx_nk_mat_wl
-    ON optical_nk(material_id, wavelength_nm);
+DROP INDEX IF EXISTS uidx_nk_mat_wl;
 
 -- ── References ─────────────────────────────────────────────────────────────────
 INSERT OR IGNORE INTO references_db (doi, citation_text, url)
