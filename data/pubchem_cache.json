@@ -1,0 +1,89 @@
+{
+  "Water": {
+    "CID": 962,
+    "MolecularFormula": "H2O",
+    "MolecularWeight": "18.015",
+    "SMILES": "O",
+    "XLogP": -0.5,
+    "TPSA": 1,
+    "HBondDonorCount": 1,
+    "HBondAcceptorCount": 1,
+    "RotatableBondCount": 0
+  },
+  "Gold": {
+    "CID": 23985,
+    "MolecularFormula": "Au",
+    "MolecularWeight": "196.96657",
+    "SMILES": "[Au]",
+    "TPSA": 0,
+    "HBondDonorCount": 0,
+    "HBondAcceptorCount": 0,
+    "RotatableBondCount": 0
+  },
+  "SiO2": {
+    "CID": 24261,
+    "MolecularFormula": "O2Si",
+    "MolecularWeight": "60.084",
+    "SMILES": "O=[Si]=O",
+    "TPSA": 34.1,
+    "HBondDonorCount": 0,
+    "HBondAcceptorCount": 2,
+    "RotatableBondCount": 0
+  },
+  "Polystyrene": null,
+  "DPPC": {
+    "CID": 452110,
+    "MolecularFormula": "C40H80NO8P",
+    "MolecularWeight": "734.0",
+    "SMILES": "CCCCCCCCCCCCCCCC(=O)OC[C@H](COP(=O)([O-])OCC[N+](C)(C)C)OC(=O)CCCCCCCCCCCCCCC",
+    "XLogP": 13.5,
+    "TPSA": 111,
+    "HBondDonorCount": 0,
+    "HBondAcceptorCount": 8,
+    "RotatableBondCount": 40
+  },
+  "PMMA": null,
+  "Ethanol": {
+    "CID": 702,
+    "MolecularFormula": "C2H6O",
+    "MolecularWeight": "46.07",
+    "SMILES": "CCO",
+    "XLogP": -0.1,
+    "TPSA": 20.2,
+    "HBondDonorCount": 1,
+    "HBondAcceptorCount": 1,
+    "RotatableBondCount": 0
+  },
+  "DMSO": {
+    "CID": 679,
+    "MolecularFormula": "C2H6OS",
+    "MolecularWeight": "78.14",
+    "SMILES": "CS(=O)C",
+    "XLogP": -0.6,
+    "TPSA": 36.3,
+    "HBondDonorCount": 0,
+    "HBondAcceptorCount": 2,
+    "RotatableBondCount": 0
+  },
+  "PEG": {
+    "CID": 174,
+    "MolecularFormula": "C2H6O2",
+    "MolecularWeight": "62.07",
+    "SMILES": "C(CO)O",
+    "XLogP": -1.4,
+    "TPSA": 40.5,
+    "HBondDonorCount": 2,
+    "HBondAcceptorCount": 2,
+    "RotatableBondCount": 1
+  },
+  "Silicon": {
+    "CID": 5461123,
+    "MolecularFormula": "Si",
+    "MolecularWeight": "28.085",
+    "SMILES": "[Si]",
+    "TPSA": 0,
+    "HBondDonorCount": 0,
+    "HBondAcceptorCount": 0,
+    "RotatableBondCount": 0
+  }
+}

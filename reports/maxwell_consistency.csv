@@ -1,0 +1,25 @@
+material,wavelength_nm,n,k,n_squared,eps_real_od,eps_pp_or_consensus,note
+Chromium,633.0,3.18,3.33,-0.9764999999999997,-0.9764999999999997,-10.7,rel_err=0.9087
+Gold,633.0,0.18,3.45,-11.8701,-11.8701,-24.0,rel_err=0.5054
+Silver,633.0,0.135,3.99,-15.901875000000002,-15.901875000000002,-15.0,rel_err=0.0601
+Water,,1.3115102040816327,,1.7200590154102458,,79.25,mean_n vs consensus_dielectric rel_err=0.9783
+SiO2,,1.4449985092597442,,2.0880206917628827,,3.9,mean_n vs consensus_dielectric rel_err=0.4646
+Polystyrene,,1.5845354559374616,,2.5107526111229395,,2.6,mean_n vs consensus_dielectric rel_err=0.0343
+DPPC,,1.47775,,2.1837450625,,2.25,mean_n vs consensus_dielectric rel_err=0.0294
+PMMA,,1.486077806167191,,2.2084272459826915,,3.3,mean_n vs consensus_dielectric rel_err=0.3308
+Ethanol,,1.3527349037705547,,1.829891719879132,,24.5,mean_n vs consensus_dielectric rel_err=0.9253
+DMSO,,1.483952874222403,,2.202116132912931,,46.7,mean_n vs consensus_dielectric rel_err=0.9528
+PEG,,1.5308156365026289,,2.3433965129609486,,12.0,mean_n vs consensus_dielectric rel_err=0.8047
+Silicon,,3.5801521739130435,,12.817489588374292,,11.7,mean_n vs consensus_dielectric rel_err=0.0955
+Gold,,1.0193478260869566,,1.0390699905482044,,-24.0,mean_n vs consensus_dielectric rel_err=1.0433
+Silver,,0.135,,0.018225,,-15.0,mean_n vs consensus_dielectric rel_err=1.0012
+TiO2,,2.441666666666667,,5.9617361111111125,,86.0,mean_n vs consensus_dielectric rel_err=0.9307
+BSA,,1.447,,2.0938090000000003,,4.0,mean_n vs consensus_dielectric rel_err=0.4765
+Chromium,,3.4633333333333334,,11.994677777777778,,-10.7,mean_n vs consensus_dielectric rel_err=2.1210
+PEI,,1.52,,2.3104,,3.8,mean_n vs consensus_dielectric rel_err=0.3920
+PTFE,,1.35,,1.8225000000000002,,2.1,mean_n vs consensus_dielectric rel_err=0.1321
+PEEK,,1.65,,2.7224999999999997,,3.2,mean_n vs consensus_dielectric rel_err=0.1492
+PVA,,1.5,,2.25,,10.8,mean_n vs consensus_dielectric rel_err=0.7917
+Nylon66,,1.53,,2.3409,,3.5,mean_n vs consensus_dielectric rel_err=0.3312
+Al2O3,,1.765,,3.1152249999999997,,9.8,mean_n vs consensus_dielectric rel_err=0.6821
+ZnO,,2.004,,4.016016,,8.5,mean_n vs consensus_dielectric rel_err=0.5275
