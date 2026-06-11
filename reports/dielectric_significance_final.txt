@@ -1,0 +1,85 @@
+DIELECTRIC SIGNIFICANCE FINAL REPORT
+======================================================================
+  Flat dataset: 23 materials × 39 columns
+  Low-freq subset: 18 materials
+
+Feature                       r         p     N   Sig   NEW  Class_filter          Notes
+------------------------------------------------------------------------------------------
+  MW_db                   -0.1341    0.5958    18   no         low_frequency         
+  density_g_cm3           +0.1601    0.5257    18   no         low_frequency         
+  dielectric_imag         -0.6201    0.5742     3   no         low_frequency         UNRELIABLE
+  n_633nm                 +0.6784    0.0039    16   YES        low_frequency         
+  k_633nm                 -0.5888    0.5992     3   no         low_frequency         UNRELIABLE
+  n_785nm                 +0.8107    0.0080     9   YES   ***  low_frequency         
+  k_785nm                 -1.0000    1.0000     2   no         low_frequency         UNRELIABLE
+  xray_sld_real           +0.1591    0.5282    18   no         low_frequency         
+  neutron_sld_real        -0.2536    0.3099    18   no         low_frequency         
+  storage_modulus_pa      -0.5031    0.2498     7   no         low_frequency         
+  loss_modulus_pa         -0.5027    0.2502     7   no         low_frequency         
+  viscosity_mpa_s         -0.7791    0.1204     5   no         low_frequency         UNRELIABLE
+  BertzCT                 -0.3375    0.5786     5   no         low_frequency         UNRELIABLE
+  MW                      -0.1341    0.5958    18   no         low_frequency         
+  FractionCSP3            -0.2080    0.4570    15   no         low_frequency         
+  LogP                    -0.3331    0.2446    14   no         low_frequency         
+  NumAromaticRings        -0.2118    0.4486    15   no         low_frequency         
+  NumHAcceptors           -0.2458    0.3773    15   no         low_frequency         
+  NumHDonors              -0.2563    0.3564    15   no         low_frequency         
+  NumHeavyAtoms           -0.4505    0.3699     6   no         low_frequency         
+  NumRings                -0.2591    0.5008     9   no         low_frequency         
+  NumRotatableBonds       -0.2248    0.4206    15   no         low_frequency         
+  TPSA                    -0.1595    0.5859    14   no         low_frequency         
+  h_bond_acceptors        -0.3922    0.2965     9   no         low_frequency         
+  h_bond_donors           -0.0903    0.8174     9   no         low_frequency         
+  rotatable_bonds         -0.2869    0.4541     9   no         low_frequency         
+  f_LL                    +0.6043    0.0132    16   YES   ***  low_frequency         
+  f_CM                    +0.7445    0.0004    18   YES   ***  low_frequency         
+  molar_vol               -0.1350    0.5933    18   no         low_frequency         
+  f_LL_norm               +0.5356    0.0325    16   YES   ***  low_frequency         
+  f_CM_norm               +0.5739    0.0128    18   YES   ***  low_frequency         
+  MW_db                   -0.0769    0.7405    21   no         all                   
+  density_g_cm3           -0.3811    0.0883    21   no         all                   
+  dielectric_imag         -0.2587    0.6206     6   no         all                   
+  n_633nm                 +0.4172    0.0756    19   no         all                   
+  k_633nm                 -0.7562    0.0819     6   no         all                   
+  n_785nm                 +0.0439    0.9042    10   no         all                   
+  k_785nm                 -0.7780    0.4325     3   no         all                   UNRELIABLE
+  xray_sld_real           -0.3772    0.0919    21   no         all                   
+  neutron_sld_real        -0.3820    0.0875    21   no         all                   
+  storage_modulus_pa      -0.5031    0.2498     7   no         all                   
+  loss_modulus_pa         -0.5027    0.2502     7   no         all                   
+  viscosity_mpa_s         -0.7791    0.1204     5   no         all                   UNRELIABLE
+  BertzCT                 +0.2548    0.5814     7   no         all                   INORGANIC_EXCLUDED
+  MW                      -0.0769    0.7405    21   no         all                   
+  FractionCSP3            +0.0100    0.9687    18   no         all                   
+  LogP                    -0.1827    0.4828    17   no         all                   INORGANIC_EXCLUDED
+  NumAromaticRings        -0.1168    0.6445    18   no         all                   
+  NumHAcceptors           -0.0318    0.9002    18   no         all                   
+  NumHDonors              -0.0982    0.6982    18   no         all                   
+  NumHeavyAtoms           -0.1103    0.7949     8   no         all                   
+  NumRings                -0.1680    0.6427    10   no         all                   
+  NumRotatableBonds       -0.1261    0.6181    18   no         all                   
+  TPSA                    +0.1051    0.6880    17   no         all                   INORGANIC_EXCLUDED
+  h_bond_acceptors        -0.2147    0.5514    10   no         all                   
+  h_bond_donors           +0.0005    0.9990    10   no         all                   
+  rotatable_bonds         -0.1868    0.6054    10   no         all                   
+  f_LL                    +0.4763    0.0393    19   YES   ***  all                   
+  f_CM                    +0.1554    0.5013    21   no         all                   
+  molar_vol               -0.0762    0.7427    21   no         all                   
+  f_LL_norm               +0.2473    0.3074    19   no         all                   
+  f_CM_norm               -0.1820    0.4299    21   no         all                   
+
+SUMMARY
+----------------------------------------
+  Total correlations computed: 62
+  Significant (p < 0.05): 7
+  Newly significant: 6
+  UNRELIABLE (N<6): 7
+  INORGANIC_EXCLUDED: 3
+
+  Significant correlations:
+    n_633nm                 r= +0.6784  p=0.00387  N=16  NEW=no
+    n_785nm                 r= +0.8107  p=0.00803  N=9  NEW=YES
+    f_LL                    r= +0.6043  p=0.01316  N=16  NEW=YES
+    f_CM                    r= +0.7445  p=0.00039  N=18  NEW=YES
+    f_LL_norm               r= +0.5356  p=0.03251  N=16  NEW=YES
+    f_CM_norm               r= +0.5739  p=0.01276  N=18  NEW=YES

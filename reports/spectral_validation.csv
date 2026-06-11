@@ -1,0 +1,13 @@
+sv_id,material_id,material_name,property,dataset_a,dataset_b,overlap_wl_min,overlap_wl_max,n_overlap_points,pearson_r,rmse,mae,max_deviation,classification,notes
+2,2,Gold,k,Johnson & Christy 1972; 633nm interpolated,P. B. Johnson and R. W. Christy.,633,633,1,—,0.01676,0.01676,0.01676,excellent,1 overlap points [633.0–633.0 nm]
+1,2,Gold,n,Johnson & Christy 1972; 633nm interpolated,P. B. Johnson and R. W. Christy.,633,633,1,—,0.003443,0.003443,0.003443,warning,1 overlap points [633.0–633.0 nm]
+3,5,DPPC,n,(unlabelled),Chou et al. Biophys J 2010 doi:10.1016/j.bpj.2010.07.026,633,633,1,—,0.002399,0.002399,0.002399,excellent,1 overlap points [633.0–633.0 nm]
+4,9,PEG,n,(unlabelled),Brandrup et al. Polymer Handbook 4th ed. (1999),589,589,1,—,0.07279,0.07279,0.07279,warning,1 overlap points [589.0–589.0 nm]
+6,15,TiO2,k,Cauchy extrapolation from 633nm,Devore 1951 J.Opt.Soc.Am; k from thin-film absorption,—,—,0,—,—,—,—,,no overlapping wavelength range
+5,15,TiO2,n,Cauchy extrapolation from 633nm,Devore 1951 J.Opt.Soc.Am; k from thin-film absorption,—,—,0,—,—,—,—,,no overlapping wavelength range
+7,16,PDMS,n,Cauchy extrapolation,Mark J.E. Polymer Data Handbook 4th ed 1999,—,—,0,—,—,—,—,,no overlapping wavelength range
+8,18,BSA,n,Cauchy extrapolation,Zhao X. et al. Langmuir 2006; protein film n,—,—,0,—,—,—,—,,no overlapping wavelength range
+10,20,ITO,k,Kim H.K. Thin Solid Films 1999; ITO thin film,Standard sputtered ITO film; n corrected to 1.800,—,—,0,—,—,—,—,,no overlapping wavelength range
+9,20,ITO,n,Kim H.K. Thin Solid Films 1999; ITO thin film,Standard sputtered ITO film; n corrected to 1.800,—,—,0,—,—,—,—,,no overlapping wavelength range
+12,21,Chromium,k,Palik E.D. Handbook of Optical Constants Vol.1 (1985); extrapolated,Palik E.D. Handbook of Optical Constants Vol.1 (1985); user-specified,—,—,0,—,—,—,—,,no overlapping wavelength range
+11,21,Chromium,n,Palik E.D. Handbook of Optical Constants Vol.1 (1985); extrapolated,Palik E.D. Handbook of Optical Constants Vol.1 (1985); user-specified,—,—,0,—,—,—,—,,no overlapping wavelength range

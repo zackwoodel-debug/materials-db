@@ -1,0 +1,5 @@
+material_id,name,formula,smiles,pubchem_cid,missing_fields,reason
+18,BSA,C2929H4624N786O892S39,,,"[""logp"", ""aromatic_rings""]",PubChem found compound but no SMILES available
+20,ITO,In18SnO29,,,"[""exact_mass"", ""tpsa"", ""logp""]",PubChem lookup returned nothing
+28,Al2O3,Al2O3,,,"[""logp"", ""aromatic_rings""]",PubChem found compound but no SMILES available
+29,ZnO,ZnO,,,"[""logp"", ""aromatic_rings""]",PubChem found compound but no SMILES available

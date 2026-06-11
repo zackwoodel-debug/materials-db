@@ -1,0 +1,43 @@
+CROSS-TABLE CONSISTENCY REPORT
+======================================================================
+materials table: 17 rows  IDs: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 16, 17, 18, 20, 21, 22]
+
+PASS optical_nk: all material_ids exist in materials
+PASS calculated_sld: all material_ids exist in materials
+PASS calculated_slds: all material_ids exist in materials
+PASS chemical_descriptors: all material_ids exist in materials
+PASS dielectric: all material_ids exist in materials
+PASS dielectrics: all material_ids exist in materials
+PASS viscoelasticity: all material_ids exist in materials
+PASS pubchem_data: all material_names match materials.name
+
+Density coverage: 17/17
+
+Material completeness matrix (presence across 7 FK tables):
+  BSA                  id=18   3/7  → optical_nk, calculated_sld, calculated_slds
+  Chromium             id=21   4/7  → optical_nk, calculated_sld, calculated_slds, chemical_descriptors
+  DMSO                 id=8    6/7  → optical_nk, calculated_sld, calculated_slds, chemical_descriptors, dielectric, viscoelasticity
+  DPPC                 id=5    7/7  → optical_nk, calculated_sld, calculated_slds, chemical_descriptors, dielectric, dielectrics, viscoelasticity
+  Ethanol              id=7    6/7  → optical_nk, calculated_sld, calculated_slds, chemical_descriptors, dielectric, viscoelasticity
+  Gold                 id=2    4/7  → optical_nk, calculated_sld, calculated_slds, chemical_descriptors
+  ITO                  id=20   5/7  → optical_nk, calculated_sld, calculated_slds, chemical_descriptors, viscoelasticity
+  PDMS                 id=16   5/7  → optical_nk, calculated_sld, calculated_slds, chemical_descriptors, viscoelasticity
+  PEG                  id=9    6/7  → optical_nk, calculated_sld, calculated_slds, chemical_descriptors, dielectric, viscoelasticity
+  PEI                  id=17   4/7  → optical_nk, calculated_sld, calculated_slds, chemical_descriptors
+  PMMA                 id=6    7/7  → optical_nk, calculated_sld, calculated_slds, chemical_descriptors, dielectric, dielectrics, viscoelasticity
+  Polystyrene          id=4    6/7  → optical_nk, calculated_sld, calculated_slds, chemical_descriptors, dielectric, viscoelasticity
+  SiO2                 id=3    5/7  → optical_nk, calculated_sld, calculated_slds, chemical_descriptors, dielectric
+  Silicon              id=10   5/7  → optical_nk, calculated_sld, calculated_slds, chemical_descriptors, dielectric
+  Silver               id=22   4/7  → optical_nk, calculated_sld, calculated_slds, chemical_descriptors
+  TiO2                 id=15   4/7  → optical_nk, calculated_sld, calculated_slds, chemical_descriptors
+  Water                id=1    7/7  → optical_nk, calculated_sld, calculated_slds, chemical_descriptors, dielectric, dielectrics, viscoelasticity
+
+Materials in BOTH dielectric tables: {1, 5, 6} (ids)
+  Water                dielectric.dielectric_real=78.4  dielectrics.real_permittivity=80.1  OK
+  DPPC                 dielectric.dielectric_real=2  dielectrics.real_permittivity=2.5  WARN diff=20.0%
+  PMMA                 dielectric.dielectric_real=3.6  dielectrics.real_permittivity=3  WARN diff=20.0%
+
+ISSUES SUMMARY
+========================================
+  - Dielectric value mismatch for DPPC: 2 vs 2.5 (20.0%)
+  - Dielectric value mismatch for PMMA: 3.6 vs 3 (20.0%)

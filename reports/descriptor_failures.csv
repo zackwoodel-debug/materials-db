@@ -1,0 +1,24 @@
+material_id,material_name,smiles_available,attempted_rdkit,attempted_pubchem,attempted_legacy,partial_fill,missing_fields,reason
+1,Water,1,1,0,1,0,[],ok
+2,Gold,1,1,0,1,0,[],ok
+3,SiO2,1,1,0,1,0,[],ok
+4,Polystyrene,1,1,0,1,0,[],ok
+5,DPPC,1,1,0,1,0,[],ok
+6,PMMA,1,1,0,1,0,[],ok
+7,Ethanol,1,1,0,1,0,[],ok
+8,DMSO,1,1,0,1,0,[],ok
+9,PEG,1,1,0,1,0,[],ok
+10,Silicon,1,1,0,1,0,[],ok
+15,TiO2,1,1,0,1,0,[],ok
+16,PDMS,1,1,0,1,0,[],ok
+17,PEI,1,1,0,1,0,[],ok
+18,BSA,0,0,1,0,1,"[""logp"", ""aromatic_rings""]",PubChem found compound but no SMILES available
+20,ITO,0,0,1,1,1,"[""exact_mass"", ""tpsa"", ""logp""]",PubChem lookup returned nothing
+21,Chromium,1,1,0,1,0,[],ok
+22,Silver,1,1,0,1,0,[],ok
+24,PTFE,0,0,1,1,0,[],PubChem lookup returned nothing
+25,PEEK,0,0,1,1,0,[],PubChem lookup returned nothing
+26,PVA,0,0,1,1,0,[],PubChem found compound but no SMILES available
+27,Nylon66,0,0,1,1,0,[],PubChem lookup returned nothing
+28,Al2O3,0,0,1,1,1,"[""logp"", ""aromatic_rings""]",PubChem found compound but no SMILES available
+29,ZnO,0,0,1,1,1,"[""logp"", ""aromatic_rings""]",PubChem found compound but no SMILES available

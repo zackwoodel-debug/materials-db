@@ -1,0 +1,24 @@
+material_name,material_class,polarisation_type,density_g_cm3,n_633nm,dielectric_real,xray_sld_real,neutron_sld_real,MW,data_sources
+Water,biological,orientational,1.0,,78.4,9.41994623362566e-06,-5.60996759557702e-07,18.010564684,calculated_slds | chemical_descriptors | dielectric | dielectrics | optical_nk | viscoelasticity
+Gold,metal,electronic,19.32,0.18,-24.0,0.0001314995848317,4.507025760040478e-06,196.9665687,calculated_slds | chemical_descriptors | dielectric | optical_nk
+SiO2,oxide,electronic,2.2,1.4569563472841431,3.9,1.8640939139069593e-05,3.4740487609567804e-06,59.966755770000006,calculated_slds | chemical_descriptors | dielectric | optical_nk
+Polystyrene,polymer,electronic,1.05,1.5875273999289277,2.6,9.580777231154544e-06,1.4111619128033947e-06,106.07825032,calculated_slds | chemical_descriptors | dielectric | optical_nk | viscoelasticity
+DPPC,biological,electronic,1.01,1.48,2.0,9.4805610208962e-06,2.279311359427869e-07,733.5621551499999,calculated_slds | chemical_descriptors | dielectric | dielectrics | optical_nk | viscoelasticity
+PMMA,polymer,electronic,1.19,1.4907787917376083,3.6,1.0892417016116188e-05,1.0673609439905036e-06,102.06807956,calculated_slds | chemical_descriptors | dielectric | dielectrics | optical_nk | viscoelasticity
+Ethanol,solvent,orientational,0.789,1.359443924488406,24.5,7.556398086204237e-06,-3.453607400284461e-07,46.041864812,calculated_slds | chemical_descriptors | dielectric | optical_nk | viscoelasticity
+DMSO,solvent,orientational,1.1,1.4768356780945269,46.7,1.003347237090223e-05,-4.2523373249777416e-08,78.013935812,calculated_slds | chemical_descriptors | dielectric | optical_nk | viscoelasticity
+PEG,polymer,electronic,1.13,1.5287255683727303,12.0,1.0504086889545033e-05,2.690871399696909e-07,62.036779432,calculated_slds | chemical_descriptors | dielectric | optical_nk | viscoelasticity
+Silicon,semiconductor,electronic,2.329,,11.7,1.9701794572149453e-05,2.0720482529969365e-06,27.97692653,calculated_slds | chemical_descriptors | dielectric | optical_nk
+TiO2,oxide,electronic,4.23,2.49,86.0,3.415424745077717e-05,2.626912904067974e-06,79.866,calculated_slds | chemical_descriptors | dielectric | optical_nk
+PDMS,polymer,electronic,0.97,1.41,,8.880041077671863e-06,6.306443825900354e-08,74.148,calculated_slds | chemical_descriptors | optical_nk | viscoelasticity
+PEI,polymer,electronic,1.03,1.52,3.8,9.74039238454886e-06,5.687488826292653e-07,43.068,calculated_slds | chemical_descriptors | dielectric | optical_nk
+BSA,biological,electronic,1.35,1.45,4.0,1.222863162992284e-05,1.8129082757950176e-06,66432.0,calculated_slds | dielectric | optical_nk
+ITO,oxide,electronic,7.12,1.8,,5.308454904985761e-05,4.0084623605927525e-06,2649.4,calculated_slds | chemical_descriptors | optical_nk | viscoelasticity
+Chromium,metal,electronic,7.19,3.18,-10.7,5.6318734491443786e-05,3.027012907802408e-06,51.996,calculated_slds | chemical_descriptors | dielectric | optical_nk
+Silver,metal,electronic,10.49,0.135,-15.0,7.756457372856987e-05,3.4681842939681165e-06,107.868,calculated_slds | chemical_descriptors | dielectric | optical_nk
+PTFE,polymer,electronic,2.2,1.35,2.1,1.7916771641381447e-05,4.756395389943772e-06,100.02,calculated_slds | chemical_descriptors | dielectric | dielectrics | optical_nk
+PEEK,polymer,electronic,1.32,1.65,3.2,1.165475741136168e-05,2.724072572347508e-06,288.3,calculated_slds | chemical_descriptors | dielectric | dielectrics | optical_nk
+PVA,polymer,electronic,1.27,1.5,10.8,1.1742261296332345e-05,7.175168129186269e-07,44.05,calculated_slds | chemical_descriptors | dielectric | dielectrics | optical_nk
+Nylon66,polymer,electronic,1.14,1.53,3.5,1.059952228991234e-05,8.428302108113763e-07,226.32,calculated_slds | chemical_descriptors | dielectric | dielectrics | optical_nk
+Al2O3,oxide,electronic,3.99,1.765,9.8,3.3204409684242717e-05,5.728294429764093e-06,101.96,calculated_slds | chemical_descriptors | dielectric | dielectrics | optical_nk
+ZnO,oxide,electronic,5.61,2.004,8.5,4.44540632189592e-05,4.767069053417533e-06,81.38,calculated_slds | chemical_descriptors | dielectric | dielectrics | optical_nk

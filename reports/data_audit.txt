@@ -1,0 +1,161 @@
+DATA AUDIT REPORT
+======================================================================
+
+────────────────────────────────────────────────────────────
+TABLE: calculated_sld  [68 rows × 12 cols]
+Columns: ['id', 'material_id', 'reference_id', 'energy_ev', 'wavelength_nm', 'frequency_hz', 'sld_xray_real', 'sld_xray_imag', 'sld_neutron_real', 'sld_neutron_imag', 'calculation_method', 'notes']
+  STAT  id: min=1  max=148  mean=67.4412  n=68
+  STAT  material_id: min=1  max=22  mean=10.8235  n=68
+  NULL  reference_id: 28/68
+  STAT  reference_id: min=14  max=14  mean=14  n=40
+  STAT  energy_ev: min=8047.8  max=17479.3  mean=11881.8  n=68
+  STAT  wavelength_nm: min=0.070932  max=0.15406  mean=0.113074  n=68
+  NULL  frequency_hz: 68/68
+  STAT  sld_xray_real: min=7.5564e-06  max=0.0001315  mean=2.87812e-05  n=68
+  STAT  sld_xray_imag: min=0  max=0  mean=0  n=68
+  STAT  sld_neutron_real: min=-5.60997e-07  max=4.50703e-06  mean=1.62677e-06  n=68
+  NULL  sld_neutron_imag: 68/68
+  NULL  notes: 68/68
+  STATUS: PASS
+
+────────────────────────────────────────────────────────────
+TABLE: calculated_slds  [34 rows × 9 cols]
+Columns: ['id', 'material_id', 'reference_id', 'energy_ev', 'wavelength_nm', 'xray_sld_real', 'xray_sld_imag', 'neutron_sld_real', 'neutron_sld_imag']
+  STAT  id: min=1  max=34  mean=17.5  n=34
+  STAT  material_id: min=1  max=22  mean=10.8235  n=34
+  NULL  reference_id: 34/34
+  STAT  energy_ev: min=8040  max=17400  mean=12720  n=34
+  STAT  wavelength_nm: min=0.07093  max=0.15406  mean=0.112495  n=34
+  STAT  xray_sld_real: min=7.5564e-06  max=0.0001315  mean=2.87812e-05  n=34
+  NULL  xray_sld_imag: 34/34
+  STAT  neutron_sld_real: min=-5.60997e-07  max=4.50703e-06  mean=1.62677e-06  n=34
+  NULL  neutron_sld_imag: 34/34
+  STATUS: PASS
+
+────────────────────────────────────────────────────────────
+TABLE: chemical_descriptors  [210 rows × 5 cols]
+Columns: ['id', 'material_id', 'descriptor_name', 'value', 'source_library']
+  STAT  id: min=1  max=420  mean=167.619  n=210
+  STAT  material_id: min=1  max=22  mean=9.21429  n=210
+  STAT  value: min=-1.5066  max=734.053  mean=27.6683  n=210
+  STATUS: PASS
+
+────────────────────────────────────────────────────────────
+TABLE: dielectric  [9 rows × 10 cols]
+Columns: ['id', 'material_id', 'reference_id', 'wavelength_nm', 'frequency_hz', 'energy_ev', 'dielectric_real', 'dielectric_imag', 'temperature_C', 'notes']
+  STAT  id: min=1  max=9  mean=5  n=9
+  STAT  material_id: min=1  max=10  mean=5.88889  n=9
+  STAT  reference_id: min=15  max=23  mean=19  n=9
+  NULL  wavelength_nm: 9/9
+  STAT  frequency_hz: min=0  max=0  mean=0  n=9
+  NULL  energy_ev: 9/9
+  STAT  dielectric_real: min=2  max=78.4  mean=20.6  n=9
+  NULL  dielectric_imag: 9/9
+  STAT  temperature_C: min=25  max=25  mean=25  n=9
+  STATUS: PASS
+
+────────────────────────────────────────────────────────────
+TABLE: dielectrics  [3 rows × 7 cols]
+Columns: ['id', 'material_id', 'reference_id', 'frequency_hz', 'temperature_C', 'real_permittivity', 'imag_permittivity']
+  STAT  id: min=1  max=3  mean=2  n=3
+  STAT  material_id: min=1  max=6  mean=4  n=3
+  NULL  reference_id: 3/3
+  STAT  frequency_hz: min=1000  max=1000  mean=1000  n=3
+  STAT  temperature_C: min=20  max=25  mean=21.6667  n=3
+  STAT  real_permittivity: min=2.5  max=80.1  mean=28.5333  n=3
+  STAT  imag_permittivity: min=0  max=0.05  mean=0.02  n=3
+  STATUS: PASS
+
+────────────────────────────────────────────────────────────
+TABLE: lab_measurements_needed  [6 rows × 11 cols]
+Columns: ['id', 'material_id', 'measurement_type', 'instrument', 'parameter', 'frequency_range', 'wavelength_range', 'priority', 'reason', 'protocol_notes', 'status']
+  STAT  id: min=1  max=6  mean=3.5  n=6
+  STAT  material_id: min=4  max=9  mean=6.33333  n=6
+  NULL  frequency_range: 2/6
+  NULL  wavelength_range: 4/6
+  STAT  priority: min=1  max=3  mean=2  n=6
+  STATUS: PASS
+
+────────────────────────────────────────────────────────────
+TABLE: materials  [17 rows × 9 cols]
+Columns: ['id', 'name', 'formula', 'smiles', 'molecular_weight', 'material_class', 'notes', 'density_g_cm3', 'pubchem_cid']
+  STAT  id: min=1  max=22  mean=10.8235  n=17
+  NULL  smiles: 2/17
+  STAT  molecular_weight: min=18.015  max=66432  mean=4168.59  n=17
+  STAT  density_g_cm3: min=0.789  max=19.32  mean=3.73518  n=17
+  NULL  pubchem_cid: 6/17
+  STAT  pubchem_cid: min=174  max=5.46112e+06  mean=548906  n=11
+  STATUS: PASS
+
+────────────────────────────────────────────────────────────
+TABLE: optical_nk  [2813 rows × 8 cols]
+Columns: ['id', 'material_id', 'reference_id', 'wavelength_nm', 'n', 'k', 'source_ref', 'temperature_C']
+  STAT  id: min=1  max=2817  mean=1407.31  n=2813
+  STAT  material_id: min=1  max=22  mean=5.79062  n=2813
+  STAT  reference_id: min=1  max=38  mean=7.07501  n=2813
+  STAT  wavelength_nm: min=191  max=3000  mean=1125.63  n=2813
+  STAT  n: min=0.13  max=6.709  mean=1.50107  n=2813
+  NOTE  n in (0,1): 17 rows (metallic regime — physically valid for metals below plasma frequency), material_ids: [2, 22]
+  NULL  k: 2164/2813
+  STAT  k: min=0  max=13.78  mean=0.406252  n=649
+  NULL  source_ref: 199/2813
+  NULL  temperature_C: 1244/2813
+  STAT  temperature_C: min=19.85  max=25  mean=20.1483  n=1569
+  STATUS: PASS
+
+────────────────────────────────────────────────────────────
+TABLE: pubchem_data  [17 rows × 9 cols]
+Columns: ['material_name', 'SMILES', 'molecular_formula', 'MW', 'XLogP', 'HBondDonors', 'HBondAcceptors', 'RotatableBonds', 'TPSA']
+  NULL  SMILES: 10/17
+  STAT  MW: min=18.015  max=66432  mean=4168.59  n=17
+  NULL  XLogP: 12/17
+  STAT  XLogP: min=-1.4  max=13.5  mean=2.18  n=5
+  NULL  HBondDonors: 9/17
+  STAT  HBondDonors: min=0  max=2  mean=0.5  n=8
+  NULL  HBondAcceptors: 9/17
+  STAT  HBondAcceptors: min=0  max=8  mean=2  n=8
+  NULL  RotatableBonds: 9/17
+  STAT  RotatableBonds: min=0  max=40  mean=5.125  n=8
+  NULL  TPSA: 9/17
+  STAT  TPSA: min=0  max=111  mean=30.3875  n=8
+  STATUS: PASS
+
+────────────────────────────────────────────────────────────
+TABLE: references_db  [34 rows × 5 cols]
+Columns: ['id', 'doi', 'citation_text', 'url', 'bibtex']
+  STAT  id: min=1  max=39  mean=18.5882  n=34
+  NULL  doi: 12/34
+  NULL  url: 10/34
+  NULL  bibtex: 34/34
+  STATUS: PASS
+
+────────────────────────────────────────────────────────────
+TABLE: viscoelasticity  [11 rows × 8 cols]
+Columns: ['id', 'material_id', 'reference_id', 'frequency_hz', 'temperature_C', 'storage_modulus_pa', 'loss_modulus_pa', 'viscosity_mpa_s']
+  STAT  id: min=1  max=17  mean=7.09091  n=11
+  STAT  material_id: min=1  max=20  mean=7.54545  n=11
+  NULL  reference_id: 5/11
+  STAT  reference_id: min=27  max=32  mean=29.5  n=6
+  STAT  frequency_hz: min=0  max=1  mean=0.909091  n=11
+  STAT  temperature_C: min=20  max=25  mean=24.0909  n=11
+  STAT  storage_modulus_pa: min=0  max=1.16e+11  mean=1.13646e+10  n=11
+  NULL  loss_modulus_pa: 1/11
+  STAT  loss_modulus_pa: min=0  max=1.5e+08  mean=4.011e+07  n=10
+  NULL  viscosity_mpa_s: 4/11
+  STAT  viscosity_mpa_s: min=0.89  max=80  mean=21.4218  n=7
+  STATUS: PASS
+
+
+SUMMARY
+========================================
+  calculated_sld                 PASS
+  calculated_slds                PASS
+  chemical_descriptors           PASS
+  dielectric                     PASS
+  dielectrics                    PASS
+  lab_measurements_needed        PASS
+  materials                      PASS
+  optical_nk                     PASS
+  pubchem_data                   PASS
+  references_db                  PASS
+  viscoelasticity                PASS

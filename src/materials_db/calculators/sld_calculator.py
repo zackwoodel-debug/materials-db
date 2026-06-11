@@ -23,22 +23,38 @@ ATOMS: Dict[str, Tuple[int, float]] = {
     "N":  (7,  14.0067),
     "O":  (8,  15.9994),
     "F":  (9,  18.9984),
+    "Al": (13, 26.9815),
     "Si": (14, 28.0855),
     "P":  (15, 30.97376),
     "S":  (16, 32.065),
+    "Ti": (22, 47.867),
+    "Zn": (30, 65.380),
+    "Cr": (24, 51.996),
+    "Ag": (47, 107.868),
+    "In": (49, 114.818),
+    "Sn": (50, 118.710),
     "Au": (79, 196.9665),
 }
 
 # Bound coherent neutron scattering lengths in Angstroms (1 fm = 1e-5 Angstroms)
+# Values: NIST neutron scattering lengths (2018), https://www.nist.gov/ncnr/neutron-scattering-lengths-list
 B_COH: Dict[str, float] = {
     "H": -3.7406e-5,
     "D":  6.6710e-5,
     "C":  6.6460e-5,
     "N":  9.3600e-5,
     "O":  5.8030e-5,
+    "F":  5.6540e-5,   # NIST 2018
+    "Al": 3.4490e-5,   # NIST 2018
     "P":  5.1300e-5,
     "S":  2.8470e-5,
     "Si": 4.1491e-5,
+    "Ti":-3.3700e-5,  # natural Ti; negative b_coh (NIST)
+    "Zn": 5.6800e-5,   # NIST 2018
+    "Cr": 3.6350e-5,  # natural Cr (NIST)
+    "Ag": 5.9220e-5,  # natural Ag (NIST)
+    "In": 4.0650e-5,  # natural In (NIST)
+    "Sn": 6.2250e-5,  # natural Sn (NIST)
     "Au": 7.6300e-5,
 }
 

@@ -3,6 +3,7 @@ __pycache__/
 refractiveindex.info-database/
 refractiveindex_db/
 .claude/
+.matplotlib/
 materials.db
 core/materials.db
 *.db-journal
