@@ -6,8 +6,8 @@
 - Shared material_ids: 17
 - Material_ids only in legacy_calculated_sld: 0
 - Material_ids only in legacy_calculated_slds: 6
-- Columns in A not B: {'sld_neutron_imag', 'sld_xray_real', 'sld_neutron_real', 'frequency_hz', 'sld_xray_imag', 'notes', 'calculation_method'}
-- Columns in B not A: {'neutron_sld_imag', 'xray_sld_real', 'xray_sld_imag', 'neutron_sld_real'}
+- Columns in A not B: {'frequency_hz', 'notes', 'sld_xray_imag', 'sld_neutron_imag', 'sld_xray_real', 'sld_neutron_real', 'calculation_method'}
+- Columns in B not A: {'xray_sld_imag', 'neutron_sld_imag', 'xray_sld_real', 'neutron_sld_real'}
 
 **Recommendation:** Both tables are legacy mirrors of `physical_properties` (xray_sld / neutron_sld columns). `legacy_calculated_sld` contains two extra columns: `calculation_method` and `notes`, and uses the `sld_` prefix naming; `legacy_calculated_slds` uses `xray_sld_` prefix. Neither table is authoritative in the normalised schema — canonical SLD data should be in `physical_properties`. Both legacy tables can be **dropped** once provenance is confirmed. If `calculation_method` / `notes` contain unique information they should be migrated to `sources.notes` first.
 
@@ -17,7 +17,7 @@
 - Shared material_ids: 9
 - Material_ids only in legacy_dielectric: 12
 - Material_ids only in legacy_dielectrics: 0
-- Columns only in legacy_dielectric: {'dielectric_real', 'wavelength_nm', 'dielectric_imag', 'notes', 'energy_ev'}
+- Columns only in legacy_dielectric: {'dielectric_imag', 'notes', 'energy_ev', 'wavelength_nm', 'dielectric_real'}
 - Columns only in legacy_dielectrics: {'imag_permittivity', 'real_permittivity'}
 
 **Recommendation:** `legacy_dielectric` is the richer table (21 rows vs 9; has `wavelength_nm`, `energy_ev`, `notes`, `measurement_regime` absent from `legacy_dielectrics`). The 9 rows in `legacy_dielectrics` are a subset by material_id with no exclusive columns. If canonical data is in `physical_properties` both legacy tables can be **dropped**. If not yet fully migrated, migrate `legacy_dielectrics` rows first (they are the minimal set), then `legacy_dielectric` extras, then drop both.

@@ -1,0 +1,296 @@
+{
+  "stack_id": "20260610_PS-on-CrAuQCM_1_slab_v1",
+  "sample_id": "PS-on-CrAuQCM_1",
+  "created_at": "2026-06-11T09:32:15",
+  "version": 1,
+  "provenance": {
+    "user": "Aiden Gauer",
+    "proposal_id": "CNMS2026-R-00000"
+  },
+  "material": {
+    "morphology": "thin-film",
+    "blend_ratio": null,
+    "casting_solvent": "toluene",
+    "deposition_method": "spin-cast",
+    "deposition_conditions": null,
+    "annealing_conditions": "95C-vacuum-1hr"
+  },
+  "n_layers": 2,
+  "stack": [
+    {
+      "role": "ambient",
+      "index": 0,
+      "label": "air",
+      "material_type": "bulk_media",
+      "molecular": {},
+      "structural": {
+        "thickness": {
+          "value": null,
+          "min": null,
+          "max": null
+        },
+        "roughness": {
+          "value": null,
+          "min": null,
+          "max": null
+        }
+      },
+      "optical": {
+        "model": "scalar",
+        "params": {
+          "preset": "air",
+          "n": 1.0,
+          "k": 0.0
+        }
+      },
+      "scattering": {
+        "sld_real": {
+          "value": null,
+          "min": null,
+          "max": null
+        },
+        "sld_imag": {
+          "value": null,
+          "min": null,
+          "max": null
+        }
+      },
+      "viscoelastic": {
+        "modulus_storage": {
+          "value": null,
+          "min": null,
+          "max": null
+        },
+        "modulus_loss": {
+          "value": null,
+          "min": null,
+          "max": null
+        },
+        "viscosity": {
+          "value": 1.81e-05,
+          "min": null,
+          "max": null
+        },
+        "density": {
+          "value": 1.2,
+          "min": null,
+          "max": null
+        }
+      }
+    },
+    {
+      "index": 0,
+      "label": "Polystyrene",
+      "material_type": "polymer",
+      "molecular": {
+        "formula": "(C8H8)n",
+        "mw_repeat_g_mol": 104.15,
+        "density_g_cm3": 1.05,
+        "neutron_sld_A2": 1.4112e-06,
+        "xray_sld_A2_CuKa": 9.5808e-06,
+        "n_at_633nm": 1.5875,
+        "k_at_633nm": null,
+        "smiles": "C(c1ccccc1)C",
+        "logP": 2.249,
+        "tpsa": 0.0,
+        "viscoelastic_notes": "G' = 3.0 GPa, G'' = 0.15 GPa at 1 Hz, 25 C (below Tg ~100 C; glassy plateau). Source DB value: G'=3.0e9, G''=1.5e8 at 1 Hz, 25 C. Consistent with Ferry, Viscoelastic Properties of Polymers, 3rd ed. (Wiley, 1980), Ch. 11; and Palade et al., Macromolecules 28, 7081 (1995).",
+        "source_optical": "materials.db id=4; Sultanova et al., Acta Phys. Pol. A 116, 585 (2009); 437-1052 nm"
+      },
+      "structural": {
+        "thickness": {
+          "value": 1000.0,
+          "min": 800.0,
+          "max": 1200.0
+        },
+        "roughness": {
+          "value": 50.0,
+          "min": 1.0,
+          "max": 100.0
+        }
+      },
+      "optical": {
+        "model": "Tabulated n,k",
+        "params": {
+          "file": "nk_spectra/polystyrene_nk.csv"
+        }
+      },
+      "scattering": {
+        "sld_real": {
+          "value": 9.5808e-06,
+          "min": null,
+          "max": null
+        },
+        "sld_imag": {
+          "value": 0.0,
+          "min": null,
+          "max": null
+        }
+      },
+      "viscoelastic": {
+        "modulus_storage": {
+          "value": 3000000000.0,
+          "min": null,
+          "max": null
+        },
+        "modulus_loss": {
+          "value": 150000000.0,
+          "min": null,
+          "max": null
+        },
+        "viscosity": {
+          "value": null,
+          "min": null,
+          "max": null
+        },
+        "density": {
+          "value": 1050.0,
+          "min": null,
+          "max": null
+        }
+      }
+    },
+    {
+      "index": 1,
+      "label": "Gold",
+      "material_type": "metal",
+      "molecular": {
+        "formula": "Au",
+        "mw_repeat_g_mol": 196.967,
+        "density_g_cm3": 19.32,
+        "neutron_sld_A2": 4.507e-06,
+        "xray_sld_A2_CuKa": 0.0001315,
+        "n_at_633nm": 0.18,
+        "k_at_633nm": 3.45,
+        "viscoelastic_notes": "G' = shear (rigidity) modulus 27 GPa; bulk modulus 220 GPa; Poisson ratio 0.44. G'' = 0: gold is elastically linear at room temperature for thin-film acoustics. Ref: Simmons & Wang, Single Crystal Elastic Constants and Calculated Aggregate Properties, MIT Press 1971; values also tabulated in WebElements (webelements.com/gold/physics.html).",
+        "source_optical": "materials.db id=2; Johnson & Christy, Phys. Rev. B 6, 4370 (1972); 188-1937 nm"
+      },
+      "structural": {
+        "thickness": {
+          "value": 50.0,
+          "min": 20.0,
+          "max": 100.0
+        },
+        "roughness": {
+          "value": 10.0,
+          "min": 1.0,
+          "max": 50.0
+        }
+      },
+      "optical": {
+        "model": "Tabulated n,k",
+        "params": {
+          "file": "nk_spectra/gold_nk.csv"
+        }
+      },
+      "scattering": {
+        "sld_real": {
+          "value": 0.0001315,
+          "min": null,
+          "max": null
+        },
+        "sld_imag": {
+          "value": 0.0,
+          "min": null,
+          "max": null
+        }
+      },
+      "viscoelastic": {
+        "modulus_storage": {
+          "value": 27000000000.0,
+          "min": null,
+          "max": null
+        },
+        "modulus_loss": {
+          "value": 0.0,
+          "min": null,
+          "max": null
+        },
+        "viscosity": {
+          "value": null,
+          "min": null,
+          "max": null
+        },
+        "density": {
+          "value": 19320.0,
+          "min": null,
+          "max": null
+        }
+      }
+    },
+    {
+      "role": "substrate",
+      "index": -1,
+      "label": "qcm_sensor",
+      "material_type": "bulk_media",
+      "molecular": {
+        "formula": "SiO2",
+        "mw_repeat_g_mol": 60.084,
+        "density_g_cm3": 2.648,
+        "neutron_sld_A2": 4.18e-06,
+        "xray_sld_A2_CuKa": 2.2437e-05,
+        "n_at_633nm": 1.4585,
+        "k_at_633nm": null,
+        "viscoelastic_notes": "G' = isotropic Voigt-Reuss-Hill average shear modulus 44.3 GPa for polycrystalline alpha-quartz (C44 = 58.2 GPa, C66 = 36.4 GPa single-crystal; VRH average used for thin-film slab model). G'' = 0 at room temperature. Ref: McSkimin, Andreatch & Thurston, J. Appl. Phys. 36, 1624 (1965), DOI:10.1063/1.1703099.",
+        "viscoelastic_note_optical": "Optical n,k from fused silica (Malitson 1965); adequate approximation for isotropic slab modelling. SLDs scaled from fused silica by density ratio 2.648/2.20.",
+        "source_optical": "Malitson 1965 (fused silica proxy); SLDs derived"
+      },
+      "structural": {
+        "thickness": {
+          "value": null,
+          "min": null,
+          "max": null
+        },
+        "roughness": {
+          "value": null,
+          "min": null,
+          "max": null
+        }
+      },
+      "optical": {
+        "model": "Tabulated n,k",
+        "params": {
+          "file": ""
+        }
+      },
+      "scattering": {
+        "sld_real": {
+          "value": 2.2437e-05,
+          "min": null,
+          "max": null
+        },
+        "sld_imag": {
+          "value": 0.0,
+          "min": null,
+          "max": null
+        }
+      },
+      "viscoelastic": {
+        "modulus_storage": {
+          "value": null,
+          "min": null,
+          "max": null
+        },
+        "modulus_loss": {
+          "value": null,
+          "min": null,
+          "max": null
+        },
+        "viscosity": {
+          "value": null,
+          "min": null,
+          "max": null
+        },
+        "density": {
+          "value": null,
+          "min": null,
+          "max": null
+        }
+      },
+      "qcm_substrate": {
+        "density": 2648.0,
+        "impedance": 8800000.0
+      },
+      "notes": null
+    }
+  ]
+}

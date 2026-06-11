@@ -1,0 +1,96 @@
+{
+  "stack_id": "XRR-2024-001",
+  "sample_id": "sample-A",
+  "provenance": {
+    "source": "literature",
+    "doi": "10.1000/placeholder",
+    "date": "2024-01-15",
+    "operator": "J. Smith"
+  },
+  "material": "PMMA",
+  "n_layers": 4,
+  "stack": [
+    {
+      "label": "Vacuum",
+      "material_type": "vacuum",
+      "role": "ambient",
+      "scattering": {
+        "sld_real": 0.0,
+        "sld_imag": 0.0
+      }
+    },
+    {
+      "label": "PMMA",
+      "material_type": "polymer",
+      "molecular": {
+        "formula": "C5H8O2",
+        "mw_repeat_g_mol": 100.12,
+        "density_g_cm3": 1.18,
+        "neutron_sld_A2": 1.06e-6,
+        "xray_sld_A2_CuKa": 1.089e-5,
+        "n_at_633nm": 1.489,
+        "k_at_633nm": 0.0,
+        "source_optical": "Sopra database"
+      },
+      "structural": {
+        "thickness": {"value": 120.0, "min": 100.0, "max": 140.0},
+        "roughness": {"value": 3.0, "min": 0.0, "max": 10.0}
+      },
+      "optical": {
+        "model": "Cauchy",
+        "params": {"A": 1.489, "B": 0.00354}
+      },
+      "scattering": {
+        "sld_real": 1.089e-5,
+        "sld_imag": 0.0
+      },
+      "viscoelastic": {
+        "modulus_storage": 3000000000.0,
+        "modulus_loss": 150000000.0,
+        "density": 1.18
+      }
+    },
+    {
+      "label": "Gold",
+      "material_type": "metal",
+      "molecular": {
+        "formula": "Au",
+        "mw_repeat_g_mol": 196.97,
+        "density_g_cm3": 19.32,
+        "xray_sld_A2_CuKa": 0.0001315,
+        "n_at_633nm": 0.2,
+        "k_at_633nm": 3.45,
+        "source_optical": "Johnson and Christy 1972"
+      },
+      "structural": {
+        "thickness": {"value": 250.0, "min": 230.0, "max": 270.0},
+        "roughness": {"value": 2.0, "min": 0.0, "max": 8.0}
+      },
+      "scattering": {
+        "sld_real": 0.0001315,
+        "sld_imag": 0.0
+      }
+    },
+    {
+      "label": "Silicon",
+      "material_type": "semiconductor",
+      "role": "substrate",
+      "molecular": {
+        "formula": "Si",
+        "density_g_cm3": 2.329,
+        "xray_sld_A2_CuKa": 1.97e-5,
+        "n_at_633nm": 3.88,
+        "k_at_633nm": 0.019,
+        "source_optical": "Green 2008"
+      },
+      "scattering": {
+        "sld_real": 1.97e-5,
+        "sld_imag": 0.0
+      },
+      "qcm_substrate": {
+        "density": 2.329,
+        "impedance": 8680000.0
+      }
+    }
+  ]
+}

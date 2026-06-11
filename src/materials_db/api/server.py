@@ -1,8 +1,12 @@
 """FastAPI SQL-RAG server for materials.db."""
 
+import json
+import os
 import sqlite3
 from contextlib import asynccontextmanager
+from datetime import date
 from pathlib import Path
+from typing import Optional
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -86,9 +90,102 @@ def chat(req: ChatRequest):
 
     result = _agent.ask(req.query, req.history)
 
-    return {
+    resp = {
         "response": result["answer"],
         "sql": result["sql"],
         "sources": result["tables_used"],
         "confidence": result["confidence"],
+    }
+    # Stack-build results carry extra fields; pass them through without
+    # changing the existing response contract for SQL queries.
+    if "stack_path" in result:
+        resp["stack_path"] = result["stack_path"]
+    if "stack_json" in result:
+        resp["stack_json"] = result["stack_json"]
+    return resp
+
+
+# ── /stack endpoint ────────────────────────────────────────────────────────────
+
+class StackRequest(BaseModel):
+    """Structured layer list for building a slab JSON v1 stack file.
+
+    Each element of *layers* is passed directly to build_stack; at minimum it
+    must contain a ``"material"`` key.  Mark the substrate layer with
+    ``"substrate": true``.  Thickness and bounds are optional.
+
+    Example body::
+
+        {
+          "layers": [
+            {"material": "Polystyrene", "thickness": 1000},
+            {"material": "Gold",        "thickness": 50},
+            {"material": "quartz",      "substrate": true}
+          ],
+          "sample_id": "PS-on-Au",
+          "user": "scientist",
+          "proposal_id": "P2024-001"
+        }
+    """
+
+    layers: list[dict]
+    sample_id: str
+    user: str = "api"
+    proposal_id: str = ""
+    out_dir: Optional[str] = None
+
+
+@app.post("/stack")
+def build_stack_endpoint(req: StackRequest):
+    """Build a slab JSON v1 StackFile from a structured layer list.
+
+    Physical purpose: Accept a fully-specified layer list, query materials.db
+    for all optical/scattering/viscoelastic properties, assemble a StackFile,
+    write it atomically to data/stacks/ (or a caller-specified directory), and
+    return the JSON together with the written path.
+
+    Args/Returns: req — StackRequest body; returns
+    {stack_json, written_path, n_layers, sample_id} or HTTP 422 on error.
+    """
+    from materials_db.pipeline.stack_exporter import build_stack
+
+    if not req.layers:
+        raise HTTPException(status_code=422, detail="layers must not be empty.")
+
+    try:
+        sf = build_stack(
+            req.layers,
+            sample_id=req.sample_id,
+            user=req.user,
+            proposal_id=req.proposal_id,
+            db_path=Path(_DB_PATH),
+        )
+    except FileNotFoundError as exc:
+        raise HTTPException(status_code=503, detail=str(exc))
+    except Exception as exc:
+        raise HTTPException(status_code=422, detail=str(exc))
+
+    stack_dict = sf.model_dump(mode="json", exclude_none=True)
+
+    # Resolve output directory; default to data/stacks/ next to the DB.
+    if req.out_dir is not None:
+        out_dir = Path(req.out_dir)
+    else:
+        out_dir = _ROOT / "data" / "stacks"
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    today = date.today().strftime("%Y%m%d")
+    safe_id = req.sample_id.replace("/", "_").replace(" ", "_")
+    fname = f"{today}_{safe_id}_slab_v1.json"
+    out_path = out_dir / fname
+    content = json.dumps(stack_dict, indent=2, ensure_ascii=False)
+    tmp = out_path.with_suffix(".tmp")
+    tmp.write_text(content, encoding="utf-8")
+    os.replace(tmp, out_path)
+
+    return {
+        "stack_json": stack_dict,
+        "written_path": str(out_path),
+        "n_layers": sf.n_layers,
+        "sample_id": sf.sample_id,
     }

@@ -252,6 +252,159 @@ finally:
     os.unlink(_tf_path)
 
 # ---------------------------------------------------------------------------
+# 7. Stack pipeline checks
+# ---------------------------------------------------------------------------
+
+try:
+    from materials_db.core.stack_schema import StackFile as _SF, _round_trip_check as _rtc
+    from materials_db.pipeline.stack_exporter import build_stack as _build_stack
+    from materials_db.pipeline.stack_to_sim import (
+        simulate_stack_xrr as _sim_xrr,
+        to_qcm_input as _qcm_in,
+        to_voigt_params as _voigt,
+    )
+    import json as _json_mod
+
+    _stacks_dir_v = _proj_root.parents[1] / "data" / "stacks"
+    _mdb_path = _proj_root.parents[1] / "data" / "materials.db"
+
+    # 7a. stack_schema_roundtrip — both example JSONs load, validate, and round-trip
+    _RT_NAMES = ("pmma_gold_si.json", "dppc_bilayer_si.json")
+    try:
+        _missing = [n for n in _RT_NAMES if not (_stacks_dir_v / n).exists()]
+        if _missing:
+            check("stack_schema_roundtrip", False, f"missing: {_missing}")
+        else:
+            for _rname in _RT_NAMES:
+                _rtc(_stacks_dir_v / _rname)
+            check("stack_schema_roundtrip", True)
+    except Exception as _exc:
+        check("stack_schema_roundtrip", False, str(_exc))
+
+    # 7b. stack_export_ps_gold — PS n within 0.01 of 1.5875, SLD within 5%, Gold G'==27e9
+    if _mdb_path.exists():
+        try:
+            _sf_pg = _build_stack(
+                [
+                    {"material": "Polystyrene", "thickness": 1000.0},
+                    {"material": "Gold", "thickness": 50.0},
+                    {"material": "quartz", "substrate": True},
+                ],
+                sample_id="verify-ps-gold",
+                user="verify_all",
+                proposal_id="V-001",
+                db_path=_mdb_path,
+            )
+            _ps_mol = _sf_pg.stack[1].molecular
+            _gold_params = _voigt(_sf_pg.stack[2])
+            check(
+                "stack_export_ps_gold",
+                (
+                    _ps_mol is not None
+                    and abs(_ps_mol.n_at_633nm - 1.5875) < 0.01
+                    and _ps_mol.xray_sld_A2_CuKa is not None
+                    and abs(_ps_mol.xray_sld_A2_CuKa / 9.58e-6 - 1.0) < 0.05
+                    and _gold_params["modulus_storage"] is not None
+                    and abs(_gold_params["modulus_storage"] - 27e9) < 1e6
+                ),
+                f"n={getattr(_ps_mol,'n_at_633nm',None)}, "
+                f"sld={getattr(_ps_mol,'xray_sld_A2_CuKa',None)}, "
+                f"G'={_gold_params.get('modulus_storage')}",
+            )
+        except Exception as _exc:
+            check("stack_export_ps_gold", False, str(_exc))
+    else:
+        check("stack_export_ps_gold", False, f"DB not found: {_mdb_path}")
+
+    # 7c. stack_physics_rejects — n=0.5 polymer triggers a violation
+    try:
+        from materials_db.core.stack_schema import Layer as _Layer, Molecular as _Mol
+        _bad_sf = _SF(
+            stack_id="bad-n",
+            sample_id="reject-test",
+            material="FakePolymer",
+            n_layers=2,
+            stack=[
+                _Layer(label="Vacuum", role="ambient"),
+                _Layer(
+                    label="FakePolymer",
+                    material_type="polymer",
+                    molecular=_Mol(n_at_633nm=0.5),
+                ),
+            ],
+        )
+        _viol = _bad_sf.validate_physics()
+        check(
+            "stack_physics_rejects",
+            any("n_at_633nm" in v for v in _viol),
+            f"violations={_viol}",
+        )
+    except Exception as _exc:
+        check("stack_physics_rejects", False, str(_exc))
+
+    # 7d. stack_xrr_runs — TER plateau and high-Q decay on SiO2/Si inline stack
+    try:
+        from materials_db.core.stack_schema import (
+            BoundedValue as _BV, Layer as _Lyr, Scattering as _Scat,
+            StackFile as _SFX, Structural as _Str,
+        )
+        _sio2_si_sf = _SFX(
+            stack_id="test-xrr",
+            sample_id="SiO2-on-Si",
+            material="SiO2",
+            n_layers=3,
+            stack=[
+                _Lyr(label="Vacuum", material_type="vacuum", role="ambient",
+                     scattering=_Scat(sld_real=0.0)),
+                _Lyr(label="SiO2", material_type="oxide",
+                     structural=_Str(thickness=_BV(value=20.0)),
+                     scattering=_Scat(sld_real=sld_SiO2)),
+                _Lyr(label="Silicon", material_type="semiconductor", role="substrate",
+                     scattering=_Scat(sld_real=sld_Si)),
+            ],
+        )
+        _Qv = np.linspace(0.01, 0.60, 500)
+        _Rv = _sim_xrr(_sio2_si_sf, Q=_Qv)
+        _qc_v = np.sqrt(16.0 * np.pi * sld_Si)
+        _pm_v = _Qv < 0.8 * _qc_v
+        check(
+            "stack_xrr_runs",
+            (
+                len(_Rv) == len(_Qv)
+                and bool(np.all(_Rv[_pm_v] > 0.999))
+                and bool(_Rv[_Qv > 0.4].max() < 0.01)
+            ),
+            f"TER_min={_Rv[_pm_v].min():.4f}, highQ_max={_Rv[_Qv > 0.4].max():.4f}",
+        )
+    except Exception as _exc:
+        check("stack_xrr_runs", False, str(_exc))
+
+    # 7e. stack_qcm_mapping — substrate impedance == 8.8e6 for the QCM example
+    if _mdb_path.exists():
+        try:
+            _qcm_out = _qcm_in(_sf_pg)  # reuse the PS/Gold/quartz stack from 7b
+            check(
+                "stack_qcm_mapping",
+                _qcm_out["impedance"] is not None
+                and abs(_qcm_out["impedance"] - 8.8e6) < 1.0,
+                f"impedance={_qcm_out['impedance']}",
+            )
+        except Exception as _exc:
+            check("stack_qcm_mapping", False, str(_exc))
+    else:
+        check("stack_qcm_mapping", False, f"DB not found: {_mdb_path}")
+
+except ImportError as _imp_err:
+    for _cn in (
+        "stack_schema_roundtrip",
+        "stack_export_ps_gold",
+        "stack_physics_rejects",
+        "stack_xrr_runs",
+        "stack_qcm_mapping",
+    ):
+        check(_cn, False, f"import error: {_imp_err}")
+
+# ---------------------------------------------------------------------------
 # Report
 # ---------------------------------------------------------------------------
 

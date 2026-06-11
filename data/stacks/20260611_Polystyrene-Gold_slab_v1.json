@@ -1,0 +1,98 @@
+{
+  "stack_id": "f773f32d-88dd-46d4-900c-4ace15bf4db2",
+  "sample_id": "Polystyrene-Gold",
+  "provenance": {
+    "date": "2026-06-11",
+    "operator": "chat",
+    "notes": "proposal_id=chat"
+  },
+  "material": "Polystyrene",
+  "n_layers": 4,
+  "stack": [
+    {
+      "label": "Air",
+      "material_type": "ambient",
+      "role": "ambient",
+      "molecular": {
+        "formula": "N₂/O₂",
+        "n_at_633nm": 1.0,
+        "k_at_633nm": 0.0
+      },
+      "scattering": {
+        "sld_real": 0.0,
+        "sld_imag": 0.0
+      },
+      "viscoelastic": {
+        "viscosity": 1.81e-05,
+        "density": 1.2
+      }
+    },
+    {
+      "label": "Polystyrene",
+      "material_type": "polymer",
+      "molecular": {
+        "formula": "(C8H8)n",
+        "mw_repeat_g_mol": 104.15,
+        "density_g_cm3": 1.05,
+        "neutron_sld_A2": 1.4111619128033947e-06,
+        "xray_sld_A2_CuKa": 9.580777231154543e-06,
+        "n_at_633nm": 1.5875134167473222,
+        "viscoelastic_notes": "G'=3.00e+09 Pa; G''=1.50e+08 Pa; @1.0 Hz; 25.0 °C; logP=2.2490000000000006; TPSA=0.0",
+        "source_optical": "N. Sultanova, S. Kasarova, I. Nikolov. Dispersion properties of optical polymers. Acta Physica Polonica A 116, 585-587 (2009) (fit of the ex"
+      },
+      "structural": {
+        "thickness": {
+          "value": 1000.0
+        }
+      },
+      "scattering": {
+        "sld_real": 9.580777231154543e-06
+      },
+      "viscoelastic": {
+        "modulus_storage": 3000000000.0,
+        "modulus_loss": 150000000.0,
+        "density": 1.05
+      }
+    },
+    {
+      "label": "Gold",
+      "material_type": "metal",
+      "molecular": {
+        "formula": "Au",
+        "mw_repeat_g_mol": 196.96657,
+        "density_g_cm3": 19.32,
+        "neutron_sld_A2": 4.507025760040478e-06,
+        "xray_sld_A2_CuKa": 0.00013149958483173516,
+        "n_at_633nm": 0.18,
+        "k_at_633nm": 3.45,
+        "viscoelastic_notes": "logP=-0.0025; TPSA=0.0",
+        "source_optical": "doi:10.1103/PhysRevB.6.4370; Johnson P.B. & Christy R.W. Phys.Rev.B 6,4370 (1972); Palik Handbook Vol.1 (1985)"
+      },
+      "scattering": {
+        "sld_real": 0.00013149958483173516
+      }
+    },
+    {
+      "label": "SiO2",
+      "material_type": "oxide",
+      "role": "substrate",
+      "molecular": {
+        "formula": "O2Si",
+        "mw_repeat_g_mol": 60.084,
+        "density_g_cm3": 2.2,
+        "neutron_sld_A2": 3.4740487609567804e-06,
+        "xray_sld_A2_CuKa": 1.8640939139069593e-05,
+        "n_at_633nm": 1.457012534892267,
+        "viscoelastic_notes": "logP=-0.6184000000000001; TPSA=34.14",
+        "source_optical": "doi:10.1364/JOSA.55.001205"
+      },
+      "scattering": {
+        "sld_real": 1.8640939139069593e-05
+      },
+      "qcm_substrate": {
+        "density": 2.2,
+        "impedance": 8800000.0
+      }
+    }
+  ]
+}

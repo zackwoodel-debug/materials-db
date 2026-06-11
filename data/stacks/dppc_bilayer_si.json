@@ -1,0 +1,84 @@
+{
+  "stack_id": "NR-2024-002",
+  "sample_id": "sample-B",
+  "provenance": {
+    "source": "experiment",
+    "date": "2024-03-10",
+    "operator": "A. Jones",
+    "instrument": "D17 ILL"
+  },
+  "material": "DPPC",
+  "n_layers": 3,
+  "stack": [
+    {
+      "label": "D2O",
+      "material_type": "solvent",
+      "role": "ambient",
+      "molecular": {
+        "formula": "D2O",
+        "density_g_cm3": 1.105,
+        "neutron_sld_A2": 6.36e-6,
+        "n_at_633nm": 1.328,
+        "k_at_633nm": 0.0,
+        "source_optical": "Harvey 1998"
+      },
+      "scattering": {
+        "sld_real": 6.36e-6,
+        "sld_imag": 0.0
+      }
+    },
+    {
+      "label": "DPPC bilayer",
+      "material_type": "biological",
+      "molecular": {
+        "formula": "C40H80NO8P",
+        "mw_repeat_g_mol": 734.05,
+        "density_g_cm3": 1.02,
+        "neutron_sld_A2": 1.98e-6,
+        "n_at_633nm": 1.48,
+        "k_at_633nm": 0.0,
+        "viscoelastic_notes": "Voigt 2-layer model; G' from Reviakine 2011",
+        "source_optical": "Chou et al. Biophys J 2010"
+      },
+      "structural": {
+        "thickness": {"value": 45.0, "min": 38.0, "max": 52.0},
+        "roughness": {"value": 4.5, "min": 1.0, "max": 8.0}
+      },
+      "optical": {
+        "model": "Cauchy",
+        "params": {"A": 1.48, "B": 0.004}
+      },
+      "scattering": {
+        "sld_real": 1.98e-6,
+        "sld_imag": 0.0
+      },
+      "viscoelastic": {
+        "modulus_storage": 50000000.0,
+        "modulus_loss": 2000000.0,
+        "viscosity": 0.001,
+        "density": 1.02
+      }
+    },
+    {
+      "label": "Silicon",
+      "material_type": "semiconductor",
+      "role": "substrate",
+      "molecular": {
+        "formula": "Si",
+        "density_g_cm3": 2.329,
+        "neutron_sld_A2": 2.07e-6,
+        "n_at_633nm": 3.88,
+        "k_at_633nm": 0.019,
+        "source_optical": "Green 2008"
+      },
+      "scattering": {
+        "sld_real": 2.07e-6,
+        "sld_imag": 0.0
+      },
+      "qcm_substrate": {
+        "density": 2.329,
+        "impedance": 8680000.0
+      }
+    }
+  ]
+}

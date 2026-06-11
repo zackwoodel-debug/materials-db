@@ -1,0 +1,221 @@
+{
+  "stack_id": "20260611_SiO2-on-Si_slab_v1",
+  "sample_id": "SiO2-on-Si",
+  "created_at": "2026-06-11T09:49:47",
+  "version": 1,
+  "provenance": {
+    "user": "Aiden Gauer",
+    "proposal_id": "CNMS2026-R-00000"
+  },
+  "material": {
+    "morphology": null,
+    "blend_ratio": null,
+    "casting_solvent": null,
+    "deposition_method": null,
+    "deposition_conditions": null,
+    "annealing_conditions": null
+  },
+  "n_layers": 1,
+  "stack": [
+    {
+      "role": "ambient",
+      "index": 0,
+      "label": "air",
+      "material_type": "bulk_media",
+      "molecular": {},
+      "structural": {
+        "thickness": {
+          "value": null,
+          "min": null,
+          "max": null
+        },
+        "roughness": {
+          "value": null,
+          "min": null,
+          "max": null
+        }
+      },
+      "optical": {
+        "model": "scalar",
+        "params": {
+          "preset": "air",
+          "n": 1.0,
+          "k": 0.0
+        }
+      },
+      "scattering": {
+        "sld_real": {
+          "value": null,
+          "min": null,
+          "max": null
+        },
+        "sld_imag": {
+          "value": null,
+          "min": null,
+          "max": null
+        }
+      },
+      "viscoelastic": {
+        "modulus_storage": {
+          "value": null,
+          "min": null,
+          "max": null
+        },
+        "modulus_loss": {
+          "value": null,
+          "min": null,
+          "max": null
+        },
+        "viscosity": {
+          "value": 1.81e-05,
+          "min": null,
+          "max": null
+        },
+        "density": {
+          "value": 1.2,
+          "min": null,
+          "max": null
+        }
+      }
+    },
+    {
+      "index": 0,
+      "label": "Silica (amorphous)",
+      "material_type": "oxide",
+      "molecular": {
+        "formula": "SiO2",
+        "mw_repeat_g_mol": 60.084,
+        "density_g_cm3": 2.2,
+        "neutron_sld_A2": 3.474e-06,
+        "xray_sld_A2_CuKa": 1.8641e-05,
+        "n_at_633nm": 1.457,
+        "k_at_633nm": null,
+        "viscoelastic_notes": "G' = shear modulus 31.4 GPa (bulk modulus K = 35.4 GPa, Poisson ratio 0.16). G'' \u2248 0 at room temperature; fused silica is a near-ideal elastic glass below ~600 C. Ref: Corning HPFS Fused Silica datasheet; also Birch 1960, J. Geophys. Res. 65, 1083.",
+        "source_optical": "materials.db id=3; Malitson 1965, J. Opt. Soc. Am. 55, 1205; fused silica 210-3000 nm"
+      },
+      "structural": {
+        "thickness": {
+          "value": 15.0,
+          "min": 1.0,
+          "max": 25.0
+        },
+        "roughness": {
+          "value": 5.0,
+          "min": 0.5,
+          "max": 10.0
+        }
+      },
+      "optical": {
+        "model": "Tabulated n,k",
+        "params": {
+          "file": "nk_spectra/silica_amorphous_nk.csv"
+        }
+      },
+      "scattering": {
+        "sld_real": {
+          "value": 1.8641e-05,
+          "min": null,
+          "max": null
+        },
+        "sld_imag": {
+          "value": 0.0,
+          "min": null,
+          "max": null
+        }
+      },
+      "viscoelastic": {
+        "modulus_storage": {
+          "value": 31400000000.0,
+          "min": null,
+          "max": null
+        },
+        "modulus_loss": {
+          "value": 0.0,
+          "min": null,
+          "max": null
+        },
+        "viscosity": {
+          "value": null,
+          "min": null,
+          "max": null
+        },
+        "density": {
+          "value": 2200.0,
+          "min": null,
+          "max": null
+        }
+      }
+    },
+    {
+      "role": "substrate",
+      "index": -1,
+      "label": "silicon_oxide",
+      "material_type": "bulk_media",
+      "molecular": {
+        "formula": "Si",
+        "mw_repeat_g_mol": 28.086,
+        "density_g_cm3": 2.329,
+        "neutron_sld_A2": 2.072e-06,
+        "xray_sld_A2_CuKa": 1.9702e-05,
+        "n_at_633nm": 3.906,
+        "k_at_633nm": 0.022,
+        "viscoelastic_notes": "G' = shear modulus (Voigt-Reuss-Hill isotropic average 79.5 GPa). G'' = 0: silicon is a near-ideal elastic solid at room temperature; acoustic loss angle < 1e-8. Ref: Hopcroft, Nix & Kenny, J. Microelectromechanical Syst. 19, 229-238 (2010), DOI:10.1109/JMEMS.2009.2039697.",
+        "source_optical": "materials.db id=10; Palik Handbook; nk range 207-827 nm"
+      },
+      "structural": {
+        "thickness": {
+          "value": null,
+          "min": null,
+          "max": null
+        },
+        "roughness": {
+          "value": null,
+          "min": null,
+          "max": null
+        }
+      },
+      "optical": {
+        "model": "Tabulated n,k",
+        "params": {
+          "file": "nk_spectra/silicon_nk.csv"
+        }
+      },
+      "scattering": {
+        "sld_real": {
+          "value": 1.9702e-05,
+          "min": null,
+          "max": null
+        },
+        "sld_imag": {
+          "value": 0.0,
+          "min": null,
+          "max": null
+        }
+      },
+      "viscoelastic": {
+        "modulus_storage": {
+          "value": null,
+          "min": null,
+          "max": null
+        },
+        "modulus_loss": {
+          "value": null,
+          "min": null,
+          "max": null
+        },
+        "viscosity": {
+          "value": null,
+          "min": null,
+          "max": null
+        },
+        "density": {
+          "value": null,
+          "min": null,
+          "max": null
+        }
+      },
+      "qcm_substrate": null,
+      "notes": null
+    }
+  ]
+}

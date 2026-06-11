@@ -320,6 +320,8 @@
 | 11 | `raw_record_table` | TEXT |  |  |
 | 12 | `raw_record_id` | INTEGER |  |  |
 | 13 | `source_id` | INTEGER | YES | `sources`.`source_id` |
+| 14 | `measurement_regime` | TEXT |  |  |
+| 15 | `phase` | TEXT |  |  |
 
 ### `property_statistics`
 

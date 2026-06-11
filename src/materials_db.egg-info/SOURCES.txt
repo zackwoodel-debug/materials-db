@@ -28,3 +28,7 @@ src/ml/chat_engine.py
 src/ml/retriever.py
 src/pipeline/__init__.py
 src/pipeline/parser.py
+tests/test_chemical_descriptors.py
+tests/test_normalized_migration.py
+tests/test_property_inventory.py
+tests/test_validation_layer.py

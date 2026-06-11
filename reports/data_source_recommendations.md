@@ -14,7 +14,7 @@ Coverage % is fraction of the 23 materials in `materials` table that currently h
 | X-ray SLD | 100.0 | Same as neutron SLD — computable from formula + density + NIST atomic scattering factors (Henke tables) |
 | phase / crystal structure | 0.0 | Materials Project `crystal_system`, `spacegroup`; ICSD; COD (Crystallography Open Database) |
 | deposition method / substrate / thickness | 0.0 | No automated DB; requires per-paper extraction or lab records. Consider adding to `sources` table metadata fields. |
-| smiles / InChIKey | 65.2 | PubChem CID → SMILES via PubChem REST API; already partially populated (pubchem_cid present for some) |
+| smiles / InChIKey | 82.6 | PubChem CID → SMILES via PubChem REST API; already partially populated (pubchem_cid present for some) |
 | chemical descriptors (TPSA, logP…) | 95.7 | RDKit (from SMILES, free); PubChem REST for computed properties; descriptor_failures table lists 23 failures |
 
 ## Priority Order
