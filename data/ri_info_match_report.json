@@ -1,0 +1,2068 @@
+[
+  {
+    "idx": 1,
+    "name": "Aluminium oxide / sapphire",
+    "formula": "Al2O3",
+    "polymorph": "corundum/sapphire",
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "Al2O3",
+        "page": "Malitson-o",
+        "page_name": "Malitson and Dodge 1972: \u03b1-Al2O3 (Sapphire); n(o) 0.20\u20135.0 \u00b5m",
+        "wl_range": "0.200-5.000 um",
+        "data_path": "main/Al2O3/nk/Malitson-o.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Al2O3",
+        "page": "Malitson-e",
+        "page_name": "Malitson and Dodge 1972: \u03b1-Al2O3 (Sapphire); n(e) 0.20\u20135.0 \u00b5m",
+        "wl_range": "0.200-5.000 um",
+        "data_path": "main/Al2O3/nk/Malitson-e.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Al2O3",
+        "page": "Querry-o",
+        "page_name": "Querry 1985: \u03b1-Al2O3 (Sapphire); n,k(o) 0.21\u201355.6 \u00b5m",
+        "wl_range": "0.210-55.556 um",
+        "data_path": "main/Al2O3/nk/Querry-o.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Al2O3",
+        "page": "Querry-e",
+        "page_name": "Querry 1985: \u03b1-Al2O3 (Sapphire); n,k(e) 0.21\u201355.6 \u00b5m",
+        "wl_range": "0.210-55.556 um",
+        "data_path": "main/Al2O3/nk/Querry-e.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Al2O3",
+        "page": "Malitson",
+        "page_name": "Malitson 1962: \u03b1-Al2O3 (Sapphire); n(o) 0.2652\u20135.577 \u00b5m",
+        "wl_range": "0.265-5.577 um",
+        "data_path": "main/Al2O3/nk/Malitson.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Al2O3",
+        "page": "Hagemann",
+        "page_name": "Hagemann et al. 1974: n,k 0.000775\u20130.207 \u00b5m",
+        "wl_range": "0.001-0.207 um",
+        "data_path": "main/Al2O3/nk/Hagemann.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Al2O3",
+        "page": "Rodriguez_de_Marcos",
+        "page_name": "Rodr\u00edguez de Marcos et al. 2025: n,k 3.1e-6\u2013993 \u00b5m",
+        "wl_range": "0.000-993.324 um",
+        "data_path": "main/Al2O3/nk/Rodriguez de Marcos.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Al2O3",
+        "page": "Boidin",
+        "page_name": "Boidin et al. 2016: n 0.3\u201318 \u00b5m",
+        "wl_range": "0.300-18.003 um",
+        "data_path": "main/Al2O3/nk/Boidin.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Al2O3",
+        "page": "Franta",
+        "page_name": "Franta et al. 2015: n,k 0.114\u2013125 \u00b5m",
+        "wl_range": "0.114-125.124 um",
+        "data_path": "main/Al2O3/nk/Franta.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Al2O3",
+        "page": "Zhukovsky",
+        "page_name": "Zhukovsky et al. 2015: n 0.211\u20131.69 \u00b5m",
+        "wl_range": "0.211-1.690 um",
+        "data_path": "main/Al2O3/nk/Zhukovsky.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Al2O3",
+        "page": "Kischkat",
+        "page_name": "Kischkat et al. 2012: n,k 1.54\u201314.3 \u00b5m",
+        "wl_range": "1.539-14.286 um",
+        "data_path": "main/Al2O3/nk/Kischkat.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Al2O3",
+        "page": "Querry",
+        "page_name": "Querry 1985: Thin film (oxidized Al mirror); n,k 0.21\u201312.5 \u00b5m",
+        "wl_range": "0.210-12.500 um",
+        "data_path": "main/Al2O3/nk/Querry.yml"
+      }
+    ]
+  },
+  {
+    "idx": 2,
+    "name": "Beryllium oxide",
+    "formula": "BeO",
+    "polymorph": null,
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "BeO",
+        "page": "Edwards-o",
+        "page_name": "Edwards and White 1991: n(o) 0.44\u20137.0 \u00b5m",
+        "wl_range": "0.440-7.000 um",
+        "data_path": "main/BeO/nk/Edwards-o.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "BeO",
+        "page": "Edwards-e",
+        "page_name": "Edwards and White 1991: n(e) 0.44\u20137.0 \u00b5m",
+        "wl_range": "0.440-7.000 um",
+        "data_path": "main/BeO/nk/Edwards-e.yml"
+      }
+    ]
+  },
+  {
+    "idx": 3,
+    "name": "Chrysoberyl",
+    "formula": "BeAl2O4",
+    "polymorph": "chrysoberyl",
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "BeAl2O4",
+        "page": "Walling-\u03b1",
+        "page_name": "Walling et al. 1980: n(\u03b1) 0.25\u20132.6 \u00b5m",
+        "wl_range": "0.250-2.600 um",
+        "data_path": "main/BeAl2O4/nk/Walling-alpha.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "BeAl2O4",
+        "page": "Walling-\u03b2",
+        "page_name": "Walling et al. 1980: n(\u03b2) 0.25\u20132.6 \u00b5m",
+        "wl_range": "0.250-2.600 um",
+        "data_path": "main/BeAl2O4/nk/Walling-beta.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "BeAl2O4",
+        "page": "Walling-\u03b3",
+        "page_name": "Walling et al. 1980: n(\u03b3) 0.25\u20132.6 \u00b5m",
+        "wl_range": "0.250-2.600 um",
+        "data_path": "main/BeAl2O4/nk/Walling-gamma.yml"
+      }
+    ]
+  },
+  {
+    "idx": 4,
+    "name": "Beryllium hexaaluminate",
+    "formula": "BeAl6O10",
+    "polymorph": null,
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "BeAl6O10",
+        "page": "Pestryakov-\u03b1",
+        "page_name": "Pestryakov et al. 1997: n(\u03b1) 0.43\u20131.1 \u00b5m",
+        "wl_range": "0.430-1.100 um",
+        "data_path": "main/BeAl6O10/nk/Pestryakov-alpha.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "BeAl6O10",
+        "page": "Pestryakov-\u03b2",
+        "page_name": "Pestryakov et al. 1997: n(\u03b2) 0.43\u20131.1 \u00b5m",
+        "wl_range": "0.430-1.100 um",
+        "data_path": "main/BeAl6O10/nk/Pestryakov-beta.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "BeAl6O10",
+        "page": "Pestryakov-\u03b3",
+        "page_name": "Pestryakov et al. 1997: n(\u03b3) 0.43\u20131.1 \u00b5m",
+        "wl_range": "0.430-1.100 um",
+        "data_path": "main/BeAl6O10/nk/Pestryakov-gamma.yml"
+      }
+    ]
+  },
+  {
+    "idx": 5,
+    "name": "Calcium gadolinium aluminate",
+    "formula": "CaGdAlO4",
+    "polymorph": null,
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "CaGdAlO4",
+        "page": "Loiko-o",
+        "page_name": "Loiko et al. 2017: n(o) 0.35\u20132.1 \u00b5m",
+        "wl_range": "0.350-2.100 um",
+        "data_path": "main/CaGdAlO4/nk/Loiko-o.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "CaGdAlO4",
+        "page": "Loiko-e",
+        "page_name": "Loiko et al. 2017: n(e) 0.35\u20132.1 \u00b5m",
+        "wl_range": "0.350-2.100 um",
+        "data_path": "main/CaGdAlO4/nk/Loiko-e.yml"
+      }
+    ]
+  },
+  {
+    "idx": 6,
+    "name": "Calcium yttrium aluminate",
+    "formula": "CaYAlO4",
+    "polymorph": null,
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "CaYAlO4",
+        "page": "Loiko-o",
+        "page_name": "Loiko et al. 2017: n(o) 0.35\u20132.1 \u00b5m",
+        "wl_range": "0.350-2.100 um",
+        "data_path": "main/CaYAlO4/nk/Loiko-o.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "CaYAlO4",
+        "page": "Loiko-e",
+        "page_name": "Loiko et al. 2017: n(e) 0.35\u20132.1 \u00b5m",
+        "wl_range": "0.350-2.100 um",
+        "data_path": "main/CaYAlO4/nk/Loiko-e.yml"
+      }
+    ]
+  },
+  {
+    "idx": 7,
+    "name": "Spinel",
+    "formula": "MgAl2O4",
+    "polymorph": "spinel",
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "MgAl2O4",
+        "page": "Tropf",
+        "page_name": "Tropf and Thomas 1991: n 0.35\u20135.5 \u00b5m",
+        "wl_range": "0.350-5.500 um",
+        "data_path": "main/MgAl2O4/nk/Tropf.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "MgAl2O4",
+        "page": "Chernova",
+        "page_name": "Chernova et al. 2017: n,k 0.14\u20131.67 \u00b5m",
+        "wl_range": "0.141-1.675 um",
+        "data_path": "main/MgAl2O4/nk/Chernova.yml"
+      }
+    ]
+  },
+  {
+    "idx": 8,
+    "name": "Lanthanum aluminate",
+    "formula": "LaAlO3",
+    "polymorph": null,
+    "status": "FOUND",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "LaAlO3",
+        "page": "Chernova",
+        "page_name": "Chernova et al. 2017: n,k 0.14\u20131.67 \u00b5m",
+        "wl_range": "0.141-1.675 um",
+        "data_path": "main/LaAlO3/nk/Chernova.yml"
+      }
+    ]
+  },
+  {
+    "idx": 9,
+    "name": "Barium borate (BBO)",
+    "formula": "BaB2O4",
+    "polymorph": "beta-BBO",
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "BaB2O4",
+        "page": "Eimerl-o",
+        "page_name": "Eimerl et al. 1987: n(o) 0.22\u20131.06 \u00b5m",
+        "wl_range": "0.220-1.060 um",
+        "data_path": "main/BaB2O4/nk/Eimerl-o.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "BaB2O4",
+        "page": "Eimerl-e",
+        "page_name": "Eimerl et al. 1987: n(e) 0.22\u20131.06 \u00b5m",
+        "wl_range": "0.220-1.060 um",
+        "data_path": "main/BaB2O4/nk/Eimerl-e.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "BaB2O4",
+        "page": "Tamosauskas-o",
+        "page_name": "Tamo\u0161auskas et al. 2018: n(o),k 0.188\u20135.2 \u00b5m",
+        "wl_range": "0.188-5.200 um",
+        "data_path": "main/BaB2O4/nk/Tamosauskas-o.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "BaB2O4",
+        "page": "Tamosauskas-e",
+        "page_name": "Tamo\u0161auskas et al. 2018: n(e),k 0.188\u20135.2 \u00b5m",
+        "wl_range": "0.188-5.200 um",
+        "data_path": "main/BaB2O4/nk/Tamosauskas-e.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "BaB2O4",
+        "page": "Zhang-o",
+        "page_name": "Zhang et al. 2000: n(o) 0.64\u20133.18 \u00b5m",
+        "wl_range": "0.640-3.180 um",
+        "data_path": "main/BaB2O4/nk/Zhang-o.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "BaB2O4",
+        "page": "Zhang-e",
+        "page_name": "Zhang et al. 2000: n(e) 0.64\u20133.18 \u00b5m",
+        "wl_range": "0.640-3.180 um",
+        "data_path": "main/BaB2O4/nk/Zhang-e.yml"
+      }
+    ]
+  },
+  {
+    "idx": 10,
+    "name": "Bismuth triborate (BiBO)",
+    "formula": "BiB3O6",
+    "polymorph": null,
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "BiB3O6",
+        "page": "Umemura-\u03b1",
+        "page_name": "Umemura et al. 2007: n(\u03b1) 0.48\u20133.1 \u00b5m",
+        "wl_range": "0.480-3.100 um",
+        "data_path": "main/BiB3O6/nk/Umemura-alpha.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "BiB3O6",
+        "page": "Umemura-\u03b2",
+        "page_name": "Umemura et al. 2007: n(\u03b2) 0.48\u20133.1 \u00b5m",
+        "wl_range": "0.480-3.100 um",
+        "data_path": "main/BiB3O6/nk/Umemura-beta.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "BiB3O6",
+        "page": "Umemura-\u03b3",
+        "page_name": "Umemura et al. 2007: n(\u03b3) 0.48\u20133.1 \u00b5m",
+        "wl_range": "0.480-3.100 um",
+        "data_path": "main/BiB3O6/nk/Umemura-gamma.yml"
+      }
+    ]
+  },
+  {
+    "idx": 11,
+    "name": "Lithium triborate (LBO)",
+    "formula": "LiB3O5",
+    "polymorph": null,
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "LiB3O5",
+        "page": "Chen-\u03b1",
+        "page_name": "Chen et al. 1989: n(\u03b1) 0.289\u20131.06 \u00b5m",
+        "wl_range": "0.289-1.064 um",
+        "data_path": "main/LiB3O5/nk/Chen-alpha.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "LiB3O5",
+        "page": "Chen-\u03b2",
+        "page_name": "Chen et al. 1989: n(\u03b2) 0.289\u20131.06 \u00b5m",
+        "wl_range": "0.289-1.064 um",
+        "data_path": "main/LiB3O5/nk/Chen-beta.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "LiB3O5",
+        "page": "Chen-\u03b3",
+        "page_name": "Chen et al. 1989: n(\u03b3) 0.289\u20131.06 \u00b5m",
+        "wl_range": "0.289-1.064 um",
+        "data_path": "main/LiB3O5/nk/Chen-gamma.yml"
+      }
+    ]
+  },
+  {
+    "idx": 12,
+    "name": "Cesium lithium borate (CLBO)",
+    "formula": "CsLiB6O10",
+    "polymorph": null,
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "CsLiB6O10",
+        "page": "Sasaki-o",
+        "page_name": "Sasaki et al. 2003: n(o) 0.19\u20132.75 \u00b5m",
+        "wl_range": "0.190-2.750 um",
+        "data_path": "main/CsLiB6O10/nk/Sasaki-o.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "CsLiB6O10",
+        "page": "Sasaki-e",
+        "page_name": "Sasaki et al. 2003: n(e) 0.19\u20132.75 \u00b5m",
+        "wl_range": "0.190-2.750 um",
+        "data_path": "main/CsLiB6O10/nk/Sasaki-e.yml"
+      }
+    ]
+  },
+  {
+    "idx": 13,
+    "name": "Lutetium aluminium borate",
+    "formula": "LuAl3(BO3)4",
+    "polymorph": null,
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "LuAl3_BO3_4",
+        "page": "Fang-o",
+        "page_name": "Fang et al. 2013: n(o) 0.266\u20131.34 \u00b5m",
+        "wl_range": "0.266-1.338 um",
+        "data_path": "main/LuAl3(BO3)4/nk/Fang-o.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "LuAl3_BO3_4",
+        "page": "Fang-e",
+        "page_name": "Fang et al. 2013: n(e) 0.266\u20131.34 \u00b5m",
+        "wl_range": "0.266-1.338 um",
+        "data_path": "main/LuAl3(BO3)4/nk/Fang-e.yml"
+      }
+    ]
+  },
+  {
+    "idx": 14,
+    "name": "Calcite",
+    "formula": "CaCO3",
+    "polymorph": "calcite",
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "CaCO3",
+        "page": "Ghosh-o",
+        "page_name": "Ghosh 1999: n(o) 0.204\u20132.172 \u00b5m",
+        "wl_range": "0.204-2.172 um",
+        "data_path": "main/CaCO3/nk/Ghosh-o.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "CaCO3",
+        "page": "Ghosh-e",
+        "page_name": "Ghosh 1999: n(e) 0.204\u20132.172 \u00b5m",
+        "wl_range": "0.204-2.172 um",
+        "data_path": "main/CaCO3/nk/Ghosh-e.yml"
+      }
+    ]
+  },
+  {
+    "idx": 15,
+    "name": "Copper(II) oxide",
+    "formula": "CuO",
+    "polymorph": null,
+    "status": "FOUND",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "CuO",
+        "page": "Brimhall",
+        "page_name": "Brimhall et al. 2009: n,k 0.0101\u20130.0348 \u00b5m",
+        "wl_range": "0.010-0.035 um",
+        "data_path": "main/CuO/nk/Brimhall.yml"
+      }
+    ]
+  },
+  {
+    "idx": 16,
+    "name": "Copper(I) oxide",
+    "formula": "Cu2O",
+    "polymorph": null,
+    "status": "FOUND",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "Cu2O",
+        "page": "Querry",
+        "page_name": "Querry 1985: n,k 2.5\u201355.6 \u00b5m",
+        "wl_range": "2.500-55.556 um",
+        "data_path": "main/Cu2O/nk/Querry.yml"
+      }
+    ]
+  },
+  {
+    "idx": 17,
+    "name": "Dysprosium oxide",
+    "formula": "Dy2O3",
+    "polymorph": null,
+    "status": "FOUND",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "Dy2O3",
+        "page": "Medenbach",
+        "page_name": "Medenbach et al. 2001: n 0.435\u20130.644 \u00b5m",
+        "wl_range": "0.435-0.644 um",
+        "data_path": "main/Dy2O3/nk/Medenbach.yml"
+      }
+    ]
+  },
+  {
+    "idx": 18,
+    "name": "Hematite",
+    "formula": "Fe2O3",
+    "polymorph": "hematite",
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "Fe2O3",
+        "page": "Querry-o",
+        "page_name": "Querry 1985: \u03b1-Fe2O3 (Hematite); n,k(o) 0.21\u201355.6 \u00b5m",
+        "wl_range": "0.210-90.909 um",
+        "data_path": "main/Fe2O3/nk/Querry-o.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Fe2O3",
+        "page": "Querry-e",
+        "page_name": "Querry 1985: \u03b1-Fe2O3 (Hematite); n,k(e) 0.21\u201355.6 \u00b5m",
+        "wl_range": "0.210-55.556 um",
+        "data_path": "main/Fe2O3/nk/Querry-e.yml"
+      }
+    ]
+  },
+  {
+    "idx": 19,
+    "name": "Magnetite",
+    "formula": "Fe3O4",
+    "polymorph": "magnetite",
+    "status": "FOUND",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "Fe3O4",
+        "page": "Querry",
+        "page_name": "Querry 1985: n,k 0.21\u201355.6 \u00b5m",
+        "wl_range": "0.210-55.556 um",
+        "data_path": "main/Fe3O4/nk/Querry.yml"
+      }
+    ]
+  },
+  {
+    "idx": 20,
+    "name": "Germanium dioxide",
+    "formula": "GeO2",
+    "polymorph": null,
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "GeO2",
+        "page": "Fleming",
+        "page_name": "Fleming 1984: Fused germania; n 0.36\u20134.3 \u00b5m",
+        "wl_range": "0.360-4.300 um",
+        "data_path": "main/GeO2/nk/Fleming.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "GeO2",
+        "page": "Nunley",
+        "page_name": "Nunley et al, 2016: n,k 0.188\u20132.48 \u00b5m",
+        "wl_range": "0.188-2.480 um",
+        "data_path": "main/GeO2/nk/Nunley.yml"
+      }
+    ]
+  },
+  {
+    "idx": 21,
+    "name": "Bismuth germanate",
+    "formula": "Bi12GeO20",
+    "polymorph": "BGO",
+    "status": "FOUND",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "Bi12GeO20",
+        "page": "Simon",
+        "page_name": "Simon et al. 1997: n 0.45\u20130.70 \u00b5m",
+        "wl_range": "0.450-0.700 um",
+        "data_path": "main/Bi12GeO20/nk/Simon.yml"
+      }
+    ]
+  },
+  {
+    "idx": 22,
+    "name": "Lead germanate",
+    "formula": "Pb5Ge3O11",
+    "polymorph": null,
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "Pb5Ge3O11",
+        "page": "Simon-o",
+        "page_name": "Simon et al. 1997: n(o) 0.45\u20130.70 \u00b5m",
+        "wl_range": "0.450-0.700 um",
+        "data_path": "main/Pb5Ge3O11/nk/Simon-o.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Pb5Ge3O11",
+        "page": "Simon-e",
+        "page_name": "Simon et al. 1997: n(e) 0.45\u20130.70 \u00b5m",
+        "wl_range": "0.450-0.700 um",
+        "data_path": "main/Pb5Ge3O11/nk/Simon-e.yml"
+      }
+    ]
+  },
+  {
+    "idx": 23,
+    "name": "Hafnium dioxide",
+    "formula": "HfO2",
+    "polymorph": null,
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "HfO2",
+        "page": "Al-Kuhaili",
+        "page_name": "Al-Kuhaili 2004: n 0.2\u20132.0 \u00b5m",
+        "wl_range": "0.200-2.000 um",
+        "data_path": "main/HfO2/nk/Al-Kuhaili.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "HfO2",
+        "page": "Siefke",
+        "page_name": "Siefke et al. 2026: Thin film; n,k 0.124\u20130.620 \u00b5m",
+        "wl_range": "0.124-0.620 um",
+        "data_path": "main/HfO2/nk/Siefke.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "HfO2",
+        "page": "Franta",
+        "page_name": "Franta et al. 2015: n,k 0.115\u2013125 \u00b5m",
+        "wl_range": "0.115-125.124 um",
+        "data_path": "main/HfO2/nk/Franta.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "HfO2",
+        "page": "Bright",
+        "page_name": "Bright et al. 2012: n,k 0.385\u2013500 \u00b5m",
+        "wl_range": "0.385-500.000 um",
+        "data_path": "main/HfO2/nk/Bright.yml"
+      }
+    ]
+  },
+  {
+    "idx": 24,
+    "name": "Lithium iodate",
+    "formula": "LiIO3",
+    "polymorph": null,
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "LiIO3",
+        "page": "Umegaki-o",
+        "page_name": "Umegaki et al. 1971: n(o) 0.4\u20135.7 \u00b5m",
+        "wl_range": "0.400-5.700 um",
+        "data_path": "main/LiIO3/nk/Umegaki-o.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "LiIO3",
+        "page": "Umegaki-e",
+        "page_name": "Umegaki et al. 1971: n(e) 0.4\u20135.7 \u00b5m",
+        "wl_range": "0.400-5.700 um",
+        "data_path": "main/LiIO3/nk/Umegaki-e.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "LiIO3",
+        "page": "Herbst-o",
+        "page_name": "Herbst 1976: n(o) 0.546\u20135.0 \u00b5m",
+        "wl_range": "0.546-5.000 um",
+        "data_path": "main/LiIO3/nk/Herbst-o.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "LiIO3",
+        "page": "Herbst-e",
+        "page_name": "Herbst 1976: n(e) 0.546\u20135.0 \u00b5m",
+        "wl_range": "0.546-5.000 um",
+        "data_path": "main/LiIO3/nk/Herbst-e.yml"
+      }
+    ]
+  },
+  {
+    "idx": 25,
+    "name": "Lutetium oxide",
+    "formula": "Lu2O3",
+    "polymorph": null,
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "Lu2O3",
+        "page": "Medenbach",
+        "page_name": "Medenbach et al. 2001: n 0.435\u20130.644 \u00b5m",
+        "wl_range": "0.435-0.644 um",
+        "data_path": "main/Lu2O3/nk/Medenbach.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Lu2O3",
+        "page": "Yao",
+        "page_name": "Yao et al. 2022: n 0.210\u20131.69 \u00b5m, k 0.210\u20130.224 \u00b5m",
+        "wl_range": "0.210-1.690 um",
+        "data_path": "main/Lu2O3/nk/Yao.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Lu2O3",
+        "page": "Kaminskii",
+        "page_name": "Kaminskii et al. 2008: n 0.365\u20132.325 \u00b5m",
+        "wl_range": "0.365-2.325 um",
+        "data_path": "main/Lu2O3/nk/Kaminskii.yml"
+      }
+    ]
+  },
+  {
+    "idx": 26,
+    "name": "LuAG",
+    "formula": "Lu3Al5O12",
+    "polymorph": "garnet",
+    "status": "FOUND",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "Lu3Al5O12",
+        "page": "Hrabovsky",
+        "page_name": "Hrabovsk\u00fd et al. 2021: n 0.193\u20131.69 \u00b5m",
+        "wl_range": "0.193-1.690 um",
+        "data_path": "main/Lu3Al5O12/nk/Hrabovsky.yml"
+      }
+    ]
+  },
+  {
+    "idx": 27,
+    "name": "Magnesium oxide",
+    "formula": "MgO",
+    "polymorph": null,
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "MgO",
+        "page": "Stephens",
+        "page_name": "Stephens and Malitson 1952: n 0.36\u20135.4 \u00b5m",
+        "wl_range": "0.360-5.400 um",
+        "data_path": "main/MgO/nk/Stephens.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "MgO",
+        "page": "Stephens-vis",
+        "page_name": "Stephens and Malitson 1952: n 0.405\u20130.768 \u00b5m",
+        "wl_range": "0.405-0.768 um",
+        "data_path": "main/MgO/nk/Stephens-vis.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "MgO",
+        "page": "Synowicki",
+        "page_name": "Synowicki and Tiwald 2004: n,k 0.13\u201333 \u00b5m",
+        "wl_range": "0.130-33.000 um",
+        "data_path": "main/As2S3/nk/Synowicki.yml"
+      }
+    ]
+  },
+  {
+    "idx": 28,
+    "name": "Molybdenum dioxide",
+    "formula": "MoO2",
+    "polymorph": null,
+    "status": "FOUND",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "MoO2",
+        "page": "Ganzhinov",
+        "page_name": "Ganzhinov et al. 2026: Thin film; n,k 0.191\u20131.69 \u00b5m",
+        "wl_range": "0.191-1.688 um",
+        "data_path": "main/MoO2/nk/Ganzhinov.yml"
+      }
+    ]
+  },
+  {
+    "idx": 29,
+    "name": "Molybdenum trioxide",
+    "formula": "MoO3",
+    "polymorph": null,
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "MoO3",
+        "page": "Lajaunie-\u03b1",
+        "page_name": "Lajaunie et al. 2013: n,k(\u03b1) 0.019\u201324.8 \u00b5m",
+        "wl_range": "0.019-24.797 um",
+        "data_path": "main/MoO3/nk/Lajaunie-alpha.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "MoO3",
+        "page": "Lajaunie-\u03b2",
+        "page_name": "Lajaunie et al. 2013: n,k(\u03b2) 0.019\u201324.8 \u00b5m",
+        "wl_range": "0.019-24.797 um",
+        "data_path": "main/MoO3/nk/Lajaunie-beta.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "MoO3",
+        "page": "Lajaunie-\u03b3",
+        "page_name": "Lajaunie et al. 2013: n,k(\u03b3) 0.019\u201324.8 \u00b5m",
+        "wl_range": "0.019-24.797 um",
+        "data_path": "main/MoO3/nk/Lajaunie-gamma.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "MoO3",
+        "page": "Vos",
+        "page_name": "Vos et al. 2016: Thin film; n,k 0.019\u20131 \u00b5m",
+        "wl_range": "0.191-0.999 um",
+        "data_path": "main/MoO3/nk/Vos.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "MoO3",
+        "page": "Stelling",
+        "page_name": "Stelling et al. 2017: Thin film; n,k 0.301\u20130.899 \u00b5m",
+        "wl_range": "0.301-0.899 um",
+        "data_path": "main/MoO3/nk/Stelling.yml"
+      }
+    ]
+  },
+  {
+    "idx": 30,
+    "name": "Calcium molybdate",
+    "formula": "CaMoO4",
+    "polymorph": null,
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "CaMoO4",
+        "page": "Bond-o",
+        "page_name": "Bond 1965: n(o) 0.45\u20133.8 \u00b5m",
+        "wl_range": "0.450-3.800 um",
+        "data_path": "main/CaMoO4/nk/Bond-o.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "CaMoO4",
+        "page": "Bond-e",
+        "page_name": "Bond 1965: n(e) 0.45\u20133.8 \u00b5m",
+        "wl_range": "0.450-3.800 um",
+        "data_path": "main/CaMoO4/nk/Bond-e.yml"
+      }
+    ]
+  },
+  {
+    "idx": 31,
+    "name": "Lead molybdate",
+    "formula": "PbMoO4",
+    "polymorph": null,
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "PbMoO4",
+        "page": "Malitson-o",
+        "page_name": "Malitson 1978: n(o) 0.44\u20131.08 \u00b5m",
+        "wl_range": "0.440-1.080 um",
+        "data_path": "main/PbMoO4/nk/Malitson-o.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "PbMoO4",
+        "page": "Malitson-e",
+        "page_name": "Malitson 1978: n(e) 0.44\u20131.08 \u00b5m",
+        "wl_range": "0.440-1.080 um",
+        "data_path": "main/PbMoO4/nk/Malitson-e.yml"
+      }
+    ]
+  },
+  {
+    "idx": 32,
+    "name": "Strontium molybdate",
+    "formula": "SrMoO4",
+    "polymorph": null,
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "SrMoO4",
+        "page": "Bond-o",
+        "page_name": "Bond 1965: n(o) 0.45\u20132.4 \u00b5m",
+        "wl_range": "0.450-2.400 um",
+        "data_path": "main/SrMoO4/nk/Bond-o.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "SrMoO4",
+        "page": "Bond-e",
+        "page_name": "Bond 1965: n(e) 0.45\u20132.4 \u00b5m",
+        "wl_range": "0.450-2.400 um",
+        "data_path": "main/SrMoO4/nk/Bond-e.yml"
+      }
+    ]
+  },
+  {
+    "idx": 33,
+    "name": "Niobium pentoxide",
+    "formula": "Nb2O5",
+    "polymorph": null,
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "Nb2O5",
+        "page": "Franta",
+        "page_name": "Franta et al. 2024: n,k 0.120\u2013399 \u00b5m",
+        "wl_range": "0.120-399.362 um",
+        "data_path": "main/Nb2O5/nk/Franta.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Nb2O5",
+        "page": "Horcholle-400",
+        "page_name": "Horcholle et al. 2022: Thin film annealed at 400 \u00b0C; n,k 0.207\u20130.827 \u00b5m",
+        "wl_range": "0.207-0.827 um",
+        "data_path": "main/Nb2O5/nk/Horcholle-400.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Nb2O5",
+        "page": "Horcholle-800",
+        "page_name": "Horcholle et al. 2022: Thin film annealed at 800 \u00b0C; n,k 0.207\u20130.827 \u00b5m",
+        "wl_range": "0.207-0.827 um",
+        "data_path": "main/Nb2O5/nk/Horcholle-800.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Nb2O5",
+        "page": "Lemarchand",
+        "page_name": "Lemarchand 2013: n,k 0.25\u20132.5 \u00b5m",
+        "wl_range": "0.250-2.500 um",
+        "data_path": "main/Nb2O5/nk/Lemarchand.yml"
+      }
+    ]
+  },
+  {
+    "idx": 34,
+    "name": "Potassium niobate",
+    "formula": "KNbO3",
+    "polymorph": null,
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "KNbO3",
+        "page": "Zysset-\u03b1",
+        "page_name": "Zysset et al. 1992: n(\u03b1) 0.40\u20133.4 \u00b5m",
+        "wl_range": "0.400-3.400 um",
+        "data_path": "main/KNbO3/nk/Zysset-alpha.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "KNbO3",
+        "page": "Zysset-\u03b2",
+        "page_name": "Zysset et al. 1992: n(\u03b2) 0.40\u20133.4 \u00b5m",
+        "wl_range": "0.400-3.400 um",
+        "data_path": "main/KNbO3/nk/Zysset-beta.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "KNbO3",
+        "page": "Zysset-\u03b3",
+        "page_name": "Zysset et al. 1992: n(\u03b3) 0.40\u20133.4 \u00b5m",
+        "wl_range": "0.400-3.400 um",
+        "data_path": "main/KNbO3/nk/Zysset-gamma.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "KNbO3",
+        "page": "Umemura-\u03b1",
+        "page_name": "Umemura et al. 1999: n(\u03b1) 0.40\u20135.3 \u00b5m",
+        "wl_range": "0.400-5.300 um",
+        "data_path": "main/KNbO3/nk/Umemura-alpha.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "KNbO3",
+        "page": "Umemura-\u03b2",
+        "page_name": "Umemura et al. 1999: n(\u03b2) 0.40\u20135.3 \u00b5m",
+        "wl_range": "0.400-5.300 um",
+        "data_path": "main/KNbO3/nk/Umemura-beta.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "KNbO3",
+        "page": "Umemura-\u03b3",
+        "page_name": "Umemura et al. 1999: n(\u03b3) 0.40\u20135.3 \u00b5m",
+        "wl_range": "0.400-5.300 um",
+        "data_path": "main/KNbO3/nk/Umemura-gamma.yml"
+      }
+    ]
+  },
+  {
+    "idx": 35,
+    "name": "Lithium niobate",
+    "formula": "LiNbO3",
+    "polymorph": null,
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "LiNbO3",
+        "page": "Zelmon-o",
+        "page_name": "Zelmon et al. 1997: n(o) 0.4\u20135.0 \u00b5m",
+        "wl_range": "0.400-5.000 um",
+        "data_path": "main/LiNbO3/nk/Zelmon-o.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "LiNbO3",
+        "page": "Zelmon-e",
+        "page_name": "Zelmon et al. 1997: n(e) 0.4\u20135.0 \u00b5m",
+        "wl_range": "0.400-5.000 um",
+        "data_path": "main/LiNbO3/nk/Zelmon-e.yml"
+      }
+    ]
+  },
+  {
+    "idx": 36,
+    "name": "Scandium oxide",
+    "formula": "Sc2O3",
+    "polymorph": null,
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "Sc2O3",
+        "page": "Medenbach",
+        "page_name": "Medenbach et al. 2001: n 0.435\u20130.644 \u00b5m",
+        "wl_range": "0.435-0.644 um",
+        "data_path": "main/Sc2O3/nk/Medenbach.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Sc2O3",
+        "page": "Belosludtsev",
+        "page_name": "Belosludtsev et al. 2018: n,k 0.270\u20131.200 \u00b5m",
+        "wl_range": "0.230-1.200 um",
+        "data_path": "main/Sc2O3/nk/Belosludtsev.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Sc2O3",
+        "page": "Arndt",
+        "page_name": "Arndt et al. 1984: n 0.40\u20130.75 \u00b5m",
+        "wl_range": "0.400-0.750 um",
+        "data_path": "main/Sc2O3/nk/Arndt.yml"
+      }
+    ]
+  },
+  {
+    "idx": 37,
+    "name": "Silicon monoxide",
+    "formula": "SiO",
+    "polymorph": "amorphous",
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "SiO",
+        "page": "Hass",
+        "page_name": "Hass and Salzberg 1954: n,k 0.24\u201314.0 \u00b5m",
+        "wl_range": "0.240-14.000 um",
+        "data_path": "main/SiO/nk/Hass.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "SiO",
+        "page": "Herguedas",
+        "page_name": "Herguedas and Carretero 2023: n,k 5.0\u201325 \u00b5m",
+        "wl_range": "5.000-25.000 um",
+        "data_path": "other/non-stoichiometric compounds/Si-O/nk/Herguedas-SiO1.10.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "SiO",
+        "page": "Fernandez-Perea",
+        "page_name": "Fernandez-Perea et al. 2009: n,k 0.00155\u20130.177 \u00b5m",
+        "wl_range": "0.002-0.177 um",
+        "data_path": "main/SiO/nk/Fernandez-Perea.yml"
+      },
+      {
+        "shelf": "other",
+        "book": "Si-O",
+        "page": "Herguedas-SiO0.31",
+        "page_name": "Herguedas and Carretero 2023: SiO0.31; n,k 5.0\u201325 \u00b5m",
+        "wl_range": "5.000-25.000 um",
+        "data_path": "other/non-stoichiometric compounds/Si-O/nk/Herguedas-SiO0.31.yml"
+      },
+      {
+        "shelf": "other",
+        "book": "Si-O",
+        "page": "Herguedas-SiO0.61",
+        "page_name": "Herguedas and Carretero 2023: SiO0.61; n,k 5.0\u201325 \u00b5m",
+        "wl_range": "5.000-25.000 um",
+        "data_path": "other/non-stoichiometric compounds/Si-O/nk/Herguedas-SiO0.61.yml"
+      },
+      {
+        "shelf": "other",
+        "book": "Si-O",
+        "page": "Herguedas-SiO1.10",
+        "page_name": "Herguedas and Carretero 2023: SiO1.10; n,k 5.0\u201325 \u00b5m",
+        "wl_range": "5.000-25.000 um",
+        "data_path": "other/non-stoichiometric compounds/Si-O/nk/Herguedas-SiO1.10.yml"
+      },
+      {
+        "shelf": "other",
+        "book": "Si-O",
+        "page": "Herguedas-SiO1.71",
+        "page_name": "Herguedas and Carretero 2023: SiO1.71; n,k 5.0\u201325 \u00b5m",
+        "wl_range": "5.000-25.000 um",
+        "data_path": "other/non-stoichiometric compounds/Si-O/nk/Herguedas-SiO1.71.yml"
+      },
+      {
+        "shelf": "other",
+        "book": "Si-O",
+        "page": "Herguedas-SiO1.89",
+        "page_name": "Herguedas and Carretero 2023: SiO1.89; n,k 5.0\u201325 \u00b5m",
+        "wl_range": "5.000-25.000 um",
+        "data_path": "other/non-stoichiometric compounds/Si-O/nk/Herguedas-SiO1.89.yml"
+      },
+      {
+        "shelf": "other",
+        "book": "Si-O",
+        "page": "Herguedas-SiO1.92",
+        "page_name": "Herguedas and Carretero 2023: SiO1.92; n,k 5.0\u201325 \u00b5m",
+        "wl_range": "5.000-25.000 um",
+        "data_path": "other/non-stoichiometric compounds/Si-O/nk/Herguedas-SiO1.92.yml"
+      }
+    ]
+  },
+  {
+    "idx": 38,
+    "name": "Silicon dioxide / quartz",
+    "formula": "SiO2",
+    "polymorph": "alpha-quartz",
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "SiO2",
+        "page": "Malitson",
+        "page_name": "Malitson 1965: n 0.21\u20136.7 \u00b5m",
+        "wl_range": "0.210-6.700 um",
+        "data_path": "main/SiO2/nk/Malitson.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "SiO2",
+        "page": "Nyakuchena",
+        "page_name": "Nyakuchena et al. 2023: n 1.10\u20131.65 \u00b5m",
+        "wl_range": "1.100-1.650 um",
+        "data_path": "main/SiO2/nk/Nyakuchena.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "SiO2",
+        "page": "Arosa",
+        "page_name": "Arosa and de la Fuente 2020: n 0.26\u20131.7 \u00b5m",
+        "wl_range": "0.260-1.700 um",
+        "data_path": "main/SiO2/nk/Arosa.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "SiO2",
+        "page": "Franta",
+        "page_name": "Franta et al. 2016: n,k 0.0248\u2013125 \u00b5m",
+        "wl_range": "0.025-125.141 um",
+        "data_path": "main/SiO2/nk/Franta.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "SiO2",
+        "page": "Popova",
+        "page_name": "Popova et al. 1972: n,k 7\u201350 \u00b5m",
+        "wl_range": "7.000-50.000 um",
+        "data_path": "main/SiO2/nk/Popova.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "SiO2",
+        "page": "Ghosh-o",
+        "page_name": "Ghosh 1999: \u03b1-Quartz, n(o) 0.198\u20132.05 \u00b5m",
+        "wl_range": "0.198-2.053 um",
+        "data_path": "main/SiO2/nk/Ghosh-o.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "SiO2",
+        "page": "Ghosh-e",
+        "page_name": "Ghosh 1999: \u03b1-Quartz, n(e) 0.198\u20132.05 \u00b5m",
+        "wl_range": "0.198-2.053 um",
+        "data_path": "main/SiO2/nk/Ghosh-e.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "SiO2",
+        "page": "Radhakrishnan-o",
+        "page_name": "Radhakrishnan 1951: \u03b1-Quartz; n(o) 0.18\u20133 \u00b5m",
+        "wl_range": "0.180-3.000 um",
+        "data_path": "main/SiO2/nk/Radhakrishnan-o.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "SiO2",
+        "page": "Radhakrishnan-e",
+        "page_name": "Radhakrishnan 1951: \u03b1-Quartz; n(e) 0.18\u20133 \u00b5m",
+        "wl_range": "0.180-3.000 um",
+        "data_path": "main/SiO2/nk/Radhakrishnan-e.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "SiO2",
+        "page": "Kischkat",
+        "page_name": "Kischkat et al. 2012: n,k 1.54\u201314.3 \u00b5m",
+        "wl_range": "1.538-14.286 um",
+        "data_path": "main/SiO2/nk/Kischkat.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "SiO2",
+        "page": "Herguedas",
+        "page_name": "Herguedas and Carretero 2023: n,k 5.0\u201325 \u00b5m",
+        "wl_range": "5.000-25.000 um",
+        "data_path": "other/non-stoichiometric compounds/Si-O/nk/Herguedas-SiO1.92.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "SiO2",
+        "page": "Rodriguez-de_Marcos",
+        "page_name": "Rodr\u00edguez-de Marcos et al. 2016: n,k 0.03\u20131.5 \u00b5m",
+        "wl_range": "0.030-1.511 um",
+        "data_path": "main/SiO2/nk/Rodriguez-de Marcos.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "SiO2",
+        "page": "Franta-25C",
+        "page_name": "Franta et al. 2016: n,k 0.0275\u2013125 \u00b5m; 25 \u00b0C",
+        "wl_range": "0.028-125.141 um",
+        "data_path": "main/SiO2/nk/Franta-25C.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "SiO2",
+        "page": "Franta-300C",
+        "page_name": "Franta et al. 2016: n,k 0.0275\u2013125 \u00b5m; 300 \u00b0C",
+        "wl_range": "0.028-125.141 um",
+        "data_path": "main/SiO2/nk/Franta-300C.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "SiO2",
+        "page": "Gao",
+        "page_name": "Gao et al. 2013: n,k 0.252\u20131.25 \u00b5m",
+        "wl_range": "0.252-1.250 um",
+        "data_path": "main/SiO2/nk/Gao.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "SiO2",
+        "page": "Lemarchand",
+        "page_name": "Lemarchand 2013: n,k 0.25\u20132.5 \u00b5m",
+        "wl_range": "0.250-2.500 um",
+        "data_path": "main/SiO2/nk/Lemarchand.yml"
+      }
+    ]
+  },
+  {
+    "idx": 39,
+    "name": "Tantalum pentoxide",
+    "formula": "Ta2O5",
+    "polymorph": null,
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "Ta2O5",
+        "page": "Bright-amorphous",
+        "page_name": "Bright et al. 2013: n,k 0.5\u20131000 \u00b5m",
+        "wl_range": "0.500-1000.000 um",
+        "data_path": "main/Ta2O5/nk/Bright-amorphous.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Ta2O5",
+        "page": "Cheikh-amorphous-3.28-4-25",
+        "page_name": "Cheikh et al. 2025: Power 3.28, O2 4, As deposited; n,k 0.207\u20131.24 \u00b5m",
+        "wl_range": "0.207-1.240 um",
+        "data_path": "main/Ta2O5/nk/Cheikh-amorphous-3.28-4-25.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Ta2O5",
+        "page": "Cheikh-amorphous-3.28-8-25",
+        "page_name": "Cheikh et al. 2025: Power 3.28, O2 8, As deposited; n,k 0.207\u20131.24 \u00b5m",
+        "wl_range": "0.207-1.240 um",
+        "data_path": "main/Ta2O5/nk/Cheikh-amorphous-3.28-8-25.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Ta2O5",
+        "page": "Cheikh-amorphous-3.28-12-25",
+        "page_name": "Cheikh et al. 2025: Power 3.28, O2 12, As deposited; n,k 0.207\u20131.24 \u00b5m",
+        "wl_range": "0.207-1.240 um",
+        "data_path": "main/Ta2O5/nk/Cheikh-amorphous-3.28-12-25.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Ta2O5",
+        "page": "Cheikh-amorphous-3.28-16-25",
+        "page_name": "Cheikh et al. 2025: Power 3.28, O2 16, As deposited; n,k 0.207\u20131.24 \u00b5m",
+        "wl_range": "0.207-1.240 um",
+        "data_path": "main/Ta2O5/nk/Cheikh-amorphous-3.28-16-25.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Ta2O5",
+        "page": "Cheikh-amorphous-4.38-12-25",
+        "page_name": "Cheikh et al. 2025: Power 4.38, O2 12, As deposited; n,k 0.207\u20131.24 \u00b5m",
+        "wl_range": "0.207-1.240 um",
+        "data_path": "main/Ta2O5/nk/Cheikh-amorphous-4.38-12-25.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Ta2O5",
+        "page": "Cheikh-amorphous-5.48-12-25",
+        "page_name": "Cheikh et al. 2025: Power 5.48, O2 12, As deposited; n,k 0.207\u20131.24 \u00b5m",
+        "wl_range": "0.207-1.240 um",
+        "data_path": "main/Ta2O5/nk/Cheikh-amorphous-5.48-12-25.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Ta2O5",
+        "page": "Cheikh-amorphous-6.75-12-25",
+        "page_name": "Cheikh et al. 2025: Power 6.75, O2 12, As deposited; n,k 0.207\u20131.24 \u00b5m",
+        "wl_range": "0.207-1.240 um",
+        "data_path": "main/Ta2O5/nk/Cheikh-amorphous-6.75-12-25.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Ta2O5",
+        "page": "Cheikh-amorphous-3.28-8-450",
+        "page_name": "Cheikh et al. 2025: Power 3.28, O2 8, Anneal. 450; n,k 0.207\u20131.24 \u00b5m",
+        "wl_range": "0.207-1.240 um",
+        "data_path": "main/Ta2O5/nk/Cheikh-amorphous-3.28-8-450.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Ta2O5",
+        "page": "Cheikh-amorphous-3.28-8-550",
+        "page_name": "Cheikh et al. 2025: Power 3.28, O2 8, Anneal. 550; n,k 0.207\u20131.24 \u00b5m",
+        "wl_range": "0.207-1.240 um",
+        "data_path": "main/Ta2O5/nk/Cheikh-amorphous-3.28-8-550.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Ta2O5",
+        "page": "Rodriguez-de_Marcos",
+        "page_name": "Rodr\u00edguez-de Marcos et al. 2016: n,k 0.03\u20131.5 \u00b5m",
+        "wl_range": "0.029-1.514 um",
+        "data_path": "main/Ta2O5/nk/Rodriguez-de Marcos.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Ta2O5",
+        "page": "Franta-2015",
+        "page_name": "Franta et al. 2015: n,k 0.142\u2013125 \u00b5m",
+        "wl_range": "0.142-125.124 um",
+        "data_path": "main/Ta2O5/nk/Franta-2015.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Ta2O5",
+        "page": "Gao",
+        "page_name": "Gao et al. 2012: n,k 0.35\u20131.8 \u00b5m",
+        "wl_range": "0.350-1.800 um",
+        "data_path": "main/Ta2O5/nk/Gao.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Ta2O5",
+        "page": "Bright-nanocrystalline",
+        "page_name": "Bright et al. 2013: Nanocrystalline film; n,k 0.5\u20131000 \u00b5m",
+        "wl_range": "0.500-1000.000 um",
+        "data_path": "main/Ta2O5/nk/Bright-nanocrystalline.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Ta2O5",
+        "page": "Franta-2025",
+        "page_name": "Franta et al. 2025: Polycrystalline; n,k 0.116\u2013400 \u00b5m",
+        "wl_range": "0.116-400.286 um",
+        "data_path": "main/Ta2O5/nk/Franta-2025.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Ta2O5",
+        "page": "Cheikh-crystalline-3.28-8-650",
+        "page_name": "Cheikh et al. 2025: Power 3.28, O2 8, Anneal. 650; n,k 0.207\u20131.24 \u00b5m",
+        "wl_range": "0.207-1.240 um",
+        "data_path": "main/Ta2O5/nk/Cheikh-crystalline-3.28-8-650.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Ta2O5",
+        "page": "Cheikh-crystalline-3.28-8-750",
+        "page_name": "Cheikh et al. 2025: Power 3.28, O2 8, Anneal. 750; n,k 0.207\u20131.24 \u00b5m",
+        "wl_range": "0.207-1.240 um",
+        "data_path": "main/Ta2O5/nk/Cheikh-crystalline-3.28-8-750.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Ta2O5",
+        "page": "Cheikh-crystalline-3.28-8-850",
+        "page_name": "Cheikh et al. 2025: Power 3.28, O2 8, Anneal. 850; n,k 0.207\u20131.24 \u00b5m",
+        "wl_range": "0.207-1.240 um",
+        "data_path": "main/Ta2O5/nk/Cheikh-crystalline-3.28-8-850.yml"
+      }
+    ]
+  },
+  {
+    "idx": 40,
+    "name": "TGG",
+    "formula": "Tb3Ga5O12",
+    "polymorph": "garnet",
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "Tb3Ga5O12",
+        "page": "Schlarb",
+        "page_name": "Schlarb and Sugg 1994: n 0.405\u20131.18 \u00b5m",
+        "wl_range": "0.405-1.177 um",
+        "data_path": "main/Tb3Ga5O12/nk/Schlarb.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Tb3Ga5O12",
+        "page": "Franta",
+        "page_name": "Franta et al. 2025: n,k 0.120\u2013400 \u00b5m",
+        "wl_range": "0.120-400.009 um",
+        "data_path": "main/Tb3Ga5O12/nk/Franta.yml"
+      }
+    ]
+  },
+  {
+    "idx": 41,
+    "name": "Tellurium dioxide",
+    "formula": "TeO2",
+    "polymorph": null,
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "TeO2",
+        "page": "Uchida-o",
+        "page_name": "Uchida 1971: \u03b1-TeO<sub>2</sub>; n(o) 0.4\u20131.0 \u00b5m",
+        "wl_range": "0.400-1.000 um",
+        "data_path": "main/TeO2/nk/Uchida-o.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "TeO2",
+        "page": "Uchida-e",
+        "page_name": "Uchida 1971: \u03b1-TeO<sub>2</sub>; n(e) 0.4\u20131.0 \u00b5m",
+        "wl_range": "0.400-1.000 um",
+        "data_path": "main/TeO2/nk/Uchida-e.yml"
+      }
+    ]
+  },
+  {
+    "idx": 42,
+    "name": "Titanium dioxide (rutile / anatase)",
+    "formula": "TiO2",
+    "polymorph": "rutile/anatase",
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "TiO2",
+        "page": "Devore-o",
+        "page_name": "Devore 1951: n(o) 0.43\u20131.53 \u00b5m",
+        "wl_range": "0.430-1.530 um",
+        "data_path": "main/TiO2/nk/Devore-o.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "TiO2",
+        "page": "Devore-e",
+        "page_name": "Devore 1951: n(e) 0.43\u20131.53 \u00b5m",
+        "wl_range": "0.430-1.530 um",
+        "data_path": "main/TiO2/nk/Devore-e.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "TiO2",
+        "page": "Bond-o",
+        "page_name": "Bond 1965: n(o) 0.45\u20132.4 \u00b5m",
+        "wl_range": "0.450-2.400 um",
+        "data_path": "main/TiO2/nk/Bond-o.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "TiO2",
+        "page": "Bond-e",
+        "page_name": "Bond 1965: n(e) 0.45\u20132.4 \u00b5m",
+        "wl_range": "0.450-2.400 um",
+        "data_path": "main/TiO2/nk/Bond-e.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "TiO2",
+        "page": "Kischkat",
+        "page_name": "Kischkat et al. 2012: Thin film; n,k 1.54\u201314.29 \u00b5m",
+        "wl_range": "1.538-14.286 um",
+        "data_path": "main/TiO2/nk/Kischkat.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "TiO2",
+        "page": "Jolivet-anatase",
+        "page_name": "Jolivet et al. 2023: Anatase thin film; n,k 0.207\u20130.827 \u00b5m",
+        "wl_range": "0.207-0.827 um",
+        "data_path": "main/TiO2/nk/Jolivet-anatase.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "TiO2",
+        "page": "Jolivet-amorphous",
+        "page_name": "Jolivet et al. 2023: Amorphous thin film; n,k 0.207\u20130.827 \u00b5m",
+        "wl_range": "0.207-0.827 um",
+        "data_path": "main/TiO2/nk/Jolivet-amorphous.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "TiO2",
+        "page": "Sarkar",
+        "page_name": "Sarkar et al. 2019: Thin film; n,k 0.30\u20131.69 \u00b5m",
+        "wl_range": "0.300-1.690 um",
+        "data_path": "main/TiO2/nk/Sarkar.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "TiO2",
+        "page": "Siefke",
+        "page_name": "Siefke et al. 2016: Thin film; n,k 0.120\u2013125 \u00b5m",
+        "wl_range": "0.120-125.123 um",
+        "data_path": "main/TiO2/nk/Siefke.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "TiO2",
+        "page": "Zhukovsky",
+        "page_name": "Zhukovsky et al. 2015: Thin film; n 0.211\u20131.69 \u00b5m",
+        "wl_range": "0.211-1.690 um",
+        "data_path": "main/TiO2/nk/Zhukovsky.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "TiO2",
+        "page": "Franta",
+        "page_name": "Franta et al. 2015: Thin film; n,k 0.114\u2013125 \u00b5m",
+        "wl_range": "0.114-125.124 um",
+        "data_path": "main/TiO2/nk/Franta.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "TiO2",
+        "page": "Bodurov",
+        "page_name": "Bodurov et al. 2016: Nanoparticles; n 0.405\u20130.635 \u00b5m",
+        "wl_range": "0.405-0.635 um",
+        "data_path": "main/TiO2/nk/Bodurov.yml"
+      }
+    ]
+  },
+  {
+    "idx": 43,
+    "name": "Barium titanate",
+    "formula": "BaTiO3",
+    "polymorph": null,
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "BaTiO3",
+        "page": "Wemple-o",
+        "page_name": "Wemple et al. 1968: n(o) 0.4\u20130.7 \u00b5m",
+        "wl_range": "0.400-0.700 um",
+        "data_path": "main/BaTiO3/nk/Wemple-o.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "BaTiO3",
+        "page": "Wemple-e",
+        "page_name": "Wemple et al. 1968: n(e) 0.4\u20130.7 \u00b5m",
+        "wl_range": "0.400-0.700 um",
+        "data_path": "main/BaTiO3/nk/Wemple-e.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "BaTiO3",
+        "page": "Johnston-x",
+        "page_name": "Johnston 1971: Unclamped measurements; n 0.4\u20131.0 \u00b5m",
+        "wl_range": "0.400-1.000 um",
+        "data_path": "main/BaTiO3/nk/Johnston-unclamped.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "BaTiO3",
+        "page": "Johnston-x-clamped",
+        "page_name": "Johnston 1971: Clamped measurements; n,k 0.4\u20131.0 \u00b5m",
+        "wl_range": "0.400-1.000 um",
+        "data_path": "main/BaTiO3/nk/Johnston-clamped.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "BaTiO3",
+        "page": "Wohlecke-a-300K",
+        "page_name": "W\u00f6hlecke et al. 1977: Amorphous; n 0.3\u20131.0 \u00b5m; 300 K",
+        "wl_range": "0.300-1.000 um",
+        "data_path": "main/BaTiO3/nk/Wohlecke-a-300K.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "BaTiO3",
+        "page": "Wohlecke-a-500K",
+        "page_name": "W\u00f6hlecke et al. 1977: Amorphous; n 0.3\u20131.0 \u00b5m; 500K",
+        "wl_range": "0.300-1.000 um",
+        "data_path": "main/BaTiO3/nk/Wohlecke-a-500K.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "BaTiO3",
+        "page": "Wohlecke-mx",
+        "page_name": "W\u00f6hlecke et al. 1977: Microcrystalline; n 0.3\u20131.0 \u00b5m",
+        "wl_range": "0.300-1.000 um",
+        "data_path": "main/BaTiO3/nk/Wohlecke-mx.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "BaTiO3",
+        "page": "Timpu",
+        "page_name": "Timpu et al. 2019: n 0.4\u20130.8 \u00b5m",
+        "wl_range": "0.350-0.800 um",
+        "data_path": "main/BaTiO3/nk/Timpu.yml"
+      }
+    ]
+  },
+  {
+    "idx": 44,
+    "name": "Strontium titanate",
+    "formula": "SrTiO3",
+    "polymorph": null,
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "SrTiO3",
+        "page": "Bond",
+        "page_name": "Bond 1965: n 0.43\u20133.8 \u00b5m",
+        "wl_range": "0.430-3.800 um",
+        "data_path": "main/SrTiO3/nk/Bond.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "SrTiO3",
+        "page": "Wohlecke-a",
+        "page_name": "W\u00f6hlecke et al. 1977: Amorphous; n 0.3\u20131.0 \u00b5m",
+        "wl_range": "0.300-1.000 um",
+        "data_path": "main/SrTiO3/nk/Wohlecke-a.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "SrTiO3",
+        "page": "Wohlecke-mx",
+        "page_name": "W\u00f6hlecke et al. 1977: Microcrystalline; n 0.3\u20131.0 \u00b5m",
+        "wl_range": "0.300-1.000 um",
+        "data_path": "main/SrTiO3/nk/Wohlecke-mx.yml"
+      }
+    ]
+  },
+  {
+    "idx": 45,
+    "name": "Vanadium dioxide",
+    "formula": "VO2",
+    "polymorph": null,
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "VO2",
+        "page": "Beaini-25C",
+        "page_name": "Beaini et al. 2020: n,k 0.5\u201325 \u00b5m; 25 \u00b0C",
+        "wl_range": "0.500-25.000 um",
+        "data_path": "main/VO2/nk/Beaini-25C.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "VO2",
+        "page": "Beaini-100C",
+        "page_name": "Beaini et al. 2020: n,k 0.5\u201325 \u00b5m; 100 \u00b0C",
+        "wl_range": "0.500-25.000 um",
+        "data_path": "main/VO2/nk/Beaini-100C.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "VO2",
+        "page": "Oguntoye-20C",
+        "page_name": "Oguntoye et al. 2023: n,k 0.21\u20132.5 \u00b5m; 20 \u00b0C",
+        "wl_range": "0.210-2.500 um",
+        "data_path": "main/VO2/nk/Oguntoye-20C.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "VO2",
+        "page": "Oguntoye-30C",
+        "page_name": "Oguntoye et al. 2023: n,k 0.21\u20132.5 \u00b5m; 30 \u00b0C",
+        "wl_range": "0.210-2.500 um",
+        "data_path": "main/VO2/nk/Oguntoye-30C.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "VO2",
+        "page": "Oguntoye-40C",
+        "page_name": "Oguntoye et al. 2023: n,k 0.21\u20132.5 \u00b5m; 40 \u00b0C",
+        "wl_range": "0.210-2.500 um",
+        "data_path": "main/VO2/nk/Oguntoye-40C.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "VO2",
+        "page": "Oguntoye-50C",
+        "page_name": "Oguntoye et al. 2023: n,k 0.21\u20132.5 \u00b5m; 50 \u00b0C",
+        "wl_range": "0.210-2.500 um",
+        "data_path": "main/VO2/nk/Oguntoye-50C.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "VO2",
+        "page": "Oguntoye-55C",
+        "page_name": "Oguntoye et al. 2023: n,k 0.21\u20132.5 \u00b5m; 55 \u00b0C",
+        "wl_range": "0.210-2.500 um",
+        "data_path": "main/VO2/nk/Oguntoye-55C.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "VO2",
+        "page": "Oguntoye-60C",
+        "page_name": "Oguntoye et al. 2023: n,k 0.21\u20132.5 \u00b5m; 60 \u00b0C",
+        "wl_range": "0.210-2.500 um",
+        "data_path": "main/VO2/nk/Oguntoye-60C.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "VO2",
+        "page": "Oguntoye-70C",
+        "page_name": "Oguntoye et al. 2023: n,k 0.21\u20132.5 \u00b5m; 70 \u00b0C",
+        "wl_range": "0.210-2.500 um",
+        "data_path": "main/VO2/nk/Oguntoye-70C.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "VO2",
+        "page": "Oguntoye-80C",
+        "page_name": "Oguntoye et al. 2023: n,k 0.21\u20132.5 \u00b5m; 80 \u00b0C",
+        "wl_range": "0.210-2.500 um",
+        "data_path": "main/VO2/nk/Oguntoye-80C.yml"
+      }
+    ]
+  },
+  {
+    "idx": 46,
+    "name": "Yttrium orthovanadate",
+    "formula": "YVO4",
+    "polymorph": null,
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "YVO4",
+        "page": "Birnbaum-o",
+        "page_name": "Birnbaum and DeShazer 1976: n(o) 0.488\u20133.39 \u00b5m",
+        "wl_range": "0.488-3.390 um",
+        "data_path": "main/YVO4/nk/Birnbaum-o.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "YVO4",
+        "page": "Birnbaum-e",
+        "page_name": "Birnbaum and DeShazer 1976: n(e) 0.488\u20133.39 \u00b5m",
+        "wl_range": "0.488-3.390 um",
+        "data_path": "main/YVO4/nk/Birnbaum-e.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "YVO4",
+        "page": "Shi-o-20C",
+        "page_name": "Shi et al. 2001: n(o) 0.48\u20131.34 \u00b5m; 20 \u00b0C",
+        "wl_range": "0.480-1.340 um",
+        "data_path": "main/YVO4/nk/Shi-o-20C.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "YVO4",
+        "page": "Shi-e-20C",
+        "page_name": "Shi et al. 2001: n(e) 0.48\u20131.34 \u00b5m; 20 \u00b0C",
+        "wl_range": "0.480-1.340 um",
+        "data_path": "main/YVO4/nk/Shi-e-20C.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "YVO4",
+        "page": "Shi-o-50C",
+        "page_name": "Shi et al. 2001: n(o) 0.48\u20131.34 \u00b5m; 50 \u00b0C",
+        "wl_range": "0.480-1.340 um",
+        "data_path": "main/YVO4/nk/Shi-o-50C.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "YVO4",
+        "page": "Shi-e-50C",
+        "page_name": "Shi et al. 2001: n(e) 0.48\u20131.34 \u00b5m; 50 \u00b0C",
+        "wl_range": "0.480-1.340 um",
+        "data_path": "main/YVO4/nk/Shi-e-50C.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "YVO4",
+        "page": "Shi-o-80C",
+        "page_name": "Shi et al. 2001: n(o) 0.48\u20131.34 \u00b5m; 80 \u00b0C",
+        "wl_range": "0.480-1.340 um",
+        "data_path": "main/YVO4/nk/Shi-o-80C.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "YVO4",
+        "page": "Shi-e-80C",
+        "page_name": "Shi et al. 2001: n(e) 0.48\u20131.34 \u00b5m; 80 \u00b0C",
+        "wl_range": "0.480-1.340 um",
+        "data_path": "main/YVO4/nk/Shi-e-80C.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "YVO4",
+        "page": "Shi-o-110C",
+        "page_name": "Shi et al. 2001: n(o) 0.48\u20131.34 \u00b5m; 110 \u00b0C",
+        "wl_range": "0.480-1.340 um",
+        "data_path": "main/YVO4/nk/Shi-o-110C.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "YVO4",
+        "page": "Shi-e-110C",
+        "page_name": "Shi et al. 2001: n(e) 0.48\u20131.34 \u00b5m; 110 \u00b0C",
+        "wl_range": "0.480-1.340 um",
+        "data_path": "main/YVO4/nk/Shi-e-110C.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "YVO4",
+        "page": "Shi-o-140C",
+        "page_name": "Shi et al. 2001: n(o) 0.48\u20131.34 \u00b5m; 140 \u00b0C",
+        "wl_range": "0.480-1.340 um",
+        "data_path": "main/YVO4/nk/Shi-o-140C.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "YVO4",
+        "page": "Shi-e-140C",
+        "page_name": "Shi et al. 2001: n(e) 0.48\u20131.34 \u00b5m; 140 \u00b0C",
+        "wl_range": "0.480-1.340 um",
+        "data_path": "main/YVO4/nk/Shi-e-140C.yml"
+      }
+    ]
+  },
+  {
+    "idx": 47,
+    "name": "Tungsten trioxide",
+    "formula": "WO3",
+    "polymorph": null,
+    "status": "FOUND",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "WO3",
+        "page": "Kulikova",
+        "page_name": "Kulikova et al. 2020: n,k 0.3\u20131.0 \u00b5m",
+        "wl_range": "0.300-1.000 um",
+        "data_path": "main/WO3/nk/Kulikova.yml"
+      }
+    ]
+  },
+  {
+    "idx": 48,
+    "name": "Yttrium oxide",
+    "formula": "Y2O3",
+    "polymorph": null,
+    "status": "FOUND",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "Y2O3",
+        "page": "Nigara",
+        "page_name": "Nigara 1968: n 0.25\u20139.6 \u00b5m",
+        "wl_range": "0.250-9.600 um",
+        "data_path": "main/Y2O3/nk/Nigara.yml"
+      }
+    ]
+  },
+  {
+    "idx": 49,
+    "name": "YAG",
+    "formula": "Y3Al5O12",
+    "polymorph": "garnet",
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "Y3Al5O12",
+        "page": "Zelmon",
+        "page_name": "Zelmon et al. 1998: n 0.4\u20135.0 \u00b5m",
+        "wl_range": "0.400-5.000 um",
+        "data_path": "main/Y3Al5O12/nk/Zelmon.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Y3Al5O12",
+        "page": "Hrabovsky",
+        "page_name": "Hrabovsk\u00fd et al. 2021: n 0.193\u20131.69 \u00b5m",
+        "wl_range": "0.193-1.690 um",
+        "data_path": "main/Y3Al5O12/nk/Hrabovsky.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Y3Al5O12",
+        "page": "Franta",
+        "page_name": "Franta et al. 2021: n,k 0.120\u2013400 \u00b5m",
+        "wl_range": "0.120-400.286 um",
+        "data_path": "main/Y3Al5O12/nk/Franta.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "Y3Al5O12",
+        "page": "Bond",
+        "page_name": "Bond 1965: n 0.4\u20134.0 \u00b5m",
+        "wl_range": "0.400-4.000 um",
+        "data_path": "main/Y3Al5O12/nk/Bond.yml"
+      }
+    ]
+  },
+  {
+    "idx": 50,
+    "name": "Zinc oxide",
+    "formula": "ZnO",
+    "polymorph": null,
+    "status": "MULTIPLE",
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "ZnO",
+        "page": "Bond-o",
+        "page_name": "Bond et al. 1965: n(o) 0.45\u20134.0 \u00b5m",
+        "wl_range": "0.450-4.000 um",
+        "data_path": "main/ZnO/nk/Bond-o.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "ZnO",
+        "page": "Bond-e",
+        "page_name": "Bond et al. 1965: n(e) 0.45\u20134.0 \u00b5m",
+        "wl_range": "0.450-4.000 um",
+        "data_path": "main/ZnO/nk/Bond-e.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "ZnO",
+        "page": "Stelling",
+        "page_name": "Stelling et al. 2017: n,k 0.302\u20131.685 \u00b5m",
+        "wl_range": "0.302-1.685 um",
+        "data_path": "main/ZnO/nk/Stelling.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "ZnO",
+        "page": "Aguilar",
+        "page_name": "Aguilar et al. 2019: n,k 0.3\u20133.2 \u00b5m",
+        "wl_range": "0.300-3.200 um",
+        "data_path": "main/ZnO/nk/Aguilar.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "ZnO",
+        "page": "Querry",
+        "page_name": "Querry 1985: n,k 0.21\u201355.6 \u00b5m",
+        "wl_range": "0.210-55.556 um",
+        "data_path": "main/ZnO/nk/Querry.yml"
+      },
+      {
+        "shelf": "main",
+        "book": "ZnO",
+        "page": "Bodurov",
+        "page_name": "Bodurov et al. 2016: Nanoparticles; n 0.405\u20130.635 \u00b5m",
+        "wl_range": "0.405-0.635 um",
+        "data_path": "main/ZnO/nk/Bodurov.yml"
+      }
+    ]
+  }
+]
