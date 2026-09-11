@@ -1,0 +1,1076 @@
+{
+  "Al2O3": {
+    "idx": 1,
+    "name": "Aluminium oxide / sapphire",
+    "polymorph": "corundum/sapphire",
+    "effective_polymorph": "corundum/sapphire",
+    "amorphous_default": false,
+    "default_paper": "Malitson and Dodge 1972: \u03b1-Al2O3 (Sapphire)",
+    "axes": [
+      {
+        "page": "Malitson-o",
+        "axis": "ordinary (o)",
+        "data_path": "main/Al2O3/nk/Malitson-o.yml",
+        "wl_range": "0.200-5.000 um",
+        "dataset_label": "corundum/sapphire | Malitson1972 | o-ray"
+      },
+      {
+        "page": "Malitson-e",
+        "axis": "extraordinary (e)",
+        "data_path": "main/Al2O3/nk/Malitson-e.yml",
+        "wl_range": "0.200-5.000 um",
+        "dataset_label": "corundum/sapphire | Malitson1972 | e-ray"
+      }
+    ]
+  },
+  "BeO": {
+    "idx": 2,
+    "name": "Beryllium oxide",
+    "polymorph": null,
+    "effective_polymorph": null,
+    "amorphous_default": false,
+    "default_paper": "Edwards and White 1991:  0.44\u20137.0 \u00b5m",
+    "axes": [
+      {
+        "page": "Edwards-o",
+        "axis": "ordinary (o)",
+        "data_path": "main/BeO/nk/Edwards-o.yml",
+        "wl_range": "0.440-7.000 um",
+        "dataset_label": "Edwards1991 | o-ray"
+      },
+      {
+        "page": "Edwards-e",
+        "axis": "extraordinary (e)",
+        "data_path": "main/BeO/nk/Edwards-e.yml",
+        "wl_range": "0.440-7.000 um",
+        "dataset_label": "Edwards1991 | e-ray"
+      }
+    ]
+  },
+  "BeAl2O4": {
+    "idx": 3,
+    "name": "Chrysoberyl",
+    "polymorph": "chrysoberyl",
+    "effective_polymorph": "chrysoberyl",
+    "amorphous_default": false,
+    "default_paper": "Walling et al. 1980:  0.25\u20132.6 \u00b5m",
+    "axes": [
+      {
+        "page": "Walling-\u03b1",
+        "axis": "biaxial alpha (n\u03b1)",
+        "data_path": "main/BeAl2O4/nk/Walling-alpha.yml",
+        "wl_range": "0.250-2.600 um",
+        "dataset_label": "chrysoberyl | Walling1980 | alpha-axis"
+      },
+      {
+        "page": "Walling-\u03b2",
+        "axis": "biaxial beta (n\u03b2)",
+        "data_path": "main/BeAl2O4/nk/Walling-beta.yml",
+        "wl_range": "0.250-2.600 um",
+        "dataset_label": "chrysoberyl | Walling1980 | beta-axis"
+      },
+      {
+        "page": "Walling-\u03b3",
+        "axis": "biaxial gamma (n\u03b3)",
+        "data_path": "main/BeAl2O4/nk/Walling-gamma.yml",
+        "wl_range": "0.250-2.600 um",
+        "dataset_label": "chrysoberyl | Walling1980 | gamma-axis"
+      }
+    ]
+  },
+  "BeAl6O10": {
+    "idx": 4,
+    "name": "Beryllium hexaaluminate",
+    "polymorph": null,
+    "effective_polymorph": null,
+    "amorphous_default": false,
+    "default_paper": "Pestryakov et al. 1997:  0.43\u20131.1 \u00b5m",
+    "axes": [
+      {
+        "page": "Pestryakov-\u03b1",
+        "axis": "biaxial alpha (n\u03b1)",
+        "data_path": "main/BeAl6O10/nk/Pestryakov-alpha.yml",
+        "wl_range": "0.430-1.100 um",
+        "dataset_label": "Pestryakov1997 | alpha-axis"
+      },
+      {
+        "page": "Pestryakov-\u03b2",
+        "axis": "biaxial beta (n\u03b2)",
+        "data_path": "main/BeAl6O10/nk/Pestryakov-beta.yml",
+        "wl_range": "0.430-1.100 um",
+        "dataset_label": "Pestryakov1997 | beta-axis"
+      },
+      {
+        "page": "Pestryakov-\u03b3",
+        "axis": "biaxial gamma (n\u03b3)",
+        "data_path": "main/BeAl6O10/nk/Pestryakov-gamma.yml",
+        "wl_range": "0.430-1.100 um",
+        "dataset_label": "Pestryakov1997 | gamma-axis"
+      }
+    ]
+  },
+  "CaGdAlO4": {
+    "idx": 5,
+    "name": "Calcium gadolinium aluminate",
+    "polymorph": null,
+    "effective_polymorph": null,
+    "amorphous_default": false,
+    "default_paper": "Loiko et al. 2017:  0.35\u20132.1 \u00b5m",
+    "axes": [
+      {
+        "page": "Loiko-o",
+        "axis": "ordinary (o)",
+        "data_path": "main/CaGdAlO4/nk/Loiko-o.yml",
+        "wl_range": "0.350-2.100 um",
+        "dataset_label": "Loiko2017 | o-ray"
+      },
+      {
+        "page": "Loiko-e",
+        "axis": "extraordinary (e)",
+        "data_path": "main/CaGdAlO4/nk/Loiko-e.yml",
+        "wl_range": "0.350-2.100 um",
+        "dataset_label": "Loiko2017 | e-ray"
+      }
+    ]
+  },
+  "CaYAlO4": {
+    "idx": 6,
+    "name": "Calcium yttrium aluminate",
+    "polymorph": null,
+    "effective_polymorph": null,
+    "amorphous_default": false,
+    "default_paper": "Loiko et al. 2017:  0.35\u20132.1 \u00b5m",
+    "axes": [
+      {
+        "page": "Loiko-o",
+        "axis": "ordinary (o)",
+        "data_path": "main/CaYAlO4/nk/Loiko-o.yml",
+        "wl_range": "0.350-2.100 um",
+        "dataset_label": "Loiko2017 | o-ray"
+      },
+      {
+        "page": "Loiko-e",
+        "axis": "extraordinary (e)",
+        "data_path": "main/CaYAlO4/nk/Loiko-e.yml",
+        "wl_range": "0.350-2.100 um",
+        "dataset_label": "Loiko2017 | e-ray"
+      }
+    ]
+  },
+  "MgAl2O4": {
+    "idx": 7,
+    "name": "Spinel",
+    "polymorph": "spinel",
+    "effective_polymorph": "spinel",
+    "amorphous_default": false,
+    "default_paper": "Tropf and Thomas 1991: n 0.35\u20135.5 \u00b5m",
+    "axes": [
+      {
+        "page": "Tropf",
+        "axis": "none (isotropic/cubic/amorphous)",
+        "data_path": "main/MgAl2O4/nk/Tropf.yml",
+        "wl_range": "0.350-5.500 um",
+        "dataset_label": "spinel | Tropf1991"
+      }
+    ]
+  },
+  "LaAlO3": {
+    "idx": 8,
+    "name": "Lanthanum aluminate",
+    "polymorph": null,
+    "effective_polymorph": null,
+    "amorphous_default": false,
+    "default_paper": "Chernova et al. 2017: n,k 0.14\u20131.67 \u00b5m",
+    "axes": [
+      {
+        "page": "Chernova",
+        "axis": "none (isotropic/cubic/amorphous)",
+        "data_path": "main/LaAlO3/nk/Chernova.yml",
+        "wl_range": "0.141-1.675 um",
+        "dataset_label": "Chernova2017"
+      }
+    ]
+  },
+  "BaB2O4": {
+    "idx": 9,
+    "name": "Barium borate (BBO)",
+    "polymorph": "beta-BBO",
+    "effective_polymorph": "beta-BBO",
+    "amorphous_default": false,
+    "default_paper": "Eimerl et al. 1987:  0.22\u20131.06 \u00b5m",
+    "axes": [
+      {
+        "page": "Eimerl-o",
+        "axis": "ordinary (o)",
+        "data_path": "main/BaB2O4/nk/Eimerl-o.yml",
+        "wl_range": "0.220-1.060 um",
+        "dataset_label": "beta-BBO | Eimerl1987 | o-ray"
+      },
+      {
+        "page": "Eimerl-e",
+        "axis": "extraordinary (e)",
+        "data_path": "main/BaB2O4/nk/Eimerl-e.yml",
+        "wl_range": "0.220-1.060 um",
+        "dataset_label": "beta-BBO | Eimerl1987 | e-ray"
+      }
+    ]
+  },
+  "BiB3O6": {
+    "idx": 10,
+    "name": "Bismuth triborate (BiBO)",
+    "polymorph": null,
+    "effective_polymorph": null,
+    "amorphous_default": false,
+    "default_paper": "Umemura et al. 2007:  0.48\u20133.1 \u00b5m",
+    "axes": [
+      {
+        "page": "Umemura-\u03b1",
+        "axis": "biaxial alpha (n\u03b1)",
+        "data_path": "main/BiB3O6/nk/Umemura-alpha.yml",
+        "wl_range": "0.480-3.100 um",
+        "dataset_label": "Umemura2007 | alpha-axis"
+      },
+      {
+        "page": "Umemura-\u03b2",
+        "axis": "biaxial beta (n\u03b2)",
+        "data_path": "main/BiB3O6/nk/Umemura-beta.yml",
+        "wl_range": "0.480-3.100 um",
+        "dataset_label": "Umemura2007 | beta-axis"
+      },
+      {
+        "page": "Umemura-\u03b3",
+        "axis": "biaxial gamma (n\u03b3)",
+        "data_path": "main/BiB3O6/nk/Umemura-gamma.yml",
+        "wl_range": "0.480-3.100 um",
+        "dataset_label": "Umemura2007 | gamma-axis"
+      }
+    ]
+  },
+  "LiB3O5": {
+    "idx": 11,
+    "name": "Lithium triborate (LBO)",
+    "polymorph": null,
+    "effective_polymorph": null,
+    "amorphous_default": false,
+    "default_paper": "Chen et al. 1989:  0.289\u20131.06 \u00b5m",
+    "axes": [
+      {
+        "page": "Chen-\u03b1",
+        "axis": "biaxial alpha (n\u03b1)",
+        "data_path": "main/LiB3O5/nk/Chen-alpha.yml",
+        "wl_range": "0.289-1.064 um",
+        "dataset_label": "Chen1989 | alpha-axis"
+      },
+      {
+        "page": "Chen-\u03b2",
+        "axis": "biaxial beta (n\u03b2)",
+        "data_path": "main/LiB3O5/nk/Chen-beta.yml",
+        "wl_range": "0.289-1.064 um",
+        "dataset_label": "Chen1989 | beta-axis"
+      },
+      {
+        "page": "Chen-\u03b3",
+        "axis": "biaxial gamma (n\u03b3)",
+        "data_path": "main/LiB3O5/nk/Chen-gamma.yml",
+        "wl_range": "0.289-1.064 um",
+        "dataset_label": "Chen1989 | gamma-axis"
+      }
+    ]
+  },
+  "CsLiB6O10": {
+    "idx": 12,
+    "name": "Cesium lithium borate (CLBO)",
+    "polymorph": null,
+    "effective_polymorph": null,
+    "amorphous_default": false,
+    "default_paper": "Sasaki et al. 2003:  0.19\u20132.75 \u00b5m",
+    "axes": [
+      {
+        "page": "Sasaki-o",
+        "axis": "ordinary (o)",
+        "data_path": "main/CsLiB6O10/nk/Sasaki-o.yml",
+        "wl_range": "0.190-2.750 um",
+        "dataset_label": "Sasaki2003 | o-ray"
+      },
+      {
+        "page": "Sasaki-e",
+        "axis": "extraordinary (e)",
+        "data_path": "main/CsLiB6O10/nk/Sasaki-e.yml",
+        "wl_range": "0.190-2.750 um",
+        "dataset_label": "Sasaki2003 | e-ray"
+      }
+    ]
+  },
+  "LuAl3(BO3)4": {
+    "idx": 13,
+    "name": "Lutetium aluminium borate",
+    "polymorph": null,
+    "effective_polymorph": null,
+    "amorphous_default": false,
+    "default_paper": "Fang et al. 2013:  0.266\u20131.34 \u00b5m",
+    "axes": [
+      {
+        "page": "Fang-o",
+        "axis": "ordinary (o)",
+        "data_path": "main/LuAl3(BO3)4/nk/Fang-o.yml",
+        "wl_range": "0.266-1.338 um",
+        "dataset_label": "Fang2013 | o-ray"
+      },
+      {
+        "page": "Fang-e",
+        "axis": "extraordinary (e)",
+        "data_path": "main/LuAl3(BO3)4/nk/Fang-e.yml",
+        "wl_range": "0.266-1.338 um",
+        "dataset_label": "Fang2013 | e-ray"
+      }
+    ]
+  },
+  "CaCO3": {
+    "idx": 14,
+    "name": "Calcite",
+    "polymorph": "calcite",
+    "effective_polymorph": "calcite",
+    "amorphous_default": false,
+    "default_paper": "Ghosh 1999:  0.204\u20132.172 \u00b5m",
+    "axes": [
+      {
+        "page": "Ghosh-o",
+        "axis": "ordinary (o)",
+        "data_path": "main/CaCO3/nk/Ghosh-o.yml",
+        "wl_range": "0.204-2.172 um",
+        "dataset_label": "calcite | Ghosh1999 | o-ray"
+      },
+      {
+        "page": "Ghosh-e",
+        "axis": "extraordinary (e)",
+        "data_path": "main/CaCO3/nk/Ghosh-e.yml",
+        "wl_range": "0.204-2.172 um",
+        "dataset_label": "calcite | Ghosh1999 | e-ray"
+      }
+    ]
+  },
+  "CuO": {
+    "idx": 15,
+    "name": "Copper(II) oxide",
+    "polymorph": null,
+    "effective_polymorph": null,
+    "amorphous_default": false,
+    "default_paper": "Brimhall et al. 2009: n,k 0.0101\u20130.0348 \u00b5m",
+    "axes": [
+      {
+        "page": "Brimhall",
+        "axis": "none (isotropic/cubic/amorphous)",
+        "data_path": "main/CuO/nk/Brimhall.yml",
+        "wl_range": "0.010-0.035 um",
+        "dataset_label": "Brimhall2009"
+      }
+    ]
+  },
+  "Cu2O": {
+    "idx": 16,
+    "name": "Copper(I) oxide",
+    "polymorph": null,
+    "effective_polymorph": null,
+    "amorphous_default": false,
+    "default_paper": "Querry 1985: n,k 2.5\u201355.6 \u00b5m",
+    "axes": [
+      {
+        "page": "Querry",
+        "axis": "none (isotropic/cubic/amorphous)",
+        "data_path": "main/Cu2O/nk/Querry.yml",
+        "wl_range": "2.500-55.556 um",
+        "dataset_label": "Querry1985"
+      }
+    ]
+  },
+  "Dy2O3": {
+    "idx": 17,
+    "name": "Dysprosium oxide",
+    "polymorph": null,
+    "effective_polymorph": null,
+    "amorphous_default": false,
+    "default_paper": "Medenbach et al. 2001: n 0.435\u20130.644 \u00b5m",
+    "axes": [
+      {
+        "page": "Medenbach",
+        "axis": "none (isotropic/cubic/amorphous)",
+        "data_path": "main/Dy2O3/nk/Medenbach.yml",
+        "wl_range": "0.435-0.644 um",
+        "dataset_label": "Medenbach2001"
+      }
+    ]
+  },
+  "Fe2O3": {
+    "idx": 18,
+    "name": "Hematite",
+    "polymorph": "hematite",
+    "effective_polymorph": "hematite",
+    "amorphous_default": false,
+    "default_paper": "Querry 1985: \u03b1-Fe2O3 (Hematite)",
+    "axes": [
+      {
+        "page": "Querry-o",
+        "axis": "ordinary (o)",
+        "data_path": "main/Fe2O3/nk/Querry-o.yml",
+        "wl_range": "0.210-90.909 um",
+        "dataset_label": "hematite | Querry1985 | o-ray"
+      },
+      {
+        "page": "Querry-e",
+        "axis": "extraordinary (e)",
+        "data_path": "main/Fe2O3/nk/Querry-e.yml",
+        "wl_range": "0.210-55.556 um",
+        "dataset_label": "hematite | Querry1985 | e-ray"
+      }
+    ]
+  },
+  "Fe3O4": {
+    "idx": 19,
+    "name": "Magnetite",
+    "polymorph": "magnetite",
+    "effective_polymorph": "magnetite",
+    "amorphous_default": false,
+    "default_paper": "Querry 1985: n,k 0.21\u201355.6 \u00b5m",
+    "axes": [
+      {
+        "page": "Querry",
+        "axis": "none (isotropic/cubic/amorphous)",
+        "data_path": "main/Fe3O4/nk/Querry.yml",
+        "wl_range": "0.210-55.556 um",
+        "dataset_label": "magnetite | Querry1985"
+      }
+    ]
+  },
+  "GeO2": {
+    "idx": 20,
+    "name": "Germanium dioxide",
+    "polymorph": null,
+    "effective_polymorph": null,
+    "amorphous_default": true,
+    "default_paper": "Fleming 1984: Fused germania",
+    "axes": [
+      {
+        "page": "Fleming",
+        "axis": "none (isotropic/cubic/amorphous)",
+        "data_path": "main/GeO2/nk/Fleming.yml",
+        "wl_range": "0.360-4.300 um",
+        "dataset_label": "Fleming1984"
+      }
+    ]
+  },
+  "Bi12GeO20": {
+    "idx": 21,
+    "name": "Bismuth germanate",
+    "polymorph": "BGO",
+    "effective_polymorph": "BGO",
+    "amorphous_default": false,
+    "default_paper": "Simon et al. 1997: n 0.45\u20130.70 \u00b5m",
+    "axes": [
+      {
+        "page": "Simon",
+        "axis": "none (isotropic/cubic/amorphous)",
+        "data_path": "main/Bi12GeO20/nk/Simon.yml",
+        "wl_range": "0.450-0.700 um",
+        "dataset_label": "BGO | Simon1997"
+      }
+    ]
+  },
+  "Pb5Ge3O11": {
+    "idx": 22,
+    "name": "Lead germanate",
+    "polymorph": null,
+    "effective_polymorph": null,
+    "amorphous_default": false,
+    "default_paper": "Simon et al. 1997:  0.45\u20130.70 \u00b5m",
+    "axes": [
+      {
+        "page": "Simon-o",
+        "axis": "ordinary (o)",
+        "data_path": "main/Pb5Ge3O11/nk/Simon-o.yml",
+        "wl_range": "0.450-0.700 um",
+        "dataset_label": "Simon1997 | o-ray"
+      },
+      {
+        "page": "Simon-e",
+        "axis": "extraordinary (e)",
+        "data_path": "main/Pb5Ge3O11/nk/Simon-e.yml",
+        "wl_range": "0.450-0.700 um",
+        "dataset_label": "Simon1997 | e-ray"
+      }
+    ]
+  },
+  "HfO2": {
+    "idx": 23,
+    "name": "Hafnium dioxide",
+    "polymorph": null,
+    "effective_polymorph": null,
+    "amorphous_default": false,
+    "default_paper": "Al-Kuhaili 2004: n 0.2\u20132.0 \u00b5m",
+    "axes": [
+      {
+        "page": "Al-Kuhaili",
+        "axis": "none (isotropic/cubic/amorphous)",
+        "data_path": "main/HfO2/nk/Al-Kuhaili.yml",
+        "wl_range": "0.200-2.000 um",
+        "dataset_label": "Al2004"
+      }
+    ]
+  },
+  "LiIO3": {
+    "idx": 24,
+    "name": "Lithium iodate",
+    "polymorph": null,
+    "effective_polymorph": null,
+    "amorphous_default": false,
+    "default_paper": "Umegaki et al. 1971:  0.4\u20135.7 \u00b5m",
+    "axes": [
+      {
+        "page": "Umegaki-o",
+        "axis": "ordinary (o)",
+        "data_path": "main/LiIO3/nk/Umegaki-o.yml",
+        "wl_range": "0.400-5.700 um",
+        "dataset_label": "Umegaki1971 | o-ray"
+      },
+      {
+        "page": "Umegaki-e",
+        "axis": "extraordinary (e)",
+        "data_path": "main/LiIO3/nk/Umegaki-e.yml",
+        "wl_range": "0.400-5.700 um",
+        "dataset_label": "Umegaki1971 | e-ray"
+      }
+    ]
+  },
+  "Lu2O3": {
+    "idx": 25,
+    "name": "Lutetium oxide",
+    "polymorph": null,
+    "effective_polymorph": null,
+    "amorphous_default": false,
+    "default_paper": "Medenbach et al. 2001: n 0.435\u20130.644 \u00b5m",
+    "axes": [
+      {
+        "page": "Medenbach",
+        "axis": "none (isotropic/cubic/amorphous)",
+        "data_path": "main/Lu2O3/nk/Medenbach.yml",
+        "wl_range": "0.435-0.644 um",
+        "dataset_label": "Medenbach2001"
+      }
+    ]
+  },
+  "Lu3Al5O12": {
+    "idx": 26,
+    "name": "LuAG",
+    "polymorph": "garnet",
+    "effective_polymorph": "garnet",
+    "amorphous_default": false,
+    "default_paper": "Hrabovsk\u00fd et al. 2021: n 0.193\u20131.69 \u00b5m",
+    "axes": [
+      {
+        "page": "Hrabovsky",
+        "axis": "none (isotropic/cubic/amorphous)",
+        "data_path": "main/Lu3Al5O12/nk/Hrabovsky.yml",
+        "wl_range": "0.193-1.690 um",
+        "dataset_label": "garnet | Hrabovsky2021"
+      }
+    ]
+  },
+  "MgO": {
+    "idx": 27,
+    "name": "Magnesium oxide",
+    "polymorph": null,
+    "effective_polymorph": null,
+    "amorphous_default": false,
+    "default_paper": "Stephens and Malitson 1952: n 0.36\u20135.4 \u00b5m",
+    "axes": [
+      {
+        "page": "Stephens",
+        "axis": "none (isotropic/cubic/amorphous)",
+        "data_path": "main/MgO/nk/Stephens.yml",
+        "wl_range": "0.360-5.400 um",
+        "dataset_label": "Stephens1952"
+      }
+    ]
+  },
+  "MoO2": {
+    "idx": 28,
+    "name": "Molybdenum dioxide",
+    "polymorph": null,
+    "effective_polymorph": null,
+    "amorphous_default": false,
+    "default_paper": "Ganzhinov et al. 2026: Thin film",
+    "axes": [
+      {
+        "page": "Ganzhinov",
+        "axis": "none (isotropic/cubic/amorphous)",
+        "data_path": "main/MoO2/nk/Ganzhinov.yml",
+        "wl_range": "0.191-1.688 um",
+        "dataset_label": "Ganzhinov2026"
+      }
+    ]
+  },
+  "MoO3": {
+    "idx": 29,
+    "name": "Molybdenum trioxide",
+    "polymorph": null,
+    "effective_polymorph": null,
+    "amorphous_default": false,
+    "default_paper": "Lajaunie et al. 2013:  0.019\u201324.8 \u00b5m",
+    "axes": [
+      {
+        "page": "Lajaunie-\u03b1",
+        "axis": "biaxial alpha (n\u03b1)",
+        "data_path": "main/MoO3/nk/Lajaunie-alpha.yml",
+        "wl_range": "0.019-24.797 um",
+        "dataset_label": "Lajaunie2013 | alpha-axis"
+      },
+      {
+        "page": "Lajaunie-\u03b2",
+        "axis": "biaxial beta (n\u03b2)",
+        "data_path": "main/MoO3/nk/Lajaunie-beta.yml",
+        "wl_range": "0.019-24.797 um",
+        "dataset_label": "Lajaunie2013 | beta-axis"
+      },
+      {
+        "page": "Lajaunie-\u03b3",
+        "axis": "biaxial gamma (n\u03b3)",
+        "data_path": "main/MoO3/nk/Lajaunie-gamma.yml",
+        "wl_range": "0.019-24.797 um",
+        "dataset_label": "Lajaunie2013 | gamma-axis"
+      }
+    ]
+  },
+  "CaMoO4": {
+    "idx": 30,
+    "name": "Calcium molybdate",
+    "polymorph": null,
+    "effective_polymorph": null,
+    "amorphous_default": false,
+    "default_paper": "Bond 1965:  0.45\u20133.8 \u00b5m",
+    "axes": [
+      {
+        "page": "Bond-o",
+        "axis": "ordinary (o)",
+        "data_path": "main/CaMoO4/nk/Bond-o.yml",
+        "wl_range": "0.450-3.800 um",
+        "dataset_label": "Bond1965 | o-ray"
+      },
+      {
+        "page": "Bond-e",
+        "axis": "extraordinary (e)",
+        "data_path": "main/CaMoO4/nk/Bond-e.yml",
+        "wl_range": "0.450-3.800 um",
+        "dataset_label": "Bond1965 | e-ray"
+      }
+    ]
+  },
+  "PbMoO4": {
+    "idx": 31,
+    "name": "Lead molybdate",
+    "polymorph": null,
+    "effective_polymorph": null,
+    "amorphous_default": false,
+    "default_paper": "Malitson 1978:  0.44\u20131.08 \u00b5m",
+    "axes": [
+      {
+        "page": "Malitson-o",
+        "axis": "ordinary (o)",
+        "data_path": "main/PbMoO4/nk/Malitson-o.yml",
+        "wl_range": "0.440-1.080 um",
+        "dataset_label": "Malitson1978 | o-ray"
+      },
+      {
+        "page": "Malitson-e",
+        "axis": "extraordinary (e)",
+        "data_path": "main/PbMoO4/nk/Malitson-e.yml",
+        "wl_range": "0.440-1.080 um",
+        "dataset_label": "Malitson1978 | e-ray"
+      }
+    ]
+  },
+  "SrMoO4": {
+    "idx": 32,
+    "name": "Strontium molybdate",
+    "polymorph": null,
+    "effective_polymorph": null,
+    "amorphous_default": false,
+    "default_paper": "Bond 1965:  0.45\u20132.4 \u00b5m",
+    "axes": [
+      {
+        "page": "Bond-o",
+        "axis": "ordinary (o)",
+        "data_path": "main/SrMoO4/nk/Bond-o.yml",
+        "wl_range": "0.450-2.400 um",
+        "dataset_label": "Bond1965 | o-ray"
+      },
+      {
+        "page": "Bond-e",
+        "axis": "extraordinary (e)",
+        "data_path": "main/SrMoO4/nk/Bond-e.yml",
+        "wl_range": "0.450-2.400 um",
+        "dataset_label": "Bond1965 | e-ray"
+      }
+    ]
+  },
+  "Nb2O5": {
+    "idx": 33,
+    "name": "Niobium pentoxide",
+    "polymorph": null,
+    "effective_polymorph": null,
+    "amorphous_default": false,
+    "default_paper": "Franta et al. 2024: n,k 0.120\u2013399 \u00b5m",
+    "axes": [
+      {
+        "page": "Franta",
+        "axis": "none (isotropic/cubic/amorphous)",
+        "data_path": "main/Nb2O5/nk/Franta.yml",
+        "wl_range": "0.120-399.362 um",
+        "dataset_label": "Franta2024"
+      }
+    ]
+  },
+  "KNbO3": {
+    "idx": 34,
+    "name": "Potassium niobate",
+    "polymorph": null,
+    "effective_polymorph": null,
+    "amorphous_default": false,
+    "default_paper": "Zysset et al. 1992:  0.40\u20133.4 \u00b5m",
+    "axes": [
+      {
+        "page": "Zysset-\u03b1",
+        "axis": "biaxial alpha (n\u03b1)",
+        "data_path": "main/KNbO3/nk/Zysset-alpha.yml",
+        "wl_range": "0.400-3.400 um",
+        "dataset_label": "Zysset1992 | alpha-axis"
+      },
+      {
+        "page": "Zysset-\u03b2",
+        "axis": "biaxial beta (n\u03b2)",
+        "data_path": "main/KNbO3/nk/Zysset-beta.yml",
+        "wl_range": "0.400-3.400 um",
+        "dataset_label": "Zysset1992 | beta-axis"
+      },
+      {
+        "page": "Zysset-\u03b3",
+        "axis": "biaxial gamma (n\u03b3)",
+        "data_path": "main/KNbO3/nk/Zysset-gamma.yml",
+        "wl_range": "0.400-3.400 um",
+        "dataset_label": "Zysset1992 | gamma-axis"
+      }
+    ]
+  },
+  "LiNbO3": {
+    "idx": 35,
+    "name": "Lithium niobate",
+    "polymorph": null,
+    "effective_polymorph": null,
+    "amorphous_default": false,
+    "default_paper": "Zelmon et al. 1997:  0.4\u20135.0 \u00b5m",
+    "axes": [
+      {
+        "page": "Zelmon-o",
+        "axis": "ordinary (o)",
+        "data_path": "main/LiNbO3/nk/Zelmon-o.yml",
+        "wl_range": "0.400-5.000 um",
+        "dataset_label": "Zelmon1997 | o-ray"
+      },
+      {
+        "page": "Zelmon-e",
+        "axis": "extraordinary (e)",
+        "data_path": "main/LiNbO3/nk/Zelmon-e.yml",
+        "wl_range": "0.400-5.000 um",
+        "dataset_label": "Zelmon1997 | e-ray"
+      }
+    ]
+  },
+  "Sc2O3": {
+    "idx": 36,
+    "name": "Scandium oxide",
+    "polymorph": null,
+    "effective_polymorph": null,
+    "amorphous_default": false,
+    "default_paper": "Medenbach et al. 2001: n 0.435\u20130.644 \u00b5m",
+    "axes": [
+      {
+        "page": "Medenbach",
+        "axis": "none (isotropic/cubic/amorphous)",
+        "data_path": "main/Sc2O3/nk/Medenbach.yml",
+        "wl_range": "0.435-0.644 um",
+        "dataset_label": "Medenbach2001"
+      }
+    ]
+  },
+  "SiO": {
+    "idx": 37,
+    "name": "Silicon monoxide",
+    "polymorph": "amorphous",
+    "effective_polymorph": "amorphous",
+    "amorphous_default": false,
+    "default_paper": "Hass and Salzberg 1954: n,k 0.24\u201314.0 \u00b5m",
+    "axes": [
+      {
+        "page": "Hass",
+        "axis": "none (isotropic/cubic/amorphous)",
+        "data_path": "main/SiO/nk/Hass.yml",
+        "wl_range": "0.240-14.000 um",
+        "dataset_label": "amorphous | Hass1954"
+      }
+    ]
+  },
+  "SiO2": {
+    "idx": 38,
+    "name": "Silicon dioxide / quartz",
+    "polymorph": "alpha-quartz",
+    "effective_polymorph": "amorphous",
+    "amorphous_default": true,
+    "default_paper": "Malitson 1965: n 0.21\u20136.7 \u00b5m",
+    "axes": [
+      {
+        "page": "Malitson",
+        "axis": "none (isotropic/cubic/amorphous)",
+        "data_path": "main/SiO2/nk/Malitson.yml",
+        "wl_range": "0.210-6.700 um",
+        "dataset_label": "amorphous | Malitson1965"
+      }
+    ]
+  },
+  "Ta2O5": {
+    "idx": 39,
+    "name": "Tantalum pentoxide",
+    "polymorph": null,
+    "effective_polymorph": null,
+    "amorphous_default": true,
+    "default_paper": "Bright et al. 2013: n,k 0.5\u20131000 \u00b5m",
+    "axes": [
+      {
+        "page": "Bright-amorphous",
+        "axis": "none (isotropic/cubic/amorphous)",
+        "data_path": "main/Ta2O5/nk/Bright-amorphous.yml",
+        "wl_range": "0.500-1000.000 um",
+        "dataset_label": "Bright2013"
+      }
+    ]
+  },
+  "Tb3Ga5O12": {
+    "idx": 40,
+    "name": "TGG",
+    "polymorph": "garnet",
+    "effective_polymorph": "garnet",
+    "amorphous_default": false,
+    "default_paper": "Schlarb and Sugg 1994: n 0.405\u20131.18 \u00b5m",
+    "axes": [
+      {
+        "page": "Schlarb",
+        "axis": "none (isotropic/cubic/amorphous)",
+        "data_path": "main/Tb3Ga5O12/nk/Schlarb.yml",
+        "wl_range": "0.405-1.177 um",
+        "dataset_label": "garnet | Schlarb1994"
+      }
+    ]
+  },
+  "TeO2": {
+    "idx": 41,
+    "name": "Tellurium dioxide",
+    "polymorph": null,
+    "effective_polymorph": null,
+    "amorphous_default": false,
+    "default_paper": "Uchida 1971: \u03b1-TeO<sub>2</sub>",
+    "axes": [
+      {
+        "page": "Uchida-o",
+        "axis": "ordinary (o)",
+        "data_path": "main/TeO2/nk/Uchida-o.yml",
+        "wl_range": "0.400-1.000 um",
+        "dataset_label": "Uchida1971 | o-ray"
+      },
+      {
+        "page": "Uchida-e",
+        "axis": "extraordinary (e)",
+        "data_path": "main/TeO2/nk/Uchida-e.yml",
+        "wl_range": "0.400-1.000 um",
+        "dataset_label": "Uchida1971 | e-ray"
+      }
+    ]
+  },
+  "TiO2": {
+    "idx": 42,
+    "name": "Titanium dioxide (rutile / anatase)",
+    "polymorph": "rutile/anatase",
+    "effective_polymorph": "rutile",
+    "amorphous_default": false,
+    "default_paper": "Devore 1951:  0.43\u20131.53 \u00b5m",
+    "axes": [
+      {
+        "page": "Devore-o",
+        "axis": "ordinary (o)",
+        "data_path": "main/TiO2/nk/Devore-o.yml",
+        "wl_range": "0.430-1.530 um",
+        "dataset_label": "rutile | Devore1951 | o-ray"
+      },
+      {
+        "page": "Devore-e",
+        "axis": "extraordinary (e)",
+        "data_path": "main/TiO2/nk/Devore-e.yml",
+        "wl_range": "0.430-1.530 um",
+        "dataset_label": "rutile | Devore1951 | e-ray"
+      }
+    ]
+  },
+  "BaTiO3": {
+    "idx": 43,
+    "name": "Barium titanate",
+    "polymorph": null,
+    "effective_polymorph": null,
+    "amorphous_default": false,
+    "default_paper": "Wemple et al. 1968:  0.4\u20130.7 \u00b5m",
+    "axes": [
+      {
+        "page": "Wemple-o",
+        "axis": "ordinary (o)",
+        "data_path": "main/BaTiO3/nk/Wemple-o.yml",
+        "wl_range": "0.400-0.700 um",
+        "dataset_label": "Wemple1968 | o-ray"
+      },
+      {
+        "page": "Wemple-e",
+        "axis": "extraordinary (e)",
+        "data_path": "main/BaTiO3/nk/Wemple-e.yml",
+        "wl_range": "0.400-0.700 um",
+        "dataset_label": "Wemple1968 | e-ray"
+      }
+    ]
+  },
+  "SrTiO3": {
+    "idx": 44,
+    "name": "Strontium titanate",
+    "polymorph": null,
+    "effective_polymorph": null,
+    "amorphous_default": false,
+    "default_paper": "Bond 1965: n 0.43\u20133.8 \u00b5m",
+    "axes": [
+      {
+        "page": "Bond",
+        "axis": "none (isotropic/cubic/amorphous)",
+        "data_path": "main/SrTiO3/nk/Bond.yml",
+        "wl_range": "0.430-3.800 um",
+        "dataset_label": "Bond1965"
+      }
+    ]
+  },
+  "VO2": {
+    "idx": 45,
+    "name": "Vanadium dioxide",
+    "polymorph": null,
+    "effective_polymorph": null,
+    "amorphous_default": false,
+    "default_paper": "Beaini et al. 2020: n,k 0.5\u201325 \u00b5m; 25 \u00b0C",
+    "axes": [
+      {
+        "page": "Beaini-25C",
+        "axis": "none (isotropic/cubic/amorphous)",
+        "data_path": "main/VO2/nk/Beaini-25C.yml",
+        "wl_range": "0.500-25.000 um",
+        "dataset_label": "Beaini2020"
+      }
+    ]
+  },
+  "YVO4": {
+    "idx": 46,
+    "name": "Yttrium orthovanadate",
+    "polymorph": null,
+    "effective_polymorph": null,
+    "amorphous_default": false,
+    "default_paper": "Birnbaum and DeShazer 1976:  0.488\u20133.39 \u00b5m",
+    "axes": [
+      {
+        "page": "Birnbaum-o",
+        "axis": "ordinary (o)",
+        "data_path": "main/YVO4/nk/Birnbaum-o.yml",
+        "wl_range": "0.488-3.390 um",
+        "dataset_label": "Birnbaum1976 | o-ray"
+      },
+      {
+        "page": "Birnbaum-e",
+        "axis": "extraordinary (e)",
+        "data_path": "main/YVO4/nk/Birnbaum-e.yml",
+        "wl_range": "0.488-3.390 um",
+        "dataset_label": "Birnbaum1976 | e-ray"
+      }
+    ]
+  },
+  "WO3": {
+    "idx": 47,
+    "name": "Tungsten trioxide",
+    "polymorph": null,
+    "effective_polymorph": null,
+    "amorphous_default": false,
+    "default_paper": "Kulikova et al. 2020: n,k 0.3\u20131.0 \u00b5m",
+    "axes": [
+      {
+        "page": "Kulikova",
+        "axis": "none (isotropic/cubic/amorphous)",
+        "data_path": "main/WO3/nk/Kulikova.yml",
+        "wl_range": "0.300-1.000 um",
+        "dataset_label": "Kulikova2020"
+      }
+    ]
+  },
+  "Y2O3": {
+    "idx": 48,
+    "name": "Yttrium oxide",
+    "polymorph": null,
+    "effective_polymorph": null,
+    "amorphous_default": false,
+    "default_paper": "Nigara 1968: n 0.25\u20139.6 \u00b5m",
+    "axes": [
+      {
+        "page": "Nigara",
+        "axis": "none (isotropic/cubic/amorphous)",
+        "data_path": "main/Y2O3/nk/Nigara.yml",
+        "wl_range": "0.250-9.600 um",
+        "dataset_label": "Nigara1968"
+      }
+    ]
+  },
+  "Y3Al5O12": {
+    "idx": 49,
+    "name": "YAG",
+    "polymorph": "garnet",
+    "effective_polymorph": "garnet",
+    "amorphous_default": false,
+    "default_paper": "Zelmon et al. 1998: n 0.4\u20135.0 \u00b5m",
+    "axes": [
+      {
+        "page": "Zelmon",
+        "axis": "none (isotropic/cubic/amorphous)",
+        "data_path": "main/Y3Al5O12/nk/Zelmon.yml",
+        "wl_range": "0.400-5.000 um",
+        "dataset_label": "garnet | Zelmon1998"
+      }
+    ]
+  },
+  "ZnO": {
+    "idx": 50,
+    "name": "Zinc oxide",
+    "polymorph": null,
+    "effective_polymorph": null,
+    "amorphous_default": false,
+    "default_paper": "Bond et al. 1965:  0.45\u20134.0 \u00b5m",
+    "axes": [
+      {
+        "page": "Bond-o",
+        "axis": "ordinary (o)",
+        "data_path": "main/ZnO/nk/Bond-o.yml",
+        "wl_range": "0.450-4.000 um",
+        "dataset_label": "Bond1965 | o-ray"
+      },
+      {
+        "page": "Bond-e",
+        "axis": "extraordinary (e)",
+        "data_path": "main/ZnO/nk/Bond-e.yml",
+        "wl_range": "0.450-4.000 um",
+        "dataset_label": "Bond1965 | e-ray"
+      }
+    ]
+  }
+}

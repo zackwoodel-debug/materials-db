@@ -7,3 +7,7 @@ refractiveindex_db/
 materials.db
 core/materials.db
 *.db-journal
+.env
+data/materials_oxide_test.db
+data/raw_cache/
+data/quarantine/
