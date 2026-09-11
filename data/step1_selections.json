@@ -113,7 +113,7 @@
     "idx": 5,
     "name": "Calcium gadolinium aluminate",
     "polymorph": null,
-    "effective_polymorph": null,
+    "effective_polymorph": "K2NiF4-type",
     "amorphous_default": false,
     "default_paper": "Loiko et al. 2017:  0.35\u20132.1 \u00b5m",
     "axes": [
@@ -122,14 +122,14 @@
         "axis": "ordinary (o)",
         "data_path": "main/CaGdAlO4/nk/Loiko-o.yml",
         "wl_range": "0.350-2.100 um",
-        "dataset_label": "Loiko2017 | o-ray"
+        "dataset_label": "K2NiF4-type | Loiko2017 | o-ray"
       },
       {
         "page": "Loiko-e",
         "axis": "extraordinary (e)",
         "data_path": "main/CaGdAlO4/nk/Loiko-e.yml",
         "wl_range": "0.350-2.100 um",
-        "dataset_label": "Loiko2017 | e-ray"
+        "dataset_label": "K2NiF4-type | Loiko2017 | e-ray"
       }
     ]
   },
@@ -137,7 +137,7 @@
     "idx": 6,
     "name": "Calcium yttrium aluminate",
     "polymorph": null,
-    "effective_polymorph": null,
+    "effective_polymorph": "K2NiF4-type",
     "amorphous_default": false,
     "default_paper": "Loiko et al. 2017:  0.35\u20132.1 \u00b5m",
     "axes": [
@@ -146,14 +146,14 @@
         "axis": "ordinary (o)",
         "data_path": "main/CaYAlO4/nk/Loiko-o.yml",
         "wl_range": "0.350-2.100 um",
-        "dataset_label": "Loiko2017 | o-ray"
+        "dataset_label": "K2NiF4-type | Loiko2017 | o-ray"
       },
       {
         "page": "Loiko-e",
         "axis": "extraordinary (e)",
         "data_path": "main/CaYAlO4/nk/Loiko-e.yml",
         "wl_range": "0.350-2.100 um",
-        "dataset_label": "Loiko2017 | e-ray"
+        "dataset_label": "K2NiF4-type | Loiko2017 | e-ray"
       }
     ]
   },
@@ -219,7 +219,7 @@
     "idx": 10,
     "name": "Bismuth triborate (BiBO)",
     "polymorph": null,
-    "effective_polymorph": null,
+    "effective_polymorph": "alpha-BiBO",
     "amorphous_default": false,
     "default_paper": "Umemura et al. 2007:  0.48\u20133.1 \u00b5m",
     "axes": [
@@ -228,21 +228,21 @@
         "axis": "biaxial alpha (n\u03b1)",
         "data_path": "main/BiB3O6/nk/Umemura-alpha.yml",
         "wl_range": "0.480-3.100 um",
-        "dataset_label": "Umemura2007 | alpha-axis"
+        "dataset_label": "alpha-BiBO | Umemura2007 | alpha-axis"
       },
       {
         "page": "Umemura-\u03b2",
         "axis": "biaxial beta (n\u03b2)",
         "data_path": "main/BiB3O6/nk/Umemura-beta.yml",
         "wl_range": "0.480-3.100 um",
-        "dataset_label": "Umemura2007 | beta-axis"
+        "dataset_label": "alpha-BiBO | Umemura2007 | beta-axis"
       },
       {
         "page": "Umemura-\u03b3",
         "axis": "biaxial gamma (n\u03b3)",
         "data_path": "main/BiB3O6/nk/Umemura-gamma.yml",
         "wl_range": "0.480-3.100 um",
-        "dataset_label": "Umemura2007 | gamma-axis"
+        "dataset_label": "alpha-BiBO | Umemura2007 | gamma-axis"
       }
     ]
   },
@@ -715,7 +715,7 @@
     "idx": 33,
     "name": "Niobium pentoxide",
     "polymorph": null,
-    "effective_polymorph": null,
+    "effective_polymorph": "amorphous",
     "amorphous_default": false,
     "default_paper": "Franta et al. 2024: n,k 0.120\u2013399 \u00b5m",
     "axes": [
@@ -724,7 +724,7 @@
         "axis": "none (isotropic/cubic/amorphous)",
         "data_path": "main/Nb2O5/nk/Franta.yml",
         "wl_range": "0.120-399.362 um",
-        "dataset_label": "Franta2024"
+        "dataset_label": "amorphous | Franta2024"
       }
     ]
   },

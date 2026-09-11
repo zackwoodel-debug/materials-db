@@ -70,6 +70,10 @@ WANTED_POLYMORPH_KEYWORDS = {
 DATASET_LABEL_POLYMORPH_OVERRIDE = {
     "TiO2": "rutile",
     "SiO2": "amorphous",
+    "BiB3O6": "alpha-BiBO",
+    "CaGdAlO4": "K2NiF4-type",
+    "CaYAlO4": "K2NiF4-type",
+    "Nb2O5": "amorphous",
 }
 
 

@@ -53,14 +53,14 @@ All 50/50 materials have >=1 match in refractiveindex.info. Every optical axis (
 
 ## 5. Calcium gadolinium aluminate (CaGdAlO4)
 - **main/CaGdAlO4/Loiko -- Loiko et al. 2017:  0.35–2.1 µm** (DEFAULT)
-    - `Loiko-o` axis=ordinary (o), range=0.350-2.100 um, covers 633nm: yes, dataset_label=`Loiko2017 | o-ray` -- Loiko et al. 2017: n(o) 0.35–2.1 µm
-    - `Loiko-e` axis=extraordinary (e), range=0.350-2.100 um, covers 633nm: yes, dataset_label=`Loiko2017 | e-ray` -- Loiko et al. 2017: n(e) 0.35–2.1 µm
+    - `Loiko-o` axis=ordinary (o), range=0.350-2.100 um, covers 633nm: yes, dataset_label=`K2NiF4-type | Loiko2017 | o-ray` -- Loiko et al. 2017: n(o) 0.35–2.1 µm
+    - `Loiko-e` axis=extraordinary (e), range=0.350-2.100 um, covers 633nm: yes, dataset_label=`K2NiF4-type | Loiko2017 | e-ray` -- Loiko et al. 2017: n(e) 0.35–2.1 µm
 
 
 ## 6. Calcium yttrium aluminate (CaYAlO4)
 - **main/CaYAlO4/Loiko -- Loiko et al. 2017:  0.35–2.1 µm** (DEFAULT)
-    - `Loiko-o` axis=ordinary (o), range=0.350-2.100 um, covers 633nm: yes, dataset_label=`Loiko2017 | o-ray` -- Loiko et al. 2017: n(o) 0.35–2.1 µm
-    - `Loiko-e` axis=extraordinary (e), range=0.350-2.100 um, covers 633nm: yes, dataset_label=`Loiko2017 | e-ray` -- Loiko et al. 2017: n(e) 0.35–2.1 µm
+    - `Loiko-o` axis=ordinary (o), range=0.350-2.100 um, covers 633nm: yes, dataset_label=`K2NiF4-type | Loiko2017 | o-ray` -- Loiko et al. 2017: n(o) 0.35–2.1 µm
+    - `Loiko-e` axis=extraordinary (e), range=0.350-2.100 um, covers 633nm: yes, dataset_label=`K2NiF4-type | Loiko2017 | e-ray` -- Loiko et al. 2017: n(e) 0.35–2.1 µm
 
 
 ## 7. Spinel (MgAl2O4) -- list polymorph: spinel
@@ -89,9 +89,9 @@ All 50/50 materials have >=1 match in refractiveindex.info. Every optical axis (
 
 ## 10. Bismuth triborate (BiBO) (BiB3O6)
 - **main/BiB3O6/Umemura -- Umemura et al. 2007:  0.48–3.1 µm** (DEFAULT)
-    - `Umemura-α` axis=biaxial alpha (nα), range=0.480-3.100 um, covers 633nm: yes, dataset_label=`Umemura2007 | alpha-axis` -- Umemura et al. 2007: n(α) 0.48–3.1 µm
-    - `Umemura-β` axis=biaxial beta (nβ), range=0.480-3.100 um, covers 633nm: yes, dataset_label=`Umemura2007 | beta-axis` -- Umemura et al. 2007: n(β) 0.48–3.1 µm
-    - `Umemura-γ` axis=biaxial gamma (nγ), range=0.480-3.100 um, covers 633nm: yes, dataset_label=`Umemura2007 | gamma-axis` -- Umemura et al. 2007: n(γ) 0.48–3.1 µm
+    - `Umemura-α` axis=biaxial alpha (nα), range=0.480-3.100 um, covers 633nm: yes, dataset_label=`alpha-BiBO | Umemura2007 | alpha-axis` -- Umemura et al. 2007: n(α) 0.48–3.1 µm
+    - `Umemura-β` axis=biaxial beta (nβ), range=0.480-3.100 um, covers 633nm: yes, dataset_label=`alpha-BiBO | Umemura2007 | beta-axis` -- Umemura et al. 2007: n(β) 0.48–3.1 µm
+    - `Umemura-γ` axis=biaxial gamma (nγ), range=0.480-3.100 um, covers 633nm: yes, dataset_label=`alpha-BiBO | Umemura2007 | gamma-axis` -- Umemura et al. 2007: n(γ) 0.48–3.1 µm
 
 
 ## 11. Lithium triborate (LBO) (LiB3O5)
@@ -242,7 +242,7 @@ All 50/50 materials have >=1 match in refractiveindex.info. Every optical axis (
 
 ## 33. Niobium pentoxide (Nb2O5)
 - **main/Nb2O5/Franta -- Franta et al. 2024: n,k 0.120–399 µm** (DEFAULT)
-    - `Franta` axis=none (isotropic/cubic/amorphous), range=0.120-399.362 um, covers 633nm: yes, dataset_label=`Franta2024` -- Franta et al. 2024: n,k 0.120–399 µm
+    - `Franta` axis=none (isotropic/cubic/amorphous), range=0.120-399.362 um, covers 633nm: yes, dataset_label=`amorphous | Franta2024` -- Franta et al. 2024: n,k 0.120–399 µm
 - main/Nb2O5/Lemarchand -- Lemarchand 2013: n,k 0.25–2.5 µm
     - `Lemarchand` axis=none (isotropic/cubic/amorphous), range=0.250-2.500 um, covers 633nm: yes -- Lemarchand 2013: n,k 0.25–2.5 µm
 - main/Nb2O5/Horcholle-400 -- Horcholle et al. 2022: Thin film annealed at 400 °C

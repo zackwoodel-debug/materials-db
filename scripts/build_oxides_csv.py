@@ -59,12 +59,12 @@ MATERIALS = [
     dict(idx=2, name="Beryllium oxide", formula="BeO", polymorph="wurtzite", pubchem_name="Beryllium oxide"),
     dict(idx=3, name="Chrysoberyl", formula="BeAl2O4", polymorph="chrysoberyl", pubchem_name="Beryllium aluminate"),
     dict(idx=4, name="Beryllium hexaaluminate", formula="BeAl6O10", polymorph=None, pubchem_name="Beryllium hexaaluminate"),
-    dict(idx=5, name="Calcium gadolinium aluminate", formula="CaGdAlO4", polymorph=None, pubchem_name="Calcium gadolinium aluminate"),
-    dict(idx=6, name="Calcium yttrium aluminate", formula="CaYAlO4", polymorph=None, pubchem_name="Calcium yttrium aluminate"),
+    dict(idx=5, name="Calcium gadolinium aluminate", formula="CaGdAlO4", polymorph="K2NiF4-type", pubchem_name="Calcium gadolinium aluminate"),
+    dict(idx=6, name="Calcium yttrium aluminate", formula="CaYAlO4", polymorph="K2NiF4-type", pubchem_name="Calcium yttrium aluminate"),
     dict(idx=7, name="Spinel", formula="MgAl2O4", polymorph="spinel", pubchem_name="Magnesium aluminate"),
     dict(idx=8, name="Lanthanum aluminate", formula="LaAlO3", polymorph=None, pubchem_name="Lanthanum aluminate"),
     dict(idx=9, name="Barium borate (BBO)", formula="BaB2O4", polymorph="beta-BBO", pubchem_name="Barium borate"),
-    dict(idx=10, name="Bismuth triborate (BiBO)", formula="BiB3O6", polymorph=None, pubchem_name="Bismuth borate"),
+    dict(idx=10, name="Bismuth triborate (BiBO)", formula="BiB3O6", polymorph="alpha-BiBO", pubchem_name="Bismuth borate"),
     dict(idx=11, name="Lithium triborate (LBO)", formula="LiB3O5", polymorph=None, pubchem_name="Lithium triborate"),
     dict(idx=12, name="Cesium lithium borate (CLBO)", formula="CsLiB6O10", polymorph=None, pubchem_name="Cesium lithium borate"),
     dict(idx=13, name="Lutetium aluminium borate", formula="LuAl3(BO3)4", polymorph=None, pubchem_name="Lutetium aluminum borate"),
@@ -87,7 +87,7 @@ MATERIALS = [
     dict(idx=30, name="Calcium molybdate", formula="CaMoO4", polymorph="scheelite", pubchem_name="Calcium molybdate"),
     dict(idx=31, name="Lead molybdate", formula="PbMoO4", polymorph="scheelite/wulfenite", pubchem_name="Lead molybdate"),
     dict(idx=32, name="Strontium molybdate", formula="SrMoO4", polymorph="scheelite", pubchem_name="Strontium molybdate"),
-    dict(idx=33, name="Niobium pentoxide", formula="Nb2O5", polymorph=None, pubchem_name="Niobium pentoxide"),
+    dict(idx=33, name="Niobium pentoxide", formula="Nb2O5", polymorph="amorphous", pubchem_name="Niobium pentoxide"),
     dict(idx=34, name="Potassium niobate", formula="KNbO3", polymorph=None, pubchem_name="Potassium niobate"),
     dict(idx=35, name="Lithium niobate", formula="LiNbO3", polymorph=None, pubchem_name="Lithium niobate"),
     dict(idx=36, name="Scandium oxide", formula="Sc2O3", polymorph="bixbyite", pubchem_name="Scandium oxide"),
@@ -107,17 +107,91 @@ MATERIALS = [
     dict(idx=50, name="Zinc oxide", formula="ZnO", polymorph="wurtzite", pubchem_name="Zinc oxide"),
 ]
 
-# Forced "no legitimate MP match" materials: the RI.info default dataset is
-# amorphous/glass (auto-detected in Step 1, plus SiO confirmed manually per
-# user instruction). Density must come from literature, not MP.
-FORCE_NO_MP = {"SiO", "SiO2", "GeO2", "Ta2O5"}
+# Forced "no legitimate MP match" materials: either the RI.info default
+# dataset is amorphous/glass (auto-detected in Step 1, SiO confirmed
+# manually), or MP's only/best entries are verified to NOT match the
+# experimentally-known structure (CaGdAlO4/CaYAlO4 -- MP has only a
+# theoretical, ICSD-unbacked I4mm entry, but the compound is well
+# documented as centrosymmetric I4/mmm K2NiF4-type; Nb2O5's Franta 2024
+# dataset is an unannealed sputtered film, almost certainly amorphous).
+# Density must come from literature/experimental-lattice-parameter
+# calculation, not MP, for all of these.
+FORCE_NO_MP = {"SiO", "SiO2", "GeO2", "Ta2O5", "CaGdAlO4", "CaYAlO4", "Nb2O5"}
 
 LITERATURE_DENSITY = {
-    # g/cm3, with source note
-    "SiO2": (2.20, "literature: fused silica, standard value"),
-    "SiO": (2.13, "literature: evaporated amorphous SiO film, commonly cited value"),
-    "GeO2": (3.65, "literature: fused (vitreous) GeO2, commonly cited value"),
-    "Ta2O5": (7.90, "literature: amorphous Ta2O5 thin film, commonly cited value (vs 8.37 crystalline)"),
+    # g/cm3, note, optional citation dict (doi/title/authors/journal/year)
+    "SiO2": (2.20, "literature: fused silica, standard value", None),
+    "SiO": (2.13, "literature: evaporated amorphous SiO film, commonly cited value", None),
+    "GeO2": (3.65, "literature: fused (vitreous) GeO2, commonly cited value", None),
+    "Ta2O5": (7.90, "literature: amorphous Ta2O5 thin film, commonly cited value (vs 8.37 crystalline)", None),
+    "CaGdAlO4": (
+        5.971787,
+        "experimental lattice params: I4/mmm K2NiF4-type, a=3.65855 A, c=11.9787 A, Z=2 "
+        "(MP's only entry is a theoretical, ICSD-unbacked I4mm approximation of this "
+        "Ca/Gd site-disordered structure; MP density 5.860 g/cm3 is ~1.9% low)",
+        dict(doi="10.1016/S0925-8388(99)00701-X",
+             title="Crystal structure and optical spectroscopy of CaGdAlO4:Er single crystal",
+             authors="Vasylechko, L.; Kodama, N.; Matkovskii, A.; Zhydachevskii, Ya.",
+             journal="Journal of Alloys and Compounds", year=2000),
+    ),
+    "CaYAlO4": (
+        4.630187,
+        "experimental lattice params: I4/mmm K2NiF4-type, a=3.6451 A, c=11.8743 A, Z=2 "
+        "(MP's only entry is a theoretical, ICSD-unbacked I4mm approximation of this "
+        "Ca/Y site-disordered structure; MP density 4.532 g/cm3 is ~2.1% low)",
+        dict(doi="10.1016/0022-4596(92)90073-5",
+             title="Dielectric constants and crystal structures of CaYAlO4, CaNdAlO4, and "
+                    "SrLaAlO4, and deviations from the oxide additivity rule",
+             authors="Shannon, R.D.; Oswald, R.A.; Parise, J.B.; Chai, B.H.T.; Byszewski, P.; "
+                      "Pajaczkowska, A.; Sobolewski, R.",
+             journal="Journal of Solid State Chemistry", year=1992),
+    ),
+    "Nb2O5": (
+        4.45,
+        "literature: stoichiometric amorphous Nb2O5 thin film density from XRR/RBS "
+        "(amorphous inferred from the Franta 2024 RI.info dataset's deposition method -- "
+        "magnetron sputtering, no anneal step mentioned in its RI.info comments; the Franta "
+        "paper itself was not directly accessed to confirm)",
+        dict(doi="10.1002/1521-396X(200112)188:3<1047::AID-PSSA1047>3.0.CO;2-J",
+             title="Characterization of Niobium Oxide Films Prepared by Reactive DC Magnetron Sputtering",
+             authors="Venkataraj, S.; Drese, R.; Kappertz, O.; Jayavel, R.; Wuttig, M.",
+             journal="Physica Status Solidi (a)", year=2001),
+    ),
+}
+
+# formula -> (experimental density g/cm3, note, citation dict) to use INSTEAD
+# of MP_DFT density, while still keeping the matched MP structure (space
+# group / energy_above_hull) for provenance.
+EXPERIMENTAL_DENSITY_OVERRIDE = {
+    "BiB3O6": (
+        5.0263,
+        "experimental lattice params: alpha-BiBO, C2, a=7.120 A, b=4.995 A, c=6.508 A, "
+        "beta=105.59 deg, Z=2",
+        dict(doi="10.1107/S0108270184004078",
+             title="Die Kristallstruktur von Wismutborat, BiB3O6",
+             authors="Froehlich, R.; Bohaty, L.; Liebertz, J.",
+             journal="Acta Crystallographica Section C", year=1984),
+    ),
+}
+
+# formula -> note appended when we override MP's default (lowest-hull or
+# otherwise) polymorph pick with additional context beyond the generic
+# EXPECTED_SPACEGROUP mismatch message.
+REJECTED_ALTERNATE_NOTE = {
+    "BiB3O6": "mp-554718 (Pca2_1 #29, Knyrim et al. 2006 'a new non-centrosymmetric MODIFICATION "
+              "of BiB3O6') rejected as a distinct, non-standard polymorph -- not the commercial "
+              "NLO crystal our Umemura et al. 2007 optical data was measured on",
+}
+
+# formula -> note confirming MP's structure was verified against independent
+# provenance (ICSD / same research group), even though no better alternative
+# was found and density stays MP_DFT.
+PROVENANCE_CONFIRMED_NOTE = {
+    "BeAl6O10": "MP structure (mp-560974, P2_1/c #14) sourced from ICSD-95408 (Alimpiev et al. "
+                "2002, J. Cryst. Growth 237, 884-889), same research group (Pestryakov) as the "
+                "optical dataset used here -- accepted with high confidence. Could not obtain "
+                "experimental lattice parameters (paper paywalled, not in COD) to compute an "
+                "experimental density, so density_source remains MP_DFT.",
 }
 
 # Expected space-group numbers for the intended polymorph, used to pick the
@@ -135,6 +209,8 @@ EXPECTED_SPACEGROUP = {
     "CsLiB6O10": ([122], "tetragonal CLBO -- MP's lowest-hull entry (#24) is a different polymorph"),
     "Bi12GeO20": ([197], "sillenite"),
     "Pb5Ge3O11": ([143], "trigonal ferroelectric"),
+    "BiB3O6": ([5], "alpha-BiBO, monoclinic C2 (Froehlich/Bohaty/Liebertz 1984, 10 ICSD entries) "
+                     "-- NOT the lowest-hull Pca2_1 #29, a distinct 'new modification' (Knyrim 2006)"),
     "LiB3O5": ([33], "orthorhombic LBO"),
     "CaCO3": ([167], "calcite"),
     "CuO": ([15], "tenorite"),
@@ -301,7 +377,15 @@ def fetch_pubchem(mat: dict) -> dict:
             return out
 
         r3 = get(f"https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/compound/{cid}/JSON?heading=CAS")
-        if r3.status_code == 200:
+        if r3.status_code == 404:
+            pass  # genuinely no curated CAS section on file -- not an error, leave NULL
+        elif r3.status_code == 429:
+            quarantine("pubchem", f"{cache_key}_cas", "rate_limited_cas_lookup", r3.text)
+            out["flags"].append("pubchem: rate-limited on CAS lookup, quarantined -- cas_number left NULL, retry the pipeline")
+        elif r3.status_code != 200:
+            quarantine("pubchem", f"{cache_key}_cas", f"cas_lookup_http_{r3.status_code}", r3.text)
+            out["flags"].append(f"pubchem: HTTP {r3.status_code} on CAS lookup, quarantined -- cas_number left NULL")
+        else:
             rdata = r3.json()
             (RAW_CACHE / "pubchem" / f"{cache_key}_cas.json").write_text(json.dumps(rdata, indent=2))
             cas_values = []
@@ -314,7 +398,6 @@ def fetch_pubchem(mat: dict) -> dict:
                 out["cas_number"] = cas_values[0]
                 if len(cas_values) > 1:
                     out["flags"].append(f"pubchem: {len(cas_values)} CAS numbers in PUG-View record, took first/primary ({cas_values[0]})")
-        # 404/empty just means no curated CAS on file -- not an error, leave NULL
 
     except (requests.RequestException, json.JSONDecodeError, KeyError, ValueError) as e:
         quarantine("pubchem", cache_key, f"exception: {type(e).__name__}: {e}", None)
@@ -328,14 +411,15 @@ def fetch_pubchem(mat: dict) -> dict:
 def fetch_mp(mat: dict, mpr) -> dict:
     formula = mat["formula"]
     out = dict(mp_id=None, mp_space_group=None, mp_energy_above_hull_ev=None,
-               density_g_cm3=None, density_source=None, flags=[])
+               density_g_cm3=None, density_source=None, density_citation=None, flags=[])
 
     if formula in FORCE_NO_MP:
-        lit_density, lit_note = LITERATURE_DENSITY[formula]
+        lit_density, lit_note, citation = LITERATURE_DENSITY[formula]
         out["density_g_cm3"] = lit_density
-        out["density_source"] = "literature"
-        out["flags"].append(f"no MP structure match: RI.info default optical data is amorphous/glass, MP has no "
-                             f"amorphous entries. Density = {lit_density} g/cm3 ({lit_note}). Verify before use.")
+        out["density_source"] = "experimental lattice params" if "experimental lattice params" in lit_note else "literature"
+        out["density_citation"] = citation
+        out["flags"].append(f"no MP structure match. Density = {lit_density} g/cm3 ({lit_note}). "
+                             f"Verify before use.")
         return out
 
     query_formula = re.sub(r"[()]", "", formula)  # MP formula search wants flat formula
@@ -387,6 +471,20 @@ def fetch_mp(mat: dict, mpr) -> dict:
     out["mp_energy_above_hull_ev"] = picked["energy_above_hull"]
     out["density_g_cm3"] = picked["density"]
     out["density_source"] = "MP_DFT"
+
+    if formula in REJECTED_ALTERNATE_NOTE:
+        out["flags"].append(REJECTED_ALTERNATE_NOTE[formula])
+    if formula in PROVENANCE_CONFIRMED_NOTE:
+        out["flags"].append(PROVENANCE_CONFIRMED_NOTE[formula])
+
+    if formula in EXPERIMENTAL_DENSITY_OVERRIDE:
+        exp_density, exp_note, exp_citation = EXPERIMENTAL_DENSITY_OVERRIDE[formula]
+        out["flags"].append(f"density overridden from MP_DFT ({out['density_g_cm3']:.4f} g/cm3) to "
+                             f"experimental value ({exp_density} g/cm3): {exp_note}")
+        out["density_g_cm3"] = exp_density
+        out["density_source"] = "experimental lattice params"
+        out["density_citation"] = exp_citation
+
     return out
 
 
@@ -469,7 +567,14 @@ def main():
 
             mpd = fetch_mp(mat, mpr)
             flags += mpd.pop("flags")
+            citation = mpd.pop("density_citation", None)
             row.update(mpd)
+            if citation:
+                row["density_citation_doi"] = citation["doi"]
+                row["density_citation_title"] = citation["title"]
+                row["density_citation_authors"] = citation["authors"]
+                row["density_citation_journal"] = citation["journal"]
+                row["density_citation_year"] = citation["year"]
 
             row["xray_energy_ev"] = XRAY_ENERGY_KEV * 1000
 

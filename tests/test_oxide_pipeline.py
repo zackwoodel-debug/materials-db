@@ -79,6 +79,41 @@ def test_rate_limited_pubchem_response_is_quarantined_not_treated_as_success(tmp
     assert (tmp_path / "quarantine" / "pubchem").glob("*.json")
 
 
+def test_rate_limited_cas_lookup_is_quarantined_not_silently_dropped(tmp_path, monkeypatch):
+    """Regression test: a 429 specifically on the third (CAS/PUG-View) request
+    used to be silently swallowed -- cid/formula/mw came back fine but
+    cas_number just went NULL with no flag and no quarantine entry, making a
+    transient rate-limit indistinguishable from 'this compound has no CAS on
+    file'. Caught by diffing two full pipeline runs (BeO/Cu2O/LiIO3 lost
+    their CAS between runs with no explanation)."""
+    monkeypatch.setattr(pipeline, "RAW_CACHE", tmp_path / "raw_cache")
+    monkeypatch.setattr(pipeline, "QUARANTINE", tmp_path / "quarantine")
+    pipeline.ensure_dirs()
+    monkeypatch.setattr(pipeline.time, "sleep", lambda *_: None)
+
+    call_n = {"n": 0}
+
+    def fake_get(url, *a, **k):
+        call_n["n"] += 1
+        if call_n["n"] == 1:
+            return _FakeResponse(200, json_data={"IdentifierList": {"CID": [42]}})
+        if call_n["n"] == 2:
+            return _FakeResponse(200, json_data={"PropertyTable": {"Properties": [
+                {"CID": 42, "MolecularFormula": "BeO", "MolecularWeight": "25.01",
+                 "SMILES": "[Be]=O", "InChIKey": "TESTKEY-UHFFFAOYSA-N"}]}})
+        return _FakeResponse(429, text="Too Many Requests")  # the CAS/PUG-View call
+
+    monkeypatch.setattr(pipeline.requests, "get", fake_get)
+
+    mat = dict(idx=1, name="Beryllium oxide", formula="BeO", pubchem_name="Beryllium oxide")
+    result = pipeline.fetch_pubchem(mat)
+
+    assert result["pubchem_cid"] == 42
+    assert result["cas_number"] is None
+    assert any("CAS" in f and "quarantined" in f for f in result["flags"]), result["flags"]
+    assert list((tmp_path / "quarantine" / "pubchem").glob("*cas*.json"))
+
+
 # ---------------------------------------------------------------------------
 # 2. Duplicate InChIKey doesn't overwrite a row
 # ---------------------------------------------------------------------------
@@ -157,35 +192,72 @@ def test_failed_load_rolls_back_entire_transaction(tmp_path, monkeypatch):
 
 
 # ---------------------------------------------------------------------------
-# 4. No RI.info data is truncated (row counts match the source YAML)
+# 4. No RI.info data is truncated (row counts match the source YAML), for
+#    every dataset actually loaded -- not just Ta2O5.
 # ---------------------------------------------------------------------------
 
-def _count_tabulated_lines(yaml_path: Path) -> int:
+SELECTIONS = json.loads((ROOT / "data" / "step1_selections.json").read_text())
+RI_DATA_ROOT = ROOT / "refractiveindex_db" / "database" / "data"
+
+# every unique RI.info data_path used by at least one of the 50 materials
+ALL_DATASET_PATHS = sorted({
+    axis["data_path"]
+    for sel in SELECTIONS.values()
+    for axis in sel["axes"]
+})
+
+
+def _count_block_lines(block: dict) -> int:
+    return len([l for l in block["data"].strip().splitlines() if l.strip()])
+
+
+def _expected_point_count(yaml_path: Path) -> int:
+    """Number of wavelength points parse_file() should produce for this file.
+
+    Only blocks that define the *n* grid count towards the total: 'tabulated
+    n' and 'tabulated nk' contribute their own row count; 'formula*' blocks
+    contribute exactly N_FORMULA (500) samples each (parse_file's fixed
+    sampling density) since our widened WL_MIN_NM/WL_MAX_NM window no longer
+    clips any real dataset's native range. A 'tabulated k'-only block (e.g.
+    SiO's Hass.yml, which reports n and k as two separately-sized tables)
+    contributes nothing to the count -- k gets interpolated onto the n grid,
+    it doesn't add rows of its own.
+    """
     raw = yaml.safe_load(open(yaml_path))
+    total = 0
     for block in raw["DATA"]:
-        if block.get("type", "").startswith("tabulated"):
-            return len([l for l in block["data"].strip().splitlines() if l.strip()])
-    raise AssertionError(f"no tabulated block found in {yaml_path}")
+        t = block.get("type", "")
+        if t in ("tabulated n", "tabulated nk"):
+            total += _count_block_lines(block)
+        elif t.startswith("formula"):
+            total += _fetch_optical_data_n_formula()
+    return total
 
 
-def test_tabulated_ri_info_data_not_truncated_by_parser():
-    """Ta2O5's default dataset (Bright-amorphous) is a 'tabulated nk' block --
-    every source data point must survive parse_file() with none dropped."""
-    data_path = "main/Ta2O5/nk/Bright-amorphous.yml"
-    yaml_path = ROOT / "refractiveindex_db" / "database" / "data" / data_path
-    expected = _count_tabulated_lines(yaml_path)
+def _fetch_optical_data_n_formula() -> int:
+    from materials_db.pipeline.fetch_optical_data import N_FORMULA
+    return N_FORMULA
+
+
+@pytest.mark.parametrize("data_path", ALL_DATASET_PATHS, ids=ALL_DATASET_PATHS)
+def test_ri_info_data_not_truncated_by_parser(data_path):
+    """For every RI.info dataset actually selected in Step 1, the parser must
+    produce exactly as many wavelength points as the source YAML defines."""
+    yaml_path = RI_DATA_ROOT / data_path
+    expected = _expected_point_count(yaml_path)
 
     wl_nm, n_val, k_val, refs, temp = pipeline.parse_file(yaml_path)
 
-    assert len(wl_nm) == expected, f"parser produced {len(wl_nm)} points, source YAML has {expected}"
+    assert len(wl_nm) == expected, f"{data_path}: parser produced {len(wl_nm)} points, source YAML implies {expected}"
 
 
 @pytest.mark.skipif(not (ROOT / "data" / "materials_oxide_test.db").exists(),
                      reason="requires data/materials_oxide_test.db from Step 3 to already be built")
-def test_tabulated_ri_info_data_not_truncated_in_loaded_db():
-    data_path = "main/Ta2O5/nk/Bright-amorphous.yml"
-    yaml_path = ROOT / "refractiveindex_db" / "database" / "data" / data_path
-    expected = _count_tabulated_lines(yaml_path)
+@pytest.mark.parametrize("data_path", ALL_DATASET_PATHS, ids=ALL_DATASET_PATHS)
+def test_ri_info_data_not_truncated_in_loaded_db(data_path):
+    """Same check against the actually-loaded DB rows for every dataset."""
+    yaml_path = RI_DATA_ROOT / data_path
+    expected = _expected_point_count(yaml_path)
 
     conn = sqlite3.connect(str(ROOT / "data" / "materials_oxide_test.db"))
     actual = conn.execute(
@@ -193,4 +265,15 @@ def test_tabulated_ri_info_data_not_truncated_in_loaded_db():
     ).fetchone()[0]
     conn.close()
 
-    assert actual == expected, f"DB has {actual} rows for {data_path}, source YAML has {expected}"
+    assert actual == expected, f"{data_path}: DB has {actual} rows, source YAML implies {expected}"
+
+
+def test_all_datasets_have_at_least_one_n_or_nk_block():
+    """Sanity guard on the fixture list itself: every dataset used must have
+    a block type the parser and this test's counting logic both recognize,
+    so a silent 0-vs-0 pass can't hide a genuinely unhandled block type."""
+    for data_path in ALL_DATASET_PATHS:
+        raw = yaml.safe_load(open(RI_DATA_ROOT / data_path))
+        types = [b.get("type", "") for b in raw["DATA"]]
+        recognized = any(t in ("tabulated n", "tabulated nk") or t.startswith("formula") for t in types)
+        assert recognized, f"{data_path}: no recognized n-contributing block type in {types}"

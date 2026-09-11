@@ -135,12 +135,27 @@ def load_optical_axis(conn, material_id, source_id, axis_entry, effective_polymo
     return n_inserted
 
 
-def load_physical_properties(conn, material_id, row, mp_source_id, literature_source_id, periodictable_source_id, effective_polymorph):
+def load_physical_properties(conn, material_id, row, mp_source_id, literature_source_id, periodictable_source_id,
+                              effective_polymorph, source_cache=None, get_source_fn=None):
     density = row.get("density_g_cm3")
     density_source = row.get("density_source")
 
     if pd.notna(density):
-        src = mp_source_id if density_source == "MP_DFT" else literature_source_id
+        citation_doi = row.get("density_citation_doi")
+        if pd.notna(citation_doi) and source_cache is not None and get_source_fn is not None:
+            src = get_source_fn(
+                conn, source_cache, citation_doi,
+                doi=citation_doi,
+                title=row.get("density_citation_title"),
+                authors=row.get("density_citation_authors"),
+                journal=row.get("density_citation_journal"),
+                year=int(row["density_citation_year"]) if pd.notna(row.get("density_citation_year")) else None,
+                technique="experimental crystallography" if density_source == "experimental lattice params" else "literature",
+                notes=f"Cited for {row['formula']} density ({density} g/cm3, density_source={density_source}). "
+                      f"See flags column in data/oxides_50.csv for the specific calculation/value.",
+            )
+        else:
+            src = mp_source_id if density_source == "MP_DFT" else literature_source_id
         conn.execute(
             "INSERT INTO physical_properties (material_id, density_g_cm3, dataset_label, source_id) "
             "VALUES (?, ?, ?, ?)",
@@ -238,7 +253,8 @@ def main():
             material_id = cur.lastrowid
             stats["materials"] += 1
 
-            load_physical_properties(conn, material_id, row, mp_source_id, literature_source_id, periodictable_source_id, effective_polymorph)
+            load_physical_properties(conn, material_id, row, mp_source_id, literature_source_id, periodictable_source_id,
+                                      effective_polymorph, source_cache=source_cache, get_source_fn=get_or_create_source)
             stats["physical_properties"] += conn.execute(
                 "SELECT COUNT(*) FROM physical_properties WHERE material_id = ?", (material_id,)
             ).fetchone()[0]
