@@ -358,3 +358,110 @@ All three resolved, loaded (`scripts/build_pure_element_csv.py` / `load_pure_ele
 and exported successfully (84 total materials, 82 OK, skip set still exactly `{GdF3,
 LuAl3(BO3)4}`). Awaiting approval before the remaining ~42 pure elements (Carbon/Tin/Boron still
 deferred to 3b) are processed.
+
+## G. The remaining 47 -- run, with 3 preliminary fixes first
+
+Before this ran, three things were done first per instruction:
+
+1. **Swept for other filename/fixed-list-keyed lookups** (the same shape as `_lookup_mp_id`'s
+   two failures). Found and fixed `export_all_materials_modalfit.py`'s hardcoded 3-CSV-filename
+   list + hardcoded material count -- now globs `data/*.csv` and cross-checks against the live
+   DB's own material count. Swept and cleared as NOT the same shape: `KNOWN_EXCLUSIONS` (actively
+   asserted against every run), `load_batch2_db.py`/`load_pure_element_db.py`'s `n_before` checks
+   (a deliberate sequential precondition, not a completeness assumption), the curated override
+   dicts (`EXPECTED_SPACEGROUP` etc. -- deliberately maintained judgment calls, not enumerations
+   expected to stay complete on their own), and the legacy `materials.db` scripts (a separate,
+   out-of-scope schema). See `docs/PIPELINE_PRINCIPLES.md` section 2a and the commit history.
+
+2. **Corrected the triage rule and re-examined GdF3.** VN's trap (+190 meV/atom) disproved the
+   unstated assumption that a correct structure, if it exists, is always near the hull.
+   `docs/PIPELINE_PRINCIPLES.md` rule 1a now states this explicitly: search the FULL candidate
+   set, treat a large gap as a signal to investigate, and "no near-degenerate alternative" is not
+   sufficient grounds for a named exclusion on its own. GdF3 was re-examined under this rule:
+   re-queried mp-api with no energy_above_hull filtering at all, confirmed MP has exactly ONE
+   entry for GdF3, full stop, at any energy above hull. Stays a named exclusion -- this was never
+   a search-width problem, so widening the window doesn't change the outcome -- but the
+   verification is now real and explicit rather than assumed sufficient the first time.
+
+3. **The oxide-amorphous migration is now a tracked, queryable open item** --
+   `process_condition.TRACKED_OPEN_TASKS["oxide_amorphous_migration"]`, with `open_tasks()` /
+   `task_detail()` queries, same treatment as `EXCLUSION_STATE`'s blocking_on queries. Not
+   migrated. Also found, while scoping it, that GeO2 has the same informal shortcut's opposite
+   problem: `FORCE_NO_MP` with a literature amorphous density but never labeled
+   `polymorph="amorphous"` at all -- added to the tracked task's scope.
+
+### The run itself: 47 elements, corrected count
+
+The corpus is 48 elements after removing Au/Se/Te (already resolved) and Carbon/Tin/Boron
+(deferred) from the 54-book total -- not the ~42 assumed when this batch was approved (that
+number silently carried the ORIGINAL miscounted 59/420 forward; corrected here, not used
+silently). Of those 48, **Hg (mercury) is EXCLUDED, not processed**: its only RI.info page
+(Inagaki et al. 1981) states directly "Liquid mercury at room temperature" -- this database is
+for thin-film/solid-state modeling, and liquid mercury doesn't have a thickness/roughness/
+crystal-structure model the way every other material here does. Same exclusion logic as the
+noble-gas/diatomic-gas books, just found later because it wasn't a formula-parsing issue. **47
+elements actually processed.**
+
+**The corrected triage rule immediately paid off at scale**: applying it (full candidate search,
+large-gap-is-a-signal) to all 47 found **16 confirmed traps (34%)** -- a dramatically higher rate
+than the oxide batch (0/50) or fluoride/nitride/sulfide batch (3/32, ~9%). This is not scattered
+noise; it clusters in two well-understood ways:
+
+- **All 5 alkali metals present (Li, Na, K, Rb, Cs) are wrong at lowest-hull**, every one of
+  them, with a real physical explanation: DFT at 0K correctly finds the low-temperature ground
+  state, and alkali metals are documented to undergo bcc -> close-packed martensitic transitions
+  well below room temperature (Li/Na specifically, below ~70-80K) -- but every RI.info
+  measurement here is at or near room temperature, where bcc is the actually-correct phase for
+  all five. Gaps range 9.2-19.3 meV/atom.
+- **4 of 6 lanthanides present (Pr, Eu, Er, Lu) plus Yb** (already resolved in the triage set's
+  adjacent research, folded in here) are wrong or unconfirmable at lowest-hull -- mostly small
+  hcp/fcc/bcc energy differences sensitive to magnetic ordering and DFT functional choice, the
+  same root cause as VN's trap in batch 2. Eu and Sr (not a lanthanide, but the same "wrong
+  ambient-condition phase" shape) have the two largest gaps in this batch, 41.44 and 44.81
+  meV/atom respectively -- both flagged explicitly rather than smoothed over.
+- Isolated cases: Ag (fcc vs. a near-degenerate hcp polytype, 2.13 meV/atom), Co (hcp vs. fcc,
+  10.62 meV/atom, cobalt's well-known small hcp/fcc energy gap), In (face-centered tetragonal vs.
+  pure cubic, 4.49 meV/atom), Ta (bcc vs. a distorted tetragonal structure, 9.15 meV/atom), Ti
+  (hcp vs. a lower-symmetry hexagonal group lacking the real screw-axis stacking, 15.17 meV/atom).
+- **Pr is only partially resolvable by this mechanism**: praseodymium's real phase is dhcp
+  (double-hcp), which shares the SAME space-group number (194) as simple hcp with a different
+  unit-cell multiplicity (Z=4 vs Z=2) -- an override keyed on space-group number alone cannot
+  distinguish them. Flagged as such, not silently asserted as fully verified.
+- **Yb has no energy_above_hull data at all** (MP reports `Ehull=None` for every entry, likely an
+  f-electron DFT+U data-availability gap) -- a third, distinct resolution shape: picked from known
+  crystallography (ytterbium's real, anomalous-among-lanthanides fcc structure), not from a hull
+  comparison that doesn't exist for this element.
+
+**A second, independent finding while overriding structures**: for 2 of the 12 literature-density
+elements, MP's own DFT-computed density diverges dramatically from the cited experimental value
+-- Ce (MP: 9.12 g/cm3, literature: 6.771 g/cm3, +35%) and Yb (MP: 9.64 g/cm3, literature: 6.81
+g/cm3, +41%). Both are lanthanides with well-documented anomalous valence/4f-electron behavior
+(Ce's alpha/gamma volume-collapse transition; Yb's divalent character) that are known to be
+difficult for standard DFT exchange-correlation functionals -- this is exactly why literature
+density, not MP_DFT, was used for these 12, and a concrete demonstration of what "verified" vs.
+"bulk_approximation" is actually protecting against: even MP's own STRUCTURE being confirmed
+correct doesn't guarantee its DENSITY NUMBER is trustworthy for these particular elements.
+
+### Density-state distribution (the number that matters)
+
+| State | Count (of 50 elements) | % |
+|---|---|---|
+| DENSITY_VERIFIED | 17 | 34% |
+| &nbsp;&nbsp;-- via a real literature density citation (Ca/Ce/Er/Eu/Ho/Lu/Mg/Pr/Sc/Sr/Tm/Yb) | 12 | |
+| &nbsp;&nbsp;-- via MP_DFT on a confirmed genuinely-bulk/single-crystal sample (Se/Te/Ag/Si/Ge) | 5 | |
+| DENSITY_BULK_APPROXIMATION (Au + 32 more) | 33 | 66% |
+
+**33 of 50 pure elements (66%) landed in DENSITY_BULK_APPROXIMATION.** This is the number that
+tells us how much of this batch is fittable with confidence today: 17 elements (34%) have a
+density defensible enough to fix in a fit; the other 33 (66%) should have density varied as a
+free fit parameter within `process_condition.bulk_approximation_density_bounds()`'s asymmetric
+`[0.70x, 1.02x]` range if they're used in a real reflectivity fit, per the standing recommendation
+from the earlier fit exercise -- fixing an admittedly-approximated density is worse than fitting
+it within a defensible range.
+
+Combined across all batches: 131 materials total, 129/131 exported (skip set unchanged: `{GdF3,
+LuAl3(BO3)4}`), 93 `DENSITY_VERIFIED` / 36 `DENSITY_BULK_APPROXIMATION` (33 pure elements + TiN/
+VN/EuS) / 2 named exclusions.
+
+Still holding batch 3b (Carbon, Tin, Boron) -- each needs the polymorph AND process-condition
+axes resolved together, deliberately not attempted alongside this larger, already-eventful pass.
