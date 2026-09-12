@@ -10,3 +10,4 @@ core/materials.db
 .env
 data/raw_cache/
 data/quarantine/
+data/modalfit_export/
