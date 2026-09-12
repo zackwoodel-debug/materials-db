@@ -64,6 +64,74 @@ never anything a wider window could have found. That is a different, and stronge
 "no NEAR-hull alternative exists" -- it is the actual reason a named exclusion is justified here,
 not the previously-implied "the alternative wasn't close enough."
 
+### 1b. A material with a known low-temperature phase transition is EXPECTED to trap this way
+
+Applying rule 1a to all 47 remaining pure elements (batch 3) found 16 confirmed traps (34% --
+see docs/batch3_scoping_report.md Part G), and they were not scattered: **all 5 alkali metals
+present (Li, Na, K, Rb, Cs) were wrong at lowest-hull, every one.** The mechanism is
+understood, not mysterious: MP's DFT calculation is a 0K ground-state search, with no
+vibrational or entropic corrections. For a material with a genuine low-temperature phase
+transition, the 0K ground state IS the low-temperature phase -- correctly, physically, that's
+what DFT is supposed to find. But refractiveindex.info's optical measurements are taken at or
+near room temperature, where a DIFFERENT phase is the one that actually exists. Lithium and
+sodium are the clearest cases: both are well documented to undergo a bcc -> close-packed
+martensitic transition below roughly 70-80 K, so DFT correctly returns that low-temperature
+phase as lowest-hull, and a room-temperature optical measurement is just as correctly NOT that
+phase.
+
+**The rule**: this is not a surprise to rediscover per material -- it is PREDICTABLE in advance.
+Before accepting any lowest-hull MP structure for a material, check whether that material has a
+well-documented phase transition at or below typical measurement conditions (roughly 0-350 K
+covers most RI.info entries, including "room temperature" and most stated cryostat studies). If
+it does, the ambient/room-temperature phase -- not lowest-hull -- is the one to check for a
+matching entry first, the same way `EXPECTED_SPACEGROUP` already encodes "the phase we expect,"
+just applied proactively from known thermodynamics rather than reactively from a hull-gap
+surprise. Alkali metals, and any material with a documented martensitic or order-disorder
+transition near typical lab conditions, should be treated as HIGH PRIOR RISK for this specific
+failure mode from the start of triage, not discovered by accident.
+
+This is related to, but distinct from, the broader "small hcp/fcc/bcc energy differences
+sensitive to magnetic ordering and DFT functional choice" pattern behind Co, Ag, Sr, Ti, In, Ta,
+and VN's traps -- those are DFT-energetics-sensitivity issues without necessarily involving a
+literal temperature-driven transition, and are still covered by the general rule 1a (search the
+full set, treat a gap as a signal). Rule 1b is the narrower, MORE PREDICTABLE special case: a
+DOCUMENTED low-temperature transition is a known, checkable fact about the material, not
+something that can only be found after the fact.
+
+**Audit of already-loaded materials for this specific exposure** (a temperature-driven phase
+transition near typical RI.info measurement conditions), done on request rather than assumed
+clean:
+
+- **VO2** (oxide batch) -- NOT newly exposed, but the reason it wasn't is worth stating
+  explicitly rather than leaving as "we got lucky": VO2's transition (68 C, insulating M1 below,
+  metallic rutile above) was independently verified against the specific paper's stated
+  measurement condition (Beaini et al., 25 C, confirmed below the transition) -- this is rule 1b
+  applied correctly by accident, not because the risk was recognized as a category at the time.
+- **BaTiO3** (oxide batch) -- FLAGGED, not previously re-verified against this specific concern.
+  BaTiO3 has THREE phase transitions clustered close to typical lab temperature
+  (rhombohedral -> orthorhombic at -90 C, orthorhombic -> tetragonal at 5 C, tetragonal -> cubic
+  at 130 C). The existing `EXPECTED_SPACEGROUP` entry (tetragonal, #99) is correct for any
+  measurement between 5 C and 130 C, which covers ordinary room temperature -- but the specific
+  citation's (Wemple et al. 1968) exact measurement temperature was not cross-checked against the
+  5 C lower bound the way VO2's was. Low risk in practice (5 C is an unusually cold "room
+  temperature"), but not a verified certainty the way VO2 now is.
+- **WO3** (oxide batch) -- FLAGGED as the closest real analogue to the alkali-metal pattern in
+  the already-loaded set. WO3 has a transition at 17 C (monoclinic-II below, monoclinic-I above)
+  -- 17 C is within normal ambient temperature variance for a lab, not a comfortably-distant
+  margin like BaTiO3's 5 C or VO2's 68 C. The two monoclinic phases are crystallographically
+  distinct despite the superficial similarity, and the current `EXPECTED_SPACEGROUP` entry
+  (`[14, 15]`, monoclinic) was not narrowed to confirm which specific monoclinic phase the
+  citation's stated temperature implies.
+- **KNbO3** (oxide batch) -- minor flag. Transition at -10 C (rhombohedral below, orthorhombic
+  above); the existing orthorhombic assignment is correct for any normal room-temperature
+  measurement, comfortably above -10 C. Lower priority than WO3.
+- **This audit is a domain-knowledge review, not a fresh literature/MP check per material** --
+  unlike the pure-element trap-finding above, WO3/BaTiO3/KNbO3 were not independently re-verified
+  against their citations' exact stated temperatures the way this rule calls for. If tighter
+  confidence is wanted, that verification (matching each citation's stated condition against the
+  known transition temperature, the same check already done for VO2) is the concrete next step,
+  not a re-guess from memory.
+
 ## 2. Two related but distinct anti-patterns, both found only by looking
 
 ### 2a. A lookup or classification silently returning a plausible-looking wrong answer
