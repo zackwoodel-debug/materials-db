@@ -26,8 +26,8 @@
   "BeO": {
     "idx": 2,
     "name": "Beryllium oxide",
-    "polymorph": null,
-    "effective_polymorph": null,
+    "polymorph": "wurtzite",
+    "effective_polymorph": "wurtzite",
     "amorphous_default": false,
     "default_paper": "Edwards and White 1991:  0.44\u20137.0 \u00b5m",
     "axes": [
@@ -36,14 +36,14 @@
         "axis": "ordinary (o)",
         "data_path": "main/BeO/nk/Edwards-o.yml",
         "wl_range": "0.440-7.000 um",
-        "dataset_label": "Edwards1991 | o-ray"
+        "dataset_label": "wurtzite | Edwards1991 | o-ray"
       },
       {
         "page": "Edwards-e",
         "axis": "extraordinary (e)",
         "data_path": "main/BeO/nk/Edwards-e.yml",
         "wl_range": "0.440-7.000 um",
-        "dataset_label": "Edwards1991 | e-ray"
+        "dataset_label": "wurtzite | Edwards1991 | e-ray"
       }
     ]
   },
@@ -112,7 +112,7 @@
   "CaGdAlO4": {
     "idx": 5,
     "name": "Calcium gadolinium aluminate",
-    "polymorph": null,
+    "polymorph": "K2NiF4-type",
     "effective_polymorph": "K2NiF4-type",
     "amorphous_default": false,
     "default_paper": "Loiko et al. 2017:  0.35\u20132.1 \u00b5m",
@@ -136,7 +136,7 @@
   "CaYAlO4": {
     "idx": 6,
     "name": "Calcium yttrium aluminate",
-    "polymorph": null,
+    "polymorph": "K2NiF4-type",
     "effective_polymorph": "K2NiF4-type",
     "amorphous_default": false,
     "default_paper": "Loiko et al. 2017:  0.35\u20132.1 \u00b5m",
@@ -218,7 +218,7 @@
   "BiB3O6": {
     "idx": 10,
     "name": "Bismuth triborate (BiBO)",
-    "polymorph": null,
+    "polymorph": "alpha-BiBO",
     "effective_polymorph": "alpha-BiBO",
     "amorphous_default": false,
     "default_paper": "Umemura et al. 2007:  0.48\u20133.1 \u00b5m",
@@ -352,8 +352,8 @@
   "CuO": {
     "idx": 15,
     "name": "Copper(II) oxide",
-    "polymorph": null,
-    "effective_polymorph": null,
+    "polymorph": "tenorite",
+    "effective_polymorph": "tenorite",
     "amorphous_default": false,
     "default_paper": "Brimhall et al. 2009: n,k 0.0101\u20130.0348 \u00b5m",
     "axes": [
@@ -362,15 +362,15 @@
         "axis": "none (isotropic/cubic/amorphous)",
         "data_path": "main/CuO/nk/Brimhall.yml",
         "wl_range": "0.010-0.035 um",
-        "dataset_label": "Brimhall2009"
+        "dataset_label": "tenorite | Brimhall2009"
       }
     ]
   },
   "Cu2O": {
     "idx": 16,
     "name": "Copper(I) oxide",
-    "polymorph": null,
-    "effective_polymorph": null,
+    "polymorph": "cuprite",
+    "effective_polymorph": "cuprite",
     "amorphous_default": false,
     "default_paper": "Querry 1985: n,k 2.5\u201355.6 \u00b5m",
     "axes": [
@@ -379,15 +379,15 @@
         "axis": "none (isotropic/cubic/amorphous)",
         "data_path": "main/Cu2O/nk/Querry.yml",
         "wl_range": "2.500-55.556 um",
-        "dataset_label": "Querry1985"
+        "dataset_label": "cuprite | Querry1985"
       }
     ]
   },
   "Dy2O3": {
     "idx": 17,
     "name": "Dysprosium oxide",
-    "polymorph": null,
-    "effective_polymorph": null,
+    "polymorph": "bixbyite",
+    "effective_polymorph": "bixbyite",
     "amorphous_default": false,
     "default_paper": "Medenbach et al. 2001: n 0.435\u20130.644 \u00b5m",
     "axes": [
@@ -396,7 +396,7 @@
         "axis": "none (isotropic/cubic/amorphous)",
         "data_path": "main/Dy2O3/nk/Medenbach.yml",
         "wl_range": "0.435-0.644 um",
-        "dataset_label": "Medenbach2001"
+        "dataset_label": "bixbyite | Medenbach2001"
       }
     ]
   },
@@ -543,8 +543,8 @@
   "Lu2O3": {
     "idx": 25,
     "name": "Lutetium oxide",
-    "polymorph": null,
-    "effective_polymorph": null,
+    "polymorph": "bixbyite",
+    "effective_polymorph": "bixbyite",
     "amorphous_default": false,
     "default_paper": "Medenbach et al. 2001: n 0.435\u20130.644 \u00b5m",
     "axes": [
@@ -553,7 +553,7 @@
         "axis": "none (isotropic/cubic/amorphous)",
         "data_path": "main/Lu2O3/nk/Medenbach.yml",
         "wl_range": "0.435-0.644 um",
-        "dataset_label": "Medenbach2001"
+        "dataset_label": "bixbyite | Medenbach2001"
       }
     ]
   },
@@ -577,8 +577,8 @@
   "MgO": {
     "idx": 27,
     "name": "Magnesium oxide",
-    "polymorph": null,
-    "effective_polymorph": null,
+    "polymorph": "rock salt",
+    "effective_polymorph": "rock salt",
     "amorphous_default": false,
     "default_paper": "Stephens and Malitson 1952: n 0.36\u20135.4 \u00b5m",
     "axes": [
@@ -587,7 +587,7 @@
         "axis": "none (isotropic/cubic/amorphous)",
         "data_path": "main/MgO/nk/Stephens.yml",
         "wl_range": "0.360-5.400 um",
-        "dataset_label": "Stephens1952"
+        "dataset_label": "rock salt | Stephens1952"
       }
     ]
   },
@@ -642,8 +642,8 @@
   "CaMoO4": {
     "idx": 30,
     "name": "Calcium molybdate",
-    "polymorph": null,
-    "effective_polymorph": null,
+    "polymorph": "scheelite",
+    "effective_polymorph": "scheelite",
     "amorphous_default": false,
     "default_paper": "Bond 1965:  0.45\u20133.8 \u00b5m",
     "axes": [
@@ -652,22 +652,22 @@
         "axis": "ordinary (o)",
         "data_path": "main/CaMoO4/nk/Bond-o.yml",
         "wl_range": "0.450-3.800 um",
-        "dataset_label": "Bond1965 | o-ray"
+        "dataset_label": "scheelite | Bond1965 | o-ray"
       },
       {
         "page": "Bond-e",
         "axis": "extraordinary (e)",
         "data_path": "main/CaMoO4/nk/Bond-e.yml",
         "wl_range": "0.450-3.800 um",
-        "dataset_label": "Bond1965 | e-ray"
+        "dataset_label": "scheelite | Bond1965 | e-ray"
       }
     ]
   },
   "PbMoO4": {
     "idx": 31,
     "name": "Lead molybdate",
-    "polymorph": null,
-    "effective_polymorph": null,
+    "polymorph": "scheelite/wulfenite",
+    "effective_polymorph": "scheelite/wulfenite",
     "amorphous_default": false,
     "default_paper": "Malitson 1978:  0.44\u20131.08 \u00b5m",
     "axes": [
@@ -676,22 +676,22 @@
         "axis": "ordinary (o)",
         "data_path": "main/PbMoO4/nk/Malitson-o.yml",
         "wl_range": "0.440-1.080 um",
-        "dataset_label": "Malitson1978 | o-ray"
+        "dataset_label": "scheelite/wulfenite | Malitson1978 | o-ray"
       },
       {
         "page": "Malitson-e",
         "axis": "extraordinary (e)",
         "data_path": "main/PbMoO4/nk/Malitson-e.yml",
         "wl_range": "0.440-1.080 um",
-        "dataset_label": "Malitson1978 | e-ray"
+        "dataset_label": "scheelite/wulfenite | Malitson1978 | e-ray"
       }
     ]
   },
   "SrMoO4": {
     "idx": 32,
     "name": "Strontium molybdate",
-    "polymorph": null,
-    "effective_polymorph": null,
+    "polymorph": "scheelite",
+    "effective_polymorph": "scheelite",
     "amorphous_default": false,
     "default_paper": "Bond 1965:  0.45\u20132.4 \u00b5m",
     "axes": [
@@ -700,21 +700,21 @@
         "axis": "ordinary (o)",
         "data_path": "main/SrMoO4/nk/Bond-o.yml",
         "wl_range": "0.450-2.400 um",
-        "dataset_label": "Bond1965 | o-ray"
+        "dataset_label": "scheelite | Bond1965 | o-ray"
       },
       {
         "page": "Bond-e",
         "axis": "extraordinary (e)",
         "data_path": "main/SrMoO4/nk/Bond-e.yml",
         "wl_range": "0.450-2.400 um",
-        "dataset_label": "Bond1965 | e-ray"
+        "dataset_label": "scheelite | Bond1965 | e-ray"
       }
     ]
   },
   "Nb2O5": {
     "idx": 33,
     "name": "Niobium pentoxide",
-    "polymorph": null,
+    "polymorph": "amorphous",
     "effective_polymorph": "amorphous",
     "amorphous_default": false,
     "default_paper": "Franta et al. 2024: n,k 0.120\u2013399 \u00b5m",
@@ -786,8 +786,8 @@
   "Sc2O3": {
     "idx": 36,
     "name": "Scandium oxide",
-    "polymorph": null,
-    "effective_polymorph": null,
+    "polymorph": "bixbyite",
+    "effective_polymorph": "bixbyite",
     "amorphous_default": false,
     "default_paper": "Medenbach et al. 2001: n 0.435\u20130.644 \u00b5m",
     "axes": [
@@ -796,7 +796,7 @@
         "axis": "none (isotropic/cubic/amorphous)",
         "data_path": "main/Sc2O3/nk/Medenbach.yml",
         "wl_range": "0.435-0.644 um",
-        "dataset_label": "Medenbach2001"
+        "dataset_label": "bixbyite | Medenbach2001"
       }
     ]
   },
@@ -820,7 +820,7 @@
   "SiO2": {
     "idx": 38,
     "name": "Silicon dioxide / quartz",
-    "polymorph": "alpha-quartz",
+    "polymorph": "amorphous",
     "effective_polymorph": "amorphous",
     "amorphous_default": true,
     "default_paper": "Malitson 1965: n 0.21\u20136.7 \u00b5m",
@@ -895,7 +895,7 @@
   "TiO2": {
     "idx": 42,
     "name": "Titanium dioxide (rutile / anatase)",
-    "polymorph": "rutile/anatase",
+    "polymorph": "rutile",
     "effective_polymorph": "rutile",
     "amorphous_default": false,
     "default_paper": "Devore 1951:  0.43\u20131.53 \u00b5m",
@@ -977,8 +977,8 @@
   "YVO4": {
     "idx": 46,
     "name": "Yttrium orthovanadate",
-    "polymorph": null,
-    "effective_polymorph": null,
+    "polymorph": "zircon",
+    "effective_polymorph": "zircon",
     "amorphous_default": false,
     "default_paper": "Birnbaum and DeShazer 1976:  0.488\u20133.39 \u00b5m",
     "axes": [
@@ -987,14 +987,14 @@
         "axis": "ordinary (o)",
         "data_path": "main/YVO4/nk/Birnbaum-o.yml",
         "wl_range": "0.488-3.390 um",
-        "dataset_label": "Birnbaum1976 | o-ray"
+        "dataset_label": "zircon | Birnbaum1976 | o-ray"
       },
       {
         "page": "Birnbaum-e",
         "axis": "extraordinary (e)",
         "data_path": "main/YVO4/nk/Birnbaum-e.yml",
         "wl_range": "0.488-3.390 um",
-        "dataset_label": "Birnbaum1976 | e-ray"
+        "dataset_label": "zircon | Birnbaum1976 | e-ray"
       }
     ]
   },
@@ -1018,8 +1018,8 @@
   "Y2O3": {
     "idx": 48,
     "name": "Yttrium oxide",
-    "polymorph": null,
-    "effective_polymorph": null,
+    "polymorph": "bixbyite",
+    "effective_polymorph": "bixbyite",
     "amorphous_default": false,
     "default_paper": "Nigara 1968: n 0.25\u20139.6 \u00b5m",
     "axes": [
@@ -1028,7 +1028,7 @@
         "axis": "none (isotropic/cubic/amorphous)",
         "data_path": "main/Y2O3/nk/Nigara.yml",
         "wl_range": "0.250-9.600 um",
-        "dataset_label": "Nigara1968"
+        "dataset_label": "bixbyite | Nigara1968"
       }
     ]
   },
@@ -1052,8 +1052,8 @@
   "ZnO": {
     "idx": 50,
     "name": "Zinc oxide",
-    "polymorph": null,
-    "effective_polymorph": null,
+    "polymorph": "wurtzite",
+    "effective_polymorph": "wurtzite",
     "amorphous_default": false,
     "default_paper": "Bond et al. 1965:  0.45\u20134.0 \u00b5m",
     "axes": [
@@ -1062,14 +1062,14 @@
         "axis": "ordinary (o)",
         "data_path": "main/ZnO/nk/Bond-o.yml",
         "wl_range": "0.450-4.000 um",
-        "dataset_label": "Bond1965 | o-ray"
+        "dataset_label": "wurtzite | Bond1965 | o-ray"
       },
       {
         "page": "Bond-e",
         "axis": "extraordinary (e)",
         "data_path": "main/ZnO/nk/Bond-e.yml",
         "wl_range": "0.450-4.000 um",
-        "dataset_label": "Bond1965 | e-ray"
+        "dataset_label": "wurtzite | Bond1965 | e-ray"
       }
     ]
   }

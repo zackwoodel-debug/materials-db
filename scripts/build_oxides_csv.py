@@ -54,58 +54,23 @@ NEUTRON_WAVELENGTH_A = 1.798  # standard reference (2200 m/s thermal neutron)
 PUBCHEM_RATE_DELAY = 0.25  # ~4 req/s, under the 5 req/s limit
 
 # ---- 50 target materials (name, formula, polymorph) --------------------------
-MATERIALS = [
-    dict(idx=1, name="Aluminium oxide / sapphire", formula="Al2O3", polymorph="corundum/sapphire", pubchem_name="Aluminum oxide"),
-    dict(idx=2, name="Beryllium oxide", formula="BeO", polymorph="wurtzite", pubchem_name="Beryllium oxide"),
-    dict(idx=3, name="Chrysoberyl", formula="BeAl2O4", polymorph="chrysoberyl", pubchem_name="Beryllium aluminate"),
-    dict(idx=4, name="Beryllium hexaaluminate", formula="BeAl6O10", polymorph=None, pubchem_name="Beryllium hexaaluminate"),
-    dict(idx=5, name="Calcium gadolinium aluminate", formula="CaGdAlO4", polymorph="K2NiF4-type", pubchem_name="Calcium gadolinium aluminate"),
-    dict(idx=6, name="Calcium yttrium aluminate", formula="CaYAlO4", polymorph="K2NiF4-type", pubchem_name="Calcium yttrium aluminate"),
-    dict(idx=7, name="Spinel", formula="MgAl2O4", polymorph="spinel", pubchem_name="Magnesium aluminate"),
-    dict(idx=8, name="Lanthanum aluminate", formula="LaAlO3", polymorph=None, pubchem_name="Lanthanum aluminate"),
-    dict(idx=9, name="Barium borate (BBO)", formula="BaB2O4", polymorph="beta-BBO", pubchem_name="Barium borate"),
-    dict(idx=10, name="Bismuth triborate (BiBO)", formula="BiB3O6", polymorph="alpha-BiBO", pubchem_name="Bismuth borate"),
-    dict(idx=11, name="Lithium triborate (LBO)", formula="LiB3O5", polymorph=None, pubchem_name="Lithium triborate"),
-    dict(idx=12, name="Cesium lithium borate (CLBO)", formula="CsLiB6O10", polymorph=None, pubchem_name="Cesium lithium borate"),
-    dict(idx=13, name="Lutetium aluminium borate", formula="LuAl3(BO3)4", polymorph=None, pubchem_name="Lutetium aluminum borate"),
-    dict(idx=14, name="Calcite", formula="CaCO3", polymorph="calcite", pubchem_name="Calcium carbonate"),
-    dict(idx=15, name="Copper(II) oxide", formula="CuO", polymorph="tenorite", pubchem_name="Copper(II) oxide"),
-    dict(idx=16, name="Copper(I) oxide", formula="Cu2O", polymorph="cuprite", pubchem_name="Copper(I) oxide"),
-    dict(idx=17, name="Dysprosium oxide", formula="Dy2O3", polymorph="bixbyite", pubchem_name="Dysprosium oxide"),
-    dict(idx=18, name="Hematite", formula="Fe2O3", polymorph="hematite", pubchem_name="Iron(III) oxide"),
-    dict(idx=19, name="Magnetite", formula="Fe3O4", polymorph="magnetite", pubchem_name="Iron(II,III) oxide"),
-    dict(idx=20, name="Germanium dioxide", formula="GeO2", polymorph=None, pubchem_name="Germanium dioxide"),
-    dict(idx=21, name="Bismuth germanate", formula="Bi12GeO20", polymorph="BGO", pubchem_name="Bismuth germanium oxide"),
-    dict(idx=22, name="Lead germanate", formula="Pb5Ge3O11", polymorph=None, pubchem_name="Lead germanate"),
-    dict(idx=23, name="Hafnium dioxide", formula="HfO2", polymorph=None, pubchem_name="Hafnium oxide"),
-    dict(idx=24, name="Lithium iodate", formula="LiIO3", polymorph=None, pubchem_name="Lithium iodate"),
-    dict(idx=25, name="Lutetium oxide", formula="Lu2O3", polymorph="bixbyite", pubchem_name="Lutetium oxide"),
-    dict(idx=26, name="LuAG", formula="Lu3Al5O12", polymorph="garnet", pubchem_name="Lutetium aluminum garnet"),
-    dict(idx=27, name="Magnesium oxide", formula="MgO", polymorph="rock salt", pubchem_name="Magnesium oxide"),
-    dict(idx=28, name="Molybdenum dioxide", formula="MoO2", polymorph=None, pubchem_name="Molybdenum dioxide"),
-    dict(idx=29, name="Molybdenum trioxide", formula="MoO3", polymorph=None, pubchem_name="Molybdenum trioxide"),
-    dict(idx=30, name="Calcium molybdate", formula="CaMoO4", polymorph="scheelite", pubchem_name="Calcium molybdate"),
-    dict(idx=31, name="Lead molybdate", formula="PbMoO4", polymorph="scheelite/wulfenite", pubchem_name="Lead molybdate"),
-    dict(idx=32, name="Strontium molybdate", formula="SrMoO4", polymorph="scheelite", pubchem_name="Strontium molybdate"),
-    dict(idx=33, name="Niobium pentoxide", formula="Nb2O5", polymorph="amorphous", pubchem_name="Niobium pentoxide"),
-    dict(idx=34, name="Potassium niobate", formula="KNbO3", polymorph=None, pubchem_name="Potassium niobate"),
-    dict(idx=35, name="Lithium niobate", formula="LiNbO3", polymorph=None, pubchem_name="Lithium niobate"),
-    dict(idx=36, name="Scandium oxide", formula="Sc2O3", polymorph="bixbyite", pubchem_name="Scandium oxide"),
-    dict(idx=37, name="Silicon monoxide", formula="SiO", polymorph="amorphous", pubchem_name="Silicon monoxide"),
-    dict(idx=38, name="Silicon dioxide / quartz", formula="SiO2", polymorph="amorphous (fused silica)", pubchem_name="Silicon dioxide"),
-    dict(idx=39, name="Tantalum pentoxide", formula="Ta2O5", polymorph="amorphous", pubchem_name="Tantalum pentoxide"),
-    dict(idx=40, name="TGG", formula="Tb3Ga5O12", polymorph="garnet", pubchem_name="Terbium gallium garnet"),
-    dict(idx=41, name="Tellurium dioxide", formula="TeO2", polymorph="paratellurite", pubchem_name="Tellurium dioxide"),
-    dict(idx=42, name="Titanium dioxide (rutile / anatase)", formula="TiO2", polymorph="rutile", pubchem_name="Titanium dioxide"),
-    dict(idx=43, name="Barium titanate", formula="BaTiO3", polymorph=None, pubchem_name="Barium titanate"),
-    dict(idx=44, name="Strontium titanate", formula="SrTiO3", polymorph=None, pubchem_name="Strontium titanate"),
-    dict(idx=45, name="Vanadium dioxide", formula="VO2", polymorph="M1 (insulating)", pubchem_name="Vanadium dioxide"),
-    dict(idx=46, name="Yttrium orthovanadate", formula="YVO4", polymorph="zircon", pubchem_name="Yttrium vanadate"),
-    dict(idx=47, name="Tungsten trioxide", formula="WO3", polymorph=None, pubchem_name="Tungsten trioxide"),
-    dict(idx=48, name="Yttrium oxide", formula="Y2O3", polymorph="bixbyite", pubchem_name="Yttrium oxide"),
-    dict(idx=49, name="YAG", formula="Y3Al5O12", polymorph="garnet", pubchem_name="Yttrium aluminum garnet"),
-    dict(idx=50, name="Zinc oxide", formula="ZnO", polymorph="wurtzite", pubchem_name="Zinc oxide"),
-]
+# Canonical source: scripts/oxide_material_list.py (shared with
+# match_ri_info_oxides.py so the two can't drift apart again -- see that
+# module's docstring for why this consolidation happened).
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from oxide_material_list import MATERIALS_50, PENDING_TRIAGE_PHYSICAL_POLYMORPH  # noqa: E402
+
+MATERIALS = []
+for _m in MATERIALS_50:
+    _m = dict(_m)
+    _m.pop("ri_aliases", None)
+    # VO2/TeO2/Ta2O5: physical-properties polymorph is verified independently
+    # (MP structure pick) and kept here even though the canonical list holds
+    # None pending optical-source triage -- see oxide_material_list.py.
+    if _m["formula"] in PENDING_TRIAGE_PHYSICAL_POLYMORPH:
+        _m["polymorph"] = PENDING_TRIAGE_PHYSICAL_POLYMORPH[_m["formula"]]
+    MATERIALS.append(_m)
+del _m
 
 # Forced "no legitimate MP match" materials: either the RI.info default
 # dataset is amorphous/glass (auto-detected in Step 1, SiO confirmed
