@@ -19,7 +19,11 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from materials_db.export.modalfit import (  # noqa: E402
-    _classify_material_type, _lookup_mp_id, _polymorph_prefix, export_stack,
+    _classify_material_type, _density_confidence, _lookup_mp_id, _polymorph_prefix,
+    export_layer, export_stack,
+)
+from materials_db.pipeline.process_condition import (  # noqa: E402
+    DENSITY_BULK_APPROXIMATION, DENSITY_VERIFIED,
 )
 
 _DB_PATH = ROOT / "data" / "materials_oxide_test.db"
@@ -208,3 +212,24 @@ class TestExportStackLabelDisambiguation:
         )
         film_labels = [e["label"] for e in out["stack"] if e.get("role") not in ("ambient", "substrate")]
         assert film_labels == ["cap", "cap#2"]
+
+
+class TestDensityConfidenceCarriesThroughExport:
+    """A layer whose density is a bulk_elemental_approximation must be
+    visibly flagged in the exported JSON itself -- at fit time, not just
+    in the DB -- so a caller (or a GUI) can tell an approximated SLD from
+    a trusted one without a separate DB query."""
+
+    def test_density_confidence_helper(self):
+        assert _density_confidence("density_MP_DFT") == DENSITY_VERIFIED
+        assert _density_confidence("amorphous | density_literature") == DENSITY_VERIFIED
+        assert _density_confidence("density_bulk_elemental_approximation") == DENSITY_BULK_APPROXIMATION
+        assert _density_confidence(None) == DENSITY_VERIFIED
+
+    @pytest.mark.skipif(not _DB_PATH.exists(), reason="data/materials_oxide_test.db not built")
+    def test_verified_material_gets_pinned_bounds_in_json(self, tmp_path):
+        layer = export_layer(str(_DB_PATH), "TiO2", nk_csv_dir=tmp_path)
+        assert layer["molecular"]["density_confidence"] == DENSITY_VERIFIED
+        assert layer["materials_db"]["density_confidence"] == DENSITY_VERIFIED
+        b = layer["molecular"]["density_bounds"]
+        assert b["min"] == b["max"] == layer["molecular"]["density_g_cm3"]

@@ -49,6 +49,10 @@ from oxide_material_list import RESOLVED_OPTICAL_SOURCE_CITATION as _OXIDE_CITAT
 from fluoride_nitride_sulfide_material_list import (  # noqa: E402
     RESOLVED_OPTICAL_SOURCE_CITATION as _BATCH2_CITATIONS,
 )
+from materials_db.pipeline.process_condition import (  # noqa: E402
+    BULK_ELEMENTAL_APPROXIMATION, DENSITY_VERIFIED, DENSITY_BULK_APPROXIMATION,
+    bulk_approximation_density_bounds, verified_density_bounds,
+)
 
 # Single merged citation lookup across every batch -- a later batch (metals,
 # TMDCs, etc.) extends this same way rather than starting its own dict, so
@@ -165,6 +169,20 @@ def _polymorph_prefix(dataset_label: str) -> Optional[str]:
     if any(first.startswith(m) for m in _QUANTITY_MARKERS) or _SOURCE_LABEL_RE.match(first):
         return None
     return first
+
+
+def _density_confidence(density_dataset_label: Optional[str]) -> str:
+    """DENSITY_VERIFIED or DENSITY_BULK_APPROXIMATION, read off the
+    density row's own dataset_label (which already carries the
+    density_source via the "density_{density_source}" convention -- see
+    load_oxides_db.py's label_join()). bulk_elemental_approximation is
+    the one density_source value that does NOT count as verified -- see
+    process_condition.density_state_from_source() and
+    docs/batch3_scoping_report.md for why this is a deliberate, argued
+    distinction, not an oversight."""
+    if density_dataset_label and BULK_ELEMENTAL_APPROXIMATION in density_dataset_label:
+        return DENSITY_BULK_APPROXIMATION
+    return DENSITY_VERIFIED
 
 
 def _resolve_physical_properties(conn, material_id, material_label, dataset_label):
@@ -433,11 +451,18 @@ def export_layer(db, material_name: str, dataset_label: Optional[str] = None, *,
             optical_citation = dict(optical_citation, verification_note=resolved["verification_note"])
         mp_id = _lookup_mp_id(formula)
 
+        density_confidence = _density_confidence(phys["density_dataset_label"])
+        density_bounds = (bulk_approximation_density_bounds(u["density_g_cm3"])
+                          if density_confidence == DENSITY_BULK_APPROXIMATION
+                          else verified_density_bounds(u["density_g_cm3"]))
+
         layer = {
             "label": label,
             "role": role,
             "material_type": _classify_material_type(formula),
-            "molecular": {"formula": formula, "density_g_cm3": u["density_g_cm3"]},
+            "molecular": {"formula": formula, "density_g_cm3": u["density_g_cm3"],
+                          "density_confidence": density_confidence,
+                          "density_bounds": density_bounds},
             "structural": {
                 "thickness": _bounded(u["thickness_a"], thickness_min, thickness_max,
                                       log_default=f"{label}.thickness" if u["thickness_a"] is not None else None),
@@ -463,6 +488,7 @@ def export_layer(db, material_name: str, dataset_label: Optional[str] = None, *,
                 "dataset_label": phys["density_dataset_label"],
                 "optical_dataset_label": opt_label,
                 "mp_id": mp_id,
+                "density_confidence": density_confidence,
                 "density_source": density_citation,
                 "optical_source": optical_citation,
             },
