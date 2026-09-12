@@ -3,10 +3,12 @@
 scripts/export_all_materials_modalfit.py
 ===========================================
 Full-catalog equivalent of export_all_oxides_modalfit.py: exports every
-material across BOTH batches (50 oxides + 28 fluoride/nitride/sulfide) from
-data/materials_oxide_test.db, asserting the skip set matches KNOWN_EXCLUSIONS
-exactly -- same invariant-not-vibe-check treatment as the oxide batch's
-49/50, extended to 77/78.
+material across all three batches (50 oxides + 31 fluoride/nitride/sulfide
+-- 28 original + TiN/VN/EuS folded in once process_condition existed + 3
+pure-element triage materials) from data/materials_oxide_test.db,
+asserting the skip set matches KNOWN_EXCLUSIONS exactly -- same
+invariant-not-vibe-check treatment as the oxide batch's 49/50, extended to
+82/84.
 """
 
 import json
@@ -26,10 +28,13 @@ OUT_DIR = _ROOT / "data" / "modalfit_export"
 
 def main():
     oxides = pd.read_csv(_ROOT / "data" / "oxides_50.csv")[["formula", "name"]]
-    batch2 = pd.read_csv(_ROOT / "data" / "batch2_28.csv")[["formula", "name"]]
-    materials = pd.concat([oxides, batch2], ignore_index=True)
+    batch2 = pd.read_csv(_ROOT / "data" / "batch2_31.csv")[["formula", "name"]]
+    elements = pd.read_csv(_ROOT / "data" / "pure_element_triage.csv")[["formula", "name"]]
+    materials = pd.concat([oxides, batch2, elements], ignore_index=True)
 
-    assert len(materials) == 78, f"Expected 78 materials (50 oxides + 28 batch 2), got {len(materials)}"
+    assert len(materials) == 84, (
+        f"Expected 84 materials (50 oxides + 31 batch 2 + 3 pure-element triage), got {len(materials)}"
+    )
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 
