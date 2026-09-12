@@ -498,7 +498,22 @@ def export_stack(db, layers: list, *, ambient: str = "air", substrate: str = "si
     entirely -- a caller can see it's unset, instead of the schema
     silently omitting it. Pass a real value for any stack meant to be fit
     against real reflectivity data; ModalFit itself still reads a missing
-    value as 0.0 (that fallback lives in physics.py, not here)."""
+    value as 0.0 (that fallback lives in physics.py, not here).
+
+    Layer labels are disambiguated BEFORE any layer is exported: two layers
+    that would resolve to the same label (the same formula+polymorph, or
+    two layers explicitly given the same `label`) get a "#2", "#3", ...
+    suffix appended to every occurrence after the first. Without this, a
+    repeated-unit stack (a Bragg mirror, a superlattice -- a real sample
+    type, not a contrived one) would silently produce two layers with the
+    IDENTICAL label: their sidecar n,k CSVs would collide in nk_csv_dir
+    (the second write overwriting the first), and worse,
+    physics.extract_params() builds each fittable parameter's key as
+    f"{label}:thick" etc., so both layers would get the SAME key -- found
+    by reproducing it directly (a SiO2/Ta2O5/SiO2 stack produced two
+    ParamSpecs both keyed "SiO2_amorphous:thick"), meaning FitEngine could
+    not move the two physically distinct layers independently. See
+    docs/xrr_fit_findings.md."""
     out_dir = Path(out_dir)
 
     ambient_entry = {"label": ambient, "role": "ambient", "material_type": "ambient",
@@ -524,16 +539,47 @@ def export_stack(db, layers: list, *, ambient: str = "air", substrate: str = "si
         raise ExportError(f"Unknown substrate '{substrate}' -- only 'silicon' is supported "
                            f"as a non-DB placeholder right now.")
 
-    stack_layers = []
-    for spec in layers:
-        stack_layers.append(export_layer(
-            db, spec["material"], spec.get("dataset_label"),
-            thickness_a=spec.get("thickness_a"), thickness_min=spec.get("thickness_min"),
-            thickness_max=spec.get("thickness_max"),
-            roughness_a=spec.get("roughness_a"), roughness_min=spec.get("roughness_min"),
-            roughness_max=spec.get("roughness_max"),
-            nk_csv_dir=out_dir, role="layer", label=spec.get("label"),
-        ))
+    conn = sqlite3.connect(str(db)) if isinstance(db, (str, Path)) else db
+    close_after = isinstance(db, (str, Path))
+    try:
+        # Resolve every layer's label FIRST, using the exact same default
+        # export_layer() would compute (formula_polymorph, or bare formula
+        # with no polymorph) -- reusing its own resolution helpers rather
+        # than re-deriving the rule, so this can never silently diverge
+        # from what export_layer() would have picked on its own. Then
+        # disambiguate any collision (whether from two identical caller-
+        # supplied labels or two layers landing on the same default)
+        # before a single export_layer() call runs, so no sidecar CSV is
+        # ever written under a name a later layer will overwrite.
+        final_labels = []
+        seen_counts: dict = {}
+        for spec in layers:
+            mat_row = _find_material(conn, spec["material"])
+            if mat_row is None:
+                raise ExportError(f"Material '{spec['material']}' not found in {db}")
+            material_id, _db_name, formula = mat_row
+            if spec.get("label"):
+                base_label = spec["label"]
+            else:
+                phys = _resolve_physical_properties(conn, material_id, spec["material"], spec.get("dataset_label"))
+                base_label = f"{formula}_{phys['polymorph']}" if phys["polymorph"] else formula
+            seen_counts[base_label] = seen_counts.get(base_label, 0) + 1
+            occurrence = seen_counts[base_label]
+            final_labels.append(base_label if occurrence == 1 else f"{base_label}#{occurrence}")
+
+        stack_layers = []
+        for spec, final_label in zip(layers, final_labels):
+            stack_layers.append(export_layer(
+                conn, spec["material"], spec.get("dataset_label"),
+                thickness_a=spec.get("thickness_a"), thickness_min=spec.get("thickness_min"),
+                thickness_max=spec.get("thickness_max"),
+                roughness_a=spec.get("roughness_a"), roughness_min=spec.get("roughness_min"),
+                roughness_max=spec.get("roughness_max"),
+                nk_csv_dir=out_dir, role="layer", label=final_label,
+            ))
+    finally:
+        if close_after:
+            conn.close()
 
     stack = [ambient_entry] + stack_layers + [substrate_entry]
     return {

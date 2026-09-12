@@ -19,8 +19,10 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from materials_db.export.modalfit import (  # noqa: E402
-    _classify_material_type, _lookup_mp_id, _polymorph_prefix,
+    _classify_material_type, _lookup_mp_id, _polymorph_prefix, export_stack,
 )
+
+_DB_PATH = ROOT / "data" / "materials_oxide_test.db"
 
 
 class TestPolymorphPrefix:
@@ -132,3 +134,77 @@ class TestClassifyMaterialType:
 
     def test_unrecognized_anion_returns_unknown_not_a_guess(self):
         assert _classify_material_type("Au") == "unknown"
+
+
+class TestExportStackLabelDisambiguation:
+    """Regression tests for the repeated-material label collision:
+    export_stack() used to give two layers of the same material (a
+    Bragg mirror / repeated-unit multilayer -- a real sample type) the
+    IDENTICAL label, silently overwriting the first layer's sidecar n,k
+    CSV with the second's, and producing two physics.extract_params()
+    ParamSpecs with the same key (confirmed: a SiO2/Ta2O5/SiO2 stack gave
+    two "SiO2_amorphous:thick" entries), so FitEngine could not move the
+    two physically distinct layers independently."""
+
+    @pytest.mark.skipif(not _DB_PATH.exists(), reason="data/materials_oxide_test.db not built")
+    def test_repeated_material_gets_disambiguated_labels(self, tmp_path):
+        out = export_stack(
+            str(_DB_PATH),
+            layers=[
+                dict(material="SiO2", dataset_label="amorphous", thickness_a=50.0, roughness_a=3.0),
+                dict(material="Ta2O5", thickness_a=30.0, roughness_a=3.0),
+                dict(material="SiO2", dataset_label="amorphous", thickness_a=15.0, roughness_a=3.0),
+            ],
+            substrate="silicon", substrate_roughness_a=3.0,
+            stack_id="collision_regression_test", out_dir=tmp_path,
+        )
+        film_labels = [e["label"] for e in out["stack"] if e.get("role") not in ("ambient", "substrate")]
+        assert len(film_labels) == len(set(film_labels)), f"duplicate labels: {film_labels}"
+        assert film_labels[0] == "SiO2_amorphous"
+        assert film_labels[2] == "SiO2_amorphous#2"
+
+        # Both sidecar files must exist and be distinct -- the second
+        # write must not have overwritten the first.
+        nk_files = {e["label"]: e["optical"]["params"]["file"]
+                    for e in out["stack"] if e.get("role") not in ("ambient", "substrate")}
+        assert len(set(nk_files.values())) == 3
+        for fname in nk_files.values():
+            assert (tmp_path / fname).exists()
+
+    @pytest.mark.skipif(not _DB_PATH.exists(), reason="data/materials_oxide_test.db not built")
+    def test_no_duplicate_fittable_param_keys(self, tmp_path):
+        out = export_stack(
+            str(_DB_PATH),
+            layers=[
+                dict(material="SiO2", dataset_label="amorphous", thickness_a=50.0, roughness_a=3.0),
+                dict(material="Ta2O5", thickness_a=30.0, roughness_a=3.0),
+                dict(material="SiO2", dataset_label="amorphous", thickness_a=15.0, roughness_a=3.0),
+            ],
+            substrate="silicon", substrate_roughness_a=3.0,
+            stack_id="collision_regression_test_2", out_dir=tmp_path,
+        )
+        # This is what actually broke: physics.extract_params() building a
+        # duplicate ParamSpec key for the two SiO2 layers. Reproduce the
+        # exact key-construction rule here without depending on the
+        # ModalFit clone (not a repo dependency) -- one ParamSpec key per
+        # (label, quantity) pair.
+        keys = [f"{e['label']}:thick" for e in out["stack"] if e.get("role") not in ("ambient", "substrate")]
+        assert len(keys) == len(set(keys)), f"duplicate fittable-parameter keys: {keys}"
+
+    @pytest.mark.skipif(not _DB_PATH.exists(), reason="data/materials_oxide_test.db not built")
+    def test_explicit_duplicate_labels_also_disambiguated(self, tmp_path):
+        """Two DIFFERENT materials given the SAME explicit label by the
+        caller must also be disambiguated -- the collision isn't only a
+        same-formula concern."""
+        out = export_stack(
+            str(_DB_PATH),
+            layers=[
+                dict(material="SiO2", dataset_label="amorphous", thickness_a=50.0,
+                     roughness_a=3.0, label="cap"),
+                dict(material="Ta2O5", thickness_a=30.0, roughness_a=3.0, label="cap"),
+            ],
+            substrate="silicon", substrate_roughness_a=3.0,
+            stack_id="collision_regression_test_3", out_dir=tmp_path,
+        )
+        film_labels = [e["label"] for e in out["stack"] if e.get("role") not in ("ambient", "substrate")]
+        assert film_labels == ["cap", "cap#2"]

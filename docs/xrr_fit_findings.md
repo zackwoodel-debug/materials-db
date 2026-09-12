@@ -133,22 +133,32 @@ above. Not a schema or exporter defect.
 
 The substrate-roughness gap was found specifically because `export_stack()` had never been run
 with more than one film layer before. Auditing the rest of the exporter for the same "only ever
-exercised single-layer/single-stack" shape found one more, confirmed by reproducing it directly:
+exercised single-layer/single-stack" shape found one more, confirmed by reproducing it directly
+-- **since fixed** (see below; this section originally flagged it as a named, not-yet-fixed gap):
 
-- **Two layers sharing the same default label silently collide.** `export_layer()`'s default
+- **Two layers sharing the same default label silently collided.** `export_layer()`'s default
   `label` is `formula` (or `formula_polymorph`) when the caller doesn't supply one, and
-  `export_stack()` writes every film layer's sidecar n,k CSV into the SAME `nk_csv_dir` using
+  `export_stack()` wrote every film layer's sidecar n,k CSV into the SAME `nk_csv_dir` using
   `f"{label}_nk.csv"`. A stack with the same material appearing twice at the same dataset_label
   (e.g. a repeated-unit multilayer/Bragg mirror/superlattice -- a common real sample type, not a
-  contrived case) writes the second layer's sidecar file over the first's, and -- more
+  contrived case) wrote the second layer's sidecar file over the first's, and -- more
   significantly -- `physics.extract_params()` builds each fittable parameter's key as
-  `f"{label}:thick"` etc., so both layers get the IDENTICAL key. Confirmed directly: a
-  3-layer stack (SiO2 / Ta2O5 / SiO2, both SiO2 layers at 50A and 15A respectively) produces two
+  `f"{label}:thick"` etc., so both layers got the IDENTICAL key. Confirmed directly: a 3-layer
+  stack (SiO2 / Ta2O5 / SiO2, both SiO2 layers at 50A and 15A respectively) produced two
   `ParamSpec` objects both keyed `"SiO2_amorphous:thick"`. Since `FitEngine._x_to_vp` builds a
-  plain dict keyed by this string, marking both as `vary=True` means the optimizer cannot move
-  the two physically distinct layers independently -- whichever value the dict resolves to gets
-  applied to both. Not fixed in this pass (the fit exercise's stack has no repeated material); a
-  fix would need `export_stack()` to auto-disambiguate a caller-unspecified label when the same
-  formula+dataset_label appears more than once in one `layers` list (e.g. suffixing repeats with
-  `#2`, `#3`, ...), or to raise rather than silently collide. Flagging this now rather than
-  finding it the same way the substrate-roughness gap was found.
+  plain dict keyed by this string, marking both as `vary=True` meant the optimizer could not
+  move the two physically distinct layers independently -- whichever value the dict resolved to
+  got applied to both.
+
+  **Fixed**: `export_stack()` now resolves every layer's label (reusing `export_layer()`'s own
+  default-label rule via `_resolve_physical_properties`, so it can never silently diverge from
+  what `export_layer()` would have picked) BEFORE any layer is exported, and appends a `#2`,
+  `#3`, ... suffix to every occurrence of a label after the first -- whether the collision comes
+  from two layers landing on the same default, or from the caller explicitly supplying the same
+  `label` twice. Preferred over the minimum fix (raising on any duplicate label) because it
+  makes repeated-unit stacks work out of the box rather than pushing manual disambiguation onto
+  every caller; the cost was moderate, not large -- reusing `_resolve_physical_properties`
+  instead of re-deriving the default-label rule, and passing the DB connection through instead
+  of re-opening it per layer, kept the change contained to `export_stack()` with no change to
+  `export_layer()`'s contract. See `tests/test_modalfit_export.py`'s
+  `TestExportStackLabelDisambiguation` for the regression tests.
