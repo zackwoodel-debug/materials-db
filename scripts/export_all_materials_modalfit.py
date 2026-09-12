@@ -21,6 +21,7 @@ also needs manual updating every batch.
 
 import glob
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -35,6 +36,17 @@ DB_PATH = _ROOT / "data" / "materials_oxide_test.db"
 OUT_DIR = _ROOT / "data" / "modalfit_export"
 
 
+def _safe_dirname(name: str) -> str:
+    """Filesystem-safe directory name derived from a material's `name`
+    (the schema's real UNIQUE identity key -- see materials.name in
+    updated_sql_schema.sql), not its formula. Formula cannot be used as
+    the export key or directory name: batch 3b's Diamond and Graphite
+    genuinely share formula "C" (two distinct, optically unrelated
+    materials), the same ambiguity _find_material() (modalfit.py) raises
+    ExportError on rather than silently resolving."""
+    return re.sub(r"[^A-Za-z0-9_.-]+", "_", name).strip("_")
+
+
 def _discover_materials() -> "pd.DataFrame":
     frames = []
     for csv_path in sorted(glob.glob(str(_ROOT / "data" / "*.csv"))):
@@ -45,11 +57,30 @@ def _discover_materials() -> "pd.DataFrame":
         raise RuntimeError(f"No enrichment CSVs with formula/name columns found under {_ROOT / 'data'}")
     materials = pd.concat(frames, ignore_index=True)
 
-    dupes = materials[materials.duplicated("formula", keep=False)]
+    # `name` is the schema's real UNIQUE identity key (materials.name);
+    # `formula` is NOT unique by design -- batch 3b's Diamond and Graphite
+    # are two distinct materials genuinely sharing formula "C" -- so only
+    # a duplicate `name` is a real conflict worth failing loudly over.
+    dupes = materials[materials.duplicated("name", keep=False)]
     if not dupes.empty:
         raise AssertionError(
-            f"Formula(s) appear in more than one batch's enrichment CSV -- a real "
-            f"conflict, not expected: {sorted(dupes['formula'].unique())}"
+            f"Name(s) appear in more than one batch's enrichment CSV -- a real "
+            f"conflict, not expected: {sorted(dupes['name'].unique())}"
+        )
+
+    # Case-insensitive collision check on the derived directory name: two
+    # DISTINCT names ("Tin" / "Titanium nitride" -> "Titanium_nitride")
+    # normally can't collide, but this guards against the case that bit
+    # this batch once already (a stale directory from an old naming
+    # scheme) recurring under a new guise -- fail loudly instead of
+    # silently overwriting one material's export with another's.
+    lowered = materials["name"].apply(lambda n: _safe_dirname(n).lower())
+    case_dupes = materials[lowered.duplicated(keep=False)]
+    if not case_dupes.empty:
+        raise AssertionError(
+            f"Material name(s) collide case-insensitively once turned into a directory "
+            f"name -- would silently overwrite each other's export on a case-insensitive "
+            f"filesystem: {sorted(case_dupes['name'].unique())}"
         )
     return materials
 
@@ -67,16 +98,33 @@ def main():
         f"is missing/stale, a batch was loaded without its CSV, or a CSV wasn't loaded yet."
     )
 
+    # Wipe and recreate OUT_DIR fresh every run rather than mkdir-if-missing:
+    # a stale directory left over from a prior naming scheme (this run
+    # switched the export key from `formula` to `name`) can silently
+    # collide on a case-insensitive filesystem with a NEW directory this
+    # run creates -- exactly what happened once during batch 3b, where a
+    # leftover formula-keyed "TiN/" directory collided with this run's
+    # name-keyed "Tin/" and got overwritten. A full rebuild each run makes
+    # that class of collision structurally impossible, not just unlikely.
+    import shutil
+    if OUT_DIR.exists():
+        shutil.rmtree(OUT_DIR)
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 
     results = []
     for _, row in materials.iterrows():
         formula = row["formula"]
         name = row["name"]
-        mat_dir = OUT_DIR / formula.replace("(", "").replace(")", "")
+        dirname = _safe_dirname(name)
+        mat_dir = OUT_DIR / dirname
         try:
-            layer = export_layer(str(DB_PATH), formula, nk_csv_dir=mat_dir, label=formula)
-            layer_path = mat_dir / f"{formula}_layer.json"
+            # Look up by `name`, not `formula`: name is the schema's real
+            # UNIQUE key, and passing a formula shared by multiple
+            # materials (batch 3b's "C") would hit _find_material's
+            # ambiguity ExportError for every such material, not just the
+            # ones actually ambiguous.
+            layer = export_layer(str(DB_PATH), name, nk_csv_dir=mat_dir, label=name)
+            layer_path = mat_dir / f"{dirname}_layer.json"
             mat_dir.mkdir(parents=True, exist_ok=True)
             layer_path.write_text(json.dumps(layer, indent=2))
             results.append(dict(formula=formula, name=name, status="OK",

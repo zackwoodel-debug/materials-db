@@ -404,7 +404,13 @@ def fetch_mp(mat: dict, mpr) -> dict:
 
     docs_sorted = sorted(cache_payload, key=lambda d: d["energy_above_hull"] if d["energy_above_hull"] is not None else 1e9)
 
-    expected = EXPECTED_SPACEGROUP.get(formula)
+    # Name-keyed lookup first, formula-keyed fallback: needed for a formula
+    # stored as multiple distinct materials (batch 3b: "C" is both Diamond
+    # and Graphite, genuinely different allotropes needing different
+    # expected space groups) -- backward compatible, since every existing
+    # EXPECTED_SPACEGROUP entry is formula-keyed and no material's `name`
+    # has ever coincided with one.
+    expected = EXPECTED_SPACEGROUP.get(mat.get("name")) or EXPECTED_SPACEGROUP.get(formula)
     picked = None
     if expected:
         wanted_sgs, label = expected
@@ -432,8 +438,14 @@ def fetch_mp(mat: dict, mpr) -> dict:
     if formula in PROVENANCE_CONFIRMED_NOTE:
         out["flags"].append(PROVENANCE_CONFIRMED_NOTE[formula])
 
-    if formula in EXPERIMENTAL_DENSITY_OVERRIDE:
-        exp_density, exp_note, exp_citation = EXPERIMENTAL_DENSITY_OVERRIDE[formula]
+    # Name-keyed lookup first, formula-keyed fallback -- same reason as
+    # EXPECTED_SPACEGROUP above: a formula stored as multiple distinct
+    # materials (batch 3b's Diamond/Graphite, both "C") can need different
+    # experimental-density treatment per material, not one answer for the
+    # shared formula.
+    density_override = EXPERIMENTAL_DENSITY_OVERRIDE.get(mat.get("name")) or EXPERIMENTAL_DENSITY_OVERRIDE.get(formula)
+    if density_override:
+        exp_density, exp_note, exp_citation = density_override
         out["flags"].append(f"density overridden from MP_DFT ({out['density_g_cm3']:.4f} g/cm3) to "
                              f"experimental value ({exp_density} g/cm3): {exp_note}")
         out["density_g_cm3"] = exp_density
