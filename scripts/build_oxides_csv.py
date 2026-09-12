@@ -58,19 +58,9 @@ PUBCHEM_RATE_DELAY = 0.25  # ~4 req/s, under the 5 req/s limit
 # match_ri_info_oxides.py so the two can't drift apart again -- see that
 # module's docstring for why this consolidation happened).
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from oxide_material_list import MATERIALS_50, PENDING_TRIAGE_PHYSICAL_POLYMORPH  # noqa: E402
+from oxide_material_list import MATERIALS_50  # noqa: E402
 
-MATERIALS = []
-for _m in MATERIALS_50:
-    _m = dict(_m)
-    _m.pop("ri_aliases", None)
-    # VO2/TeO2/Ta2O5: physical-properties polymorph is verified independently
-    # (MP structure pick) and kept here even though the canonical list holds
-    # None pending optical-source triage -- see oxide_material_list.py.
-    if _m["formula"] in PENDING_TRIAGE_PHYSICAL_POLYMORPH:
-        _m["polymorph"] = PENDING_TRIAGE_PHYSICAL_POLYMORPH[_m["formula"]]
-    MATERIALS.append(_m)
-del _m
+MATERIALS = [{k: v for k, v in m.items() if k != "ri_aliases"} for m in MATERIALS_50]
 
 # Forced "no legitimate MP match" materials: either the RI.info default
 # dataset is amorphous/glass (auto-detected in Step 1, SiO confirmed

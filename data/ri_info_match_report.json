@@ -1329,7 +1329,7 @@
     "idx": 39,
     "name": "Tantalum pentoxide",
     "formula": "Ta2O5",
-    "polymorph": null,
+    "polymorph": "amorphous",
     "status": "MULTIPLE",
     "datasets": [
       {
@@ -1507,7 +1507,7 @@
     "idx": 41,
     "name": "Tellurium dioxide",
     "formula": "TeO2",
-    "polymorph": null,
+    "polymorph": "paratellurite",
     "status": "MULTIPLE",
     "datasets": [
       {
@@ -1743,7 +1743,7 @@
     "idx": 45,
     "name": "Vanadium dioxide",
     "formula": "VO2",
-    "polymorph": null,
+    "polymorph": "M1 (insulating)",
     "status": "MULTIPLE",
     "datasets": [
       {

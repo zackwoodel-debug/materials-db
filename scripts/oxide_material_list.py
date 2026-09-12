@@ -15,16 +15,11 @@ polymorph prefixes for 16 of them (e.g. BeO: physical_properties said
 o-ray", no prefix at all). Both steps now import MATERIALS_50 from here, so
 that can't happen again.
 
-Three materials are DELIBERATELY left with polymorph=None here even though
-scripts/build_oxides_csv.py's own physical-properties selection has since
-verified a specific phase for them (VO2: "M1 (insulating)", TeO2:
-"paratellurite", Ta2O5: "amorphous") -- see PENDING_TRIAGE_PHYSICAL_POLYMORPH
-below. The question of whether the RI.info OPTICAL measurement for each is
-the SAME phase as the physical-properties pick is a claim that needs
-checking per-material, not backfilled by string-matching; until that's
-resolved, the optical side stays unlabeled (None) here rather than assuming
-agreement. Do not add these three to MATERIALS_50's polymorph field until
-that triage is explicitly resolved.
+VO2, TeO2, and Ta2O5 were held out of this list pending per-material
+optical-source verification (the claim that the RI.info optical measurement
+is the same phase as the physical-properties pick needs checking, not
+backfilling by string-matching). All three are now resolved and included
+above -- see the triage resolution record below for the citations.
 """
 
 MATERIALS_50 = [
@@ -104,11 +99,11 @@ MATERIALS_50 = [
          pubchem_name="Silicon monoxide", ri_aliases=["SiO"]),
     dict(idx=38, name="Silicon dioxide / quartz", formula="SiO2", polymorph="amorphous",
          pubchem_name="Silicon dioxide", ri_aliases=["SiO2"]),
-    dict(idx=39, name="Tantalum pentoxide", formula="Ta2O5", polymorph=None,
+    dict(idx=39, name="Tantalum pentoxide", formula="Ta2O5", polymorph="amorphous",
          pubchem_name="Tantalum pentoxide", ri_aliases=["Ta2O5"]),
     dict(idx=40, name="TGG", formula="Tb3Ga5O12", polymorph="garnet",
          pubchem_name="Terbium gallium garnet", ri_aliases=["Tb3Ga5O12", "TGG"]),
-    dict(idx=41, name="Tellurium dioxide", formula="TeO2", polymorph=None,
+    dict(idx=41, name="Tellurium dioxide", formula="TeO2", polymorph="paratellurite",
          pubchem_name="Tellurium dioxide", ri_aliases=["TeO2"]),
     dict(idx=42, name="Titanium dioxide (rutile / anatase)", formula="TiO2", polymorph="rutile",
          pubchem_name="Titanium dioxide", ri_aliases=["TiO2"]),
@@ -116,7 +111,7 @@ MATERIALS_50 = [
          pubchem_name="Barium titanate", ri_aliases=["BaTiO3"]),
     dict(idx=44, name="Strontium titanate", formula="SrTiO3", polymorph=None,
          pubchem_name="Strontium titanate", ri_aliases=["SrTiO3"]),
-    dict(idx=45, name="Vanadium dioxide", formula="VO2", polymorph=None,
+    dict(idx=45, name="Vanadium dioxide", formula="VO2", polymorph="M1 (insulating)",
          pubchem_name="Vanadium dioxide", ri_aliases=["VO2"]),
     dict(idx=46, name="Yttrium orthovanadate", formula="YVO4", polymorph="zircon",
          pubchem_name="Yttrium vanadate", ri_aliases=["YVO4"]),
@@ -130,15 +125,44 @@ MATERIALS_50 = [
          pubchem_name="Zinc oxide", ri_aliases=["ZnO"]),
 ]
 
-# Pending optical-source triage (see conversation history / PR description):
-# these 3 materials' PHYSICAL PROPERTIES polymorph has already been verified
-# independently (via the MP structure pick), but whether the RI.info OPTICAL
-# measurement is the same phase has not been confirmed to the same standard
-# as everything else in MATERIALS_50 -- so it's kept out of the shared list
-# and applied only on the physical-properties side (scripts/build_oxides_csv.py)
-# until triage resolves. Do not use this to backfill optical_dispersion.
-PENDING_TRIAGE_PHYSICAL_POLYMORPH = {
-    "VO2": "M1 (insulating)",     # Beaini et al., 70nm film @ 25C (below the ~68C MIT) -- reads as M1, unconfirmed to canonical standard
-    "TeO2": "paratellurite",       # Uchida 1971 title says "paratellurite" explicitly -- strong match, unconfirmed to canonical standard
-    "Ta2O5": "amorphous",          # Bright et al. comments say "Amorphous thin film" explicitly -- strong match, unconfirmed to canonical standard
+# Optical-source triage resolution record (formerly PENDING_TRIAGE_PHYSICAL_
+# POLYMORPH, held out of MATERIALS_50 pending per-material verification --
+# now resolved and folded into the list above). Each phase call was checked
+# against the specific measurement condition stated in the optical source
+# itself, not inferred from the physical-properties pick:
+#   VO2   -> M1 (insulating): Beaini et al., 70nm film measured at 25 C,
+#            below VO2's ~68 C metal-insulator transition -- monoclinic M1.
+#   TeO2  -> paratellurite: Uchida 1971 paper title states this directly
+#            ("Optical properties of single-crystal paratellurite (TeO2)").
+#   Ta2O5 -> amorphous: Bright et al.'s RI.info COMMENTS field states
+#            "Amorphous thin film" explicitly -- NOT a crystalline phase name.
+# Full citations below, carried into each exported layer's provenance
+# (materials_db.export.modalfit) so a future reader can see the phase label
+# was verified against a stated measurement condition, not inferred.
+RESOLVED_OPTICAL_SOURCE_CITATION = {
+    "VO2": dict(
+        doi="10.1016/j.solmat.2019.110260",
+        title="Thermochromic VO2-based smart radiator devices with ultralow "
+              "refractive index cavities for increased performance",
+        authors="Beaini, R.; Baloukas, B.; Loquai, S.; Klemberg-Sapieha, J.E.; Martinu, L.",
+        journal="Solar Energy Materials and Solar Cells", year=2020,
+        verification_note="70nm film measured at 25 C, below VO2's ~68 C metal-insulator "
+                           "transition -- confirms monoclinic M1 (insulating) phase.",
+    ),
+    "TeO2": dict(
+        doi="10.1103/PhysRevB.4.3736",
+        title="Optical properties of single-crystal paratellurite (TeO2)",
+        authors="Uchida, N.",
+        journal="Physical Review B", year=1971,
+        verification_note="Paper title explicitly names the measured phase: paratellurite.",
+    ),
+    "Ta2O5": dict(
+        doi="10.1063/1.4819325",
+        title="Infrared optical properties of amorphous and nanocrystalline Ta2O5 thin films",
+        authors="Bright, T.J.; Watjen, J.I.; Zhang, Z.M.; Muratore, C.; Voevodin, A.A.; "
+                "Koukis, D.I.; Tanner, D.B.; Arenas, D.J.",
+        journal="Journal of Applied Physics", year=2013,
+        verification_note="RI.info's COMMENTS field for this dataset states \"Amorphous thin "
+                           "film\" explicitly -- not a crystalline phase name.",
+    ),
 }

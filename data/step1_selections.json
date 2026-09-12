@@ -837,8 +837,8 @@
   "Ta2O5": {
     "idx": 39,
     "name": "Tantalum pentoxide",
-    "polymorph": null,
-    "effective_polymorph": null,
+    "polymorph": "amorphous",
+    "effective_polymorph": "amorphous",
     "amorphous_default": true,
     "default_paper": "Bright et al. 2013: n,k 0.5\u20131000 \u00b5m",
     "axes": [
@@ -847,7 +847,7 @@
         "axis": "none (isotropic/cubic/amorphous)",
         "data_path": "main/Ta2O5/nk/Bright-amorphous.yml",
         "wl_range": "0.500-1000.000 um",
-        "dataset_label": "Bright2013"
+        "dataset_label": "amorphous | Bright2013"
       }
     ]
   },
@@ -871,8 +871,8 @@
   "TeO2": {
     "idx": 41,
     "name": "Tellurium dioxide",
-    "polymorph": null,
-    "effective_polymorph": null,
+    "polymorph": "paratellurite",
+    "effective_polymorph": "paratellurite",
     "amorphous_default": false,
     "default_paper": "Uchida 1971: \u03b1-TeO<sub>2</sub>",
     "axes": [
@@ -881,14 +881,14 @@
         "axis": "ordinary (o)",
         "data_path": "main/TeO2/nk/Uchida-o.yml",
         "wl_range": "0.400-1.000 um",
-        "dataset_label": "Uchida1971 | o-ray"
+        "dataset_label": "paratellurite | Uchida1971 | o-ray"
       },
       {
         "page": "Uchida-e",
         "axis": "extraordinary (e)",
         "data_path": "main/TeO2/nk/Uchida-e.yml",
         "wl_range": "0.400-1.000 um",
-        "dataset_label": "Uchida1971 | e-ray"
+        "dataset_label": "paratellurite | Uchida1971 | e-ray"
       }
     ]
   },
@@ -960,8 +960,8 @@
   "VO2": {
     "idx": 45,
     "name": "Vanadium dioxide",
-    "polymorph": null,
-    "effective_polymorph": null,
+    "polymorph": "M1 (insulating)",
+    "effective_polymorph": "M1 (insulating)",
     "amorphous_default": false,
     "default_paper": "Beaini et al. 2020: n,k 0.5\u201325 \u00b5m; 25 \u00b0C",
     "axes": [
@@ -970,7 +970,7 @@
         "axis": "none (isotropic/cubic/amorphous)",
         "data_path": "main/VO2/nk/Beaini-25C.yml",
         "wl_range": "0.500-25.000 um",
-        "dataset_label": "Beaini2020"
+        "dataset_label": "M1 (insulating) | Beaini2020"
       }
     ]
   },

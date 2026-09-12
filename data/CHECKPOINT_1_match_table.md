@@ -320,9 +320,9 @@ All 50/50 materials have >=1 match in refractiveindex.info. Every optical axis (
     - `Herguedas` axis=none (isotropic/cubic/amorphous), range=5.000-25.000 um, covers 633nm: no -- Herguedas and Carretero 2023: n,k 5.0–25 µm
 
 
-## 39. Tantalum pentoxide (Ta2O5)
+## 39. Tantalum pentoxide (Ta2O5) -- list polymorph: amorphous
 - **main/Ta2O5/Bright-amorphous -- Bright et al. 2013: n,k 0.5–1000 µm** (DEFAULT)
-    - `Bright-amorphous` axis=none (isotropic/cubic/amorphous), range=0.500-1000.000 um, covers 633nm: yes, dataset_label=`Bright2013` -- Bright et al. 2013: n,k 0.5–1000 µm
+    - `Bright-amorphous` axis=none (isotropic/cubic/amorphous), range=0.500-1000.000 um, covers 633nm: yes, dataset_label=`amorphous | Bright2013` -- Bright et al. 2013: n,k 0.5–1000 µm
 - main/Ta2O5/Cheikh-amorphous-3.28-4-25 -- Cheikh et al. 2025: Power 3.28, O2 4, As deposited
     - `Cheikh-amorphous-3.28-4-25` axis=none (isotropic/cubic/amorphous), range=0.207-1.240 um, covers 633nm: yes -- Cheikh et al. 2025: Power 3.28, O2 4, As deposited; n,k 0.207–1.24 µm
 - main/Ta2O5/Cheikh-amorphous-3.28-8-25 -- Cheikh et al. 2025: Power 3.28, O2 8, As deposited
@@ -366,10 +366,10 @@ All 50/50 materials have >=1 match in refractiveindex.info. Every optical axis (
     - `Franta` axis=none (isotropic/cubic/amorphous), range=0.120-400.009 um, covers 633nm: yes -- Franta et al. 2025: n,k 0.120–400 µm
 
 
-## 41. Tellurium dioxide (TeO2)
+## 41. Tellurium dioxide (TeO2) -- list polymorph: paratellurite
 - **main/TeO2/Uchida -- Uchida 1971: α-TeO<sub>2</sub>** (DEFAULT)
-    - `Uchida-o` axis=ordinary (o), range=0.400-1.000 um, covers 633nm: yes, dataset_label=`Uchida1971 | o-ray` -- Uchida 1971: α-TeO<sub>2</sub>; n(o) 0.4–1.0 µm
-    - `Uchida-e` axis=extraordinary (e), range=0.400-1.000 um, covers 633nm: yes, dataset_label=`Uchida1971 | e-ray` -- Uchida 1971: α-TeO<sub>2</sub>; n(e) 0.4–1.0 µm
+    - `Uchida-o` axis=ordinary (o), range=0.400-1.000 um, covers 633nm: yes, dataset_label=`paratellurite | Uchida1971 | o-ray` -- Uchida 1971: α-TeO<sub>2</sub>; n(o) 0.4–1.0 µm
+    - `Uchida-e` axis=extraordinary (e), range=0.400-1.000 um, covers 633nm: yes, dataset_label=`paratellurite | Uchida1971 | e-ray` -- Uchida 1971: α-TeO<sub>2</sub>; n(e) 0.4–1.0 µm
 
 
 ## 42. Titanium dioxide (rutile / anatase) (TiO2) -- list polymorph: rutile
@@ -424,9 +424,9 @@ All 50/50 materials have >=1 match in refractiveindex.info. Every optical axis (
     - `Wohlecke-mx` axis=none (isotropic/cubic/amorphous), range=0.300-1.000 um, covers 633nm: yes -- Wöhlecke et al. 1977: Microcrystalline; n 0.3–1.0 µm
 
 
-## 45. Vanadium dioxide (VO2)
+## 45. Vanadium dioxide (VO2) -- list polymorph: M1 (insulating)
 - **main/VO2/Beaini-25C -- Beaini et al. 2020: n,k 0.5–25 µm; 25 °C** (DEFAULT)
-    - `Beaini-25C` axis=none (isotropic/cubic/amorphous), range=0.500-25.000 um, covers 633nm: yes, dataset_label=`Beaini2020` -- Beaini et al. 2020: n,k 0.5–25 µm; 25 °C
+    - `Beaini-25C` axis=none (isotropic/cubic/amorphous), range=0.500-25.000 um, covers 633nm: yes, dataset_label=`M1 (insulating) | Beaini2020` -- Beaini et al. 2020: n,k 0.5–25 µm; 25 °C
 - main/VO2/Beaini-100C -- Beaini et al. 2020: n,k 0.5–25 µm; 100 °C
     - `Beaini-100C` axis=none (isotropic/cubic/amorphous), range=0.500-25.000 um, covers 633nm: yes -- Beaini et al. 2020: n,k 0.5–25 µm; 100 °C
 - main/VO2/Oguntoye-20C -- Oguntoye et al. 2023: n,k 0.21–2.5 µm; 20 °C
