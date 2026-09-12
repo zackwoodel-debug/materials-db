@@ -23,10 +23,12 @@ from materials_db.pipeline.process_condition import (  # noqa: E402
     DENSITY_UNRESOLVED,
     DENSITY_VERIFIED,
     bulk_approximation_density_bounds,
+    crosscheck_element_density_periodictable,
     density_state_from_source,
     format_process_condition,
     looks_like_process_condition,
     materials_with_density_state,
+    materials_with_uncrosschecked_mp_density,
     open_tasks,
     parse_process_condition,
     task_detail,
@@ -162,3 +164,48 @@ class TestTrackedOpenTasks:
     def test_unknown_task_raises(self):
         with pytest.raises(ValueError, match="Unrecognized task id"):
             task_detail("not_a_real_task")
+
+    def test_mp_density_crosscheck_compounds_is_open_with_66_materials(self):
+        assert "mp_density_crosscheck_compounds" in open_tasks()
+        detail = task_detail("mp_density_crosscheck_compounds")
+        assert len(detail["affected_materials"]) == 66
+        assert "CuO" in detail["affected_materials"]  # one of the spot-checked-but-not-yet-cited
+
+
+class TestMpDensityCrosscheck:
+    """Ce and Yb showed MP_DFT density can be wrong by 35-41% -- an
+    uncrosschecked MP_DFT density isn't meaningfully more trustworthy
+    than DENSITY_BULK_APPROXIMATION. These make "how many materials are
+    exposed" and "does this specific value check out" real, queryable
+    answers instead of a two-material footnote."""
+
+    @pytest.mark.skipif(not _DB_PATH.exists(), reason="data/materials_oxide_test.db not built")
+    def test_uncrosschecked_mp_density_count(self):
+        """71 materials across all batches currently have a raw,
+        uncrosschecked MP_DFT density -- the real count, not a guess."""
+        uncrosschecked = materials_with_uncrosschecked_mp_density(str(_DB_PATH))
+        assert len(uncrosschecked) == 71
+        formulas = {m["formula"] for m in uncrosschecked}
+        assert "Se" in formulas  # a pure element, cross-checked clean via periodictable
+        assert "CuO" in formulas  # a compound, spot-checked clean via literature
+
+    def test_crosscheck_matches_known_good_value(self):
+        """Se's DB density (4.4956) vs periodictable's handbook value
+        (4.79) is a real, already-computed -6.1% deviation -- well under
+        the flag threshold."""
+        result = crosscheck_element_density_periodictable("Se", 4.495591)
+        assert result["periodictable_density"] == pytest.approx(4.79, abs=0.01)
+        assert not result["flagged"]
+
+    def test_crosscheck_flags_a_large_deviation(self):
+        """Reproduce the Ce case directly: MP_DFT's raw value (9.1237,
+        before the literature override) vs periodictable's handbook value
+        (6.77) is a +35% deviation -- exactly the case this mechanism
+        exists to catch."""
+        result = crosscheck_element_density_periodictable("Ce", 9.1237)
+        assert result["flagged"] is True
+        assert result["deviation_pct"] > 30
+
+    def test_crosscheck_raises_for_a_compound(self):
+        with pytest.raises(ValueError, match="not a recognized single element"):
+            crosscheck_element_density_periodictable("TiO2", 4.23)

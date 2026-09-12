@@ -268,6 +268,54 @@ TRACKED_OPEN_TASKS = {
         blocking_on=None,  # not blocked on anything -- deliberately deferred, not stuck
         status="open",  # "open" | "done" | "wont_do" -- update in place, don't delete silently
     ),
+    "mp_density_crosscheck_compounds": dict(
+        description=(
+            "Ce and Yb (batch 3, pure elements) showed MP_DFT density can diverge from an "
+            "independent value by 35-41% -- both lanthanides with documented anomalous valence "
+            "behavior, a known hard case for standard DFT exchange-correlation functionals. An "
+            "MP_DFT density that has never been cross-checked against anything is not "
+            "meaningfully more trustworthy than DENSITY_BULK_APPROXIMATION; it just hasn't been "
+            "looked at. Across all 131 currently-loaded materials, 71 have a density row that "
+            "is raw, uncrosschecked MP_DFT (55% of the 129 materials with any density at all). "
+            "Of those 71: 5 are pure elements (Ag, Ge, Se, Si, Te) -- cross-checked against "
+            "periodictable's independent handbook density (a free, already-available second "
+            "source for elements): all 5 within 6.1% deviation, none flagged at the 10% "
+            "threshold. The other 66 are COMPOUNDS, for which periodictable has no equivalent "
+            "compound-density table -- no equally cheap independent source exists. A targeted "
+            "spot-check of 6 compounds chosen for the SAME anomalous-valence/complex-magnetism "
+            "risk profile as Ce/Yb (Fe3O4, CuO, Dy2O3, Lu2O3, CeF3, LaAlO3) against handbook/"
+            "literature values found via web search came back reassuring, not alarming: worst "
+            "case CuO at -7.9% (measured tenorite: 6.45 g/cm3 vs. our MP_DFT: 5.938 g/cm3), "
+            "Fe3O4 -1.2%, CeF3 +1.2%, Lu2O3 +4.1% -- none near Ce/Yb's 35-41% scale. This is "
+            "reassuring for those 6, not proof the other 60 are fine -- it is a spot-check, not "
+            "an exhaustive pass."
+        ),
+        affected_materials=[
+            'Al2O3', 'AlN', 'BN', 'BaB2O4', 'BaF2', 'BaTiO3', 'BeAl2O4', 'BeAl6O10', 'BeO',
+            'Bi12GeO20', 'CaCO3', 'CaF2', 'CaMoO4', 'CdF2', 'CdS', 'CeF3', 'CsF', 'CsLiB6O10',
+            'Cu2O', 'CuO', 'Dy2O3', 'Fe2O3', 'Fe3O4', 'GaN', 'GaS', 'GeS2', 'HfO2', 'KF', 'KNbO3',
+            'LaAlO3', 'LaF3', 'LiB3O5', 'LiCaAlF6', 'LiF', 'LiIO3', 'LiNbO3', 'Lu2O3', 'Lu3Al5O12',
+            'MgAl2O4', 'MgF2', 'MgO', 'MoO2', 'MoO3', 'NaF', 'Pb5Ge3O11', 'PbF2', 'PbMoO4', 'PbS',
+            'RbF', 'Sc2O3', 'SrF2', 'SrMoO4', 'SrTiO3', 'Tb3Ga5O12', 'TeO2', 'ThF4', 'TiO2', 'VO2',
+            'WO3', 'Y2O3', 'Y3Al5O12', 'YLiF4', 'YVO4', 'YbF3', 'ZnO', 'ZnS',
+        ],  # 66 compounds; the 6 already spot-checked (Fe3O4, CuO, Dy2O3, Lu2O3, CeF3, LaAlO3)
+            # are deliberately left IN this list -- a spot-check is not the same as the
+            # systematic per-material citation this task is tracking; don't let their presence
+            # in a paragraph above be mistaken for them being done.
+        cost_estimate=(
+            "No cheap, already-available second source exists for compounds the way "
+            "periodictable covers elements -- each of the 66 needs an actual literature/"
+            "handbook density lookup (a WebSearch or primary-source check per material, similar "
+            "effort to a single EXPECTED_SPACEGROUP resolution). Rough scale: 60 remaining "
+            "materials x a few minutes each of real verification work, not a bulk/automatable "
+            "pass -- a multi-session effort, not a half-day task like the amorphous migration. "
+            "Prioritize by DFT-difficulty risk profile first (mixed-valence transition metals, "
+            "lanthanide/actinide-containing compounds, magnetic materials -- the same profile "
+            "that flagged Ce/Yb) rather than working through the list in an arbitrary order."
+        ),
+        blocking_on=None,
+        status="open",
+    ),
 }
 
 
@@ -282,3 +330,70 @@ def task_detail(task_id: str) -> dict:
     if task_id not in TRACKED_OPEN_TASKS:
         raise ValueError(f"Unrecognized task id {task_id!r}. Known: {sorted(TRACKED_OPEN_TASKS)}")
     return TRACKED_OPEN_TASKS[task_id]
+
+
+# ---------------------------------------------------------------------------
+# 4. MP density cross-check -- Ce and Yb (batch 3) showed MP_DFT density can
+# diverge from a real independent value by 35-41% (both lanthanides with
+# documented anomalous valence behavior, a known hard case for standard DFT
+# functionals). An MP_DFT density that has never been cross-checked against
+# ANY independent source is not meaningfully more trustworthy than
+# DENSITY_BULK_APPROXIMATION -- it just doesn't look that way, because
+# nothing has looked. This section makes "how many materials are in that
+# position" a real, queryable answer instead of a two-material footnote.
+# ---------------------------------------------------------------------------
+
+def materials_with_uncrosschecked_mp_density(db) -> list:
+    """Every material whose ONLY density value is raw MP_DFT (no
+    EXPERIMENTAL_DENSITY_OVERRIDE, no literature citation, no independent
+    cross-check ever performed) -- the same DB-query pattern as
+    materials_with_density_state(), because this is a live, growing risk,
+    not a fixed list. `db` is a path/str or an existing sqlite3.Connection."""
+    import sqlite3
+    from pathlib import Path as _Path
+
+    conn = sqlite3.connect(str(db)) if isinstance(db, (str, _Path)) else db
+    close_after = isinstance(db, (str, _Path))
+    try:
+        rows = conn.execute(
+            "SELECT DISTINCT m.name, m.formula, p.density_g_cm3, p.dataset_label "
+            "FROM physical_properties p JOIN materials m ON m.material_id = p.material_id "
+            "WHERE p.density_g_cm3 IS NOT NULL"
+        ).fetchall()
+    finally:
+        if close_after:
+            conn.close()
+
+    return [dict(name=name, formula=formula, density_g_cm3=density, dataset_label=dataset_label)
+            for name, formula, density, dataset_label in rows
+            if "density_MP_DFT" in dataset_label]
+
+
+def crosscheck_element_density_periodictable(formula: str, db_density_g_cm3: float,
+                                              threshold_pct: float = 10.0) -> dict:
+    """Cross-check a PURE ELEMENT's density against periodictable's
+    built-in handbook bulk density -- a real, free, independent second
+    source already available in this repo's dependencies (distinct from
+    both MP's DFT calculation and any RI.info-cited thin-film
+    measurement). Only meaningful for single-element formulas; raises for
+    a compound, where periodictable has no compound-density table (no
+    equally cheap independent source exists for compounds -- see
+    TRACKED_OPEN_TASKS["mp_density_crosscheck_compounds"]).
+
+    Returns {formula, db_density, periodictable_density, deviation_pct,
+    flagged} -- flagged=True when |deviation_pct| exceeds threshold_pct
+    (default 10%, chosen to sit comfortably above the ~1-8% scatter
+    normal DFT/handbook/thin-film differences show, and far below the
+    35-41% Ce/Yb divergence that motivated this check)."""
+    import periodictable
+
+    try:
+        pt_density = getattr(periodictable, formula).density
+    except AttributeError:
+        raise ValueError(
+            f"'{formula}' is not a recognized single element in periodictable -- "
+            f"this cross-check is element-only, not for compounds."
+        )
+    deviation_pct = 100.0 * (db_density_g_cm3 - pt_density) / pt_density
+    return dict(formula=formula, db_density=db_density_g_cm3, periodictable_density=pt_density,
+                deviation_pct=deviation_pct, flagged=abs(deviation_pct) > threshold_pct)
