@@ -3,14 +3,23 @@
 scripts/export_all_materials_modalfit.py
 ===========================================
 Full-catalog equivalent of export_all_oxides_modalfit.py: exports every
-material across all three batches (50 oxides + 31 fluoride/nitride/sulfide
--- 28 original + TiN/VN/EuS folded in once process_condition existed + 3
-pure-element triage materials) from data/materials_oxide_test.db,
-asserting the skip set matches KNOWN_EXCLUSIONS exactly -- same
-invariant-not-vibe-check treatment as the oxide batch's 49/50, extended to
-82/84.
+material across every batch from data/materials_oxide_test.db, asserting
+the skip set matches KNOWN_EXCLUSIONS exactly -- same
+invariant-not-vibe-check treatment as the oxide batch's 49/50.
+
+Which materials that is is discovered, not hardcoded: globs data/*.csv
+for any file with "formula" and "name" columns (the shape every batch's
+build_*_csv.py produces), same technique as _lookup_mp_id in
+materials_db/export/modalfit.py -- a hardcoded 3-filename list here would
+be the exact same failure shape that function had twice (see that
+module's _lookup_mp_id docstring): silently missing a batch's materials
+because a file was renamed or a new batch's CSV was added without
+updating a list in a second place. The expected total is cross-checked
+against the live DB's own materials count, not a hardcoded number that
+also needs manual updating every batch.
 """
 
+import glob
 import json
 import sys
 from pathlib import Path
@@ -26,14 +35,36 @@ DB_PATH = _ROOT / "data" / "materials_oxide_test.db"
 OUT_DIR = _ROOT / "data" / "modalfit_export"
 
 
-def main():
-    oxides = pd.read_csv(_ROOT / "data" / "oxides_50.csv")[["formula", "name"]]
-    batch2 = pd.read_csv(_ROOT / "data" / "batch2_31.csv")[["formula", "name"]]
-    elements = pd.read_csv(_ROOT / "data" / "pure_element_triage.csv")[["formula", "name"]]
-    materials = pd.concat([oxides, batch2, elements], ignore_index=True)
+def _discover_materials() -> "pd.DataFrame":
+    frames = []
+    for csv_path in sorted(glob.glob(str(_ROOT / "data" / "*.csv"))):
+        df = pd.read_csv(csv_path)
+        if "formula" in df.columns and "name" in df.columns:
+            frames.append(df[["formula", "name"]])
+    if not frames:
+        raise RuntimeError(f"No enrichment CSVs with formula/name columns found under {_ROOT / 'data'}")
+    materials = pd.concat(frames, ignore_index=True)
 
-    assert len(materials) == 84, (
-        f"Expected 84 materials (50 oxides + 31 batch 2 + 3 pure-element triage), got {len(materials)}"
+    dupes = materials[materials.duplicated("formula", keep=False)]
+    if not dupes.empty:
+        raise AssertionError(
+            f"Formula(s) appear in more than one batch's enrichment CSV -- a real "
+            f"conflict, not expected: {sorted(dupes['formula'].unique())}"
+        )
+    return materials
+
+
+def main():
+    materials = _discover_materials()
+
+    import sqlite3
+    conn = sqlite3.connect(str(DB_PATH))
+    db_count = conn.execute("SELECT COUNT(*) FROM materials").fetchone()[0]
+    conn.close()
+    assert len(materials) == db_count, (
+        f"Discovered {len(materials)} materials across data/*.csv enrichment files, but "
+        f"the DB has {db_count} materials rows -- these must match exactly. Either a CSV "
+        f"is missing/stale, a batch was loaded without its CSV, or a CSV wasn't loaded yet."
     )
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
