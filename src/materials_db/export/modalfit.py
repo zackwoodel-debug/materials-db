@@ -134,14 +134,33 @@ def _bounded(value, vmin=None, vmax=None, log_default=None):
 # ---------------------------------------------------------------------------
 
 def _find_material(conn, name):
+    """Look up a materials row by exact name first, falling back to
+    formula. Raises ExportError (does not silently pick one) if the
+    formula fallback matches more than one row -- true for any formula
+    with multiple genuinely distinct allotropes stored as separate
+    materials rows (e.g. "C" resolves to both Diamond and Graphite,
+    batch 3b). Before this check, .fetchone() on the formula query would
+    silently return whichever row SQLite happened to return first for an
+    ambiguous formula -- the same silent-wrong-answer shape this project
+    has hunted down repeatedly elsewhere (_lookup_mp_id, material_type,
+    batch 1's polymorph fallback). A caller hitting this must specify the
+    exact material name instead of the formula."""
     row = conn.execute(
         "SELECT material_id, name, formula FROM materials WHERE name = ?", (name,)
     ).fetchone()
-    if row is None:
-        row = conn.execute(
-            "SELECT material_id, name, formula FROM materials WHERE formula = ?", (name,)
-        ).fetchone()
-    return row
+    if row is not None:
+        return row
+
+    matches = conn.execute(
+        "SELECT material_id, name, formula FROM materials WHERE formula = ?", (name,)
+    ).fetchall()
+    if len(matches) > 1:
+        names = [m[1] for m in matches]
+        raise ExportError(
+            f"Formula '{name}' matches {len(matches)} distinct materials: {names}. "
+            f"Specify the exact material name instead of the formula to disambiguate."
+        )
+    return matches[0] if matches else None
 
 
 # dataset_label shapes (see scripts/load_oxides_db.py / build_checkpoint1_report.py):

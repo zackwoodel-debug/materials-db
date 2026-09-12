@@ -19,8 +19,8 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from materials_db.export.modalfit import (  # noqa: E402
-    _classify_material_type, _density_confidence, _lookup_mp_id, _polymorph_prefix,
-    export_layer, export_stack,
+    ExportError, _classify_material_type, _density_confidence, _find_material, _lookup_mp_id,
+    _polymorph_prefix, export_layer, export_stack,
 )
 from materials_db.pipeline.process_condition import (  # noqa: E402
     DENSITY_BULK_APPROXIMATION, DENSITY_VERIFIED,
@@ -252,3 +252,44 @@ class TestDensityConfidenceCarriesThroughExport:
         assert layer["materials_db"]["density_confidence"] == DENSITY_VERIFIED
         b = layer["molecular"]["density_bounds"]
         assert b["min"] == b["max"] == layer["molecular"]["density_g_cm3"]
+
+
+class TestFindMaterialFormulaAmbiguity:
+    """Regression test for the ambiguity _find_material() must catch, not
+    silently resolve: a formula with multiple genuinely distinct
+    materials rows (carbon's Diamond and Graphite, batch 3b -- the same
+    formula "C" deliberately stored as two separate materials, since
+    they're optically nothing alike). Before this check, .fetchone() on
+    the formula-fallback query would silently return whichever row
+    SQLite happened to return first."""
+
+    def test_unambiguous_formula_still_resolves(self, tmp_path):
+        import sqlite3
+        conn = sqlite3.connect(":memory:")
+        conn.execute("CREATE TABLE materials (material_id INTEGER PRIMARY KEY, name TEXT, formula TEXT)")
+        conn.execute("INSERT INTO materials (name, formula) VALUES ('Silicon', 'Si')")
+        row = _find_material(conn, "Si")
+        assert row is not None
+        assert row[1] == "Silicon"
+
+    def test_ambiguous_formula_raises(self):
+        import sqlite3
+        conn = sqlite3.connect(":memory:")
+        conn.execute("CREATE TABLE materials (material_id INTEGER PRIMARY KEY, name TEXT, formula TEXT)")
+        conn.execute("INSERT INTO materials (name, formula) VALUES ('Diamond', 'C')")
+        conn.execute("INSERT INTO materials (name, formula) VALUES ('Graphite', 'C')")
+        with pytest.raises(ExportError, match="matches 2 distinct materials"):
+            _find_material(conn, "C")
+
+    def test_exact_name_bypasses_the_ambiguity(self):
+        """Looking up by the exact name ('Diamond') must still work even
+        when the formula alone would be ambiguous -- name is checked
+        first and short-circuits before the formula fallback runs."""
+        import sqlite3
+        conn = sqlite3.connect(":memory:")
+        conn.execute("CREATE TABLE materials (material_id INTEGER PRIMARY KEY, name TEXT, formula TEXT)")
+        conn.execute("INSERT INTO materials (name, formula) VALUES ('Diamond', 'C')")
+        conn.execute("INSERT INTO materials (name, formula) VALUES ('Graphite', 'C')")
+        row = _find_material(conn, "Diamond")
+        assert row is not None
+        assert row[1] == "Diamond"
