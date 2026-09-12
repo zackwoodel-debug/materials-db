@@ -23,14 +23,46 @@ resolution didn't have an MP structure to get wrong.
 reached, whether from RI.info metadata, general crystallographic knowledge, or a prior batch's
 spot-check -- gets an actual MP query, compared against the specific space group the intended
 phase implies, before it's accepted. If MP's lowest-hull entry doesn't match, either find the
-correct entry (an `EXPECTED_SPACEGROUP`-style override, if a citable alternative exists at or
-near the hull) or treat it as a genuine unresolved/excluded case -- never accept the phase claim
-on the strength of the source description alone. See `scripts/build_oxides_csv.py`'s
-`EXPECTED_SPACEGROUP` and `scripts/fluoride_nitride_sulfide_material_list.py`'s equivalent for
-the pattern, including entries added purely as defensive pins for cases that were already
+correct entry (an `EXPECTED_SPACEGROUP`-style override) or treat it as a genuine
+unresolved/excluded case -- never accept the phase claim on the strength of the source
+description alone. See `scripts/build_oxides_csv.py`'s `EXPECTED_SPACEGROUP` and
+`scripts/fluoride_nitride_sulfide_material_list.py`'s equivalent for the pattern, including
+entries added purely as defensive pins for cases that were already
 correct at the time they were checked (LaF3, MgF2, YbF3, LiCaAlF6, YLiF4, PbS, AlN, GaN, CdS,
 GaS) -- pinning an already-correct match costs nothing and protects against a future MP update
 or near-tie silently flipping it.
+
+### 1a. A large energy_above_hull gap is a signal to investigate, not grounds to exclude
+
+Every override found through rule 1 above, up through batch 2, was a NEAR-degenerate tie (CeF3,
+BN, HgS, ZnS, Se: all within ~2 meV/atom of the hull). That pattern quietly became an unstated
+assumption: "the correct structure, if it exists in MP at all, will be near the hull; if nothing
+near the hull matches, there's nothing to find." **VN (batch 3) disproved this directly**: its
+correct entry (mp-925, Fm-3m, the well-documented rock-salt structure isostructural with the
+already-confirmed TiN) sits at +190 meV/atom -- two orders of magnitude further from the hull
+than every prior override, and would have been missed entirely by a "check near the hull, stop"
+search.
+
+**The corrected rule**: search MP's FULL candidate set for a formula, not a window near the hull
+-- `mp-api`'s `summary.search(formula=...)` already returns everything regardless of
+`energy_above_hull`; the mistake was in how far down the sorted list a human kept looking, not in
+the query itself. A large gap between the lowest-hull entry and the one that actually matches the
+measured structure is a signal that something (a magnetic-ordering sensitivity, a DFT-functional
+limitation for that particular chemistry, a genuinely metastable-but-real experimental phase) is
+making the DFT ground state disagree with reality -- investigate why, the way VN's entry was
+attributed to vanadium's partially-filled d-orbitals being a known difficulty for standard
+DFT-GGA, rather than silently accepting lowest-hull OR silently excluding for lack of a
+NEAR-hull alternative.
+
+**Consequently: "no near-degenerate alternative exists" is not sufficient grounds for a
+NAMED_EXCLUSION.** Before excluding a material for lack of an MP match, confirm the full
+candidate set was searched (not just the first few sorted by energy_above_hull) and that
+NOTHING in it -- at any energy_above_hull -- matches the expected structure. GdF3 was
+re-examined under this corrected rule and confirmed to still be a genuine named exclusion: MP
+has exactly ONE entry for GdF3 (mp-972965) at any energy_above_hull, full stop, so there was
+never anything a wider window could have found. That is a different, and stronger, finding than
+"no NEAR-hull alternative exists" -- it is the actual reason a named exclusion is justified here,
+not the previously-implied "the alternative wasn't close enough."
 
 ## 2. Two related but distinct anti-patterns, both found only by looking
 
