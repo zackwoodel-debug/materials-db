@@ -374,6 +374,34 @@ def export_layer(db, material_name: str, dataset_label: Optional[str] = None, *,
     its sidecar n,k CSV into nk_csv_dir. Raises ExportError rather than
     emitting a null for a missing density, an ambiguous dataset_label with
     no way to pick one, or missing optical data.
+
+    Two conventions this layer's "structural.roughness" and
+    "xray.sld_imag"/"neutron.sld_imag" fields commit to, verified directly
+    against ModalFit's fitting code (physics.py's _make_xrr_slab/
+    _make_xrr_boundary and refnx's Scatterer/MaterialSLD, not just against
+    our own simulator) rather than assumed from how they parse -- see
+    docs/xrr_fit_findings.md for the verification:
+
+    1. roughness_a describes the interface ABOVE this layer (between the
+       previous entry in the stack and this one), never below. This is
+       refnx's own Scatterer convention (`sld_obj(thick, rough)`) --
+       ModalFit's _make_xrr_slab/_make_xrr_boundary call it exactly that
+       way, reading `rough` straight off THIS entry. Get this backwards
+       (as src/materials_db/simulation/xrr.py's parratt() did until this
+       was checked) and every interface's roughness silently attaches to
+       the wrong side, with no error.
+    2. A positive imaginary SLD means absorption (this repo's stored
+       convention throughout: periodictable's xray_sld(), this DB's
+       xray_sld_imag column, this field). Both of ModalFit's actual
+       consumption paths agree with that sign as-is: refnx.reflect.SLD
+       correctly treats a positive imaginary part as absorptive with no
+       conjugation needed, and the DEFAULT path (MaterialSLD, used
+       whenever molecular.formula + molecular.density are both present --
+       i.e. every layer this exporter emits) recomputes SLD independently
+       from refnx's own tables and agrees with this DB's periodictable
+       value to 5 significant figures, confirming the two are consistent
+       rather than one silently overriding the other with a different
+       sign.
     """
     conn = sqlite3.connect(str(db)) if isinstance(db, (str, Path)) else db
     close_after = isinstance(db, (str, Path))
@@ -446,12 +474,31 @@ def export_layer(db, material_name: str, dataset_label: Optional[str] = None, *,
 
 
 def export_stack(db, layers: list, *, ambient: str = "air", substrate: str = "silicon",
+                  substrate_roughness_a: Optional[float] = None,
+                  substrate_roughness_min: Optional[float] = None,
+                  substrate_roughness_max: Optional[float] = None,
                   stack_id: Optional[str] = None, sample_id: Optional[str] = None,
                   out_dir: Path = Path(".")) -> dict:
     """Assemble a full ModalFit stack: ambient + oxide layers (from the DB,
     via export_layer) + substrate. ambient/substrate are NOT read from
     materials_oxide_test.db (an oxides-only dataset -- e.g. no elemental Si
-    row) -- they're minimal fixed placeholders, clearly not DB-sourced."""
+    row) -- they're minimal fixed placeholders, clearly not DB-sourced.
+
+    substrate_roughness_a matters more than it looks: ModalFit's
+    _make_xrr_boundary() reads the film/substrate interface roughness from
+    the SUBSTRATE entry's own "structural.roughness", not from the last
+    film layer's. Before this parameter existed, substrate_entry had no
+    "structural" key at all -- absent, not just unset -- so that roughness
+    silently read back as 0.0 (a perfectly sharp interface) with no error,
+    found by actually running a real fit through this exporter (see
+    docs/xrr_fit_findings.md). Passing None here keeps the field PRESENT
+    with value=None (same convention as every film layer's thickness_a/
+    roughness_a, and the same "no explicit bounds" notice _bounded()
+    prints for one), rather than leaving the key out of the schema
+    entirely -- a caller can see it's unset, instead of the schema
+    silently omitting it. Pass a real value for any stack meant to be fit
+    against real reflectivity data; ModalFit itself still reads a missing
+    value as 0.0 (that fallback lives in physics.py, not here)."""
     out_dir = Path(out_dir)
 
     ambient_entry = {"label": ambient, "role": "ambient", "material_type": "ambient",
@@ -463,6 +510,11 @@ def export_stack(db, layers: list, *, ambient: str = "air", substrate: str = "si
         substrate_entry = {
             "label": "Silicon", "role": "substrate", "material_type": "substrate",
             "molecular": {"formula": "Si", "density_g_cm3": sub["density_g_cm3"]},
+            "structural": {
+                "roughness": _bounded(substrate_roughness_a, substrate_roughness_min,
+                                      substrate_roughness_max,
+                                      log_default="Silicon.roughness" if substrate_roughness_a is not None else None),
+            },
             "xray": {"sld_real": {"value": sub["xray_sld_real"]}, "sld_imag": {"value": sub["xray_sld_imag"]}},
             "neutron": {"sld_real": {"value": None}, "sld_imag": {"value": None}},
             "materials_db": {"note": "standard crystalline Si constants, NOT from "
