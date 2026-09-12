@@ -93,10 +93,13 @@ class TestLookupMpIdCoversEveryBatch:
     def test_oxide_batch_material_resolves(self):
         assert _lookup_mp_id("TiO2") is not None
 
-    @pytest.mark.skipif(not (ROOT / "data" / "batch2_28.csv").exists(), reason="data/batch2_28.csv not built")
+    @pytest.mark.skipif(not (ROOT / "data" / "batch2_31.csv").exists(), reason="data/batch2_31.csv not built")
     def test_batch2_material_resolves(self):
         """This is the exact case that silently returned None: a formula
-        that only exists in batch2_28.csv, not oxides_50.csv."""
+        that only exists in batch2_31.csv, not oxides_50.csv. Also
+        regression coverage for _lookup_mp_id's glob-based lookup surviving
+        a CSV rename (batch2_28.csv -> batch2_31.csv broke this test once
+        already, via the OLD hardcoded-filename-list implementation)."""
         mp_id = _lookup_mp_id("ZnS")
         assert mp_id is not None, (
             "_lookup_mp_id returned None for a batch-2-only formula -- "
@@ -106,6 +109,22 @@ class TestLookupMpIdCoversEveryBatch:
 
     def test_unknown_formula_returns_none_not_an_error(self):
         assert _lookup_mp_id("NotARealFormulaXYZ") is None
+
+    def test_lookup_is_filename_agnostic(self, tmp_path, monkeypatch):
+        """The real regression: a hardcoded filename list broke this
+        function twice (once when batch2_28.csv was first written, again
+        when it was renamed to batch2_31.csv) -- prove the CURRENT
+        (glob-based) implementation doesn't care what a CSV is named at
+        all, so a future rename can't reintroduce the same bug shape."""
+        import materials_db.export.modalfit as modalfit_mod
+        import pandas as pd
+
+        monkeypatch.setattr(modalfit_mod, "_ROOT", tmp_path)
+        (tmp_path / "data").mkdir()
+        pd.DataFrame([{"formula": "Zzzz9", "mp_id": "mp-999999", "name": "Fake"}]).to_csv(
+            tmp_path / "data" / "whatever_this_file_is_called_2027.csv", index=False
+        )
+        assert modalfit_mod._lookup_mp_id("Zzzz9") == "mp-999999"
 
 
 class TestClassifyMaterialType:

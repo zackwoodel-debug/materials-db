@@ -327,18 +327,25 @@ def _classify_material_type(formula: str) -> str:
 def _lookup_mp_id(material_formula: str) -> Optional[str]:
     """Best-effort enrichment: mp_id isn't a DB column (only dataset_label
     is, by the schema-freeze decision), but it IS in the per-batch enrichment
-    CSVs. Checks every known batch's CSV (not just the oxide batch's --
-    checking only oxides_50.csv silently returned None for every batch-2
-    material even though a real mp_id was on file). Returns None (never
-    raises) if no CSV has a match -- this is supplementary provenance, not
-    a required field."""
+    CSVs. Globs data/*.csv and checks any CSV with "formula"/"mp_id"
+    columns, rather than a hardcoded filename list -- a hardcoded list of
+    exactly two names ("oxides_50.csv", "batch2_28.csv") already caused
+    this function to silently return None for every batch-2 material once
+    written, and then AGAIN, for every batch-2 AND batch-3 material, the
+    moment batch2_28.csv was renamed to batch2_31.csv (found by that
+    rename's own test suite catching a newly-skipped test, not by this
+    function failing loudly). Globbing removes the recurring failure mode
+    instead of patching this instance of it. Returns None (never raises)
+    if no CSV has a match -- this is supplementary provenance, not a
+    required field."""
+    import glob as _glob
     import pandas as pd
-    for csv_name in ("oxides_50.csv", "batch2_28.csv"):
-        csv_path = _ROOT / "data" / csv_name
-        if not csv_path.exists():
-            continue
+    for csv_path_str in sorted(_glob.glob(str(_ROOT / "data" / "*.csv"))):
+        csv_path = Path(csv_path_str)
         try:
             df = pd.read_csv(csv_path)
+            if "formula" not in df.columns or "mp_id" not in df.columns:
+                continue
             match = df[df["formula"] == material_formula]
             if match.empty:
                 continue
