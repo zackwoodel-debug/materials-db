@@ -78,29 +78,10 @@ EXCLUSION_STATE = {
         ),
         blocking_on="si3n4_amorphous_vs_crystalline_source_read",
     ),
-    "TiN": dict(
-        state=DEFERRED,
-        reason=(
-            "No bulk single-crystal reference dataset in RI.info at all -- every entry is "
-            "a thin film distinguished by deposition method (sputtering vs. ALD) or anneal "
-            "temperature (700/800/900 C), not crystal phase. Rock-salt structure isn't in "
-            "question; what's missing is a descriptor for the axis that actually varies "
-            "(process condition), which the polymorph field is the wrong shape for."
-        ),
-        blocking_on="process_condition_field",
-    ),
-    "VN": dict(
-        state=DEFERRED,
-        reason="Same shape as TiN -- deposition-method/anneal-only entries, no bulk "
-               "single-crystal reference, rock-salt structure not in question.",
-        blocking_on="process_condition_field",
-    ),
-    "EuS": dict(
-        state=DEFERRED,
-        reason="Same shape as TiN/VN -- deposition-method-only entries, no bulk "
-               "single-crystal reference, rock-salt structure not in question.",
-        blocking_on="process_condition_field",
-    ),
+    # TiN, VN, EuS: RESOLVED in batch 3 (see scripts/pure_element_material_list.py and
+    # src/materials_db/pipeline/process_condition.py) -- the process_condition field they
+    # were blocked on now exists. Removed from EXCLUSION_STATE (no longer excluded in any
+    # sense) and added to MATERIALS_31 below with process_condition assignments per dataset.
 }
 
 
@@ -119,25 +100,35 @@ def materials_in_state(state: str) -> list:
 
 
 # ---------------------------------------------------------------------------
-# MATERIALS_28 -- the bulk-processable set (32 candidates minus the 4 in
-# EXCLUSION_STATE that aren't NAMED_EXCLUSION; GdF3 IS included here since a
-# named exclusion still gets processed through the normal pipeline with its
-# density deliberately forced to None, same treatment as LuAl3(BO3)4 in the
-# oxide batch -- Si3N4/TiN/VN/EuS are NOT included, since UNRESOLVED/DEFERRED
-# means "not ready to process", not "process with a placeholder".)
+# MATERIALS_31 -- the bulk-processable set. Batch 2's MATERIALS_28 (32
+# candidates minus Si3N4/TiN/VN/EuS -- GdF3 stayed in as a processed named
+# exclusion, same treatment as LuAl3(BO3)4) plus TiN/VN/EuS folded in now
+# that process_condition exists to describe them correctly: 28 + 3 = 31.
+# Si3N4 is still NOT included -- UNRESOLVED means not ready to process,
+# unchanged by this batch.
 #
 # ri_axes entries use the exact dataset_label axis-vocabulary modalfit.py's
 # _resolve_optical_axis already recognizes: "o-ray"/"e-ray" (uniaxial),
 # "alpha-axis"/"beta-axis"/"gamma-axis" (biaxial), or no suffix (isotropic/
 # single dataset). Author+year source labels use the "AuthorYYYY" form
-# established by the oxide batch (e.g. "Malitson1964").
+# established by the oxide batch (e.g. "Malitson1964"). process_condition,
+# when given, uses process_condition.format_process_condition()'s
+# "axis:value[;axis:value]" encoding (defined once in that shared module,
+# not redefined here -- see its docstring for why it's cross-batch).
 # ---------------------------------------------------------------------------
 
-def _axis(page, data_path, source_label, axis=None):
-    return dict(page=page, data_path=data_path, source_label=source_label, axis=axis)
+import sys as _sys
+from pathlib import Path as _Path
+_sys.path.insert(0, str(_Path(__file__).resolve().parents[1] / "src"))
+from materials_db.pipeline.process_condition import format_process_condition  # noqa: E402
 
 
-MATERIALS_28 = [
+def _axis(page, data_path, source_label, axis=None, process_condition=None):
+    return dict(page=page, data_path=data_path, source_label=source_label, axis=axis,
+                process_condition=process_condition)
+
+
+MATERIALS_31 = [
     # ---- Fluorides (16 processable; CeF3 has an MP override, GdF3 excluded
     # separately below but still enrichment-processed) ----
     dict(idx=51, name="Barium fluoride", formula="BaF2", polymorph=None,
@@ -240,6 +231,47 @@ MATERIALS_28 = [
     dict(idx=78, name="Zinc sulfide", formula="ZnS", polymorph="sphalerite",
          pubchem_name="Zinc sulfide", ri_aliases=["ZnS"],
          ri_axes=[_axis("Ozaki", "main/ZnS/nk/Ozaki.yml", "Ozaki1993")]),
+
+    # ---- Folded in from DEFERRED once process_condition existed (batch 3) ----
+    # All three: rock-salt (Fm-3m #225), confirmed/re-confirmed via MP (VN's
+    # was a real trap -- see EXPECTED_SPACEGROUP below). No RI.info page for
+    # any of the three states a measured film density -- every entry is an
+    # explicit thin film (sputtered/ALD/evaporated); density_source is
+    # relabeled to bulk_elemental_approximation by build_batch2_csv.py (see
+    # BULK_APPROXIMATION_FORMULAS below), not "MP_DFT" as a trusted value.
+    dict(idx=79, name="Titanium nitride", formula="TiN", polymorph="rock salt",
+         pubchem_name="Titanium nitride", ri_aliases=["TiN"],
+         ri_axes=[_axis("Pfluger", "main/TiN/nk/Pfluger.yml", "Pfluger1984",
+                        process_condition=None)]),  # TiN(1.0) film on Mo, room temp -- no
+                                                     # deposition method stated even for this default
+    dict(idx=80, name="Vanadium nitride", formula="VN", polymorph="rock salt",
+         pubchem_name="Vanadium nitride", ri_aliases=["VN"],
+         ri_axes=[_axis("Pfluger", "main/VN/nk/Pfluger.yml", "Pfluger1984",
+                        process_condition=None)]),  # VN(1.0), room temp -- only page for VN at all
+    dict(idx=81, name="Europium sulfide", formula="EuS", polymorph="rock salt",
+         pubchem_name="Europium sulfide", ri_aliases=["EuS"],
+         ri_axes=[_axis("Meretska", "main/EuS/nk/Meretska.yml", "Meretska2022",
+                        process_condition=format_process_condition(
+                            deposition="evaporated", thickness="100nm"))]),
+]
+
+# Additional RI.info pages for TiN available as named alternates (not the
+# default pick above), each with a real process_condition -- demonstrating
+# the field against the corpus that motivated it, not just the default:
+TIN_ALTERNATE_PAGES = [
+    _axis("Beliaev-sputtering", "main/TiN/nk/Beliaev-sputtering.yml", "Beliaev2023",
+          process_condition=format_process_condition(deposition="sputtered", thickness="50nm")),
+    _axis("Beliaev-ALD", "main/TiN/nk/Beliaev-ALD.yml", "Beliaev2023",
+          process_condition=format_process_condition(deposition="ALD", thickness="100nm",
+                                                       anneal_temperature="900C")),
+    _axis("Shkondin", "main/TiN/nk/Shkondin.yml", "Shkondin2017",
+          process_condition=format_process_condition(thickness="105nm", structure="polycrystalline")),
+    _axis("Shkondin-700", "main/TiN/nk/Shkondin-700.yml", "Shkondin2017",
+          process_condition=format_process_condition(thickness="105nm", anneal_temperature="700C")),
+    _axis("Shkondin-800", "main/TiN/nk/Shkondin-800.yml", "Shkondin2017",
+          process_condition=format_process_condition(thickness="105nm", anneal_temperature="800C")),
+    _axis("Shkondin-900", "main/TiN/nk/Shkondin-900.yml", "Shkondin2017",
+          process_condition=format_process_condition(thickness="105nm", anneal_temperature="900C")),
 ]
 
 # ---------------------------------------------------------------------------
@@ -325,7 +357,40 @@ EXPECTED_SPACEGROUP = {
                     "transition is at 2.2 GPa, nowhere near ambient conditions). Nearest "
                     "competitor mp-1057015 (R3m #160) at +1.36 meV/atom is a DFT metastable "
                     "entry, not a documented ambient polymorph. Re-checked fresh."),
+
+    # TiN/VN/EuS -- folded in from DEFERRED, batch 3.
+    "TiN": ([225], "rock-salt -- already the lowest-hull MP match (mp-492), Ehull=0.00000. "
+                    "Pinned explicitly, same reasoning as AlN above."),
+    "VN": ([225], "rock-salt -- CONFIRMED TRAP. MP's lowest-hull entry (mp-1018027, P-6m2 "
+                   "#187, Ehull=0.00000) is theoretical=True (though ICSD-backed) and is NOT "
+                   "the well-documented rock-salt structure VN is known for in the ceramics/ "
+                   "hard-coatings literature, isostructural with TiN (confirmed correct "
+                   "above). The correct Fm-3m entry (mp-925) is at +190 meV/atom -- an "
+                   "unusually LARGE gap compared to every other override in this project "
+                   "(all <2 meV/atom); flagged rather than treated as an ordinary "
+                   "near-degenerate tie. Likely reflects magnetic-ordering/DFT-functional "
+                   "sensitivity for this particular V-containing nitride (V's partially "
+                   "filled d-orbitals are a known difficulty for standard DFT-GGA ground-"
+                   "state ordering) rather than genuine instability of the real material. "
+                   "Picked on textbook-consensus grounds, not a tight-tie argument -- if "
+                   "this one is ever revisited, that's why."),
+    "EuS": ([225], "rock-salt -- already the lowest-hull MP match (mp-20587), Ehull=0.00000. "
+                    "Pinned explicitly, same reasoning as AlN above."),
 }
+
+# formulas whose only RI.info data is thin film with no stated density,
+# where MP_DFT nonetheless computes a real, verified crystal structure
+# (see EXPECTED_SPACEGROUP above) -- so the STRUCTURE is trusted but the
+# DENSITY NUMBER (MP's bulk-crystal DFT relaxation) is not a measured
+# value for the actual sputtered/ALD/evaporated sample. Reuses the same
+# process_condition.BULK_ELEMENTAL_APPROXIMATION concept pioneered for
+# pure elements -- see that module's docstring: the mechanism is not
+# element-specific, and TiN/VN/EuS are exactly the compound case it
+# anticipates. build_batch2_csv.py relabels density_source to this value
+# for these three formulas after the normal MP fetch, keeping MP's
+# numeric density but marking it DENSITY_BULK_APPROXIMATION, not
+# DENSITY_VERIFIED.
+BULK_APPROXIMATION_FORMULAS = {"TiN", "VN", "EuS"}
 
 # ---------------------------------------------------------------------------
 # Density overrides -- MP_DFT density for BOTH cinnabar candidates diverges
