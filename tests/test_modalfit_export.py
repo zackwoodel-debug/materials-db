@@ -13,10 +13,14 @@ error, SLD-agreement tolerance) are added in Step 4 per MODALFIT_INTEGRATION.md.
 import sys
 from pathlib import Path
 
+import pytest
+
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from materials_db.export.modalfit import _polymorph_prefix  # noqa: E402
+from materials_db.export.modalfit import (  # noqa: E402
+    _classify_material_type, _lookup_mp_id, _polymorph_prefix,
+)
 
 
 class TestPolymorphPrefix:
@@ -69,3 +73,62 @@ class TestPolymorphPrefix:
         ]
         prefixes = {_polymorph_prefix(l) for l in labels}
         assert prefixes == {None}, f"expected all 5 rows to group as one (None) polymorph, got {prefixes}"
+
+
+class TestLookupMpIdCoversEveryBatch:
+    """Regression test for the bug found during the batch-2 audit:
+    _lookup_mp_id only ever read data/oxides_50.csv, so every batch-2
+    material's mp_id silently came back None (a wrong answer, no error --
+    the same failure shape as batch 1's polymorph fallback). This test
+    would have caught it: it requires a real mp_id for a material from
+    EACH batch's CSV, not just the oxide batch's."""
+
+    @pytest.mark.skipif(not (ROOT / "data" / "oxides_50.csv").exists(), reason="data/oxides_50.csv not built")
+    def test_oxide_batch_material_resolves(self):
+        assert _lookup_mp_id("TiO2") is not None
+
+    @pytest.mark.skipif(not (ROOT / "data" / "batch2_28.csv").exists(), reason="data/batch2_28.csv not built")
+    def test_batch2_material_resolves(self):
+        """This is the exact case that silently returned None: a formula
+        that only exists in batch2_28.csv, not oxides_50.csv."""
+        mp_id = _lookup_mp_id("ZnS")
+        assert mp_id is not None, (
+            "_lookup_mp_id returned None for a batch-2-only formula -- "
+            "regression of the oxides_50.csv-only lookup bug."
+        )
+        assert mp_id.startswith("mp-")
+
+    def test_unknown_formula_returns_none_not_an_error(self):
+        assert _lookup_mp_id("NotARealFormulaXYZ") is None
+
+
+class TestClassifyMaterialType:
+    """Regression test for the second bug found during the same audit:
+    export_layer() hardcoded material_type="oxide" for every layer
+    regardless of formula, silently mislabeling every batch-2 fluoride/
+    nitride/sulfide layer. material_type must vary by formula."""
+
+    def test_oxide(self):
+        assert _classify_material_type("TiO2") == "oxide"
+        assert _classify_material_type("LuAl3(BO3)4") == "oxide"  # borate: O present -> oxide
+
+    def test_fluoride(self):
+        assert _classify_material_type("CaF2") == "fluoride"
+        assert _classify_material_type("LiCaAlF6") == "fluoride"
+
+    def test_nitride(self):
+        assert _classify_material_type("GaN") == "nitride"
+        assert _classify_material_type("BN") == "nitride"
+
+    def test_sulfide(self):
+        assert _classify_material_type("ZnS") == "sulfide"
+        assert _classify_material_type("As2S3") == "sulfide"
+
+    def test_not_all_oxide(self):
+        """The literal shape of the bug: every material_type must NOT
+        collapse to the same value."""
+        types = {_classify_material_type(f) for f in ("TiO2", "CaF2", "GaN", "ZnS")}
+        assert types == {"oxide", "fluoride", "nitride", "sulfide"}
+
+    def test_unrecognized_anion_returns_unknown_not_a_guess(self):
+        assert _classify_material_type("Au") == "unknown"

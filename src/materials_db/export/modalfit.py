@@ -45,7 +45,15 @@ _ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_DB = _ROOT / "data" / "materials_oxide_test.db"
 
 sys.path.insert(0, str(_ROOT / "scripts"))
-from oxide_material_list import RESOLVED_OPTICAL_SOURCE_CITATION  # noqa: E402
+from oxide_material_list import RESOLVED_OPTICAL_SOURCE_CITATION as _OXIDE_CITATIONS  # noqa: E402
+from fluoride_nitride_sulfide_material_list import (  # noqa: E402
+    RESOLVED_OPTICAL_SOURCE_CITATION as _BATCH2_CITATIONS,
+)
+
+# Single merged citation lookup across every batch -- a later batch (metals,
+# TMDCs, etc.) extends this same way rather than starting its own dict, so
+# no batch has to re-litigate what an earlier one already settled.
+RESOLVED_OPTICAL_SOURCE_CITATION = {**_OXIDE_CITATIONS, **_BATCH2_CITATIONS}
 
 # Standard crystalline Si substrate, NOT sourced from materials_oxide_test.db
 # (an oxides-only dataset with no elemental Si row) -- same values used and
@@ -72,6 +80,11 @@ KNOWN_EXCLUSIONS = {
                    "(see data/CHECKPOINT_2_report.md) -- export_layer correctly "
                    "refuses to export a layer with no density rather than emitting "
                    "a null. Accepted, expected exclusion, not a bug.",
+    "GdF3": "named exclusion (batch 2, see scripts/fluoride_nitride_sulfide_material_list.py "
+            "EXCLUSION_STATE) -- MP's only entry is theoretical/unverified and structurally "
+            "inconsistent with GdF3's documented room-temperature phase; no citable "
+            "experimental density found within the timebox. Same shape as LuAl3(BO3)4: "
+            "accepted, expected exclusion, not a bug.",
 }
 
 
@@ -267,24 +280,56 @@ def _source_citation(conn, source_id):
     return dict(doi=doi, title=title, authors=authors, journal=journal, year=year)
 
 
+_ANION_TO_MATERIAL_TYPE = (
+    # Checked in this order: a formula containing oxygen is classified as
+    # an oxide even if it also contains another anion (e.g. a borate,
+    # molybdate, or vanadate -- all 50 oxide-batch formulas fit this).
+    ("O", "oxide"),
+    ("F", "fluoride"),
+    ("N", "nitride"),
+    ("S", "sulfide"),
+)
+
+
+def _classify_material_type(formula: str) -> str:
+    """Derive the ModalFit "material_type" field from the formula's anion
+    rather than a fixed string. export_layer() used to hardcode
+    "material_type": "oxide" for every layer regardless of formula -- found
+    during the batch-2 audit: every fluoride/nitride/sulfide layer (ZnS,
+    CaF2, GaN, ...) was silently mislabeled "oxide" in its exported JSON.
+    Returns "unknown" rather than guessing if none of the recognized
+    anions are present (never silently mislabels)."""
+    elements = set(re.findall(r"[A-Z][a-z]?", formula))
+    for anion, material_type in _ANION_TO_MATERIAL_TYPE:
+        if anion in elements:
+            return material_type
+    return "unknown"
+
+
 def _lookup_mp_id(material_formula: str) -> Optional[str]:
     """Best-effort enrichment: mp_id isn't a DB column (only dataset_label
-    is, by the schema-freeze decision), but it IS in data/oxides_50.csv.
-    Returns None (never raises) if the CSV is missing or has no match --
-    this is supplementary provenance, not a required field."""
-    csv_path = _ROOT / "data" / "oxides_50.csv"
-    if not csv_path.exists():
-        return None
-    try:
-        import pandas as pd
-        df = pd.read_csv(csv_path)
-        match = df[df["formula"] == material_formula]
-        if match.empty:
-            return None
-        val = match.iloc[0].get("mp_id")
-        return None if pd.isna(val) else str(val)
-    except Exception:
-        return None
+    is, by the schema-freeze decision), but it IS in the per-batch enrichment
+    CSVs. Checks every known batch's CSV (not just the oxide batch's --
+    checking only oxides_50.csv silently returned None for every batch-2
+    material even though a real mp_id was on file). Returns None (never
+    raises) if no CSV has a match -- this is supplementary provenance, not
+    a required field."""
+    import pandas as pd
+    for csv_name in ("oxides_50.csv", "batch2_28.csv"):
+        csv_path = _ROOT / "data" / csv_name
+        if not csv_path.exists():
+            continue
+        try:
+            df = pd.read_csv(csv_path)
+            match = df[df["formula"] == material_formula]
+            if match.empty:
+                continue
+            val = match.iloc[0].get("mp_id")
+            if pd.notna(val):
+                return str(val)
+        except Exception:
+            continue
+    return None
 
 
 # ---------------------------------------------------------------------------
@@ -363,7 +408,7 @@ def export_layer(db, material_name: str, dataset_label: Optional[str] = None, *,
         layer = {
             "label": label,
             "role": role,
-            "material_type": "oxide",
+            "material_type": _classify_material_type(formula),
             "molecular": {"formula": formula, "density_g_cm3": u["density_g_cm3"]},
             "structural": {
                 "thickness": _bounded(u["thickness_a"], thickness_min, thickness_max,
