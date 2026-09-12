@@ -113,16 +113,19 @@ class TestMaterialsWithDensityState:
         assert "LuAl3(BO3)4" not in formulas
 
     @pytest.mark.skipif(not _DB_PATH.exists(), reason="data/materials_oxide_test.db not built")
-    def test_bulk_approximation_finds_tin_vn_eus_and_au(self):
+    def test_bulk_approximation_includes_tin_vn_eus_au_and_most_pure_elements(self):
         """TiN/VN/EuS were folded into batch 2 once process_condition
         existed: no RI.info page for any of the three states a measured
         film density, so their MP-bulk-crystal density is relabeled
-        bulk_elemental_approximation rather than trusted as verified. Gold
-        (the batch-3 flagship process-condition case) is the same: no
-        entry in its corpus states a measured film density either."""
+        bulk_elemental_approximation rather than trusted as verified.
+        Gold and 32 other pure elements (36 total here, alongside
+        TiN/VN/EuS) are the same: no entry in their corpus states a
+        measured film density, and their default dataset isn't confirmed
+        genuinely bulk/single-crystal either."""
         bulk = materials_with_density_state(str(_DB_PATH), DENSITY_BULK_APPROXIMATION)
         formulas = {m["formula"] for m in bulk}
-        assert formulas == {"TiN", "VN", "EuS", "Au"}
+        assert {"TiN", "VN", "EuS", "Au"} <= formulas
+        assert len(formulas) == 36
 
     @pytest.mark.skipif(not _DB_PATH.exists(), reason="data/materials_oxide_test.db not built")
     def test_verified_includes_bulk_single_crystal_elements(self):
