@@ -178,7 +178,7 @@ class TestExportStackLabelDisambiguation:
                 dict(material="Ta2O5", thickness_a=30.0, roughness_a=3.0),
                 dict(material="SiO2", dataset_label="amorphous", thickness_a=15.0, roughness_a=3.0),
             ],
-            substrate="silicon", substrate_roughness_a=3.0,
+            substrate="Silicon", substrate_roughness_a=3.0,
             stack_id="collision_regression_test", out_dir=tmp_path,
         )
         film_labels = [e["label"] for e in out["stack"] if e.get("role") not in ("ambient", "substrate")]
@@ -203,7 +203,7 @@ class TestExportStackLabelDisambiguation:
                 dict(material="Ta2O5", thickness_a=30.0, roughness_a=3.0),
                 dict(material="SiO2", dataset_label="amorphous", thickness_a=15.0, roughness_a=3.0),
             ],
-            substrate="silicon", substrate_roughness_a=3.0,
+            substrate="Silicon", substrate_roughness_a=3.0,
             stack_id="collision_regression_test_2", out_dir=tmp_path,
         )
         # This is what actually broke: physics.extract_params() building a
@@ -226,7 +226,7 @@ class TestExportStackLabelDisambiguation:
                      roughness_a=3.0, label="cap"),
                 dict(material="Ta2O5", thickness_a=30.0, roughness_a=3.0, label="cap"),
             ],
-            substrate="silicon", substrate_roughness_a=3.0,
+            substrate="Silicon", substrate_roughness_a=3.0,
             stack_id="collision_regression_test_3", out_dir=tmp_path,
         )
         film_labels = [e["label"] for e in out["stack"] if e.get("role") not in ("ambient", "substrate")]
@@ -293,3 +293,98 @@ class TestFindMaterialFormulaAmbiguity:
         row = _find_material(conn, "Diamond")
         assert row is not None
         assert row[1] == "Diamond"
+
+
+class TestDbDrivenSubstrate:
+    """export_stack()'s substrate used to be a fixed, non-DB-sourced
+    Silicon placeholder -- every fit run before the ModalFit launcher used
+    a substrate that never came from the database, even though the DB has
+    real oxide-growth substrates (sapphire, quartz, MgO) alongside
+    Silicon. Substrate is now resolved exactly like a film layer, via
+    export_layer(role="substrate")."""
+
+    @pytest.mark.skipif(not _DB_PATH.exists(), reason="data/materials_oxide_test.db not built")
+    def test_default_substrate_is_silicon_and_db_sourced(self, tmp_path):
+        out = export_stack(str(_DB_PATH), layers=[], substrate_roughness_a=3.0,
+                            out_dir=tmp_path, stack_id="default_substrate_test")
+        sub = out["stack"][-1]
+        assert sub["role"] == "substrate"
+        assert sub["label"] == "Si_diamond cubic"  # formula_polymorph, same default rule export_layer() uses
+        assert sub["molecular"]["formula"] == "Si"
+        # A DB-sourced substrate must carry the same density_confidence
+        # visibility a film layer does -- the old placeholder had none.
+        assert "density_confidence" in sub["molecular"]
+        assert "density_confidence" in sub["materials_db"]
+
+    @pytest.mark.skipif(not _DB_PATH.exists(), reason="data/materials_oxide_test.db not built")
+    def test_sapphire_substrate_resolves_with_real_db_data(self, tmp_path):
+        """Sapphire (Al2O3) is a real, common oxide-growth substrate
+        already in the DB -- confirming substrate is genuinely DB-driven,
+        not just defaulting correctly."""
+        out = export_stack(str(_DB_PATH), layers=[], substrate="Aluminium oxide / sapphire",
+                            substrate_roughness_a=3.0, out_dir=tmp_path,
+                            stack_id="sapphire_substrate_test")
+        sub = out["stack"][-1]
+        assert sub["molecular"]["formula"] == "Al2O3"
+        assert sub["molecular"]["density_g_cm3"] > 0
+        assert sub["xray"]["sld_real"]["value"] > 0
+        assert (tmp_path / sub["optical"]["params"]["file"]).exists()
+
+    @pytest.mark.skipif(not _DB_PATH.exists(), reason="data/materials_oxide_test.db not built")
+    def test_unknown_substrate_raises_export_error(self, tmp_path):
+        with pytest.raises(ExportError, match="Substrate material .* not found"):
+            export_stack(str(_DB_PATH), layers=[], substrate="Unobtainium",
+                         out_dir=tmp_path, stack_id="bad_substrate_test")
+
+    @pytest.mark.skipif(not _DB_PATH.exists(), reason="data/materials_oxide_test.db not built")
+    def test_film_layer_colliding_with_substrate_label_is_disambiguated(self, tmp_path):
+        """A film layer that happens to resolve to the SAME label as the
+        substrate (Silicon-on-Silicon, an unusual but not physically
+        meaningless stack) must not collide -- the substrate keeps its
+        plain label (there is only one substrate) and the film layer gets
+        "#2", the same disambiguation direction as two colliding film
+        layers."""
+        out = export_stack(str(_DB_PATH), layers=[
+            dict(material="Silicon", thickness_a=100.0, roughness_a=2.0),
+        ], substrate="Silicon", substrate_roughness_a=3.0, out_dir=tmp_path,
+           stack_id="si_on_si_test")
+        film = [e for e in out["stack"] if e["role"] == "layer"][0]
+        sub = out["stack"][-1]
+        assert sub["label"] == "Si_diamond cubic"
+        assert film["label"] == "Si_diamond cubic#2"
+        nk_files = {e["optical"]["params"]["file"] for e in out["stack"] if e["role"] in ("layer", "substrate")}
+        assert len(nk_files) == 2
+        for fname in nk_files:
+            assert (tmp_path / fname).exists()
+
+
+class TestAmbientPresets:
+    """ambient accepts the literal string "air" (default, unchanged
+    behavior) or a pre-built entry dict from
+    materials_db.launcher.ambient.build_ambient_entry() -- checked here
+    that export_stack() actually plumbs a dict through untouched, and
+    rejects anything else rather than silently guessing."""
+
+    @pytest.mark.skipif(not _DB_PATH.exists(), reason="data/materials_oxide_test.db not built")
+    def test_default_ambient_is_air(self, tmp_path):
+        out = export_stack(str(_DB_PATH), layers=[], out_dir=tmp_path, stack_id="air_default_test")
+        amb = out["stack"][0]
+        assert amb["role"] == "ambient"
+        assert amb["xray"]["sld_real"]["value"] == 0.0
+
+    @pytest.mark.skipif(not _DB_PATH.exists(), reason="data/materials_oxide_test.db not built")
+    def test_ambient_dict_is_passed_through(self, tmp_path):
+        from materials_db.launcher.ambient import build_ambient_entry
+        d2o_entry = build_ambient_entry("d2o")
+        out = export_stack(str(_DB_PATH), layers=[], ambient=d2o_entry,
+                           out_dir=tmp_path, stack_id="d2o_ambient_test")
+        amb = out["stack"][0]
+        assert amb["label"] == "D2O (heavy water)"
+        assert amb["molecular"]["formula"] == "D2O"
+        assert amb["neutron"]["sld_real"]["value"] > 6.0  # real D2O contrast, not 0
+
+    @pytest.mark.skipif(not _DB_PATH.exists(), reason="data/materials_oxide_test.db not built")
+    def test_unknown_ambient_string_raises(self, tmp_path):
+        with pytest.raises(ExportError, match="Unknown ambient"):
+            export_stack(str(_DB_PATH), layers=[], ambient="helium",
+                         out_dir=tmp_path, stack_id="bad_ambient_test")

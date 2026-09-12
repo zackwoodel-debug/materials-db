@@ -59,10 +59,16 @@ from materials_db.pipeline.process_condition import (  # noqa: E402
 # no batch has to re-litigate what an earlier one already settled.
 RESOLVED_OPTICAL_SOURCE_CITATION = {**_OXIDE_CITATIONS, **_BATCH2_CITATIONS}
 
-# Standard crystalline Si substrate, NOT sourced from materials_oxide_test.db
-# (an oxides-only dataset with no elemental Si row) -- same values used and
-# labeled the same way in scripts/xrr_smoke_test_oxide_db.py.
-_SILICON_SUBSTRATE = dict(density_g_cm3=2.329, xray_sld_real=20.0620, xray_sld_imag=0.457236)
+# Historical note: substrate used to be a fixed, non-DB-sourced Si
+# placeholder here (density_g_cm3=2.329, xray_sld_real=20.0620,
+# xray_sld_imag=0.457236). Silicon is now a real materials_oxide_test.db
+# material (batch 3, verified bulk/single-crystal) and export_stack()
+# resolves ANY substrate the same way it resolves a film layer -- see
+# export_stack()'s docstring. Cross-checked once, for the record: routing
+# "Silicon" through export_layer() reproduces these exact legacy numbers
+# to displayed precision (confirmed via refnx.MaterialSLD("Si", 2.329,
+# probe="x-ray") -> 20.0620+0.4573j, matching this constant exactly), so
+# the switch changes WHERE the number comes from, not its value.
 
 
 class ExportError(ValueError):
@@ -467,7 +473,22 @@ def export_layer(db, material_name: str, dataset_label: Optional[str] = None, *,
         )
 
         label = label or (f"{formula}_{phys['polymorph']}" if phys["polymorph"] else formula)
-        nk_filename = f"{label}_nk.csv".replace(" ", "_")
+        # Sanitize the label into a flat, filesystem-safe filename -- a
+        # bare .replace(" ", "_") missed "/", which two real polymorph
+        # names contain ("corundum/sapphire", "scheelite/wulfenite").
+        # Found live: export_stack() picking Sapphire as a substrate wrote
+        # "Al2O3_corundum/sapphire_nk.csv" as the optical.params.file
+        # value, which os.path.join'd into an ACCIDENTAL nested
+        # subdirectory ("Al2O3_corundum/" containing "sapphire_nk.csv")
+        # instead of the flat file in nk_csv_dir this function's own
+        # docstring promises. It happened to still resolve (ModalFit's
+        # _resolve_nk_path does the same os.path.join), so nothing ever
+        # crashed -- but it's an accident, not a design, and a second
+        # slash-containing label sharing the same prefix could collide in
+        # ways the label-disambiguation logic never accounts for (it
+        # tracks the full label string, not the sanitized filename). Same
+        # sanitizer as export_all_materials_modalfit.py's _safe_dirname().
+        nk_filename = re.sub(r"[^A-Za-z0-9_.-]+", "_", label) + "_nk.csv"
         _write_nk_csv(Path(nk_csv_dir) / nk_filename, nk_rows)
 
         density_citation = _source_citation(conn, phys["density_source_id"])
@@ -525,86 +546,112 @@ def export_layer(db, material_name: str, dataset_label: Optional[str] = None, *,
             conn.close()
 
 
-def export_stack(db, layers: list, *, ambient: str = "air", substrate: str = "silicon",
+def export_stack(db, layers: list, *, ambient="air", substrate: str = "Silicon",
+                  substrate_dataset_label: Optional[str] = None,
                   substrate_roughness_a: Optional[float] = None,
                   substrate_roughness_min: Optional[float] = None,
                   substrate_roughness_max: Optional[float] = None,
                   stack_id: Optional[str] = None, sample_id: Optional[str] = None,
                   out_dir: Path = Path(".")) -> dict:
-    """Assemble a full ModalFit stack: ambient + oxide layers (from the DB,
-    via export_layer) + substrate. ambient/substrate are NOT read from
-    materials_oxide_test.db (an oxides-only dataset -- e.g. no elemental Si
-    row) -- they're minimal fixed placeholders, clearly not DB-sourced.
+    """Assemble a full ModalFit stack: ambient + film layers + substrate.
+
+    substrate is DB-driven, exactly like a film layer -- pass any
+    materials_oxide_test.db name or formula (default "Silicon", the pure
+    element added in batch 3; previously a fixed, non-DB-sourced Si
+    placeholder). Resolved via export_layer(role="substrate") internally,
+    so a substrate carries the SAME density_confidence/density_bounds/
+    citation fields a film layer does -- the old placeholder had none of
+    that (no way to see whether the substrate's density was trustworthy,
+    because it wasn't a DB lookup at all). `substrate_dataset_label`
+    disambiguates a substrate material with more than one polymorph, same
+    as a film layer's `dataset_label`. Raises ExportError if the substrate
+    name/formula isn't found in `db` -- same "raise, don't guess" contract
+    export_layer() already has for a film layer.
+
+    ambient accepts either the literal string "air" (default, an exact-
+    zero-SLD placeholder -- materials_oxide_test.db has no liquid/gas
+    materials, so there is nothing to look up) or a pre-built ambient
+    entry dict, e.g. from materials_db.launcher.ambient.build_ambient_entry
+    ("vacuum"/"d2o"/"h2o") -- checked against ModalFit's actual ambient-
+    handling code (physics.py:_make_xrr_boundary, compute_se) before that
+    module was written; see its docstring for what's confirmed and what's
+    a labeled approximation.
 
     substrate_roughness_a matters more than it looks: ModalFit's
     _make_xrr_boundary() reads the film/substrate interface roughness from
     the SUBSTRATE entry's own "structural.roughness", not from the last
-    film layer's. Before this parameter existed, substrate_entry had no
-    "structural" key at all -- absent, not just unset -- so that roughness
-    silently read back as 0.0 (a perfectly sharp interface) with no error,
-    found by actually running a real fit through this exporter (see
-    docs/xrr_fit_findings.md). Passing None here keeps the field PRESENT
-    with value=None (same convention as every film layer's thickness_a/
-    roughness_a, and the same "no explicit bounds" notice _bounded()
-    prints for one), rather than leaving the key out of the schema
-    entirely -- a caller can see it's unset, instead of the schema
-    silently omitting it. Pass a real value for any stack meant to be fit
-    against real reflectivity data; ModalFit itself still reads a missing
-    value as 0.0 (that fallback lives in physics.py, not here).
+    film layer's. export_layer() always keeps this field PRESENT with
+    value=None when no roughness is given (same convention as a film
+    layer's thickness_a/roughness_a, and the same "no explicit bounds"
+    notice _bounded() prints for one) rather than omitting the key --
+    before this parameter existed at all, the old hardcoded substrate had
+    no "structural" key whatsoever, so roughness silently read back as 0.0
+    (a perfectly sharp interface) with no error (see docs/xrr_fit_findings.md).
+    Pass a real value for any stack meant to be fit against real
+    reflectivity data.
 
-    Layer labels are disambiguated BEFORE any layer is exported: two layers
-    that would resolve to the same label (the same formula+polymorph, or
-    two layers explicitly given the same `label`) get a "#2", "#3", ...
-    suffix appended to every occurrence after the first. Without this, a
-    repeated-unit stack (a Bragg mirror, a superlattice -- a real sample
-    type, not a contrived one) would silently produce two layers with the
-    IDENTICAL label: their sidecar n,k CSVs would collide in nk_csv_dir
-    (the second write overwriting the first), and worse,
-    physics.extract_params() builds each fittable parameter's key as
-    f"{label}:thick" etc., so both layers would get the SAME key -- found
-    by reproducing it directly (a SiO2/Ta2O5/SiO2 stack produced two
-    ParamSpecs both keyed "SiO2_amorphous:thick"), meaning FitEngine could
-    not move the two physically distinct layers independently. See
-    docs/xrr_fit_findings.md."""
+    Layer labels (film AND substrate) are disambiguated BEFORE any layer
+    is exported: the substrate's label is resolved first and seeded into
+    the collision-tracking, so a film layer that happens to land on the
+    SAME label the substrate resolved to (e.g. "Silicon" chosen as both a
+    thin film AND the substrate -- unusual, but not physically
+    meaningless, and the schema doesn't forbid it) gets a "#2" suffix
+    rather than colliding with the substrate's own sidecar n,k CSV.
+    Among film layers, two that would resolve to the same label (the same
+    formula+polymorph, or two layers explicitly given the same `label`)
+    get a "#2", "#3", ... suffix appended to every occurrence after the
+    first. Without this, a repeated-unit stack (a Bragg mirror, a
+    superlattice -- a real sample type, not a contrived one) would
+    silently produce two layers with the IDENTICAL label: their sidecar
+    n,k CSVs would collide in nk_csv_dir (the second write overwriting the
+    first), and worse, physics.extract_params() builds each fittable
+    parameter's key as f"{label}:thick" etc., so both layers would get the
+    SAME key -- found by reproducing it directly (a SiO2/Ta2O5/SiO2 stack
+    produced two ParamSpecs both keyed "SiO2_amorphous:thick"), meaning
+    FitEngine could not move the two physically distinct layers
+    independently. See docs/xrr_fit_findings.md."""
     out_dir = Path(out_dir)
 
-    ambient_entry = {"label": ambient, "role": "ambient", "material_type": "ambient",
-                      "xray": {"sld_real": {"value": 0.0}, "sld_imag": {"value": 0.0}},
-                      "neutron": {"sld_real": {"value": 0.0}, "sld_imag": {"value": 0.0}}}
-
-    if substrate.lower() in ("silicon", "si"):
-        sub = _SILICON_SUBSTRATE
-        substrate_entry = {
-            "label": "Silicon", "role": "substrate", "material_type": "substrate",
-            "molecular": {"formula": "Si", "density_g_cm3": sub["density_g_cm3"]},
-            "structural": {
-                "roughness": _bounded(substrate_roughness_a, substrate_roughness_min,
-                                      substrate_roughness_max,
-                                      log_default="Silicon.roughness" if substrate_roughness_a is not None else None),
-            },
-            "xray": {"sld_real": {"value": sub["xray_sld_real"]}, "sld_imag": {"value": sub["xray_sld_imag"]}},
-            "neutron": {"sld_real": {"value": None}, "sld_imag": {"value": None}},
-            "materials_db": {"note": "standard crystalline Si constants, NOT from "
-                                      "materials_oxide_test.db (an oxides-only dataset)"},
-        }
+    if isinstance(ambient, dict):
+        ambient_entry = dict(ambient)
+    elif isinstance(ambient, str) and ambient.lower() == "air":
+        ambient_entry = {"label": "Air", "role": "ambient", "material_type": "ambient",
+                          "xray": {"sld_real": {"value": 0.0}, "sld_imag": {"value": 0.0}},
+                          "neutron": {"sld_real": {"value": 0.0}, "sld_imag": {"value": 0.0}}}
     else:
-        raise ExportError(f"Unknown substrate '{substrate}' -- only 'silicon' is supported "
-                           f"as a non-DB placeholder right now.")
+        raise ExportError(
+            f"Unknown ambient {ambient!r} -- materials_oxide_test.db has no liquid/gas "
+            f"materials, so ambient isn't DB-driven. Pass 'air' (default) or a pre-built "
+            f"entry dict, e.g. materials_db.launcher.ambient.build_ambient_entry('vacuum'/"
+            f"'d2o'/'h2o')."
+        )
 
     conn = sqlite3.connect(str(db)) if isinstance(db, (str, Path)) else db
     close_after = isinstance(db, (str, Path))
     try:
-        # Resolve every layer's label FIRST, using the exact same default
-        # export_layer() would compute (formula_polymorph, or bare formula
-        # with no polymorph) -- reusing its own resolution helpers rather
-        # than re-deriving the rule, so this can never silently diverge
-        # from what export_layer() would have picked on its own. Then
-        # disambiguate any collision (whether from two identical caller-
-        # supplied labels or two layers landing on the same default)
-        # before a single export_layer() call runs, so no sidecar CSV is
-        # ever written under a name a later layer will overwrite.
+        # Resolve the substrate's label FIRST -- it's exempt from its own
+        # "#N" suffix (there is exactly one substrate) but seeds
+        # seen_counts below so a colliding FILM layer is the one that
+        # gets disambiguated.
+        sub_mat_row = _find_material(conn, substrate)
+        if sub_mat_row is None:
+            raise ExportError(f"Substrate material '{substrate}' not found in {db}")
+        _sub_material_id, _sub_db_name, sub_formula = sub_mat_row
+        sub_phys = _resolve_physical_properties(conn, _sub_material_id, substrate, substrate_dataset_label)
+        substrate_label = f"{sub_formula}_{sub_phys['polymorph']}" if sub_phys["polymorph"] else sub_formula
+
+        # Resolve every FILM layer's label next, using the exact same
+        # default export_layer() would compute (formula_polymorph, or bare
+        # formula with no polymorph) -- reusing its own resolution helpers
+        # rather than re-deriving the rule, so this can never silently
+        # diverge from what export_layer() would have picked on its own.
+        # Then disambiguate any collision (whether from two identical
+        # caller-supplied labels, two layers landing on the same default,
+        # or a collision with the substrate's own label) before a single
+        # export_layer() call runs, so no sidecar CSV is ever written
+        # under a name a later layer (or the substrate) will overwrite.
         final_labels = []
-        seen_counts: dict = {}
+        seen_counts: dict = {substrate_label: 1}
         for spec in layers:
             mat_row = _find_material(conn, spec["material"])
             if mat_row is None:
@@ -629,6 +676,17 @@ def export_stack(db, layers: list, *, ambient: str = "air", substrate: str = "si
                 roughness_max=spec.get("roughness_max"),
                 nk_csv_dir=out_dir, role="layer", label=final_label,
             ))
+
+        substrate_entry = export_layer(
+            conn, substrate, substrate_dataset_label,
+            roughness_a=substrate_roughness_a, roughness_min=substrate_roughness_min,
+            roughness_max=substrate_roughness_max,
+            nk_csv_dir=out_dir, role="substrate", label=substrate_label,
+        )
+        substrate_entry["materials_db"]["note"] = (
+            f"DB-sourced substrate ('{substrate}') -- see this entry's own "
+            f"density_confidence/density_source above, same as any film layer."
+        )
     finally:
         if close_after:
             conn.close()
