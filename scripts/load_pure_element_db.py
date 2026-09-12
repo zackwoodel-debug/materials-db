@@ -2,7 +2,7 @@
 """
 scripts/load_pure_element_db.py
 ==================================
-Step 3 for the batch-3 triage set: load data/pure_element_triage.csv into
+Step 3 for batch 3: load data/pure_elements_50.csv (50 pure elements) into
 the SAME materials_oxide_test.db the oxide + batch-2 pipelines populated
 (appends onto the existing 81 materials -- does not recreate). Same
 pattern as load_batch2_db.py, reusing load_oxides_db.py's helpers directly.
@@ -19,11 +19,11 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import sqlite3
 import load_oxides_db as base  # noqa: E402
-from pure_element_material_list import MATERIALS_ELEMENT_TRIAGE  # noqa: E402
+from pure_element_material_list import MATERIALS_PURE_ELEMENTS  # noqa: E402
 
-CSV_PATH = _ROOT / "data" / "pure_element_triage.csv"
+CSV_PATH = _ROOT / "data" / "pure_elements_50.csv"
 
-_BY_FORMULA = {m["formula"]: m for m in MATERIALS_ELEMENT_TRIAGE}
+_BY_FORMULA = {m["formula"]: m for m in MATERIALS_PURE_ELEMENTS}
 
 
 def main():
@@ -52,14 +52,14 @@ def main():
             doi="10.1063/1.4812323",
             notes="mp-api queries against the Materials Project summary endpoint; see "
                   "mp_id/mp_space_group/mp_energy_above_hull_ev per-material in "
-                  "data/pure_element_triage.csv.",
+                  "data/pure_elements_50.csv.",
         )
         pubchem_source_id = base.get_or_create_source(
             conn, source_cache, "pubchem",
             title="PubChem", authors="National Center for Biotechnology Information", year=2024,
             technique="PubChem PUG REST/PUG-View", url="https://pubchem.ncbi.nlm.nih.gov",
             notes="cid/smiles/inchikey/molecular_weight/CAS from PubChem PUG REST + PUG-View "
-                  "CAS heading for the pure-element triage set.",
+                  "CAS heading for the pure-element set.",
         )
         periodictable_source_id = base.get_or_create_source(
             conn, source_cache, "periodictable",
@@ -72,10 +72,12 @@ def main():
         literature_source_id = base.get_or_create_source(
             conn, source_cache, "literature_density_batch3",
             title="Literature density estimate (batch-3 materials with no trustworthy measured density)",
-            technique="literature", notes="Placeholder source id for parity with other batches; "
-                                           "no batch-3-triage material currently uses a literature "
-                                           "density citation (Au/Se/Te are MP_DFT or bulk-"
-                                           "approximation, not literature-cited).",
+            technique="literature", notes="Used for the 12 elements (Ca/Ce/Er/Eu/Ho/Lu/Mg/Pr/Sc/Sr/"
+                                           "Tm/Yb) with a real measured film density from the "
+                                           "Fernandez-Perea/Larruquert EUV thin-film research program "
+                                           "-- see density_citation_* columns in "
+                                           "data/pure_elements_50.csv for the specific value and "
+                                           "citation per element.",
         )
         stats["sources"] += 4
 
@@ -128,7 +130,7 @@ def main():
         conn.close()
         raise
 
-    print("Committed pure-element triage set. Row counts inserted this run:")
+    print("Committed pure-element set. Row counts inserted this run:")
     for k, v in stats.items():
         print(f"  {k}: {v}")
 

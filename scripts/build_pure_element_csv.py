@@ -4,18 +4,20 @@ scripts/build_pure_element_csv.py
 ====================================
 Batch 3 equivalent of build_oxides_csv.py / build_batch2_csv.py: PubChem +
 Materials Project + periodictable SLD + RI.info n,k enrichment for the
-pure-element triage set in scripts/pure_element_material_list.py (Au, Se,
-Te -- see that module's docstring for the resolutions).
+full pure-element set in scripts/pure_element_material_list.py (50
+elements: Au/Se/Te triage + the 47 processed after -- see that module's
+docstring for every resolution).
 
 Default density-state policy for this batch, distinct from oxides/batch 2:
 MP_DFT bulk density is relabeled bulk_elemental_approximation UNLESS the
-formula is in VERIFIED_BULK_SAMPLE_FORMULAS (an explicit, small set --
-here, Se and Te, whose default datasets are genuinely bulk/single-crystal
-samples). This is inverted from batch 2's TiN/VN/EuS handling (a small
-set relabeled TO approximation) because for pure elements the corpus
-default IS approximation -- 14/359 pages state a real measured film
-density (see docs/batch3_scoping_report.md Part C); assuming verified
-unless proven otherwise would get the common case backwards.
+formula is in VERIFIED_BULK_SAMPLE_FORMULAS (genuinely bulk/single-crystal
+default datasets) or EXPERIMENTAL_DENSITY_OVERRIDE (a real measured film
+density citation, replacing the MP_DFT number entirely). This is inverted
+from batch 2's TiN/VN/EuS handling (a small set relabeled TO
+approximation) because for pure elements the corpus default IS
+approximation -- 14/359 pages state a real measured film density (see
+docs/batch3_scoping_report.md Part C); assuming verified unless proven
+otherwise would get the common case backwards.
 """
 
 import sys
@@ -27,14 +29,15 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import build_oxides_csv as base  # noqa: E402
 from pure_element_material_list import (  # noqa: E402
-    MATERIALS_ELEMENT_TRIAGE, EXPECTED_SPACEGROUP, VERIFIED_BULK_SAMPLE_FORMULAS,
+    MATERIALS_PURE_ELEMENTS, EXPECTED_SPACEGROUP, EXPERIMENTAL_DENSITY_OVERRIDE,
+    VERIFIED_BULK_SAMPLE_FORMULAS,
 )
 from materials_db.pipeline.process_condition import BULK_ELEMENTAL_APPROXIMATION  # noqa: E402
 
-OUT_CSV = _ROOT / "data" / "pure_element_triage.csv"
+OUT_CSV = _ROOT / "data" / "pure_elements_50.csv"
 
 base.EXPECTED_SPACEGROUP = EXPECTED_SPACEGROUP
-base.EXPERIMENTAL_DENSITY_OVERRIDE = {}
+base.EXPERIMENTAL_DENSITY_OVERRIDE = EXPERIMENTAL_DENSITY_OVERRIDE
 base.FORCE_NO_MP = set()
 base.LITERATURE_DENSITY = {}
 base.REJECTED_ALTERNATE_NOTE = {}
@@ -54,7 +57,7 @@ def main():
 
     rows = []
     try:
-        for mat in MATERIALS_ELEMENT_TRIAGE:
+        for mat in MATERIALS_PURE_ELEMENTS:
             formula = mat["formula"]
             print(f"[{mat['idx']}] {mat['name']} ({formula})", flush=True)
             row = dict(idx=mat["idx"], name=mat["name"], formula=formula, polymorph=mat["polymorph"])
@@ -75,7 +78,9 @@ def main():
                 row["density_citation_journal"] = citation["journal"]
                 row["density_citation_year"] = citation["year"]
 
-            if formula not in VERIFIED_BULK_SAMPLE_FORMULAS and row.get("density_source") == "MP_DFT":
+            if (formula not in VERIFIED_BULK_SAMPLE_FORMULAS
+                    and formula not in EXPERIMENTAL_DENSITY_OVERRIDE
+                    and row.get("density_source") == "MP_DFT"):
                 row["density_source"] = BULK_ELEMENTAL_APPROXIMATION
                 flags.append(f"density relabeled bulk_elemental_approximation: no RI.info page "
                              f"for {formula} states a measured film density, and the default "
