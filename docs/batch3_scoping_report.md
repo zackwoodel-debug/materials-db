@@ -465,3 +465,110 @@ VN/EuS) / 2 named exclusions.
 
 Still holding batch 3b (Carbon, Tin, Boron) -- each needs the polymorph AND process-condition
 axes resolved together, deliberately not attempted alongside this larger, already-eventful pass.
+
+## H. Batch 3b -- Carbon (Diamond + Graphite), Tin, Boron
+
+The three deferred materials, each combining a polymorph question with a process-condition or
+amorphous question at once. All three MP structures were verified directly (full candidate
+search, per rule 1a) before writing any code.
+
+### Carbon needed a genuinely new shape: two materials, one formula
+
+Diamond and Graphite are optically nothing alike and are stored as two separate `materials` rows
+that legitimately share `formula="C"` -- not a data-entry ambiguity to resolve down to one row,
+the way every prior polymorph question in this project has worked. This is a real, load-bearing
+exception to "one formula = one identity" and it exposed three places in the pipeline that had
+silently assumed the opposite, all found and fixed before any Carbon data was written:
+
+1. **`_find_material()`** (`src/materials_db/export/modalfit.py`) used `.fetchone()` on its
+   formula-fallback query -- would have silently returned whichever of Diamond/Graphite SQLite
+   happened to return first. Now raises `ExportError` naming both matches on formula ambiguity,
+   requiring the caller to specify the exact material name. Fixed and committed (`7f67820`)
+   *before* Carbon existed in the DB, specifically because scoping Carbon predicted this failure
+   shape rather than waiting to hit it.
+2. **`fetch_mp()`'s `EXPECTED_SPACEGROUP` lookup** (`scripts/build_oxides_csv.py`) was keyed by
+   formula only -- cannot express "Diamond wants #227, Graphite wants #194" for the same formula.
+   Changed to a name-first, formula-fallback lookup, backward compatible since no existing
+   material's `name` has ever coincided with a formula key.
+3. **`EXPERIMENTAL_DENSITY_OVERRIDE`'s lookup** (same file) had the identical formula-only
+   ambiguity, found while resolving Graphite's density (below) -- fixed the same way, same commit.
+4. **`export_all_materials_modalfit.py`'s `_discover_materials()`/export loop** asserted no
+   duplicate formulas across CSVs and used formula as both the export lookup key and the output
+   directory name -- all three assumptions break for Carbon. Switched the identity key throughout
+   to `name` (the schema's real `UNIQUE` column), duplicate-checked on `name` instead of formula,
+   and derived the output directory from a sanitized `name`.
+
+**A live incident during this fix surfaced a fourth, unrelated gap**: switching the export
+directory to a sanitized `name` caused "Tin" to collide case-insensitively with a stale "TiN"
+directory left over from before this change (macOS's default filesystem, APFS, is
+case-insensitive but case-preserving) -- Tin's export silently overwrote the old TiN directory's
+files. No real data was lost (the current run's actual Titanium-nitride export lives correctly at
+`Titanium_nitride/`, itself unaffected), but the failure shape -- one export overwriting another's
+output file on disk without any error -- is the same "silent wrong answer" class this project has
+hunted down repeatedly elsewhere, just manifesting as a filesystem collision instead of a database
+query. Fixed two ways: `export_all_materials_modalfit.py` now wipes and rebuilds `OUT_DIR` fully
+on every run (a stale directory from an old naming scheme can no longer linger to collide later),
+and `_discover_materials()` now explicitly checks for and raises on any case-insensitive collision
+among the current run's own derived directory names, rather than relying on it never happening
+again by chance.
+
+**A fifth gap, a genuine density-crosscheck finding, not an infrastructure bug**: MP's DFT density
+for graphite (mp-48, 1.939 g/cm3) deviates ~14% from the well-established theoretical density of
+ideal AB-stacked hexagonal graphite (a=2.464 A, c=6.711 A), which computes to 2.267 g/cm3 --
+confirmed against Mounet and Marzari's first-principles structural study (Phys. Rev. B 71, 205214,
+2005). Per the density-crosscheck discipline this batch established (see "Ce/Yb" above and
+`process_condition.TRACKED_OPEN_TASKS["mp_density_crosscheck_compounds"]`), a real, checkable
+14% discrepancy is not smoothed over: Graphite gets a name-keyed `EXPERIMENTAL_DENSITY_OVERRIDE`
+entry (2.267 g/cm3, cited), `DENSITY_VERIFIED`. Diamond's MP_DFT density (3.534 g/cm3, mp-66)
+matches real diamond (~3.51-3.52 g/cm3) and needed no override; both Diamond and Graphite's
+default RI.info datasets are genuinely bulk/single-crystal (Taylor's page states "Single-crystal
+CVD" directly; Djurisic's o/e pair requires a uniaxial oriented crystal, same o/e logic as Se/Te),
+so formula "C" was added to `VERIFIED_BULK_SAMPLE_FORMULAS`, applying correctly to both rows.
+
+### A third root cause for a large energy_above_hull gap: kinetic metastability
+
+Diamond sits at mp-66, **+112.26 meV/atom** above graphite's mp-48 -- the largest gap resolved as
+"the measured phase is correct" anywhere in this project. This is neither a DFT-functional
+artifact (rule 1a's VN/Co/Ag/Sr/Ti/In/Ta cases) nor a genuine low-temperature phase transition
+(rule 1b's alkali metals): graphite really is more thermodynamically stable than diamond at all
+normal conditions, and DFT correctly says so. Diamond persists indefinitely at room temperature
+only because the diamond-to-graphite transformation has an enormous kinetic barrier -- a third,
+distinct, and completely legitimate reason to trust a phase MP ranks far from the hull, recorded
+as such rather than filed under either existing rule.
+
+**Tin's beta phase is the same root cause, at an even larger gap**: mp-84 (beta-Sn, tetragonal
+I4_1/amd #141), **+120.18 meV/atom** above alpha-Sn's diamond-cubic ground state (mp-117) -- the
+textbook "tin pest" transition (13.2 C, alpha stable below, beta above). Unlike the alkali metals,
+where the low-temperature phase genuinely forms on ordinary cooling, tin pest is famously
+KINETICALLY HINDERED without deliberate seeding or prolonged cold exposure (historically took
+years to manifest in affected artifacts). Golovashkin and Motulevich 1964 measured the same
+sample's optical constants at 293/78/4.2 K -- almost certainly all beta-Sn throughout (a metal
+cooled in a cryostat for an optics measurement, not deliberately held for tin-pest nucleation),
+not a genuine phase change partway through the series. Recorded explicitly as an assumption based
+on well-documented metallurgical kinetics, not asserted as a certainty. Tin's density: no RI.info
+page states a measured film density or a bulk/single-crystal claim, so it gets the same default
+`DENSITY_BULK_APPROXIMATION` treatment as most of the 47-element batch, using MP_DFT's beta-Sn
+density (7.129 g/cm3).
+
+### Boron: no MP structure at all, amorphous confirmed by density
+
+Every crystalline boron candidate MP offers (2.30-2.57 g/cm3 across several genuine rhombohedral/
+tetragonal allotropes) is denser than the RI.info-stated film density (2.10 g/cm3, Fernandez-Perea
+et al. 2007) -- consistent with amorphous boron, the well-known typical state of a room-
+temperature-evaporated boron film (boron is notoriously difficult to crystallize without
+high-temperature annealing). `FORCE_NO_MP`, `polymorph="amorphous"`, `DENSITY_VERIFIED` via the
+stated literature film density.
+
+### Combined totals after batch 3b
+
+135 materials total (131 + Diamond/Graphite/Tin/Boron), 133/135 exported (skip set unchanged:
+`{GdF3, LuAl3(BO3)4}`), 96 `DENSITY_VERIFIED` (+3: Diamond, Graphite, Boron) / 37
+`DENSITY_BULK_APPROXIMATION` (+1: Tin) / 2 named exclusions. Full export + ModalFit-layer-JSON
+round trip confirmed correct for all four: `density_confidence`/`density_bounds` are `verified`
+with zero-width bounds for Diamond/Graphite/Boron, and `bulk_approximation` with the asymmetric
+`[0.70x, 1.02x]` bounds for Tin, exactly as designed. The formula-ambiguity guard was confirmed
+live against the real database: calling `export_layer(db, "C")` raises `ExportError` naming both
+Diamond and Graphite, requiring the exact name.
+
+Batch 3, including 3b, is now complete: 54 pure-element books resolved (50 + Carbon/Tin/Boron),
+1 excluded (Hg, liquid at room temperature).
