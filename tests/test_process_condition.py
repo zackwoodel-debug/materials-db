@@ -27,7 +27,9 @@ from materials_db.pipeline.process_condition import (  # noqa: E402
     format_process_condition,
     looks_like_process_condition,
     materials_with_density_state,
+    open_tasks,
     parse_process_condition,
+    task_detail,
     verified_density_bounds,
 )
 
@@ -137,3 +139,23 @@ class TestMaterialsWithDensityState:
     def test_invalid_state_raises(self):
         with pytest.raises(ValueError, match="Unrecognized density state"):
             materials_with_density_state(str(_DB_PATH), "not_a_real_state")
+
+
+class TestTrackedOpenTasks:
+    """The oxide-amorphous migration must be a tracked, queryable open
+    item in the repo -- not just a note left in a conversation -- same
+    treatment as EXCLUSION_STATE's blocking_on queries."""
+
+    def test_oxide_amorphous_migration_is_open(self):
+        assert "oxide_amorphous_migration" in open_tasks()
+
+    def test_task_detail_has_scope_and_cost(self):
+        detail = task_detail("oxide_amorphous_migration")
+        assert set(detail["affected_materials"]) == {"Nb2O5", "SiO", "SiO2", "Ta2O5", "GeO2"}
+        assert len(detail["affected_call_sites"]) >= 3
+        assert detail["cost_estimate"]
+        assert detail["status"] == "open"
+
+    def test_unknown_task_raises(self):
+        with pytest.raises(ValueError, match="Unrecognized task id"):
+            task_detail("not_a_real_task")

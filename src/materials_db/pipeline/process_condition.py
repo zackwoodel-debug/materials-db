@@ -219,3 +219,66 @@ def _extract_density_source(dataset_label: str) -> Optional[str]:
         if f"density_{src}" in dataset_label:
             return src
     return None
+
+
+# ---------------------------------------------------------------------------
+# 3. TRACKED_OPEN_TASKS -- known, scoped work that's deliberately not being
+# done right now. Lives in the repo, queryable, the same way EXCLUSION_STATE
+# and DENSITY_STATE are -- not just a note left in a conversation. A task
+# recorded here has a fixed scope and a cost estimate; it stops being
+# "tracked" only when it's actually done (remove the entry) or explicitly
+# decided against (move it to a "won't do" note with the reason, don't just
+# delete it silently).
+# ---------------------------------------------------------------------------
+
+TRACKED_OPEN_TASKS = {
+    "oxide_amorphous_migration": dict(
+        description=(
+            "The oxide batch's polymorph=\"amorphous\" (Nb2O5, SiO, SiO2, Ta2O5) is really a "
+            "process_condition value (structure:amorphous) sitting in the polymorph slot -- "
+            "the same informal shortcut this batch's own As2S3 uses, predating "
+            "process_condition's existence. GeO2 is a related, separate inconsistency: it's "
+            "FORCE_NO_MP with a literature amorphous/vitreous density but was never labeled "
+            "polymorph=\"amorphous\" at all (polymorph=None) -- found while scoping this "
+            "task, not previously noticed."
+        ),
+        affected_materials=["Nb2O5", "SiO", "SiO2", "Ta2O5", "GeO2"],
+        affected_call_sites=[
+            "scripts/oxide_material_list.py (the 4-5 polymorph fields themselves)",
+            "data/step1_selections.json (the ACTUAL load-bearing source for the optical side -- "
+            "stores polymorph/effective_polymorph/dataset_label per-axis independently of the "
+            "Python module; load_oxides_db.py reads this file, not MATERIALS_50's polymorph "
+            "field, for optical_dispersion rows)",
+            "scripts/xrr_smoke_test_oxide_db.py (hardcodes "
+            "read_layer_by_dataset_label(conn, \"SiO2\", \"amorphous\"))",
+            "src/materials_db/calculators/simulate_xrr.py (docstring CLI examples: "
+            "\"SiO2[amorphous]:100\")",
+            "tests/test_modalfit_export.py::TestExportStackLabelDisambiguation (uses SiO2/"
+            "\"amorphous\" as its fixture)",
+        ],
+        cost_estimate=(
+            "Small-to-moderate, not a five-minute edit: no open design questions (unlike "
+            "inventing process_condition itself), but requires editing 2 data files + 1 "
+            "canonical module, then a MANDATORY full DB rebuild in sequence (load_oxides_db.py's "
+            "fresh_db() wipes and recreates the DB from scratch; batch 2 and the pure-element "
+            "triage are appended on top and would need re-appending after), plus updating the "
+            "3 dependent call sites above, plus a full-suite + full-export re-verification pass. "
+            "Contained, half-day scale."
+        ),
+        blocking_on=None,  # not blocked on anything -- deliberately deferred, not stuck
+        status="open",  # "open" | "done" | "wont_do" -- update in place, don't delete silently
+    ),
+}
+
+
+def open_tasks() -> list:
+    """Query: what's tracked as open work right now? Returns task ids
+    with status == "open" -- the same "don't leave it in a conversation"
+    discipline as EXCLUSION_STATE/DENSITY_STATE."""
+    return sorted(k for k, v in TRACKED_OPEN_TASKS.items() if v["status"] == "open")
+
+
+def task_detail(task_id: str) -> dict:
+    if task_id not in TRACKED_OPEN_TASKS:
+        raise ValueError(f"Unrecognized task id {task_id!r}. Known: {sorted(TRACKED_OPEN_TASKS)}")
+    return TRACKED_OPEN_TASKS[task_id]
