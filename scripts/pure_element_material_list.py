@@ -515,4 +515,146 @@ VERIFIED_BULK_SAMPLE_FORMULAS = {
     "Ag",  # "Epitaxially grown, atomically smooth, single crystalline thick Ag film"
     "Si",  # Aspnes and Studna: "Crystal orientation: <111>" -- a bulk single-crystal wafer
     "Ge",  # Aspnes and Studna: "Crystal orientation: <111>" -- a bulk single-crystal wafer
+    "C",  # batch 3b: BOTH C materials are genuinely bulk/single-crystal defaults --
+          # Diamond's Taylor page states "Single-crystal CVD" directly; Graphite's
+          # Djurisic o/e pair requires a uniaxial (oriented) crystal, same o/e logic
+          # as Se/Te. Applies to both rows sharing this formula; Graphite additionally
+          # gets a name-keyed EXPERIMENTAL_DENSITY_OVERRIDE below since its MP_DFT
+          # value (1.939 g/cm3) diverges ~14% from real crystalline graphite.
+}
+
+# =============================================================================
+# BATCH 3b: Carbon, Tin, Boron -- held back from the main pass because each
+# combines a polymorph trap WITH a process-condition/amorphous question at
+# once. See docs/batch3_scoping_report.md Part H for the full resolution
+# writeup; summarized here as the code comments justifying each choice.
+#
+# Carbon needs TWO separate `materials` rows sharing formula "C" (Diamond,
+# Graphite) -- genuinely different allotropes, not "the same material, pick
+# one". This requires _find_material() to raise on formula ambiguity
+# (fixed, src/materials_db/export/modalfit.py) and EXPECTED_SPACEGROUP to
+# support a name-keyed lookup alongside the formula-keyed one (fixed,
+# scripts/build_oxides_csv.py's fetch_mp()) -- both were real gaps this
+# batch exposed, not pre-existing machinery.
+#
+# A THIRD root cause for a large energy_above_hull gap, distinct from both
+# rule 1a's DFT-functional-sensitivity cases (VN, Co, Ag, Sr, Ti, In, Ta)
+# and rule 1b's genuine-low-temperature-phase cases (the alkali metals):
+# KINETIC METASTABILITY. Diamond (Fd-3m #227, mp-66, +112.26 meV/atom) is
+# NOT a DFT error and NOT a temperature-driven phase mismatch -- graphite
+# genuinely is more thermodynamically stable at all normal conditions, a
+# well-known fact, and DFT correctly says so. Diamond persists at room
+# temperature only because the diamond-to-graphite transformation has an
+# enormous kinetic barrier, not because it's the ground state. The
+# measured material is still diamond -- multiple RI.info pages explicitly
+# say so -- kinetic stability is a completely legitimate reason to trust a
+# phase MP ranks far from the hull, but it is a DIFFERENT reason than "the
+# gap reflects a DFT/functional artifact" and should not be filed as one.
+# Tin's beta phase (see below) is the same root cause.
+# =============================================================================
+
+MATERIALS_PURE_ELEMENTS += [
+    dict(idx=260, name="Diamond", formula="C", polymorph="diamond cubic",
+         pubchem_name="Diamond", ri_aliases=["C"],
+         ri_axes=[_axis("Taylor", "main/C/nk/Taylor.yml", "Taylor2023",
+                        process_condition=format_process_condition(deposition="single_crystal"))]),
+    dict(idx=261, name="Graphite", formula="C", polymorph="graphite",
+         pubchem_name="Graphite", ri_aliases=["C"],
+         ri_axes=[_axis("Djurisic-o", "main/C/nk/Djurisic-o.yml", "Djurisic1999", axis="o-ray"),
+                  _axis("Djurisic-e", "main/C/nk/Djurisic-e.yml", "Djurisic1999", axis="e-ray")]),
+    dict(idx=262, name="Tin", formula="Sn", polymorph="beta-Sn (tetragonal)",
+         pubchem_name="Tin", ri_aliases=["Sn"],
+         ri_axes=[_axis("Golovashkin-293K", "main/Sn/nk/Golovashkin-293K.yml", "Golovashkin1964",
+                        process_condition=format_process_condition(temperature="293K"))]),
+    dict(idx=263, name="Boron", formula="B", polymorph="amorphous",
+         pubchem_name="Boron", ri_aliases=["B"],
+         ri_axes=[_axis("Fernandez-Perea", "main/B/nk/Fernandez-Perea.yml", "FernandezPerea2007",
+                        process_condition=format_process_condition(deposition="evaporated"))]),
+]
+
+# Named alternates, demonstrating the corpus's real breadth without being
+# the default pick:
+C_ALTERNATE_PAGES = [
+    _axis("Phillip", "main/C/nk/Phillip.yml", "Phillip1964"),  # diamond, no stated condition
+    _axis("Dore", "main/C/nk/Dore.yml", "Dore1998",
+          process_condition=format_process_condition(structure="polycrystalline")),  # CVD diamond
+]
+SN_ALTERNATE_PAGES = [
+    _axis("Golovashkin-78K", "main/Sn/nk/Golovashkin-78K.yml", "Golovashkin1964",
+          process_condition=format_process_condition(temperature="78K")),
+    _axis("Golovashkin-4.2K", "main/Sn/nk/Golovashkin-4.2K.yml", "Golovashkin1964",
+          process_condition=format_process_condition(temperature="4.2K")),
+]
+
+EXPERIMENTAL_DENSITY_OVERRIDE.update({
+    # Name-keyed (fetch_mp() now checks name before formula for this dict
+    # too -- build_oxides_csv.py): applying this via formula "C" would
+    # incorrectly also override Diamond's already-correct MP_DFT density.
+    "Graphite": (2.267, "literature: MP_DFT's graphite density (1.939 g/cm3, mp-48) deviates "
+                         "~14% from the well-established theoretical density of ideal "
+                         "AB-stacked hexagonal graphite (a=2.464 A, c=6.711 A), computed here "
+                         "as 2.267 g/cm3 -- a real, checkable discrepancy per the density-"
+                         "crosscheck discipline (docs/PIPELINE_PRINCIPLES.md), not smoothed "
+                         "over as 'close enough'.",
+                 dict(doi="10.1103/PhysRevB.71.205214",
+                      title="First-principles determination of the structural, vibrational and "
+                             "thermodynamic properties of diamond, graphite, and derivatives",
+                      authors="Mounet, N.; Marzari, N.",
+                      journal="Physical Review B", year=2005)),
+})
+
+EXPECTED_SPACEGROUP.update({
+    # Name-keyed (fetch_mp() checks name before formula -- see
+    # build_oxides_csv.py): "C" alone is ambiguous between these two.
+    "Diamond": ([227], "diamond cubic -- CONFIRMED, at a KINETIC-METASTABILITY gap (mp-66, "
+                        "+112.26 meV/atom), not a DFT error: graphite genuinely is more stable "
+                        "at all normal conditions, but the diamond-to-graphite transformation "
+                        "has an enormous kinetic barrier, so diamond persists indefinitely at "
+                        "room temperature. Multiple RI.info pages explicitly state 'Diamond' or "
+                        "'Single-crystal CVD' -- the measured material is not in question, only "
+                        "why MP ranks it far from the hull."),
+    "Graphite": ([194], "hexagonal graphite (AB-stacked) -- lowest-hull entry (mp-3347313, "
+                         "C2/m #12) is a closely related rhombohedral/monoclinic stacking "
+                         "variant at only +0.79 meV/atom above the correct hexagonal entry "
+                         "(mp-48) -- a genuine near-degenerate stacking-polytype tie, the SAME "
+                         "shape as h-BN/ZnS's stacking-polytype zoos, not the kinetic-"
+                         "metastability shape diamond has. Djurisic and Li 1999's o/e data "
+                         "requires a uniaxial hexagonal crystal, matching P6_3/mmc directly."),
+    "Sn": ([141], "beta-Sn (white tin, tetragonal I4_1/amd) -- CONFIRMED at the LARGEST "
+                   "kinetic-metastability gap found in this whole project after diamond "
+                   "(mp-84, +120.18 meV/atom above alpha-Sn's diamond-cubic ground state, "
+                   "mp-117). This is the textbook 'tin pest' transition (13.2 C, alpha stable "
+                   "below, beta above) -- but unlike the alkali metals (rule 1b), where the "
+                   "low-temperature phase transition genuinely occurs on ordinary cooling, tin "
+                   "pest is famously KINETICALLY HINDERED without deliberate seeding or "
+                   "prolonged cold exposure (historically took YEARS to manifest in affected "
+                   "artifacts). Golovashkin and Motulevich 1964 measured the SAME sample's "
+                   "temperature-dependent optical constants at 293/78/4.2 K -- almost certainly "
+                   "all beta-Sn throughout (a metal cooled in a cryostat for an optics "
+                   "measurement, not deliberately held for the tin-pest transformation to "
+                   "occur), NOT a genuine phase change partway through the series. This is an "
+                   "ASSUMPTION based on well-documented metallurgical kinetics, not a "
+                   "certainty -- recorded as such, not silently treated as equally solid as a "
+                   "directly-stated phase."),
+})
+
+# Boron: no MP structure used at all -- the RI.info-stated film density
+# (2.10 g/cm3) is BELOW every crystalline boron candidate MP offers
+# (2.30-2.57 g/cm3 across multiple genuine rhombohedral/tetragonal boron
+# allotropes), consistent with amorphous boron -- the well-known typical
+# state of a room-temperature-evaporated boron film, since boron is
+# notoriously difficult to crystallize without high-temperature annealing.
+# Density is VERIFIED via the RI.info-stated value itself (a real
+# measured film density, same evidentiary bar as the 12 lanthanide/
+# alkaline-earth elements' EXPERIMENTAL_DENSITY_OVERRIDE entries).
+FORCE_NO_MP_BATCH_3B = {"B"}
+LITERATURE_DENSITY_BATCH_3B = {
+    "B": (2.10,
+          "literature: B film, density stated directly in RI.info's COMMENTS field, below "
+          "every crystalline boron candidate -- consistent with amorphous boron.",
+          dict(doi="10.1364/JOSAA.24.003800",
+               title="Optical constants of electron-beam evaporated boron films in the "
+                      "6.8-900eV photon energy range",
+               authors="Fernandez-Perea, M.; Larruquert, J.I.; Aznarez, J.A.; et al.",
+               journal="Journal of the Optical Society of America A", year=2007)),
 }

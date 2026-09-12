@@ -1,23 +1,24 @@
 #!/usr/bin/env python3
 """
-scripts/build_pure_element_csv.py
-====================================
-Batch 3 equivalent of build_oxides_csv.py / build_batch2_csv.py: PubChem +
-Materials Project + periodictable SLD + RI.info n,k enrichment for the
-full pure-element set in scripts/pure_element_material_list.py (50
-elements: Au/Se/Te triage + the 47 processed after -- see that module's
-docstring for every resolution).
+scripts/build_batch3b_csv.py
+================================
+Batch 3b: Carbon (Diamond + Graphite, two materials rows sharing formula
+"C"), Tin, Boron -- the 4 materials held back from the main pure-element
+pass (scripts/build_pure_element_csv.py) because each combines a polymorph
+trap WITH a process-condition/amorphous question at once. See
+scripts/pure_element_material_list.py's BATCH 3b section and
+docs/batch3_scoping_report.md Part H.
 
-Default density-state policy for this batch, distinct from oxides/batch 2:
-MP_DFT bulk density is relabeled bulk_elemental_approximation UNLESS the
-formula is in VERIFIED_BULK_SAMPLE_FORMULAS (genuinely bulk/single-crystal
-default datasets) or EXPERIMENTAL_DENSITY_OVERRIDE (a real measured film
-density citation, replacing the MP_DFT number entirely). This is inverted
-from batch 2's TiN/VN/EuS handling (a small set relabeled TO
-approximation) because for pure elements the corpus default IS
-approximation -- 14/359 pages state a real measured film density (see
-docs/batch3_scoping_report.md Part C); assuming verified unless proven
-otherwise would get the common case backwards.
+A separate script, not an extension of build_pure_element_csv.py, matching
+the established per-phase pattern (build_oxides_csv.py / build_batch2_csv.py
+/ build_pure_element_csv.py are each their own script) -- the 50-element
+pass is a completed, already-reported-on phase and should not be re-run or
+have its CSV regenerated as a side effect of adding these 4.
+
+Iterates the 4 new dict entries in MATERIALS_PURE_ELEMENTS (idx 260-263,
+appended after the original 50) directly, rather than importing a separate
+list module, since pure_element_material_list.py already scopes them as
+"BATCH 3b" additions to the same canonical list.
 """
 
 import sys
@@ -34,13 +35,13 @@ from pure_element_material_list import (  # noqa: E402
 )
 from materials_db.pipeline.process_condition import BULK_ELEMENTAL_APPROXIMATION  # noqa: E402
 
-OUT_CSV = _ROOT / "data" / "pure_elements_50.csv"
+OUT_CSV = _ROOT / "data" / "batch3b_4.csv"
+
+MATERIALS_BATCH_3B = [m for m in MATERIALS_PURE_ELEMENTS if m["idx"] >= 260]
+assert len(MATERIALS_BATCH_3B) == 4, f"expected exactly 4 batch-3b materials, found {len(MATERIALS_BATCH_3B)}"
 
 base.EXPECTED_SPACEGROUP = EXPECTED_SPACEGROUP
 base.EXPERIMENTAL_DENSITY_OVERRIDE = EXPERIMENTAL_DENSITY_OVERRIDE
-# Boron (batch 3b) is the first pure-element case with no usable MP
-# candidate at all -- every crystalline boron structure is denser than
-# the RI.info-stated film density, consistent with amorphous boron.
 base.FORCE_NO_MP = FORCE_NO_MP_BATCH_3B
 base.LITERATURE_DENSITY = LITERATURE_DENSITY_BATCH_3B
 base.REJECTED_ALTERNATE_NOTE = {}
@@ -60,7 +61,7 @@ def main():
 
     rows = []
     try:
-        for mat in MATERIALS_PURE_ELEMENTS:
+        for mat in MATERIALS_BATCH_3B:
             formula = mat["formula"]
             print(f"[{mat['idx']}] {mat['name']} ({formula})", flush=True)
             row = dict(idx=mat["idx"], name=mat["name"], formula=formula, polymorph=mat["polymorph"])
@@ -86,7 +87,7 @@ def main():
                     and row.get("density_source") == "MP_DFT"):
                 row["density_source"] = BULK_ELEMENTAL_APPROXIMATION
                 flags.append(f"density relabeled bulk_elemental_approximation: no RI.info page "
-                             f"for {formula} states a measured film density, and the default "
+                             f"for {mat['name']} states a measured film density, and the default "
                              f"dataset is not confirmed genuinely bulk/single-crystal -- MP's "
                              f"bulk-crystal DFT density is a stand-in, not a verified value.")
 

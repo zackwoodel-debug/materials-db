@@ -123,11 +123,15 @@ class TestMaterialsWithDensityState:
         Gold and 32 other pure elements (36 total here, alongside
         TiN/VN/EuS) are the same: no entry in their corpus states a
         measured film density, and their default dataset isn't confirmed
-        genuinely bulk/single-crystal either."""
+        genuinely bulk/single-crystal either. Batch 3b adds one more, the
+        element Tin (formula "Sn"): Golovashkin and Motulevich 1964 states
+        no measured film density and no bulk/single-crystal claim for the
+        beta-Sn sample, the same default-to-approximation policy as every
+        other pure element here -- 37 total."""
         bulk = materials_with_density_state(str(_DB_PATH), DENSITY_BULK_APPROXIMATION)
         formulas = {m["formula"] for m in bulk}
-        assert {"TiN", "VN", "EuS", "Au"} <= formulas
-        assert len(formulas) == 36
+        assert {"TiN", "VN", "EuS", "Au", "Sn"} <= formulas
+        assert len(formulas) == 37
 
     @pytest.mark.skipif(not _DB_PATH.exists(), reason="data/materials_oxide_test.db not built")
     def test_verified_includes_bulk_single_crystal_elements(self):
@@ -182,12 +186,24 @@ class TestMpDensityCrosscheck:
     @pytest.mark.skipif(not _DB_PATH.exists(), reason="data/materials_oxide_test.db not built")
     def test_uncrosschecked_mp_density_count(self):
         """71 materials across all batches currently have a raw,
-        uncrosschecked MP_DFT density -- the real count, not a guess."""
+        uncrosschecked MP_DFT density -- the real count, not a guess.
+        Batch 3b adds Diamond: its MP_DFT density (3.534 g/cm3, mp-66) is
+        VERIFIED via VERIFIED_BULK_SAMPLE_FORMULAS (Taylor's page states
+        "Single-crystal CVD" outright) rather than an approximation, but
+        that trust rests on a manual literature comparison during this
+        batch's resolution (matches real diamond's ~3.51-3.52 g/cm3), not
+        an independent, citable, DB-recorded cross-check -- so it correctly
+        still counts here. Graphite and Tin do NOT count: Graphite's
+        density_source is "experimental lattice params" (an
+        EXPERIMENTAL_DENSITY_OVERRIDE, not raw MP_DFT) and Tin's is
+        bulk_elemental_approximation, neither of which matches this
+        function's "density_MP_DFT" dataset_label filter -- 72 total."""
         uncrosschecked = materials_with_uncrosschecked_mp_density(str(_DB_PATH))
-        assert len(uncrosschecked) == 71
+        assert len(uncrosschecked) == 72
         formulas = {m["formula"] for m in uncrosschecked}
         assert "Se" in formulas  # a pure element, cross-checked clean via periodictable
         assert "CuO" in formulas  # a compound, spot-checked clean via literature
+        assert "C" in formulas  # Diamond (batch 3b) -- verified by domain knowledge, not a DB-recorded crosscheck
 
     def test_crosscheck_matches_known_good_value(self):
         """Se's DB density (4.4956) vs periodictable's handbook value
