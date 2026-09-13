@@ -31,17 +31,39 @@ ModalFit's actual dependencies (numpy/scipy/matplotlib/refnx/periodictable), exp
 real stack, and ran the launcher's exact sequence against the real `ModelPredictorApp`
 class from the pinned clone. It loaded correctly on the first attempt.
 
-## Environment caveat (not something to design around)
+## Environment requirement: Tk >= 8.6 (found on a real desktop run, now guarded against)
 
-In this session's own sandboxed, semi-headless verification environment, a second
-variant of the smoke test -- one that additionally suppressed the "Model loaded"
-confirmation dialog (`messagebox.showinfo` patched to a no-op) -- hung indefinitely and
-had to be killed. The *unpatched* path (letting the real dialog show and get pumped by
-Tk's own event loop normally) completed cleanly on every run, including the full
-end-to-end validation below. This looks like a quirk of running Tkinter in an
-automated/non-interactive session, not a ModalFit or launcher defect, and was not
-observed on a normal interactive desktop run. `modalfit_bridge.launch()` therefore does
-**not** suppress that dialog -- do not "fix" this by patching it away.
+A real desktop run of this launcher came up with ModalFit's window as a genuinely blank
+white rectangle -- no exception, nothing in stderr, just an empty window that never
+painted, on every run. Isolated by ruling out every materials-db-side variable one at a
+time, down to running ModalFit completely on its own (`python3 model_predictor.py`, zero
+materials-db code involved) -- still blank. The actual cause: Tk version. A disposable
+venv built with `python3 -m venv` from Apple's bundled system Python (`/usr/bin/python3`)
+inherits Tk 8.5 (from roughly 2007), which cannot render ModalFit's Tk/matplotlib UI at
+all on this machine. Rebuilding the identical venv from a Tk-8.6 Python already present
+on the same machine (`/Library/Frameworks/Python.framework/Versions/3.13`, a standard
+python.org installer) with the exact same dependencies fixed it immediately -- confirmed
+with a full end-to-end run (HfO2 on sapphire, SE curves plotted, stack diagram correct,
+see below).
+
+`launcher/modalfit_bridge.check_tk_version()` now checks this before ever constructing
+ModalFit's window, raising a clear, actionable error instead of reproducing that blank,
+signal-free confusion for the next person: "This Python's Tk is version 8.5, but
+ModalFit's GUI needs Tk >= 8.6 ... Use a Python built against Tk 8.6+ instead." Check any
+candidate Python with `python3 -c "import tkinter; print(tkinter.TkVersion)"` before
+pointing `--modalfit-path`/`MODALFIT_PATH` at it.
+
+A separate, smaller, genuinely-real bug was also found and fixed along the way (kept
+regardless of the Tk-version fix, since it's the objectively correct pattern):
+`_load_model()` was being called synchronously right after constructing
+`ModelPredictorApp()`, before `mainloop()` ever started -- normally it only runs as a
+button-click callback while the event loop is already pumping and the window is already
+mapped on screen. `launch()` now defers it via `app.after(0, ...)` so it fires as the
+first event the running loop processes, matching how a real click would. Confirmed this
+was NOT the cause of the blank window on its own (the same blank window still reproduced
+with this fix applied, on Tk 8.5; it disappeared entirely on Tk 8.6 with or without it) --
+worth keeping anyway as the correct ordering, not as the fix for the bug that was
+actually found.
 
 ## Substrate: now DB-driven, not a fixed placeholder
 
@@ -125,3 +147,14 @@ ModalFit's actual dependencies installed.
 
 This is the first time a fit-oriented stack export in this project has used a
 DB-sourced substrate instead of the fixed Silicon placeholder.
+
+**Visually confirmed on a real interactive desktop session**, after the Tk-8.6 fix above
+(this is the run that matters -- everything before it was data-correctness verification
+against a blank window; this is the first time the actual rendered GUI was inspected):
+title bar "ORNL Model Predictor -- SE * XRR * QCM", "Slab Model JSON:
+hfo2_on_sapphire_final.json", the Layer Parameters panel showing HfO2 at exactly d=300.0
+Å / σ=5.0 Å as entered through the CLI, and the Stack Diagram panel correctly rendering
+Air -> HfO2 (300 Å, tabulated n,k) -> Al2O3_corundum/sapphire (tabulated n,k, "Total: 305
+Å"), with live SE Ψ/Δ prediction curves already plotted from the real DB-derived optical
+constants. Full round trip, from CLI selection through a real, correctly-painted ModalFit
+window.

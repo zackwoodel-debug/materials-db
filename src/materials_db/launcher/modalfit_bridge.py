@@ -26,17 +26,23 @@ from the pinned clone -- the stack loaded correctly (3 entries, correct
 roles, sidecar CSV resolved via _json_dir exactly as the contract
 predicted).
 
-Environment caveat, not something to design around (found during that
-same verification): in an automated/headless-ish session with no real
-interactive desktop, a code path inside _load_model() (the diagram draw /
-parameter-adjuster build, both matplotlib/Tk calls) blocked indefinitely
-when the "Model loaded" confirmation dialog was suppressed rather than
-shown normally. The UNPATCHED path (letting the real dialog show and get
-naturally pumped by Tk's own event loop) completed cleanly on every real
-run. launch() below therefore does NOT suppress that dialog -- do not
-"fix" this by patching messagebox.showinfo away; on a real interactive
-desktop session (where you already run ModalFit's GUI today) this hang
-was not observed and is not expected to occur.
+Real environment gotcha, found on an actual desktop run of this launcher
+(not a hang -- a silent mispaint, worse in a way, since nothing ever
+errors): ModalFit's window came up a genuinely blank white rectangle,
+consistently, across multiple runs. Isolated by ruling out every
+materials-db-side variable one at a time -- reproduced with a bare,
+unmodified `python3 model_predictor.py` (zero materials-db code
+involved) -- down to the actual cause: Tk version. Apple's bundled
+system Python (/usr/bin/python3, what a disposable venv built with
+`python3 -m venv` naively inherits unless you pick the base interpreter
+deliberately) ships Tk 8.5, which cannot render ModalFit's Tk/matplotlib
+UI at all on this machine -- no exception, nothing in stderr, just an
+empty window that never paints, on EVERY run, with or without a model
+loaded. Rebuilding the exact same venv on a Tk-8.6 Python (a python.org
+installer or a Homebrew "python-tk"-linked interpreter both work) with
+identical dependencies fixed it immediately. check_tk_version() below
+guards against this with a clear, actionable error instead of a silently
+blank window -- see its docstring.
 """
 
 import importlib.util
@@ -51,11 +57,47 @@ sys.path.insert(0, str(_ROOT / "scripts"))
 from verify_modalfit_pin import check_pin  # noqa: E402
 
 MODALFIT_PATH_ENV_VAR = "MODALFIT_PATH"
+MIN_TK_VERSION = 8.6
 
 
 class ModalFitBridgeError(RuntimeError):
     """Raised for anything this bridge refuses to silently paper over: no
-    clone configured, or the configured path isn't a ModalFit clone."""
+    clone configured, the configured path isn't a ModalFit clone, or the
+    running Python's Tk is too old to render ModalFit's GUI at all."""
+
+
+def check_tk_version() -> None:
+    """Raise ModalFitBridgeError if the CURRENT Python's Tk is older than
+    MIN_TK_VERSION. This is a property of the Python/tkinter build
+    actually running this code, not of the ModalFit clone directory --
+    checked here because there is no other signal a caller would get:
+    on Tk 8.5 (notably Apple's bundled /usr/bin/python3, and any venv
+    built from it without picking a different base interpreter),
+    ModalFit's window renders as a genuinely blank white rectangle, with
+    no exception and nothing in stderr, every single time -- confirmed
+    directly on this project's own desktop run (see this module's
+    docstring). Failing loudly here, before ever opening a window a user
+    would otherwise stare at wondering if the load silently failed, is
+    strictly better than reproducing that confusion for the next person."""
+    try:
+        import tkinter
+    except ImportError as e:
+        raise ModalFitBridgeError(
+            f"This Python has no Tk support at all ({e}) -- ModalFit's GUI cannot run. "
+            f"Use a Python built with Tk support (a python.org installer or a Homebrew "
+            f"python-tk-linked interpreter both work)."
+        )
+    if tkinter.TkVersion < MIN_TK_VERSION:
+        raise ModalFitBridgeError(
+            f"This Python's Tk is version {tkinter.TkVersion}, but ModalFit's GUI needs "
+            f"Tk >= {MIN_TK_VERSION}. On an older Tk (notably Apple's bundled "
+            f"/usr/bin/python3, which ships Tk 8.5), ModalFit's window renders as a "
+            f"genuinely blank white rectangle -- no error, nothing in stderr, just an "
+            f"empty window that never paints. Use a Python built against Tk 8.6+ instead "
+            f"(a python.org installer or a Homebrew python-tk-linked interpreter both "
+            f"work); check any candidate with: "
+            f"python3 -c \"import tkinter; print(tkinter.TkVersion)\""
+        )
 
 
 def locate_modalfit_clone(explicit_path: Optional[str] = None) -> Path:
@@ -112,9 +154,35 @@ def launch(model_json_path, clone_path: Path) -> None:
     model_json_path via the exact production _load_model() code path
     (the file dialog monkeypatched to return our path -- ModalFit's files
     on disk are never touched), and enter its GUI event loop. Blocks
-    until the user closes the ModalFit window."""
+    until the user closes the ModalFit window.
+
+    Checks check_tk_version() FIRST -- see that function's docstring for
+    why: the blank-white-window failure it guards against gives no other
+    signal at all.
+
+    _load_model() is deferred via app.after(0, ...) to fire once
+    mainloop() has actually started, rather than being called
+    synchronously beforehand: normally it runs as a button-click callback
+    while the event loop is already pumping and the window is already
+    mapped on screen, so calling it before mainloop() ever starts means
+    the toplevel window has no valid on-screen surface yet when
+    matplotlib's FigureCanvasTkAgg draws into it. This is a real, correct
+    fix for a real ordering hazard -- confirmed NOT to be the (much
+    larger) blank-window cause on its own, though: the same blank window
+    still reproduced with this fix applied on a Tk-8.5 Python, and
+    disappeared entirely on Tk 8.6 with or without this fix. Kept anyway
+    because deferring GUI work until the event loop is actually running
+    is the correct pattern regardless, and a real fit-adjacent bug (a
+    live parameter edit scheduling a redraw before the window exists)
+    is easy to imagine recurring even once check_tk_version() rules out
+    the bigger failure mode."""
+    check_tk_version()
     mp = _import_model_predictor(clone_path)
     app = mp.ModelPredictorApp()
-    with patch.object(mp.filedialog, "askopenfilename", return_value=str(model_json_path)):
-        app._load_model()
+
+    def _do_load():
+        with patch.object(mp.filedialog, "askopenfilename", return_value=str(model_json_path)):
+            app._load_model()
+
+    app.after(0, _do_load)
     app.mainloop()
