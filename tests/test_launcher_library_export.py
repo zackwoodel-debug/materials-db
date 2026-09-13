@@ -62,6 +62,43 @@ class TestBuildLibraryEntry:
         assert d_file != g_file
         assert Path(d_file).exists() and Path(g_file).exists()
 
+    def test_known_substrate_formulas_map_to_modalfit_dropdown_names(self, tmp_path):
+        """The 4 materials with a real, unambiguous SubstrateEditor
+        dropdown correspondence get `name` remapped so ModalFit's own
+        substrate-category dropdown actually updates when a library
+        entry is applied -- not just its optical/scattering data."""
+        cases = [
+            ("Silicon", None, "silicon"),
+            ("Silicon dioxide / quartz", "amorphous", "silicon_oxide"),
+            ("Gold", None, "gold"),
+            ("Aluminium oxide / sapphire", "corundum/sapphire", "sapphire"),
+        ]
+        for db_name, polymorph, expected in cases:
+            entry = build_library_entry(str(_DB_PATH), db_name, polymorph, tmp_path)
+            assert entry["name"] == expected, f"{db_name} -> {entry['name']!r}, expected {expected!r}"
+            # the human-readable label must still name the real material,
+            # not the generic dropdown category
+            assert db_name in entry["label"]
+
+    def test_unmapped_material_keeps_its_real_db_name(self, tmp_path):
+        entry = build_library_entry(str(_DB_PATH), "Hafnium dioxide", None, tmp_path)
+        assert entry["name"] == "Hafnium dioxide"
+
+    def test_material_type_translated_to_modalfit_vocabulary(self, tmp_path):
+        """oxide passes through unchanged; everything else (fluoride/
+        nitride/sulfide/unknown, this project's own vocabulary) becomes
+        "inorganic" -- true without exception here, unlike guessing
+        "metal" for every pure element (Boron, Silicon, Diamond, and
+        Graphite are not metals)."""
+        hfo2 = build_library_entry(str(_DB_PATH), "Hafnium dioxide", None, tmp_path)
+        assert hfo2["material_type"] == "oxide"
+
+        gold = build_library_entry(str(_DB_PATH), "Gold", None, tmp_path)
+        assert gold["material_type"] == "inorganic"  # our own classifier says "unknown"
+
+        boron = build_library_entry(str(_DB_PATH), "Boron", None, tmp_path)
+        assert boron["material_type"] == "inorganic"  # NOT "metal" -- boron isn't one
+
 
 class TestBuildMaterialLibrary:
     def test_full_catalog_matches_known_distribution(self, tmp_path):

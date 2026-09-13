@@ -36,13 +36,33 @@ commit, see export/modalfit_contract.py), not guessed:
   - substrate_editor._name.set(name) only takes effect if `name` is one
     of SubstrateEditor's fixed dropdown values (line 38:
     ["silicon","silicon_oxide","gold","qcm_sensor","glass","sapphire",
-    "other"]) -- none of this catalog's material names match, so
-    applying a library entry to a substrate leaves that dropdown
-    unchanged while still correctly populating optical/scattering/
-    descriptors. A real, minor mismatch, not a bug: the substrate
-    editor's own category selector is cosmetic-only for this purpose.
+    "other"]). For the 4 materials with a real, unambiguous
+    correspondence (Si -> "silicon", SiO2 -> "silicon_oxide", Au ->
+    "gold", Al2O3 -> "sapphire" -- each confirmed the ONLY material in
+    this DB with that formula before mapping it), `name` is set to the
+    matching dropdown value instead of the DB's own display name, so
+    applying the library entry actually updates the substrate category
+    dropdown too, not just its optical/scattering/descriptors data.
+    Every other material keeps its real DB name -- ModalFit's dropdown
+    genuinely has no category for e.g. HfO2 or MgO, so there's nothing
+    more correct to map those to; forcing them to "other" would lose the
+    real name for zero gain, since substrate_editor only checks
+    membership, never displays `name` itself.
   - Layers have no such name field at all -- library-to-layer application
-    is unaffected.
+    is unaffected by the substrate-name mapping above.
+  - material_type is freeform text in MaterialPickerDialog's own filter,
+    but LayerEditor's OWN material_type dropdown (used outside library
+    import) is restricted to MATERIAL_TYPES (line 36: ["polymer","oxide",
+    "metal","semiconductor","organic","inorganic","bulk_media","other"]),
+    a different vocabulary than this project's own anion-based
+    _classify_material_type() (oxide/fluoride/nitride/sulfide/unknown).
+    "oxide" already matches directly. Everything else maps to
+    "inorganic" -- true without exception for every material in this
+    catalog (oxides, fluorides, nitrides, sulfides, and pure elements are
+    all inorganic solids), rather than guessing "metal" vs.
+    "semiconductor" per pure element (Boron, Silicon, Diamond, and
+    Graphite are not metals; getting that classification wrong would be
+    a worse outcome than the honest, broader "inorganic").
 
 Deliberately NOT thickness/roughness/viscoelastic: those describe one
 specific film INSTANCE (a given deposition's measured thickness, a
@@ -75,6 +95,34 @@ from materials_db.export.modalfit import ExportError, _classify_material_type, e
 from materials_db.launcher.catalog import list_materials
 from materials_db.pipeline.process_condition import DENSITY_BULK_APPROXIMATION
 
+# slab_model_builder.py's SubstrateEditor only recognizes these 7 fixed
+# dropdown values (line 38) -- mapped here for the 4 formulas that
+# genuinely, unambiguously correspond to one (each confirmed the ONLY
+# material in this DB with that formula; see this module's docstring).
+# Everything else keeps its real DB name -- there's no more-correct
+# target to map e.g. HfO2 or MgO to, and forcing "other" would lose the
+# real name for no benefit (SubstrateEditor only checks membership).
+_MODALFIT_SUBSTRATE_NAME_BY_FORMULA = {
+    "Si": "silicon",
+    "SiO2": "silicon_oxide",
+    "Au": "gold",
+    "Al2O3": "sapphire",
+}
+
+# ModalFit's own LayerEditor material_type vocabulary (line 36) is
+# different from this project's anion-based _classify_material_type().
+# "oxide" is the one value both sides already share; everything else
+# maps to "inorganic" -- broadly, unconditionally true for every
+# material in this catalog, rather than guessing a finer ModalFit
+# category (e.g. "metal" vs. "semiconductor") per pure element, which
+# would be wrong for several of them (Boron, Silicon, Diamond, Graphite
+# are not metals).
+_MODALFIT_MATERIAL_TYPE = {"oxide": "oxide"}
+
+
+def _to_modalfit_material_type(our_material_type: str) -> str:
+    return _MODALFIT_MATERIAL_TYPE.get(our_material_type, "inorganic")
+
 
 def build_library_entry(db, name: str, polymorph: Optional[str], out_dir) -> dict:
     """One slab_model_builder.py library entry for a single DB material.
@@ -85,6 +133,7 @@ def build_library_entry(db, name: str, polymorph: Optional[str], out_dir) -> dic
     treatment export_all_materials_modalfit.py already uses."""
     out_dir = Path(out_dir).resolve()
     layer = export_layer(db, name, polymorph, nk_csv_dir=out_dir, role="layer")
+    formula = layer["molecular"]["formula"]
 
     optical = dict(layer["optical"])
     if optical.get("model") == "Tabulated n,k":
@@ -93,15 +142,17 @@ def build_library_entry(db, name: str, polymorph: Optional[str], out_dir) -> dic
 
     confidence = layer["molecular"]["density_confidence"]
     flag = " *** BULK_APPROXIMATION density ***" if confidence == DENSITY_BULK_APPROXIMATION else ""
-    display_label = f"{name} ({layer['molecular']['formula']}) -- {confidence}{flag}"
+    display_label = f"{name} ({formula}) -- {confidence}{flag}"
 
     descriptors = dict(layer["molecular"])
     descriptors.update(layer["materials_db"])
 
+    our_material_type = _classify_material_type(formula)
+
     return {
-        "name": name,
+        "name": _MODALFIT_SUBSTRATE_NAME_BY_FORMULA.get(formula, name),
         "label": display_label,
-        "material_type": _classify_material_type(layer["molecular"]["formula"]),
+        "material_type": _to_modalfit_material_type(our_material_type),
         "optical": optical,
         "scattering": layer["scattering"],
         "molecular_descriptors": descriptors,

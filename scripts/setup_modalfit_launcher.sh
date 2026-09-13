@@ -83,7 +83,17 @@ fi
 
 echo "Installing dependencies ..."
 "$VENV/bin/pip" install --quiet --upgrade pip
-"$VENV/bin/pip" install --quiet numpy scipy matplotlib pandas refnx periodictable refellips
+# Core: numpy/scipy/matplotlib/pandas/refnx/periodictable/refellips cover
+# everything this launcher actually exercises and has verified (XRR, SE,
+# QCM). PyMoosh (SPR) and emcee/corner (the DREAM/MCMC optimizer) are
+# ModalFit's own optional extras, installed too since they're real
+# fitting features within this project's scope -- unlike datafed
+# (requires a DataFed server/account) and opencv-python/Pillow (camera-
+# based QR-code sample-ID scanning), which are genuinely unrelated to a
+# local, database-driven launcher and are skipped deliberately, not by
+# oversight. Skipping either group just means ModalFit's own "Missing
+# packages" notice keeps mentioning it -- nothing else breaks.
+"$VENV/bin/pip" install --quiet numpy scipy matplotlib pandas refnx periodictable refellips PyMoosh emcee corner
 echo "Dependencies installed."
 echo
 
