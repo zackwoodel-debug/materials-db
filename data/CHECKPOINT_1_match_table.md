@@ -31,10 +31,10 @@ All 50/50 materials have >=1 match in refractiveindex.info. Every optical axis (
     - `Kischkat` axis=none (isotropic/cubic/amorphous), range=1.539-14.286 um, covers 633nm: no -- Kischkat et al. 2012: n,k 1.54–14.3 µm
 
 
-## 2. Beryllium oxide (BeO)
+## 2. Beryllium oxide (BeO) -- list polymorph: wurtzite
 - **main/BeO/Edwards -- Edwards and White 1991:  0.44–7.0 µm** (DEFAULT)
-    - `Edwards-o` axis=ordinary (o), range=0.440-7.000 um, covers 633nm: yes, dataset_label=`Edwards1991 | o-ray` -- Edwards and White 1991: n(o) 0.44–7.0 µm
-    - `Edwards-e` axis=extraordinary (e), range=0.440-7.000 um, covers 633nm: yes, dataset_label=`Edwards1991 | e-ray` -- Edwards and White 1991: n(e) 0.44–7.0 µm
+    - `Edwards-o` axis=ordinary (o), range=0.440-7.000 um, covers 633nm: yes, dataset_label=`wurtzite | Edwards1991 | o-ray` -- Edwards and White 1991: n(o) 0.44–7.0 µm
+    - `Edwards-e` axis=extraordinary (e), range=0.440-7.000 um, covers 633nm: yes, dataset_label=`wurtzite | Edwards1991 | e-ray` -- Edwards and White 1991: n(e) 0.44–7.0 µm
 
 
 ## 3. Chrysoberyl (BeAl2O4) -- list polymorph: chrysoberyl
@@ -51,13 +51,13 @@ All 50/50 materials have >=1 match in refractiveindex.info. Every optical axis (
     - `Pestryakov-γ` axis=biaxial gamma (nγ), range=0.430-1.100 um, covers 633nm: yes, dataset_label=`Pestryakov1997 | gamma-axis` -- Pestryakov et al. 1997: n(γ) 0.43–1.1 µm
 
 
-## 5. Calcium gadolinium aluminate (CaGdAlO4)
+## 5. Calcium gadolinium aluminate (CaGdAlO4) -- list polymorph: K2NiF4-type
 - **main/CaGdAlO4/Loiko -- Loiko et al. 2017:  0.35–2.1 µm** (DEFAULT)
     - `Loiko-o` axis=ordinary (o), range=0.350-2.100 um, covers 633nm: yes, dataset_label=`K2NiF4-type | Loiko2017 | o-ray` -- Loiko et al. 2017: n(o) 0.35–2.1 µm
     - `Loiko-e` axis=extraordinary (e), range=0.350-2.100 um, covers 633nm: yes, dataset_label=`K2NiF4-type | Loiko2017 | e-ray` -- Loiko et al. 2017: n(e) 0.35–2.1 µm
 
 
-## 6. Calcium yttrium aluminate (CaYAlO4)
+## 6. Calcium yttrium aluminate (CaYAlO4) -- list polymorph: K2NiF4-type
 - **main/CaYAlO4/Loiko -- Loiko et al. 2017:  0.35–2.1 µm** (DEFAULT)
     - `Loiko-o` axis=ordinary (o), range=0.350-2.100 um, covers 633nm: yes, dataset_label=`K2NiF4-type | Loiko2017 | o-ray` -- Loiko et al. 2017: n(o) 0.35–2.1 µm
     - `Loiko-e` axis=extraordinary (e), range=0.350-2.100 um, covers 633nm: yes, dataset_label=`K2NiF4-type | Loiko2017 | e-ray` -- Loiko et al. 2017: n(e) 0.35–2.1 µm
@@ -87,7 +87,7 @@ All 50/50 materials have >=1 match in refractiveindex.info. Every optical axis (
     - `Zhang-e` axis=extraordinary (e), range=0.640-3.180 um, covers 633nm: no -- Zhang et al. 2000: n(e) 0.64–3.18 µm
 
 
-## 10. Bismuth triborate (BiBO) (BiB3O6)
+## 10. Bismuth triborate (BiBO) (BiB3O6) -- list polymorph: alpha-BiBO
 - **main/BiB3O6/Umemura -- Umemura et al. 2007:  0.48–3.1 µm** (DEFAULT)
     - `Umemura-α` axis=biaxial alpha (nα), range=0.480-3.100 um, covers 633nm: yes, dataset_label=`alpha-BiBO | Umemura2007 | alpha-axis` -- Umemura et al. 2007: n(α) 0.48–3.1 µm
     - `Umemura-β` axis=biaxial beta (nβ), range=0.480-3.100 um, covers 633nm: yes, dataset_label=`alpha-BiBO | Umemura2007 | beta-axis` -- Umemura et al. 2007: n(β) 0.48–3.1 µm
@@ -119,19 +119,19 @@ All 50/50 materials have >=1 match in refractiveindex.info. Every optical axis (
     - `Ghosh-e` axis=extraordinary (e), range=0.204-2.172 um, covers 633nm: yes, dataset_label=`calcite | Ghosh1999 | e-ray` -- Ghosh 1999: n(e) 0.204–2.172 µm
 
 
-## 15. Copper(II) oxide (CuO)
+## 15. Copper(II) oxide (CuO) -- list polymorph: tenorite
 - **main/CuO/Brimhall -- Brimhall et al. 2009: n,k 0.0101–0.0348 µm** (DEFAULT)
-    - `Brimhall` axis=none (isotropic/cubic/amorphous), range=0.010-0.035 um, covers 633nm: no, dataset_label=`Brimhall2009` -- Brimhall et al. 2009: n,k 0.0101–0.0348 µm
+    - `Brimhall` axis=none (isotropic/cubic/amorphous), range=0.010-0.035 um, covers 633nm: no, dataset_label=`tenorite | Brimhall2009` -- Brimhall et al. 2009: n,k 0.0101–0.0348 µm
 
 
-## 16. Copper(I) oxide (Cu2O)
+## 16. Copper(I) oxide (Cu2O) -- list polymorph: cuprite
 - **main/Cu2O/Querry -- Querry 1985: n,k 2.5–55.6 µm** (DEFAULT)
-    - `Querry` axis=none (isotropic/cubic/amorphous), range=2.500-55.556 um, covers 633nm: no, dataset_label=`Querry1985` -- Querry 1985: n,k 2.5–55.6 µm
+    - `Querry` axis=none (isotropic/cubic/amorphous), range=2.500-55.556 um, covers 633nm: no, dataset_label=`cuprite | Querry1985` -- Querry 1985: n,k 2.5–55.6 µm
 
 
-## 17. Dysprosium oxide (Dy2O3)
+## 17. Dysprosium oxide (Dy2O3) -- list polymorph: bixbyite
 - **main/Dy2O3/Medenbach -- Medenbach et al. 2001: n 0.435–0.644 µm** (DEFAULT)
-    - `Medenbach` axis=none (isotropic/cubic/amorphous), range=0.435-0.644 um, covers 633nm: yes, dataset_label=`Medenbach2001` -- Medenbach et al. 2001: n 0.435–0.644 µm
+    - `Medenbach` axis=none (isotropic/cubic/amorphous), range=0.435-0.644 um, covers 633nm: yes, dataset_label=`bixbyite | Medenbach2001` -- Medenbach et al. 2001: n 0.435–0.644 µm
 
 
 ## 18. Hematite (Fe2O3) -- list polymorph: hematite
@@ -183,9 +183,9 @@ All 50/50 materials have >=1 match in refractiveindex.info. Every optical axis (
     - `Herbst-e` axis=extraordinary (e), range=0.546-5.000 um, covers 633nm: yes -- Herbst 1976: n(e) 0.546–5.0 µm
 
 
-## 25. Lutetium oxide (Lu2O3)
+## 25. Lutetium oxide (Lu2O3) -- list polymorph: bixbyite
 - **main/Lu2O3/Medenbach -- Medenbach et al. 2001: n 0.435–0.644 µm** (DEFAULT)
-    - `Medenbach` axis=none (isotropic/cubic/amorphous), range=0.435-0.644 um, covers 633nm: yes, dataset_label=`Medenbach2001` -- Medenbach et al. 2001: n 0.435–0.644 µm
+    - `Medenbach` axis=none (isotropic/cubic/amorphous), range=0.435-0.644 um, covers 633nm: yes, dataset_label=`bixbyite | Medenbach2001` -- Medenbach et al. 2001: n 0.435–0.644 µm
 - main/Lu2O3/Yao -- Yao et al. 2022: n 0.210–1.69 µm, k 0.210–0.224 µm
     - `Yao` axis=none (isotropic/cubic/amorphous), range=0.210-1.690 um, covers 633nm: yes -- Yao et al. 2022: n 0.210–1.69 µm, k 0.210–0.224 µm
 - main/Lu2O3/Kaminskii -- Kaminskii et al. 2008: n 0.365–2.325 µm
@@ -197,9 +197,9 @@ All 50/50 materials have >=1 match in refractiveindex.info. Every optical axis (
     - `Hrabovsky` axis=none (isotropic/cubic/amorphous), range=0.193-1.690 um, covers 633nm: yes, dataset_label=`garnet | Hrabovsky2021` -- Hrabovský et al. 2021: n 0.193–1.69 µm
 
 
-## 27. Magnesium oxide (MgO)
+## 27. Magnesium oxide (MgO) -- list polymorph: rock salt
 - **main/MgO/Stephens -- Stephens and Malitson 1952: n 0.36–5.4 µm** (DEFAULT)
-    - `Stephens` axis=none (isotropic/cubic/amorphous), range=0.360-5.400 um, covers 633nm: yes, dataset_label=`Stephens1952` -- Stephens and Malitson 1952: n 0.36–5.4 µm
+    - `Stephens` axis=none (isotropic/cubic/amorphous), range=0.360-5.400 um, covers 633nm: yes, dataset_label=`rock salt | Stephens1952` -- Stephens and Malitson 1952: n 0.36–5.4 µm
 - main/MgO/Stephens-vis -- Stephens and Malitson 1952: n 0.405–0.768 µm
     - `Stephens-vis` axis=none (isotropic/cubic/amorphous), range=0.405-0.768 um, covers 633nm: yes -- Stephens and Malitson 1952: n 0.405–0.768 µm
 - main/MgO/Synowicki -- Synowicki and Tiwald 2004: n,k 0.13–33 µm
@@ -222,25 +222,25 @@ All 50/50 materials have >=1 match in refractiveindex.info. Every optical axis (
     - `Stelling` axis=none (isotropic/cubic/amorphous), range=0.301-0.899 um, covers 633nm: yes -- Stelling et al. 2017: Thin film; n,k 0.301–0.899 µm
 
 
-## 30. Calcium molybdate (CaMoO4)
+## 30. Calcium molybdate (CaMoO4) -- list polymorph: scheelite
 - **main/CaMoO4/Bond -- Bond 1965:  0.45–3.8 µm** (DEFAULT)
-    - `Bond-o` axis=ordinary (o), range=0.450-3.800 um, covers 633nm: yes, dataset_label=`Bond1965 | o-ray` -- Bond 1965: n(o) 0.45–3.8 µm
-    - `Bond-e` axis=extraordinary (e), range=0.450-3.800 um, covers 633nm: yes, dataset_label=`Bond1965 | e-ray` -- Bond 1965: n(e) 0.45–3.8 µm
+    - `Bond-o` axis=ordinary (o), range=0.450-3.800 um, covers 633nm: yes, dataset_label=`scheelite | Bond1965 | o-ray` -- Bond 1965: n(o) 0.45–3.8 µm
+    - `Bond-e` axis=extraordinary (e), range=0.450-3.800 um, covers 633nm: yes, dataset_label=`scheelite | Bond1965 | e-ray` -- Bond 1965: n(e) 0.45–3.8 µm
 
 
-## 31. Lead molybdate (PbMoO4)
+## 31. Lead molybdate (PbMoO4) -- list polymorph: scheelite/wulfenite
 - **main/PbMoO4/Malitson -- Malitson 1978:  0.44–1.08 µm** (DEFAULT)
-    - `Malitson-o` axis=ordinary (o), range=0.440-1.080 um, covers 633nm: yes, dataset_label=`Malitson1978 | o-ray` -- Malitson 1978: n(o) 0.44–1.08 µm
-    - `Malitson-e` axis=extraordinary (e), range=0.440-1.080 um, covers 633nm: yes, dataset_label=`Malitson1978 | e-ray` -- Malitson 1978: n(e) 0.44–1.08 µm
+    - `Malitson-o` axis=ordinary (o), range=0.440-1.080 um, covers 633nm: yes, dataset_label=`scheelite/wulfenite | Malitson1978 | o-ray` -- Malitson 1978: n(o) 0.44–1.08 µm
+    - `Malitson-e` axis=extraordinary (e), range=0.440-1.080 um, covers 633nm: yes, dataset_label=`scheelite/wulfenite | Malitson1978 | e-ray` -- Malitson 1978: n(e) 0.44–1.08 µm
 
 
-## 32. Strontium molybdate (SrMoO4)
+## 32. Strontium molybdate (SrMoO4) -- list polymorph: scheelite
 - **main/SrMoO4/Bond -- Bond 1965:  0.45–2.4 µm** (DEFAULT)
-    - `Bond-o` axis=ordinary (o), range=0.450-2.400 um, covers 633nm: yes, dataset_label=`Bond1965 | o-ray` -- Bond 1965: n(o) 0.45–2.4 µm
-    - `Bond-e` axis=extraordinary (e), range=0.450-2.400 um, covers 633nm: yes, dataset_label=`Bond1965 | e-ray` -- Bond 1965: n(e) 0.45–2.4 µm
+    - `Bond-o` axis=ordinary (o), range=0.450-2.400 um, covers 633nm: yes, dataset_label=`scheelite | Bond1965 | o-ray` -- Bond 1965: n(o) 0.45–2.4 µm
+    - `Bond-e` axis=extraordinary (e), range=0.450-2.400 um, covers 633nm: yes, dataset_label=`scheelite | Bond1965 | e-ray` -- Bond 1965: n(e) 0.45–2.4 µm
 
 
-## 33. Niobium pentoxide (Nb2O5)
+## 33. Niobium pentoxide (Nb2O5) -- list polymorph: amorphous
 - **main/Nb2O5/Franta -- Franta et al. 2024: n,k 0.120–399 µm** (DEFAULT)
     - `Franta` axis=none (isotropic/cubic/amorphous), range=0.120-399.362 um, covers 633nm: yes, dataset_label=`amorphous | Franta2024` -- Franta et al. 2024: n,k 0.120–399 µm
 - main/Nb2O5/Lemarchand -- Lemarchand 2013: n,k 0.25–2.5 µm
@@ -268,9 +268,9 @@ All 50/50 materials have >=1 match in refractiveindex.info. Every optical axis (
     - `Zelmon-e` axis=extraordinary (e), range=0.400-5.000 um, covers 633nm: yes, dataset_label=`Zelmon1997 | e-ray` -- Zelmon et al. 1997: n(e) 0.4–5.0 µm
 
 
-## 36. Scandium oxide (Sc2O3)
+## 36. Scandium oxide (Sc2O3) -- list polymorph: bixbyite
 - **main/Sc2O3/Medenbach -- Medenbach et al. 2001: n 0.435–0.644 µm** (DEFAULT)
-    - `Medenbach` axis=none (isotropic/cubic/amorphous), range=0.435-0.644 um, covers 633nm: yes, dataset_label=`Medenbach2001` -- Medenbach et al. 2001: n 0.435–0.644 µm
+    - `Medenbach` axis=none (isotropic/cubic/amorphous), range=0.435-0.644 um, covers 633nm: yes, dataset_label=`bixbyite | Medenbach2001` -- Medenbach et al. 2001: n 0.435–0.644 µm
 - main/Sc2O3/Belosludtsev -- Belosludtsev et al. 2018: n,k 0.270–1.200 µm
     - `Belosludtsev` axis=none (isotropic/cubic/amorphous), range=0.230-1.200 um, covers 633nm: yes -- Belosludtsev et al. 2018: n,k 0.270–1.200 µm
 - main/Sc2O3/Arndt -- Arndt et al. 1984: n 0.40–0.75 µm
@@ -287,7 +287,7 @@ All 50/50 materials have >=1 match in refractiveindex.info. Every optical axis (
 - Excluded as non-matching stoichiometry: Herguedas-SiO0.31, Herguedas-SiO0.61, Herguedas-SiO1.10, Herguedas-SiO1.71, Herguedas-SiO1.89, Herguedas-SiO1.92
 
 
-## 38. Silicon dioxide / quartz (SiO2) -- list polymorph: alpha-quartz
+## 38. Silicon dioxide / quartz (SiO2) -- list polymorph: amorphous
 - **main/SiO2/Malitson -- Malitson 1965: n 0.21–6.7 µm** (DEFAULT)
     - `Malitson` axis=none (isotropic/cubic/amorphous), range=0.210-6.700 um, covers 633nm: yes, dataset_label=`amorphous | Malitson1965` -- Malitson 1965: n 0.21–6.7 µm
 - main/SiO2/Ghosh -- Ghosh 1999: α-Quartz,  0.198–2.05 µm
@@ -320,9 +320,9 @@ All 50/50 materials have >=1 match in refractiveindex.info. Every optical axis (
     - `Herguedas` axis=none (isotropic/cubic/amorphous), range=5.000-25.000 um, covers 633nm: no -- Herguedas and Carretero 2023: n,k 5.0–25 µm
 
 
-## 39. Tantalum pentoxide (Ta2O5)
+## 39. Tantalum pentoxide (Ta2O5) -- list polymorph: amorphous
 - **main/Ta2O5/Bright-amorphous -- Bright et al. 2013: n,k 0.5–1000 µm** (DEFAULT)
-    - `Bright-amorphous` axis=none (isotropic/cubic/amorphous), range=0.500-1000.000 um, covers 633nm: yes, dataset_label=`Bright2013` -- Bright et al. 2013: n,k 0.5–1000 µm
+    - `Bright-amorphous` axis=none (isotropic/cubic/amorphous), range=0.500-1000.000 um, covers 633nm: yes, dataset_label=`amorphous | Bright2013` -- Bright et al. 2013: n,k 0.5–1000 µm
 - main/Ta2O5/Cheikh-amorphous-3.28-4-25 -- Cheikh et al. 2025: Power 3.28, O2 4, As deposited
     - `Cheikh-amorphous-3.28-4-25` axis=none (isotropic/cubic/amorphous), range=0.207-1.240 um, covers 633nm: yes -- Cheikh et al. 2025: Power 3.28, O2 4, As deposited; n,k 0.207–1.24 µm
 - main/Ta2O5/Cheikh-amorphous-3.28-8-25 -- Cheikh et al. 2025: Power 3.28, O2 8, As deposited
@@ -366,13 +366,13 @@ All 50/50 materials have >=1 match in refractiveindex.info. Every optical axis (
     - `Franta` axis=none (isotropic/cubic/amorphous), range=0.120-400.009 um, covers 633nm: yes -- Franta et al. 2025: n,k 0.120–400 µm
 
 
-## 41. Tellurium dioxide (TeO2)
+## 41. Tellurium dioxide (TeO2) -- list polymorph: paratellurite
 - **main/TeO2/Uchida -- Uchida 1971: α-TeO<sub>2</sub>** (DEFAULT)
-    - `Uchida-o` axis=ordinary (o), range=0.400-1.000 um, covers 633nm: yes, dataset_label=`Uchida1971 | o-ray` -- Uchida 1971: α-TeO<sub>2</sub>; n(o) 0.4–1.0 µm
-    - `Uchida-e` axis=extraordinary (e), range=0.400-1.000 um, covers 633nm: yes, dataset_label=`Uchida1971 | e-ray` -- Uchida 1971: α-TeO<sub>2</sub>; n(e) 0.4–1.0 µm
+    - `Uchida-o` axis=ordinary (o), range=0.400-1.000 um, covers 633nm: yes, dataset_label=`paratellurite | Uchida1971 | o-ray` -- Uchida 1971: α-TeO<sub>2</sub>; n(o) 0.4–1.0 µm
+    - `Uchida-e` axis=extraordinary (e), range=0.400-1.000 um, covers 633nm: yes, dataset_label=`paratellurite | Uchida1971 | e-ray` -- Uchida 1971: α-TeO<sub>2</sub>; n(e) 0.4–1.0 µm
 
 
-## 42. Titanium dioxide (rutile / anatase) (TiO2) -- list polymorph: rutile/anatase
+## 42. Titanium dioxide (rutile / anatase) (TiO2) -- list polymorph: rutile
 - **main/TiO2/Devore -- Devore 1951:  0.43–1.53 µm** (DEFAULT)
     - `Devore-o` axis=ordinary (o), range=0.430-1.530 um, covers 633nm: yes, dataset_label=`rutile | Devore1951 | o-ray` -- Devore 1951: n(o) 0.43–1.53 µm
     - `Devore-e` axis=extraordinary (e), range=0.430-1.530 um, covers 633nm: yes, dataset_label=`rutile | Devore1951 | e-ray` -- Devore 1951: n(e) 0.43–1.53 µm
@@ -424,9 +424,9 @@ All 50/50 materials have >=1 match in refractiveindex.info. Every optical axis (
     - `Wohlecke-mx` axis=none (isotropic/cubic/amorphous), range=0.300-1.000 um, covers 633nm: yes -- Wöhlecke et al. 1977: Microcrystalline; n 0.3–1.0 µm
 
 
-## 45. Vanadium dioxide (VO2)
+## 45. Vanadium dioxide (VO2) -- list polymorph: M1 (insulating)
 - **main/VO2/Beaini-25C -- Beaini et al. 2020: n,k 0.5–25 µm; 25 °C** (DEFAULT)
-    - `Beaini-25C` axis=none (isotropic/cubic/amorphous), range=0.500-25.000 um, covers 633nm: yes, dataset_label=`Beaini2020` -- Beaini et al. 2020: n,k 0.5–25 µm; 25 °C
+    - `Beaini-25C` axis=none (isotropic/cubic/amorphous), range=0.500-25.000 um, covers 633nm: yes, dataset_label=`M1 (insulating) | Beaini2020` -- Beaini et al. 2020: n,k 0.5–25 µm; 25 °C
 - main/VO2/Beaini-100C -- Beaini et al. 2020: n,k 0.5–25 µm; 100 °C
     - `Beaini-100C` axis=none (isotropic/cubic/amorphous), range=0.500-25.000 um, covers 633nm: yes -- Beaini et al. 2020: n,k 0.5–25 µm; 100 °C
 - main/VO2/Oguntoye-20C -- Oguntoye et al. 2023: n,k 0.21–2.5 µm; 20 °C
@@ -447,10 +447,10 @@ All 50/50 materials have >=1 match in refractiveindex.info. Every optical axis (
     - `Oguntoye-80C` axis=none (isotropic/cubic/amorphous), range=0.210-2.500 um, covers 633nm: yes -- Oguntoye et al. 2023: n,k 0.21–2.5 µm; 80 °C
 
 
-## 46. Yttrium orthovanadate (YVO4)
+## 46. Yttrium orthovanadate (YVO4) -- list polymorph: zircon
 - **main/YVO4/Birnbaum -- Birnbaum and DeShazer 1976:  0.488–3.39 µm** (DEFAULT)
-    - `Birnbaum-o` axis=ordinary (o), range=0.488-3.390 um, covers 633nm: yes, dataset_label=`Birnbaum1976 | o-ray` -- Birnbaum and DeShazer 1976: n(o) 0.488–3.39 µm
-    - `Birnbaum-e` axis=extraordinary (e), range=0.488-3.390 um, covers 633nm: yes, dataset_label=`Birnbaum1976 | e-ray` -- Birnbaum and DeShazer 1976: n(e) 0.488–3.39 µm
+    - `Birnbaum-o` axis=ordinary (o), range=0.488-3.390 um, covers 633nm: yes, dataset_label=`zircon | Birnbaum1976 | o-ray` -- Birnbaum and DeShazer 1976: n(o) 0.488–3.39 µm
+    - `Birnbaum-e` axis=extraordinary (e), range=0.488-3.390 um, covers 633nm: yes, dataset_label=`zircon | Birnbaum1976 | e-ray` -- Birnbaum and DeShazer 1976: n(e) 0.488–3.39 µm
 - main/YVO4/Shi -- Shi et al. 2001:  0.48–1.34 µm; 20 °C
     - `Shi-o-20C` axis=ordinary (o), range=0.480-1.340 um, covers 633nm: yes -- Shi et al. 2001: n(o) 0.48–1.34 µm; 20 °C
     - `Shi-e-20C` axis=extraordinary (e), range=0.480-1.340 um, covers 633nm: yes -- Shi et al. 2001: n(e) 0.48–1.34 µm; 20 °C
@@ -473,9 +473,9 @@ All 50/50 materials have >=1 match in refractiveindex.info. Every optical axis (
     - `Kulikova` axis=none (isotropic/cubic/amorphous), range=0.300-1.000 um, covers 633nm: yes, dataset_label=`Kulikova2020` -- Kulikova et al. 2020: n,k 0.3–1.0 µm
 
 
-## 48. Yttrium oxide (Y2O3)
+## 48. Yttrium oxide (Y2O3) -- list polymorph: bixbyite
 - **main/Y2O3/Nigara -- Nigara 1968: n 0.25–9.6 µm** (DEFAULT)
-    - `Nigara` axis=none (isotropic/cubic/amorphous), range=0.250-9.600 um, covers 633nm: yes, dataset_label=`Nigara1968` -- Nigara 1968: n 0.25–9.6 µm
+    - `Nigara` axis=none (isotropic/cubic/amorphous), range=0.250-9.600 um, covers 633nm: yes, dataset_label=`bixbyite | Nigara1968` -- Nigara 1968: n 0.25–9.6 µm
 
 
 ## 49. YAG (Y3Al5O12) -- list polymorph: garnet
@@ -489,10 +489,10 @@ All 50/50 materials have >=1 match in refractiveindex.info. Every optical axis (
     - `Bond` axis=none (isotropic/cubic/amorphous), range=0.400-4.000 um, covers 633nm: yes -- Bond 1965: n 0.4–4.0 µm
 
 
-## 50. Zinc oxide (ZnO)
+## 50. Zinc oxide (ZnO) -- list polymorph: wurtzite
 - **main/ZnO/Bond -- Bond et al. 1965:  0.45–4.0 µm** (DEFAULT)
-    - `Bond-o` axis=ordinary (o), range=0.450-4.000 um, covers 633nm: yes, dataset_label=`Bond1965 | o-ray` -- Bond et al. 1965: n(o) 0.45–4.0 µm
-    - `Bond-e` axis=extraordinary (e), range=0.450-4.000 um, covers 633nm: yes, dataset_label=`Bond1965 | e-ray` -- Bond et al. 1965: n(e) 0.45–4.0 µm
+    - `Bond-o` axis=ordinary (o), range=0.450-4.000 um, covers 633nm: yes, dataset_label=`wurtzite | Bond1965 | o-ray` -- Bond et al. 1965: n(o) 0.45–4.0 µm
+    - `Bond-e` axis=extraordinary (e), range=0.450-4.000 um, covers 633nm: yes, dataset_label=`wurtzite | Bond1965 | e-ray` -- Bond et al. 1965: n(e) 0.45–4.0 µm
 - main/ZnO/Stelling -- Stelling et al. 2017: n,k 0.302–1.685 µm
     - `Stelling` axis=none (isotropic/cubic/amorphous), range=0.302-1.685 um, covers 633nm: yes -- Stelling et al. 2017: n,k 0.302–1.685 µm
 - main/ZnO/Aguilar -- Aguilar et al. 2019: n,k 0.3–3.2 µm

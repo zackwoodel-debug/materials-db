@@ -63,19 +63,6 @@ WANTED_POLYMORPH_KEYWORDS = {
     "CaCO3": ["calcite"],
 }
 
-# the task's original TARGETS polymorph field is sometimes a placeholder
-# covering multiple possibilities (e.g. TiO2: "rutile/anatase") -- override
-# with the specific polymorph of the dataset actually selected as default,
-# so dataset_label reflects reality rather than the ambiguous placeholder.
-DATASET_LABEL_POLYMORPH_OVERRIDE = {
-    "TiO2": "rutile",
-    "SiO2": "amorphous",
-    "BiB3O6": "alpha-BiBO",
-    "CaGdAlO4": "K2NiF4-type",
-    "CaYAlO4": "K2NiF4-type",
-    "Nb2O5": "amorphous",
-}
-
 
 def group_key(page_id: str) -> str:
     return RAY_SUFFIX_RE.sub("", page_id)
@@ -227,7 +214,7 @@ def main():
         if len(scored) > 1:
             needs_decision.append(r["idx"])
 
-        effective_polymorph = DATASET_LABEL_POLYMORPH_OVERRIDE.get(formula, r["polymorph"])
+        effective_polymorph = r["polymorph"]
 
         for i, (s, gk, pages) in enumerate(scored):
             is_default = (i == 0)

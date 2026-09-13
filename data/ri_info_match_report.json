@@ -108,7 +108,7 @@
     "idx": 2,
     "name": "Beryllium oxide",
     "formula": "BeO",
-    "polymorph": null,
+    "polymorph": "wurtzite",
     "status": "MULTIPLE",
     "datasets": [
       {
@@ -199,7 +199,7 @@
     "idx": 5,
     "name": "Calcium gadolinium aluminate",
     "formula": "CaGdAlO4",
-    "polymorph": null,
+    "polymorph": "K2NiF4-type",
     "status": "MULTIPLE",
     "datasets": [
       {
@@ -224,7 +224,7 @@
     "idx": 6,
     "name": "Calcium yttrium aluminate",
     "formula": "CaYAlO4",
-    "polymorph": null,
+    "polymorph": "K2NiF4-type",
     "status": "MULTIPLE",
     "datasets": [
       {
@@ -348,7 +348,7 @@
     "idx": 10,
     "name": "Bismuth triborate (BiBO)",
     "formula": "BiB3O6",
-    "polymorph": null,
+    "polymorph": "alpha-BiBO",
     "status": "MULTIPLE",
     "datasets": [
       {
@@ -489,7 +489,7 @@
     "idx": 15,
     "name": "Copper(II) oxide",
     "formula": "CuO",
-    "polymorph": null,
+    "polymorph": "tenorite",
     "status": "FOUND",
     "datasets": [
       {
@@ -506,7 +506,7 @@
     "idx": 16,
     "name": "Copper(I) oxide",
     "formula": "Cu2O",
-    "polymorph": null,
+    "polymorph": "cuprite",
     "status": "FOUND",
     "datasets": [
       {
@@ -523,7 +523,7 @@
     "idx": 17,
     "name": "Dysprosium oxide",
     "formula": "Dy2O3",
-    "polymorph": null,
+    "polymorph": "bixbyite",
     "status": "FOUND",
     "datasets": [
       {
@@ -731,7 +731,7 @@
     "idx": 25,
     "name": "Lutetium oxide",
     "formula": "Lu2O3",
-    "polymorph": null,
+    "polymorph": "bixbyite",
     "status": "MULTIPLE",
     "datasets": [
       {
@@ -781,7 +781,7 @@
     "idx": 27,
     "name": "Magnesium oxide",
     "formula": "MgO",
-    "polymorph": null,
+    "polymorph": "rock salt",
     "status": "MULTIPLE",
     "datasets": [
       {
@@ -880,7 +880,7 @@
     "idx": 30,
     "name": "Calcium molybdate",
     "formula": "CaMoO4",
-    "polymorph": null,
+    "polymorph": "scheelite",
     "status": "MULTIPLE",
     "datasets": [
       {
@@ -905,7 +905,7 @@
     "idx": 31,
     "name": "Lead molybdate",
     "formula": "PbMoO4",
-    "polymorph": null,
+    "polymorph": "scheelite/wulfenite",
     "status": "MULTIPLE",
     "datasets": [
       {
@@ -930,7 +930,7 @@
     "idx": 32,
     "name": "Strontium molybdate",
     "formula": "SrMoO4",
-    "polymorph": null,
+    "polymorph": "scheelite",
     "status": "MULTIPLE",
     "datasets": [
       {
@@ -955,7 +955,7 @@
     "idx": 33,
     "name": "Niobium pentoxide",
     "formula": "Nb2O5",
-    "polymorph": null,
+    "polymorph": "amorphous",
     "status": "MULTIPLE",
     "datasets": [
       {
@@ -1078,7 +1078,7 @@
     "idx": 36,
     "name": "Scandium oxide",
     "formula": "Sc2O3",
-    "polymorph": null,
+    "polymorph": "bixbyite",
     "status": "MULTIPLE",
     "datasets": [
       {
@@ -1192,7 +1192,7 @@
     "idx": 38,
     "name": "Silicon dioxide / quartz",
     "formula": "SiO2",
-    "polymorph": "alpha-quartz",
+    "polymorph": "amorphous",
     "status": "MULTIPLE",
     "datasets": [
       {
@@ -1329,7 +1329,7 @@
     "idx": 39,
     "name": "Tantalum pentoxide",
     "formula": "Ta2O5",
-    "polymorph": null,
+    "polymorph": "amorphous",
     "status": "MULTIPLE",
     "datasets": [
       {
@@ -1507,7 +1507,7 @@
     "idx": 41,
     "name": "Tellurium dioxide",
     "formula": "TeO2",
-    "polymorph": null,
+    "polymorph": "paratellurite",
     "status": "MULTIPLE",
     "datasets": [
       {
@@ -1532,7 +1532,7 @@
     "idx": 42,
     "name": "Titanium dioxide (rutile / anatase)",
     "formula": "TiO2",
-    "polymorph": "rutile/anatase",
+    "polymorph": "rutile",
     "status": "MULTIPLE",
     "datasets": [
       {
@@ -1743,7 +1743,7 @@
     "idx": 45,
     "name": "Vanadium dioxide",
     "formula": "VO2",
-    "polymorph": null,
+    "polymorph": "M1 (insulating)",
     "status": "MULTIPLE",
     "datasets": [
       {
@@ -1832,7 +1832,7 @@
     "idx": 46,
     "name": "Yttrium orthovanadate",
     "formula": "YVO4",
-    "polymorph": null,
+    "polymorph": "zircon",
     "status": "MULTIPLE",
     "datasets": [
       {
@@ -1954,7 +1954,7 @@
     "idx": 48,
     "name": "Yttrium oxide",
     "formula": "Y2O3",
-    "polymorph": null,
+    "polymorph": "bixbyite",
     "status": "FOUND",
     "datasets": [
       {
@@ -2012,7 +2012,7 @@
     "idx": 50,
     "name": "Zinc oxide",
     "formula": "ZnO",
-    "polymorph": null,
+    "polymorph": "wurtzite",
     "status": "MULTIPLE",
     "datasets": [
       {

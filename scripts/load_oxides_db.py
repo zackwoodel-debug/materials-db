@@ -238,7 +238,20 @@ def main():
         for _, row in df.iterrows():
             formula = row["formula"]
             sel = selections.get(formula, {})
-            effective_polymorph = sel.get("effective_polymorph") or (row["polymorph"] if pd.notna(row.get("polymorph")) else None)
+            optical_polymorph = sel.get("effective_polymorph")
+            csv_polymorph = row["polymorph"] if pd.notna(row.get("polymorph")) else None
+            if optical_polymorph != csv_polymorph:
+                # Not silently resolved: physical_properties (this row) uses
+                # the CSV's independently-verified polymorph; optical_dispersion
+                # was already written in Step 1 using optical_polymorph, baked
+                # into its rows' dataset_label. A mismatch here means the two
+                # tables will use different dataset_label prefixes for this
+                # material -- expected right now only for VO2/TeO2/Ta2O5
+                # (pending optical-source triage, see scripts/oxide_material_list.py).
+                print(f"[load_oxides_db] NOTE: polymorph differs between optical "
+                      f"({optical_polymorph!r}) and physical properties ({csv_polymorph!r}) "
+                      f"for {formula} -- their dataset_label prefixes will not match.")
+            effective_polymorph = csv_polymorph
 
             cur = conn.execute(
                 "INSERT INTO materials (name, formula, smiles, inchikey, molecular_weight, cas_number, pubchem_cid) "

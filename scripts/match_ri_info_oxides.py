@@ -13,6 +13,7 @@ the match table for CHECKPOINT 1.
 
 import json
 import re
+import sys
 from pathlib import Path
 
 import yaml
@@ -21,60 +22,18 @@ _ROOT = Path(__file__).resolve().parents[1]
 CATALOG_PATH = _ROOT / "refractiveindex_db" / "database" / "catalog-nk.yml"
 DATA_ROOT = _ROOT / "refractiveindex_db" / "database" / "data"
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from oxide_material_list import MATERIALS_50  # noqa: E402
+
 # name/formula/aliases for each of the 50 target materials, plus known
 # RI.info book-id spellings to try (RI.info book ids are case-sensitive
-# formula strings, occasionally with a polymorph suffix).
+# formula strings, occasionally with a polymorph suffix). Canonical source:
+# scripts/oxide_material_list.py -- shared with build_oxides_csv.py so the
+# polymorph field can't drift apart between the two steps again.
 TARGETS = [
-    dict(idx=1,  name="Aluminium oxide / sapphire", formula="Al2O3", polymorph="corundum/sapphire", aliases=["Al2O3"]),
-    dict(idx=2,  name="Beryllium oxide", formula="BeO", polymorph=None, aliases=["BeO"]),
-    dict(idx=3,  name="Chrysoberyl", formula="BeAl2O4", polymorph="chrysoberyl", aliases=["BeAl2O4"]),
-    dict(idx=4,  name="Beryllium hexaaluminate", formula="BeAl6O10", polymorph=None, aliases=["BeAl6O10"]),
-    dict(idx=5,  name="Calcium gadolinium aluminate", formula="CaGdAlO4", polymorph=None, aliases=["CaGdAlO4"]),
-    dict(idx=6,  name="Calcium yttrium aluminate", formula="CaYAlO4", polymorph=None, aliases=["CaYAlO4"]),
-    dict(idx=7,  name="Spinel", formula="MgAl2O4", polymorph="spinel", aliases=["MgAl2O4"]),
-    dict(idx=8,  name="Lanthanum aluminate", formula="LaAlO3", polymorph=None, aliases=["LaAlO3"]),
-    dict(idx=9,  name="Barium borate (BBO)", formula="BaB2O4", polymorph="beta-BBO", aliases=["BaB2O4", "BBO"]),
-    dict(idx=10, name="Bismuth triborate (BiBO)", formula="BiB3O6", polymorph=None, aliases=["BiB3O6", "BiBO3"]),
-    dict(idx=11, name="Lithium triborate (LBO)", formula="LiB3O5", polymorph=None, aliases=["LiB3O5", "LBO"]),
-    dict(idx=12, name="Cesium lithium borate (CLBO)", formula="CsLiB6O10", polymorph=None, aliases=["CsLiB6O10", "CLBO"]),
-    dict(idx=13, name="Lutetium aluminium borate", formula="LuAl3(BO3)4", polymorph=None, aliases=["LuAl3(BO3)4", "LuAl3B4O12"]),
-    dict(idx=14, name="Calcite", formula="CaCO3", polymorph="calcite", aliases=["CaCO3"]),
-    dict(idx=15, name="Copper(II) oxide", formula="CuO", polymorph=None, aliases=["CuO"]),
-    dict(idx=16, name="Copper(I) oxide", formula="Cu2O", polymorph=None, aliases=["Cu2O"]),
-    dict(idx=17, name="Dysprosium oxide", formula="Dy2O3", polymorph=None, aliases=["Dy2O3"]),
-    dict(idx=18, name="Hematite", formula="Fe2O3", polymorph="hematite", aliases=["Fe2O3"]),
-    dict(idx=19, name="Magnetite", formula="Fe3O4", polymorph="magnetite", aliases=["Fe3O4"]),
-    dict(idx=20, name="Germanium dioxide", formula="GeO2", polymorph=None, aliases=["GeO2"]),
-    dict(idx=21, name="Bismuth germanate", formula="Bi12GeO20", polymorph="BGO", aliases=["Bi12GeO20", "BGO"]),
-    dict(idx=22, name="Lead germanate", formula="Pb5Ge3O11", polymorph=None, aliases=["Pb5Ge3O11"]),
-    dict(idx=23, name="Hafnium dioxide", formula="HfO2", polymorph=None, aliases=["HfO2"]),
-    dict(idx=24, name="Lithium iodate", formula="LiIO3", polymorph=None, aliases=["LiIO3"]),
-    dict(idx=25, name="Lutetium oxide", formula="Lu2O3", polymorph=None, aliases=["Lu2O3"]),
-    dict(idx=26, name="LuAG", formula="Lu3Al5O12", polymorph="garnet", aliases=["Lu3Al5O12", "LuAG"]),
-    dict(idx=27, name="Magnesium oxide", formula="MgO", polymorph=None, aliases=["MgO"]),
-    dict(idx=28, name="Molybdenum dioxide", formula="MoO2", polymorph=None, aliases=["MoO2"]),
-    dict(idx=29, name="Molybdenum trioxide", formula="MoO3", polymorph=None, aliases=["MoO3"]),
-    dict(idx=30, name="Calcium molybdate", formula="CaMoO4", polymorph=None, aliases=["CaMoO4"]),
-    dict(idx=31, name="Lead molybdate", formula="PbMoO4", polymorph=None, aliases=["PbMoO4"]),
-    dict(idx=32, name="Strontium molybdate", formula="SrMoO4", polymorph=None, aliases=["SrMoO4"]),
-    dict(idx=33, name="Niobium pentoxide", formula="Nb2O5", polymorph=None, aliases=["Nb2O5"]),
-    dict(idx=34, name="Potassium niobate", formula="KNbO3", polymorph=None, aliases=["KNbO3"]),
-    dict(idx=35, name="Lithium niobate", formula="LiNbO3", polymorph=None, aliases=["LiNbO3"]),
-    dict(idx=36, name="Scandium oxide", formula="Sc2O3", polymorph=None, aliases=["Sc2O3"]),
-    dict(idx=37, name="Silicon monoxide", formula="SiO", polymorph="amorphous", aliases=["SiO"]),
-    dict(idx=38, name="Silicon dioxide / quartz", formula="SiO2", polymorph="alpha-quartz", aliases=["SiO2"]),
-    dict(idx=39, name="Tantalum pentoxide", formula="Ta2O5", polymorph=None, aliases=["Ta2O5"]),
-    dict(idx=40, name="TGG", formula="Tb3Ga5O12", polymorph="garnet", aliases=["Tb3Ga5O12", "TGG"]),
-    dict(idx=41, name="Tellurium dioxide", formula="TeO2", polymorph=None, aliases=["TeO2"]),
-    dict(idx=42, name="Titanium dioxide (rutile / anatase)", formula="TiO2", polymorph="rutile/anatase", aliases=["TiO2"]),
-    dict(idx=43, name="Barium titanate", formula="BaTiO3", polymorph=None, aliases=["BaTiO3"]),
-    dict(idx=44, name="Strontium titanate", formula="SrTiO3", polymorph=None, aliases=["SrTiO3"]),
-    dict(idx=45, name="Vanadium dioxide", formula="VO2", polymorph=None, aliases=["VO2"]),
-    dict(idx=46, name="Yttrium orthovanadate", formula="YVO4", polymorph=None, aliases=["YVO4"]),
-    dict(idx=47, name="Tungsten trioxide", formula="WO3", polymorph=None, aliases=["WO3"]),
-    dict(idx=48, name="Yttrium oxide", formula="Y2O3", polymorph=None, aliases=["Y2O3"]),
-    dict(idx=49, name="YAG", formula="Y3Al5O12", polymorph="garnet", aliases=["Y3Al5O12", "YAG"]),
-    dict(idx=50, name="Zinc oxide", formula="ZnO", polymorph=None, aliases=["ZnO"]),
+    dict(idx=m["idx"], name=m["name"], formula=m["formula"], polymorph=m["polymorph"],
+         aliases=m["ri_aliases"])
+    for m in MATERIALS_50
 ]
 
 RELEVANT_SHELVES = {"main", "other"}
