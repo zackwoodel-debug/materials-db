@@ -158,3 +158,64 @@ Air -> HfO2 (300 Å, tabulated n,k) -> Al2O3_corundum/sapphire (tabulated n,k, "
 Å"), with live SE Ψ/Δ prediction curves already plotted from the real DB-derived optical
 constants. Full round trip, from CLI selection through a real, correctly-painted ModalFit
 window.
+
+Repeated with a second, independent combination (Titanium nitride film on Magnesium
+oxide substrate, chosen fresh rather than reusing HfO2/sapphire) -- same result: stack
+loaded, TiN_rock salt at exactly d=50/σ=2 Å as entered, Stack Diagram showing Air -> TiN
+-> MgO, real SE curves plotted. Also verified at catalog scale (not just by hand): every
+one of the 133 selectable materials exports successfully as BOTH a substrate and a film
+layer via `export_stack()`, in isolated temp directories with no silent overwrites --
+`tests/test_modalfit_export.py::TestWholeCatalogAsSubstrateOrFilm`.
+
+## A second, complementary integration: ModalFit's own material-library browser
+
+Everything above is the CLI picking materials and handing ModalFit ONE finished,
+pre-assembled stack -- ModalFit never "browses" anything in that flow. A real, separate
+question: can ModalFit's own UI see the whole catalog directly? Checked, not assumed:
+`model_predictor.py` (what the launcher above targets) has no such browser. But ModalFit
+has a SECOND standalone tool, `slab_model_builder.py` -- its own app for manually
+constructing a model from scratch, unrelated to model_predictor.py -- with a real,
+built-in "Load Library..." feature: load a JSON file of materials, and a native
+`MaterialPickerDialog` lets you browse/filter and apply any of them to a layer or
+substrate while building a stack by hand.
+
+`scripts/build_modalfit_material_library.py` (`src/materials_db/launcher/
+library_export.py`) generates `data/modalfit_material_library/materials_library.json`
+in exactly the schema that dialog reads (confirmed against slab_model_builder.py's
+source directly, not guessed): 133 entries, one per selectable material, each with
+`optical`/`scattering` (the same shapes export_layer() already produces) and a
+`molecular_descriptors` passthrough blob carrying the full `materials_db` citation/
+confidence block, so a user browsing the library still sees provenance, not just SLD
+numbers.
+
+**Density confidence baked into the picker LIST itself**, not just the post-apply
+readout: `MaterialPickerDialog`'s list only shows each entry's `label` and
+`material_type` -- nothing else is visible before you pick one. So `label` is built as
+`"{name} ({formula}) -- {confidence}"`, with a `*** BULK_APPROXIMATION density ***` flag
+appended for the 37 materials in that state, matching this whole launcher's standing
+principle (confidence visible before selection, not discovered afterward) even though
+the mechanism here is a label string, not a CLI display column.
+
+**Absolute sidecar paths, deliberately different from every other export in this
+project**: a stack JSON's relative n,k path resolves against that model's own directory
+via `model_predictor.py`'s `_json_dir` tracking, but a material LIBRARY is loaded once
+and reused across many future model-building sessions, each saved wherever the user
+chooses -- a relative path can't assume where that will be. Sidecar CSVs are written to
+a persistent location (`data/modalfit_material_library/`, gitignored like
+`data/modalfit_export/`) and referenced by absolute path instead.
+
+One confirmed, minor mismatch, not a bug: `SubstrateEditor`'s own name field is a fixed
+7-value dropdown (`silicon`, `sapphire`, `gold`, ...) that none of this catalog's real
+material names match, so applying a library entry to a substrate leaves that dropdown
+unchanged while still correctly populating its optical/scattering/descriptors data.
+
+**Verified two ways**: a headless check against the real `SlabModelBuilder` class
+(loaded 133 entries via the actual `_load_material_library()` method, confirmed correct
+confidence-flagged labels), and visually on the real desktop -- ModalFit's own "Loaded
+133 material(s)" confirmation, then its real "Select Material from Library" dialog,
+alphabetically listing every material with density confidence visible in the row text
+(e.g. `Aluminium (Al) -- bulk_approximation *** BULK_APPROXIMATION density`, `Aluminium
+oxide / sapphire (Al2O3) -- verified [oxide]`), filterable, and confirmed applying an
+entry returns the real picked material's data. `tests/test_launcher_library_export.py`
+covers the export logic (133/133, no errors, correct label flagging, Diamond/Graphite
+distinct despite shared formula, no sidecar collisions).
