@@ -23,7 +23,8 @@ sys.path.insert(0, str(ROOT / "src"))
 
 import materials_db.launcher.modalfit_bridge as bridge  # noqa: E402
 from materials_db.launcher.modalfit_bridge import (  # noqa: E402
-    ModalFitBridgeError, check_tk_version, launch, locate_modalfit_clone, verify_pin_or_warn,
+    ModalFitBridgeError, check_tk_version, launch, launch_builder, locate_modalfit_clone,
+    verify_pin_or_warn,
 )
 
 
@@ -234,3 +235,68 @@ class TestLaunchWiring:
 
         lines = marker.read_text().splitlines()
         assert lines == ["after_scheduled", f"loaded:{model_path}", "mainloop"]
+
+
+class TestLaunchBuilderWiring:
+    """launch_builder() targets ModalFit's OTHER standalone tool
+    (slab_model_builder.py, unrelated to model_predictor.py) -- same
+    dynamic-import-by-path, monkeypatch-the-dialog, defer-via-after
+    sequence, verified the same way: a minimal stand-in with no real
+    Tkinter involved, since this dev environment has none."""
+
+    @pytest.fixture
+    def fake_modalfit_clone(self, tmp_path):
+        marker = tmp_path / "calls.log"
+        stub = tmp_path / "slab_model_builder.py"
+        stub.write_text(
+            "from pathlib import Path\n"
+            f"_MARKER = Path(r'{marker}')\n"
+            "\n"
+            "class _FakeDialog:\n"
+            "    @staticmethod\n"
+            "    def askopenfilename(*a, **k):\n"
+            "        raise AssertionError('real dialog should never be called -- must be patched')\n"
+            "\n"
+            "filedialog = _FakeDialog()\n"
+            "\n"
+            "class SlabModelBuilder:\n"
+            "    def after(self, delay, callback):\n"
+            "        with open(_MARKER, 'a') as f:\n"
+            "            f.write('after_scheduled\\n')\n"
+            "        self._pending = callback\n"
+            "\n"
+            "    def _load_material_library(self):\n"
+            "        path = filedialog.askopenfilename()\n"
+            "        with open(_MARKER, 'a') as f:\n"
+            "            f.write(f'loaded_library:{path}\\n')\n"
+            "\n"
+            "    def mainloop(self):\n"
+            "        self._pending()\n"
+            "        with open(_MARKER, 'a') as f:\n"
+            "            f.write('mainloop\\n')\n"
+        )
+        return tmp_path, marker
+
+    def test_launch_builder_defers_load_via_after_then_enters_event_loop(self, fake_modalfit_clone, monkeypatch):
+        monkeypatch.setattr(bridge, "check_tk_version", lambda: None)
+        clone_path, marker = fake_modalfit_clone
+        library_path = clone_path / "materials_library.json"
+        library_path.write_text('{"materials": []}')
+
+        # The fake's own askopenfilename raises if called unpatched -- a
+        # clean run here proves launch_builder() really monkeypatches it
+        # rather than letting a real dialog block.
+        launch_builder(library_path, clone_path)
+
+        lines = marker.read_text().splitlines()
+        assert lines == ["after_scheduled", f"loaded_library:{library_path}", "mainloop"]
+
+    def test_launch_builder_checks_tk_version_first(self, fake_modalfit_clone, monkeypatch):
+        clone_path, marker = fake_modalfit_clone
+        library_path = clone_path / "materials_library.json"
+        library_path.write_text('{"materials": []}')
+
+        calls = []
+        monkeypatch.setattr(bridge, "check_tk_version", lambda: calls.append("checked"))
+        launch_builder(library_path, clone_path)
+        assert calls == ["checked"]

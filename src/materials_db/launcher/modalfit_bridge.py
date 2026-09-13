@@ -171,6 +171,50 @@ def _import_model_predictor(clone_path: Path):
     return module
 
 
+def _import_slab_model_builder(clone_path: Path):
+    """Same dynamic-import pattern as _import_model_predictor(), for
+    ModalFit's OTHER standalone tool -- slab_model_builder.py, its own
+    app for manually constructing a model, unrelated to model_predictor.py.
+    Also has no sibling-module imports of its own."""
+    spec = importlib.util.spec_from_file_location(
+        "modalfit_slab_model_builder", clone_path / "slab_model_builder.py"
+    )
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def launch_builder(library_json_path, clone_path: Path) -> None:
+    """Construct ModalFit's real SlabModelBuilder, pre-load it with a
+    materials-db library JSON via the exact production "Load Library..."
+    code path (_load_material_library(), the file dialog monkeypatched to
+    return our path -- ModalFit's files on disk are never touched), and
+    enter its GUI event loop. For the zero-prompt double-click flow: this
+    is the whole point of building the library exporter (launcher/
+    library_export.py) -- open ModalFit ready to use, with all 133
+    materials already browsable via its own native "Apply from Library"
+    picker, no CLI stack-assembly questions asked at all. Contrast with
+    launch() above, which pre-loads one already-assembled stack for
+    predicting/fitting; this pre-loads the whole catalog for building a
+    stack from scratch inside ModalFit's own UI.
+
+    Same check_tk_version() guard and app.after(0, ...) deferred-load
+    pattern as launch() -- see that function's docstring for why both
+    matter. slab_model_builder.py's own real "Loaded N material(s)."
+    confirmation dialog is expected and NOT suppressed, matching launch()'s
+    existing discipline of never patching away ModalFit's own dialogs."""
+    check_tk_version()
+    mp = _import_slab_model_builder(clone_path)
+    app = mp.SlabModelBuilder()
+
+    def _do_load():
+        with patch.object(mp.filedialog, "askopenfilename", return_value=str(library_json_path)):
+            app._load_material_library()
+
+    app.after(0, _do_load)
+    app.mainloop()
+
+
 def launch(model_json_path, clone_path: Path) -> None:
     """Construct ModalFit's real ModelPredictorApp, pre-load it with
     model_json_path via the exact production _load_model() code path

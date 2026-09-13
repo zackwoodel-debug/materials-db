@@ -1,9 +1,18 @@
 #!/usr/bin/env bash
 # scripts/launch_modalfit.command
 # ===================================
-# Double-click this file in Finder to run the ModalFit launcher --
-# double-clicking a .command file opens Terminal.app and runs it as a
-# shell script; that's the whole mechanism, no packaging magic involved.
+# Double-click this file in Finder: ModalFit just opens, ready to use --
+# no questions asked in the Terminal window this briefly shows. Opens
+# ModalFit's own stack-BUILDER tool (slab_model_builder.py) with the
+# whole materials-db catalog pre-loaded into its native "Load Library..."
+# picker: click "+ Add Layer" -> "Apply from Library" to pick any of the
+# 133 materials yourself, entirely inside ModalFit's own UI from there.
+#
+# Want to instead have THIS launcher search/pick a specific ambient/
+# film(s)/substrate stack for you and hand ModalFit that one finished
+# model, ready to predict/fit? Double-click
+# scripts/launch_modalfit_pick_stack.command instead -- that one asks a
+# few questions in the Terminal first.
 #
 # First run (no venv yet) triggers scripts/setup_modalfit_launcher.sh
 # automatically. Re-run setup manually any time via:
@@ -29,7 +38,7 @@ if [ ! -x "$VENV/bin/python3" ]; then
   echo
 fi
 
-"$VENV/bin/python3" "$ROOT/scripts/modalfit_launcher.py" "$@"
+"$VENV/bin/python3" "$ROOT/scripts/modalfit_builder_launcher.py" "$@"
 status=$?
 
 echo

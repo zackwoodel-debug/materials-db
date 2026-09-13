@@ -14,21 +14,35 @@ with the existing `export_stack()`, and launches ModalFit pre-loaded with the re
    ModalFit's runtime dependencies, and asks for your local ModalFit clone path
    (`git clone https://github.com/agauer/modalfit` somewhere first if you haven't),
    saving it to `.modalfit_path` (gitignored, repo-local).
-2. Double-click `scripts/launch_modalfit.command` in Finder any time after that -- no
-   flags, no environment variables, no Terminal typing. It runs setup automatically on
-   a completely fresh checkout if `.venv-modalfit-launcher/` doesn't exist yet.
+2. Double-click one of two files in Finder any time after that -- no flags, no
+   environment variables, no Terminal typing beyond what each shows you. Both run setup
+   automatically on a completely fresh checkout if `.venv-modalfit-launcher/` doesn't
+   exist yet.
+   - **`scripts/launch_modalfit.command`** -- zero prompts. Rebuilds the material
+     library fresh (always current, ~1.5s) and opens ModalFit's own stack-BUILDER tool
+     (`slab_model_builder.py`) with all 133 materials pre-loaded into its native "Load
+     Library..." picker. Click "+ Add Layer" -> "Apply from Library" to pick materials
+     yourself, entirely inside ModalFit's own UI from there.
+   - **`scripts/launch_modalfit_pick_stack.command`** -- the interactive one. Asks a few
+     questions in the Terminal (search/pick an ambient, film(s), substrate) and hands
+     ModalFit one finished, ready-to-fit stack.
 
-Re-run step 1 any time you re-clone ModalFit elsewhere, or if the launcher reports a
+Re-run step 1 any time you re-clone ModalFit elsewhere, or if either launcher reports a
 Tk/dependency problem. `locate_modalfit_clone()` checks, in order: an explicit
 `--modalfit-path`, the `MODALFIT_PATH` environment variable, then the saved
 `.modalfit_path` file -- so scripting/CI use (env var or flag) and the double-click
 flow (saved config) both work without stepping on each other.
 
-**Verified for real**: ran `setup_modalfit_launcher.sh` from a genuinely clean checkout
-(no pre-existing venv or saved path), then ran `launch_modalfit.command` exactly as
-Finder would (no `MODALFIT_PATH` set, no CLI flags) -- HfO2 on Silicon loaded correctly,
-same "Stack: 3 entries" confirmation and correct Stack Diagram as every other real run
-in this document.
+**Verified for real, both paths**: ran `setup_modalfit_launcher.sh` from a genuinely
+clean checkout (no pre-existing venv or saved path), then `launch_modalfit_pick_stack.command`
+exactly as Finder would (no `MODALFIT_PATH` set, no CLI flags) -- HfO2 on Silicon loaded
+correctly, same "Stack: 3 entries" confirmation and correct Stack Diagram as every other
+real run in this document. Separately confirmed `launch_modalfit.command` (the
+zero-prompt path): the library rebuild ran cleanly (133 materials, matching the known
+count) and the real "Slab Model Builder" window opened with it -- the underlying
+pre-load mechanism (`_load_material_library()` fired via the same monkeypatched-dialog
+pattern) was already verified in full via a real screenshot of the native "Select
+Material from Library" picker (see the material-library section below).
 
 ## Entry-point finding (checked before writing any launcher code)
 
