@@ -388,3 +388,69 @@ class TestAmbientPresets:
         with pytest.raises(ExportError, match="Unknown ambient"):
             export_stack(str(_DB_PATH), layers=[], ambient="helium",
                          out_dir=tmp_path, stack_id="bad_ambient_test")
+
+
+class TestWholeCatalogAsSubstrateOrFilm:
+    """The launcher's whole premise is that ANY of the 133 exportable
+    materials can be picked as a substrate or a film layer, not just the
+    one combination (HfO2 on sapphire) exercised by hand end-to-end.
+    Substrate especially was never bulk-tested before this launcher --
+    only Silicon (the fixed placeholder) had ever been used in that role
+    across this whole project. These run the real DB, once per material,
+    catching exactly the class of bug the Sapphire nk-filename collision
+    was (something that only shows up on a specific real polymorph
+    string, not on the one or two materials a hand-written test happens
+    to pick)."""
+
+    @pytest.mark.skipif(not _DB_PATH.exists(), reason="data/materials_oxide_test.db not built")
+    def test_every_selectable_material_works_as_substrate(self, tmp_path):
+        from materials_db.launcher.catalog import list_materials
+        rows = [r for r in list_materials(str(_DB_PATH)) if r["selectable"]]
+        assert len(rows) == 133  # the real count -- catches a silent drop in coverage too
+
+        failures = []
+        for r in rows:
+            d = tmp_path / str(r["material_id"])
+            d.mkdir()
+            try:
+                out = export_stack(str(_DB_PATH), layers=[], substrate=r["name"],
+                                    substrate_dataset_label=r["polymorph"],
+                                    substrate_roughness_a=3.0, out_dir=d,
+                                    stack_id="whole_catalog_substrate_test")
+                sub = out["stack"][-1]
+                csv_files = list(d.glob("*.csv"))
+                # Exactly one sidecar file, and it must be a FLAT file in
+                # out_dir (not nested) -- the Sapphire "corundum/sapphire"
+                # regression this whole class exists to catch.
+                if len(csv_files) != 1:
+                    failures.append((r["name"], f"expected 1 sidecar csv, found {len(csv_files)}"))
+                elif "/" in sub["optical"]["params"]["file"]:
+                    failures.append((r["name"], f"nested path in optical.params.file: {sub['optical']['params']['file']}"))
+            except Exception as e:
+                failures.append((r["name"], f"{type(e).__name__}: {e}"))
+
+        assert not failures, f"{len(failures)}/{len(rows)} materials failed as substrate:\n" + "\n".join(
+            f"  {name}: {msg}" for name, msg in failures
+        )
+
+    @pytest.mark.skipif(not _DB_PATH.exists(), reason="data/materials_oxide_test.db not built")
+    def test_every_selectable_material_works_as_a_film_layer(self, tmp_path):
+        from materials_db.launcher.catalog import list_materials
+        rows = [r for r in list_materials(str(_DB_PATH)) if r["selectable"]]
+
+        failures = []
+        for r in rows:
+            d = tmp_path / f"film_{r['material_id']}"
+            d.mkdir()
+            spec = dict(material=r["name"], thickness_a=100.0, roughness_a=2.0)
+            if r["polymorph"]:
+                spec["dataset_label"] = r["polymorph"]
+            try:
+                export_stack(str(_DB_PATH), layers=[spec], substrate="Silicon",
+                             substrate_roughness_a=3.0, out_dir=d, stack_id="whole_catalog_film_test")
+            except Exception as e:
+                failures.append((r["name"], f"{type(e).__name__}: {e}"))
+
+        assert not failures, f"{len(failures)}/{len(rows)} materials failed as a film layer:\n" + "\n".join(
+            f"  {name}: {msg}" for name, msg in failures
+        )
