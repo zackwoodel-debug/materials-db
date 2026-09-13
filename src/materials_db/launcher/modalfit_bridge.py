@@ -57,6 +57,7 @@ sys.path.insert(0, str(_ROOT / "scripts"))
 from verify_modalfit_pin import check_pin  # noqa: E402
 
 MODALFIT_PATH_ENV_VAR = "MODALFIT_PATH"
+MODALFIT_PATH_CONFIG_FILE = _ROOT / ".modalfit_path"
 MIN_TK_VERSION = 8.6
 
 
@@ -102,19 +103,40 @@ def check_tk_version() -> None:
 
 def locate_modalfit_clone(explicit_path: Optional[str] = None) -> Path:
     """Resolve the ModalFit clone directory: an explicit path, else the
-    MODALFIT_PATH environment variable, else raise with the exact fix --
-    never guess a default path."""
+    MODALFIT_PATH environment variable, else a saved path from a prior
+    save_modalfit_path() call (MODALFIT_PATH_CONFIG_FILE -- a plain-text,
+    gitignored, repo-local file; see scripts/setup_modalfit_launcher.sh),
+    else raise with the exact fix. Never guess a default path.
+
+    The config-file fallback exists specifically for the double-click
+    launcher (scripts/launch_modalfit.command): a Finder double-click has
+    no shell environment to read MODALFIT_PATH from, and re-typing
+    --modalfit-path every time defeats the point of double-clicking."""
     candidate = explicit_path or os.environ.get(MODALFIT_PATH_ENV_VAR)
+    if not candidate and MODALFIT_PATH_CONFIG_FILE.exists():
+        candidate = MODALFIT_PATH_CONFIG_FILE.read_text().strip()
     if not candidate:
         raise ModalFitBridgeError(
-            f"No ModalFit clone configured. Pass --modalfit-path, or set the "
-            f"{MODALFIT_PATH_ENV_VAR} environment variable to a local clone of "
-            f"https://github.com/agauer/modalfit."
+            f"No ModalFit clone configured. Pass --modalfit-path, set the "
+            f"{MODALFIT_PATH_ENV_VAR} environment variable, or run "
+            f"scripts/setup_modalfit_launcher.sh once to save a path -- "
+            f"to a local clone of https://github.com/agauer/modalfit."
         )
     path = Path(candidate).expanduser().resolve()
     if not (path / "model_predictor.py").exists():
         raise ModalFitBridgeError(f"{path} does not contain model_predictor.py -- not a ModalFit clone.")
     return path
+
+
+def save_modalfit_path(path) -> None:
+    """Persist a ModalFit clone path to MODALFIT_PATH_CONFIG_FILE for
+    locate_modalfit_clone() to pick up automatically next time (no env
+    var, no --modalfit-path flag needed) -- used by
+    scripts/setup_modalfit_launcher.sh's one-time setup."""
+    resolved = Path(path).expanduser().resolve()
+    if not (resolved / "model_predictor.py").exists():
+        raise ModalFitBridgeError(f"{resolved} does not contain model_predictor.py -- not a ModalFit clone.")
+    MODALFIT_PATH_CONFIG_FILE.write_text(str(resolved) + "\n")
 
 
 def verify_pin_or_warn(clone_path: Path) -> str:

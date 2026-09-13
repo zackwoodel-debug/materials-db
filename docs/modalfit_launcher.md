@@ -6,6 +6,30 @@ Selecting and loading a material used to be entirely manual; this tool searches
 materials_oxide_test.db, assembles an ambient/film(s)/substrate stack, exports it
 with the existing `export_stack()`, and launches ModalFit pre-loaded with the result.
 
+## Quickstart: double-click to launch
+
+1. `bash scripts/setup_modalfit_launcher.sh` -- one-time only. Finds a Python built
+   with Tk >= 8.6 (refuses to silently use an older one -- see the Tk-version section
+   below for why), creates a local venv (`.venv-modalfit-launcher/`, gitignored) with
+   ModalFit's runtime dependencies, and asks for your local ModalFit clone path
+   (`git clone https://github.com/agauer/modalfit` somewhere first if you haven't),
+   saving it to `.modalfit_path` (gitignored, repo-local).
+2. Double-click `scripts/launch_modalfit.command` in Finder any time after that -- no
+   flags, no environment variables, no Terminal typing. It runs setup automatically on
+   a completely fresh checkout if `.venv-modalfit-launcher/` doesn't exist yet.
+
+Re-run step 1 any time you re-clone ModalFit elsewhere, or if the launcher reports a
+Tk/dependency problem. `locate_modalfit_clone()` checks, in order: an explicit
+`--modalfit-path`, the `MODALFIT_PATH` environment variable, then the saved
+`.modalfit_path` file -- so scripting/CI use (env var or flag) and the double-click
+flow (saved config) both work without stepping on each other.
+
+**Verified for real**: ran `setup_modalfit_launcher.sh` from a genuinely clean checkout
+(no pre-existing venv or saved path), then ran `launch_modalfit.command` exactly as
+Finder would (no `MODALFIT_PATH` set, no CLI flags) -- HfO2 on Silicon loaded correctly,
+same "Stack: 3 entries" confirmation and correct Stack Diagram as every other real run
+in this document.
+
 ## Entry-point finding (checked before writing any launcher code)
 
 No command-line argument for a model path exists anywhere in ModalFit -- grepped the

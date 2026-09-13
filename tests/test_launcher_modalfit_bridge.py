@@ -72,10 +72,24 @@ class TestCheckTkVersion:
 
 
 class TestLocateModalfitClone:
-    def test_no_path_and_no_env_var_raises(self, monkeypatch):
+    def test_no_path_and_no_env_var_raises(self, monkeypatch, tmp_path):
         monkeypatch.delenv("MODALFIT_PATH", raising=False)
+        # Point the config-file fallback at a path that doesn't exist --
+        # this repo's own real .modalfit_path (written by
+        # scripts/setup_modalfit_launcher.sh) must not leak into this
+        # test's result.
+        monkeypatch.setattr(bridge, "MODALFIT_PATH_CONFIG_FILE", tmp_path / "no_such_config")
         with pytest.raises(ModalFitBridgeError, match="No ModalFit clone configured"):
             locate_modalfit_clone()
+
+    def test_config_file_fallback_is_used_when_no_arg_or_env_var(self, monkeypatch, tmp_path):
+        monkeypatch.delenv("MODALFIT_PATH", raising=False)
+        (tmp_path / "model_predictor.py").write_text("# stub\n")
+        config_file = tmp_path / "config"
+        config_file.write_text(str(tmp_path) + "\n")
+        monkeypatch.setattr(bridge, "MODALFIT_PATH_CONFIG_FILE", config_file)
+        resolved = locate_modalfit_clone()
+        assert resolved == tmp_path.resolve()
 
     def test_explicit_path_without_model_predictor_raises(self, tmp_path):
         with pytest.raises(ModalFitBridgeError, match="not a ModalFit clone"):
@@ -91,6 +105,48 @@ class TestLocateModalfitClone:
         monkeypatch.setenv("MODALFIT_PATH", str(tmp_path))
         resolved = locate_modalfit_clone()
         assert resolved == tmp_path.resolve()
+
+    def test_env_var_takes_priority_over_config_file(self, tmp_path, monkeypatch):
+        """Explicit arg > env var > saved config file -- an env var set
+        for one session shouldn't be silently overridden by a stale saved
+        path from a previous setup run."""
+        env_clone = tmp_path / "env_clone"
+        env_clone.mkdir()
+        (env_clone / "model_predictor.py").write_text("# stub\n")
+        config_clone = tmp_path / "config_clone"
+        config_clone.mkdir()
+        (config_clone / "model_predictor.py").write_text("# stub\n")
+        config_file = tmp_path / "config"
+        config_file.write_text(str(config_clone) + "\n")
+
+        monkeypatch.setenv("MODALFIT_PATH", str(env_clone))
+        monkeypatch.setattr(bridge, "MODALFIT_PATH_CONFIG_FILE", config_file)
+        assert locate_modalfit_clone() == env_clone.resolve()
+
+
+class TestSaveModalfitPath:
+    def test_saves_a_valid_clone_path(self, tmp_path, monkeypatch):
+        from materials_db.launcher.modalfit_bridge import save_modalfit_path
+
+        (tmp_path / "model_predictor.py").write_text("# stub\n")
+        config_file = tmp_path / "saved_config"
+        monkeypatch.setattr(bridge, "MODALFIT_PATH_CONFIG_FILE", config_file)
+
+        save_modalfit_path(str(tmp_path))
+
+        assert config_file.read_text().strip() == str(tmp_path.resolve())
+        # And locate_modalfit_clone() picks it straight back up.
+        monkeypatch.delenv("MODALFIT_PATH", raising=False)
+        assert locate_modalfit_clone() == tmp_path.resolve()
+
+    def test_rejects_a_non_clone_path(self, tmp_path, monkeypatch):
+        from materials_db.launcher.modalfit_bridge import save_modalfit_path
+
+        config_file = tmp_path / "saved_config"
+        monkeypatch.setattr(bridge, "MODALFIT_PATH_CONFIG_FILE", config_file)
+        with pytest.raises(ModalFitBridgeError, match="not a ModalFit clone"):
+            save_modalfit_path(str(tmp_path))
+        assert not config_file.exists()
 
 
 class TestVerifyPinOrWarn:
