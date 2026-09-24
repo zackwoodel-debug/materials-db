@@ -1,0 +1,111 @@
+{
+  "AlN": {
+    "name": "Aluminium nitride",
+    "polymorph": "wurtzite",
+    "effective_polymorph": "wurtzite",
+    "source": "carried over from batch2/3b (human selection)",
+    "axes": [
+      {
+        "page": "Pastrnak-o",
+        "axis": "o-ray",
+        "data_path": "main/AlN/nk/Pastrnak-o.yml",
+        "dataset_label": "wurtzite | Pastrnak1966 | o-ray"
+      },
+      {
+        "page": "Pastrnak-e",
+        "axis": "e-ray",
+        "data_path": "main/AlN/nk/Pastrnak-e.yml",
+        "dataset_label": "wurtzite | Pastrnak1966 | e-ray"
+      }
+    ]
+  },
+  "GaN": {
+    "name": "Gallium nitride",
+    "polymorph": "wurtzite",
+    "effective_polymorph": "wurtzite",
+    "source": "carried over from batch2/3b (human selection)",
+    "axes": [
+      {
+        "page": "Barker-o",
+        "axis": "o-ray",
+        "data_path": "main/GaN/nk/Barker-o.yml",
+        "dataset_label": "wurtzite | Barker1973 | o-ray"
+      },
+      {
+        "page": "Barker-e",
+        "axis": "e-ray",
+        "data_path": "main/GaN/nk/Barker-e.yml",
+        "dataset_label": "wurtzite | Barker1973 | e-ray"
+      }
+    ]
+  },
+  "Si3N4": {
+    "name": "Silicon nitride",
+    "polymorph": "amorphous",
+    "effective_polymorph": "amorphous",
+    "source": "user decision (Luke primary, Philipp secondary)",
+    "basis": "user decision: stoichiometric amorphous thin film. RI.info's own files state only '340 nm Si3N4 on 3.1 um thermal SiO2 on silicon' (Luke) and nothing (Philipp; Baak dispersion fit to Philipp's data); 'stoichiometric'/'amorphous' are not stated in the RI.info files.",
+    "axes": [
+      {
+        "page": "Luke",
+        "axis": "isotropic",
+        "data_path": "main/Si3N4/nk/Luke.yml",
+        "dataset_label": "amorphous | Luke2015"
+      },
+      {
+        "page": "Philipp",
+        "axis": "isotropic",
+        "data_path": "main/Si3N4/nk/Philipp.yml",
+        "dataset_label": "amorphous | Philipp1973"
+      }
+    ]
+  },
+  "BN-hex": {
+    "name": "Boron nitride (hexagonal)",
+    "polymorph": "h-BN",
+    "effective_polymorph": "h-BN",
+    "source": "carried over from batch2/3b (human selection)",
+    "axes": [
+      {
+        "page": "Zotev-o",
+        "axis": "o-ray",
+        "data_path": "main/BN/nk/Zotev-o.yml",
+        "dataset_label": "h-BN | Zotev2023 | o-ray"
+      },
+      {
+        "page": "Zotev-e",
+        "axis": "e-ray",
+        "data_path": "main/BN/nk/Zotev-e.yml",
+        "dataset_label": "h-BN | Zotev2023 | e-ray"
+      }
+    ]
+  },
+  "TiN": {
+    "name": "Titanium nitride",
+    "polymorph": "rock salt",
+    "effective_polymorph": "rock salt",
+    "source": "carried over from batch2/3b (human selection)",
+    "axes": [
+      {
+        "page": "Pfluger",
+        "axis": null,
+        "data_path": "main/TiN/nk/Pfluger.yml",
+        "dataset_label": "rock salt | Pfluger1984"
+      }
+    ]
+  },
+  "VN": {
+    "name": "Vanadium nitride",
+    "polymorph": "rock salt",
+    "effective_polymorph": "rock salt",
+    "source": "carried over from batch2/3b (human selection)",
+    "axes": [
+      {
+        "page": "Pfluger",
+        "axis": null,
+        "data_path": "main/VN/nk/Pfluger.yml",
+        "dataset_label": "rock salt | Pfluger1984"
+      }
+    ]
+  }
+}

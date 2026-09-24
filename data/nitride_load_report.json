@@ -1,0 +1,20 @@
+{
+  "family": "nitride",
+  "inserted": {
+    "materials": 6,
+    "physical_properties": 30,
+    "optical_dispersion": 3906,
+    "sources": 11
+  },
+  "unchanged": {
+    "materials": 0,
+    "physical_properties": 0,
+    "optical_dispersion": 0
+  },
+  "conflicts": [],
+  "skipped": [],
+  "warnings": [],
+  "notes": [
+    "polymorph differs between optical ('amorphous') and physical properties ('beta') for Si3N4 -- their dataset_label prefixes will not match"
+  ]
+}
