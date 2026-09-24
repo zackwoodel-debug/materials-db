@@ -1,0 +1,647 @@
+[
+  {
+    "name": "Aluminium nitride",
+    "formula": "AlN",
+    "selection_key": "AlN",
+    "status": "MULTIPLE",
+    "n_papers": 4,
+    "papers": {
+      "Pastrnak": [
+        "Pastrnak-o",
+        "Pastrnak-e"
+      ],
+      "Kischkat": [
+        "Kischkat"
+      ],
+      "Beliaev1": [
+        "Beliaev1"
+      ],
+      "Beliaev2": [
+        "Beliaev2"
+      ]
+    },
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "AlN",
+        "page": "Pastrnak-o",
+        "page_name": "Pastr\u0148\u00e1k and Roskovcov\u00e1 1966: n(o) 0.22\u20135 \u00b5m",
+        "data_path": "main/AlN/nk/Pastrnak-o.yml",
+        "wl_range": "0.220-5.000 um"
+      },
+      {
+        "shelf": "main",
+        "book": "AlN",
+        "page": "Pastrnak-e",
+        "page_name": "Pastr\u0148\u00e1k and Roskovcov\u00e1 1966: n(e) 0.22\u20135 \u00b5m",
+        "data_path": "main/AlN/nk/Pastrnak-e.yml",
+        "wl_range": "0.220-5.000 um"
+      },
+      {
+        "shelf": "main",
+        "book": "AlN",
+        "page": "Kischkat",
+        "page_name": "Kischkat et al. 2012: Non-stoichiometric AlN; n,k 1.54\u201314.29 \u00b5m",
+        "data_path": "main/AlN/nk/Kischkat.yml",
+        "wl_range": "1.538-14.286 um"
+      },
+      {
+        "shelf": "main",
+        "book": "AlN",
+        "page": "Beliaev1",
+        "page_name": "Beliaev et al. 2021: Non-stoichiometric AlN; n,k 0.211\u20131.69 \u00b5m",
+        "data_path": "main/AlN/nk/Beliaev1.yml",
+        "wl_range": "0.211-1.688 um"
+      },
+      {
+        "shelf": "main",
+        "book": "AlN",
+        "page": "Beliaev2",
+        "page_name": "Beliaev et al. 2021: Non-stoichiometric AlN; n,k 2\u201320 \u00b5m",
+        "data_path": "main/AlN/nk/Beliaev2.yml",
+        "wl_range": "2.001-20.019 um"
+      }
+    ],
+    "prior_selection": true,
+    "user_selection": false,
+    "excluded_pages": [],
+    "note": null
+  },
+  {
+    "name": "Gallium nitride",
+    "formula": "GaN",
+    "selection_key": "GaN",
+    "status": "MULTIPLE",
+    "n_papers": 4,
+    "papers": {
+      "Barker": [
+        "Barker-o",
+        "Barker-e"
+      ],
+      "Lin-wurtzite": [
+        "Lin-wurtzite"
+      ],
+      "Lin-zincblende": [
+        "Lin-zincblende"
+      ],
+      "Kawashima": [
+        "Kawashima"
+      ]
+    },
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "GaN",
+        "page": "Barker-o",
+        "page_name": "Barker and Ilegems 1973: n(o) 0.35\u201310 \u00b5m",
+        "data_path": "main/GaN/nk/Barker-o.yml",
+        "wl_range": "0.350-10.000 um"
+      },
+      {
+        "shelf": "main",
+        "book": "GaN",
+        "page": "Barker-e",
+        "page_name": "Barker and Ilegems 1973: n(e) 0.35\u201310 \u00b5m",
+        "data_path": "main/GaN/nk/Barker-e.yml",
+        "wl_range": "0.350-10.000 um"
+      },
+      {
+        "shelf": "main",
+        "book": "GaN",
+        "page": "Lin-wurtzite",
+        "page_name": "Lin et al. 1993: n(o) 0.37\u20130.99 \u00b5m",
+        "data_path": "main/GaN/nk/Lin-wurtzite.yml",
+        "wl_range": "0.368-0.992 um"
+      },
+      {
+        "shelf": "main",
+        "book": "GaN",
+        "page": "Lin-zincblende",
+        "page_name": "Lin et al. 1993: Zincblende; n 0.37\u20130.99 \u00b5m",
+        "data_path": "main/GaN/nk/Lin-zincblende.yml",
+        "wl_range": "0.385-0.960 um"
+      },
+      {
+        "shelf": "main",
+        "book": "GaN",
+        "page": "Kawashima",
+        "page_name": "Kawashima et al. 1997: thin film; n,k 0.124\u20130.992 \u00b5m",
+        "data_path": "main/GaN/nk/Kawashima.yml",
+        "wl_range": "0.124-0.992 um"
+      }
+    ],
+    "prior_selection": true,
+    "user_selection": false,
+    "excluded_pages": [],
+    "note": null
+  },
+  {
+    "name": "Indium nitride",
+    "formula": "InN",
+    "selection_key": "InN",
+    "status": "MISSING",
+    "n_papers": 0,
+    "papers": {},
+    "datasets": [],
+    "prior_selection": false,
+    "user_selection": false,
+    "excluded_pages": [],
+    "note": null
+  },
+  {
+    "name": "Silicon nitride",
+    "formula": "Si3N4",
+    "selection_key": "Si3N4",
+    "status": "MULTIPLE",
+    "n_papers": 7,
+    "papers": {
+      "Philipp": [
+        "Philipp"
+      ],
+      "Luke": [
+        "Luke"
+      ],
+      "Kischkat": [
+        "Kischkat"
+      ],
+      "Beliaev": [
+        "Beliaev"
+      ],
+      "Vogt-1.91": [
+        "Vogt-1.91"
+      ],
+      "Vogt-2.09": [
+        "Vogt-2.09"
+      ],
+      "Vogt-2.13": [
+        "Vogt-2.13"
+      ]
+    },
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "Si3N4",
+        "page": "Philipp",
+        "page_name": "Philipp 1973: n 0.207\u20131.24 \u00b5m",
+        "data_path": "main/Si3N4/nk/Philipp.yml",
+        "wl_range": "0.207-1.240 um"
+      },
+      {
+        "shelf": "main",
+        "book": "Si3N4",
+        "page": "Luke",
+        "page_name": "Luke et al. 2015: n 0.310\u20135.504 \u00b5m",
+        "data_path": "main/Si3N4/nk/Luke.yml",
+        "wl_range": "0.310-5.504 um"
+      },
+      {
+        "shelf": "main",
+        "book": "Si3N4",
+        "page": "Kischkat",
+        "page_name": "Kischkat et al. 2012: Non-stoichiometric SiN; n,k 1.54\u201314.29 \u00b5m",
+        "data_path": "main/Si3N4/nk/Kischkat.yml",
+        "wl_range": "1.538-14.286 um"
+      },
+      {
+        "shelf": "main",
+        "book": "Si3N4",
+        "page": "Beliaev",
+        "page_name": "Beliaev et al. 2022: Non-stoichiometric SiN; n,k 0.21-1.7 \u00b5m",
+        "data_path": "main/Si3N4/nk/Beliaev.yml",
+        "wl_range": "0.211-1.688 um"
+      },
+      {
+        "shelf": "main",
+        "book": "Si3N4",
+        "page": "Vogt-1.91",
+        "page_name": "Vogt 2015: Non-stoichiometric SiN #1; n,k 0.25-1.7 \u00b5m",
+        "data_path": "main/Si3N4/nk/Vogt-1.yml",
+        "wl_range": "0.250-1.700 um"
+      },
+      {
+        "shelf": "main",
+        "book": "Si3N4",
+        "page": "Vogt-2.09",
+        "page_name": "Vogt 2015: Non-stoichiometric SiN #2; n,k 0.25-1.7 \u00b5m",
+        "data_path": "main/Si3N4/nk/Vogt-2.yml",
+        "wl_range": "0.250-1.700 um"
+      },
+      {
+        "shelf": "main",
+        "book": "Si3N4",
+        "page": "Vogt-2.13",
+        "page_name": "Vogt 2015: Non-stoichiometric SiN #3; n,k 0.25-1.7 \u00b5m",
+        "data_path": "main/Si3N4/nk/Vogt-3.yml",
+        "wl_range": "0.250-1.700 um"
+      }
+    ],
+    "prior_selection": false,
+    "user_selection": true,
+    "excluded_pages": [
+      "Kischkat",
+      "Beliaev",
+      "Vogt-1.91",
+      "Vogt-2.09",
+      "Vogt-2.13"
+    ],
+    "note": null
+  },
+  {
+    "name": "Boron nitride (cubic)",
+    "formula": "BN",
+    "selection_key": "BN-cubic",
+    "status": "MISSING",
+    "n_papers": 0,
+    "papers": {},
+    "datasets": [],
+    "prior_selection": false,
+    "user_selection": false,
+    "excluded_pages": [],
+    "note": "BN book on RI.info holds only h-BN pages; no cubic-BN dataset"
+  },
+  {
+    "name": "Boron nitride (hexagonal)",
+    "formula": "BN",
+    "selection_key": "BN-hex",
+    "status": "MULTIPLE",
+    "n_papers": 6,
+    "papers": {
+      "Lee": [
+        "Lee"
+      ],
+      "Choi": [
+        "Choi-o",
+        "Choi-e"
+      ],
+      "Grudinin": [
+        "Grudinin-o",
+        "Grudinin-e"
+      ],
+      "Zotev": [
+        "Zotev-o",
+        "Zotev-e"
+      ],
+      "Rah": [
+        "Rah-o",
+        "Rah-e"
+      ],
+      "Grudinin-DFT": [
+        "Grudinin-DFT-o",
+        "Grudinin-DFT-e"
+      ]
+    },
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "BN",
+        "page": "Lee",
+        "page_name": "Lee et al. 2018: h-BN; n(o) 0.450\u20131.20 \u00b5m",
+        "data_path": "main/BN/nk/Lee.yml",
+        "wl_range": "0.450-1.200 um"
+      },
+      {
+        "shelf": "main",
+        "book": "BN",
+        "page": "Choi-o",
+        "page_name": "Choi et al. 2026: h-BN; n,k(o) 0.190\u20131.00 \u00b5m",
+        "data_path": "main/BN/nk/Choi-o.yml",
+        "wl_range": "0.190-1.000 um"
+      },
+      {
+        "shelf": "main",
+        "book": "BN",
+        "page": "Choi-e",
+        "page_name": "Choi et al. 2026: h-BN; n,k(e) 0.190\u20131.00 \u00b5m",
+        "data_path": "main/BN/nk/Choi-e.yml",
+        "wl_range": "0.190-1.000 um"
+      },
+      {
+        "shelf": "main",
+        "book": "BN",
+        "page": "Grudinin-o",
+        "page_name": "Grudinin et al. 2023: h-BN; n(o) 0.250\u20131.70 \u00b5m",
+        "data_path": "main/BN/nk/Grudinin-o.yml",
+        "wl_range": "0.250-1.700 um"
+      },
+      {
+        "shelf": "main",
+        "book": "BN",
+        "page": "Grudinin-e",
+        "page_name": "Grudinin et al. 2023: h-BN; n(e) 0.250\u20131.70 \u00b5m",
+        "data_path": "main/BN/nk/Grudinin-e.yml",
+        "wl_range": "0.250-1.700 um"
+      },
+      {
+        "shelf": "main",
+        "book": "BN",
+        "page": "Zotev-o",
+        "page_name": "Zotev et al. 2023: h-BN; n,k(o) 0.36\u20131.0 \u00b5m",
+        "data_path": "main/BN/nk/Zotev-o.yml",
+        "wl_range": "0.360-1.000 um"
+      },
+      {
+        "shelf": "main",
+        "book": "BN",
+        "page": "Zotev-e",
+        "page_name": "Zotev et al. 2023: h-BN; n,k(e) 0.36\u20131.0 \u00b5m",
+        "data_path": "main/BN/nk/Zotev-e.yml",
+        "wl_range": "0.360-1.000 um"
+      },
+      {
+        "shelf": "main",
+        "book": "BN",
+        "page": "Rah-o",
+        "page_name": "Rah et al. 2019: h-BN; n(o) 0.4\u20131.6 \u00b5m",
+        "data_path": "main/BN/nk/Rah-o.yml",
+        "wl_range": "0.400-1.600 um"
+      },
+      {
+        "shelf": "main",
+        "book": "BN",
+        "page": "Rah-e",
+        "page_name": "Rah et al. 2019: h-BN; n(e) 0.4\u20131.6 \u00b5m",
+        "data_path": "main/BN/nk/Rah-e.yml",
+        "wl_range": "0.400-1.600 um"
+      },
+      {
+        "shelf": "main",
+        "book": "BN",
+        "page": "Grudinin-DFT-o",
+        "page_name": "Grudinin et al. 2023: h-BN; n,k(o) 0.199\u20132.01 \u00b5m",
+        "data_path": "main/BN/nk/Grudinin-DFT-o.yml",
+        "wl_range": "0.199-2.013 um"
+      },
+      {
+        "shelf": "main",
+        "book": "BN",
+        "page": "Grudinin-DFT-e",
+        "page_name": "Grudinin et al. 2023: h-BN; n,k(e) 0.199\u20132.01 \u00b5m",
+        "data_path": "main/BN/nk/Grudinin-DFT-e.yml",
+        "wl_range": "0.199-2.013 um"
+      }
+    ],
+    "prior_selection": true,
+    "user_selection": false,
+    "excluded_pages": [],
+    "note": null
+  },
+  {
+    "name": "Titanium nitride",
+    "formula": "TiN",
+    "selection_key": "TiN",
+    "status": "MULTIPLE",
+    "n_papers": 8,
+    "papers": {
+      "Pfluger": [
+        "Pfluger"
+      ],
+      "Beliaev-sputtering": [
+        "Beliaev-sputtering"
+      ],
+      "Beliaev-ALD": [
+        "Beliaev-ALD"
+      ],
+      "Schnabel": [
+        "Schnabel"
+      ],
+      "Shkondin": [
+        "Shkondin"
+      ],
+      "Shkondin-700": [
+        "Shkondin-700"
+      ],
+      "Shkondin-800": [
+        "Shkondin-800"
+      ],
+      "Shkondin-900": [
+        "Shkondin-900"
+      ]
+    },
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "TiN",
+        "page": "Pfluger",
+        "page_name": "Pfl\u00fcger et al. 1984: n,k 0.031\u20132.48 \u00b5m",
+        "data_path": "main/TiN/nk/Pfluger.yml",
+        "wl_range": "0.031-2.480 um"
+      },
+      {
+        "shelf": "main",
+        "book": "TiN",
+        "page": "Beliaev-sputtering",
+        "page_name": "Beliaev et al. 2023: Sputtering; n,k 0.211-20.0 \u00b5m",
+        "data_path": "main/TiN/nk/Beliaev-sputtering.yml",
+        "wl_range": "0.211-20.000 um"
+      },
+      {
+        "shelf": "main",
+        "book": "TiN",
+        "page": "Beliaev-ALD",
+        "page_name": "Beliaev et al. 2023: ALD; n,k 2.00-20.0 \u00b5m",
+        "data_path": "main/TiN/nk/Beliaev-ALD.yml",
+        "wl_range": "2.000-20.000 um"
+      },
+      {
+        "shelf": "main",
+        "book": "TiN",
+        "page": "Schnabel",
+        "page_name": "Schnabel et al. 2018: n,k 0.292\u20130.809 \u00b5m",
+        "data_path": "main/TiN/nk/Schnabel.yml",
+        "wl_range": "0.292-0.809 um"
+      },
+      {
+        "shelf": "main",
+        "book": "TiN",
+        "page": "Shkondin",
+        "page_name": "Shkondin et al. 2017: n,k 0.211\u20131.69 \u00b5m",
+        "data_path": "main/TiN/nk/Shkondin.yml",
+        "wl_range": "0.211-1.689 um"
+      },
+      {
+        "shelf": "main",
+        "book": "TiN",
+        "page": "Shkondin-700",
+        "page_name": "Shkondin et al. 2017: Annealed at 700 \u00b0C; n,k 0.211\u20131.69 \u00b5m",
+        "data_path": "main/TiN/nk/Shkondin-700.yml",
+        "wl_range": "0.211-1.689 um"
+      },
+      {
+        "shelf": "main",
+        "book": "TiN",
+        "page": "Shkondin-800",
+        "page_name": "Shkondin et al. 2017: Annealed at 800 \u00b0C; n,k 0.211\u20131.69 \u00b5m",
+        "data_path": "main/TiN/nk/Shkondin-800.yml",
+        "wl_range": "0.211-1.689 um"
+      },
+      {
+        "shelf": "main",
+        "book": "TiN",
+        "page": "Shkondin-900",
+        "page_name": "Shkondin et al. 2017: Annealed at 900 \u00b0C; n,k 0.211\u20131.69 \u00b5m",
+        "data_path": "main/TiN/nk/Shkondin-900.yml",
+        "wl_range": "0.211-1.689 um"
+      }
+    ],
+    "prior_selection": true,
+    "user_selection": false,
+    "excluded_pages": [],
+    "note": null
+  },
+  {
+    "name": "Tantalum nitride",
+    "formula": "TaN",
+    "selection_key": "TaN",
+    "status": "MISSING",
+    "n_papers": 0,
+    "papers": {},
+    "datasets": [],
+    "prior_selection": false,
+    "user_selection": false,
+    "excluded_pages": [],
+    "note": null
+  },
+  {
+    "name": "Niobium nitride",
+    "formula": "NbN",
+    "selection_key": "NbN",
+    "status": "MISSING",
+    "n_papers": 0,
+    "papers": {},
+    "datasets": [],
+    "prior_selection": false,
+    "user_selection": false,
+    "excluded_pages": [],
+    "note": null
+  },
+  {
+    "name": "Vanadium nitride",
+    "formula": "VN",
+    "selection_key": "VN",
+    "status": "FOUND",
+    "n_papers": 1,
+    "papers": {
+      "Pfluger": [
+        "Pfluger"
+      ]
+    },
+    "datasets": [
+      {
+        "shelf": "main",
+        "book": "VN",
+        "page": "Pfluger",
+        "page_name": "Pfl\u00fcger et al. 1984: n,k 0.031\u20132.48 \u00b5m",
+        "data_path": "main/VN/nk/Pfluger.yml",
+        "wl_range": "0.031-2.480 um"
+      }
+    ],
+    "prior_selection": true,
+    "user_selection": false,
+    "excluded_pages": [],
+    "note": null
+  },
+  {
+    "name": "Chromium nitride",
+    "formula": "CrN",
+    "selection_key": "CrN",
+    "status": "MISSING",
+    "n_papers": 0,
+    "papers": {},
+    "datasets": [],
+    "prior_selection": false,
+    "user_selection": false,
+    "excluded_pages": [],
+    "note": null
+  },
+  {
+    "name": "Zirconium nitride",
+    "formula": "ZrN",
+    "selection_key": "ZrN",
+    "status": "MISSING",
+    "n_papers": 0,
+    "papers": {},
+    "datasets": [],
+    "prior_selection": false,
+    "user_selection": false,
+    "excluded_pages": [],
+    "note": null
+  },
+  {
+    "name": "Hafnium nitride",
+    "formula": "HfN",
+    "selection_key": "HfN",
+    "status": "MISSING",
+    "n_papers": 0,
+    "papers": {},
+    "datasets": [],
+    "prior_selection": false,
+    "user_selection": false,
+    "excluded_pages": [],
+    "note": null
+  },
+  {
+    "name": "Tungsten nitride",
+    "formula": "WN",
+    "selection_key": "WN",
+    "status": "MISSING",
+    "n_papers": 0,
+    "papers": {},
+    "datasets": [],
+    "prior_selection": false,
+    "user_selection": false,
+    "excluded_pages": [],
+    "note": null
+  },
+  {
+    "name": "Molybdenum nitride",
+    "formula": "MoN",
+    "selection_key": "MoN",
+    "status": "MISSING",
+    "n_papers": 0,
+    "papers": {},
+    "datasets": [],
+    "prior_selection": false,
+    "user_selection": false,
+    "excluded_pages": [],
+    "note": null
+  },
+  {
+    "name": "Scandium nitride",
+    "formula": "ScN",
+    "selection_key": "ScN",
+    "status": "MISSING",
+    "n_papers": 0,
+    "papers": {},
+    "datasets": [],
+    "prior_selection": false,
+    "user_selection": false,
+    "excluded_pages": [],
+    "note": null
+  },
+  {
+    "name": "Copper(I) nitride",
+    "formula": "Cu3N",
+    "selection_key": "Cu3N",
+    "status": "MISSING",
+    "n_papers": 0,
+    "papers": {},
+    "datasets": [],
+    "prior_selection": false,
+    "user_selection": false,
+    "excluded_pages": [],
+    "note": null
+  },
+  {
+    "name": "Magnesium nitride",
+    "formula": "Mg3N2",
+    "selection_key": "Mg3N2",
+    "status": "MISSING",
+    "n_papers": 0,
+    "papers": {},
+    "datasets": [],
+    "prior_selection": false,
+    "user_selection": false,
+    "excluded_pages": [],
+    "note": null
+  }
+]

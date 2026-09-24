@@ -4,20 +4,32 @@ calculators/simulate_xrr.py
 ============================
 Parratt-recursion XRR simulator.
 
-SLD values are computed by xrr_engine.py (reads formula + density from materials.db).
+SLD values are computed by xrr_engine.py (reads formula + density from the
+database; schema is auto-detected -- data/materials.db's legacy shape, or
+data/materials_oxide_test.db's updated_sql_schema.sql shape).
 Only NumPy is required; no external reflectometry packages.
 
 Usage:
     python simulate_xrr.py --stack "Vacuum,PMMA:120,Gold:250,Silicon" \\
-                            --db ../materials.db
+                            --db ../../../data/materials.db
+
+    # oxide-schema DB: disambiguate a material with more than one density
+    # row (e.g. a different polymorph) using Name[dataset_label]
+    python simulate_xrr.py --stack "Vacuum,TiO2[rutile]:50,SiO2[amorphous]:100,Silicon" \\
+                            --db ../../../data/materials_oxide_test.db
 """
 
 import argparse
 import csv
 import importlib.util as _ilu
+import re
+import sys
 from pathlib import Path
 
 import numpy as np
+
+# Name, Name:thickness, Name[dataset_label], or Name[dataset_label]:thickness
+_LAYER_RE = re.compile(r"^(?P<name>[^\[\]:]+?)\s*(?:\[(?P<label>[^\[\]]+)\])?\s*(?::(?P<thickness>[^:\[\]]+))?$")
 
 def _import_sibling(name: str):
     """
@@ -43,14 +55,39 @@ def parratt(q_arr: np.ndarray,
             thicknesses: np.ndarray) -> np.ndarray:
     """
     Physical purpose: Compute specular X-ray reflectivity using exact Parratt recursion in the full-Q convention, propagating reflected amplitude from the substrate interface upward to the superstrate.
-    Args/Returns: q_arr — (M,) momentum transfer in Å⁻¹; slds — (L,) SLD per layer in Å⁻² with slds[0] the superstrate and slds[-1] the substrate; thicknesses — (L,) thickness in Å with boundary entries unused; returns (M,) reflectivity clamped to [0, 1].
+    Args/Returns: q_arr — (M,) momentum transfer in Å⁻¹; slds — (L,) SLD per layer in Å⁻² with slds[0] the superstrate and slds[-1] the substrate (positive imaginary part = absorption, matching xrr_engine.py's periodictable-derived values); thicknesses — (L,) thickness in Å with boundary entries unused; returns (M,) reflectivity clamped to [0, 1].
+
+    Two bugs fixed here, found by cross-checking this function against refnx
+    (the reference implementation ModalFit's real fits use) on a real
+    HfO2-on-Si stack -- see docs/xrr_fit_findings.md:
+      1. Phase factor was exp(2i*q_j*d), double what this "full-Q" convention
+         needs. Here q_j = 2*k_z (this function's own q_j^2 = q^2 - 16*pi*SLD
+         is algebraically q_j = 2*sqrt((q/2)^2 - 4*pi*SLD) = 2*k_z), so the
+         correct phase accumulated crossing a layer of thickness d is
+         exp(i*q_j*d), not exp(2i*q_j*d) -- the old formula doubled every
+         Kiessig fringe frequency, silently, for every stack with >=1 film,
+         independent of absorption.
+      2. slds was used directly (not conjugated) in the q_j formula, which
+         inverts the sign of absorptive damping through any film with a
+         non-negligible imaginary SLD (this repo's stored convention is
+         positive-imaginary = absorptive, e.g. HfO2's xray_sld_imag=4.41,
+         and that convention is correct -- refnx agrees with the value
+         as-stored; the bug was in how this function's own k_z-style
+         formula consumed it).
+    Both were confirmed independently: agreement with refnx was exact
+    (0.000000 max log10(R) difference) once fixed, for absorbing and
+    non-absorbing multi-layer stacks alike; the unfixed formula diverged by
+    orders of magnitude at Kiessig fringe minima the moment either a real
+    film thickness or a realistic absorption was introduced.
     """
     n_media = len(slds)                        # superstrate + films + substrate = N+1
 
-    # Wavevector in each medium; shape (n_media, M)
+    # Wavevector in each medium; shape (n_media, M). conj(slds): see bug 2
+    # in the docstring above.
+    slds_eff = slds.real - 1j * slds.imag
     q_j = np.sqrt(
         q_arr[np.newaxis, :] ** 2
-        - 16.0 * np.pi * slds[:, np.newaxis]
+        - 16.0 * np.pi * slds_eff[:, np.newaxis]
         + 0j
     )
     # Physical root: q_j.real >= 0 (sign convention for decaying evanescent wave)
@@ -69,7 +106,7 @@ def parratt(q_arr: np.ndarray,
 
     # Propagate the reflected amplitude upward through the stack, one interface at a time.
     for j in range(n_media - 3, -1, -1):
-        phase = np.exp(2j * q_j[j + 1] * thicknesses[j + 1])
+        phase = np.exp(1j * q_j[j + 1] * thicknesses[j + 1])  # see bug 1 above
         rj    = r[j]
         X     = (rj + X * phase) / (1.0 + rj * X * phase)
 
@@ -81,7 +118,7 @@ def parratt(q_arr: np.ndarray,
 def parse_stack(stack_str: str, db_path: str) -> list[dict]:
     """
     Physical purpose: Decode the comma-separated stack string into a validated list of layer dicts (name, thickness, formula, density, SLD), verifying every material exists in the database before any arithmetic begins.
-    Args/Returns: stack_str — comma-separated string such as "Vacuum,PMMA:120,Gold:250,Silicon"; db_path — path to materials.db; returns list of layer dicts or raises ValueError on malformed input or missing material.
+    Args/Returns: stack_str — comma-separated string such as "Vacuum,PMMA:120,Gold:250,Silicon" or, against the oxide-schema DB, "Vacuum,TiO2[rutile]:50,SiO2[amorphous]:100,Silicon"; db_path — path to the database (either schema, auto-detected); returns list of layer dicts or raises ValueError on malformed input, missing material, or an ambiguous/unmatched dataset_label.
     """
     entries = [s.strip() for s in stack_str.split(",")]
     if len(entries) < 2:
@@ -92,11 +129,20 @@ def parse_stack(stack_str: str, db_path: str) -> list[dict]:
     for i, entry in enumerate(entries):
         semi_inf = (i == 0) or (i == len(entries) - 1)
 
-        if ":" in entry:
-            name, thick_str = entry.split(":", 1)
+        m = _LAYER_RE.match(entry)
+        if not m:
+            raise ValueError(
+                f"Could not parse layer '{entry}' (position {i}). Expected "
+                "Name, Name:thickness_Å, Name[dataset_label], or Name[dataset_label]:thickness_Å."
+            )
+        name = m.group("name").strip()
+        dataset_label = m.group("label")
+        thick_str = m.group("thickness")
+
+        if thick_str is not None:
             if semi_inf:
                 raise ValueError(
-                    f"Semi-infinite layer '{name.strip()}' (position {i}) "
+                    f"Semi-infinite layer '{name}' (position {i}) "
                     "must not have a thickness."
                 )
             thickness = float(thick_str)
@@ -104,15 +150,14 @@ def parse_stack(stack_str: str, db_path: str) -> list[dict]:
             if not semi_inf:
                 raise ValueError(
                     f"Intermediate layer '{entry}' (position {i}) "
-                    "must specify a thickness as Name:thickness_Å."
+                    "must specify a thickness as Name:thickness_Å or Name[dataset_label]:thickness_Å."
                 )
-            name = entry
             thickness = 0.0     # not used in recursion
-
-        name = name.strip()
 
         # Vacuum / Air: SLD = 0 by definition, no DB lookup needed
         if name.lower() in ("vacuum", "air"):
+            if dataset_label is not None:
+                raise ValueError(f"'{name}' (position {i}) is vacuum/air and cannot take a dataset_label.")
             layers.append(dict(
                 name=name, thickness_A=thickness,
                 formula="—", density=0.0, rho_e=0.0, SLD=0.0,
@@ -120,7 +165,7 @@ def parse_stack(stack_str: str, db_path: str) -> list[dict]:
             continue
 
         # All other materials: DB lookup + XRR computation
-        formula, density = read_material(db_path, name)
+        formula, density = read_material(db_path, name, dataset_label=dataset_label)
         result = compute_xrr(formula, density)
         layers.append(dict(
             name=name, thickness_A=thickness,
@@ -183,11 +228,13 @@ def main() -> None:
         help=(
             'Comma-separated layer stack, e.g. "Vacuum,PMMA:120,Gold:250,Silicon". '
             "First and last entries are semi-infinite (no thickness). "
-            "Intermediate entries require Name:thickness_Å."
+            "Intermediate entries require Name:thickness_Å. Against an oxide-schema "
+            "DB, use Name[dataset_label]:thickness_Å to disambiguate a material with "
+            "more than one density row, e.g. \"TiO2[rutile]:50\"."
         ),
     )
     ap.add_argument("--db",     default=DEFAULT_DB,
-                    help="Path to materials.db  [default: %(default)s]")
+                    help="Path to the database (schema auto-detected)  [default: %(default)s]")
     ap.add_argument("--qmin",   type=float, default=0.01,
                     help="Minimum q in Å⁻¹  [default: %(default)s]")
     ap.add_argument("--qmax",   type=float, default=0.50,
