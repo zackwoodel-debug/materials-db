@@ -14,3 +14,6 @@ data/modalfit_export/
 data/modalfit_material_library/
 .modalfit_path
 .venv-modalfit-launcher/
+
+# regenerable from data/nitrides.csv + data/step1_selections_nitrides.json (scripts/load_nitrides_db.py)
+data/materials_nitride_test.db
