@@ -1,0 +1,20 @@
+{
+  "family": "inorganic3",
+  "inserted": {
+    "materials": 16,
+    "physical_properties": 60,
+    "optical_dispersion": 15321,
+    "sources": 22
+  },
+  "unchanged": {
+    "materials": 0,
+    "physical_properties": 0,
+    "optical_dispersion": 0
+  },
+  "conflicts": [],
+  "skipped": [],
+  "warnings": [],
+  "notes": [
+    "polymorph differs between optical (None) and physical properties ('thin film') for SiC -- their dataset_label prefixes will not match"
+  ]
+}

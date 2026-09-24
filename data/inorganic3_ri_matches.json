@@ -1,0 +1,1017 @@
+{
+ "candidates": [
+  {
+   "key": "B4C",
+   "name": "Boron carbide",
+   "formula": "B4C",
+   "book": "B4C",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "carbide",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Larruquert et al. 2012: n,k 0.001738\u201321.54 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Larruquert",
+     "title": "Larruquert et al. 2012: n,k 0.001738\u201321.54 \u00b5m",
+     "paper": "Larruquert et al. 2012: n,k 0.001738\u201321.54 \u00b5m",
+     "data_path": "main/B4C/nk/Larruquert.yml",
+     "axis": null,
+     "phase_words": [
+      "Film"
+     ],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.001737709,
+      21.53810759
+     ],
+     "single_point": false,
+     "comments": "Density: 2.28 g/cm3. Film deposited at room temperature.\n",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "B4C (Boron carbide)"
+  },
+  {
+   "key": "SiC",
+   "name": "Silicon carbide",
+   "formula": "SiC",
+   "book": "SiC",
+   "shelf": "main",
+   "note": "polytypes/phases are distinct datasets under one material; the source states 4H, 6H, beta (zincblende), alpha (hexagonal, polytype not stated) and a thin film",
+   "materialclass": "carbide",
+   "page_polymorph": {
+    "Wang-4H-o": "4H",
+    "Wang-4H-e": "4H",
+    "Fischer-o": "4H",
+    "Fischer-e": "4H",
+    "Wang-6H-o": "6H",
+    "Wang-6H-e": "6H",
+    "Shaffer": "3C (beta, zincblende)",
+    "Singh-o": "alpha (hexagonal, polytype not stated)",
+    "Singh-e": "alpha (hexagonal, polytype not stated)",
+    "Larruquert": "thin film"
+   },
+   "basis": "all 10 RI.info pages, each labelled by the phase its source states; 4H combines Wang 2013 (0.405-5 um) with Fischer 2017 (17-150 um), which do not overlap",
+   "status": "SELECTED_BY_USER",
+   "n_pages": 10,
+   "n_papers": 6,
+   "papers": [
+    "Fischer et al. 2017: 4H-SiC",
+    "Larruquert et al. 2011: Thin film",
+    "Shaffer 1971: \u03b2-SiC",
+    "Singh et al. 1971: \u03b1-SiC",
+    "Wang et al. 2013: 4H-SiC",
+    "Wang et al. 2013: 6H-SiC"
+   ],
+   "datasets": [
+    {
+     "page": "Singh-o",
+     "title": "Singh et al. 1971: \u03b1-SiC; n(o) 0.488\u20131.064 \u00b5m",
+     "paper": "Singh et al. 1971: \u03b1-SiC",
+     "data_path": "main/SiC/nk/Singh-o.yml",
+     "axis": "o-ray",
+     "phase_words": [
+      "Ordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.488,
+      1.064
+     ],
+     "single_point": false,
+     "comments": "\u03b1-SiC (hexagonal crystal structure); Ordinary ray (o); Room temperature.\n",
+     "conditions": "{'direction': 'o'}"
+    },
+    {
+     "page": "Singh-e",
+     "title": "Singh et al. 1971: \u03b1-SiC; n(e) 0.488\u20131.064 \u00b5m",
+     "paper": "Singh et al. 1971: \u03b1-SiC",
+     "data_path": "main/SiC/nk/Singh-e.yml",
+     "axis": "e-ray",
+     "phase_words": [
+      "Extraordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.488,
+      1.064
+     ],
+     "single_point": false,
+     "comments": "\u03b1-SiC (hexagonal crystal structure); Extraordinary ray (e); Room temperature.\n",
+     "conditions": "{'direction': 'e'}"
+    },
+    {
+     "page": "Wang-6H-o",
+     "title": "Wang et al. 2013: 6H-SiC; n(o) 0.436\u20132.33 \u00b5m",
+     "paper": "Wang et al. 2013: 6H-SiC",
+     "data_path": "main/SiC/nk/Wang-6H-o.yml",
+     "axis": "o-ray",
+     "phase_words": [
+      "6H",
+      "Ordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4358,
+      2.325
+     ],
+     "single_point": false,
+     "comments": "6H-SiC (hexagonal crystal structure); Ordinary ray (o)\n",
+     "conditions": "{'direction': 'o'}"
+    },
+    {
+     "page": "Wang-6H-e",
+     "title": "Wang et al. 2013: 6H-SiC; n(e) 0.436\u20132.33 \u00b5m",
+     "paper": "Wang et al. 2013: 6H-SiC",
+     "data_path": "main/SiC/nk/Wang-6H-e.yml",
+     "axis": "e-ray",
+     "phase_words": [
+      "6H",
+      "Extraordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4358,
+      2.325
+     ],
+     "single_point": false,
+     "comments": "6H-SiC (hexagonal crystal structure); Extraordinary ray (e)\n",
+     "conditions": "{'direction': 'e'}"
+    },
+    {
+     "page": "Wang-4H-o",
+     "title": "Wang et al. 2013: 4H-SiC; n(o) 0.405\u20135 \u00b5m",
+     "paper": "Wang et al. 2013: 4H-SiC",
+     "data_path": "main/SiC/nk/Wang-4H-o.yml",
+     "axis": "o-ray",
+     "phase_words": [
+      "4H",
+      "Ordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4047,
+      5.0
+     ],
+     "single_point": false,
+     "comments": "4H-SiC (hexagonal crystal structure); Ordinary ray (o)\n",
+     "conditions": "{'direction': 'o'}"
+    },
+    {
+     "page": "Wang-4H-e",
+     "title": "Wang et al. 2013: 4H-SiC; n(e) 0.405\u20132.33 \u00b5m",
+     "paper": "Wang et al. 2013: 4H-SiC",
+     "data_path": "main/SiC/nk/Wang-4H-e.yml",
+     "axis": "e-ray",
+     "phase_words": [
+      "4H",
+      "Extraordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4047,
+      2.325
+     ],
+     "single_point": false,
+     "comments": "4H-SiC (hexagonal crystal structure); Extraordinary ray (e)\n",
+     "conditions": "{'direction': 'e'}"
+    },
+    {
+     "page": "Fischer-o",
+     "title": "Fischer et al. 2017: 4H-SiC; n(o) 17\u2013150 \u00b5m",
+     "paper": "Fischer et al. 2017: 4H-SiC",
+     "data_path": "main/SiC/nk/Fischer-o.yml",
+     "axis": "o-ray",
+     "phase_words": [
+      "4H",
+      "Ordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      17.0,
+      150.0
+     ],
+     "single_point": false,
+     "comments": "4H-SiC (hexagonal crystal structure); Ordinary ray (o); Room temperature.\n",
+     "conditions": "{'temperature': 293, 'direction': 'o'}"
+    },
+    {
+     "page": "Fischer-e",
+     "title": "Fischer et al. 2017: 4H-SiC; n(e) 17\u2013150 \u00b5m",
+     "paper": "Fischer et al. 2017: 4H-SiC",
+     "data_path": "main/SiC/nk/Fischer-e.yml",
+     "axis": "e-ray",
+     "phase_words": [
+      "4H",
+      "Extraordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      17.0,
+      150.0
+     ],
+     "single_point": false,
+     "comments": "4H-SiC (hexagonal crystal structure); Extraordinary ray (e); Room temperature.\n",
+     "conditions": "{'temperature': 293, 'direction': 'e'}"
+    },
+    {
+     "page": "Shaffer",
+     "title": "Shaffer 1971: \u03b2-SiC; n 0.467\u20130.691 \u00b5m",
+     "paper": "Shaffer 1971: \u03b2-SiC",
+     "data_path": "main/SiC/nk/Shaffer.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.467,
+      0.691
+     ],
+     "single_point": false,
+     "comments": "\u03b2-SiC (zincblende crystal structure)\n",
+     "conditions": ""
+    },
+    {
+     "page": "Larruquert",
+     "title": "Larruquert et al. 2011: Thin film; n,k 0.006154\u2013131.7 \u00b5m",
+     "paper": "Larruquert et al. 2011: Thin film",
+     "data_path": "main/SiC/nk/Larruquert.yml",
+     "axis": null,
+     "phase_words": [
+      "Film",
+      "Thin film"
+     ],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.00615447,
+      131.7250957
+     ],
+     "single_point": false,
+     "comments": "Density: 2.98 g/cm3. Film deposited at room temperature.\n",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "SiC (Silicon carbide)"
+  },
+  {
+   "key": "TiC",
+   "name": "Titanium carbide",
+   "formula": "TiC",
+   "book": "TiC",
+   "shelf": "main",
+   "note": "source states composition TiC1.0",
+   "materialclass": "carbide",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Pfl\u00fcger et al. 1984: n,k 0.0311\u20132.48 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Pfluger",
+     "title": "Pfl\u00fcger et al. 1984: n,k 0.0311\u20132.48 \u00b5m",
+     "paper": "Pfl\u00fcger et al. 1984: n,k 0.0311\u20132.48 \u00b5m",
+     "data_path": "main/TiC/nk/Pfluger.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.03107,
+      2.4797
+     ],
+     "single_point": false,
+     "comments": "TiC1.0. Room temperature.\n",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "TiC (Titanium carbide)"
+  },
+  {
+   "key": "VC",
+   "name": "Vanadium carbide",
+   "formula": "VC",
+   "book": "VC",
+   "shelf": "main",
+   "note": "source states composition VC0.88 (sub-stoichiometric), not VC1.0",
+   "materialclass": "carbide",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Pfl\u00fcger et al. 1984: n,k 0.0311\u20132.48 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Pfluger",
+     "title": "Pfl\u00fcger et al. 1984: n,k 0.0311\u20132.48 \u00b5m",
+     "paper": "Pfl\u00fcger et al. 1984: n,k 0.0311\u20132.48 \u00b5m",
+     "data_path": "main/VC/nk/Pfluger.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.03107,
+      2.4797
+     ],
+     "single_point": false,
+     "comments": "VC0.88. Room temperature.\n",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "VC (Vanadium carbide)"
+  },
+  {
+   "key": "CaMgCO32",
+   "name": "Dolomite (calcium magnesium carbonate)",
+   "formula": "CaMg(CO3)2",
+   "book": "CaMg_CO3_2",
+   "shelf": "main",
+   "note": "birefringent",
+   "materialclass": "carbonate",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 2,
+   "n_papers": 1,
+   "papers": [
+    "Querry 1987"
+   ],
+   "datasets": [
+    {
+     "page": "Querry-o",
+     "title": "Querry 1987: n,k(o) 2.5\u201340 \u00b5m",
+     "paper": "Querry 1987",
+     "data_path": "main/CaMg(CO3)2/nk/Querry-o.yml",
+     "axis": "o-ray",
+     "phase_words": [
+      "Ordinary"
+     ],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      2.5,
+      40.0
+     ],
+     "single_point": false,
+     "comments": "Ordinary ray (o).\n",
+     "conditions": "{'direction': 'o'}"
+    },
+    {
+     "page": "Querry-e",
+     "title": "Querry 1987: n,k(e) 2.5\u201350 \u00b5m",
+     "paper": "Querry 1987",
+     "data_path": "main/CaMg(CO3)2/nk/Querry-e.yml",
+     "axis": "e-ray",
+     "phase_words": [
+      "Extraordinary"
+     ],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      2.5,
+      50.0
+     ],
+     "single_point": false,
+     "comments": "Extraordinary ray (e).\n",
+     "conditions": "{'direction': 'e'}"
+    }
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "CaMg(CO3)2 (Calcium magnesium carbonate, Dolomite)"
+  },
+  {
+   "key": "BiFeO3",
+   "name": "Bismuth ferrite",
+   "formula": "BiFeO3",
+   "book": "BiFeO3",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "oxide",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Kumar et al. 2008: n 0.197\u20131.67 \u00b5m, k 0.197\u20130.576 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Kumar",
+     "title": "Kumar et al. 2008: n 0.197\u20131.67 \u00b5m, k 0.197\u20130.576 \u00b5m",
+     "paper": "Kumar et al. 2008: n 0.197\u20131.67 \u00b5m, k 0.197\u20130.576 \u00b5m",
+     "data_path": "main/BiFeO3/nk/Kumar.yml",
+     "axis": null,
+     "phase_words": [
+      "film"
+     ],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.19706,
+      1.6693
+     ],
+     "single_point": false,
+     "comments": "25 nm BiFeO3 film grown on (100)SrTiO3 substrate.\n",
+     "conditions": "{'temperature': 273}"
+    }
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "BiFeO3 (Bismuth ferrite, BFO)"
+  },
+  {
+   "key": "Bi4Ge3O12",
+   "name": "Bismuth germanate (BGO)",
+   "formula": "Bi4Ge3O12",
+   "book": "Bi4Ge3O12",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "oxide",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Williams et al. 1996: n 0.305\u20131.0 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Williams",
+     "title": "Williams et al. 1996: n 0.305\u20131.0 \u00b5m",
+     "paper": "Williams et al. 1996: n 0.305\u20131.0 \u00b5m",
+     "data_path": "main/Bi4Ge3O12/nk/Williams.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.305,
+      1.0
+     ],
+     "single_point": false,
+     "comments": "",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "Bi4Ge3O12 (Bismuth germanate, BGO)"
+  },
+  {
+   "key": "Bi12SiO20",
+   "name": "Bismuth silicate (BSO)",
+   "formula": "Bi12SiO20",
+   "book": "Bi12SiO20",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "oxide",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Gospodinov et al. 1988: n 0.48\u20130.70 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Gospodinov",
+     "title": "Gospodinov et al. 1988: n 0.48\u20130.70 \u00b5m",
+     "paper": "Gospodinov et al. 1988: n 0.48\u20130.70 \u00b5m",
+     "data_path": "main/Bi12SiO20/nk/Gospodinov.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.48,
+      0.7
+     ],
+     "single_point": false,
+     "comments": "Room temperature\n",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "Bi12SiO20 (Bismuth silicate, BSO)"
+  },
+  {
+   "key": "ScAlMgO4",
+   "name": "Magnesium aluminate scandium oxide (SCAM)",
+   "formula": "ScAlMgO4",
+   "book": "ScAlMgO4",
+   "shelf": "main",
+   "note": "birefringent",
+   "materialclass": "oxide",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 2,
+   "n_papers": 1,
+   "papers": [
+    "Stefaniuk et al. 2023"
+   ],
+   "datasets": [
+    {
+     "page": "Stefaniuk-o",
+     "title": "Stefaniuk et al. 2023: n,k(o) 0.193\u20131.690 \u00b5m",
+     "paper": "Stefaniuk et al. 2023",
+     "data_path": "main/ScAlMgO4/nk/Stefaniuk-o.yml",
+     "axis": "o-ray",
+     "phase_words": [
+      "Ordinary"
+     ],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.193,
+      1.69
+     ],
+     "single_point": false,
+     "comments": "Ordinary ray (o).\n",
+     "conditions": "{'direction': 'o'}"
+    },
+    {
+     "page": "Stefaniuk-e",
+     "title": "Stefaniuk et al. 2023: n,k(e) 0.193\u20131.690 \u00b5m",
+     "paper": "Stefaniuk et al. 2023",
+     "data_path": "main/ScAlMgO4/nk/Stefaniuk-e.yml",
+     "axis": "e-ray",
+     "phase_words": [
+      "Extraordinary"
+     ],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.193,
+      1.69
+     ],
+     "single_point": false,
+     "comments": "Extraordinary ray (e).\n",
+     "conditions": "{'direction': 'e'}"
+    }
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "ScAlMgO4 (Magnesium aluminate scandium oxide, SAM, SCAM)"
+  },
+  {
+   "key": "Yb2O3",
+   "name": "Ytterbium oxide",
+   "formula": "Yb2O3",
+   "book": "Yb2O3",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "oxide",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Medenbach et al. 2001: n 0.435\u20130.644 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Medenbach",
+     "title": "Medenbach et al. 2001: n 0.435\u20130.644 \u00b5m",
+     "paper": "Medenbach et al. 2001: n 0.435\u20130.644 \u00b5m",
+     "data_path": "main/Yb2O3/nk/Medenbach.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.435,
+      0.644
+     ],
+     "single_point": false,
+     "comments": "",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "Yb2O3 (Ytterbium sesquioxide)"
+  },
+  {
+   "key": "KTaO3",
+   "name": "Potassium tantalate",
+   "formula": "KTaO3",
+   "book": "KTaO3",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "oxide",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Fujii and Sakudo 1976: n 0.4\u20131.06 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Fujii",
+     "title": "Fujii and Sakudo 1976: n 0.4\u20131.06 \u00b5m",
+     "paper": "Fujii and Sakudo 1976: n 0.4\u20131.06 \u00b5m",
+     "data_path": "main/KTaO3/nk/Fujii.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      1.06
+     ],
+     "single_point": false,
+     "comments": "300 K (27 \u00b0C)\n",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "KTaO3 (Potassium tantalate)"
+  },
+  {
+   "key": "LiTaO3",
+   "name": "Lithium tantalate",
+   "formula": "LiTaO3",
+   "book": "LiTaO3",
+   "shelf": "main",
+   "note": "birefringent",
+   "materialclass": "oxide",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 2,
+   "n_papers": 1,
+   "papers": [
+    "Bond et al. 1965"
+   ],
+   "datasets": [
+    {
+     "page": "Bond-o",
+     "title": "Bond et al. 1965: n(o) 0.45\u20134.0 \u00b5m",
+     "paper": "Bond et al. 1965",
+     "data_path": "main/LiTaO3/nk/Bond-o.yml",
+     "axis": "o-ray",
+     "phase_words": [
+      "Ordinary"
+     ],
+     "kind": "n",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.45,
+      4.0
+     ],
+     "single_point": false,
+     "comments": "Ordinary ray (o); Room temperature.\n",
+     "conditions": "{'direction': 'o'}"
+    },
+    {
+     "page": "Bond-e",
+     "title": "Bond et al. 1965: n(e) 0.45\u20134.0 \u00b5m",
+     "paper": "Bond et al. 1965",
+     "data_path": "main/LiTaO3/nk/Bond-e.yml",
+     "axis": "e-ray",
+     "phase_words": [
+      "Extraordinary"
+     ],
+     "kind": "n",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.45,
+      4.0
+     ],
+     "single_point": false,
+     "comments": "Extraordinary ray (e); Room temperature.\n",
+     "conditions": "{'direction': 'e'}"
+    }
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "LiTaO3 (Lithium tantalate)"
+  },
+  {
+   "key": "Bi4Ti3O12",
+   "name": "Bismuth titanate",
+   "formula": "Bi4Ti3O12",
+   "book": "Bi4Ti3O12",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "oxide",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 2,
+   "n_papers": 1,
+   "papers": [
+    "Simon et al. 1997"
+   ],
+   "datasets": [
+    {
+     "page": "Simon-a",
+     "title": "Simon et al. 1997: n(a); 0.45\u20130.70 \u00b5m",
+     "paper": "Simon et al. 1997",
+     "data_path": "main/Bi4Ti3O12/nk/Simon-a.yml",
+     "axis": "a-axis",
+     "phase_words": [
+      "a-a"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.45,
+      0.7
+     ],
+     "single_point": false,
+     "comments": "Polarization parallel to a-axis. 21 \u00b0C.\n",
+     "conditions": ""
+    },
+    {
+     "page": "Simon-b",
+     "title": "Simon et al. 1997: n(b); 0.45\u20130.70 \u00b5m",
+     "paper": "Simon et al. 1997",
+     "data_path": "main/Bi4Ti3O12/nk/Simon-b.yml",
+     "axis": "b-axis",
+     "phase_words": [
+      "b-a"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.45,
+      0.7
+     ],
+     "single_point": false,
+     "comments": "Polarization parallel to b-axis. 21 \u00b0C.\n",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "Bi4Ti3O12 (Bismuth titanate, BTO)"
+  },
+  {
+   "key": "PbTiO3",
+   "name": "Lead titanate",
+   "formula": "PbTiO3",
+   "book": "PbTiO3",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "oxide",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 2,
+   "n_papers": 1,
+   "papers": [
+    "Singh et al. 1972"
+   ],
+   "datasets": [
+    {
+     "page": "Singh-o",
+     "title": "Singh et al. 1972: n(o) 0.45\u20131.15 \u00b5m",
+     "paper": "Singh et al. 1972",
+     "data_path": "main/PbTiO3/nk/Singh-o.yml",
+     "axis": "o-ray",
+     "phase_words": [
+      "Ordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.45,
+      1.15
+     ],
+     "single_point": false,
+     "comments": "Ordinary ray (o)\n",
+     "conditions": "{'direction': 'o'}"
+    },
+    {
+     "page": "Singh-e",
+     "title": "Singh et al. 1972: n(e) 0.45\u20131.15 \u00b5m",
+     "paper": "Singh et al. 1972",
+     "data_path": "main/PbTiO3/nk/Singh-e.yml",
+     "axis": "e-ray",
+     "phase_words": [
+      "Extraordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.45,
+      1.15
+     ],
+     "single_point": false,
+     "comments": "Extraordinary ray (e)\n",
+     "conditions": "{'direction': 'e'}"
+    }
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "PbTiO3 (Lead titanate)"
+  },
+  {
+   "key": "CaWO4",
+   "name": "Calcium tungstate",
+   "formula": "CaWO4",
+   "book": "CaWO4",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "oxide",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 2,
+   "n_papers": 1,
+   "papers": [
+    "Bond 1965"
+   ],
+   "datasets": [
+    {
+     "page": "Bond-o",
+     "title": "Bond 1965: n(o) 0.45\u20134.0 \u00b5m",
+     "paper": "Bond 1965",
+     "data_path": "main/CaWO4/nk/Bond-o.yml",
+     "axis": "o-ray",
+     "phase_words": [
+      "Ordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.45,
+      4.0
+     ],
+     "single_point": false,
+     "comments": "Ordinary ray (o). Room temperature.\n",
+     "conditions": "{'direction': 'o'}"
+    },
+    {
+     "page": "Bond-e",
+     "title": "Bond 1965: n(e) 0.45\u20134.0 \u00b5m",
+     "paper": "Bond 1965",
+     "data_path": "main/CaWO4/nk/Bond-e.yml",
+     "axis": "e-ray",
+     "phase_words": [
+      "Extraordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.45,
+      4.0
+     ],
+     "single_point": false,
+     "comments": "Extraordinary ray (e). Room temperature.\n",
+     "conditions": "{'direction': 'e'}"
+    }
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "CaWO4 (Calcium tungstate)"
+  },
+  {
+   "key": "ZnWO4",
+   "name": "Zinc tungstate",
+   "formula": "ZnWO4",
+   "book": "ZnWO4",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "oxide",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 3,
+   "n_papers": 1,
+   "papers": [
+    "Bond et al. 1965"
+   ],
+   "datasets": [
+    {
+     "page": "Bond-\u03b1",
+     "title": "Bond et al. 1965: n(\u03b1) 0.42\u20134.0 \u00b5m",
+     "paper": "Bond et al. 1965",
+     "data_path": "main/ZnWO4/nk/Bond-alpha.yml",
+     "axis": "alpha-axis",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.42,
+      4.0
+     ],
+     "single_point": false,
+     "comments": "Monoclinic ZnWO4; n\u03b1; room temperature.\n",
+     "conditions": "{'direction': 'alpha'}"
+    },
+    {
+     "page": "Bond-\u03b2",
+     "title": "Bond et al. 1965: n(\u03b2) 0.42\u20133.6 \u00b5m",
+     "paper": "Bond et al. 1965",
+     "data_path": "main/ZnWO4/nk/Bond-beta.yml",
+     "axis": "beta-axis",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.42,
+      3.6
+     ],
+     "single_point": false,
+     "comments": "Monoclinic ZnWO4; n\u03b2; room temperature.\n",
+     "conditions": "{'direction': 'beta'}"
+    },
+    {
+     "page": "Bond-\u03b3",
+     "title": "Bond et al. 1965: n(\u03b3) 0.42\u20133.6 \u00b5m",
+     "paper": "Bond et al. 1965",
+     "data_path": "main/ZnWO4/nk/Bond-gamma.yml",
+     "axis": "gamma-axis",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.42,
+      3.6
+     ],
+     "single_point": false,
+     "comments": "Monoclinic ZnWO4; n\u03b3; room temperature.\n",
+     "conditions": "{'direction': 'gamma'}"
+    }
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "ZnWO4 (Zinc tungstate)"
+  }
+ ],
+ "out_of_family": {
+  "Ti3C2": "Ti3C2 MXene is a 2D layered material: belongs with the graphene/2D follow-up (film thickness and sheet effects), not bulk-crystal loading",
+  "O2": "gas",
+  "CO": "gas",
+  "CO2": "gas",
+  "N2": "gas",
+  "SF6": "gas",
+  "Ar": "noble gas",
+  "He": "noble gas",
+  "Kr": "noble gas",
+  "Ne": "noble gas",
+  "Xe": "noble gas",
+  "H2O": "liquid water / ice, 28 pages (temperature series); already in the benchmark DB from another source; a liquids family",
+  "Hg": "liquid metal element"
+ }
+}
