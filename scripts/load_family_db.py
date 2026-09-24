@@ -9,7 +9,8 @@ Schema is frozen pending Aiden's approval: no new columns. Polymorph, optical
 axis and SLD real-vs-imaginary distinctions live in the existing `dataset_label`
 text column as "polymorph | source_or_quantity | axis".
 
-Catalog CSV: required columns `name`, `formula`; optional `polymorph`, PubChem
+Catalog CSV: required columns `name`, `formula` (formula may be NULL only with allow_null_formula, used by the polymer
+family; then a `selection_key` column is required); optional `polymorph`, PubChem
 columns and the density/SLD columns used by load_physical_properties. The
 selections JSON is keyed by `selection_key` (a catalog column) if present, else
 by `formula`; it must be unique per catalog row.
@@ -17,11 +18,17 @@ by `formula`; it must be unique per catalog row.
 Selection states: a dict with a non-empty `axes` list -> optical data is loaded.
 A missing key, `null`, or a dict without `axes` (e.g. only `candidates`) is an
 unresolved/ambiguous match -> optical load is SKIPPED and reported, never
-auto-picked.
+auto-picked. A dict with `"deferred": true` is a deliberate deferral: the whole material is skipped (zero rows) and listed
+under report.deferred; it is not a warning and does not fail --strict.
 
 Idempotent: a rerun against an existing DB adds zero logical rows. Conflicting
 values are kept side by side (physical rows) or left untouched (materials /
 optical) and reported; nothing is silently overwritten.
+
+Block-boundary duplicates (opt-in, --collapse-block-duplicates): when an RI.info file gives n by a formula block AND by a tabulated
+block, parse_file emits a row from each at a shared wavelength (n differs ~1e-5). With the flag, the TABULATED row (the source's own
+n,k) is kept and the formula-sampled row dropped; every drop is recorded in report.collapsed with both n values. Anything that cannot
+be identified this way is left alone and warned. Default off: oxide/nitride output is unchanged.
 
 Modes: --fresh (delete + rebuild DB), --dry-run (runs on an in-memory copy, writes
 nothing), --strict (any conflict/skip/warning aborts and rolls back), --report PATH
@@ -29,6 +36,7 @@ nothing), --strict (any conflict/skip/warning aborts and rolls back), --report P
 """
 
 import argparse
+import collections
 import html
 import json
 import math
@@ -73,11 +81,13 @@ class Report:
         self.family = family
         self.inserted = {"materials": 0, "physical_properties": 0, "optical_dispersion": 0, "sources": 0}
         self.unchanged = {"materials": 0, "physical_properties": 0, "optical_dispersion": 0}
-        self.conflicts, self.skipped, self.warnings, self.notes = [], [], [], []
+        self.conflicts, self.skipped, self.warnings, self.notes, self.deferred = [], [], [], [], []
+        self.collapsed = []
 
     def to_dict(self):
         return dict(family=self.family, inserted=self.inserted, unchanged=self.unchanged,
-                    conflicts=self.conflicts, skipped=self.skipped, warnings=self.warnings, notes=self.notes)
+                    conflicts=self.conflicts, skipped=self.skipped, warnings=self.warnings, notes=self.notes,
+                    deferred=self.deferred, collapsed=self.collapsed)
 
 
 # ---------------------------------------------------------------------------
@@ -88,7 +98,7 @@ def _clean(v):
     return None if v is None or (isinstance(v, float) and math.isnan(v)) or pd.isna(v) else v
 
 
-def load_catalog(path) -> pd.DataFrame:
+def load_catalog(path, allow_null_formula=False) -> pd.DataFrame:
     path = Path(path)
     if not path.exists():
         raise CatalogError(f"catalog not found: {path}")
@@ -98,14 +108,24 @@ def load_catalog(path) -> pd.DataFrame:
         raise CatalogError(f"catalog unreadable ({path.name}): {e}") from e
     if df.empty:
         raise CatalogError(f"catalog has no rows: {path.name}")
-    missing = {"name", "formula"} - set(df.columns)
+    required = {"name"} if allow_null_formula else {"name", "formula"}
+    missing = required - set(df.columns)
     if missing:
         raise CatalogError(f"catalog {path.name} missing required columns: {sorted(missing)}")
-    for col in ("name", "formula"):
+    if allow_null_formula:
+        if "formula" not in df.columns:
+            df["formula"] = None
+        if "selection_key" not in df.columns:
+            raise CatalogError(f"catalog {path.name}: a selection_key column is required when formulas may be NULL")
+    for col in ("name",) if allow_null_formula else ("name", "formula"):
         blank = df[df[col].isna() | (df[col].astype(str).str.strip() == "")]
         if len(blank):
             raise CatalogError(f"catalog {path.name}: blank {col} in row(s) {list(blank.index + 2)}")
-    df["selection_key"] = df["selection_key"] if "selection_key" in df.columns else df["formula"]
+    if "selection_key" not in df.columns:
+        df["selection_key"] = df["formula"]
+    blank_key = df[df["selection_key"].isna() | (df["selection_key"].astype(str).str.strip() == "")]
+    if len(blank_key):
+        raise CatalogError(f"catalog {path.name}: blank selection_key in row(s) {list(blank_key.index + 2)}")
     for col in ("name", "selection_key"):
         dup = df[df[col].duplicated(keep=False)][col].unique().tolist()
         if dup:
@@ -245,12 +265,47 @@ def _insert_physical(conn, report, material_id, label, source_id, **cols):
     report.inserted["physical_properties"] += 1
 
 
-def load_optical_axis(conn, material_id, source_id, axis_entry, effective_polymorph, report=None):
+def collapse_block_duplicates(data_path, wl_nm, n_val, report):
+    """Indices to keep after resolving formula-vs-tabulated duplicates at a shared wavelength (see module docstring)."""
+    groups = collections.defaultdict(list)
+    for i, w in enumerate(wl_nm):
+        groups[round(float(w), 6)].append(i)
+    dup = {w: ix for w, ix in groups.items() if len(ix) > 1}
+    if not dup:
+        return list(range(len(wl_nm)))
+    table = {}
+    for b in yaml.safe_load(open(RI_DATA_ROOT / data_path)).get("DATA", []):
+        if b.get("type") in ("tabulated nk", "tabulated n"):
+            for line in b["data"].strip().splitlines():
+                c = line.split()
+                if c:
+                    table[round(float(c[0]) * 1000.0, 6)] = float(c[1])
+    drop = set()
+    for w, ix in sorted(dup.items()):
+        tab_n = table.get(w)
+        cand = [i for i in ix if tab_n is not None and abs(float(n_val[i]) - tab_n) < 1e-9]
+        if len(cand) != 1:  # cannot tell which row is the tabulated one: leave both, say so
+            report.warnings.append(dict(kind="unresolved_duplicate_wavelength", data_path=data_path, wavelength_nm=w,
+                                        n_values=[float(n_val[i]) for i in ix], action="left as is"))
+            continue
+        keep = cand[0]
+        for i in ix:
+            if i != keep:
+                drop.add(i)
+                report.collapsed.append(dict(data_path=data_path, wavelength_nm=w, kept="tabulated", kept_n=float(n_val[keep]),
+                                             dropped="formula-sampled", dropped_n=float(n_val[i]),
+                                             delta_n=float(n_val[keep]) - float(n_val[i]), dropped_raw_record_id=i))
+    return [i for i in range(len(wl_nm)) if i not in drop]
+
+
+def load_optical_axis(conn, material_id, source_id, axis_entry, effective_polymorph, report=None,
+                      collapse_block_duplicates_flag=False):
     report = report or Report("adhoc")
     data_path = axis_entry["data_path"]
     dataset_label = axis_entry["dataset_label"]
     wl_nm, n_val, k_val, refs, temp_c = parse_file(RI_DATA_ROOT / data_path)
-    total = len(wl_nm)
+    keep = collapse_block_duplicates(data_path, wl_nm, n_val, report) if collapse_block_duplicates_flag else list(range(len(wl_nm)))
+    total = len(keep)
 
     have, lo, hi = conn.execute(
         "SELECT COUNT(*), MIN(material_id), MAX(material_id) FROM optical_dispersion WHERE raw_record_table = ?",
@@ -263,8 +318,18 @@ def load_optical_axis(conn, material_id, source_id, axis_entry, effective_polymo
                                          existing_rows=have, expected_rows=total, existing_material_ids=[lo, hi],
                                          action="left untouched"))
         return 0
+    # Dedupe key (material, source, dataset_label): the same dataset arriving from a DIFFERENT data file must never be
+    # inserted a second time. Enforced here, not in the schema (schema is frozen).
+    dup = conn.execute(
+        "SELECT COUNT(*), GROUP_CONCAT(DISTINCT raw_record_table) FROM optical_dispersion "
+        "WHERE material_id = ? AND source_id = ? AND dataset_label IS ?", (material_id, source_id, dataset_label)).fetchone()
+    if dup[0]:
+        report.conflicts.append(dict(kind="optical_duplicate_key", material_id=material_id, source_id=source_id,
+                                     dataset_label=dataset_label, existing_rows=dup[0], existing_data_files=dup[1],
+                                     new_data_file=data_path, action="not inserted; existing rows kept"))
+        return 0
 
-    for i in range(total):
+    for i in keep:  # i is parse_file's row index, kept as raw_record_id for traceability
         n = float(n_val[i])
         k = None
         if k_val is not None and not np.isnan(k_val[i]):
@@ -331,7 +396,7 @@ def load_physical_properties(conn, material_id, row, mp_source_id, literature_so
 def upsert_material(conn, report, row):
     """Return (material_id, is_new), or (None, False) if the row collides and must be skipped."""
     vals = dict(
-        formula=row["formula"],
+        formula=_clean(row.get("formula")),
         smiles=_clean(row.get("smiles")),
         inchikey=_clean(row.get("inchikey")),
         molecular_weight=float(row["molecular_weight"]) if _clean(row.get("molecular_weight")) is not None else None,
@@ -387,53 +452,66 @@ def _open_db(db_path, schema_path, fresh, dry_run):
 
 def run_family(family, catalog_path, selections_path, db_path, *, fresh=False, dry_run=False, strict=False,
                report_path=None, load_physical_fn=None, literature_note=None, literature_title=None,
-               literature_technique=None, schema_path=SCHEMA_PATH) -> Report:
+               literature_technique=None, schema_path=SCHEMA_PATH, allow_null_formula=False, reference_sources=True,
+               collapse_block_duplicates=False) -> Report:
     catalog_path = Path(catalog_path)
     load_physical_fn = load_physical_fn or load_physical_properties
-    df = load_catalog(catalog_path)
+    df = load_catalog(catalog_path, allow_null_formula=allow_null_formula)
     selections = load_selections(selections_path)
     report = Report(family)
+    deferred_keys = {k for k, v in selections.items() if isinstance(v, dict) and v.get("deferred") is True}
+    if not reference_sources:
+        dens_cols = [c for c in ("density_g_cm3", "xray_sld_real", "xray_sld_imag", "neutron_sld_real", "neutron_sld_imag") if c in df.columns]
+        if any(df[c].notna().any() for c in dens_cols):
+            raise CatalogError("catalog carries density/SLD values but reference_sources=False (no source rows to cite)")
 
-    for key in sorted(set(selections) - set(df["selection_key"])):
+    for key in sorted(set(selections) - set(df["selection_key"]) - deferred_keys):
         report.warnings.append(dict(kind="unknown_selection_key", key=key))
+    for key in sorted(deferred_keys - set(df["selection_key"])):  # deferred and not in the catalog: nothing to load, but recorded
+        report.deferred.append(dict(key=key, name=None, reason=selections[key].get("reason"), in_catalog=False))
 
     conn = _open_db(db_path, schema_path, fresh, dry_run)
     conn.execute("PRAGMA foreign_keys = ON")
     sources_before, max_source_id = conn.execute("SELECT COUNT(*), MAX(source_id) FROM sources").fetchone()
     source_cache = {PREEXISTING_SOURCE_KEY: max_source_id or 0}
 
+    mp_source_id = periodictable_source_id = literature_source_id = None
     try:
-        mp_source_id = get_or_create_named_source(
-            conn, source_cache, "mp", "Materials Project",
-            authors="Materials Project Consortium", year=2013, technique="DFT (Materials Project)",
-            url="https://materialsproject.org", doi="10.1063/1.4812323",
-            notes="mp-api queries against the Materials Project summary endpoint; see mp_id/mp_space_group/"
-                  f"mp_energy_above_hull_ev provenance recorded per-material in data/{catalog_path.name} and "
-                  "data/raw_cache/mp/*.json")
-        get_or_create_named_source(  # pubchem: registered so the source row exists; no numeric rows cite it
-            conn, source_cache, "pubchem", "PubChem",
-            authors="National Center for Biotechnology Information", year=2024,
-            technique="PubChem PUG REST/PUG-View", url="https://pubchem.ncbi.nlm.nih.gov",
-            notes="cid/smiles/inchikey/molecular_weight/CAS from PubChem PUG REST + PUG-View CAS heading; "
-                  "raw responses cached under data/raw_cache/pubchem/")
-        periodictable_source_id = get_or_create_named_source(
-            conn, source_cache, "periodictable",
-            "periodictable: x-ray and neutron scattering length density calculation",
-            authors="periodictable Python package", technique="calculated",
-            url="https://periodictable.readthedocs.io",
-            notes=f"xray_sld at {XRAY_ENERGY_EV} eV (Cu K-alpha, {XRAY_WAVELENGTH_NM} nm); "
-                  f"neutron_sld at {NEUTRON_WAVELENGTH_NM} nm (thermal, 2200 m/s reference), natural isotopic abundance")
-        literature_source_id = get_or_create_named_source(
-            conn, source_cache, "literature_density",
-            literature_title or f"Literature density estimate ({family} materials with no trustworthy MP structure)",
-            technique=literature_technique or "literature",
-            notes=literature_note or f"Literature densities for {family} materials with no MP structure -- see the "
-                                     f"flags column in data/{catalog_path.name} per material; verify against a "
-                                     "primary source before relying on it.")
+        if reference_sources:
+            mp_source_id = get_or_create_named_source(
+                conn, source_cache, "mp", "Materials Project",
+                authors="Materials Project Consortium", year=2013, technique="DFT (Materials Project)",
+                url="https://materialsproject.org", doi="10.1063/1.4812323",
+                notes="mp-api queries against the Materials Project summary endpoint; see mp_id/mp_space_group/"
+                      f"mp_energy_above_hull_ev provenance recorded per-material in data/{catalog_path.name} and "
+                      "data/raw_cache/mp/*.json")
+            get_or_create_named_source(  # pubchem: registered so the source row exists; no numeric rows cite it
+                conn, source_cache, "pubchem", "PubChem",
+                authors="National Center for Biotechnology Information", year=2024,
+                technique="PubChem PUG REST/PUG-View", url="https://pubchem.ncbi.nlm.nih.gov",
+                notes="cid/smiles/inchikey/molecular_weight/CAS from PubChem PUG REST + PUG-View CAS heading; "
+                      "raw responses cached under data/raw_cache/pubchem/")
+            periodictable_source_id = get_or_create_named_source(
+                conn, source_cache, "periodictable",
+                "periodictable: x-ray and neutron scattering length density calculation",
+                authors="periodictable Python package", technique="calculated",
+                url="https://periodictable.readthedocs.io",
+                notes=f"xray_sld at {XRAY_ENERGY_EV} eV (Cu K-alpha, {XRAY_WAVELENGTH_NM} nm); "
+                      f"neutron_sld at {NEUTRON_WAVELENGTH_NM} nm (thermal, 2200 m/s reference), natural isotopic abundance")
+            literature_source_id = get_or_create_named_source(
+                conn, source_cache, "literature_density",
+                literature_title or f"Literature density estimate ({family} materials with no trustworthy MP structure)",
+                technique=literature_technique or "literature",
+                notes=literature_note or f"Literature densities for {family} materials with no MP structure -- see the "
+                                         f"flags column in data/{catalog_path.name} per material; verify against a "
+                                         "primary source before relying on it.")
 
         for _, row in df.iterrows():
             key = row["selection_key"]
             sel = selections.get(key)
+            if key in deferred_keys:  # deliberate deferral: zero rows for this material, not a warning
+                report.deferred.append(dict(key=key, name=row["name"], reason=sel.get("reason"), in_catalog=True))
+                continue
             csv_polymorph = row["polymorph"] if "polymorph" in df.columns and pd.notna(row.get("polymorph")) else None
             optical_polymorph = sel.get("effective_polymorph") if isinstance(sel, dict) else None
             if isinstance(sel, dict) and sel.get("axes") and optical_polymorph != csv_polymorph:
@@ -463,7 +541,8 @@ def run_family(family, catalog_path, selections_path, db_path, *, fresh=False, d
                     doi=ref["doi"], title=ref["title"], authors=ref["authors"], year=ref["year"],
                     technique="refractiveindex.info", url=ref["url"] or "https://refractiveindex.info",
                     notes=ref["notes"])
-                load_optical_axis(conn, material_id, src_id, axis_entry, csv_polymorph, report)
+                load_optical_axis(conn, material_id, src_id, axis_entry, csv_polymorph, report,
+                                  collapse_block_duplicates_flag=collapse_block_duplicates)
 
         report.inserted["sources"] = conn.execute("SELECT COUNT(*) FROM sources").fetchone()[0] - sources_before
         if strict and (report.conflicts or report.skipped or report.warnings):
@@ -482,7 +561,7 @@ def run_family(family, catalog_path, selections_path, db_path, *, fresh=False, d
 
     print(f"[{family}] {'DRY RUN (rolled back)' if dry_run else 'Committed'}. inserted={report.inserted} "
           f"unchanged={report.unchanged} conflicts={len(report.conflicts)} skipped={len(report.skipped)} "
-          f"warnings={len(report.warnings)}")
+          f"warnings={len(report.warnings)} deferred={len(report.deferred)} collapsed={len(report.collapsed)}")
     for n in report.notes:
         print(f"[{family}] NOTE: {n}")
     if not dry_run:
@@ -509,6 +588,9 @@ def build_parser(default_family=None):
     p.add_argument("--strict", action="store_true", help="abort + roll back on any conflict/skip/warning")
     p.add_argument("--report", help="write a JSON report to this path")
     if default_family is None:
+        p.add_argument("--allow-null-formula", action="store_true", help="NULL formula is valid (grade-specific materials)")
+        p.add_argument("--collapse-block-duplicates", action="store_true", help="keep the tabulated row where a formula and a tabulated block share a wavelength")
+        p.add_argument("--no-reference-sources", action="store_true", help="do not create the MP/PubChem/periodictable/literature source rows")
         p.add_argument("--literature-title", help="title of the source row that non-MP densities are attributed to")
         p.add_argument("--literature-technique", help="technique field of that source row (default: literature)")
         p.add_argument("--literature-note", help="notes field of that source row")
@@ -519,7 +601,9 @@ def main(argv=None):
     a = build_parser().parse_args(argv)
     run_family(a.family, a.catalog, a.selections, a.db, fresh=a.fresh, dry_run=a.dry_run, strict=a.strict,
                report_path=a.report, literature_title=a.literature_title,
-               literature_technique=a.literature_technique, literature_note=a.literature_note)
+               literature_technique=a.literature_technique, literature_note=a.literature_note,
+               allow_null_formula=a.allow_null_formula, reference_sources=not a.no_reference_sources,
+               collapse_block_duplicates=a.collapse_block_duplicates)
 
 
 if __name__ == "__main__":

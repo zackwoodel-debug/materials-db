@@ -1,0 +1,72 @@
+{
+  "family": "polymer",
+  "inserted": {
+    "materials": 14,
+    "physical_properties": 0,
+    "optical_dispersion": 6543,
+    "sources": 10
+  },
+  "unchanged": {
+    "materials": 0,
+    "physical_properties": 0,
+    "optical_dispersion": 0
+  },
+  "conflicts": [],
+  "skipped": [],
+  "warnings": [],
+  "notes": [],
+  "deferred": [
+    {
+      "key": "Kapton",
+      "name": null,
+      "reason": "8 loadable datasets across products (H/HN/DuPont sheet) and non-overlapping ranges; product not chosen",
+      "in_catalog": false
+    },
+    {
+      "key": "PDMS",
+      "name": null,
+      "reason": "10 datasets that are likely distinct materials (cure ratios 5:1-20:1, RTV615/Sylgard 184, UV-curable, SF-96 fluid)",
+      "in_catalog": false
+    },
+    {
+      "key": "PMMA",
+      "name": null,
+      "reason": "12 datasets (bulk, thin film, microspheres, 950k resist grade, Microchem 495/950); grades not resolved",
+      "in_catalog": false
+    },
+    {
+      "key": "PS",
+      "name": null,
+      "reason": "5 datasets (bulk, powder, microspheres, two n+k); no dataset chosen this PR",
+      "in_catalog": false
+    },
+    {
+      "key": "PVA",
+      "name": null,
+      "reason": "2 different films (10 um on glass vs thin film on Si); not resolved",
+      "in_catalog": false
+    }
+  ],
+  "collapsed": [
+    {
+      "data_path": "organic/(C6H9NO)n - polyvinylpyrrolidone/nk/Konig.yml",
+      "wavelength_nm": 375.0,
+      "kept": "tabulated",
+      "kept_n": 1.56059344395062,
+      "dropped": "formula-sampled",
+      "dropped_n": 1.5606062439506172,
+      "delta_n": -1.2799999997259448e-05,
+      "dropped_raw_record_id": 0
+    },
+    {
+      "data_path": "organic/(C6H9NO)n - polyvinylpyrrolidone/nk/Konig.yml",
+      "wavelength_nm": 1000.0,
+      "kept": "tabulated",
+      "kept_n": 1.51839576,
+      "dropped": "formula-sampled",
+      "dropped_n": 1.51839756,
+      "delta_n": -1.7999999999407379e-06,
+      "dropped_raw_record_id": 524
+    }
+  ]
+}

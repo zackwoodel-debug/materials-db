@@ -1,0 +1,15 @@
+idx,name,formula,notes,abbreviation,polymer_group,materialclass,tier,status,selection_key,ri_shelf,ri_book,n_selected_datasets,needs_specific_formulation,density_g_cm3,density_source,flags
+2,High-density polyethylene (HDPE),(C2H4)n,,PE-HDPE,commodity,polymer,1,FOUND,PE-HDPE,organic,polyethylene,1,False,,,
+4,Polyvinyl chloride,(C2H3Cl)n,,PVC,commodity,polymer,1,FOUND,PVC,organic,polyvinil_chloride,1,False,,,
+7,Polycarbonate,(C16H14O3)n,,PC,commodity,polymer,1,SELECTED_BY_USER,PC,organic,polycarbonate,1,False,,,multi-match resolved by user: polycarbonate/Zhang
+8,Polyethylene terephthalate,(C10H8O4)n,,PET,commodity,polymer,1,FOUND,PET,organic,polyethylene_terephthalate,1,False,,,
+12,Polyvinylpyrrolidone,(C6H9NO)n,,PVP,commodity,polymer,1,FOUND,PVP,organic,polyvinylpyrrolidone,1,False,,,
+26,Polyetherimide (PEI),(C37H24O6N2)n,,PEI,engineering,polymer,1,FOUND,PEI,organic,polyetherimide,1,False,,,"NAME COLLISION: the DB's existing 'PEI' row is (C2H5N)n = polyethylenimine, a different polymer ; materials_normalized.db already has 'PEI' (id 17, formula (C2H5N)n); separate DB here, matters at merge"
+36,Styrene-acrylonitrile copolymer,(C8H8)n-(C3H3N)m,,SAN,engineering,polymer,1,FOUND,SAN,other,C8H8_n-C3H3N_m,1,False,,,
+39,SU-8 3000 (epoxy photoresist),,grade: SU-8 3000,SU-8,optical,polymer,1,SELECTED_BY_USER,SU-8,other,Microchem_SU8_3000,1,False,,,"formula not stated by source (grade-specific commercial material): formula NULL (valid), never a placeholder token ; multi-match resolved by user: Microchem_SU8_3000/specs"
+40,Zeonex E48R (cyclo olefin polymer),,grade: Zeonex E48R,COP-Zeonex-E48R,optical,polymer,1,FOUND,COP-Zeonex-E48R,other,ZeonexE48R,1,False,,,"formula not stated by source (grade-specific commercial material): formula NULL (valid), never a placeholder token"
+42,Optorez 1330,,grade: Optorez 1330,Optorez-1330,optical,polymer,1,FOUND,Optorez-1330,other,Optorez1330,1,False,,,"formula not stated by source (grade-specific commercial material): formula NULL (valid), never a placeholder token"
+43,NAS-21,,grade: NAS-21,NAS-21,optical,polymer,1,FOUND,NAS-21,other,NAS-21,1,False,,,"formula not stated by source (grade-specific commercial material): formula NULL (valid), never a placeholder token"
+44,Polymethylpentene (TPX),(C6H12)n,,PMP,optical,polymer,1,FOUND,PMP,organic,C6H12_n - polymethylpentene,1,False,,,
+50,Poly(D-lactic acid) (PDLA),(C3H4O2)n,,PLA,bio,polymer,1,FOUND,PLA,organic,polylactic_acid,1,False,,,"the only RI.info dataset is PDLA (poly-D-lactic acid), narrower than generic PLA; stereochemistry not generalized"
+54,Cellulose,(C6H10O5)n,,cellulose,bio,polymer,1,SELECTED_BY_USER,cellulose,organic,cellulose,1,False,,,multi-match resolved by user: cellulose/Sultanova

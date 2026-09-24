@@ -1,0 +1,413 @@
+{
+ "PE-HDPE": {
+  "name": "High-density polyethylene (HDPE)",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "auto: the only dispersion-capable RI.info dataset",
+  "not_stated_by_source": [
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source",
+   "cure_ratio: not stated by source",
+   "supplier: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "Smith",
+    "axis": null,
+    "data_path": "organic/(C2H4)n - polyethylene/nk/Smith.yml",
+    "dataset_label": "Smith1975",
+    "span_um": [
+     40.0,
+     200.0
+    ],
+    "kind": "nk",
+    "attributes_stated": {
+     "grade": "HDPE"
+    }
+   }
+  ]
+ },
+ "PVC": {
+  "name": "Polyvinyl chloride",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "auto: the only dispersion-capable RI.info dataset",
+  "not_stated_by_source": [
+   "grade: not stated by source",
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source",
+   "cure_ratio: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "Zhang",
+    "axis": null,
+    "data_path": "organic/(C2H3Cl)n - polyvinyl chloride/nk/Zhang.yml",
+    "dataset_label": "Zhang2020",
+    "span_um": [
+     0.4,
+     19.942
+    ],
+    "kind": "nk",
+    "attributes_stated": {
+     "supplier": "Manufacturer: Jubang plastic material, China"
+    }
+   }
+  ]
+ },
+ "PS": {
+  "selection": null,
+  "deferred": true,
+  "reason": "5 datasets (bulk, powder, microspheres, two n+k); no dataset chosen this PR"
+ },
+ "PMMA": {
+  "selection": null,
+  "deferred": true,
+  "reason": "12 datasets (bulk, thin film, microspheres, 950k resist grade, Microchem 495/950); grades not resolved"
+ },
+ "PC": {
+  "name": "Polycarbonate",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "user decision (this run): Zhang only (user decision): Sultanova (0.437-1.052 um) lies entirely inside Zhang (0.4-19.94 um)",
+  "not_stated_by_source": [
+   "grade: not stated by source",
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source",
+   "cure_ratio: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "Zhang",
+    "axis": null,
+    "data_path": "organic/(C16H14O3)n - polycarbonate/nk/Zhang.yml",
+    "dataset_label": "Zhang2020",
+    "span_um": [
+     0.4,
+     19.942
+    ],
+    "kind": "nk",
+    "attributes_stated": {
+     "supplier": "Manufacturer: Dedicated Plastic, China"
+    }
+   }
+  ]
+ },
+ "PET": {
+  "name": "Polyethylene terephthalate",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "auto: the only dispersion-capable RI.info dataset",
+  "not_stated_by_source": [
+   "grade: not stated by source",
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source",
+   "cure_ratio: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "Zhang",
+    "axis": null,
+    "data_path": "organic/(C10H8O4)n - polyethylene terephthalate/nk/Zhang.yml",
+    "dataset_label": "Zhang2020",
+    "span_um": [
+     0.4,
+     19.942
+    ],
+    "kind": "nk",
+    "attributes_stated": {
+     "supplier": "Manufacturer: Chenghang plastic material, China"
+    }
+   }
+  ]
+ },
+ "PVA": {
+  "selection": null,
+  "deferred": true,
+  "reason": "2 different films (10 um on glass vs thin film on Si); not resolved"
+ },
+ "PVP": {
+  "name": "Polyvinylpyrrolidone",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "auto: the only dispersion-capable RI.info dataset",
+  "not_stated_by_source": [
+   "grade: not stated by source",
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source",
+   "cure_ratio: not stated by source",
+   "supplier: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "Konig",
+    "axis": null,
+    "data_path": "organic/(C6H9NO)n - polyvinylpyrrolidone/nk/Konig.yml",
+    "dataset_label": "Konig2014",
+    "span_um": [
+     0.375,
+     1.0
+    ],
+    "kind": "nk",
+    "attributes_stated": {}
+   }
+  ]
+ },
+ "PEI": {
+  "name": "Polyetherimide (PEI)",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "auto: the only dispersion-capable RI.info dataset",
+  "not_stated_by_source": [
+   "grade: not stated by source",
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source",
+   "cure_ratio: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "Zhang",
+    "axis": null,
+    "data_path": "organic/(C37H24O6N2)n - polyetherimide/nk/Zhang.yml",
+    "dataset_label": "Zhang2020",
+    "span_um": [
+     0.4,
+     19.942
+    ],
+    "kind": "nk",
+    "attributes_stated": {
+     "supplier": "Manufacturer: Winning engineering plastic, China"
+    }
+   }
+  ]
+ },
+ "SAN": {
+  "name": "Styrene-acrylonitrile copolymer",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "auto: the only dispersion-capable RI.info dataset",
+  "not_stated_by_source": [
+   "grade: not stated by source",
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source",
+   "cure_ratio: not stated by source",
+   "supplier: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "Sultanova",
+    "axis": null,
+    "data_path": "other/mixed organic/(C8H8)n-(C3H3N)m/nk/Sultanova.yml",
+    "dataset_label": "Sultanova2009",
+    "span_um": [
+     0.4368,
+     1.052
+    ],
+    "kind": "n",
+    "attributes_stated": {}
+   }
+  ]
+ },
+ "PDMS": {
+  "selection": null,
+  "deferred": true,
+  "reason": "10 datasets that are likely distinct materials (cure ratios 5:1-20:1, RTV615/Sylgard 184, UV-curable, SF-96 fluid)"
+ },
+ "SU-8": {
+  "name": "SU-8 3000 (epoxy photoresist)",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "user decision (this run): 3000 series only, one row (user decision)",
+  "not_stated_by_source": [
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source",
+   "cure_ratio: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "specs",
+    "axis": null,
+    "data_path": "other/resists/Microchem SU-8 3000/nk/specs.yml",
+    "dataset_label": "Microchem_SU8_3000",
+    "span_um": [
+     0.32,
+     1.7
+    ],
+    "kind": "n",
+    "attributes_stated": {
+     "grade": "SU-8 3000",
+     "supplier": "Microchem"
+    }
+   }
+  ]
+ },
+ "COP-Zeonex-E48R": {
+  "name": "Zeonex E48R (cyclo olefin polymer)",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "auto: the only dispersion-capable RI.info dataset",
+  "not_stated_by_source": [
+   "grade: not stated by source",
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source",
+   "cure_ratio: not stated by source",
+   "supplier: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "Sultanova",
+    "axis": null,
+    "data_path": "other/commercial polymers/ZeonexE48R/nk/Sultanova.yml",
+    "dataset_label": "Sultanova2009",
+    "span_um": [
+     0.4368,
+     1.052
+    ],
+    "kind": "n",
+    "attributes_stated": {}
+   }
+  ]
+ },
+ "Optorez-1330": {
+  "name": "Optorez 1330",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "auto: the only dispersion-capable RI.info dataset",
+  "not_stated_by_source": [
+   "grade: not stated by source",
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source",
+   "cure_ratio: not stated by source",
+   "supplier: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "Sultanova",
+    "axis": null,
+    "data_path": "other/commercial polymers/Optorez1330/nk/Sultanova.yml",
+    "dataset_label": "Sultanova2009",
+    "span_um": [
+     0.4368,
+     1.052
+    ],
+    "kind": "n",
+    "attributes_stated": {}
+   }
+  ]
+ },
+ "NAS-21": {
+  "name": "NAS-21",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "auto: the only dispersion-capable RI.info dataset",
+  "not_stated_by_source": [
+   "grade: not stated by source",
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source",
+   "cure_ratio: not stated by source",
+   "supplier: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "Sultanova",
+    "axis": null,
+    "data_path": "other/commercial polymers/NAS-21/nk/Sultanova.yml",
+    "dataset_label": "Sultanova2009",
+    "span_um": [
+     0.4368,
+     1.052
+    ],
+    "kind": "n",
+    "attributes_stated": {}
+   }
+  ]
+ },
+ "PMP": {
+  "name": "Polymethylpentene (TPX)",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "auto: the only dispersion-capable RI.info dataset",
+  "not_stated_by_source": [
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source",
+   "cure_ratio: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "Smith",
+    "axis": null,
+    "data_path": "organic/(C6H12)n - polymethylpentene/nk/Smith.yml",
+    "dataset_label": "Smith1975",
+    "span_um": [
+     29.4118,
+     200.0
+    ],
+    "kind": "nk",
+    "attributes_stated": {
+     "grade": "TPX",
+     "supplier": "Manufactured by Imperial Chemical Industries under the name TPX"
+    }
+   }
+  ]
+ },
+ "Kapton": {
+  "selection": null,
+  "deferred": true,
+  "reason": "8 loadable datasets across products (H/HN/DuPont sheet) and non-overlapping ranges; product not chosen"
+ },
+ "PLA": {
+  "name": "Poly(D-lactic acid) (PDLA)",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "auto: the only dispersion-capable RI.info dataset",
+  "not_stated_by_source": [
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source",
+   "cure_ratio: not stated by source",
+   "supplier: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "Bodurov",
+    "axis": null,
+    "data_path": "organic/(C3H4O2)n - polylactic acid/nk/Bodurov.yml",
+    "dataset_label": "Bodurov2016",
+    "span_um": [
+     0.405,
+     0.635
+    ],
+    "kind": "n",
+    "attributes_stated": {
+     "grade": "PDLA"
+    }
+   }
+  ]
+ },
+ "cellulose": {
+  "name": "Cellulose",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "user decision (this run): Sultanova bulk only (user decision)",
+  "not_stated_by_source": [
+   "grade: not stated by source",
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source",
+   "cure_ratio: not stated by source",
+   "supplier: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "Sultanova",
+    "axis": null,
+    "data_path": "organic/(C6H10O5)n - cellulose/nk/Sultanova.yml",
+    "dataset_label": "Sultanova2009",
+    "span_um": [
+     0.4368,
+     1.052
+    ],
+    "kind": "n",
+    "attributes_stated": {}
+   }
+  ]
+ }
+}

@@ -17,3 +17,6 @@ data/modalfit_material_library/
 
 # regenerable from data/nitrides.csv + data/step1_selections_nitrides.json (scripts/load_nitrides_db.py)
 data/materials_nitride_test.db
+
+# regenerable from data/polymers.csv + data/step1_selections_polymers.json (scripts/load_polymers_db.py)
+data/materials_polymer_test.db
