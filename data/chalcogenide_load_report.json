@@ -1,0 +1,22 @@
+{
+  "family": "chalcogenide",
+  "inserted": {
+    "materials": 16,
+    "physical_properties": 75,
+    "optical_dispersion": 29836,
+    "sources": 31
+  },
+  "unchanged": {
+    "materials": 0,
+    "physical_properties": 0,
+    "optical_dispersion": 0
+  },
+  "conflicts": [],
+  "skipped": [],
+  "warnings": [],
+  "notes": [
+    "polymorph differs between optical (None) and physical properties ('hexagonal') for CdSe -- their dataset_label prefixes will not match"
+  ],
+  "deferred": [],
+  "collapsed": []
+}
