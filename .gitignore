@@ -12,6 +12,9 @@ data/raw_cache/
 data/quarantine/
 data/modalfit_export/
 data/modalfit_material_library/
+data/modalfit_cloud_test_subset/
+data/modalfit_cloud_test_subset.db
+data/modalfit_cloud_test_subset.zip
 .modalfit_path
 .venv-modalfit-launcher/
 
