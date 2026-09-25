@@ -1,0 +1,5813 @@
+{
+ "candidates": [
+  {
+   "key": "H2O",
+   "name": "Water",
+   "formula": "H2O",
+   "book": "H2O",
+   "shelf": "main",
+   "materialclass": "liquid",
+   "pubchem_name": "Water",
+   "pages": [
+    "Hale",
+    "Kedenburg",
+    "Daimon-19.0C",
+    "Daimon-20.0C",
+    "Daimon-21.5C",
+    "Daimon-24.0C",
+    "Bashkatov",
+    "Segelstein",
+    "Asfar-H2O",
+    "Rowe-240K",
+    "Rowe-253K",
+    "Rowe-263K",
+    "Rowe-273K",
+    "Warren-2008",
+    "Warren-1984",
+    "Kofman-10K",
+    "Kofman-30K",
+    "Kofman-50K",
+    "Kofman-70K",
+    "Kofman-90K",
+    "Kofman-110K",
+    "Kofman-130K",
+    "Kofman-150K",
+    "Wang"
+   ],
+   "note": "one compound, several phases: each dataset is labelled with the phase its page states",
+   "status": "MULTI_PAPER",
+   "n_pages": 24,
+   "n_papers": 10,
+   "papers": [
+    "Afsar and Hasted 1977",
+    "Bashkatov and Genina 2003",
+    "Daimon and Masumura 2007",
+    "Hale and Querry 1973",
+    "Kedenburg et al. 2012",
+    "Kofman et al. 2019",
+    "Rowe et al. 2020",
+    "Segelstein 1981",
+    "Warren 1984",
+    "Warren and Brandt 2008"
+   ],
+   "datasets": [
+    {
+     "page": "Hale",
+     "title": "Hale and Querry 1973: Water; n,k 0.2\u2013200 \u00b5m; 25 \u00b0C",
+     "paper": "Hale and Querry 1973",
+     "data_path": "main/H2O/nk/Hale.yml",
+     "axis": null,
+     "phase": "liquid",
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.2,
+      200.0
+     ],
+     "single_point": false,
+     "comments": "Liquid water (H2O) at 25 \u00b0C",
+     "temperature_c": 24.85,
+     "types": [
+      "tabulated nk"
+     ]
+    },
+    {
+     "page": "Wang",
+     "title": "Wang et al. 2017: Water; k 1.2\u20131.9 \u00b5m; 22 \u00b0C",
+     "paper": "Wang et al. 2017",
+     "data_path": "main/H2O/nk/Wang.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "k-only",
+     "dispersion": "tabulated",
+     "span_um": [
+      1.2,
+      1.9
+     ],
+     "single_point": false,
+     "comments": "22 \u00b0C.",
+     "temperature_c": 22.0,
+     "types": [
+      "tabulated k"
+     ]
+    },
+    {
+     "page": "Kedenburg",
+     "title": "Kedenburg et al. 2012: Water; n 0.5\u20131.6 \u00b5m, k 0.5\u20131.75 \u00b5m; 20.0 \u00b0C",
+     "paper": "Kedenburg et al. 2012",
+     "data_path": "main/H2O/nk/Kedenburg.yml",
+     "axis": null,
+     "phase": "liquid",
+     "kind": "nk",
+     "dispersion": "formula+tabulated",
+     "span_um": [
+      0.5,
+      1.75
+     ],
+     "single_point": false,
+     "comments": "Distilled water at 20 \u00b0C.",
+     "temperature_c": 19.85,
+     "types": [
+      "formula 2",
+      "tabulated k"
+     ]
+    },
+    {
+     "page": "Daimon-19.0C",
+     "title": "Daimon and Masumura 2007: Water; n 0.18\u20131.13 \u00b5m; 19.0 \u00b0C",
+     "paper": "Daimon and Masumura 2007",
+     "data_path": "main/H2O/nk/Daimon-19.0C.yml",
+     "axis": null,
+     "phase": "liquid",
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.182,
+      1.129
+     ],
+     "single_point": false,
+     "comments": "High performance liquid chromatography (HPLC) distilled water at 19.0 \u00b0C.",
+     "temperature_c": 19.0,
+     "types": [
+      "formula 2"
+     ]
+    },
+    {
+     "page": "Daimon-20.0C",
+     "title": "Daimon and Masumura 2007: Water; n 0.18\u20131.13 \u00b5m; 20.0 \u00b0C",
+     "paper": "Daimon and Masumura 2007",
+     "data_path": "main/H2O/nk/Daimon-20.0C.yml",
+     "axis": null,
+     "phase": "liquid",
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.182,
+      1.129
+     ],
+     "single_point": false,
+     "comments": "High performance liquid chromatography (HPLC) distilled water at 20.0 \u00b0C.",
+     "temperature_c": 20.0,
+     "types": [
+      "formula 2"
+     ]
+    },
+    {
+     "page": "Daimon-21.5C",
+     "title": "Daimon and Masumura 2007: Water; n 0.18\u20131.13 \u00b5m; 21.5 \u00b0C",
+     "paper": "Daimon and Masumura 2007",
+     "data_path": "main/H2O/nk/Daimon-21.5C.yml",
+     "axis": null,
+     "phase": "liquid",
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.182,
+      1.129
+     ],
+     "single_point": false,
+     "comments": "High performance liquid chromatography (HPLC) distilled water at 21.5 \u00b0C.",
+     "temperature_c": 21.5,
+     "types": [
+      "formula 2"
+     ]
+    },
+    {
+     "page": "Daimon-24.0C",
+     "title": "Daimon and Masumura 2007: Water; n 0.18\u20131.13 \u00b5m; 24.0 \u00b0C",
+     "paper": "Daimon and Masumura 2007",
+     "data_path": "main/H2O/nk/Daimon-24.0C.yml",
+     "axis": null,
+     "phase": "liquid",
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.182,
+      1.129
+     ],
+     "single_point": false,
+     "comments": "High performance liquid chromatography (HPLC) distilled water at 24.0 \u00b0C.",
+     "temperature_c": 24.0,
+     "types": [
+      "formula 2"
+     ]
+    },
+    {
+     "page": "Bashkatov",
+     "title": "Bashkatov and Genina 2003: Water; n 0.225\u20131.14 \u00b5m; 20 \u00b0C",
+     "paper": "Bashkatov and Genina 2003",
+     "data_path": "main/H2O/nk/Bashkatov.yml",
+     "axis": null,
+     "phase": "liquid",
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.225,
+      1.14
+     ],
+     "single_point": false,
+     "comments": "High-performance liquid chromatography (HPLC) distilled water at 20.0 \u00b0C. There are typesetting errors in the original paper: In Table 2, the coefficient C must be multiplied by 108 (not 10\u22128) and the coefficient D must be multiplied by 1012. Additionally, Equation (7) must be multiplied by 1012. With these corrections, and after converting the wavelength to \u00b5m, the following expressions can be used to calculate the coefficients of the dispersion formula at any temperature in the 0\u2013100 \u00b0C range: A(t) = 1.3208 \u2212 1.2325\u00d710\u22125\u00b7t \u2212 1.8674\u00d710\u22126\u00b7t2 + 5.0233\u00d710\u22129\u00b7t3 B(t) = 5.2082413\u00d710\u22123 \u2212 5.179\u00d710\u22127\u00b7t \u2212 2.284\u00d710\u22128\u00b7t2 + 6.9608\u00d710\u221211\u00b7t3 C(t) = \u22122.5551\u00d710\u22124 \u2212 1.8341336\u00d710\u22128\u00b7t \u2212 9.172319\u00d710\u221210\u00b7t2 + 2.7729\u00d710\u221212\u00b7t3 D(t) = 9.3495\u00d710\u22126 + 1.7855\u00d710\u22123\u00b7t + 3.6733\u00d710\u22121\u00b7t2 \u2212 1.2932\u00d7101\u00b7t3",
+     "temperature_c": 20.0,
+     "types": [
+      "formula 5"
+     ]
+    },
+    {
+     "page": "Segelstein",
+     "title": "Segelstein 1981: Water; n,k 0.034\u20131.0e7 \u00b5m; 25 \u00b0C",
+     "paper": "Segelstein 1981",
+     "data_path": "main/H2O/nk/Segelstein.yml",
+     "axis": null,
+     "phase": "liquid",
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.033962528,
+      10000000.0
+     ],
+     "single_point": false,
+     "comments": "Liquid water (H2O) at 25 \u00b0C (from Hale and Querry 1973)",
+     "temperature_c": 24.85,
+     "types": [
+      "tabulated nk"
+     ]
+    },
+    {
+     "page": "Asfar-H2O",
+     "title": "Afsar and Hasted 1977: Water; n,k 22.22\u20131733 \u00b5m; 19.0 \u00b0C",
+     "paper": "Afsar and Hasted 1977",
+     "data_path": "main/H2O/nk/Asfar.yml",
+     "axis": null,
+     "phase": "liquid",
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      22.22,
+      1733.0
+     ],
+     "single_point": false,
+     "comments": "Liquid water (H2O) at 19 \u00b0C",
+     "temperature_c": 19.0,
+     "types": [
+      "tabulated nk"
+     ]
+    },
+    {
+     "page": "Warren-2008",
+     "title": "Warren and Brandt 2008: Ice; n,k 0.00443\u20132e6 \u00b5m",
+     "paper": "Warren and Brandt 2008",
+     "data_path": "main/H2O/nk/Warren-2008.yml",
+     "axis": null,
+     "phase": "ice",
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.0443,
+      2000000.0
+     ],
+     "single_point": false,
+     "comments": "Water ice (solid H2O) at -7 \u00b0C",
+     "temperature_c": -7.0,
+     "types": [
+      "tabulated nk"
+     ]
+    },
+    {
+     "page": "Warren-1984",
+     "title": "Warren 1984: Ice; n,k 0.00443\u2013167 \u00b5m",
+     "paper": "Warren 1984",
+     "data_path": "main/H2O/nk/Warren-1984.yml",
+     "axis": null,
+     "phase": "ice",
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.0443,
+      167.0
+     ],
+     "single_point": false,
+     "comments": "Water ice (solid H2O) at -7 \u00b0C",
+     "temperature_c": -7.0,
+     "types": [
+      "tabulated nk"
+     ]
+    },
+    {
+     "page": "Kofman-10K",
+     "title": "Kofman et al. 2019: Amorphous ice; n 0.210\u20130.757 \u00b5m; 10 K",
+     "paper": "Kofman et al. 2019",
+     "data_path": "main/H2O/nk/Kofman-10K.yml",
+     "axis": null,
+     "phase": "amorphous ice",
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.21,
+      0.757
+     ],
+     "single_point": false,
+     "comments": "Amorphous water ice at 10 K.",
+     "temperature_c": -263.15,
+     "types": [
+      "formula 1"
+     ]
+    },
+    {
+     "page": "Kofman-30K",
+     "title": "Kofman et al. 2019: Amorphous ice; n 0.210\u20130.757 \u00b5m; 30 K",
+     "paper": "Kofman et al. 2019",
+     "data_path": "main/H2O/nk/Kofman-30K.yml",
+     "axis": null,
+     "phase": "amorphous ice",
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.21,
+      0.757
+     ],
+     "single_point": false,
+     "comments": "Amorphous water ice at 30 K.",
+     "temperature_c": -243.15,
+     "types": [
+      "formula 1"
+     ]
+    },
+    {
+     "page": "Kofman-50K",
+     "title": "Kofman et al. 2019: Amorphous ice; n 0.210\u20130.757 \u00b5m; 50 K",
+     "paper": "Kofman et al. 2019",
+     "data_path": "main/H2O/nk/Kofman-50K.yml",
+     "axis": null,
+     "phase": "amorphous ice",
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.21,
+      0.757
+     ],
+     "single_point": false,
+     "comments": "Amorphous water ice at 50 K.",
+     "temperature_c": -223.15,
+     "types": [
+      "formula 1"
+     ]
+    },
+    {
+     "page": "Kofman-70K",
+     "title": "Kofman et al. 2019: Amorphous ice; n 0.210\u20130.757 \u00b5m; 70 K",
+     "paper": "Kofman et al. 2019",
+     "data_path": "main/H2O/nk/Kofman-70K.yml",
+     "axis": null,
+     "phase": "amorphous ice",
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.21,
+      0.757
+     ],
+     "single_point": false,
+     "comments": "Amorphous water ice at 70 K.",
+     "temperature_c": -203.15,
+     "types": [
+      "formula 1"
+     ]
+    },
+    {
+     "page": "Kofman-90K",
+     "title": "Kofman et al. 2019: Amorphous ice; n 0.210\u20130.757 \u00b5m; 90 K",
+     "paper": "Kofman et al. 2019",
+     "data_path": "main/H2O/nk/Kofman-90K.yml",
+     "axis": null,
+     "phase": "amorphous ice",
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.21,
+      0.757
+     ],
+     "single_point": false,
+     "comments": "Amorphous water ice at 90 K.",
+     "temperature_c": -183.15,
+     "types": [
+      "formula 1"
+     ]
+    },
+    {
+     "page": "Kofman-110K",
+     "title": "Kofman et al. 2019: Amorphous ice; n 0.210\u20130.757 \u00b5m; 110 K",
+     "paper": "Kofman et al. 2019",
+     "data_path": "main/H2O/nk/Kofman-110K.yml",
+     "axis": null,
+     "phase": "amorphous ice",
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.21,
+      0.757
+     ],
+     "single_point": false,
+     "comments": "Amorphous water ice at 110 K.",
+     "temperature_c": -163.15,
+     "types": [
+      "formula 1"
+     ]
+    },
+    {
+     "page": "Kofman-130K",
+     "title": "Kofman et al. 2019: Amorphous ice; n 0.210\u20130.757 \u00b5m; 130 K",
+     "paper": "Kofman et al. 2019",
+     "data_path": "main/H2O/nk/Kofman-130K.yml",
+     "axis": null,
+     "phase": "amorphous ice",
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.21,
+      0.757
+     ],
+     "single_point": false,
+     "comments": "Amorphous water ice at 130 K.",
+     "temperature_c": -143.15,
+     "types": [
+      "formula 1"
+     ]
+    },
+    {
+     "page": "Kofman-150K",
+     "title": "Kofman et al. 2019: Crystalline ice; n 0.210\u20130.757 \u00b5m; 150 K",
+     "paper": "Kofman et al. 2019",
+     "data_path": "main/H2O/nk/Kofman-150K.yml",
+     "axis": null,
+     "phase": "crystalline ice",
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.21,
+      0.757
+     ],
+     "single_point": false,
+     "comments": "Crystalline water ice at 150 K.",
+     "temperature_c": -123.15,
+     "types": [
+      "formula 1"
+     ]
+    },
+    {
+     "page": "Rowe-240K",
+     "title": "Rowe et al. 2020: Water; n,k 0.667\u201310400 \u00b5m; -33 \u00b0C",
+     "paper": "Rowe et al. 2020",
+     "data_path": "main/H2O/nk/Rowe-240K.yml",
+     "axis": null,
+     "phase": "supercooled liquid",
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.66668373,
+      10395.939
+     ],
+     "single_point": false,
+     "comments": "Supercooled liquid water (H2O) at -33 \u00b0C",
+     "temperature_c": -33.15,
+     "types": [
+      "tabulated nk"
+     ]
+    },
+    {
+     "page": "Rowe-253K",
+     "title": "Rowe et al. 2020: Water; n,k 0.667\u201310400 \u00b5m; -20 \u00b0C",
+     "paper": "Rowe et al. 2020",
+     "data_path": "main/H2O/nk/Rowe-253K.yml",
+     "axis": null,
+     "phase": "supercooled liquid",
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.66668373,
+      10395.939
+     ],
+     "single_point": false,
+     "comments": "Supercooled liquid water (H2O) at -20 \u00b0C",
+     "temperature_c": -20.15,
+     "types": [
+      "tabulated nk"
+     ]
+    },
+    {
+     "page": "Rowe-263K",
+     "title": "Rowe et al. 2020: Water; n,k 0.667\u201310400 \u00b5m; -10 \u00b0C",
+     "paper": "Rowe et al. 2020",
+     "data_path": "main/H2O/nk/Rowe-263K.yml",
+     "axis": null,
+     "phase": "supercooled liquid",
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.66668373,
+      10395.939
+     ],
+     "single_point": false,
+     "comments": "Supercooled liquid water (H2O) at -10 \u00b0C",
+     "temperature_c": -10.15,
+     "types": [
+      "tabulated nk"
+     ]
+    },
+    {
+     "page": "Rowe-273K",
+     "title": "Rowe et al. 2020: Water; n,k 0.667\u201310400 \u00b5m; 0 \u00b0C",
+     "paper": "Rowe et al. 2020",
+     "data_path": "main/H2O/nk/Rowe-273K.yml",
+     "axis": null,
+     "phase": "supercooled liquid",
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.66668373,
+      10395.939
+     ],
+     "single_point": false,
+     "comments": "Supercooled liquid water (H2O) at 0 \u00b0C",
+     "temperature_c": 0.0,
+     "types": [
+      "tabulated nk"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [
+    "Wang"
+   ],
+   "single_point_pages": [],
+   "ri_book_title": "H2O, D2O (Water, heavy water, ice)",
+   "about_yml_formula": "H2O",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "D2O",
+   "name": "Heavy water (D2O)",
+   "formula": "D2O",
+   "book": "H2O",
+   "shelf": "main",
+   "materialclass": "liquid",
+   "pubchem_name": "Deuterium oxide",
+   "pages": [
+    "Kedenburg-D2O",
+    "Sarkar-D2O",
+    "Wang-D2O",
+    "Asfar-D2O"
+   ],
+   "note": "its pages sit in the H2O book; a different compound (different InChIKey)",
+   "status": "MULTI_PAPER",
+   "n_pages": 4,
+   "n_papers": 3,
+   "papers": [
+    "Afsar and Hasted 1977",
+    "Kedenburg et al. 2012",
+    "Sarkar et al. 2022"
+   ],
+   "datasets": [
+    {
+     "page": "Kedenburg-D2O",
+     "title": "Kedenburg et al. 2012: Heavy water; n 0.5\u20131.6 \u00b5m, k 0.5\u20131.75 \u00b5m",
+     "paper": "Kedenburg et al. 2012",
+     "data_path": "main/D2O/nk/Kedenburg.yml",
+     "axis": null,
+     "phase": "liquid",
+     "kind": "nk",
+     "dispersion": "formula+tabulated",
+     "span_um": [
+      0.5,
+      1.75
+     ],
+     "single_point": false,
+     "comments": "Heavy water (D2O) at 20 \u00b0C.",
+     "temperature_c": 19.85,
+     "types": [
+      "formula 2",
+      "tabulated k"
+     ]
+    },
+    {
+     "page": "Sarkar-D2O",
+     "title": "Sarkar et al. 2022: n 0.48\u20130.71 \u00b5m",
+     "paper": "Sarkar et al. 2022",
+     "data_path": "main/D2O/nk/Sarkar.yml",
+     "axis": null,
+     "phase": "liquid",
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.48,
+      0.71
+     ],
+     "single_point": false,
+     "comments": "Room temperature.",
+     "temperature_c": null,
+     "types": [
+      "formula 5"
+     ]
+    },
+    {
+     "page": "Wang-D2O",
+     "title": "Wang et al. 2016: Heavy water; k 1.2\u20132.6 \u00b5m",
+     "paper": "Wang et al. 2016",
+     "data_path": "main/D2O/nk/Wang.yml",
+     "axis": null,
+     "phase": "liquid",
+     "kind": "k-only",
+     "dispersion": "tabulated",
+     "span_um": [
+      1.2,
+      2.6
+     ],
+     "single_point": false,
+     "comments": "22 \u00b0C.",
+     "temperature_c": 22.0,
+     "types": [
+      "tabulated k"
+     ]
+    },
+    {
+     "page": "Asfar-D2O",
+     "title": "Afsar and Hasted 1977: Heavy water; n,k 250\u20132000 \u00b5m",
+     "paper": "Afsar and Hasted 1977",
+     "data_path": "main/D2O/nk/Asfar.yml",
+     "axis": null,
+     "phase": "liquid",
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      250.0,
+      2000.0
+     ],
+     "single_point": false,
+     "comments": "Heavy water (D2O) at 19.5 \u00b0C",
+     "temperature_c": 19.5,
+     "types": [
+      "tabulated nk"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [
+    "Wang-D2O"
+   ],
+   "single_point_pages": [],
+   "ri_book_title": "H2O, D2O (Water, heavy water, ice)",
+   "about_yml_formula": "H2O",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "CS2",
+   "name": "Carbon disulfide",
+   "formula": "CS2",
+   "book": "CS2",
+   "shelf": "main",
+   "materialclass": "liquid",
+   "pubchem_name": "Carbon disulfide",
+   "pages": null,
+   "note": null,
+   "status": "MULTI_PAPER",
+   "n_pages": 3,
+   "n_papers": 3,
+   "papers": [
+    "Chang et al. 2024",
+    "Ghosal et al. 1993",
+    "Kedenburg et al. 2012"
+   ],
+   "datasets": [
+    {
+     "page": "Kedenburg",
+     "title": "Kedenburg et al. 2012: n 0.5\u20131.6 \u00b5m",
+     "paper": "Kedenburg et al. 2012",
+     "data_path": "main/CS2/nk/Kedenburg.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.5,
+      1.6
+     ],
+     "single_point": false,
+     "comments": "20 \u00b0C.",
+     "temperature_c": 20.0,
+     "types": [
+      "formula 2"
+     ]
+    },
+    {
+     "page": "Chang",
+     "title": "Chang et al. 2024: n 0.4\u20132.0 \u00b5m",
+     "paper": "Chang et al. 2024",
+     "data_path": "main/CS2/nk/Chang.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      2.0
+     ],
+     "single_point": false,
+     "comments": "21.5\u201322.0 \u00b0C.",
+     "temperature_c": 21.85,
+     "types": [
+      "formula 1"
+     ]
+    },
+    {
+     "page": "Ghosal",
+     "title": "Ghosal et al. 1993: n 7.3\u201311 \u00b5m",
+     "paper": "Ghosal et al. 1993",
+     "data_path": "main/CS2/nk/Ghosal.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "tabulated",
+     "span_um": [
+      7.3,
+      11.0
+     ],
+     "single_point": false,
+     "comments": "298 K (25 \u00b0C)",
+     "temperature_c": 24.85,
+     "types": [
+      "tabulated n"
+     ]
+    }
+   ],
+   "excluded_pages": [
+    "Chemnitz"
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "CS2 (Carbon disulfide)",
+   "about_yml_formula": "CS2",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "Hg",
+   "name": "Mercury (liquid)",
+   "formula": "Hg",
+   "book": "Hg",
+   "shelf": "main",
+   "materialclass": "liquid",
+   "pubchem_name": "Mercury",
+   "pages": null,
+   "note": "liquid metal at room temperature",
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Inagaki et al. 1981"
+   ],
+   "datasets": [
+    {
+     "page": "Inagaki",
+     "title": "Inagaki et al. 1981: n,k 0.0636\u20136.20 \u00b5m",
+     "paper": "Inagaki et al. 1981",
+     "data_path": "main/Hg/nk/Inagaki.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.06358,
+      6.19921
+     ],
+     "single_point": false,
+     "comments": "Liquid mercury at room temperature",
+     "temperature_c": null,
+     "types": [
+      "tabulated nk"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "Hg (Mercury)",
+   "about_yml_formula": null,
+   "about_yml_formula_matches": null
+  },
+  {
+   "key": "n-C5H12",
+   "name": "n-Pentane",
+   "formula": "C5H12",
+   "book": "pentane",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Pentane",
+   "pages": [
+    "Kerl-293K",
+    "Kerl-313K",
+    "Kerl-333K"
+   ],
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 3,
+   "n_papers": 1,
+   "papers": [
+    "Kerl and Varchmin 1995"
+   ],
+   "datasets": [
+    {
+     "page": "Kerl-293K",
+     "title": "Kerl and Varchmin 1995: n-Pentane; 293 K; n 0.326\u20130.644 \u00b5m",
+     "paper": "Kerl and Varchmin 1995",
+     "data_path": "organic/C5H12 - pentane/nk/Kerl-293K.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.326,
+      0.644
+     ],
+     "single_point": false,
+     "comments": "n-Pentane; 293 K (20 \u00b0C). See the original publication for the expression for n(\u03bb,T).",
+     "temperature_c": 19.85,
+     "types": [
+      "formula 5"
+     ]
+    },
+    {
+     "page": "Kerl-313K",
+     "title": "Kerl and Varchmin 1995: n-Pentane; 313 K; n 0.326\u20130.644 \u00b5m",
+     "paper": "Kerl and Varchmin 1995",
+     "data_path": "organic/C5H12 - pentane/nk/Kerl-313K.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.326,
+      0.644
+     ],
+     "single_point": false,
+     "comments": "n-Pentane; 313 K (40 \u00b0C). See the original publication for the expression for n(\u03bb,T).",
+     "temperature_c": 39.85,
+     "types": [
+      "formula 5"
+     ]
+    },
+    {
+     "page": "Kerl-333K",
+     "title": "Kerl and Varchmin 1995: n-Pentane; 333 K; n 0.326\u20130.644 \u00b5m",
+     "paper": "Kerl and Varchmin 1995",
+     "data_path": "organic/C5H12 - pentane/nk/Kerl-333K.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.326,
+      0.644
+     ],
+     "single_point": false,
+     "comments": "n-Pentane; 333 K (60 \u00b0C). See the original publication for the expression for n(\u03bb,T).",
+     "temperature_c": 59.85,
+     "types": [
+      "formula 5"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C5H12 (Pentane)",
+   "about_yml_formula": "C5H12",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "i-C5H12",
+   "name": "Isopentane (2-methylbutane)",
+   "formula": "C5H12",
+   "book": "pentane",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Isopentane",
+   "pages": [
+    "Anderson"
+   ],
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Anderson 2000"
+   ],
+   "datasets": [
+    {
+     "page": "Anderson",
+     "title": "Anderson 2000: iso-Pentane; n,k 2.0\u201314.9 \u00b5m",
+     "paper": "Anderson 2000",
+     "data_path": "organic/C5H12 - pentane/nk/Anderson.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      2.0,
+      14.925
+     ],
+     "single_point": false,
+     "comments": "Iso-pentane",
+     "temperature_c": null,
+     "types": [
+      "tabulated nk"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C5H12 (Pentane)",
+   "about_yml_formula": "C5H12",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "n-C6H14",
+   "name": "n-Hexane",
+   "formula": "C6H14",
+   "book": "hexane",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Hexane",
+   "pages": [
+    "Kozma",
+    "Kerl-293K",
+    "Kerl-313K",
+    "Kerl-333K"
+   ],
+   "note": null,
+   "status": "MULTI_PAPER",
+   "n_pages": 4,
+   "n_papers": 2,
+   "papers": [
+    "Kerl and Varchmin 1995",
+    "Kozma et al. 2005"
+   ],
+   "datasets": [
+    {
+     "page": "Kozma",
+     "title": "Kozma et al. 2005: n-Hexane; n 0.230\u20130.641 \u00b5m",
+     "paper": "Kozma et al. 2005",
+     "data_path": "organic/C6H14 - hexane/nk/Kozma.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.23,
+      0.6407
+     ],
+     "single_point": false,
+     "comments": "n-Hexane; 22 \u00b0C",
+     "temperature_c": 21.85,
+     "types": [
+      "formula 5"
+     ]
+    },
+    {
+     "page": "Kerl-293K",
+     "title": "Kerl and Varchmin 1995: n-Hexane; 293 K; n 0.326\u20130.644 \u00b5m",
+     "paper": "Kerl and Varchmin 1995",
+     "data_path": "organic/C6H14 - hexane/nk/Kerl-293K.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.326,
+      0.644
+     ],
+     "single_point": false,
+     "comments": "n-Hexane; 293 K (20 \u00b0C). See the original publication for the expression for n(\u03bb,T).",
+     "temperature_c": 19.85,
+     "types": [
+      "formula 5"
+     ]
+    },
+    {
+     "page": "Kerl-313K",
+     "title": "Kerl and Varchmin 1995: n-Hexane; 313 K; n 0.326\u20130.644 \u00b5m",
+     "paper": "Kerl and Varchmin 1995",
+     "data_path": "organic/C6H14 - hexane/nk/Kerl-313K.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.326,
+      0.644
+     ],
+     "single_point": false,
+     "comments": "n-Hexane; 313 K (40 \u00b0C). See the original publication for the expression for n(\u03bb,T).",
+     "temperature_c": 39.85,
+     "types": [
+      "formula 5"
+     ]
+    },
+    {
+     "page": "Kerl-333K",
+     "title": "Kerl and Varchmin 1995: n-Hexane; 333 K; n 0.326\u20130.644 \u00b5m",
+     "paper": "Kerl and Varchmin 1995",
+     "data_path": "organic/C6H14 - hexane/nk/Kerl-333K.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.326,
+      0.644
+     ],
+     "single_point": false,
+     "comments": "n-Hexane; 333 K (60 \u00b0C). See the original publication for the expression for n(\u03bb,T).",
+     "temperature_c": 59.85,
+     "types": [
+      "formula 5"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C6H14 (Hexane)",
+   "about_yml_formula": "C6H14",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "n-C7H16",
+   "name": "n-Heptane",
+   "formula": "C7H16",
+   "book": "heptane",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Heptane",
+   "pages": null,
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 3,
+   "n_papers": 1,
+   "papers": [
+    "Kerl and Varchmin 1995"
+   ],
+   "datasets": [
+    {
+     "page": "Kerl-293K",
+     "title": "Kerl and Varchmin 1995: n-Heptane; 293 K; n 0.326\u20130.644 \u00b5m",
+     "paper": "Kerl and Varchmin 1995",
+     "data_path": "organic/C7H16 - heptane/nk/Kerl-293K.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.326,
+      0.644
+     ],
+     "single_point": false,
+     "comments": "n-Heptane; 293 K (20 \u00b0C). See the original publication for the expression for n(\u03bb,T).",
+     "temperature_c": 19.85,
+     "types": [
+      "formula 5"
+     ]
+    },
+    {
+     "page": "Kerl-313K",
+     "title": "Kerl and Varchmin 1995: n-Heptane; 313 K; n 0.326\u20130.644 \u00b5m",
+     "paper": "Kerl and Varchmin 1995",
+     "data_path": "organic/C7H16 - heptane/nk/Kerl-313K.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.326,
+      0.644
+     ],
+     "single_point": false,
+     "comments": "n-Heptane; 313 K (40 \u00b0C). See the original publication for the expression for n(\u03bb,T).",
+     "temperature_c": 39.85,
+     "types": [
+      "formula 5"
+     ]
+    },
+    {
+     "page": "Kerl-333K",
+     "title": "Kerl and Varchmin 1995: n-Heptane; 333 K; n 0.326\u20130.644 \u00b5m",
+     "paper": "Kerl and Varchmin 1995",
+     "data_path": "organic/C7H16 - heptane/nk/Kerl-333K.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.326,
+      0.644
+     ],
+     "single_point": false,
+     "comments": "n-Heptane; 333 K (60 \u00b0C). See the original publication for the expression for n(\u03bb,T).",
+     "temperature_c": 59.85,
+     "types": [
+      "formula 5"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C7H16 (Heptane)",
+   "about_yml_formula": "C7H16",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "n-C8H18",
+   "name": "n-Octane",
+   "formula": "C8H18",
+   "book": "octane",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Octane",
+   "pages": [
+    "Kerl-293K",
+    "Kerl-313K",
+    "Kerl-333K",
+    "Myers"
+   ],
+   "note": null,
+   "status": "MULTI_PAPER",
+   "n_pages": 4,
+   "n_papers": 2,
+   "papers": [
+    "Kerl and Varchmin 1995",
+    "Myers et al. 2018"
+   ],
+   "datasets": [
+    {
+     "page": "Kerl-293K",
+     "title": "Kerl and Varchmin 1995: n-Octane; 293 K; n 0.326\u20130.644 \u00b5m",
+     "paper": "Kerl and Varchmin 1995",
+     "data_path": "organic/C8H18 - octane/nk/Kerl-293K.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.326,
+      0.644
+     ],
+     "single_point": false,
+     "comments": "n-Octane; 293 K (20 \u00b0C). See the original publication for the expression for n(\u03bb,T).",
+     "temperature_c": 19.85,
+     "types": [
+      "formula 5"
+     ]
+    },
+    {
+     "page": "Kerl-313K",
+     "title": "Kerl and Varchmin 1995: n-Octane; 313 K; n 0.326\u20130.644 \u00b5m",
+     "paper": "Kerl and Varchmin 1995",
+     "data_path": "organic/C8H18 - octane/nk/Kerl-313K.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.326,
+      0.644
+     ],
+     "single_point": false,
+     "comments": "n-Octane; 313 K (40 \u00b0C). See the original publication for the expression for n(\u03bb,T).",
+     "temperature_c": 39.85,
+     "types": [
+      "formula 5"
+     ]
+    },
+    {
+     "page": "Kerl-333K",
+     "title": "Kerl and Varchmin 1995: n-Octane; 333 K; n 0.326\u20130.644 \u00b5m",
+     "paper": "Kerl and Varchmin 1995",
+     "data_path": "organic/C8H18 - octane/nk/Kerl-333K.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.326,
+      0.644
+     ],
+     "single_point": false,
+     "comments": "n-Octane; 333 K (60 \u00b0C). See the original publication for the expression for n(\u03bb,T).",
+     "temperature_c": 59.85,
+     "types": [
+      "formula 5"
+     ]
+    },
+    {
+     "page": "Myers",
+     "title": "Myers et al. 2018: n-Octane; n,k 1.28\u201325.0 \u00b5m",
+     "paper": "Myers et al. 2018",
+     "data_path": "organic/C8H18 - octane/nk/Myers.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      1.28246,
+      25.0194
+     ],
+     "single_point": false,
+     "comments": "Isopropanol. 26 \u00b0C.",
+     "temperature_c": 25.85,
+     "types": [
+      "tabulated nk"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C8H18 (Octane)",
+   "about_yml_formula": "C8H18",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "i-C8H18",
+   "name": "Isooctane (2,2,4-trimethylpentane)",
+   "formula": "C8H18",
+   "book": "octane",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "2,2,4-Trimethylpentane",
+   "pages": [
+    "Anderson"
+   ],
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Anderson 2000"
+   ],
+   "datasets": [
+    {
+     "page": "Anderson",
+     "title": "Anderson 2000: iso-Octane; n,k 2\u201323 \u00b5m",
+     "paper": "Anderson 2000",
+     "data_path": "organic/C8H18 - octane/nk/Anderson.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      2.006,
+      23.0
+     ],
+     "single_point": false,
+     "comments": "Iso-octane",
+     "temperature_c": null,
+     "types": [
+      "tabulated nk"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C8H18 (Octane)",
+   "about_yml_formula": "C8H18",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "CHBr3",
+   "name": "Bromoform",
+   "formula": "CHBr3",
+   "book": "bromoform",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Bromoform",
+   "pages": null,
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Ghosal et al. 1993"
+   ],
+   "datasets": [
+    {
+     "page": "Ghosal",
+     "title": "Ghosal et al. 1993: n 1\u201313 \u00b5m",
+     "paper": "Ghosal et al. 1993",
+     "data_path": "organic/CHBr3 - bromoform/nk/Ghosal.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "tabulated",
+     "span_um": [
+      1.0,
+      13.0
+     ],
+     "single_point": false,
+     "comments": "298 K (25 \u00b0C)",
+     "temperature_c": 24.85,
+     "types": [
+      "tabulated n"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "CHBr3 (Bromoform)",
+   "about_yml_formula": "CHBr3",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "CH2Cl2",
+   "name": "Dichloromethane",
+   "formula": "CH2Cl2",
+   "book": "dichloromethane",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Dichloromethane",
+   "pages": null,
+   "note": null,
+   "status": "MULTI_PAPER",
+   "n_pages": 3,
+   "n_papers": 3,
+   "papers": [
+    "Bertie et al. 1995",
+    "Chang et al. 2024",
+    "Li et al. 2022"
+   ],
+   "datasets": [
+    {
+     "page": "Bertie",
+     "title": "Bertie et al. 1995: n,k 1.54\u201312.5 \u00b5m",
+     "paper": "Bertie et al. 1995",
+     "data_path": "organic/CH2Cl2 - dichloromethane/nk/Bertie.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      1.5385,
+      12.5253
+     ],
+     "single_point": false,
+     "comments": "",
+     "temperature_c": 24.85,
+     "types": [
+      "tabulated nk"
+     ]
+    },
+    {
+     "page": "Chang",
+     "title": "Chang et al. 2024: n 0.4\u20132.0 \u00b5m",
+     "paper": "Chang et al. 2024",
+     "data_path": "organic/CH2Cl2 - dichloromethane/nk/Chang.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      2.0
+     ],
+     "single_point": false,
+     "comments": "21.5\u201322.0 \u00b0C",
+     "temperature_c": 21.85,
+     "types": [
+      "formula 1"
+     ]
+    },
+    {
+     "page": "Li",
+     "title": "Li et al. 2022: n 0.2\u20131.7 \u00b5m",
+     "paper": "Li et al. 2022",
+     "data_path": "organic/CH2Cl2 - dichloromethane/nk/Li.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.2,
+      1.7
+     ],
+     "single_point": false,
+     "comments": "Room temperature.",
+     "temperature_c": null,
+     "types": [
+      "formula 5"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "CH2Cl2 (Dichloromethane, DCM)",
+   "about_yml_formula": "CH2Cl2",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "CHCl3",
+   "name": "Chloroform",
+   "formula": "CHCl3",
+   "book": "chloroform",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Chloroform",
+   "pages": null,
+   "note": null,
+   "status": "MULTI_PAPER",
+   "n_pages": 2,
+   "n_papers": 2,
+   "papers": [
+    "Chang et al. 2024",
+    "Kedenburg et al. 2012"
+   ],
+   "datasets": [
+    {
+     "page": "Kedenburg",
+     "title": "Kedenburg et al. 2012: n 0.5\u20131.6 \u00b5m, k 0.5\u20131.75 \u00b5m",
+     "paper": "Kedenburg et al. 2012",
+     "data_path": "organic/CHCl3 - chloroform/nk/Kedenburg.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "formula+tabulated",
+     "span_um": [
+      0.5,
+      1.75
+     ],
+     "single_point": false,
+     "comments": "20 \u00b0C.",
+     "temperature_c": 19.85,
+     "types": [
+      "formula 2",
+      "tabulated k"
+     ]
+    },
+    {
+     "page": "Chang",
+     "title": "Chang et al. 2024: n 0.4\u20132.0 \u00b5m",
+     "paper": "Chang et al. 2024",
+     "data_path": "organic/CHCl3 - chloroform/nk/Chang.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      2.0
+     ],
+     "single_point": false,
+     "comments": "21.5\u201322.0 \u00b0C",
+     "temperature_c": 21.85,
+     "types": [
+      "formula 1"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "CHCl3 (Chloroform)",
+   "about_yml_formula": "CHCl3",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "CCl4",
+   "name": "Carbon tetrachloride",
+   "formula": "CCl4",
+   "book": "carbon_tetrachloride",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Carbon tetrachloride",
+   "pages": null,
+   "note": null,
+   "status": "MULTI_PAPER",
+   "n_pages": 4,
+   "n_papers": 4,
+   "papers": [
+    "Chang et al. 2024",
+    "Ghosal et al. 1993",
+    "Kedenburg et al. 2012",
+    "Moutzouris et al. 2013"
+   ],
+   "datasets": [
+    {
+     "page": "Kedenburg",
+     "title": "Kedenburg et al. 2012: n 0.5\u20131.6 \u00b5m, k 0.5\u20131.5 \u00b5m",
+     "paper": "Kedenburg et al. 2012",
+     "data_path": "organic/CCl4 - carbon tetrachloride/nk/Kedenburg.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "formula+tabulated",
+     "span_um": [
+      0.5,
+      1.6
+     ],
+     "single_point": false,
+     "comments": "20 \u00b0C.",
+     "temperature_c": 19.85,
+     "types": [
+      "formula 2",
+      "tabulated k"
+     ]
+    },
+    {
+     "page": "Chang",
+     "title": "Chang et al. 2024: n 0.4\u20132.0 \u00b5m",
+     "paper": "Chang et al. 2024",
+     "data_path": "organic/CCl4 - carbon tetrachloride/nk/Chang.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      2.0
+     ],
+     "single_point": false,
+     "comments": "21.5\u201322.0 \u00b0C",
+     "temperature_c": 21.85,
+     "types": [
+      "formula 1"
+     ]
+    },
+    {
+     "page": "Moutzouris",
+     "title": "Moutzouris et al. 2013: n 0.450\u20131.55 \u00b5m",
+     "paper": "Moutzouris et al. 2013",
+     "data_path": "organic/CCl4 - carbon tetrachloride/nk/Moutzouris.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.45,
+      1.551
+     ],
+     "single_point": false,
+     "comments": "300 K (27 \u00b0C).",
+     "temperature_c": 26.85,
+     "types": [
+      "formula 3"
+     ]
+    },
+    {
+     "page": "Ghosal",
+     "title": "Ghosal et al. 1993: n 1\u20139 \u00b5m",
+     "paper": "Ghosal et al. 1993",
+     "data_path": "organic/CCl4 - carbon tetrachloride/nk/Ghosal.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "tabulated",
+     "span_um": [
+      1.0,
+      9.0
+     ],
+     "single_point": false,
+     "comments": "298 K (25 \u00b0C).",
+     "temperature_c": 24.85,
+     "types": [
+      "tabulated n"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "CCl4 (Carbon tetrachloride)",
+   "about_yml_formula": "CCl4",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "CBrCl3",
+   "name": "Bromotrichloromethane",
+   "formula": "CBrCl3",
+   "book": "bromotrichloromethane",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Bromotrichloromethane",
+   "pages": null,
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Chang et al. 2024"
+   ],
+   "datasets": [
+    {
+     "page": "Chang",
+     "title": "Chang et al. 2024: n 0.4\u20132.0 \u00b5m",
+     "paper": "Chang et al. 2024",
+     "data_path": "organic/CBrCl3 - bromotrichloromethane/nk/Chang.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      2.0
+     ],
+     "single_point": false,
+     "comments": "21.5\u201322.0 \u00b0C.",
+     "temperature_c": 21.85,
+     "types": [
+      "formula 1"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "CBrCl3 (Bromotrichloromethane)",
+   "about_yml_formula": "CH4",
+   "about_yml_formula_matches": false
+  },
+  {
+   "key": "C6F14",
+   "name": "Perfluorohexane",
+   "formula": "C6F14",
+   "book": "perfluorohexane",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Tetradecafluorohexane",
+   "pages": null,
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Chang et al. 2024"
+   ],
+   "datasets": [
+    {
+     "page": "Chang",
+     "title": "Chang et al. 2024: n 0.4\u20132.0 \u00b5m",
+     "paper": "Chang et al. 2024",
+     "data_path": "organic/C6F14 - perfluorohexane/nk/Chang.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      2.0
+     ],
+     "single_point": false,
+     "comments": "21.5\u201322.0 \u00b0C.",
+     "temperature_c": 21.85,
+     "types": [
+      "formula 1"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C6F14 (Perfluorohexane)",
+   "about_yml_formula": "C6F14",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C2Cl4",
+   "name": "Tetrachloroethylene",
+   "formula": "C2Cl4",
+   "book": "tetrachloroethylene",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Tetrachloroethylene",
+   "pages": null,
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Chang et al. 2024"
+   ],
+   "datasets": [
+    {
+     "page": "Chang",
+     "title": "Chang et al. 2024: n 0.4\u20132.0 \u00b5m",
+     "paper": "Chang et al. 2024",
+     "data_path": "organic/C2Cl4 - tetrachloroethylene/nk/Chang.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      2.0
+     ],
+     "single_point": false,
+     "comments": "21.5\u201322.0 \u00b0C.",
+     "temperature_c": 21.85,
+     "types": [
+      "formula 1"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C2Cl4 (Tetrachloroethylene, PCE, PERC)",
+   "about_yml_formula": "C2Cl4",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C6H6",
+   "name": "Benzene",
+   "formula": "C6H6",
+   "book": "benzene",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Benzene",
+   "pages": null,
+   "note": null,
+   "status": "MULTI_PAPER",
+   "n_pages": 3,
+   "n_papers": 3,
+   "papers": [
+    "Chang et al. 2024",
+    "Moutzouris et al. 2013",
+    "Myers et al. 2018"
+   ],
+   "datasets": [
+    {
+     "page": "Moutzouris",
+     "title": "Moutzouris et al. 2013: n 0.450\u20131.55 \u00b5m",
+     "paper": "Moutzouris et al. 2013",
+     "data_path": "organic/C6H6 - benzene/nk/Moutzouris.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.45,
+      1.551
+     ],
+     "single_point": false,
+     "comments": "300 K (27 \u00b0C).",
+     "temperature_c": 26.85,
+     "types": [
+      "formula 3"
+     ]
+    },
+    {
+     "page": "Chang",
+     "title": "Chang et al. 2024: n 0.4\u20132.0 \u00b5m",
+     "paper": "Chang et al. 2024",
+     "data_path": "organic/C6H6 - benzene/nk/Chang.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      2.0
+     ],
+     "single_point": false,
+     "comments": "21.5\u201322.0 \u00b0C",
+     "temperature_c": 21.85,
+     "types": [
+      "formula 1"
+     ]
+    },
+    {
+     "page": "Myers",
+     "title": "Myers et al. 2018: n,k 1.28\u201325.0 \u00b5m",
+     "paper": "Myers et al. 2018",
+     "data_path": "organic/C6H6 - benzene/nk/Myers.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      1.28246,
+      25.0194
+     ],
+     "single_point": false,
+     "comments": "26 \u00b0C",
+     "temperature_c": 25.85,
+     "types": [
+      "tabulated nk"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C6H6 (Benzene)",
+   "about_yml_formula": "C6H6",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C4H8OS",
+   "name": "1,4-Oxathiane",
+   "formula": "C4H8OS",
+   "book": "oxathiane",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "1,4-Oxathiane",
+   "pages": null,
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Myers et al. 2018"
+   ],
+   "datasets": [
+    {
+     "page": "Myers",
+     "title": "Myers et al. 2018: 1,4-Oxathiane; n,k 1.28\u201325.0 \u00b5m",
+     "paper": "Myers et al. 2018",
+     "data_path": "organic/C4H8OS - oxathiane/nk/Myers.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      1.28246,
+      25.0194
+     ],
+     "single_point": false,
+     "comments": "1,4-Oxathiane, 26 \u00b0C",
+     "temperature_c": 25.85,
+     "types": [
+      "tabulated nk"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C4H8OS (Oxathiane)",
+   "about_yml_formula": "C4H8OS",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C5H5N",
+   "name": "Pyridine",
+   "formula": "C5H5N",
+   "book": "pyridine",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Pyridine",
+   "pages": null,
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Chang et al. 2024"
+   ],
+   "datasets": [
+    {
+     "page": "Chang",
+     "title": "Chang et al. 2024: n 0.4\u20132.0 \u00b5m",
+     "paper": "Chang et al. 2024",
+     "data_path": "organic/C5H5N - pyridine/nk/Chang.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      2.0
+     ],
+     "single_point": false,
+     "comments": "21.5\u201322.0 \u00b0C",
+     "temperature_c": 21.85,
+     "types": [
+      "formula 1"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C5H5N (Pyridine)",
+   "about_yml_formula": "C5H5N",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C6H12",
+   "name": "Cyclohexane",
+   "formula": "C6H12",
+   "book": "cyclohexane",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Cyclohexane",
+   "pages": null,
+   "note": null,
+   "status": "MULTI_PAPER",
+   "n_pages": 6,
+   "n_papers": 4,
+   "papers": [
+    "Chang et al. 2024",
+    "Kerl and Varchmin 1995",
+    "Kozma et al. 2005",
+    "Rheims et al. 1997"
+   ],
+   "datasets": [
+    {
+     "page": "Rheims",
+     "title": "Rheims et al. 1997: n 0.477\u20130.83 \u00b5m",
+     "paper": "Rheims et al. 1997",
+     "data_path": "organic/C6H12 - cyclohexane/nk/Rheims.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4765,
+      0.83
+     ],
+     "single_point": false,
+     "comments": "20 \u00b0C",
+     "temperature_c": 19.85,
+     "types": [
+      "formula 5"
+     ]
+    },
+    {
+     "page": "Chang",
+     "title": "Chang et al. 2024: n 0.4\u20132.0 \u00b5m",
+     "paper": "Chang et al. 2024",
+     "data_path": "organic/C6H12 - cyclohexane/nk/Chang.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      2.0
+     ],
+     "single_point": false,
+     "comments": "21.5\u201322.0 \u00b0C.",
+     "temperature_c": 21.85,
+     "types": [
+      "formula 1"
+     ]
+    },
+    {
+     "page": "Kozma",
+     "title": "Kozma et al. 2005: n 0.230\u20130.641 \u00b5m",
+     "paper": "Kozma et al. 2005",
+     "data_path": "organic/C6H12 - cyclohexane/nk/Kozma.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.23,
+      0.6407
+     ],
+     "single_point": false,
+     "comments": "22 \u00b0C",
+     "temperature_c": 21.85,
+     "types": [
+      "formula 2"
+     ]
+    },
+    {
+     "page": "Kerl-293K",
+     "title": "Kerl and Varchmin 1995: 293 K; n 0.326\u20130.644 \u00b5m",
+     "paper": "Kerl and Varchmin 1995",
+     "data_path": "organic/C6H12 - cyclohexane/nk/Kerl-293K.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.326,
+      0.644
+     ],
+     "single_point": false,
+     "comments": "293 K (20 \u00b0C). See the original publication for the expression for n(\u03bb,T).",
+     "temperature_c": 19.85,
+     "types": [
+      "formula 5"
+     ]
+    },
+    {
+     "page": "Kerl-313K",
+     "title": "Kerl and Varchmin 1995: 313 K; n 0.326\u20130.644 \u00b5m",
+     "paper": "Kerl and Varchmin 1995",
+     "data_path": "organic/C6H12 - cyclohexane/nk/Kerl-313K.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.326,
+      0.644
+     ],
+     "single_point": false,
+     "comments": "313 K (40 \u00b0C). See the original publication for the expression for n(\u03bb,T).",
+     "temperature_c": 39.85,
+     "types": [
+      "formula 5"
+     ]
+    },
+    {
+     "page": "Kerl-333K",
+     "title": "Kerl and Varchmin 1995: 333 K; n 0.326\u20130.644 \u00b5m",
+     "paper": "Kerl and Varchmin 1995",
+     "data_path": "organic/C6H12 - cyclohexane/nk/Kerl-333K.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.326,
+      0.644
+     ],
+     "single_point": false,
+     "comments": "333 K (60 \u00b0C). See the original publication for the expression for n(\u03bb,T).",
+     "temperature_c": 59.85,
+     "types": [
+      "formula 5"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C6H12 (Cyclohexane)",
+   "about_yml_formula": "C6H14",
+   "about_yml_formula_matches": false
+  },
+  {
+   "key": "C7H8",
+   "name": "Toluene",
+   "formula": "C7H8",
+   "book": "toluene",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Toluene",
+   "pages": null,
+   "note": null,
+   "status": "MULTI_PAPER",
+   "n_pages": 5,
+   "n_papers": 5,
+   "papers": [
+    "Chang et al. 2024",
+    "Kedenburg et al. 2012",
+    "Kozma et al. 2005",
+    "Moutzouris et al. 2013",
+    "Myers et al. 2018"
+   ],
+   "datasets": [
+    {
+     "page": "Kedenburg",
+     "title": "Kedenburg et al. 2012: n 0.5\u20131.6 \u00b5m, k 0.5\u20131.75 \u00b5m",
+     "paper": "Kedenburg et al. 2012",
+     "data_path": "organic/C7H8 - toluene/nk/Kedenburg.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "formula+tabulated",
+     "span_um": [
+      0.5,
+      1.75
+     ],
+     "single_point": false,
+     "comments": "20 \u00b0C.",
+     "temperature_c": 19.85,
+     "types": [
+      "formula 2",
+      "tabulated k"
+     ]
+    },
+    {
+     "page": "Chang",
+     "title": "Chang et al. 2024: n 0.4\u20132.0 \u00b5m",
+     "paper": "Chang et al. 2024",
+     "data_path": "organic/C7H8 - toluene/nk/Chang.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      2.0
+     ],
+     "single_point": false,
+     "comments": "21.5\u201322.0 \u00b0C",
+     "temperature_c": 21.85,
+     "types": [
+      "formula 1"
+     ]
+    },
+    {
+     "page": "Myers",
+     "title": "Myers et al. 2018: n,k 1.28\u201325.0 \u00b5m",
+     "paper": "Myers et al. 2018",
+     "data_path": "organic/C7H8 - toluene/nk/Myers.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      1.28246,
+      25.0194
+     ],
+     "single_point": false,
+     "comments": "Isopropanol. 26 \u00b0C.",
+     "temperature_c": 25.85,
+     "types": [
+      "tabulated nk"
+     ]
+    },
+    {
+     "page": "Moutzouris",
+     "title": "Moutzouris et al. 2013: n 0.450\u20131.55 \u00b5m",
+     "paper": "Moutzouris et al. 2013",
+     "data_path": "organic/C7H8 - toluene/nk/Moutzouris.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.45,
+      1.551
+     ],
+     "single_point": false,
+     "comments": "300 K (27 \u00b0C).",
+     "temperature_c": 26.85,
+     "types": [
+      "formula 3"
+     ]
+    },
+    {
+     "page": "Kozma",
+     "title": "Kozma et al. 2005: n 0.300\u20130.641 \u00b5m",
+     "paper": "Kozma et al. 2005",
+     "data_path": "organic/C7H8 - toluene/nk/Kozma.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.3001,
+      0.6407
+     ],
+     "single_point": false,
+     "comments": "22 \u00b0C.",
+     "temperature_c": 21.85,
+     "types": [
+      "formula 5"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C7H8 (Toluene)",
+   "about_yml_formula": "C7H8",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C8H8",
+   "name": "Styrene",
+   "formula": "C8H8",
+   "book": "styrene",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Styrene",
+   "pages": null,
+   "note": null,
+   "status": "MULTI_PAPER",
+   "n_pages": 2,
+   "n_papers": 2,
+   "papers": [
+    "Myers et al. 2018",
+    "Sultanova et al. 2009"
+   ],
+   "datasets": [
+    {
+     "page": "Sultanova",
+     "title": "Sultanova et al. 2009: n 0.437\u20131.05 \u00b5m",
+     "paper": "Sultanova et al. 2009",
+     "data_path": "organic/C8H8 - styrene/nk/Sultanova.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4368,
+      1.052
+     ],
+     "single_point": false,
+     "comments": "20 \u00b0C.",
+     "temperature_c": 19.85,
+     "types": [
+      "formula 2"
+     ]
+    },
+    {
+     "page": "Myers",
+     "title": "Myers et al. 2018: n,k 1.28\u201325.0 \u00b5m",
+     "paper": "Myers et al. 2018",
+     "data_path": "organic/C8H8 - styrene/nk/Myers.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      1.28244,
+      25.0203
+     ],
+     "single_point": false,
+     "comments": "Isopropanol. 26 \u00b0C.",
+     "temperature_c": 25.85,
+     "types": [
+      "tabulated nk"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C8H8 (Styrene)",
+   "about_yml_formula": "C8H8",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "p-C8H10",
+   "name": "p-Xylene",
+   "formula": "C8H10",
+   "book": "xylene",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "p-Xylene",
+   "pages": null,
+   "note": null,
+   "status": "MULTI_PAPER",
+   "n_pages": 2,
+   "n_papers": 2,
+   "papers": [
+    "Chang et al. 2024",
+    "Li et al. 2022"
+   ],
+   "datasets": [
+    {
+     "page": "Li",
+     "title": "Li et al. 2022: para-Xylene (PX); n 0.226\u20131.7 \u00b5m",
+     "paper": "Li et al. 2022",
+     "data_path": "organic/C8H10 - xylene/nk/Li.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.226,
+      1.7
+     ],
+     "single_point": false,
+     "comments": "Room temperature.",
+     "temperature_c": null,
+     "types": [
+      "formula 5"
+     ]
+    },
+    {
+     "page": "Chang",
+     "title": "Chang et al. 2024: n 0.4\u20132.0 \u00b5m",
+     "paper": "Chang et al. 2024",
+     "data_path": "organic/C8H10 - xylene/nk/Chang.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      2.0
+     ],
+     "single_point": false,
+     "comments": "p-Xylene. 21.5\u201322.0 \u00b0C",
+     "temperature_c": 21.85,
+     "types": [
+      "formula 1"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C8H10 (Xylene)",
+   "about_yml_formula": "C6H4(CH3)2",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C6H3Cl3",
+   "name": "1,2,4-Trichlorobenzene",
+   "formula": "C6H3Cl3",
+   "book": "trichlorobenzene",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "1,2,4-Trichlorobenzene",
+   "pages": null,
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Myers et al. 2018"
+   ],
+   "datasets": [
+    {
+     "page": "Myers",
+     "title": "Myers et al. 2018: 1,2,4-TCB; n,k 1.28\u201325.0 \u00b5m",
+     "paper": "Myers et al. 2018",
+     "data_path": "organic/C6H3Cl3 - trichlorobenzene/nk/Myers.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      1.28244,
+      25.0203
+     ],
+     "single_point": false,
+     "comments": "1,2,4-Trichlorobenzene, 26 \u00b0C",
+     "temperature_c": 25.85,
+     "types": [
+      "tabulated nk"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C6H3Cl3 (Trichlorobenzene, TCB)",
+   "about_yml_formula": "C6H3Cl3",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C6H5NO2",
+   "name": "Nitrobenzene",
+   "formula": "C6H5NO2",
+   "book": "nitrobenzene",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Nitrobenzene",
+   "pages": null,
+   "note": null,
+   "status": "MULTI_PAPER",
+   "n_pages": 3,
+   "n_papers": 3,
+   "papers": [
+    "Chang et al. 2024",
+    "Kedenburg et al. 2012",
+    "Myers et al. 2018"
+   ],
+   "datasets": [
+    {
+     "page": "Kedenburg",
+     "title": "Kedenburg et al. 2012: n 0.5\u20131.6 \u00b5m",
+     "paper": "Kedenburg et al. 2012",
+     "data_path": "organic/C6H5NO2 - nitrobenzene/nk/Kedenburg.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.5,
+      1.6
+     ],
+     "single_point": false,
+     "comments": "20 \u00b0C.",
+     "temperature_c": 19.85,
+     "types": [
+      "formula 2"
+     ]
+    },
+    {
+     "page": "Chang",
+     "title": "Chang et al. 2024: n 0.4\u20132.0 \u00b5m",
+     "paper": "Chang et al. 2024",
+     "data_path": "organic/C6H5NO2 - nitrobenzene/nk/Chang.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      2.0
+     ],
+     "single_point": false,
+     "comments": "21.5\u201322.0 \u00b0C",
+     "temperature_c": 21.85,
+     "types": [
+      "formula 1"
+     ]
+    },
+    {
+     "page": "Myers",
+     "title": "Myers et al. 2018: n,k 1.28\u201325.0 \u00b5m",
+     "paper": "Myers et al. 2018",
+     "data_path": "organic/C6H5NO2 - nitrobenzene/nk/Myers.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      1.28244,
+      25.0203
+     ],
+     "single_point": false,
+     "comments": "Isopropanol. 26 \u00b0C.",
+     "temperature_c": 25.85,
+     "types": [
+      "tabulated nk"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C6H5NO2 (Nitrobenzene)",
+   "about_yml_formula": "C6H5NO2",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C7F5N",
+   "name": "Pentafluorobenzonitrile",
+   "formula": "C7F5N",
+   "book": "pentafluorobenzonitrile",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Pentafluorobenzonitrile",
+   "pages": null,
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Chang et al. 2024"
+   ],
+   "datasets": [
+    {
+     "page": "Chang",
+     "title": "Chang et al. 2024: n 0.4\u20132.0 \u00b5m",
+     "paper": "Chang et al. 2024",
+     "data_path": "organic/C7F5N - pentafluorobenzonitrile/nk/Chang.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      2.0
+     ],
+     "single_point": false,
+     "comments": "21.5\u201322.0 \u00b0C.",
+     "temperature_c": 21.85,
+     "types": [
+      "formula 1"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C7F5N (Pentafluorobenzonitrile)",
+   "about_yml_formula": "C7F5N",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C8H11N",
+   "name": "N,N-Dimethylaniline",
+   "formula": "C8H11N",
+   "book": "dimethylaniline",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "N,N-Dimethylaniline",
+   "pages": null,
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Li et al. 2022"
+   ],
+   "datasets": [
+    {
+     "page": "Li",
+     "title": "Li et al. 2022: n 0.321\u20131.7 \u00b5m",
+     "paper": "Li et al. 2022",
+     "data_path": "organic/C8H11N - dimethylaniline/nk/Li.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.321,
+      1.7
+     ],
+     "single_point": false,
+     "comments": "Room temperature.",
+     "temperature_c": null,
+     "types": [
+      "formula 5"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C8H11N (Dimethylaniline, DMA)",
+   "about_yml_formula": "C8H11N",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "CH3OH",
+   "name": "Methanol",
+   "formula": "CH3OH",
+   "book": "methanol",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Methanol",
+   "pages": null,
+   "note": null,
+   "status": "MULTI_PAPER",
+   "n_pages": 5,
+   "n_papers": 5,
+   "papers": [
+    "Chang et al. 2024",
+    "El-Kashef 2000",
+    "Kozma et al. 2005",
+    "Moutzouris et al. 2013",
+    "Myers et al. 2018"
+   ],
+   "datasets": [
+    {
+     "page": "El-Kashef",
+     "title": "El-Kashef 2000: n 0.4\u20130.8 \u00b5m",
+     "paper": "El-Kashef 2000",
+     "data_path": "organic/CH4O - methanol/nk/El-Kashef.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      0.8
+     ],
+     "single_point": false,
+     "comments": "25 \u00b0C",
+     "temperature_c": 24.85,
+     "types": [
+      "formula 5"
+     ]
+    },
+    {
+     "page": "Chang",
+     "title": "Chang et al. 2024: n 0.4\u20132.0 \u00b5m",
+     "paper": "Chang et al. 2024",
+     "data_path": "organic/CH4O - methanol/nk/Chang.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      2.0
+     ],
+     "single_point": false,
+     "comments": "21.5\u201322.0 \u00b0C",
+     "temperature_c": 21.85,
+     "types": [
+      "formula 1"
+     ]
+    },
+    {
+     "page": "Myers",
+     "title": "Myers et al. 2018: n,k 1.28\u201325.0 \u00b5m",
+     "paper": "Myers et al. 2018",
+     "data_path": "organic/CH4O - methanol/nk/Myers.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      1.28244,
+      25.0203
+     ],
+     "single_point": false,
+     "comments": "26 \u00b0C",
+     "temperature_c": 25.85,
+     "types": [
+      "tabulated nk"
+     ]
+    },
+    {
+     "page": "Moutzouris",
+     "title": "Moutzouris et al. 2013: n 0.450\u20131.55 \u00b5m",
+     "paper": "Moutzouris et al. 2013",
+     "data_path": "organic/CH4O - methanol/nk/Moutzouris.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.45,
+      1.551
+     ],
+     "single_point": false,
+     "comments": "300 K (27 \u00b0C).",
+     "temperature_c": 26.85,
+     "types": [
+      "formula 3"
+     ]
+    },
+    {
+     "page": "Kozma",
+     "title": "Kozma et al. 2005: n 0.230\u20130.641 \u00b5m",
+     "paper": "Kozma et al. 2005",
+     "data_path": "organic/CH4O - methanol/nk/Kozma.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.23,
+      0.6407
+     ],
+     "single_point": false,
+     "comments": "22 \u00b0C",
+     "temperature_c": 21.85,
+     "types": [
+      "formula 5"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "CH3OH (Methanol)",
+   "about_yml_formula": "CH4O",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C2H5OH",
+   "name": "Ethanol",
+   "formula": "C2H5OH",
+   "book": "ethanol",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Ethanol",
+   "pages": null,
+   "note": null,
+   "status": "MULTI_PAPER",
+   "n_pages": 7,
+   "n_papers": 6,
+   "papers": [
+    "Chang et al. 2024",
+    "Kedenburg et al. 2012",
+    "Kozma et al. 2005",
+    "Myers et al. 2018",
+    "Rheims et al. 1997",
+    "Sani and Dell'Oro 2016"
+   ],
+   "datasets": [
+    {
+     "page": "Rheims",
+     "title": "Rheims et al. 1997: n 0.477\u20130.83 \u00b5m",
+     "paper": "Rheims et al. 1997",
+     "data_path": "organic/C2H6O - ethanol/nk/Rheims.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4765,
+      0.83
+     ],
+     "single_point": false,
+     "comments": "20 \u00b0C",
+     "temperature_c": 19.85,
+     "types": [
+      "formula 5"
+     ]
+    },
+    {
+     "page": "Chang",
+     "title": "Chang et al. 2024: n 0.4\u20132.0 \u00b5m",
+     "paper": "Chang et al. 2024",
+     "data_path": "organic/C2H6O - ethanol/nk/Chang.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      2.0
+     ],
+     "single_point": false,
+     "comments": "21.5\u201322.0 \u00b0C",
+     "temperature_c": 21.85,
+     "types": [
+      "formula 1"
+     ]
+    },
+    {
+     "page": "Myers",
+     "title": "Myers et al. 2018: n,k 1.28\u201325.0 \u00b5m",
+     "paper": "Myers et al. 2018",
+     "data_path": "organic/C2H6O - ethanol/nk/Myers.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      1.28221,
+      25.0224
+     ],
+     "single_point": false,
+     "comments": "26 \u00b0C",
+     "temperature_c": 25.85,
+     "types": [
+      "tabulated nk"
+     ]
+    },
+    {
+     "page": "Sani",
+     "title": "Sani and Dell'Oro 2016: n,k 0.185\u201361 \u00b5m",
+     "paper": "Sani and Dell'Oro 2016",
+     "data_path": "organic/C2H6O - ethanol/nk/Sani.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.185185,
+      60.9359
+     ],
+     "single_point": false,
+     "comments": "Room temperature",
+     "temperature_c": null,
+     "types": [
+      "tabulated nk"
+     ]
+    },
+    {
+     "page": "Sani-formula",
+     "title": "Sani and Dell'Oro 2016: Dispersion formula; n,k 0.185\u20132.8 \u00b5m",
+     "paper": "Sani and Dell'Oro 2016",
+     "data_path": "organic/C2H6O - ethanol/nk/Sani-formula.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "formula+tabulated",
+     "span_um": [
+      0.185,
+      2.8
+     ],
+     "single_point": false,
+     "comments": "Room temperature",
+     "temperature_c": null,
+     "types": [
+      "formula 2",
+      "tabulated k"
+     ]
+    },
+    {
+     "page": "Kedenburg",
+     "title": "Kedenburg et al. 2012: n 0.5\u20131.6 \u00b5m, k 0.5\u20131.75 \u00b5m",
+     "paper": "Kedenburg et al. 2012",
+     "data_path": "organic/C2H6O - ethanol/nk/Kedenburg.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "formula+tabulated",
+     "span_um": [
+      0.5,
+      1.75
+     ],
+     "single_point": false,
+     "comments": "20 \u00b0C.",
+     "temperature_c": 19.85,
+     "types": [
+      "formula 2",
+      "tabulated k"
+     ]
+    },
+    {
+     "page": "Kozma",
+     "title": "Kozma et al. 2005: n 0.230\u20130.641 \u00b5m",
+     "paper": "Kozma et al. 2005",
+     "data_path": "organic/C2H6O - ethanol/nk/Kozma.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.23,
+      0.6407
+     ],
+     "single_point": false,
+     "comments": "22 \u00b0C",
+     "temperature_c": 19.85,
+     "types": [
+      "formula 5"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C2H5OH (Ethanol)",
+   "about_yml_formula": "C2H6O",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "2-C3H7OH",
+   "name": "2-Propanol (isopropanol)",
+   "formula": "C3H7OH",
+   "book": "propanol",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Isopropyl alcohol",
+   "pages": [
+    "Kozma",
+    "Wang-20C",
+    "Wang-50C",
+    "Wang-70C",
+    "Myers",
+    "Sani",
+    "Sani-formula"
+   ],
+   "note": null,
+   "status": "MULTI_PAPER",
+   "n_pages": 7,
+   "n_papers": 4,
+   "papers": [
+    "Kozma et al. 2005",
+    "Myers et al. 2018",
+    "Sani and Dell'Oro 2016",
+    "Wang et al. 2018"
+   ],
+   "datasets": [
+    {
+     "page": "Kozma",
+     "title": "Kozma et al. 2005: iso-propanol; n 0.230\u20130.641 \u00b5m",
+     "paper": "Kozma et al. 2005",
+     "data_path": "organic/C3H8O - propanol/nk/Kozma.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.23,
+      0.6407
+     ],
+     "single_point": false,
+     "comments": "Isopropanol (2-propanol); 22 \u00b0C.",
+     "temperature_c": 21.85,
+     "types": [
+      "formula 5"
+     ]
+    },
+    {
+     "page": "Wang-20C",
+     "title": "Wang et al. 2018: iso-propanol, 20 \u00b0C; n,k 1.66\u201319.1 \u00b5m",
+     "paper": "Wang et al. 2018",
+     "data_path": "organic/C3H8O - propanol/nk/Wang-20C.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      1.66,
+      19.06
+     ],
+     "single_point": false,
+     "comments": "Isopropanol, 20 \u00b0C.",
+     "temperature_c": 20.0,
+     "types": [
+      "tabulated nk"
+     ]
+    },
+    {
+     "page": "Wang-50C",
+     "title": "Wang et al. 2018: iso-propanol, 50 \u00b0C; n,k 1.66\u201319.1 \u00b5m",
+     "paper": "Wang et al. 2018",
+     "data_path": "organic/C3H8O - propanol/nk/Wang-50C.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      1.66,
+      19.06
+     ],
+     "single_point": false,
+     "comments": "Isopropanol, 50 \u00b0C.",
+     "temperature_c": 50.0,
+     "types": [
+      "tabulated nk"
+     ]
+    },
+    {
+     "page": "Wang-70C",
+     "title": "Wang et al. 2018: iso-propanol, 70 \u00b0C; n,k 1.66\u201319.1 \u00b5m",
+     "paper": "Wang et al. 2018",
+     "data_path": "organic/C3H8O - propanol/nk/Wang-70C.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      1.66,
+      19.06
+     ],
+     "single_point": false,
+     "comments": "Isopropanol, 70 \u00b0C.",
+     "temperature_c": 70.0,
+     "types": [
+      "tabulated nk"
+     ]
+    },
+    {
+     "page": "Myers",
+     "title": "Myers et al. 2018: iso-propanol; n,k 1.28\u201325.0 \u00b5m",
+     "paper": "Myers et al. 2018",
+     "data_path": "organic/C3H8O - propanol/nk/Myers.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      1.28246,
+      25.0194
+     ],
+     "single_point": false,
+     "comments": "Isopropanol. 26 \u00b0C.",
+     "temperature_c": 25.85,
+     "types": [
+      "tabulated nk"
+     ]
+    },
+    {
+     "page": "Sani",
+     "title": "Sani and Dell'Oro 2016: iso-propanol; n,k 0.185\u201361 \u00b5m",
+     "paper": "Sani and Dell'Oro 2016",
+     "data_path": "organic/C3H8O - propanol/nk/Sani.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.185185,
+      60.9359
+     ],
+     "single_point": false,
+     "comments": "Room temperature",
+     "temperature_c": null,
+     "types": [
+      "tabulated nk"
+     ]
+    },
+    {
+     "page": "Sani-formula",
+     "title": "Sani and Dell'Oro 2016: iso-propanol; Dispersion formula; n,k 0.185\u20132.8 \u00b5m",
+     "paper": "Sani and Dell'Oro 2016",
+     "data_path": "organic/C3H8O - propanol/nk/Sani-formula.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "formula+tabulated",
+     "span_um": [
+      0.185,
+      2.8
+     ],
+     "single_point": false,
+     "comments": "Room temperature",
+     "temperature_c": null,
+     "types": [
+      "formula 2",
+      "tabulated k"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C3H7OH (Propanol)",
+   "about_yml_formula": "C3H8O",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "1-C3H7OH",
+   "name": "1-Propanol",
+   "formula": "C3H7OH",
+   "book": "propanol",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "1-Propanol",
+   "pages": [
+    "Chang",
+    "Moutzouris"
+   ],
+   "note": null,
+   "status": "MULTI_PAPER",
+   "n_pages": 2,
+   "n_papers": 2,
+   "papers": [
+    "Chang et al. 2024",
+    "Moutzouris et al. 2013"
+   ],
+   "datasets": [
+    {
+     "page": "Chang",
+     "title": "Chang et al. 2024: n 0.4\u20132.0 \u00b5m",
+     "paper": "Chang et al. 2024",
+     "data_path": "organic/C3H8O - propanol/nk/Chang.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      2.0
+     ],
+     "single_point": false,
+     "comments": "1-Propanol. 21.5\u201322.0 \u00b0C.",
+     "temperature_c": 21.85,
+     "types": [
+      "formula 1"
+     ]
+    },
+    {
+     "page": "Moutzouris",
+     "title": "Moutzouris et al. 2013: 1-Propanol; n 0.450\u20131.55 \u00b5m",
+     "paper": "Moutzouris et al. 2013",
+     "data_path": "organic/C3H8O - propanol/nk/Moutzouris.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.45,
+      1.551
+     ],
+     "single_point": false,
+     "comments": "1-Propanol (n-Propanol); 300 K (27 \u00b0C).",
+     "temperature_c": 26.85,
+     "types": [
+      "formula 3"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C3H7OH (Propanol)",
+   "about_yml_formula": "C3H8O",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "1-C4H9OH",
+   "name": "1-Butanol",
+   "formula": "C4H9OH",
+   "book": "butanol",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "1-Butanol",
+   "pages": [
+    "Chang",
+    "Wang-20C",
+    "Wang-60C",
+    "Wang-90C",
+    "Moutzouris-n"
+   ],
+   "note": null,
+   "status": "MULTI_PAPER",
+   "n_pages": 5,
+   "n_papers": 3,
+   "papers": [
+    "Chang et al. 2024",
+    "Moutzouris et al. 2013",
+    "Wang et al. 2018"
+   ],
+   "datasets": [
+    {
+     "page": "Chang",
+     "title": "Chang et al. 2024: n 0.4\u20132.0 \u00b5m",
+     "paper": "Chang et al. 2024",
+     "data_path": "organic/C4H10O - butanol/nk/Chang.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      2.0
+     ],
+     "single_point": false,
+     "comments": "1-Butanol. 21.5\u201322.0 \u00b0C.",
+     "temperature_c": 21.85,
+     "types": [
+      "formula 1"
+     ]
+    },
+    {
+     "page": "Wang-20C",
+     "title": "Wang et al. 2018: n-Butanol, 20 \u00b0C; n,k 1.66\u201319.1 \u00b5m",
+     "paper": "Wang et al. 2018",
+     "data_path": "organic/C4H10O - butanol/nk/Wang-20C.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      1.66,
+      19.06
+     ],
+     "single_point": false,
+     "comments": "n-butanol, 20 \u00b0C.",
+     "temperature_c": 20.0,
+     "types": [
+      "tabulated nk"
+     ]
+    },
+    {
+     "page": "Wang-60C",
+     "title": "Wang et al. 2018: n-Butanol, 60 \u00b0C; n,k 1.66\u201319.1 \u00b5m",
+     "paper": "Wang et al. 2018",
+     "data_path": "organic/C4H10O - butanol/nk/Wang-60C.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      1.66,
+      19.06
+     ],
+     "single_point": false,
+     "comments": "n-butanol, 60 \u00b0C.",
+     "temperature_c": 60.0,
+     "types": [
+      "tabulated nk"
+     ]
+    },
+    {
+     "page": "Wang-90C",
+     "title": "Wang et al. 2018: n-Butanol, 90 \u00b0C; n,k 1.66\u201319.1 \u00b5m",
+     "paper": "Wang et al. 2018",
+     "data_path": "organic/C4H10O - butanol/nk/Wang-90C.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      1.66,
+      19.06
+     ],
+     "single_point": false,
+     "comments": "n-butanol, 90 \u00b0C.",
+     "temperature_c": 90.0,
+     "types": [
+      "tabulated nk"
+     ]
+    },
+    {
+     "page": "Moutzouris-n",
+     "title": "Moutzouris et al. 2013: n-Butanol; n 0.450\u20131.55 \u00b5m",
+     "paper": "Moutzouris et al. 2013",
+     "data_path": "organic/C4H10O - butanol/nk/Moutzouris-n.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.45,
+      1.551
+     ],
+     "single_point": false,
+     "comments": "n-Butanol (1-Butanol); 300 K (27 \u00b0C).",
+     "temperature_c": 26.85,
+     "types": [
+      "formula 3"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C4H9OH (Butanol)",
+   "about_yml_formula": "C4H10O",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "i-C4H9OH",
+   "name": "Isobutanol (2-methyl-1-propanol)",
+   "formula": "C4H9OH",
+   "book": "butanol",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Isobutanol",
+   "pages": [
+    "Moutzouris-iso"
+   ],
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Moutzouris et al. 2013"
+   ],
+   "datasets": [
+    {
+     "page": "Moutzouris-iso",
+     "title": "Moutzouris et al. 2013: iso-Butanol; n 0.450\u20131.55 \u00b5m",
+     "paper": "Moutzouris et al. 2013",
+     "data_path": "organic/C4H10O - butanol/nk/Moutzouris-iso.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.45,
+      1.551
+     ],
+     "single_point": false,
+     "comments": "Isobutanol; 300 K (27 \u00b0C).",
+     "temperature_c": 26.85,
+     "types": [
+      "formula 3"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C4H9OH (Butanol)",
+   "about_yml_formula": "C4H10O",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "1-C5H11OH",
+   "name": "1-Pentanol",
+   "formula": "C5H11OH",
+   "book": "pentanol",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "1-Pentanol",
+   "pages": [
+    "Moutzouris-normal"
+   ],
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Moutzouris et al. 2013"
+   ],
+   "datasets": [
+    {
+     "page": "Moutzouris-normal",
+     "title": "Moutzouris et al. 2013: Normal amyl alcohol; n 0.450\u20131.55 \u00b5m",
+     "paper": "Moutzouris et al. 2013",
+     "data_path": "organic/C5H12O - pentanol/nk/Moutzouris-normal.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.45,
+      1.551
+     ],
+     "single_point": false,
+     "comments": "Normal amyl alcohol; 300 K (27 \u00b0C).",
+     "temperature_c": 26.85,
+     "types": [
+      "formula 3"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C5H11OH (Pentanol, amyl alcohol)",
+   "about_yml_formula": "C5H12O",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "i-C5H11OH",
+   "name": "Isoamyl alcohol (3-methyl-1-butanol)",
+   "formula": "C5H11OH",
+   "book": "pentanol",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Isoamyl alcohol",
+   "pages": [
+    "Moutzouris-iso"
+   ],
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Moutzouris et al. 2013"
+   ],
+   "datasets": [
+    {
+     "page": "Moutzouris-iso",
+     "title": "Moutzouris et al. 2013: Isoamyl alcohol; n 0.450\u20131.55 \u00b5m",
+     "paper": "Moutzouris et al. 2013",
+     "data_path": "organic/C5H12O - pentanol/nk/Moutzouris-iso.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.45,
+      1.551
+     ],
+     "single_point": false,
+     "comments": "Isoamyl alcohol; 300 K (27 \u00b0C).",
+     "temperature_c": 26.85,
+     "types": [
+      "formula 3"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C5H11OH (Pentanol, amyl alcohol)",
+   "about_yml_formula": "C5H12O",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C8H17OH",
+   "name": "1-Octanol",
+   "formula": "C8H17OH",
+   "book": "octanol",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "1-Octanol",
+   "pages": null,
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Chang et al. 2024"
+   ],
+   "datasets": [
+    {
+     "page": "Chang",
+     "title": "Chang et al. 2024: n 0.4\u20132.0 \u00b5m",
+     "paper": "Chang et al. 2024",
+     "data_path": "organic/C8H18O - octanol/nk/Chang.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      2.0
+     ],
+     "single_point": false,
+     "comments": "1-Octanol. 21.5\u201322.0 \u00b0C.",
+     "temperature_c": 21.85,
+     "types": [
+      "formula 1"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C8H17OH (Octanol)",
+   "about_yml_formula": "C8H18O",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C2H4(OH)2",
+   "name": "Ethylene glycol",
+   "formula": "C2H4(OH)2",
+   "book": "ethylene_glycol",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Ethylene glycol",
+   "pages": null,
+   "note": null,
+   "status": "MULTI_PAPER",
+   "n_pages": 5,
+   "n_papers": 3,
+   "papers": [
+    "El-Kashef 2000",
+    "Kozma et al. 2005",
+    "Sani and Dell'Oro 2014"
+   ],
+   "datasets": [
+    {
+     "page": "Otanicar",
+     "title": "Otanicar 2009: k 0.2\u20131.5 \u00b5m",
+     "paper": "Otanicar 2009",
+     "data_path": "organic/C2H6O2 - ethylene glycol/nk/Otanicar.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "k-only",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.2,
+      1.5
+     ],
+     "single_point": false,
+     "comments": "25 \u00b0C",
+     "temperature_c": 25.0,
+     "types": [
+      "tabulated k"
+     ]
+    },
+    {
+     "page": "Sani",
+     "title": "Sani and Dell'Oro 2014: n,k 0.185\u201355.0 \u00b5m",
+     "paper": "Sani and Dell'Oro 2014",
+     "data_path": "organic/C2H6O2 - ethylene glycol/nk/Sani.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.1852,
+      55.0
+     ],
+     "single_point": false,
+     "comments": "Room temperature",
+     "temperature_c": null,
+     "types": [
+      "tabulated nk"
+     ]
+    },
+    {
+     "page": "Sani-formula",
+     "title": "Sani and Dell'Oro 2014: Dispersion formula; n,k 0.185\u20132.8 \u00b5m",
+     "paper": "Sani and Dell'Oro 2014",
+     "data_path": "organic/C2H6O2 - ethylene glycol/nk/Sani-formula.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "formula+tabulated",
+     "span_um": [
+      0.185,
+      2.8
+     ],
+     "single_point": false,
+     "comments": "Room temperature",
+     "temperature_c": null,
+     "types": [
+      "formula 2",
+      "tabulated k"
+     ]
+    },
+    {
+     "page": "Kozma",
+     "title": "Kozma et al. 2005: n 0.230\u20130.641 \u00b5m",
+     "paper": "Kozma et al. 2005",
+     "data_path": "organic/C2H6O2 - ethylene glycol/nk/Kozma.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.23,
+      0.6407
+     ],
+     "single_point": false,
+     "comments": "22 \u00b0C",
+     "temperature_c": 21.85,
+     "types": [
+      "formula 5"
+     ]
+    },
+    {
+     "page": "El-Kashef",
+     "title": "El-Kashef 2000: n 0.4\u20130.8 \u00b5m",
+     "paper": "El-Kashef 2000",
+     "data_path": "organic/C2H6O2 - ethylene glycol/nk/El-Kashef.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      0.8
+     ],
+     "single_point": false,
+     "comments": "20 \u00b0C",
+     "temperature_c": 19.85,
+     "types": [
+      "formula 5"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [
+    "Otanicar"
+   ],
+   "single_point_pages": [],
+   "ri_book_title": "C2H4(OH)2 (Ethylene glycol)",
+   "about_yml_formula": "C2H4",
+   "about_yml_formula_matches": false
+  },
+  {
+   "key": "C3H6(OH)2",
+   "name": "Propylene glycol",
+   "formula": "C3H6(OH)2",
+   "book": "propylene_glycol",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Propylene glycol",
+   "pages": null,
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Otanicar et al. 2009"
+   ],
+   "datasets": [
+    {
+     "page": "Otanicar",
+     "title": "Otanicar et al. 2009: n 0.434\u20130.656 \u00b5m, k 0.2\u20131.5 \u00b5m",
+     "paper": "Otanicar et al. 2009",
+     "data_path": "organic/C3H8O2 - propylene glycol/nk/Otanicar.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.2,
+      1.5
+     ],
+     "single_point": false,
+     "comments": "25 \u00b0C",
+     "temperature_c": 24.85,
+     "types": [
+      "tabulated n",
+      "tabulated k"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C3H6(OH)2 (Propylene glycol)",
+   "about_yml_formula": "C3H8O2",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C5H10(OH)2",
+   "name": "1,5-Pentanediol",
+   "formula": "C5H10(OH)2",
+   "book": "pentanediol",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "1,5-Pentanediol",
+   "pages": null,
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Moutzouris et al. 2013"
+   ],
+   "datasets": [
+    {
+     "page": "Moutzouris",
+     "title": "Moutzouris et al. 2013: n 0.450\u20131.55 \u00b5m",
+     "paper": "Moutzouris et al. 2013",
+     "data_path": "organic/C5H12O2 - pentanediol/nk/Moutzouris.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.45,
+      1.551
+     ],
+     "single_point": false,
+     "comments": "1,5-Pentanediol; 300 K (27 \u00b0C).",
+     "temperature_c": 26.85,
+     "types": [
+      "formula 3"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C5H10(OH)2 (Pentanediol)",
+   "about_yml_formula": "C5H12O2",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C3H5(OH)3",
+   "name": "Glycerol",
+   "formula": "C3H5(OH)3",
+   "book": "glycerol",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Glycerol",
+   "pages": null,
+   "note": null,
+   "status": "MULTI_PAPER",
+   "n_pages": 5,
+   "n_papers": 4,
+   "papers": [
+    "Birkhoff et al. 1978",
+    "Gupta et al. 2022",
+    "Nyakuchena et al. 2023",
+    "Rheims et al. 1997"
+   ],
+   "datasets": [
+    {
+     "page": "Rheims",
+     "title": "Rheims et al. 1997: n 0.589\u20131.05 \u00b5m",
+     "paper": "Rheims et al. 1997",
+     "data_path": "organic/C3H8O3 - glycerol/nk/Rheims.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.5893,
+      1.05
+     ],
+     "single_point": false,
+     "comments": "25 \u00b0C",
+     "temperature_c": 24.85,
+     "types": [
+      "formula 5"
+     ]
+    },
+    {
+     "page": "Nyakuchena",
+     "title": "Nyakuchena et al. 2023: n 1.10\u20131.65 \u00b5m",
+     "paper": "Nyakuchena et al. 2023",
+     "data_path": "organic/C3H8O3 - glycerol/nk/Nyakuchena.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      1.1,
+      1.65
+     ],
+     "single_point": false,
+     "comments": "23 \u00b0C",
+     "temperature_c": 22.85,
+     "types": [
+      "formula 5"
+     ]
+    },
+    {
+     "page": "Gupta",
+     "title": "Gupta et al. 2022: n 0.40\u20130.71 \u00b5m",
+     "paper": "Gupta et al. 2022",
+     "data_path": "organic/C3H8O3 - glycerol/nk/Gupta.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      0.71
+     ],
+     "single_point": false,
+     "comments": "Room temperature.",
+     "temperature_c": null,
+     "types": [
+      "formula 5"
+     ]
+    },
+    {
+     "page": "Wang",
+     "title": "Wang et al. 2017: k 1.2\u20131.9 \u00b5m",
+     "paper": "Wang et al. 2017",
+     "data_path": "organic/C3H8O3 - glycerol/nk/Wang.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "k-only",
+     "dispersion": "tabulated",
+     "span_um": [
+      1.2,
+      1.9
+     ],
+     "single_point": false,
+     "comments": "22 \u00b0C.",
+     "temperature_c": 22.0,
+     "types": [
+      "tabulated k"
+     ]
+    },
+    {
+     "page": "Birkhoff",
+     "title": "Birkhoff et al. 1978: n,k 0.0512\u20130.620 \u00b5m",
+     "paper": "Birkhoff et al. 1978",
+     "data_path": "organic/C3H8O3 - glycerol/nk/Birkhoff.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.05123,
+      0.61992
+     ],
+     "single_point": false,
+     "comments": "",
+     "temperature_c": null,
+     "types": [
+      "tabulated nk"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [
+    "Wang"
+   ],
+   "single_point_pages": [],
+   "ri_book_title": "C3H5(OH)3 (Glycerol)",
+   "about_yml_formula": "C3H8O3",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C4H8O",
+   "name": "Tetrahydrofuran",
+   "formula": "C4H8O",
+   "book": "tetrahydrofuran",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Tetrahydrofuran",
+   "pages": null,
+   "note": null,
+   "status": "MULTI_PAPER",
+   "n_pages": 2,
+   "n_papers": 2,
+   "papers": [
+    "Chang et al. 2024",
+    "Li et al. 2022"
+   ],
+   "datasets": [
+    {
+     "page": "Li",
+     "title": "Li et al. 2022: n 0.2\u20131.7 \u00b5m",
+     "paper": "Li et al. 2022",
+     "data_path": "organic/C4H8O - tetrahydrofuran/nk/Li.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.2,
+      1.7
+     ],
+     "single_point": false,
+     "comments": "Room temperature.",
+     "temperature_c": null,
+     "types": [
+      "formula 5"
+     ]
+    },
+    {
+     "page": "Chang",
+     "title": "Chang et al. 2024: n 0.4\u20132.0 \u00b5m",
+     "paper": "Chang et al. 2024",
+     "data_path": "organic/C4H8O - tetrahydrofuran/nk/Chang.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      2.0
+     ],
+     "single_point": false,
+     "comments": "21.5\u201322.0 \u00b0C.",
+     "temperature_c": 21.85,
+     "types": [
+      "formula 1"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C4H8O (Tetrahydrofuran, THF)",
+   "about_yml_formula": "C4H8O",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C4H8O2-dioxane",
+   "name": "1,4-Dioxane",
+   "formula": "C4H8O2",
+   "book": "dioxane",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "1,4-Dioxane",
+   "pages": null,
+   "note": null,
+   "status": "MULTI_PAPER",
+   "n_pages": 2,
+   "n_papers": 2,
+   "papers": [
+    "Chang et al. 2024",
+    "Moutzouris et al. 2013"
+   ],
+   "datasets": [
+    {
+     "page": "Moutzouris",
+     "title": "Moutzouris et al. 2013: n 0.450\u20131.55 \u00b5m",
+     "paper": "Moutzouris et al. 2013",
+     "data_path": "organic/C4H8O2 - dioxane/nk/Moutzouris.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.45,
+      1.551
+     ],
+     "single_point": false,
+     "comments": "1,4-Dioxane (p-Dioxane); 300 K (27 \u00b0C).",
+     "temperature_c": 26.85,
+     "types": [
+      "formula 3"
+     ]
+    },
+    {
+     "page": "Chang",
+     "title": "Chang et al. 2024: n 0.4\u20132.0 \u00b5m",
+     "paper": "Chang et al. 2024",
+     "data_path": "organic/C4H8O2 - dioxane/nk/Chang.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      2.0
+     ],
+     "single_point": false,
+     "comments": "1,4-Dioxane. 21.5\u201322.0 \u00b0C.",
+     "temperature_c": 21.85,
+     "types": [
+      "formula 1"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C4H8O2 (Dioxane)",
+   "about_yml_formula": "C4H8O2",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C3H6O",
+   "name": "Acetone",
+   "formula": "C3H6O",
+   "book": "acetone",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Acetone",
+   "pages": null,
+   "note": null,
+   "status": "MULTI_PAPER",
+   "n_pages": 2,
+   "n_papers": 2,
+   "papers": [
+    "Chang et al. 2024",
+    "Rheims et al. 1997"
+   ],
+   "datasets": [
+    {
+     "page": "Rheims",
+     "title": "Rheims et al. 1997: n 0.477\u20130.83 \u00b5m",
+     "paper": "Rheims et al. 1997",
+     "data_path": "organic/C3H6O - acetone/nk/Rheims.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4765,
+      0.83
+     ],
+     "single_point": false,
+     "comments": "20 \u00b0C",
+     "temperature_c": 19.85,
+     "types": [
+      "formula 5"
+     ]
+    },
+    {
+     "page": "Chang",
+     "title": "Chang et al. 2024: n 0.4\u20132.0 \u00b5m",
+     "paper": "Chang et al. 2024",
+     "data_path": "organic/C3H6O - acetone/nk/Chang.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      2.0
+     ],
+     "single_point": false,
+     "comments": "21.5\u201322.0 \u00b0C.",
+     "temperature_c": 21.85,
+     "types": [
+      "formula 1"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C3H6O (Acetone)",
+   "about_yml_formula": "C3H6O",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C2H4O2",
+   "name": "Acetic acid",
+   "formula": "C2H4O2",
+   "book": "acetic_acid",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Acetic acid",
+   "pages": null,
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "El-Kashef 2000"
+   ],
+   "datasets": [
+    {
+     "page": "El-Kashef",
+     "title": "El-Kashef 2000: n 0.4\u20130.8 \u00b5m",
+     "paper": "El-Kashef 2000",
+     "data_path": "organic/C2H4O2 - acetic acid/nk/El-Kashef.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      0.8
+     ],
+     "single_point": false,
+     "comments": "20 \u00b0C",
+     "temperature_c": 19.85,
+     "types": [
+      "formula 5"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C2H4O2 (Acetic acid)",
+   "about_yml_formula": "C2H4O2",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C5H10O2-valeric",
+   "name": "Valeric acid",
+   "formula": "C5H10O2",
+   "book": "valeric_acid",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Valeric acid",
+   "pages": null,
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Rubio et al. 2015"
+   ],
+   "datasets": [
+    {
+     "page": "Rubio",
+     "title": "Rubio et al. 2015: n 0.400\u20130.590 \u00b5m",
+     "paper": "Rubio et al. 2015",
+     "data_path": "organic/C5H10O2 - valeric acid/nk/Rubio.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      0.59
+     ],
+     "single_point": false,
+     "comments": "20 \u00b0C (293 K). For the temperature-dependent formula, refer to the original publication.",
+     "temperature_c": 19.85,
+     "types": [
+      "formula 5"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C5H10O2 (Valeric acid)",
+   "about_yml_formula": "C5H10O2",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C6H12O2",
+   "name": "Caproic acid (hexanoic acid)",
+   "formula": "C6H12O2",
+   "book": "caproic_acid",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Hexanoic acid",
+   "pages": null,
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Rubio et al. 2015"
+   ],
+   "datasets": [
+    {
+     "page": "Rubio",
+     "title": "Rubio et al. 2015: n 0.400\u20130.590 \u00b5m",
+     "paper": "Rubio et al. 2015",
+     "data_path": "organic/C6H12O2 - caproic acid/nk/Rubio.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      0.59
+     ],
+     "single_point": false,
+     "comments": "20 \u00b0C (293 K). For the temperature-dependent formula, refer to the original publication.",
+     "temperature_c": 19.85,
+     "types": [
+      "formula 5"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C6H12O2 (Caproic acid)",
+   "about_yml_formula": "C6H12O2",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C7H14O2",
+   "name": "Enanthic acid (heptanoic acid)",
+   "formula": "C7H14O2",
+   "book": "enanthic_acid",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Heptanoic acid",
+   "pages": null,
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Rubio et al. 2015"
+   ],
+   "datasets": [
+    {
+     "page": "Rubio",
+     "title": "Rubio et al. 2015: n 0.400\u20130.590 \u00b5m",
+     "paper": "Rubio et al. 2015",
+     "data_path": "organic/C7H14O2 - enanthic acid/nk/Rubio.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      0.59
+     ],
+     "single_point": false,
+     "comments": "20 \u00b0C (293 K). For the temperature-dependent formula, refer to the original publication.",
+     "temperature_c": 19.85,
+     "types": [
+      "formula 5"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C7H14O2 (Enanthic acid)",
+   "about_yml_formula": "C7H14O2",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C8H16O2",
+   "name": "Caprylic acid (octanoic acid)",
+   "formula": "C8H16O2",
+   "book": "caprylic_acid",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Octanoic acid",
+   "pages": null,
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Rubio et al. 2015"
+   ],
+   "datasets": [
+    {
+     "page": "Rubio",
+     "title": "Rubio et al. 2015: n 0.400\u20130.590 \u00b5m",
+     "paper": "Rubio et al. 2015",
+     "data_path": "organic/C8H16O2 - caprylic acid/nk/Rubio.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      0.59
+     ],
+     "single_point": false,
+     "comments": "20 \u00b0C (293.15 K). For the temperature-dependent formula, refer to the original publication.",
+     "temperature_c": 20.0,
+     "types": [
+      "formula 5"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C8H16O2 (Caprylic acid)",
+   "about_yml_formula": "C8H16O2",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C9H18O2",
+   "name": "Pelargonic acid (nonanoic acid)",
+   "formula": "C9H18O2",
+   "book": "pelargonic_acid",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Nonanoic acid",
+   "pages": null,
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Rubio et al. 2015"
+   ],
+   "datasets": [
+    {
+     "page": "Rubio",
+     "title": "Rubio et al. 2015: n 0.400\u20130.590 \u00b5m",
+     "paper": "Rubio et al. 2015",
+     "data_path": "organic/C9H18O2 - pelargonic acid/nk/Rubio.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      0.59
+     ],
+     "single_point": false,
+     "comments": "20 \u00b0C (293.15 K). For the temperature-dependent formula, refer to the original publication.",
+     "temperature_c": 20.0,
+     "types": [
+      "formula 5"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C9H18O2 (Pelargonic acid)",
+   "about_yml_formula": "C9H18O2",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C18H34O2",
+   "name": "Oleic acid",
+   "formula": "C18H34O2",
+   "book": "oleic_acid",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Oleic acid",
+   "pages": null,
+   "note": "measured as ~1 um droplets / aerosol, i.e. liquid",
+   "status": "MULTI_PAPER",
+   "n_pages": 2,
+   "n_papers": 2,
+   "papers": [
+    "Jones et al. 2015",
+    "McGinty et al. 2009"
+   ],
+   "datasets": [
+    {
+     "page": "Jones",
+     "title": "Jones et al. 2015: n 0.595\u20130.670 \u00b5m",
+     "paper": "Jones et al. 2015",
+     "data_path": "organic/C18H34O2 - oleic acid/nk/Jones.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.495,
+      0.67
+     ],
+     "single_point": false,
+     "comments": "Optically trapped oleic acid droplets of ~1 \u00b5m radius.",
+     "temperature_c": null,
+     "types": [
+      "formula 5"
+     ]
+    },
+    {
+     "page": "McGinty",
+     "title": "McGinty et al. 2009: n,k 2.00\u201313.3 \u00b5m",
+     "paper": "McGinty et al. 2009",
+     "data_path": "organic/C18H34O2 - oleic acid/nk/McGinty.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      2.0003505,
+      13.328814
+     ],
+     "single_point": false,
+     "comments": "Aerosole. 298 K (25 \u00b0C).",
+     "temperature_c": 24.85,
+     "types": [
+      "tabulated nk"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C18H34O2 (Oleic acid)",
+   "about_yml_formula": "C18H34O2",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C4F6O3",
+   "name": "Trifluoroacetic anhydride",
+   "formula": "(CF3CO)2O",
+   "book": "trifluoroacetic_anhydride",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Trifluoroacetic anhydride",
+   "pages": null,
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Chang et al. 2024"
+   ],
+   "datasets": [
+    {
+     "page": "Chang",
+     "title": "Chang et al. 2024: n 0.4\u20132.0 \u00b5m",
+     "paper": "Chang et al. 2024",
+     "data_path": "organic/C4F6O3 - trifluoroacetic anhydride/nk/Chang.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      2.0
+     ],
+     "single_point": false,
+     "comments": "21.5\u201322.0 \u00b0C.",
+     "temperature_c": 21.85,
+     "types": [
+      "formula 1"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "(CF3CO)2O (Trifluoroacetic anhydride, TFAA)",
+   "about_yml_formula": "(CF3CO)2O",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C4H8O2-etac",
+   "name": "Ethyl acetate",
+   "formula": "C4H8O2",
+   "book": "ethyl_acetate",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Ethyl acetate",
+   "pages": null,
+   "note": null,
+   "status": "MULTI_PAPER",
+   "n_pages": 2,
+   "n_papers": 2,
+   "papers": [
+    "Kozma et al. 2005",
+    "Li et al. 2022"
+   ],
+   "datasets": [
+    {
+     "page": "Kozma",
+     "title": "Kozma et al. 2005: n 0.248\u20130.641 \u00b5m",
+     "paper": "Kozma et al. 2005",
+     "data_path": "organic/C4H8O2 - ethyl acetate/nk/Kozma.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.2484,
+      0.6407
+     ],
+     "single_point": false,
+     "comments": "22 \u00b0C",
+     "temperature_c": 21.85,
+     "types": [
+      "formula 5"
+     ]
+    },
+    {
+     "page": "Li",
+     "title": "Li et al. 2022: n 0.2\u20131.7 \u00b5m",
+     "paper": "Li et al. 2022",
+     "data_path": "organic/C4H8O2 - ethyl acetate/nk/Li.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.2,
+      1.7
+     ],
+     "single_point": false,
+     "comments": "Room temperature.",
+     "temperature_c": null,
+     "types": [
+      "formula 5"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C4H8O2 (Ethyl acetate, EtOAc, EA)",
+   "about_yml_formula": "C4H8O2",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C5H10O2-ipac",
+   "name": "Isopropyl acetate",
+   "formula": "C5H10O2",
+   "book": "propyl_acetate",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Isopropyl acetate",
+   "pages": null,
+   "note": "the book is titled 'Propyl acetate (PAC, IPAC)' and its name list starts with n-propyl acetate, but its only page states isopropyl acetate",
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Li et al. 2022"
+   ],
+   "datasets": [
+    {
+     "page": "Li",
+     "title": "Li et al. 2022: isopropyl acetate; n 0.2\u20131.7 \u00b5m",
+     "paper": "Li et al. 2022",
+     "data_path": "organic/C5H10O2 - propyl acetate/nk/Li.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.2,
+      1.7
+     ],
+     "single_point": false,
+     "comments": "Room temperature.",
+     "temperature_c": null,
+     "types": [
+      "formula 5"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C5H10O2 (Propyl acetate, PAC, IPAC)",
+   "about_yml_formula": "C5H10O2",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C8H8O3",
+   "name": "Methyl salicylate",
+   "formula": "C8H8O3",
+   "book": "methyl_salicylate",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Methyl salicylate",
+   "pages": null,
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Rheims et al. 1997"
+   ],
+   "datasets": [
+    {
+     "page": "Rheims",
+     "title": "Rheims et al. 1997: n 0.589\u20131.05 \u00b5m",
+     "paper": "Rheims et al. 1997",
+     "data_path": "organic/C8H8O3 - methyl salicylate/nk/Rheims.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.5893,
+      1.05
+     ],
+     "single_point": false,
+     "comments": "25 \u00b0C",
+     "temperature_c": 24.85,
+     "types": [
+      "formula 5"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C8H8O3 (Methyl salicylate)",
+   "about_yml_formula": "C8H8O3",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C9H10O3",
+   "name": "Ethyl salicylate",
+   "formula": "C9H10O3",
+   "book": "ethyl_salicylate",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Ethyl salicylate",
+   "pages": null,
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Rheims et al. 1997"
+   ],
+   "datasets": [
+    {
+     "page": "Rheims",
+     "title": "Rheims et al. 1997: n 0.589\u20131.05 \u00b5m",
+     "paper": "Rheims et al. 1997",
+     "data_path": "organic/C9H10O3 - ethyl salicylate/nk/Rheims.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.5893,
+      1.05
+     ],
+     "single_point": false,
+     "comments": "20 \u00b0C",
+     "temperature_c": 19.85,
+     "types": [
+      "formula 5"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C9H10O3 (Ethyl salicylate)",
+   "about_yml_formula": "C9H10O3",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C11H12O2",
+   "name": "Ethyl cinnamate",
+   "formula": "C11H12O2",
+   "book": "ethyl_cinnamate",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Ethyl cinnamate",
+   "pages": null,
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Krauter et al. 2015"
+   ],
+   "datasets": [
+    {
+     "page": "Krauter",
+     "title": "Krauter et al. 2015: n 0.45\u20130.70 \u00b5m",
+     "paper": "Krauter et al. 2015",
+     "data_path": "organic/C11H12O2 - ethyl cinnamate/nk/Krauter.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.45,
+      0.7
+     ],
+     "single_point": false,
+     "comments": "Room temperature",
+     "temperature_c": null,
+     "types": [
+      "formula 5"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C11H12O2 (Ethyl cinnamate)",
+   "about_yml_formula": "C11H12O2",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C12H14O4",
+   "name": "Diethyl phthalate",
+   "formula": "C12H14O4",
+   "book": "diethyl_phthalate",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Diethyl phthalate",
+   "pages": null,
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 2,
+   "n_papers": 1,
+   "papers": [
+    "Querry 1987"
+   ],
+   "datasets": [
+    {
+     "page": "Querry-NIR",
+     "title": "Querry 1987: Near-infrared; n,k 0.81\u20132.5 \u00b5m",
+     "paper": "Querry 1987",
+     "data_path": "organic/C12H14O4 - diethyl phthalate/nk/Querry-NIR.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.8095,
+      2.4995
+     ],
+     "single_point": false,
+     "comments": "",
+     "temperature_c": null,
+     "types": [
+      "tabulated nk"
+     ]
+    },
+    {
+     "page": "Querry-IR",
+     "title": "Querry 1987: Infrared; n,k 2.5\u201356 \u00b5m",
+     "paper": "Querry 1987",
+     "data_path": "organic/C12H14O4 - diethyl phthalate/nk/Querry-IR.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      2.5,
+      55.5556
+     ],
+     "single_point": false,
+     "comments": "",
+     "temperature_c": null,
+     "types": [
+      "tabulated nk"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C12H14O4 (Diethyl phthalate, DEP)",
+   "about_yml_formula": "C12H14O4",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C8H19NO",
+   "name": "2-(Diisopropylamino)ethanol",
+   "formula": "C8H19NO",
+   "book": "diisopropylaminoethanol",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "2-(Diisopropylamino)ethanol",
+   "pages": null,
+   "note": "the book's about.yml lists ethanol's names and formula (a copy error); the catalog title, folder and data are DIPA (n = 1.43 at 2 um, where the same paper's ethanol page gives 1.31)",
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Myers et al. 2018"
+   ],
+   "datasets": [
+    {
+     "page": "Myers",
+     "title": "Myers et al. 2018: n,k 1.28\u201325.0 \u00b5m",
+     "paper": "Myers et al. 2018",
+     "data_path": "organic/C8H19NO - diisopropylaminoethanol/nk/Myers.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      1.28244,
+      25.0203
+     ],
+     "single_point": false,
+     "comments": "26 \u00b0C",
+     "temperature_c": 25.85,
+     "types": [
+      "tabulated nk"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C8H19NO (Diisopropylaminoethanol, DIPA)",
+   "about_yml_formula": "C2H6O",
+   "about_yml_formula_matches": false
+  },
+  {
+   "key": "C2H3N",
+   "name": "Acetonitrile",
+   "formula": "C2H3N",
+   "book": "acetonitrile",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Acetonitrile",
+   "pages": null,
+   "note": null,
+   "status": "MULTI_PAPER",
+   "n_pages": 4,
+   "n_papers": 4,
+   "papers": [
+    "Chang et al. 2024",
+    "Kozma et al. 2005",
+    "Moutzouris et al. 2013",
+    "Myers et al. 2018"
+   ],
+   "datasets": [
+    {
+     "page": "Kozma",
+     "title": "Kozma et al. 2005: n 0.230\u20130.641 \u00b5m",
+     "paper": "Kozma et al. 2005",
+     "data_path": "organic/C2H3N - acetonitrile/nk/Kozma.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.23,
+      0.6407
+     ],
+     "single_point": false,
+     "comments": "22 \u00b0C",
+     "temperature_c": 19.85,
+     "types": [
+      "formula 5"
+     ]
+    },
+    {
+     "page": "Chang",
+     "title": "Chang et al. 2024: n 0.4\u20132.0 \u00b5m",
+     "paper": "Chang et al. 2024",
+     "data_path": "organic/C2H3N - acetonitrile/nk/Chang.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      2.0
+     ],
+     "single_point": false,
+     "comments": "21.5\u201322.0 \u00b0C.",
+     "temperature_c": 21.85,
+     "types": [
+      "formula 1"
+     ]
+    },
+    {
+     "page": "Myers",
+     "title": "Myers et al. 2018: n,k 1.28\u201325.0 \u00b5m",
+     "paper": "Myers et al. 2018",
+     "data_path": "organic/C2H3N - acetonitrile/nk/Myers.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      1.28246,
+      25.0194
+     ],
+     "single_point": false,
+     "comments": "26 \u00b0C",
+     "temperature_c": 25.85,
+     "types": [
+      "tabulated nk"
+     ]
+    },
+    {
+     "page": "Moutzouris",
+     "title": "Moutzouris et al. 2013: n 0.450\u20131.55 \u00b5m",
+     "paper": "Moutzouris et al. 2013",
+     "data_path": "organic/C2H3N - acetonitrile/nk/Moutzouris.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.45,
+      1.551
+     ],
+     "single_point": false,
+     "comments": "300 K (27 \u00b0C).",
+     "temperature_c": 26.85,
+     "types": [
+      "formula 3"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C2H3N (Acetonitrile)",
+   "about_yml_formula": "C2H3N",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C2Cl3N",
+   "name": "Trichloroacetonitrile",
+   "formula": "C2Cl3N",
+   "book": "trichloroacetonitrile",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Trichloroacetonitrile",
+   "pages": null,
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Chang et al. 2024"
+   ],
+   "datasets": [
+    {
+     "page": "Chang",
+     "title": "Chang et al. 2024: n 0.4\u20132.0 \u00b5m",
+     "paper": "Chang et al. 2024",
+     "data_path": "organic/C2Cl3N - trichloroacetonitrile/nk/Chang.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      2.0
+     ],
+     "single_point": false,
+     "comments": "21.5\u201322.0 \u00b0C.",
+     "temperature_c": 21.85,
+     "types": [
+      "formula 1"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C2Cl3N (Trichloroacetonitrile)",
+   "about_yml_formula": "C2Cl3N",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C2H6OS",
+   "name": "Dimethyl sulfoxide",
+   "formula": "C2H6OS",
+   "book": "dimethyl_sulfoxide",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Dimethyl sulfoxide",
+   "pages": null,
+   "note": null,
+   "status": "MULTI_PAPER",
+   "n_pages": 2,
+   "n_papers": 2,
+   "papers": [
+    "Kozma et al. 2005",
+    "Li et al. 2022"
+   ],
+   "datasets": [
+    {
+     "page": "Kozma",
+     "title": "Kozma et al. 2005: n 0.237\u20130.641 \u00b5m",
+     "paper": "Kozma et al. 2005",
+     "data_path": "organic/C2H6OS - dimethyl sulfoxide/nk/Kozma.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.23687,
+      0.6407
+     ],
+     "single_point": false,
+     "comments": "22 \u00b0C",
+     "temperature_c": 19.85,
+     "types": [
+      "formula 2"
+     ]
+    },
+    {
+     "page": "Li",
+     "title": "Li et al. 2022: n 0.2\u20131.7 \u00b5m",
+     "paper": "Li et al. 2022",
+     "data_path": "organic/C2H6OS - dimethyl sulfoxide/nk/Li.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.2,
+      1.7
+     ],
+     "single_point": false,
+     "comments": "Room temperature.",
+     "temperature_c": null,
+     "types": [
+      "formula 5"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C2H6OS (Dimethyl sulfoxide, DMSO)",
+   "about_yml_formula": null,
+   "about_yml_formula_matches": null
+  },
+  {
+   "key": "C3H7NO",
+   "name": "N,N-Dimethylformamide",
+   "formula": "C3H7NO",
+   "book": "dimethylformamide",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "N,N-Dimethylformamide",
+   "pages": null,
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Li et al. 2022"
+   ],
+   "datasets": [
+    {
+     "page": "Li",
+     "title": "Li et al. 2022: n 0.215\u20131.7 \u00b5m",
+     "paper": "Li et al. 2022",
+     "data_path": "organic/C3H7NO - dimethylformamide/nk/Li.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.215,
+      1.7
+     ],
+     "single_point": false,
+     "comments": "Room temperature.",
+     "temperature_c": null,
+     "types": [
+      "formula 5"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C3H7NO (Dimethylformamide, DMF)",
+   "about_yml_formula": "C3H7NO",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C3H9O3P",
+   "name": "Dimethyl methylphosphonate",
+   "formula": "C3H9O3P",
+   "book": "dimethyl_methylphosphonate",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Dimethyl methylphosphonate",
+   "pages": null,
+   "note": null,
+   "status": "MULTI_PAPER",
+   "n_pages": 3,
+   "n_papers": 2,
+   "papers": [
+    "Myers et al. 2018",
+    "Querry 1987"
+   ],
+   "datasets": [
+    {
+     "page": "Querry-NIR",
+     "title": "Querry 1987: Near-infrared; n,k 0.80\u20132.5 \u00b5m",
+     "paper": "Querry 1987",
+     "data_path": "organic/C3H9O3P - dimethyl methylphosphonate/nk/Querry-NIR.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.8045,
+      2.4995
+     ],
+     "single_point": false,
+     "comments": "",
+     "temperature_c": null,
+     "types": [
+      "tabulated nk"
+     ]
+    },
+    {
+     "page": "Querry-IR",
+     "title": "Querry 1987: Infrared; n,k 2.5\u201356 \u00b5m",
+     "paper": "Querry 1987",
+     "data_path": "organic/C3H9O3P - dimethyl methylphosphonate/nk/Querry-IR.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      2.5,
+      55.5556
+     ],
+     "single_point": false,
+     "comments": "",
+     "temperature_c": null,
+     "types": [
+      "tabulated nk"
+     ]
+    },
+    {
+     "page": "Myers",
+     "title": "Myers et al. 2018: n,k 1.28\u201325.0 \u00b5m",
+     "paper": "Myers et al. 2018",
+     "data_path": "organic/C3H9O3P - dimethyl methylphosphonate/nk/Myers.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      1.28221,
+      25.0224
+     ],
+     "single_point": false,
+     "comments": "26 \u00b0C",
+     "temperature_c": 25.85,
+     "types": [
+      "tabulated nk"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C3H9O3P (Dimethyl methylphosphonate, DMMP)",
+   "about_yml_formula": "C3H9O3P",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C4H10O3S",
+   "name": "Diethyl sulfite",
+   "formula": "C4H10O3S",
+   "book": "diethyl_sulfite",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Diethyl sulfite",
+   "pages": null,
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Querry 1987"
+   ],
+   "datasets": [
+    {
+     "page": "Querry",
+     "title": "Querry 1987: n,k 0.270\u201319.6 \u00b5m",
+     "paper": "Querry 1987",
+     "data_path": "organic/C4H10O3S - diethyl sulfite/nk/Querry.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.3,
+      19.6078
+     ],
+     "single_point": false,
+     "comments": "",
+     "temperature_c": null,
+     "types": [
+      "tabulated nk"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C4H10O3S (Diethyl sulfite, DES)",
+   "about_yml_formula": "C4H10O3S",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C7H17O3P",
+   "name": "Diisopropyl methylphosphonate",
+   "formula": "C7H17O3P",
+   "book": "diisopropyl_methylphosphonate",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Diisopropyl methylphosphonate",
+   "pages": null,
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 2,
+   "n_papers": 1,
+   "papers": [
+    "Querry 1987"
+   ],
+   "datasets": [
+    {
+     "page": "Querry-NIR",
+     "title": "Querry 1987: Near-infrared; n,k 0.81\u20132.5 \u00b5m",
+     "paper": "Querry 1987",
+     "data_path": "organic/C7H17O3P - diisopropyl methylphosphonate/nk/Querry-NIR.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.814,
+      2.499
+     ],
+     "single_point": false,
+     "comments": "",
+     "temperature_c": null,
+     "types": [
+      "tabulated nk"
+     ]
+    },
+    {
+     "page": "Querry-IR",
+     "title": "Querry 1987: Infrared; n,k 2.5\u201356 \u00b5m",
+     "paper": "Querry 1987",
+     "data_path": "organic/C7H17O3P - diisopropyl methylphosphonate/nk/Querry-IR.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      2.5,
+      55.5556
+     ],
+     "single_point": false,
+     "comments": "",
+     "temperature_c": null,
+     "types": [
+      "tabulated nk"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C7H17O3P (Diisopropyl methylphosphonate, DIMP)",
+   "about_yml_formula": "C7H17O3P",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C9H8O",
+   "name": "Cinnamaldehyde",
+   "formula": "C9H8O",
+   "book": "cinnamaldehyde",
+   "shelf": "organic",
+   "materialclass": "liquid",
+   "pubchem_name": "Cinnamaldehyde",
+   "pages": null,
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Rheims et al. 1997"
+   ],
+   "datasets": [
+    {
+     "page": "Rheims",
+     "title": "Rheims et al. 1997: n 0.589\u20131.05 \u00b5m",
+     "paper": "Rheims et al. 1997",
+     "data_path": "organic/C9H8O - cinnamaldehyde/nk/Rheims.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.5893,
+      1.05
+     ],
+     "single_point": false,
+     "comments": "24 \u00b0C.",
+     "temperature_c": 23.85,
+     "types": [
+      "formula 5"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C9H8O (Cinnamaldehyde)",
+   "about_yml_formula": "C9H8O",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C9H11NO3",
+   "name": "L-Tyrosine",
+   "formula": "C9H11NO3",
+   "book": "tyrosine",
+   "shelf": "organic",
+   "materialclass": "biomolecule",
+   "pubchem_name": "L-Tyrosine",
+   "pages": null,
+   "note": "measured as a film",
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Leite et al. 2022"
+   ],
+   "datasets": [
+    {
+     "page": "Leite",
+     "title": "Leite et al. 2022: L-Tyrosine; n,k 0.210\u20130.320 \u00b5m",
+     "paper": "Leite et al. 2022",
+     "data_path": "organic/C9H11NO3 - tyrosine/nk/Leite.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.21,
+      0.32
+     ],
+     "single_point": false,
+     "comments": "L-Tyrosine film. Kappa values are also available in the supporting information of the original publication.",
+     "temperature_c": null,
+     "types": [
+      "tabulated nk"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C9H11NO3 (Tyrosine)",
+   "about_yml_formula": "C9H11NO3",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "CH4N2O",
+   "name": "Urea",
+   "formula": "CH4N2O",
+   "book": "urea",
+   "shelf": "organic",
+   "materialclass": "biomolecule",
+   "pubchem_name": "Urea",
+   "pages": null,
+   "note": "single crystal, uniaxial (o/e)",
+   "status": "FOUND",
+   "n_pages": 2,
+   "n_papers": 1,
+   "papers": [
+    "Rosker et al. 1985"
+   ],
+   "datasets": [
+    {
+     "page": "Rosker-o",
+     "title": "Rosker et al. 1985: n(o) 0.3\u20131.06 \u00b5m",
+     "paper": "Rosker et al. 1985",
+     "data_path": "organic/CH4N2O - urea/nk/Rosker-o.yml",
+     "axis": "o-ray",
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.3,
+      1.06
+     ],
+     "single_point": false,
+     "comments": "Room temperature. Ordinary ray (o).",
+     "temperature_c": null,
+     "types": [
+      "formula 4"
+     ]
+    },
+    {
+     "page": "Rosker-e",
+     "title": "Rosker et al. 1985: n(e) 0.3\u20131.06 \u00b5m",
+     "paper": "Rosker et al. 1985",
+     "data_path": "organic/CH4N2O - urea/nk/Rosker-e.yml",
+     "axis": "e-ray",
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.3,
+      1.06
+     ],
+     "single_point": false,
+     "comments": "Room temperature. Extraordinary ray (e).",
+     "temperature_c": null,
+     "types": [
+      "formula 9"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "CH4N2O (Urea)",
+   "about_yml_formula": "CH4N2O",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "C12H24O12",
+   "name": "Lactose monohydrate",
+   "formula": "C12H24O12",
+   "book": "lactose_monohydrate",
+   "shelf": "organic",
+   "materialclass": "biomolecule",
+   "pubchem_name": "Lactose monohydrate",
+   "pages": null,
+   "note": "measured as a powder",
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Juntunen et al. 2024"
+   ],
+   "datasets": [
+    {
+     "page": "Juntunen",
+     "title": "Juntunen et al. 2024: n 1.10\u20131.65 \u00b5m",
+     "paper": "Juntunen et al. 2024",
+     "data_path": "organic/C12H24O12 - lactose monohydrate/nk/Juntunen.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      1.1,
+      1.65
+     ],
+     "single_point": false,
+     "comments": "Powder. 23 \u00b0C",
+     "temperature_c": 22.85,
+     "types": [
+      "formula 5"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "C12H24O12 (Lactose monohydrate)",
+   "about_yml_formula": "C12H24O12",
+   "about_yml_formula_matches": true
+  },
+  {
+   "key": "DNA",
+   "name": "DNA (sodium salt, calf thymus)",
+   "formula": null,
+   "book": "DNA",
+   "shelf": "other",
+   "materialclass": "biomacromolecule",
+   "pubchem_name": null,
+   "pages": null,
+   "note": "dry film; a biopolymer with no single molecular formula",
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Inagaki et al. 1974"
+   ],
+   "datasets": [
+    {
+     "page": "Inagaki",
+     "title": "Inagaki et al. 1974: n,k 0.015\u20130.62 \u00b5m",
+     "paper": "Inagaki et al. 1974",
+     "data_path": "other/human body/DNA/nk/Inagaki.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.0151,
+      0.6199
+     ],
+     "single_point": false,
+     "comments": "Dry films of deoxyribonucleic acid (sodium salt of calf thymus DNA)",
+     "temperature_c": null,
+     "types": [
+      "tabulated nk"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "DNA",
+   "about_yml_formula": null,
+   "about_yml_formula_matches": null
+  },
+  {
+   "key": "silk-Bm",
+   "name": "Silk fibroin (Bombyx mori)",
+   "formula": null,
+   "book": "Bombyx_mori",
+   "shelf": "other",
+   "materialclass": "biomacromolecule",
+   "pubchem_name": null,
+   "pages": null,
+   "note": "fibroin films; a protein with no single molecular formula",
+   "status": "MULTI_PAPER",
+   "n_pages": 10,
+   "n_papers": 2,
+   "papers": [
+    "Bucciarelli et al. 2018",
+    "Perotto et al. 2017"
+   ],
+   "datasets": [
+    {
+     "page": "Bucciarelli-FPP_FA_Ex",
+     "title": "Bucciarelli et al. 2018: Photocrosslinkable fibroin film, crosslinked; n 0.4\u20131.5 \u00b5m",
+     "paper": "Bucciarelli et al. 2018",
+     "data_path": "other/silk/Bombyx mori/nk/Bucciarelli-FPP_FA_Ex.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      1.5
+     ],
+     "single_point": false,
+     "comments": "Photocrosslinkable fibroin film. Formed using formic acid. Crosslinked.",
+     "temperature_c": null,
+     "types": [
+      "formula 5"
+     ]
+    },
+    {
+     "page": "Bucciarelli-FPP_FA_Unex",
+     "title": "Bucciarelli et al. 2018: Photocrosslinkable fibroin film, uncrosslinked; n 0.4\u20131.5 \u00b5m",
+     "paper": "Bucciarelli et al. 2018",
+     "data_path": "other/silk/Bombyx mori/nk/Bucciarelli-FPP_FA_Unex.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      1.5
+     ],
+     "single_point": false,
+     "comments": "Photocrosslinkable fibroin film. Formed using formic acid. Uncrosslinked.",
+     "temperature_c": null,
+     "types": [
+      "formula 5"
+     ]
+    },
+    {
+     "page": "Bucciarelli-rSF_FA",
+     "title": "Bucciarelli et al. 2018: Pure fibroin film, formed using formic acid; n 0.4\u20131.5 \u00b5m",
+     "paper": "Bucciarelli et al. 2018",
+     "data_path": "other/silk/Bombyx mori/nk/Bucciarelli-rSF_FA.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      1.5
+     ],
+     "single_point": false,
+     "comments": "Pure fibroin (regenerated silk fibroin) film. Formed using formic acid.",
+     "temperature_c": null,
+     "types": [
+      "formula 5"
+     ]
+    },
+    {
+     "page": "Bucciarelli-rSF_H2O",
+     "title": "Bucciarelli et al. 2018: Pure fibroin film, formed using water; n 0.4\u20131.5 \u00b5m",
+     "paper": "Bucciarelli et al. 2018",
+     "data_path": "other/silk/Bombyx mori/nk/Bucciarelli-rSF_H2O.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      1.5
+     ],
+     "single_point": false,
+     "comments": "Pure fibroin (regenerated silk fibroin) film. Formed using water.",
+     "temperature_c": null,
+     "types": [
+      "formula 5"
+     ]
+    },
+    {
+     "page": "Bucciarelli-SPP_FA_Ex",
+     "title": "Bucciarelli et al. 2018: Photocrosslinkable sericin film, crosslinked; n 0.4\u20131.5 \u00b5m",
+     "paper": "Bucciarelli et al. 2018",
+     "data_path": "other/silk/Bombyx mori/nk/Bucciarelli-SPP_FA_Ex.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      1.5
+     ],
+     "single_point": false,
+     "comments": "Photocrosslinkable sericin film. Formed using formic acid. Crosslinked.",
+     "temperature_c": null,
+     "types": [
+      "formula 5"
+     ]
+    },
+    {
+     "page": "Bucciarelli-SPP_FA_Unex",
+     "title": "Bucciarelli et al. 2018: Photocrosslinkable sericin film, uncrosslinked; n 0.4\u20131.5 \u00b5m",
+     "paper": "Bucciarelli et al. 2018",
+     "data_path": "other/silk/Bombyx mori/nk/Bucciarelli-SPP_FA_Unex.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      1.5
+     ],
+     "single_point": false,
+     "comments": "Photocrosslinkable sericin film. Formed using formic acid. Uncrosslinked.",
+     "temperature_c": null,
+     "types": [
+      "formula 5"
+     ]
+    },
+    {
+     "page": "Bucciarelli-SN_FA",
+     "title": "Bucciarelli et al. 2018: Sericin film; n 0.4\u20131.5 \u00b5m",
+     "paper": "Bucciarelli et al. 2018",
+     "data_path": "other/silk/Bombyx mori/nk/Bucciarelli-SN_FA.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      1.5
+     ],
+     "single_point": false,
+     "comments": "Sericin film. Formed using formic acid.",
+     "temperature_c": null,
+     "types": [
+      "formula 5"
+     ]
+    },
+    {
+     "page": "Perotto",
+     "title": "Perotto et al. 2017: Native fibroin film; n 0.3\u20131.7 \u00b5m",
+     "paper": "Perotto et al. 2017",
+     "data_path": "other/silk/Bombyx mori/nk/Perotto.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "formula+tabulated",
+     "span_um": [
+      0.3,
+      1.7
+     ],
+     "single_point": false,
+     "comments": "Native Bombyx mori (silkworm) fibroin film",
+     "temperature_c": null,
+     "types": [
+      "formula 5",
+      "tabulated k"
+     ]
+    },
+    {
+     "page": "Perotto-uncrystallized",
+     "title": "Perotto et al. 2017: Uncrystallized fibroin film; n 0.3\u20131.7 \u00b5m",
+     "paper": "Perotto et al. 2017",
+     "data_path": "other/silk/Bombyx mori/nk/Perotto-uncrystallized.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "formula+tabulated",
+     "span_um": [
+      0.3,
+      1.7
+     ],
+     "single_point": false,
+     "comments": "Uncrystallized Bombyx mori (silkworm) fibroin film",
+     "temperature_c": null,
+     "types": [
+      "formula 5",
+      "tabulated k"
+     ]
+    },
+    {
+     "page": "Perotto-crystallized",
+     "title": "Perotto et al. 2017: Crystallized fibroin film; n 0.3\u20131.7 \u00b5m",
+     "paper": "Perotto et al. 2017",
+     "data_path": "other/silk/Bombyx mori/nk/Perotto-crystallized.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "formula+tabulated",
+     "span_um": [
+      0.3,
+      1.7
+     ],
+     "single_point": false,
+     "comments": "Uncrystallized Bombyx mori (silkworm) fibroin film",
+     "temperature_c": null,
+     "types": [
+      "formula 5",
+      "tabulated k"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "Bombyx mori (silkworm) silk",
+   "about_yml_formula": null,
+   "about_yml_formula_matches": null
+  },
+  {
+   "key": "silk-Am",
+   "name": "Silk fibroin (Antheraea mylitta)",
+   "formula": null,
+   "book": "Antheraea_mylitta",
+   "shelf": "other",
+   "materialclass": "biomacromolecule",
+   "pubchem_name": null,
+   "pages": null,
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Perotto et al. 2017"
+   ],
+   "datasets": [
+    {
+     "page": "Perotto",
+     "title": "Perotto et al. 2017: Fibroin film; n 0.3\u20131.695 \u00b5m",
+     "paper": "Perotto et al. 2017",
+     "data_path": "other/silk/Antheraea mylitta/nk/Perotto.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "formula+tabulated",
+     "span_um": [
+      0.3,
+      1.695
+     ],
+     "single_point": false,
+     "comments": "Antheraea mylitta fibroin film",
+     "temperature_c": null,
+     "types": [
+      "formula 5",
+      "tabulated k"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "Antheraea mylitta silk",
+   "about_yml_formula": null,
+   "about_yml_formula_matches": null
+  },
+  {
+   "key": "silk-Sr",
+   "name": "Silk fibroin (Samia ricini)",
+   "formula": null,
+   "book": "Samia_ricini",
+   "shelf": "other",
+   "materialclass": "biomacromolecule",
+   "pubchem_name": null,
+   "pages": null,
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Perotto et al. 2017"
+   ],
+   "datasets": [
+    {
+     "page": "Perotto",
+     "title": "Perotto et al. 2017: Fibroin film; n 0.3\u20131.695 \u00b5m",
+     "paper": "Perotto et al. 2017",
+     "data_path": "other/silk/Samia ricini/nk/Perotto.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "formula+tabulated",
+     "span_um": [
+      0.3,
+      1.695
+     ],
+     "single_point": false,
+     "comments": "Samia ricini (eri silkworm) fibroin film",
+     "temperature_c": null,
+     "types": [
+      "formula 5",
+      "tabulated k"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "Samia ricini (eri silkworm) silk",
+   "about_yml_formula": null,
+   "about_yml_formula_matches": null
+  },
+  {
+   "key": "silk-Aa",
+   "name": "Silk fibroin (Antheraea assamensis)",
+   "formula": null,
+   "book": "Antheraea_assamensis",
+   "shelf": "other",
+   "materialclass": "biomacromolecule",
+   "pubchem_name": null,
+   "pages": null,
+   "note": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Perotto et al. 2017"
+   ],
+   "datasets": [
+    {
+     "page": "Perotto",
+     "title": "Perotto et al. 2017: Fibroin film; n 0.3\u20131.695 \u00b5m",
+     "paper": "Perotto et al. 2017",
+     "data_path": "other/silk/Antheraea assamensis/nk/Perotto.yml",
+     "axis": null,
+     "phase": null,
+     "kind": "nk",
+     "dispersion": "formula+tabulated",
+     "span_um": [
+      0.3,
+      1.695
+     ],
+     "single_point": false,
+     "comments": "Antheraea assamensis fibroin film",
+     "temperature_c": null,
+     "types": [
+      "formula 5",
+      "tabulated k"
+     ]
+    }
+   ],
+   "excluded_pages": [],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "ri_book_title": "Antheraea assamensis silk",
+   "about_yml_formula": null,
+   "about_yml_formula_matches": null
+  }
+ ],
+ "excluded_pages": {
+  "organic/hexane/Chang": "isomer not stated on the page (hexane); the book's other pages are n-hexane",
+  "organic/butanol/El-Kashef": "isomer not stated on the page (butanol); the book holds both 1-butanol and isobutanol",
+  "main/CS2/Chemnitz": "the Sellmeier fit (stated for 0.3-12 um) has a pole inside its range at CS2's ~6.5 um absorption band: n^2 <= 0 from 6.477 to 6.592 um and n > 5 up to 6.605 um, which the pipeline would store as floored n ~1e-15. Same open decision as GaSe (load the fit with that window removed?); CS2's other three papers are loaded"
+ },
+ "out_of_family": {
+  "organic/methane": "gas at room temperature (a gases family)",
+  "organic/ethane": "gas at room temperature (a gases family)",
+  "organic/ethylene": "gas at room temperature (a gases family)",
+  "organic/acetylene": "gas at room temperature (a gases family)",
+  "main/H2": "gas at room temperature (a gases family)",
+  "main/D2": "gas at room temperature (a gases family)",
+  "main/NH3": "gas at room temperature (a gases family)",
+  "main/Ar": "only a cryogenic or molten liquid page in a book of an element that is a gas or solid at room temperature",
+  "main/Kr": "only a cryogenic or molten liquid page in a book of an element that is a gas or solid at room temperature",
+  "main/Xe": "only a cryogenic or molten liquid page in a book of an element that is a gas or solid at room temperature",
+  "main/Na": "only a cryogenic or molten liquid page in a book of an element that is a gas or solid at room temperature",
+  "main/MgH2": "solid inorganic hydride",
+  "main/TiH2": "solid inorganic hydride",
+  "organic/potassium_hydrogen_phthalate": "organic molecular solid that is not a biomolecule (a molecular-solids family)",
+  "organic/SQIB": "organic molecular solid that is not a biomolecule (a molecular-solids family)",
+  "organic/ProSQ-C16": "organic molecular solid that is not a biomolecule (a molecular-solids family)",
+  "organic/rhodamine_6g": "organic molecular solid that is not a biomolecule (a molecular-solids family)",
+  "organic/acetaminophen": "powder dispersed in microcrystalline cellulose (a mixture), not the pure compound",
+  "other/Cu-C12H4N4": "solid organic charge-transfer salt, not a liquid or biomolecule",
+  "other/Li-C12H4N4": "solid organic charge-transfer salt, not a liquid or biomolecule",
+  "other/H2O-C3H5_OH_3": "mixture with no single composition (needs a composition decision: a mixtures family)",
+  "other/D2O-C3H5_OH_3": "mixture with no single composition (needs a composition decision: a mixtures family)",
+  "other/PBS": "mixture with no single composition (needs a composition decision: a mixtures family)",
+  "other/BME": "mixture with no single composition (needs a composition decision: a mixtures family)",
+  "other/Leica_Type_F": "mixture with no single composition (needs a composition decision: a mixtures family)",
+  "other/Olympus_IMMOIL-F30CC": "mixture with no single composition (needs a composition decision: a mixtures family)",
+  "other/Sigma_Aldrich_M5904": "mixture with no single composition (needs a composition decision: a mixtures family)",
+  "other/TherminolVP-1": "mixture with no single composition (needs a composition decision: a mixtures family)",
+  "other/biodisel": "mixture with no single composition (needs a composition decision: a mixtures family)",
+  "other/Eukitt": "mixture with no single composition (needs a composition decision: a mixtures family)",
+  "other/FluorSave": "mixture with no single composition (needs a composition decision: a mixtures family)",
+  "specs/Cargille": "mixture with no single composition (needs a composition decision: a mixtures family)",
+  "other/5CB": "liquid crystal: anisotropic, temperature-dependent phases (a liquid-crystals family); E7, E44 and the MLC/TL grades are mixtures",
+  "other/5PCH": "liquid crystal: anisotropic, temperature-dependent phases (a liquid-crystals family); E7, E44 and the MLC/TL grades are mixtures",
+  "other/E7": "liquid crystal: anisotropic, temperature-dependent phases (a liquid-crystals family); E7, E44 and the MLC/TL grades are mixtures",
+  "other/E44": "liquid crystal: anisotropic, temperature-dependent phases (a liquid-crystals family); E7, E44 and the MLC/TL grades are mixtures",
+  "other/MLC-6241-000": "liquid crystal: anisotropic, temperature-dependent phases (a liquid-crystals family); E7, E44 and the MLC/TL grades are mixtures",
+  "other/MLC-6608": "liquid crystal: anisotropic, temperature-dependent phases (a liquid-crystals family); E7, E44 and the MLC/TL grades are mixtures",
+  "other/MLC-9200-000": "liquid crystal: anisotropic, temperature-dependent phases (a liquid-crystals family); E7, E44 and the MLC/TL grades are mixtures",
+  "other/MLC-9200-100": "liquid crystal: anisotropic, temperature-dependent phases (a liquid-crystals family); E7, E44 and the MLC/TL grades are mixtures",
+  "other/TL-216": "liquid crystal: anisotropic, temperature-dependent phases (a liquid-crystals family); E7, E44 and the MLC/TL grades are mixtures",
+  "other/blood": "biological tissue: a mixture with no single composition (a biological-tissues family)",
+  "other/adipose_tissue": "biological tissue: a mixture with no single composition (a biological-tissues family)",
+  "other/liver": "biological tissue: a mixture with no single composition (a biological-tissues family)",
+  "other/colon": "biological tissue: a mixture with no single composition (a biological-tissues family)"
+ }
+}

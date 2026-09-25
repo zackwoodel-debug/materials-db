@@ -50,8 +50,8 @@ import release_descriptors as rd  # noqa: E402
 
 BASE_DB = _ROOT / "data" / "materials_oxide_test.db"
 FAMILY_CSVS = ["oxides_50", "batch2_31", "batch3b_4", "pure_elements_50", "nitrides", "polymers", "inorganic3", "halides",
-               "chalcogenides"]
-GAP_CSVS = ["nitride_gaps", "polymer_gaps", "inorganic3_gaps", "halide_gaps", "chalcogenide_gaps"]
+               "chalcogenides", "liquids"]
+GAP_CSVS = ["nitride_gaps", "polymer_gaps", "inorganic3_gaps", "halide_gaps", "chalcogenide_gaps", "liquid_gaps"]
 DESCRIPTOR_INPUTS = ["mp_structural.json", "polymer_repeat_units.csv", "formula_issues.csv"]
 # Same allow-list as tests/test_family_optical_sanity.py (a test keeps them equal): measurement noise around k = 0 in tabulated sources.
 NEGATIVE_K_ALLOWED = {
@@ -72,12 +72,14 @@ def family_jobs():
     import load_chalcogenides_db as chl
     import load_halides_db as hal
     import load_inorganic3_db as i3
+    import load_liquids_db as liq
     import load_nitrides_db as nit
     import load_polymers_db as pol  # noqa: F401  (kwargs below mirror its main())
     lit = lambda m: dict(literature_title=m.LITERATURE_TITLE, literature_technique=m.LITERATURE_TECHNIQUE, literature_note=m.LITERATURE_NOTE)
     return [("nitride", nit, lit(nit)),
             ("polymer", pol, dict(allow_null_formula=True, reference_sources=False, collapse_block_duplicates=True)),
-            ("inorganic3", i3, lit(i3)), ("halide", hal, lit(hal)), ("chalcogenide", chl, lit(chl))]
+            ("inorganic3", i3, lit(i3)), ("halide", hal, lit(hal)), ("chalcogenide", chl, lit(chl)),
+            ("liquid", liq, dict(lit(liq), allow_null_formula=True))]
 
 
 def family_rows():
@@ -141,11 +143,11 @@ def populate_descriptors(conn):
         labels[mid].append(lab)
     conn.execute("DELETE FROM chemical_descriptors")
     coverage = defaultdict(int)
-    for mid, name, formula in conn.execute("SELECT material_id, name, formula FROM materials ORDER BY material_id").fetchall():
+    for mid, name, formula, smiles in conn.execute("SELECT material_id, name, formula, smiles FROM materials ORDER BY material_id").fetchall():
         if name not in rows:
             raise ReleaseError(f"material {name!r} is in the DB but in no family CSV")
         family, csv_row = rows[name]
-        cols, doc = rd.descriptor_row(name, formula, family, csv_row, labels[mid], mp, units, issues)
+        cols, doc = rd.descriptor_row(name, formula, family, csv_row, labels[mid], mp, units, issues, smiles=smiles)
         conn.execute("INSERT INTO chemical_descriptors(material_id, exact_mass, tpsa, logp, heavy_atom_count, rotatable_bonds, hbond_donors, "
                      "hbond_acceptors, aromatic_rings, descriptor_json, morgan_fp) VALUES (?,?,?,?,?,?,?,?,?,?,?)",
                      (mid, cols["exact_mass"], cols["tpsa"], cols["logp"], cols["heavy_atom_count"], cols["rotatable_bonds"],
@@ -290,7 +292,8 @@ def write_readme(path, version, facts, c, mp_version):
     path.write_text(f"""# materials-db v{version}
 
 Optical constants (n, k), densities, x-ray and neutron scattering length densities, and compositional, structural and
-molecular descriptors for **{n_mat} materials**: {c['datasets']} optical datasets and {c['tables']['optical_dispersion']:,} optical
+molecular descriptors for **{n_mat} materials** (inorganic crystals and glasses, metals, polymers, molecular liquids and
+biomolecules): {c['datasets']} optical datasets and {c['tables']['optical_dispersion']:,} optical
 data points. All of it is in one SQLite file, `materials-db-v{version}.sqlite`, and every table is also exported as CSV in `csv/`.
 
 Licence: **CC BY 4.0**. Cite this dataset and the upstream sources listed in `DATA_LICENSE.md` (refractiveindex.info,
@@ -331,8 +334,8 @@ is NULL, and `descriptor_json` explains why.
   {mp_version} and are **calculated, not measured**. `applies_to` says whether the entry is the material itself or only a
   crystalline reference for a film or amorphous sample.
 - **molecular** ({cov.get('molecular', 0)}/{n_mat}): RDKit exact mass, TPSA, logP, rotatable bonds, H-bond donors and
-  acceptors, aromatic rings and a Morgan fingerprint (radius 2, 2048 bits). These are computed on polymer repeat units, and each
-  repeat unit is checked against the source's formula. They are not computed for inorganic solids, because those are not
+  acceptors, aromatic rings and a Morgan fingerprint (radius 2, 2048 bits). These are computed on molecules (liquids and
+  biomolecules, from PubChem's SMILES) and on polymer repeat units, each checked against the source's formula. They are not computed for inorganic solids, because those are not
   molecules; exact mass and heavy-atom count still come from their formula.
 
 ## Calculated vs measured, and caveats
@@ -342,8 +345,12 @@ is NULL, and `descriptor_json` explains why.
 - Materials without a density (no reliable value) have no SLD. The family tables' `flags` say why.
 - Known open items: GaSe is deferred (its formulas go non-physical inside their stated range). The SnSe alpha axis is
   excluded (the source data is not physical). PDCBT's recorded formula conflicts with its own name, so it has no formula
-  descriptors. The legacy benchmark set (water, ethanol, DMSO, DPPC, BSA, ITO, PTFE, PEEK, nylon 6,6, PEG, polyethylenimine)
-  is not included yet, because its units and labels do not match.
+  descriptors. CS2's Chemnitz 2017 fit is excluded (same problem as GaSe). The legacy benchmark set is not included: water,
+  ethanol and DMSO come from the liquids family instead; DPPC, BSA, PTFE, PEEK, nylon 6,6, PEG and polyethylenimine are not in
+  refractiveindex.info; ITO is (other/In2O3-SnO2) and belongs with a later mixed-oxides batch.
+- Liquid densities carry their temperature (`physical_properties.temperature_c`). They come from the CIPM water formula, NIST
+  reference equations of state, or PubChem records that are all physically consistent with each other; otherwise they are
+  left empty.
 
 ## Files
 

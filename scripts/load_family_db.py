@@ -304,6 +304,8 @@ def load_optical_axis(conn, material_id, source_id, axis_entry, effective_polymo
     data_path = axis_entry["data_path"]
     dataset_label = axis_entry["dataset_label"]
     wl_nm, n_val, k_val, refs, temp_c = parse_file(RI_DATA_ROOT / data_path)
+    if temp_c is None and axis_entry.get("temperature_c") is not None:
+        temp_c = float(axis_entry["temperature_c"])  # stated in the page text ("293 K (20 degC)"); only families whose matcher records it
     keep = collapse_block_duplicates(data_path, wl_nm, n_val, report) if collapse_block_duplicates_flag else list(range(len(wl_nm)))
     total = len(keep)
 
@@ -350,6 +352,8 @@ def load_physical_properties(conn, material_id, row, mp_source_id, literature_so
     report = report or Report("adhoc")
     density = row.get("density_g_cm3")
     density_source = row.get("density_source")
+    # a liquid's density is only meaningful at its temperature: families that state it get it on the density and SLD rows
+    at_t = {"temperature_c": float(row["density_temperature_c"])} if pd.notna(row.get("density_temperature_c")) else {}
 
     if pd.notna(density):
         citation_doi = row.get("density_citation_doi")
@@ -373,20 +377,20 @@ def load_physical_properties(conn, material_id, row, mp_source_id, literature_so
         else:
             src = mp_source_id if density_source == "MP_DFT" else literature_source_id
         _insert_physical(conn, report, material_id, label_join(effective_polymorph, f"density_{density_source}"),
-                         src, density_g_cm3=float(density))
+                         src, density_g_cm3=float(density), **at_t)
 
     for col in ("xray_sld_real", "xray_sld_imag"):
         if pd.notna(row.get(col)):
             _insert_physical(conn, report, material_id,
                              label_join(effective_polymorph, col, "periodictable_CuKalpha"),
                              periodictable_source_id, xray_sld=float(row[col]),
-                             energy_ev=XRAY_ENERGY_EV, wavelength_nm=XRAY_WAVELENGTH_NM)
+                             energy_ev=XRAY_ENERGY_EV, wavelength_nm=XRAY_WAVELENGTH_NM, **at_t)
     for col in ("neutron_sld_real", "neutron_sld_imag"):
         if pd.notna(row.get(col)):
             _insert_physical(conn, report, material_id,
                              label_join(effective_polymorph, col, "periodictable_thermal"),
                              periodictable_source_id, neutron_sld=float(row[col]),
-                             wavelength_nm=NEUTRON_WAVELENGTH_NM)
+                             wavelength_nm=NEUTRON_WAVELENGTH_NM, **at_t)
 
 
 # ---------------------------------------------------------------------------

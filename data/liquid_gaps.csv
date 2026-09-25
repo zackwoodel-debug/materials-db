@@ -1,0 +1,69 @@
+key,name,gap_kind,reason
+CH2Cl2,Dichloromethane,density,"PubChem density records are physically inconsistent (a wrong value or temperature label), so none is used: CAMEO Chemicals '1.322 at 68 °F (USCG, 1999) - Dens' vs PAC Chemical Database, U.S.  '1.3266 @ 20°C'"
+C6F14,Perfluorohexane,density,"PubChem density records are physically inconsistent (a wrong value or temperature label), so none is used: Hazardous Substances Data Ba '1.6910 g/cu cm at 20 °C' vs PAC Chemical Database, U.S.  '1.6995 @ 20°C'"
+C6H3Cl3,"1,2,4-Trichlorobenzene",density,"PubChem density records are physically inconsistent (a wrong value or temperature label), so none is used: CAMEO Chemicals '1.454 at 68 °F (USCG, 1999) - Dens' vs PAC Chemical Database, U.S.  '1.459 @25 °C'"
+C7F5N,Pentafluorobenzonitrile,density,"no PubChem density (>= 3 significant digits, stated temperature) within 10 degC of 21.85 degC (records: [])"
+2-C3H7OH,2-Propanol (isopropanol),density,"PubChem density records are physically inconsistent (a wrong value or temperature label), so none is used: Hazardous Substances Data Ba '0.78509 at 25 °C' vs PAC Chemical Database, U.S.  '0.7809 @25 °C'"
+1-C3H7OH,1-Propanol,density,"PubChem density records are physically inconsistent (a wrong value or temperature label), so none is used: CAMEO Chemicals '0.803 at 68 °F (USCG, 1999) - Less' vs PAC Chemical Database, U.S.  '0.8044 @25 °C'"
+C3H6O,Acetone,density,"PubChem density records are physically inconsistent (a wrong value or temperature label), so none is used: CAMEO Chemicals '0.791 at 68 °F (USCG, 1999) - Less' vs Hazardous Substances Data Ba '0.7845 g/cu cm at 20 °C'; Hazardous Substances Data Ba '0.7845 g/cu cm at 20 °C' vs PAC Chemical Database, U.S.  '0.791 @ 20°C'"
+C18H34O2,Oleic acid,density,"no PubChem density (>= 3 significant digits, stated temperature) within 10 degC of 20 degC (records: ['0.89 at 77 °F (USCG, 1999) - Less dense '])"
+C5H10O2-ipac,Isopropyl acetate,density,"PubChem density records are physically inconsistent (a wrong value or temperature label), so none is used: Hazardous Substances Data Ba '0.8718 @ 20 °C/4 °C' vs PAC Chemical Database, U.S.  '0.874 @25 °C'"
+C9H10O3,Ethyl salicylate,density,"no PubChem density (>= 3 significant digits, stated temperature) within 10 degC of 19.85 degC (records: [])"
+C11H12O2,Ethyl cinnamate,density,"no PubChem density (>= 3 significant digits, stated temperature) within 10 degC of 20 degC (records: [])"
+C12H14O4,Diethyl phthalate,density,"PubChem density records are physically inconsistent (a wrong value or temperature label), so none is used: CAMEO Chemicals '1.12 at 68 °F (USCG, 1999) - Dense' vs PAC Chemical Database, U.S.  '1.232 @ 14°C'"
+C2H6OS,Dimethyl sulfoxide,density,"PubChem density records are physically inconsistent (a wrong value or temperature label), so none is used: Hazardous Substances Data Ba '1.100 at 20 °C/4 °C' vs PAC Chemical Database, U.S.  '1.101 @25 °C'"
+C3H9O3P,Dimethyl methylphosphonate,density,"PubChem density records are physically inconsistent (a wrong value or temperature label), so none is used: CAMEO Chemicals '1.1596 at 77 °F (NTP, 1992) - Dens' vs Hazardous Substances Data Ba '1.1507 g/cu cm at 20 °C'; Hazardous Substances Data Ba '1.1507 g/cu cm at 20 °C' vs PAC Chemical Database, U.S.  '1.168 @ 20°C'"
+C4H10O3S,Diethyl sulfite,density,"no PubChem density (>= 3 significant digits, stated temperature) within 10 degC of 20 degC (records: [])"
+C7H17O3P,Diisopropyl methylphosphonate,density,"no PubChem density (>= 3 significant digits, stated temperature) within 10 degC of 20 degC (records: [])"
+C9H8O,Cinnamaldehyde,density,"no PubChem density (>= 3 significant digits, stated temperature) within 10 degC of 23.85 degC (records: [])"
+C9H11NO3,L-Tyrosine,density,"no PubChem density (>= 3 significant digits, stated temperature) within 10 degC of 20 degC (records: [])"
+CH4N2O,Urea,density,"PubChem density records are physically inconsistent (a wrong value or temperature label), so none is used: CAMEO Chemicals '1.34 at 68 °F (USCG, 1999) - Dense' vs Hazardous Substances Data Ba '1.3230 @ 20 °C/4 °C'; Hazardous Substances Data Ba '1.3230 @ 20 °C/4 °C' vs PAC Chemical Database, U.S.  '1.335 @25 °C'"
+C12H24O12,Lactose monohydrate,density,"no PubChem density (>= 3 significant digits, stated temperature) within 10 degC of 22.85 degC (records: [])"
+organic/hexane/Chang,hexane page Chang,excluded_page,isomer not stated on the page (hexane); the book's other pages are n-hexane
+organic/butanol/El-Kashef,butanol page El-Kashef,excluded_page,isomer not stated on the page (butanol); the book holds both 1-butanol and isobutanol
+main/CS2/Chemnitz,CS2 page Chemnitz,excluded_page,"the Sellmeier fit (stated for 0.3-12 um) has a pole inside its range at CS2's ~6.5 um absorption band: n^2 <= 0 from 6.477 to 6.592 um and n > 5 up to 6.605 um, which the pipeline would store as floored n ~1e-15. Same open decision as GaSe (load the fit with that window removed?); CS2's other three papers are loaded"
+organic/methane,organic/methane,out_of_family,gas at room temperature (a gases family)
+organic/ethane,organic/ethane,out_of_family,gas at room temperature (a gases family)
+organic/ethylene,organic/ethylene,out_of_family,gas at room temperature (a gases family)
+organic/acetylene,organic/acetylene,out_of_family,gas at room temperature (a gases family)
+main/H2,main/H2,out_of_family,gas at room temperature (a gases family)
+main/D2,main/D2,out_of_family,gas at room temperature (a gases family)
+main/NH3,main/NH3,out_of_family,gas at room temperature (a gases family)
+main/Ar,main/Ar,out_of_family,only a cryogenic or molten liquid page in a book of an element that is a gas or solid at room temperature
+main/Kr,main/Kr,out_of_family,only a cryogenic or molten liquid page in a book of an element that is a gas or solid at room temperature
+main/Xe,main/Xe,out_of_family,only a cryogenic or molten liquid page in a book of an element that is a gas or solid at room temperature
+main/Na,main/Na,out_of_family,only a cryogenic or molten liquid page in a book of an element that is a gas or solid at room temperature
+main/MgH2,main/MgH2,out_of_family,solid inorganic hydride
+main/TiH2,main/TiH2,out_of_family,solid inorganic hydride
+organic/potassium_hydrogen_phthalate,organic/potassium_hydrogen_phthalate,out_of_family,organic molecular solid that is not a biomolecule (a molecular-solids family)
+organic/SQIB,organic/SQIB,out_of_family,organic molecular solid that is not a biomolecule (a molecular-solids family)
+organic/ProSQ-C16,organic/ProSQ-C16,out_of_family,organic molecular solid that is not a biomolecule (a molecular-solids family)
+organic/rhodamine_6g,organic/rhodamine_6g,out_of_family,organic molecular solid that is not a biomolecule (a molecular-solids family)
+organic/acetaminophen,organic/acetaminophen,out_of_family,"powder dispersed in microcrystalline cellulose (a mixture), not the pure compound"
+other/Cu-C12H4N4,other/Cu-C12H4N4,out_of_family,"solid organic charge-transfer salt, not a liquid or biomolecule"
+other/Li-C12H4N4,other/Li-C12H4N4,out_of_family,"solid organic charge-transfer salt, not a liquid or biomolecule"
+other/H2O-C3H5_OH_3,other/H2O-C3H5_OH_3,out_of_family,mixture with no single composition (needs a composition decision: a mixtures family)
+other/D2O-C3H5_OH_3,other/D2O-C3H5_OH_3,out_of_family,mixture with no single composition (needs a composition decision: a mixtures family)
+other/PBS,other/PBS,out_of_family,mixture with no single composition (needs a composition decision: a mixtures family)
+other/BME,other/BME,out_of_family,mixture with no single composition (needs a composition decision: a mixtures family)
+other/Leica_Type_F,other/Leica_Type_F,out_of_family,mixture with no single composition (needs a composition decision: a mixtures family)
+other/Olympus_IMMOIL-F30CC,other/Olympus_IMMOIL-F30CC,out_of_family,mixture with no single composition (needs a composition decision: a mixtures family)
+other/Sigma_Aldrich_M5904,other/Sigma_Aldrich_M5904,out_of_family,mixture with no single composition (needs a composition decision: a mixtures family)
+other/TherminolVP-1,other/TherminolVP-1,out_of_family,mixture with no single composition (needs a composition decision: a mixtures family)
+other/biodisel,other/biodisel,out_of_family,mixture with no single composition (needs a composition decision: a mixtures family)
+other/Eukitt,other/Eukitt,out_of_family,mixture with no single composition (needs a composition decision: a mixtures family)
+other/FluorSave,other/FluorSave,out_of_family,mixture with no single composition (needs a composition decision: a mixtures family)
+specs/Cargille,specs/Cargille,out_of_family,mixture with no single composition (needs a composition decision: a mixtures family)
+other/5CB,other/5CB,out_of_family,"liquid crystal: anisotropic, temperature-dependent phases (a liquid-crystals family); E7, E44 and the MLC/TL grades are mixtures"
+other/5PCH,other/5PCH,out_of_family,"liquid crystal: anisotropic, temperature-dependent phases (a liquid-crystals family); E7, E44 and the MLC/TL grades are mixtures"
+other/E7,other/E7,out_of_family,"liquid crystal: anisotropic, temperature-dependent phases (a liquid-crystals family); E7, E44 and the MLC/TL grades are mixtures"
+other/E44,other/E44,out_of_family,"liquid crystal: anisotropic, temperature-dependent phases (a liquid-crystals family); E7, E44 and the MLC/TL grades are mixtures"
+other/MLC-6241-000,other/MLC-6241-000,out_of_family,"liquid crystal: anisotropic, temperature-dependent phases (a liquid-crystals family); E7, E44 and the MLC/TL grades are mixtures"
+other/MLC-6608,other/MLC-6608,out_of_family,"liquid crystal: anisotropic, temperature-dependent phases (a liquid-crystals family); E7, E44 and the MLC/TL grades are mixtures"
+other/MLC-9200-000,other/MLC-9200-000,out_of_family,"liquid crystal: anisotropic, temperature-dependent phases (a liquid-crystals family); E7, E44 and the MLC/TL grades are mixtures"
+other/MLC-9200-100,other/MLC-9200-100,out_of_family,"liquid crystal: anisotropic, temperature-dependent phases (a liquid-crystals family); E7, E44 and the MLC/TL grades are mixtures"
+other/TL-216,other/TL-216,out_of_family,"liquid crystal: anisotropic, temperature-dependent phases (a liquid-crystals family); E7, E44 and the MLC/TL grades are mixtures"
+other/blood,other/blood,out_of_family,biological tissue: a mixture with no single composition (a biological-tissues family)
+other/adipose_tissue,other/adipose_tissue,out_of_family,biological tissue: a mixture with no single composition (a biological-tissues family)
+other/liver,other/liver,out_of_family,biological tissue: a mixture with no single composition (a biological-tissues family)
+other/colon,other/colon,out_of_family,biological tissue: a mixture with no single composition (a biological-tissues family)
