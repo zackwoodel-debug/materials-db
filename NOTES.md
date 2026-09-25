@@ -12,21 +12,37 @@ Run from repo root. MP_API_KEY comes from `.env` (never printed). Schema is froz
 4. load:    `python3 scripts/load_nitrides_db.py [--dry-run] [--strict] [--report out.json]`  -> fresh data/materials_nitride_test.db
 5. audit:   `python3 -m pytest tests -q`;  `PYTHONPATH=.:src python3 src/materials_db/verify_all.py`;
             audit: `python3 -c "import sys;sys.path.insert(0,'src');from materials_db.core.audit import run_audit;run_audit()"`
-6. merge:   `python3 scripts/load_nitrides_db.py --merge-into <db> --report r.json` (idempotent upsert, one transaction, conflicts reported
-            never overwritten). Back up <db>, data/ML_feature_matrix.parquet and data/ML_feature_metadata.json first.
+6. merge:   families go into the release DB only: `python3 scripts/build_release.py --version X.Y.Z` (upserts every family onto
+            data/materials_oxide_test.db; see README "Downloadable dataset"). Do NOT merge into data/materials_normalized.db (below).
 7. parquet: `python3 scripts/generate_ml_training_set.py` (reads data/materials_normalized.db ONLY; refits the scaler).
 
-NOT MERGED YET. Rehearsal into materials_normalized.db worked (+6 materials, parquet 23 -> 29, no conflicts) but broke 4 existing
-guards (test_chemical_descriptors x2, test_property_inventory, test_validation_layer: pinned 2819 optical rows / a descriptors row per
-material). Merge only after deciding whether to update those guards. Also: the tracked parquet is stale vs the tracked DB (BSA smiles,
-Al2O3/ZnO/BSA fingerprints); regenerating refreshes those rows and refits 11 scaled feat_ columns for existing rows.
+DECIDED 2026-09-25: materials_normalized.db is NOT merged into. It stays frozen as the legacy 23-material benchmark its guard tests
+pin (2819 optical rows, a descriptors row per material). Reason: its SLDs are in 1/A^2 (Au xray 1.31e-4) and repeated 4-6x per
+material, while the families store 1e-6/A^2 with anomalous-scattering terms (Au xray 116.5); a merge would mix both in one column.
+The release DB (release/materials-db-vX.Y.Z/*.sqlite, published on GitHub) is the canonical database. The rehearsal merge (+6
+nitrides, parquet 23 -> 29, no conflicts) is therefore not pursued, and the 4 guards stay as they are.
 data/materials.db is the legacy schema and cannot take these tables; audit/verify_all read it and do not exercise nitrides.
 Generic loader: scripts/load_family_db.py (--family/--catalog/--selections/--db/--fresh/--dry-run/--strict/--report).
 
 ## FOLLOW-UPS
-1. Guard test vs spec: one guard pins a chemical-descriptors row per material; spec says oxides/nitrides get none. Blocks merge into materials_normalized.db. Decide before Phase 5.
-2. Tracked parquet is stale vs the DB independent of nitrides (wrong BSA SMILES; fingerprints for Al2O3/ZnO rows no longer in DB). Regenerate as its own commit.
-3. TiN/VN density rows cite a source whose note reads "used for As2S3 and HgS" (pre-existing). Attach a correct source; do not silently rewrite.
-4. ri_wl_min_nm / ri_wl_max_nm are empty for all nitrides (batch 2/3b never produced them).
+1. DONE (decision above): guard tests kept; materials_normalized.db is not merged into.
+2. DONE (PR #16): parquet regenerated; only BSA (wrong SMILES, was N,O-bis(trimethylsilyl)acetamide) and the Al2O3/ZnO fingerprints changed.
+3. DONE (PR #18): wider than TiN/VN. 37 bulk_elemental_approximation densities (TiN, VN, EuS, 33 elements, Sn) cited another batch's
+   literature source; the legacy loaders now cite an "MP bulk DFT density used as a film approximation" source. Values unchanged.
+4. DONE (PR #17): ri_wl_min_nm / ri_wl_max_nm were empty for 134 rows (nitrides, halides, chalcogenides, inorganic3, liquids); now
+   taken from the parsed primary-axis data.
 5. Non-stoichiometric SiNx (Kischkat, Beliaev, Vogt x3) not yet modelled; no SiNx material rows exist.
 6. Migrations 002-004 pending Aiden. Until 004, polymorph/axis live in dataset_label.
+7. After PRs #17 and #18 merge, publish v0.2.1 (v0.2.0 on GitHub still has the old citations and empty ranges).
+8. Optional: point generate_ml_training_set.py at the release DB so the ML set covers all 303 materials (new scaler; separate change).
+
+## FOLLOW-UP (logged, NOT started): graphene / 2D carbon as its own family -- materialclass must NOT be 'polymer'
+- RI.info main/C, verified read-only: monolayer graphene = Weber 2010 (0.21-1.0 um, exfoliated flake, 3.4 A, on Si/98 nm SiO2), Song 2018 "Graphene"
+  (0.193-1.69, CVD mono), Tikuisis 2023 (0.226-4.40, epitaxial on 6H-SiC), El-Sayed 2021 (0.24-1.0, CVD): four, not three. Song 2018 also holds 4 bulk-HOPG pages (graphite).
+- Hagemann 1974 (0.0000413-124 um) has NO material description (COMMENTS None): cannot be verified as graphene/graphite/amorphous C from RI.info; treat as NOT graphene.
+- Graphene, graphite (Djurisic, Querry pellets, HOPG), few-layer graphene, graphene oxide, rGO, CNTs, ta-C and diamond are DISTINCT materials. Never substitute graphite for monolayer.
+- Strongly anisotropic: in-plane (o) and out-of-plane (e) are separate rows. hBN already exists from the nitride batch (BN-hex): check for collision first.
+- Open question before any load: can the bulk n,k model represent a monolayer (sheet conductivity, effective-thickness dependence; Weber's n,k is tied to 3.4 A on a substrate)?
+  If not, document a schema limitation; do not import.
+- Other 2D candidates: MoS2, WS2, MoSe2, WSe2, black phosphorus. Explicit compounds only, no generic "TMD".
+
