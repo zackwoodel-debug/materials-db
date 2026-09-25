@@ -1,0 +1,630 @@
+{
+ "applied": true,
+ "dbs": [
+  {
+   "db": "materials_oxide_test.db",
+   "datasets": [
+    {
+     "data_path": "main/BaB2O4/nk/Eimerl-e.yml",
+     "material": "Barium borate (BBO)",
+     "dataset_label": "beta-BBO | Eimerl1987 | e-ray",
+     "rows": 500,
+     "rows_changed": 500,
+     "max_abs_dn": 0.10165691689602796,
+     "n_633_before": 1.5466064801705106,
+     "n_633_after": 1.550658627878745
+    },
+    {
+     "data_path": "main/BaB2O4/nk/Eimerl-o.yml",
+     "material": "Barium borate (BBO)",
+     "dataset_label": "beta-BBO | Eimerl1987 | o-ray",
+     "rows": 500,
+     "rows_changed": 500,
+     "max_abs_dn": 0.14589874679103998,
+     "n_633_before": 1.6626011048525553,
+     "n_633_after": 1.6680708697029967
+    },
+    {
+     "data_path": "main/BeAl2O4/nk/Walling-alpha.yml",
+     "material": "Chrysoberyl",
+     "dataset_label": "chrysoberyl | Walling1980 | alpha-axis",
+     "rows": 500,
+     "rows_changed": 500,
+     "max_abs_dn": 0.5008071485485486,
+     "n_633_before": 1.5998344916415728,
+     "n_633_after": 1.7407327088226976
+    },
+    {
+     "data_path": "main/BeAl2O4/nk/Walling-beta.yml",
+     "material": "Chrysoberyl",
+     "dataset_label": "chrysoberyl | Walling1980 | beta-axis",
+     "rows": 500,
+     "rows_changed": 500,
+     "max_abs_dn": 0.5765183041482889,
+     "n_633_before": 1.5807792551756878,
+     "n_633_after": 1.7463147921453772
+    },
+    {
+     "data_path": "main/BeAl2O4/nk/Walling-gamma.yml",
+     "material": "Chrysoberyl",
+     "dataset_label": "chrysoberyl | Walling1980 | gamma-axis",
+     "rows": 500,
+     "rows_changed": 500,
+     "max_abs_dn": 0.5278199052429267,
+     "n_633_before": 1.5894870080882533,
+     "n_633_after": 1.7388085600711405
+    },
+    {
+     "data_path": "main/BiB3O6/nk/Umemura-alpha.yml",
+     "material": "Bismuth triborate (BiBO)",
+     "dataset_label": "alpha-BiBO | Umemura2007 | alpha-axis",
+     "rows": 500,
+     "rows_changed": 500,
+     "max_abs_dn": 0.02533953659301713,
+     "n_633_before": 1.7670528974416986,
+     "n_633_after": 1.7766404004315381
+    },
+    {
+     "data_path": "main/BiB3O6/nk/Umemura-beta.yml",
+     "material": "Bismuth triborate (BiBO)",
+     "dataset_label": "alpha-BiBO | Umemura2007 | beta-axis",
+     "rows": 500,
+     "rows_changed": 500,
+     "max_abs_dn": 0.029322884402563698,
+     "n_633_before": 1.7956370556788324,
+     "n_633_after": 1.8066410823929842
+    },
+    {
+     "data_path": "main/BiB3O6/nk/Umemura-gamma.yml",
+     "material": "Bismuth triborate (BiBO)",
+     "dataset_label": "alpha-BiBO | Umemura2007 | gamma-axis",
+     "rows": 500,
+     "rows_changed": 500,
+     "max_abs_dn": 0.03804185516685754,
+     "n_633_before": 1.9316723342825992,
+     "n_633_after": 1.9458756910811916
+    },
+    {
+     "data_path": "main/CaGdAlO4/nk/Loiko-e.yml",
+     "material": "Calcium gadolinium aluminate",
+     "dataset_label": "K2NiF4-type | Loiko2017 | e-ray",
+     "rows": 500,
+     "rows_changed": 500,
+     "max_abs_dn": 0.06584590850276761,
+     "n_633_before": 1.9493595187580017,
+     "n_633_after": 1.9592368392444444
+    },
+    {
+     "data_path": "main/CaGdAlO4/nk/Loiko-o.yml",
+     "material": "Calcium gadolinium aluminate",
+     "dataset_label": "K2NiF4-type | Loiko2017 | o-ray",
+     "rows": 500,
+     "rows_changed": 500,
+     "max_abs_dn": 0.06893177324100552,
+     "n_633_before": 1.9256965459911084,
+     "n_633_after": 1.9358547174437897
+    },
+    {
+     "data_path": "main/CaYAlO4/nk/Loiko-e.yml",
+     "material": "Calcium yttrium aluminate",
+     "dataset_label": "K2NiF4-type | Loiko2017 | e-ray",
+     "rows": 500,
+     "rows_changed": 500,
+     "max_abs_dn": 0.060795939751417505,
+     "n_633_before": 1.9169240681287054,
+     "n_633_after": 1.9261113139318737
+    },
+    {
+     "data_path": "main/CaYAlO4/nk/Loiko-o.yml",
+     "material": "Calcium yttrium aluminate",
+     "dataset_label": "K2NiF4-type | Loiko2017 | o-ray",
+     "rows": 500,
+     "rows_changed": 500,
+     "max_abs_dn": 0.06361856560626888,
+     "n_633_before": 1.893919258825871,
+     "n_633_after": 1.9033888929221556
+    },
+    {
+     "data_path": "main/CdF2/nk/Bosomworth-300K.yml",
+     "material": "Cadmium fluoride",
+     "dataset_label": "Bosomworth1967",
+     "rows": 500,
+     "rows_changed": 500,
+     "max_abs_dn": 0.4172758431316135,
+     "n_633_before": null,
+     "n_633_after": null
+    },
+    {
+     "data_path": "main/CsLiB6O10/nk/Sasaki-e.yml",
+     "material": "Cesium lithium borate (CLBO)",
+     "dataset_label": "Sasaki2003 | e-ray",
+     "rows": 500,
+     "rows_changed": 500,
+     "max_abs_dn": 0.10809502021548978,
+     "n_633_before": 1.4387323834313228,
+     "n_633_after": 1.4415824375278514
+    },
+    {
+     "data_path": "main/CsLiB6O10/nk/Sasaki-o.yml",
+     "material": "Cesium lithium borate (CLBO)",
+     "dataset_label": "Sasaki2003 | o-ray",
+     "rows": 500,
+     "rows_changed": 500,
+     "max_abs_dn": 0.1297938566843615,
+     "n_633_before": 1.4905999180715768,
+     "n_633_after": 1.4939498517483627
+    },
+    {
+     "data_path": "main/GaS/nk/Kato-e.yml",
+     "material": "Gallium sulfide",
+     "dataset_label": "beta-GaS (2H) | Kato2011 | e-ray",
+     "rows": 500,
+     "rows_changed": 500,
+     "max_abs_dn": 0.05138711016181974,
+     "n_633_before": 2.3088663404990473,
+     "n_633_after": 2.360253450660867
+    },
+    {
+     "data_path": "main/GaS/nk/Kato-o.yml",
+     "material": "Gallium sulfide",
+     "dataset_label": "beta-GaS (2H) | Kato2011 | o-ray",
+     "rows": 500,
+     "rows_changed": 500,
+     "max_abs_dn": 0.07465913470563379,
+     "n_633_before": 2.6609030288931956,
+     "n_633_after": 2.7151659538272668
+    },
+    {
+     "data_path": "main/KNbO3/nk/Zysset-alpha.yml",
+     "material": "Potassium niobate",
+     "dataset_label": "Zysset1992 | alpha-axis",
+     "rows": 500,
+     "rows_changed": 500,
+     "max_abs_dn": 7.480211801673029,
+     "n_633_before": 2.6890565955339536,
+     "n_633_after": 2.1682618026366187
+    },
+    {
+     "data_path": "main/KNbO3/nk/Zysset-beta.yml",
+     "material": "Potassium niobate",
+     "dataset_label": "Zysset1992 | beta-axis",
+     "rows": 500,
+     "rows_changed": 500,
+     "max_abs_dn": 49.9300738685181,
+     "n_633_before": 2.896885209307021,
+     "n_633_after": 2.2795906359698197
+    },
+    {
+     "data_path": "main/KNbO3/nk/Zysset-gamma.yml",
+     "material": "Potassium niobate",
+     "dataset_label": "Zysset1992 | gamma-axis",
+     "rows": 500,
+     "rows_changed": 500,
+     "max_abs_dn": 7.671487936792076,
+     "n_633_before": 3.0517991850389596,
+     "n_633_after": 2.3289830779495535
+    },
+    {
+     "data_path": "main/LiB3O5/nk/Chen-alpha.yml",
+     "material": "Lithium triborate (LBO)",
+     "dataset_label": "Chen1989 | alpha-axis",
+     "rows": 500,
+     "rows_changed": 500,
+     "max_abs_dn": 0.041850818502123355,
+     "n_633_before": 1.5711294240299876,
+     "n_633_after": 1.5743523152798593
+    },
+    {
+     "data_path": "main/LiB3O5/nk/Chen-beta.yml",
+     "material": "Lithium triborate (LBO)",
+     "dataset_label": "Chen1989 | beta-axis",
+     "rows": 500,
+     "rows_changed": 500,
+     "max_abs_dn": 0.04077733899398406,
+     "n_633_before": 1.59634066422422,
+     "n_633_after": 1.6011419198479664
+    },
+    {
+     "data_path": "main/LiB3O5/nk/Chen-gamma.yml",
+     "material": "Lithium triborate (LBO)",
+     "dataset_label": "Chen1989 | gamma-axis",
+     "rows": 500,
+     "rows_changed": 500,
+     "max_abs_dn": 0.0476320313606835,
+     "n_633_before": 1.6122057343082272,
+     "n_633_after": 1.6161701355421831
+    },
+    {
+     "data_path": "main/LiCaAlF6/nk/Woods-e.yml",
+     "material": "Lithium calcium aluminum fluoride (LiCAF)",
+     "dataset_label": "colquiriite | Woods1991 | e-ray",
+     "rows": 500,
+     "rows_changed": 499,
+     "max_abs_dn": 0.00701926863289426,
+     "n_633_before": 1.388499818578816,
+     "n_633_after": 1.390167272414123
+    },
+    {
+     "data_path": "main/LiCaAlF6/nk/Woods-o.yml",
+     "material": "Lithium calcium aluminum fluoride (LiCAF)",
+     "dataset_label": "colquiriite | Woods1991 | o-ray",
+     "rows": 500,
+     "rows_changed": 499,
+     "max_abs_dn": 0.006953922375986021,
+     "n_633_before": 1.3898458042927309,
+     "n_633_after": 1.39150162508336
+    },
+    {
+     "data_path": "main/LiIO3/nk/Umegaki-e.yml",
+     "material": "Lithium iodate",
+     "dataset_label": "Umegaki1971 | e-ray",
+     "rows": 500,
+     "rows_changed": 500,
+     "max_abs_dn": 0.04890771431318419,
+     "n_633_before": 1.724899529185811,
+     "n_633_after": 1.7353311548887125
+    },
+    {
+     "data_path": "main/LiIO3/nk/Umegaki-o.yml",
+     "material": "Lithium iodate",
+     "dataset_label": "Umegaki1971 | o-ray",
+     "rows": 500,
+     "rows_changed": 500,
+     "max_abs_dn": 0.06481505630911877,
+     "n_633_before": 1.8683633910313044,
+     "n_633_after": 1.8816487438705913
+    },
+    {
+     "data_path": "main/Lu3Al5O12/nk/Hrabovsky.yml",
+     "material": "LuAG",
+     "dataset_label": "garnet | Hrabovsky2021",
+     "rows": 500,
+     "rows_changed": 500,
+     "max_abs_dn": 8.833940008788394,
+     "n_633_before": 1.9883889964134445,
+     "n_633_after": 1.8360195267142263
+    },
+    {
+     "data_path": "main/LuAl3(BO3)4/nk/Fang-e.yml",
+     "material": "Lutetium aluminium borate",
+     "dataset_label": "Fang2013 | e-ray",
+     "rows": 500,
+     "rows_changed": 500,
+     "max_abs_dn": 0.05970515742459259,
+     "n_633_before": 1.696856172703075,
+     "n_633_after": 1.7011678277981748
+    },
+    {
+     "data_path": "main/LuAl3(BO3)4/nk/Fang-o.yml",
+     "material": "Lutetium aluminium borate",
+     "dataset_label": "Fang2013 | o-ray",
+     "rows": 500,
+     "rows_changed": 500,
+     "max_abs_dn": 0.07178236844461616,
+     "n_633_before": 1.7700599890035542,
+     "n_633_after": 1.7751114856387125
+    },
+    {
+     "data_path": "main/MgO/nk/Stephens.yml",
+     "material": "Magnesium oxide",
+     "dataset_label": "rock salt | Stephens1952",
+     "rows": 500,
+     "rows_changed": 500,
+     "max_abs_dn": 0.0987917268154237,
+     "n_633_before": 1.722014139410789,
+     "n_633_after": 1.7346429578754687
+    },
+    {
+     "data_path": "main/Pb5Ge3O11/nk/Simon-e.yml",
+     "material": "Lead germanate",
+     "dataset_label": "Simon1997 | e-ray",
+     "rows": 500,
+     "rows_changed": 500,
+     "max_abs_dn": 0.4175092101308875,
+     "n_633_before": 1.9239284567892707,
+     "n_633_after": 2.147633185130691
+    },
+    {
+     "data_path": "main/Pb5Ge3O11/nk/Simon-o.yml",
+     "material": "Lead germanate",
+     "dataset_label": "Simon1997 | o-ray",
+     "rows": 500,
+     "rows_changed": 500,
+     "max_abs_dn": 0.3817252529854318,
+     "n_633_before": 1.9111461435331787,
+     "n_633_after": 2.1125331629583752
+    },
+    {
+     "data_path": "main/TiO2/nk/Devore-e.yml",
+     "material": "Titanium dioxide (rutile / anatase)",
+     "dataset_label": "rutile | Devore1951 | e-ray",
+     "rows": 500,
+     "rows_changed": 500,
+     "max_abs_dn": 0.3840325624814813,
+     "n_633_before": 2.793321603708823,
+     "n_633_after": 2.871896673114279
+    },
+    {
+     "data_path": "main/TiO2/nk/Devore-o.yml",
+     "material": "Titanium dioxide (rutile / anatase)",
+     "dataset_label": "rutile | Devore1951 | o-ray",
+     "rows": 500,
+     "rows_changed": 500,
+     "max_abs_dn": 0.3005067297365529,
+     "n_633_before": 2.520873949198741,
+     "n_633_after": 2.5836934627639927
+    },
+    {
+     "data_path": "main/ZnO/nk/Bond-e.yml",
+     "material": "Zinc oxide",
+     "dataset_label": "wurtzite | Bond1965 | e-ray",
+     "rows": 500,
+     "rows_changed": 500,
+     "max_abs_dn": 11.183567763123254,
+     "n_633_before": 2.550703352820797,
+     "n_633_after": 2.004385565741447
+    },
+    {
+     "data_path": "main/ZnO/nk/Bond-o.yml",
+     "material": "Zinc oxide",
+     "dataset_label": "wurtzite | Bond1965 | o-ray",
+     "rows": 500,
+     "rows_changed": 500,
+     "max_abs_dn": 5.08243422966355,
+     "n_633_before": 2.528709126954627,
+     "n_633_after": 1.9882244734923786
+    }
+   ],
+   "rows_changed": 18498,
+   "rows_checked": 18500
+  }
+ ],
+ "csvs": [
+  {
+   "csv": "oxides_50.csv",
+   "rows": 50,
+   "cells_updated": [
+    {
+     "row": "BeAl2O4",
+     "column": "n_633",
+     "old": 1.6004059388027254,
+     "new": 1.7406667543938212
+    },
+    {
+     "row": "BeAl2O4",
+     "column": "n_633_axis2",
+     "old": 1.5814619562352934,
+     "new": 1.7462472435478802
+    },
+    {
+     "row": "BeAl2O4",
+     "column": "n_633_axis3",
+     "old": 1.5900968455097948,
+     "new": 1.7387433789819076
+    },
+    {
+     "row": "CaGdAlO4",
+     "column": "n_633",
+     "old": 1.925729745893636,
+     "new": 1.935954774227011
+    },
+    {
+     "row": "CaGdAlO4",
+     "column": "n_633_axis2",
+     "old": 1.949392456989453,
+     "new": 1.959334526572209
+    },
+    {
+     "row": "CaYAlO4",
+     "column": "n_633",
+     "old": 1.8939506720047896,
+     "new": 1.9034824917906144
+    },
+    {
+     "row": "CaYAlO4",
+     "column": "n_633_axis2",
+     "old": 1.9169551889490708,
+     "new": 1.9262025594044934
+    },
+    {
+     "row": "BaB2O4",
+     "column": "n_633",
+     "old": 1.6625893046246392,
+     "new": 1.6680401135779612
+    },
+    {
+     "row": "BaB2O4",
+     "column": "n_633_axis2",
+     "old": 1.5465992055136326,
+     "new": 1.5506373553769695
+    },
+    {
+     "row": "BiB3O6",
+     "column": "n_633",
+     "old": 1.7670308852454013,
+     "new": 1.7765753292888227
+    },
+    {
+     "row": "BiB3O6",
+     "column": "n_633_axis2",
+     "old": 1.7956111621995865,
+     "new": 1.8065655045018125
+    },
+    {
+     "row": "BiB3O6",
+     "column": "n_633_axis3",
+     "old": 1.9316396305057195,
+     "new": 1.94577864642207
+    },
+    {
+     "row": "LiB3O5",
+     "column": "n_633",
+     "old": 1.5711217909732664,
+     "new": 1.5743340037205769
+    },
+    {
+     "row": "LiB3O5",
+     "column": "n_633_axis2",
+     "old": 1.596331684868671,
+     "new": 1.6011179413683192
+    },
+    {
+     "row": "LiB3O5",
+     "column": "n_633_axis3",
+     "old": 1.6121965684390986,
+     "new": 1.6161479552519844
+    },
+    {
+     "row": "CsLiB6O10",
+     "column": "n_633",
+     "old": 1.4905743094383952,
+     "new": 1.4938885320318307
+    },
+    {
+     "row": "CsLiB6O10",
+     "column": "n_633_axis2",
+     "old": 1.4387139634688155,
+     "new": 1.4415336527418252
+    },
+    {
+     "row": "LuAl3(BO3)4",
+     "column": "n_633",
+     "old": 1.7700678975953723,
+     "new": 1.7751303994318375
+    },
+    {
+     "row": "LuAl3(BO3)4",
+     "column": "n_633_axis2",
+     "old": 1.6968618462583114,
+     "new": 1.701182871917208
+    },
+    {
+     "row": "Pb5Ge3O11",
+     "column": "n_633",
+     "old": 1.9112047157178969,
+     "new": 2.1124969375533924
+    },
+    {
+     "row": "Pb5Ge3O11",
+     "column": "n_633_axis2",
+     "old": 1.9239950843142093,
+     "new": 2.1475956798677798
+    },
+    {
+     "row": "LiIO3",
+     "column": "n_633",
+     "old": 1.868389246363488,
+     "new": 1.8817317751297902
+    },
+    {
+     "row": "LiIO3",
+     "column": "n_633_axis2",
+     "old": 1.7249192903772932,
+     "new": 1.7353952139745452
+    },
+    {
+     "row": "Lu3Al5O12",
+     "column": "n_633",
+     "old": 1.9891778825241335,
+     "new": 1.836078654334532
+    },
+    {
+     "row": "MgO",
+     "column": "n_633",
+     "old": 1.7220163120751817,
+     "new": 1.734626359323129
+    },
+    {
+     "row": "KNbO3",
+     "column": "n_633",
+     "old": 2.69477916236331,
+     "new": 2.1686308605745834
+    },
+    {
+     "row": "KNbO3",
+     "column": "n_633_axis2",
+     "old": 2.903871725980222,
+     "new": 2.2800453530909306
+    },
+    {
+     "row": "KNbO3",
+     "column": "n_633_axis3",
+     "old": 3.0608305380999536,
+     "new": 2.3295317359123655
+    },
+    {
+     "row": "TiO2",
+     "column": "n_633",
+     "old": 2.5208432388224087,
+     "new": 2.5835808289635223
+    },
+    {
+     "row": "TiO2",
+     "column": "n_633_axis2",
+     "old": 2.793283334492771,
+     "new": 2.871755269668555
+    },
+    {
+     "row": "ZnO",
+     "column": "n_633",
+     "old": 2.5433345589992644,
+     "new": 1.9887720856076774
+    },
+    {
+     "row": "ZnO",
+     "column": "n_633_axis2",
+     "old": 2.5649169595377095,
+     "new": 2.0049458591443097
+    }
+   ],
+   "unexplained": [],
+   "unresolved": []
+  },
+  {
+   "csv": "batch2_31.csv",
+   "rows": 31,
+   "cells_updated": [
+    {
+     "row": "LiCaAlF6",
+     "column": "n_633",
+     "old": 1.3898475151804177,
+     "new": 1.3915059647788222
+    },
+    {
+     "row": "LiCaAlF6",
+     "column": "n_633_axis2",
+     "old": 1.3885014795638624,
+     "new": 1.3901715830152814
+    },
+    {
+     "row": "GaS",
+     "column": "n_633",
+     "old": 2.6609030288931956,
+     "new": 2.7151659538272668
+    },
+    {
+     "row": "GaS",
+     "column": "n_633_axis2",
+     "old": 2.3088663404990473,
+     "new": 2.360253450660867
+    }
+   ],
+   "unexplained": [],
+   "unresolved": []
+  },
+  {
+   "csv": "batch3b_4.csv",
+   "rows": 4,
+   "cells_updated": [],
+   "unexplained": [],
+   "unresolved": []
+  },
+  {
+   "csv": "pure_elements_50.csv",
+   "rows": 50,
+   "cells_updated": [],
+   "unexplained": [],
+   "unresolved": []
+  }
+ ]
+}

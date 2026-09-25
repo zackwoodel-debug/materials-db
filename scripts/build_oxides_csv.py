@@ -464,8 +464,8 @@ def compute_sld(formula: str, density: float) -> dict:
         out["flags"].append("SLD: no density available, xray/neutron SLD left NULL")
         return out
     try:
-        clean_formula = re.sub(r"[()]", "", formula)
-        f = periodictable.formula(clean_formula, density=density)
+        # periodictable parses parentheses natively; stripping them turned CaMg(CO3)2 into CaMgCO32 (1 C, 32 O) and gave wrong SLDs
+        f = periodictable.formula(formula, density=density)
         xr, xi = f.xray_sld(energy=XRAY_ENERGY_KEV)
         nr, ni, _inc = f.neutron_sld(wavelength=NEUTRON_WAVELENGTH_A)
         out["xray_sld_real"] = float(xr) if xr is not None else None

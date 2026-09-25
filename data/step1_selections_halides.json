@@ -1,0 +1,539 @@
+{
+ "AgCl": {
+  "name": "Silver chloride",
+  "formula": "AgCl",
+  "source": "auto: exactly one paper on RI.info (all its pages are axes of it)",
+  "axes": [
+   {
+    "page": "Tilton",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/AgCl/nk/Tilton.yml",
+    "span_um": [
+     0.578,
+     20.6
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "Tilton1950"
+   }
+  ]
+ },
+ "CsCl": {
+  "name": "Cesium chloride",
+  "formula": "CsCl",
+  "source": "auto: exactly one paper on RI.info (all its pages are axes of it)",
+  "axes": [
+   {
+    "page": "Li",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/CsCl/nk/Li.yml",
+    "span_um": [
+     0.18,
+     40.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "Li1976"
+   }
+  ]
+ },
+ "CuCl": {
+  "name": "Copper(I) chloride",
+  "formula": "CuCl",
+  "source": "auto: exactly one paper on RI.info (all its pages are axes of it)",
+  "axes": [
+   {
+    "page": "Feldman",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/CuCl/nk/Feldman.yml",
+    "span_um": [
+     0.43,
+     2.5
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "Feldman1969"
+   }
+  ]
+ },
+ "KCl": {
+  "name": "Potassium chloride",
+  "formula": "KCl",
+  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = widest span",
+  "axes": [
+   {
+    "page": "Querry",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/KCl/nk/Querry.yml",
+    "span_um": [
+     0.22,
+     166.6667
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "dataset_label": "Querry1987"
+   },
+   {
+    "page": "Li",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/KCl/nk/Li.yml",
+    "span_um": [
+     0.18,
+     35.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "Li1976"
+   }
+  ]
+ },
+ "LiCl": {
+  "name": "Lithium chloride",
+  "formula": "LiCl",
+  "source": "auto: exactly one paper on RI.info (all its pages are axes of it)",
+  "axes": [
+   {
+    "page": "Li",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/LiCl/nk/Li.yml",
+    "span_um": [
+     0.17,
+     16.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "Li1976"
+   }
+  ]
+ },
+ "NaCl": {
+  "name": "Sodium chloride",
+  "formula": "NaCl",
+  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = widest span",
+  "axes": [
+   {
+    "page": "Querry",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/NaCl/nk/Querry.yml",
+    "span_um": [
+     0.22,
+     166.6667
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "dataset_label": "Querry1987"
+   },
+   {
+    "page": "Li",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/NaCl/nk/Li.yml",
+    "span_um": [
+     0.2,
+     30.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "Li1976"
+   }
+  ]
+ },
+ "RbCl": {
+  "name": "Rubidium chloride",
+  "formula": "RbCl",
+  "source": "auto: exactly one paper on RI.info (all its pages are axes of it)",
+  "axes": [
+   {
+    "page": "Li",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/RbCl/nk/Li.yml",
+    "span_um": [
+     0.18,
+     40.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "Li1976"
+   }
+  ]
+ },
+ "TlCl": {
+  "name": "Thallium(I) chloride",
+  "formula": "TlCl",
+  "source": "auto: exactly one paper on RI.info (all its pages are axes of it)",
+  "axes": [
+   {
+    "page": "Schroter",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/TlCl/nk/Schroter.yml",
+    "span_um": [
+     0.43,
+     0.66
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "Schroter1931"
+   }
+  ]
+ },
+ "AgBr": {
+  "name": "Silver bromide",
+  "formula": "AgBr",
+  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = widest span",
+  "axes": [
+   {
+    "page": "Polyanskiy",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/AgBr/nk/Polyanskiy.yml",
+    "span_um": [
+     0.495,
+     12.7
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "Polyanskiy2024"
+   },
+   {
+    "page": "Schr\u00f6ter",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/AgBr/nk/Schroter.yml",
+    "span_um": [
+     0.495,
+     0.67
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "Schroter1931"
+   }
+  ]
+ },
+ "CsBr": {
+  "name": "Cesium bromide",
+  "formula": "CsBr",
+  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = widest span",
+  "axes": [
+   {
+    "page": "Querry",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/CsBr/nk/Querry.yml",
+    "span_um": [
+     0.213,
+     149.2537
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "dataset_label": "Querry1987"
+   },
+   {
+    "page": "Li",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/CsBr/nk/Li.yml",
+    "span_um": [
+     0.21,
+     55.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "Li1976"
+   },
+   {
+    "page": "Rodney",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/CsBr/nk/Rodney.yml",
+    "span_um": [
+     0.365,
+     39.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "Rodney1953"
+   }
+  ]
+ },
+ "KBr": {
+  "name": "Potassium bromide",
+  "formula": "KBr",
+  "source": "auto: exactly one paper on RI.info (all its pages are axes of it)",
+  "axes": [
+   {
+    "page": "Li",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/KBr/nk/Li.yml",
+    "span_um": [
+     0.2,
+     42.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "Li1976"
+   }
+  ]
+ },
+ "LiBr": {
+  "name": "Lithium bromide",
+  "formula": "LiBr",
+  "source": "auto: exactly one paper on RI.info (all its pages are axes of it)",
+  "axes": [
+   {
+    "page": "Li",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/LiBr/nk/Li.yml",
+    "span_um": [
+     0.21,
+     20.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "Li1976"
+   }
+  ]
+ },
+ "NaBr": {
+  "name": "Sodium bromide",
+  "formula": "NaBr",
+  "source": "auto: exactly one paper on RI.info (all its pages are axes of it)",
+  "axes": [
+   {
+    "page": "Li",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/NaBr/nk/Li.yml",
+    "span_um": [
+     0.21,
+     34.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "Li1976"
+   }
+  ]
+ },
+ "RbBr": {
+  "name": "Rubidium bromide",
+  "formula": "RbBr",
+  "source": "auto: exactly one paper on RI.info (all its pages are axes of it)",
+  "axes": [
+   {
+    "page": "Li",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/RbBr/nk/Li.yml",
+    "span_um": [
+     0.21,
+     50.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "Li1976"
+   }
+  ]
+ },
+ "TlBr": {
+  "name": "Thallium(I) bromide",
+  "formula": "TlBr",
+  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = widest span",
+  "axes": [
+   {
+    "page": "Palik",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/TlBr/nk/Palik.yml",
+    "span_um": [
+     0.57,
+     39.4
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "Palik1985"
+   },
+   {
+    "page": "Schroter",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/TlBr/nk/Schroter.yml",
+    "span_um": [
+     0.54,
+     0.65
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "Schroter1931"
+   }
+  ]
+ },
+ "CsI": {
+  "name": "Cesium iodide",
+  "formula": "CsI",
+  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = widest span",
+  "axes": [
+   {
+    "page": "Querry",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/CsI/nk/Querry.yml",
+    "span_um": [
+     0.22,
+     166.6667
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "dataset_label": "Querry1987"
+   },
+   {
+    "page": "Li",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/CsI/nk/Li.yml",
+    "span_um": [
+     0.25,
+     67.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "Li1976"
+   },
+   {
+    "page": "Rodney",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/CsI/nk/Rodney.yml",
+    "span_um": [
+     0.2967,
+     50.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "Rodney1955"
+   }
+  ]
+ },
+ "KI": {
+  "name": "Potassium iodide",
+  "formula": "KI",
+  "source": "auto: exactly one paper on RI.info (all its pages are axes of it)",
+  "axes": [
+   {
+    "page": "Li",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/KI/nk/Li.yml",
+    "span_um": [
+     0.25,
+     50.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "Li1976"
+   }
+  ]
+ },
+ "LiI": {
+  "name": "Lithium iodide",
+  "formula": "LiI",
+  "source": "auto: exactly one paper on RI.info (all its pages are axes of it)",
+  "axes": [
+   {
+    "page": "Li",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/LiI/nk/Li.yml",
+    "span_um": [
+     0.25,
+     25.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "Li1976"
+   }
+  ]
+ },
+ "NaI": {
+  "name": "Sodium iodide",
+  "formula": "NaI",
+  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = widest span",
+  "axes": [
+   {
+    "page": "Li",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/NaI/nk/Li.yml",
+    "span_um": [
+     0.25,
+     40.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "Li1976"
+   },
+   {
+    "page": "Jellison",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/NaI/nk/Jellison.yml",
+    "span_um": [
+     0.436,
+     0.633
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "Jellison2012"
+   }
+  ]
+ },
+ "PbI2": {
+  "name": "Lead(II) iodide",
+  "formula": "PbI2",
+  "source": "auto: exactly one paper on RI.info (all its pages are axes of it)",
+  "axes": [
+   {
+    "page": "Frisenda",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/PbI2/nk/Frisenda.yml",
+    "span_um": [
+     0.4234589,
+     0.7935374
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "dataset_label": "Frisenda2017"
+   }
+  ]
+ },
+ "RbI": {
+  "name": "Rubidium iodide",
+  "formula": "RbI",
+  "source": "auto: exactly one paper on RI.info (all its pages are axes of it)",
+  "axes": [
+   {
+    "page": "Li",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/RbI/nk/Li.yml",
+    "span_um": [
+     0.24,
+     64.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "Li1976"
+   }
+  ]
+ }
+}

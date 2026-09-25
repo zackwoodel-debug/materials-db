@@ -1,0 +1,543 @@
+{
+ "B4C": {
+  "name": "Boron carbide",
+  "formula": "B4C",
+  "source": "auto: exactly one paper on RI.info (all its pages are axes of it)",
+  "axes": [
+   {
+    "page": "Larruquert",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/B4C/nk/Larruquert.yml",
+    "span_um": [
+     0.001737709,
+     21.53810759
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "dataset_label": "Larruquert2012"
+   }
+  ]
+ },
+ "SiC": {
+  "name": "Silicon carbide",
+  "formula": "SiC",
+  "source": "user decision: all 10 RI.info pages, each labelled by the phase its source states; 4H combines Wang 2013 (0.405-5 um) with Fischer 2017 (17-150 um), which do not overlap",
+  "axes": [
+   {
+    "page": "Singh-o",
+    "axis": "o-ray",
+    "phase": "alpha (hexagonal, polytype not stated)",
+    "data_path": "main/SiC/nk/Singh-o.yml",
+    "span_um": [
+     0.488,
+     1.064
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "alpha (hexagonal, polytype not stated) | Singh1971 | o-ray"
+   },
+   {
+    "page": "Singh-e",
+    "axis": "e-ray",
+    "phase": "alpha (hexagonal, polytype not stated)",
+    "data_path": "main/SiC/nk/Singh-e.yml",
+    "span_um": [
+     0.488,
+     1.064
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "alpha (hexagonal, polytype not stated) | Singh1971 | e-ray"
+   },
+   {
+    "page": "Wang-6H-o",
+    "axis": "o-ray",
+    "phase": "6H",
+    "data_path": "main/SiC/nk/Wang-6H-o.yml",
+    "span_um": [
+     0.4358,
+     2.325
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "6H | Wang2013 | o-ray"
+   },
+   {
+    "page": "Wang-6H-e",
+    "axis": "e-ray",
+    "phase": "6H",
+    "data_path": "main/SiC/nk/Wang-6H-e.yml",
+    "span_um": [
+     0.4358,
+     2.325
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "6H | Wang2013 | e-ray"
+   },
+   {
+    "page": "Wang-4H-o",
+    "axis": "o-ray",
+    "phase": "4H",
+    "data_path": "main/SiC/nk/Wang-4H-o.yml",
+    "span_um": [
+     0.4047,
+     5.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "4H | Wang2013 | o-ray"
+   },
+   {
+    "page": "Wang-4H-e",
+    "axis": "e-ray",
+    "phase": "4H",
+    "data_path": "main/SiC/nk/Wang-4H-e.yml",
+    "span_um": [
+     0.4047,
+     2.325
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "4H | Wang2013 | e-ray"
+   },
+   {
+    "page": "Fischer-o",
+    "axis": "o-ray",
+    "phase": "4H",
+    "data_path": "main/SiC/nk/Fischer-o.yml",
+    "span_um": [
+     17.0,
+     150.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "4H | Fischer2017 | o-ray"
+   },
+   {
+    "page": "Fischer-e",
+    "axis": "e-ray",
+    "phase": "4H",
+    "data_path": "main/SiC/nk/Fischer-e.yml",
+    "span_um": [
+     17.0,
+     150.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "4H | Fischer2017 | e-ray"
+   },
+   {
+    "page": "Shaffer",
+    "axis": null,
+    "phase": "3C (beta, zincblende)",
+    "data_path": "main/SiC/nk/Shaffer.yml",
+    "span_um": [
+     0.467,
+     0.691
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "3C (beta, zincblende) | Shaffer1971"
+   },
+   {
+    "page": "Larruquert",
+    "axis": null,
+    "phase": "thin film",
+    "data_path": "main/SiC/nk/Larruquert.yml",
+    "span_um": [
+     0.00615447,
+     131.7250957
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "dataset_label": "thin film | Larruquert2011"
+   }
+  ]
+ },
+ "TiC": {
+  "name": "Titanium carbide",
+  "formula": "TiC",
+  "source": "auto: exactly one paper on RI.info (all its pages are axes of it)",
+  "axes": [
+   {
+    "page": "Pfluger",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/TiC/nk/Pfluger.yml",
+    "span_um": [
+     0.03107,
+     2.4797
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "dataset_label": "Pfluger1984"
+   }
+  ]
+ },
+ "VC": {
+  "name": "Vanadium carbide",
+  "formula": "VC",
+  "source": "auto: exactly one paper on RI.info (all its pages are axes of it)",
+  "axes": [
+   {
+    "page": "Pfluger",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/VC/nk/Pfluger.yml",
+    "span_um": [
+     0.03107,
+     2.4797
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "dataset_label": "Pfluger1984"
+   }
+  ]
+ },
+ "CaMgCO32": {
+  "name": "Dolomite (calcium magnesium carbonate)",
+  "formula": "CaMg(CO3)2",
+  "source": "auto: exactly one paper on RI.info (all its pages are axes of it)",
+  "axes": [
+   {
+    "page": "Querry-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "main/CaMg(CO3)2/nk/Querry-o.yml",
+    "span_um": [
+     2.5,
+     40.0
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "dataset_label": "Querry1987 | o-ray"
+   },
+   {
+    "page": "Querry-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "main/CaMg(CO3)2/nk/Querry-e.yml",
+    "span_um": [
+     2.5,
+     50.0
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "dataset_label": "Querry1987 | e-ray"
+   }
+  ]
+ },
+ "BiFeO3": {
+  "name": "Bismuth ferrite",
+  "formula": "BiFeO3",
+  "source": "auto: exactly one paper on RI.info (all its pages are axes of it)",
+  "axes": [
+   {
+    "page": "Kumar",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/BiFeO3/nk/Kumar.yml",
+    "span_um": [
+     0.19706,
+     1.6693
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "dataset_label": "Kumar2008"
+   }
+  ]
+ },
+ "Bi4Ge3O12": {
+  "name": "Bismuth germanate (BGO)",
+  "formula": "Bi4Ge3O12",
+  "source": "auto: exactly one paper on RI.info (all its pages are axes of it)",
+  "axes": [
+   {
+    "page": "Williams",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/Bi4Ge3O12/nk/Williams.yml",
+    "span_um": [
+     0.305,
+     1.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "Williams1996"
+   }
+  ]
+ },
+ "Bi12SiO20": {
+  "name": "Bismuth silicate (BSO)",
+  "formula": "Bi12SiO20",
+  "source": "auto: exactly one paper on RI.info (all its pages are axes of it)",
+  "axes": [
+   {
+    "page": "Gospodinov",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/Bi12SiO20/nk/Gospodinov.yml",
+    "span_um": [
+     0.48,
+     0.7
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "Gospodinov1988"
+   }
+  ]
+ },
+ "ScAlMgO4": {
+  "name": "Magnesium aluminate scandium oxide (SCAM)",
+  "formula": "ScAlMgO4",
+  "source": "auto: exactly one paper on RI.info (all its pages are axes of it)",
+  "axes": [
+   {
+    "page": "Stefaniuk-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "main/ScAlMgO4/nk/Stefaniuk-o.yml",
+    "span_um": [
+     0.193,
+     1.69
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "dataset_label": "Stefaniuk2023 | o-ray"
+   },
+   {
+    "page": "Stefaniuk-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "main/ScAlMgO4/nk/Stefaniuk-e.yml",
+    "span_um": [
+     0.193,
+     1.69
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "dataset_label": "Stefaniuk2023 | e-ray"
+   }
+  ]
+ },
+ "Yb2O3": {
+  "name": "Ytterbium oxide",
+  "formula": "Yb2O3",
+  "source": "auto: exactly one paper on RI.info (all its pages are axes of it)",
+  "axes": [
+   {
+    "page": "Medenbach",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/Yb2O3/nk/Medenbach.yml",
+    "span_um": [
+     0.435,
+     0.644
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "Medenbach2001"
+   }
+  ]
+ },
+ "KTaO3": {
+  "name": "Potassium tantalate",
+  "formula": "KTaO3",
+  "source": "auto: exactly one paper on RI.info (all its pages are axes of it)",
+  "axes": [
+   {
+    "page": "Fujii",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/KTaO3/nk/Fujii.yml",
+    "span_um": [
+     0.4,
+     1.06
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "Fujii1976"
+   }
+  ]
+ },
+ "LiTaO3": {
+  "name": "Lithium tantalate",
+  "formula": "LiTaO3",
+  "source": "auto: exactly one paper on RI.info (all its pages are axes of it)",
+  "axes": [
+   {
+    "page": "Bond-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "main/LiTaO3/nk/Bond-o.yml",
+    "span_um": [
+     0.45,
+     4.0
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "dataset_label": "Bond1965 | o-ray"
+   },
+   {
+    "page": "Bond-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "main/LiTaO3/nk/Bond-e.yml",
+    "span_um": [
+     0.45,
+     4.0
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "dataset_label": "Bond1965 | e-ray"
+   }
+  ]
+ },
+ "Bi4Ti3O12": {
+  "name": "Bismuth titanate",
+  "formula": "Bi4Ti3O12",
+  "source": "auto: exactly one paper on RI.info (all its pages are axes of it)",
+  "axes": [
+   {
+    "page": "Simon-a",
+    "axis": "a-axis",
+    "phase": null,
+    "data_path": "main/Bi4Ti3O12/nk/Simon-a.yml",
+    "span_um": [
+     0.45,
+     0.7
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "Simon1997 | a-axis"
+   },
+   {
+    "page": "Simon-b",
+    "axis": "b-axis",
+    "phase": null,
+    "data_path": "main/Bi4Ti3O12/nk/Simon-b.yml",
+    "span_um": [
+     0.45,
+     0.7
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "Simon1997 | b-axis"
+   }
+  ]
+ },
+ "PbTiO3": {
+  "name": "Lead titanate",
+  "formula": "PbTiO3",
+  "source": "auto: exactly one paper on RI.info (all its pages are axes of it)",
+  "axes": [
+   {
+    "page": "Singh-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "main/PbTiO3/nk/Singh-o.yml",
+    "span_um": [
+     0.45,
+     1.15
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "Singh1972 | o-ray"
+   },
+   {
+    "page": "Singh-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "main/PbTiO3/nk/Singh-e.yml",
+    "span_um": [
+     0.45,
+     1.15
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "Singh1972 | e-ray"
+   }
+  ]
+ },
+ "CaWO4": {
+  "name": "Calcium tungstate",
+  "formula": "CaWO4",
+  "source": "auto: exactly one paper on RI.info (all its pages are axes of it)",
+  "axes": [
+   {
+    "page": "Bond-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "main/CaWO4/nk/Bond-o.yml",
+    "span_um": [
+     0.45,
+     4.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "Bond1965 | o-ray"
+   },
+   {
+    "page": "Bond-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "main/CaWO4/nk/Bond-e.yml",
+    "span_um": [
+     0.45,
+     4.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "dataset_label": "Bond1965 | e-ray"
+   }
+  ]
+ },
+ "ZnWO4": {
+  "name": "Zinc tungstate",
+  "formula": "ZnWO4",
+  "source": "auto: exactly one paper on RI.info (all its pages are axes of it)",
+  "axes": [
+   {
+    "page": "Bond-\u03b1",
+    "axis": "alpha-axis",
+    "phase": null,
+    "data_path": "main/ZnWO4/nk/Bond-alpha.yml",
+    "span_um": [
+     0.42,
+     4.0
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "dataset_label": "Bond1965 | alpha-axis"
+   },
+   {
+    "page": "Bond-\u03b2",
+    "axis": "beta-axis",
+    "phase": null,
+    "data_path": "main/ZnWO4/nk/Bond-beta.yml",
+    "span_um": [
+     0.42,
+     3.6
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "dataset_label": "Bond1965 | beta-axis"
+   },
+   {
+    "page": "Bond-\u03b3",
+    "axis": "gamma-axis",
+    "phase": null,
+    "data_path": "main/ZnWO4/nk/Bond-gamma.yml",
+    "span_um": [
+     0.42,
+     3.6
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "dataset_label": "Bond1965 | gamma-axis"
+   }
+  ]
+ }
+}

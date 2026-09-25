@@ -1,0 +1,18 @@
+key,name,gap_kind,reason,evidence
+VC,Vanadium carbide,density,no stated density and no supported single MP entry (see flags),mp-1282 Fm-3m (#225) hull=0.0881eV rho=5.800 nsites=2; mp-1238834 P6_3/mmc (#194) hull=0.2245eV rho=5.753 nsites=4 theoretical
+ScAlMgO4,Magnesium aluminate scandium oxide (SCAM),density,no stated density and no supported single MP entry (see flags),mp-1221961 R3m (#160) hull=0.0482eV rho=3.441 nsites=7 theoretical
+Bi4Ti3O12,Bismuth titanate,density,no stated density and no supported single MP entry (see flags),mp-723064 Pc (#7) hull=0.0023eV rho=7.995 nsites=38; mp-23427 Aea2 (#41) hull=0.0066eV rho=7.968 nsites=38; mp-558277 Cc (#9) hull=0.0081eV rho=8.013 nsites=38
+CaWO4,Calcium tungstate,density,no stated density and no supported single MP entry (see flags),mp-19426 I4_1/a (#88) hull=0.0000eV rho=6.100 nsites=12; mp-1103190 C2/c (#15) hull=0.0023eV rho=5.866 nsites=12; mp-1190383 Cmce (#64) hull=0.1928eV rho=6.797 nsites=24 theoretical
+Ti3C2,Ti3C2,out_of_family,"Ti3C2 MXene is a 2D layered material: belongs with the graphene/2D follow-up (film thickness and sheet effects), not bulk-crystal loading",
+O2,O2,out_of_family,gas,
+CO,CO,out_of_family,gas,
+CO2,CO2,out_of_family,gas,
+N2,N2,out_of_family,gas,
+SF6,SF6,out_of_family,gas,
+Ar,Ar,out_of_family,noble gas,
+He,He,out_of_family,noble gas,
+Kr,Kr,out_of_family,noble gas,
+Ne,Ne,out_of_family,noble gas,
+Xe,Xe,out_of_family,noble gas,
+H2O,H2O,out_of_family,"liquid water / ice, 28 pages (temperature series); already in the benchmark DB from another source; a liquids family",
+Hg,Hg,out_of_family,liquid metal element,
