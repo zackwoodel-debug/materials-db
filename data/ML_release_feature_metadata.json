@@ -1,9 +1,9 @@
 {
-  "source_release": "0.2.1",
-  "source_release_git_commit": "0e5d774d8df96d09d1e9b35a98c8236be44ccc95",
-  "source_sqlite": "materials-db-v0.2.1.sqlite",
-  "source_sqlite_sha256": "0b30b3fca86ba440cd20d2e264e580c196961ea61c173b33ffa450932e0bf01a",
-  "n_materials": 303,
+  "source_release": "0.3.0",
+  "source_release_git_commit": "a646cb4fe69d95cc7a012ccaae522b67a54a7139",
+  "source_sqlite": "materials-db-v0.3.0.sqlite",
+  "source_sqlite_sha256": "96648ea2dde37308ca76b8cd45a9e41be79b5e2fc5db3bdcdfed1ad05a41fecc",
+  "n_materials": 319,
   "optical_ref_wl_nm": 633.0,
   "scaled": false,
   "target_columns": [
@@ -12,9 +12,9 @@
     "target_density_g_cm3"
   ],
   "target_present": {
-    "target_n_633nm": 242,
-    "target_k_633nm": 92,
-    "target_density_g_cm3": 232
+    "target_n_633nm": 249,
+    "target_k_633nm": 96,
+    "target_density_g_cm3": 248
   },
   "feature_columns": [
     "feat_comp_n_elements",
@@ -149,6 +149,7 @@
     "feat_frac_Rh",
     "feat_frac_Ru",
     "feat_frac_S",
+    "feat_frac_Sb",
     "feat_frac_Sc",
     "feat_frac_Se",
     "feat_frac_Si",
@@ -686,8 +687,8 @@
   "fp_radius": 2,
   "fp_note": "release 2048-bit Morgan fingerprint folded to 512 (identical to fpSize=512)",
   "block_present": {
-    "has_composition": 284,
-    "has_structure": 171,
+    "has_composition": 300,
+    "has_structure": 187,
     "has_molecular": 94
   },
   "per_family": {
@@ -699,10 +700,11 @@
     "halides": 21,
     "inorganic3": 16,
     "chalcogenides": 16,
+    "semiconductors": 16,
     "batch3b_4": 4,
     "nitrides": 1
   },
-  "n633_max_rel_dev_vs_family_tables": 0.0011852119655647536,
+  "n633_max_rel_dev_vs_family_tables": 0.0014364399484777322,
   "notes": [
     "Primary optical dataset per material; n,k interpolated inside its range only, never extrapolated.",
     "Missing values are NaN, never imputed; has_* flags say which descriptor blocks exist.",
