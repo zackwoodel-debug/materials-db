@@ -34,7 +34,12 @@ Generic loader: scripts/load_family_db.py (--family/--catalog/--selections/--db/
 5. Non-stoichiometric SiNx (Kischkat, Beliaev, Vogt x3) not yet modelled; no SiNx material rows exist.
 6. Migrations 002-004 pending Aiden. Until 004, polymorph/axis live in dataset_label.
 7. After PRs #17 and #18 merge, publish v0.2.1 (v0.2.0 on GitHub still has the old citations and empty ranges).
-8. Optional: point generate_ml_training_set.py at the release DB so the ML set covers all 303 materials (new scaler; separate change).
+8. DONE: release ML set, `python3 scripts/generate_ml_release_set.py` -> data/ML_release_feature_matrix.parquet (303 materials;
+   targets n,k at 633 nm + density; features = compositional/structural/molecular descriptors; unscaled; no target leaks into
+   features). The legacy generate_ml_training_set.py / ML_feature_matrix.parquet stay with the frozen benchmark DB.
+   Regenerate after every release build; tests/test_ml_release_set.py checks it matches the newest local release.
+9. Negative k in the release: 496 rows in 3 datasets (Cu2O Querry and Fe2O3 Querry-o far-IR tails, ma-N 1407 Sarkar 460-1532 nm).
+   Kept as the source gives them; build_release validation does not flag k < 0. Decide: flag, exclude, or document.
 
 ## FOLLOW-UP (logged, NOT started): graphene / 2D carbon as its own family -- materialclass must NOT be 'polymer'
 - RI.info main/C, verified read-only: monolayer graphene = Weber 2010 (0.21-1.0 um, exfoliated flake, 3.4 A, on Si/98 nm SiO2), Song 2018 "Graphene"
