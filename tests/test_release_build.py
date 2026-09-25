@@ -341,3 +341,54 @@ def test_package_database_opens_clean_and_matches_the_built_one(release):
     c = sqlite3.connect(f"{Path(release['db']).as_uri()}?mode=ro", uri=True)
     assert c.execute("PRAGMA integrity_check").fetchone()[0] == "ok" and c.execute("PRAGMA foreign_key_check").fetchall() == []
     c.close()
+
+
+# ---------------------------------------------------------------- cross-source validation and consensus (release_validation.py)
+
+def test_validation_tables_are_filled_and_match_the_manifest(release):
+    facts = release["facts"]["cross_source_validation"]
+    assert sum(facts["pairs"].values()) == q(release, "SELECT COUNT(*) FROM dataset_validation")[0][0] > 300
+    assert sum(facts["consensus"].values()) == q(release, "SELECT COUNT(*) FROM consensus_properties")[0][0] > 400
+    classes = {c for (c,) in q(release, "SELECT DISTINCT classification FROM dataset_validation")}
+    assert classes <= {"excellent", "warning", "suspicious"}
+
+
+def test_every_validated_pair_is_like_for_like(release):
+    import release_validation as rv
+    for mid, a, b in q(release, "SELECT material_id, dataset_a, dataset_b FROM dataset_validation"):
+        (pa, _, xa), (pb, _, xb) = rv.parse_label(a), rv.parse_label(b)
+        assert (pa, xa) == (pb, xb), (a, b)
+        ta, tb = (q(release, "SELECT DISTINCT temperature_c FROM optical_dispersion WHERE material_id=? AND dataset_label=?", (mid, lab))
+                  for lab in (a, b))
+        assert len(ta) == len(tb) == 1
+        ta, tb = ta[0][0], tb[0][0]
+        assert (rv.ambient(ta) and rv.ambient(tb)) or abs(ta - tb) <= 1.0, (a, b, ta, tb)
+
+
+def test_gaas_n633_consensus_recomputed_independently_from_raw_rows(release):
+    """Median of the measured ambient GaAs datasets covering 633 nm, straight from optical_dispersion with numpy."""
+    import numpy as np
+    from dataset_kind import is_model_fit
+    rows = q(release, "SELECT o.dataset_label, o.raw_record_table, o.wavelength_nm, o.n, o.temperature_c FROM optical_dispersion o "
+                      "JOIN materials m USING(material_id) WHERE m.name='Gallium arsenide'")
+    by = {}
+    for lab, table, wl, n, t in rows:
+        by.setdefault((lab, table, t), []).append((wl, n))
+    votes = []
+    for (lab, table, t), pts in by.items():
+        pts.sort()
+        if is_model_fit(table) or not (t is None or 15 <= t <= 30) or not pts[0][0] <= 633 <= pts[-1][0]:
+            continue
+        votes.append(float(np.interp(633.0, [p[0] for p in pts], [p[1] for p in pts])))
+    (val, n_src, cls), = q(release, "SELECT consensus_value, num_sources, classification FROM consensus_properties c "
+                                    "JOIN materials m USING(material_id) WHERE m.name='Gallium arsenide' AND property_name='n_633nm'")
+    assert n_src == len(votes) >= 3 and val == pytest.approx(float(np.median(votes)), abs=1e-9) and cls == "excellent"
+    assert val == pytest.approx(3.85, abs=0.02)  # Aspnes 1986, Jellison 1992, Papatryfonos 2021
+
+
+def test_model_fits_never_vote_and_model_only_materials_have_no_consensus(release):
+    assert q(release, "SELECT COUNT(*) FROM consensus_properties c JOIN materials m USING(material_id) "
+                      "WHERE m.name='Cadmium telluride' AND property_name LIKE 'n_633nm%'")[0][0] == 0
+    ins = dict(q(release, "SELECT property_name, consensus_value FROM consensus_properties c JOIN materials m USING(material_id) "
+                          "WHERE m.name='Indium antimonide'"))
+    assert ins["n_633nm"] == pytest.approx(4.290, abs=2e-3)  # Aspnes & Studna only; Adachi's model (4.77) does not vote
