@@ -384,23 +384,22 @@ def eval_formula(
         return np.sqrt(np.clip(n2, 1e-30, None)), None
 
     if ftype == "formula 4":
-        # General:  n² = c₀ + Σ Bᵢ·λ^pᵢ/(λ^qᵢ−Cᵢ)   [4-coeff groups]
-        #                    + Σ Dⱼ·λ^fⱼ                [2-coeff polynomial tail]
-        # Group layout: [B, p_num, C, q_den] → B·λ^p / (λ^q − C)
+        # RefractiveIndex.INFO formula 4 (C1..C17 in the published numbering):
+        #   n² = C1 + C2·λ^C3/(λ² − C4^C5) + C6·λ^C7/(λ² − C8^C9)      <- EXACTLY two resonance groups [B, p, C, q]
+        #           + C10·λ^C11 + C12·λ^C13 + C14·λ^C15 + C16·λ^C17    <- then 2-coefficient polynomial terms
+        # Two earlier errors, both verified against BBO's published indices and rutile/ZnO/MgO/KNbO3 at 633 nm:
+        #   (1) the denominator is λ² − C^q, not λ^q − C (BBO n_o(532) came out 1.6649 instead of 1.6749);
+        #   (2) coefficients after the second group are 2-coefficient pairs, never a third/fourth resonance group
+        #       (files with 13 or 15 coefficients were mis-evaluated).
         n2 = np.full_like(lam, c[0])
-        i = 1
-        while i < len(c):
-            if i + 3 < len(c):
-                B, p, C_val, q = c[i], c[i + 1], c[i + 2], c[i + 3]
-                denom = lam**q - C_val
+        for g in (1, 5):
+            if g + 3 < len(c):
+                B, p, C_val, q = c[g], c[g + 1], c[g + 2], c[g + 3]
+                denom = lam**2 - C_val**q
                 with np.errstate(divide="ignore", invalid="ignore"):
                     n2 = n2 + np.where(denom != 0.0, B * lam**p / denom, 0.0)
-                i += 4
-            elif i + 1 < len(c):
-                n2 = n2 + c[i] * lam ** c[i + 1]
-                i += 2
-            else:
-                break
+        for i in range(9, len(c) - 1, 2):
+            n2 = n2 + c[i] * lam ** c[i + 1]
         return np.sqrt(np.clip(n2, 1e-30, None)), None
 
     if ftype == "formula 5":
@@ -424,6 +423,16 @@ def eval_formula(
         L = lam**2 - 0.028
         n = A + B / L + C / L**2 + D * lam**2 + E * lam**4 + F * lam**6
         return n, None
+
+    if ftype == "formula 8":
+        # Retro (Lorentz-Lorenz):  (n²−1)/(n²+2) = c₀ + c₁·λ²/(λ²−c₂) + c₃·λ²
+        x = np.full_like(lam, c[0])
+        if len(c) > 2:
+            x = x + c[1] * lam**2 / (lam**2 - c[2])
+        if len(c) > 3:
+            x = x + c[3] * lam**2
+        n2 = (1.0 + 2.0 * x) / (1.0 - x)
+        return np.sqrt(np.clip(n2, 1e-30, None)), None
 
     raise ValueError(f"Unsupported formula type: '{ftype}'")
 
