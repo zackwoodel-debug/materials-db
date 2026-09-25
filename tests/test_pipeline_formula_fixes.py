@@ -23,16 +23,27 @@ RI = ROOT / "refractiveindex_db" / "database" / "data"
 
 
 def official_formula4(c, lam):
-    """RefractiveIndex.INFO formula 4, written straight from its published definition (independent of the parser)."""
+    """n from the published formula 4; NaN where n^2 < 0 (no real index exists there)."""
+    with np.errstate(invalid="ignore"):
+        return np.sqrt(official_formula4_n2(c, lam))
+
+
+def official_formula4_n2(c, lam):
+    """n^2 of RefractiveIndex.INFO formula 4, written straight from its published definition (independent of the parser)."""
     l2 = lam * lam
+
+    def group(B, p, C, q):  # B == 0 contributes exactly 0 (LuAG's all-zero second group has a 0/0 at 1.000 um)
+        with np.errstate(divide="ignore", invalid="ignore"):
+            return np.where(B == 0.0, 0.0, B * lam ** p / (l2 - C ** q))
+
     n2 = np.full_like(lam, c[0])
     if len(c) >= 5:
-        n2 = n2 + c[1] * lam ** c[2] / (l2 - c[3] ** c[4])
+        n2 = n2 + group(*c[1:5])
     if len(c) >= 9:
-        n2 = n2 + c[5] * lam ** c[6] / (l2 - c[7] ** c[8])
+        n2 = n2 + group(*c[5:9])
     for i in range(9, len(c) - 1, 2):
         n2 = n2 + c[i] * lam ** c[i + 1]
-    return np.sqrt(n2)
+    return n2
 
 
 def _block(rel):
@@ -66,7 +77,7 @@ def _all_formula4_files():
 def test_formula4_equals_the_published_definition_for_every_local_file():
     files = _all_formula4_files()
     assert len(files) > 30, "expected many formula-4 files in the local RI.info clone"
-    checked = 0
+    checked = floored = 0
     for p in files:
         for b in yaml.safe_load(open(p))["DATA"]:
             if b["type"] != "formula 4":
@@ -74,13 +85,16 @@ def test_formula4_equals_the_published_definition_for_every_local_file():
             lo, hi = [float(x) for x in b["wavelength_range"].split()]
             lam = np.linspace(lo, hi, 40)
             c = [float(x) for x in b["coefficients"].split()]
-            with np.errstate(all="ignore"):
-                want = official_formula4(c, lam)
-                got = fod.eval_formula(b, lam)[0]
-            fin = np.isfinite(want) & np.isfinite(got)
-            assert np.allclose(got[fin], want[fin], rtol=1e-9, atol=1e-12), p.relative_to(RI)
+            n2 = official_formula4_n2(c, lam)
+            got = fod.eval_formula(b, lam)[0]
+            assert np.isfinite(n2).all() and np.isfinite(got).all(), f"{p.relative_to(RI)}: non-finite values must never pass a comparison"
+            neg = n2 < 0  # e.g. GaSe near its ~41 um phonon band: no real index exists; the parser floors n to ~0 (documented, not hidden)
+            floored += int(neg.sum())
+            assert (got[neg] <= 1e-10).all(), p.relative_to(RI)
+            assert np.allclose(got[~neg], np.sqrt(n2[~neg]), rtol=1e-9, atol=1e-12), p.relative_to(RI)
             checked += 1
     assert checked >= len(files)
+    assert floored > 0, "expected the GaSe far-IR points where n^2 < 0 (a floored n is not a physical index: loaders should flag it)"
 
 
 def test_compute_sld_keeps_parentheses_so_dolomite_is_not_CaMgCO32():
