@@ -54,6 +54,16 @@ Generic loader: scripts/load_family_db.py (--family/--catalog/--selections/--db/
    As2Se3 400 vs 700 nm films differ 17% in k. Next depth steps (see chat plan): per-dataset metadata table (Aiden), recorded
    uncertainties, synonyms + missing DOIs (99/317), CI.
 
+12. Uncertainties (plan step 3): NOT built. Only 2 of 617 datasets state one numerically (Perner GaAs: relative 3.3e-4 on n;
+   Schnepf PVA: k = 0.0050 +- 0.0004), with different meanings, so sources.uncertainty stays empty; the usable uncertainty is the
+   cross-source spread in consensus_properties. Revisit with the per-dataset metadata table (Aiden) and the original papers.
+13. DONE (plan step 4, scripts/release_curation.py, build stage 3a): 23 duplicate source rows merged (317 -> 294), 5 Crossref DOIs
+   (scripts/fetch_source_dois.py -> data/descriptors/source_dois.json; 20 citations have none: reports, theses, datasheets,
+   handbooks, a conference abstract); 220 synonyms for 144 materials (PubChem titles cached by scripts/fetch_pubchem_titles.py).
+   Every name bracket is reviewed in release_curation.NAME_SYNONYMS / NAME_QUALIFIERS; an unreviewed one stops the build.
+14. Naming ambiguity in our own data: Bi12GeO20 is "Bismuth germanate" and Bi4Ge3O12 is "Bismuth germanate (BGO)"; RI.info calls
+   both "Bismuth germanate, BGO". Consider renaming Bi12GeO20 (e.g. "Bismuth germanium oxide (sillenite)").
+
 ## FOLLOW-UP (logged, NOT started): graphene / 2D carbon as its own family -- materialclass must NOT be 'polymer'
 - RI.info main/C, verified read-only: monolayer graphene = Weber 2010 (0.21-1.0 um, exfoliated flake, 3.4 A, on Si/98 nm SiO2), Song 2018 "Graphene"
   (0.193-1.69, CVD mono), Tikuisis 2023 (0.226-4.40, epitaxial on 6H-SiC), El-Sayed 2021 (0.24-1.0, CVD): four, not three. Song 2018 also holds 4 bulk-HOPG pages (graphite).

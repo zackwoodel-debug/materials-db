@@ -14,6 +14,9 @@ Stages, all reproducible from committed inputs (no API key, no network):
   3. dedupe       physical rows a later family re-loaded with identical values (the five nitrides batch 2 already held): keep
                   one, preferring the source whose title/notes name the material, else the older source; then drop sources
                   nothing references. Every removal is recorded in MANIFEST.json.
+  3a. curation   merge identical source rows; add Crossref DOIs from data/descriptors/source_dois.json; material_synonyms from
+                  the material's own name, single-material refractiveindex.info book titles, polymer abbreviations, PubChem titles
+                  and British/American spellings; ambiguous synonyms dropped (scripts/release_curation.py)
   3b. validation cross-source agreement (dataset_validation) and measured consensus at 633 nm (consensus_properties) for
                   like-for-like datasets: same material, phase, axis and temperature (scripts/release_validation.py)
   4. descriptors  one chemical_descriptors row per material (scripts/release_descriptors.py)
@@ -48,6 +51,7 @@ sys.path.insert(0, str(_ROOT / "scripts"))
 sys.path.insert(0, str(_ROOT / "src"))
 
 import load_family_db as fam  # noqa: E402
+import release_curation as rcur  # noqa: E402
 import release_descriptors as rd  # noqa: E402
 import release_validation as rv  # noqa: E402
 
@@ -55,7 +59,7 @@ BASE_DB = _ROOT / "data" / "materials_oxide_test.db"
 FAMILY_CSVS = ["oxides_50", "batch2_31", "batch3b_4", "pure_elements_50", "nitrides", "polymers", "inorganic3", "halides",
                "chalcogenides", "liquids", "semiconductors"]
 GAP_CSVS = ["nitride_gaps", "polymer_gaps", "inorganic3_gaps", "halide_gaps", "chalcogenide_gaps", "liquid_gaps", "semiconductor_gaps"]
-DESCRIPTOR_INPUTS = ["mp_structural.json", "polymer_repeat_units.csv", "formula_issues.csv"]
+DESCRIPTOR_INPUTS = ["mp_structural.json", "polymer_repeat_units.csv", "formula_issues.csv", "source_dois.json", "pubchem_titles.json"]
 # Same allow-list as tests/test_family_optical_sanity.py (a test keeps them equal): measurement noise around k = 0 in tabulated sources.
 NEGATIVE_K_ALLOWED = {
     ("Copper(I) oxide", "cuprite | Querry1985"): -0.03,
@@ -228,13 +232,15 @@ def build_db(db_path):
     conn.execute("PRAGMA foreign_keys = ON")
     with conn:
         removed, orphans = dedupe_physical(conn)
+        sources = rcur.curate_sources(conn)
+        synonyms = rcur.populate_synonyms(conn, family_rows())
         cross_source = rv.populate(conn)
         coverage = populate_descriptors(conn)
     source_repeats = validate(conn)
     conn.execute("VACUUM")
     conn.close()
     return dict(family_merges=merged, removed_duplicate_physical_rows=removed, removed_unreferenced_sources=orphans,
-                descriptor_coverage=coverage, cross_source_validation=cross_source,
+                descriptor_coverage=coverage, cross_source_validation=cross_source, source_curation=sources, synonyms=synonyms,
                 optical_wavelengths_repeated_in_source=source_repeats)
 
 
@@ -296,6 +302,7 @@ def write_readme(path, version, facts, c, mp_version):
     fam_lines = "\n".join(f"| {k} | {v['materials']} | {v['datasets']} | {v['optical_rows']:,} | {v['with_density']} |" for k, v in c["per_family"].items())
     cov = facts["descriptor_coverage"]
     xs = facts["cross_source_validation"]
+    sc, sy = facts["source_curation"], facts["synonyms"]
     n_mat = c["tables"]["materials"]
     path.write_text(f"""# materials-db v{version}
 
@@ -361,6 +368,17 @@ temperature, over the wavelengths both cover, at their own data points (nothing 
   classification on the spread (max - min) / median with the thresholds above (`single_source` for one), and
   `confidence_score` = (1 - 0.5^sources) x (1 - spread / 10%), so one source scores 0.5 and a 5% spread halves the score;
   counts {xs['consensus']}. A material with only model fits at 633 nm (e.g. CdTe) has no consensus row.
+
+## Finding a material and its citations (`material_synonyms`, `sources`)
+
+- **material_synonyms** ({sy['synonyms']} names for {sy['materials_with_synonyms']} materials): the alternate name or abbreviation in the
+  material's own name (`ZGP`, `galena`), the names in the title of the refractiveindex.info book holding its data (only when
+  that book holds no other material), the polymer abbreviations, PubChem's record title and British/American spellings
+  (aluminium/aluminum, caesium/cesium, sulphide/sulfide). A name that would point to more than one material is left out
+  ({', '.join(sy['ambiguous_dropped'])}).
+- **sources**: {sc['merged_identical_rows']} rows that were identical in every column were merged; {len(sc['dois_added'])} citations
+  gained a DOI from Crossref (accepted only on matching year, first author and title), and {len(sc['merged_same_doi'])} pair of rows
+  found to be the same paper were merged. Reports, theses, datasheets and handbook citations have no DOI.
 
 ## Calculated vs measured, and caveats
 

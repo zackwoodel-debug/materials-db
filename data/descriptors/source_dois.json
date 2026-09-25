@@ -1,0 +1,1059 @@
+{
+ "source": "Crossref REST API (api.crossref.org); accepted only on year + first author + >=90% title-word match",
+ "retrieved_utc": "2026-09-25T23:35:05Z",
+ "release": "materials-db-v0.4.0",
+ "looked_up": 26,
+ "accepted": {
+  "dispersion properties of optical polymers|n sultanova s kasarova i nikolov|2009": {
+   "citation": "Dispersion properties of optical polymers. N. Sultanova, S. Kasarova, I. Nikolov.",
+   "doi": "10.12693/aphyspola.116.585",
+   "crossref_title": "Dispersion Properties of Optical Polymers",
+   "title_coverage": 1.0
+  },
+  "|d khmelevskaia d i markina v v fedorov g a ermolaev a v arsenin v s volkov a s goltaev yu m zadiranov i a tzibizov a p pushkarev a k samusev a a shcherbakov p a belov i s mukhin s v makarov directly grown crystalline gallium phosphide on sapphire for nonlinear all dielectric nanophotonics appl phys lett 118 201101 2021 numerical data kindly provided by georgy ermolaev|2021": {
+   "citation": "D. Khmelevskaia, D.I. Markina, V.V. Fedorov, G.A. Ermolaev, A.V. Arsenin, V.S. Volkov, A.S. Goltaev, Yu.M. Zadiranov, I.A. Tzibizov, A.P. Pushkarev, A.K. Samusev, A.A. Shcherbakov, P.A. Belov, I.S. Mukhin, S.V. Makarov. Directly grown crystalline gallium phosphide on sapphire for nonlinear all-dielectric nanophotonics, Appl. Phys. Lett., 118, 201101 (2021) (Numerical data kindly provided by Georgy Ermolaev)",
+   "doi": "10.1063/5.0048969",
+   "crossref_title": "Directly grown crystalline gallium phosphide on sapphire for nonlinear all-dielectric nanophotonics",
+   "title_coverage": 1.0
+  },
+  "|j choi f cheng j w cleary l sun c k dass j r hendrickson c y wang s gwo c k shih x li optical dielectric constants of single crystalline silver films in the long wavelength range opt mater express 10 693 703 2020 see supplementary materials|2020": {
+   "citation": "J. Choi, F. Cheng, J. W. Cleary, L. Sun, C. K. Dass, J. R. Hendrickson, C.-Y. Wang, S. Gwo, C.-K. Shih, X. Li. Optical dielectric constants of single crystalline silver films in the long wavelength range, Opt. Mater. Express 10, 693-703 (2020) (See supplementary materials)",
+   "doi": "10.1364/ome.385723",
+   "crossref_title": "Optical dielectric constants of single crystalline silver films in the long wavelength range",
+   "title_coverage": 1.0
+  },
+  "|n sultanova s kasarova and i nikolov dispersion properties of optical polymers acta physica polonica a 116 585 587 2009 fit of the experimental data with the sellmeier dispersion formula mikhail polyanskiy|2009": {
+   "citation": "N. Sultanova, S. Kasarova and I. Nikolov. Dispersion properties of optical polymers, Acta Physica Polonica A 116, 585-587 (2009) (fit of the experimental data with the Sellmeier dispersion formula: Mikhail Polyanskiy)",
+   "doi": "10.12693/aphyspola.116.585",
+   "crossref_title": "Dispersion Properties of Optical Polymers",
+   "title_coverage": 1.0
+  },
+  "|u schlarb b sugg refractive index of terbium gallium garnet phys status solidi b 182 k91k93 1994|1994": {
+   "citation": "U. Schlarb, B. Sugg. Refractive index of terbium gallium garnet, Phys. Status Solidi B 182, K91–K93 (1994)",
+   "doi": "10.1002/pssb.2221820238",
+   "crossref_title": "Refractive Index of Terbium Gallium Garnet",
+   "title_coverage": 1.0
+  },
+  "|w s rodney and r j spindler refractive index of cesium bromide for ultraviolet visible and infrared wavelengths j res nat bur stand 51 123 126 1953|1953": {
+   "citation": "W. S. Rodney and R. J. Spindler. Refractive index of cesium bromide for ultraviolet, visible, and infrared wavelengths, J. Res. Nat. Bur. Stand. 51, 123-126 (1953)",
+   "doi": "10.6028/jres.051.015",
+   "crossref_title": "Refractive index of cesium bromide for ultraviolet, visible, and infrared wavelengths",
+   "title_coverage": 1.0
+  }
+ },
+ "unmatched": {
+  "determination of infrared optical constatns for single components hydrocarbon fuels master thesis 2009|m r anderson|2009": {
+   "citation": "Determination of infrared optical constatns for single components hydrocarbon fuels, Master Thesis (2009) M. R. Anderson.",
+   "candidates": [
+    {
+     "doi": "10.2172/970973",
+     "crossref_title": "Heterogeneous Reburning By Mixed Fuels",
+     "title_coverage": 0.25,
+     "reasons": [
+      "first author 'anderson hall' not in citation",
+      "title coverage 0.25 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1016/j.jqsrt.2009.05.017",
+     "crossref_title": "Mid-infrared absorption measurements of liquid hydrocarbon fuels near",
+     "title_coverage": 0.375,
+     "reasons": [
+      "first author 'porter' not in citation",
+      "title coverage 0.38 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1007/978-90-481-2973-7_14",
+     "crossref_title": "Master Thesis Supervision",
+     "title_coverage": 0.667,
+     "reasons": [
+      "first author 'semeijn' not in citation",
+      "title coverage 0.67 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1021/ef8011323",
+     "crossref_title": "Coking of Model Hydrocarbon Fuels under Supercritical Condition",
+     "title_coverage": 0.286,
+     "reasons": [
+      "first author 'xie' not in citation",
+      "title coverage 0.29 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1016/j.mencom.2009.07.021",
+     "crossref_title": "Gas chromatography with atomic emission detection: a method for the determination of hydrocarbon mixture components",
+     "title_coverage": 0.308,
+     "reasons": [
+      "first author 'revelsky' not in citation",
+      "title coverage 0.31 < 0.9"
+     ]
+    }
+   ]
+  },
+  "modified design of a laser refractometer|i bodurov i vlaeva a viraneva t yovcheva s sainov|2016": {
+   "citation": "Modified design of a laser refractometer. I. Bodurov, I. Vlaeva, A. Viraneva, T. Yovcheva, S. Sainov.",
+   "candidates": [
+    {
+     "doi": "10.1063/1.4944251",
+     "crossref_title": "Optical methods and differential scanning calorimetry as a potential tool for discrimination of olive oils (extra virgin and mix with vegetable oils)",
+     "title_coverage": 0.0,
+     "reasons": [
+      "first author 'nikolova' not in citation",
+      "title coverage 0.00 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1063/1.4944257",
+     "crossref_title": "Deposition of polyelectrolyte multilayer films made from chitosan and xanthan on biodegradable substrate: Effect of pH and ionic strength",
+     "title_coverage": 0.0,
+     "reasons": [
+      "title coverage 0.00 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1063/1.4944258",
+     "crossref_title": "Various corona treated biopolymer substrates for the deposition of polyelectrolyte multilayers",
+     "title_coverage": 0.0,
+     "reasons": [
+      "title coverage 0.00 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1088/1742-6596/682/1/012026",
+     "crossref_title": "Investigation of multilayered polyelectrolyte thin films by means of refractive index measurements, FT-IR spectroscopy and SEM",
+     "title_coverage": 0.0,
+     "reasons": [
+      "title coverage 0.00 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1063/1.4944250",
+     "crossref_title": "Electret behaviour of Polypropylene/KNO3 composite films",
+     "title_coverage": 0.0,
+     "reasons": [
+      "first author 'mancheva' not in citation",
+      "title coverage 0.00 < 0.9"
+     ]
+    }
+   ]
+  },
+  "optical constants of minerals and other materials from the millimeter to the ultraviolet|m r querry|1987": {
+   "citation": "Optical constants of minerals and other materials from the millimeter to the ultraviolet. M. R. Querry.",
+   "candidates": [
+    {
+     "doi": "10.1080/00357529.1987.11762637",
+     "crossref_title": "Pyrite and other Minerals from Bargers Quarry",
+     "title_coverage": 0.571,
+     "reasons": [
+      "first author 'penick' not in citation",
+      "title coverage 0.57 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.58799/nmg-v9n2.25",
+     "crossref_title": "Ultraviolet fluorescence of minerals--Examples from New Mexico",
+     "title_coverage": 0.429,
+     "reasons": [
+      "first author 'modreski' not in citation",
+      "title coverage 0.43 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.3133/ofr874b",
+     "crossref_title": "Source codes of CLAYFORM and associated file of data constants, a Fortran 77 computer program for calculating structural formulae of clay minerals and other silicates",
+     "title_coverage": 0.25,
+     "reasons": [
+      "first author 'bodine' not in citation",
+      "title coverage 0.25 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.3133/ofr874a",
+     "crossref_title": "Source codes of CLAYFORM and associated file of data constants, a Fortran 77 computer program for calculating structural formulae of clay minerals and other silicates",
+     "title_coverage": 0.25,
+     "reasons": [
+      "first author 'bodine' not in citation",
+      "title coverage 0.25 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1016/0167-577x(87)90098-x",
+     "crossref_title": "Optical constants of reactively sputtered cupric oxide films",
+     "title_coverage": 0.286,
+     "reasons": [
+      "first author 'rakhshani' not in citation",
+      "title coverage 0.29 < 0.9"
+     ]
+    }
+   ]
+  },
+  "refractive index and birefringence of synthetic sapphire|i h malitson and m j dodge|1972": {
+   "citation": "Refractive index and birefringence of synthetic sapphire. I. H. Malitson and M. J. Dodge.",
+   "candidates": [
+    {
+     "doi": "10.1364/josa.62.000341",
+     "crossref_title": "Refractive Index and Birefringence of 2H Silicon Carbide",
+     "title_coverage": 0.667,
+     "reasons": [
+      "first author 'powell' not in citation",
+      "title coverage 0.67 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1016/0032-3861(72)90134-6",
+     "crossref_title": "Refractive index increments of polymers in solution: 2. Refractive index increments and light-scattering in polydisperse systems of low molecular weight",
+     "title_coverage": 0.312,
+     "reasons": [
+      "first author 'lorimer' not in citation",
+      "title coverage 0.31 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.21236/ad0755808",
+     "crossref_title": "Diurnal Cycles of the Refractive Index Structure Function Coefficient",
+     "title_coverage": 0.25,
+     "reasons": [
+      "first author 'wesley' not in citation",
+      "title coverage 0.25 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1016/b978-0-12-717006-0.50013-x",
+     "crossref_title": "SUBJECT INDEX",
+     "title_coverage": 0.5,
+     "reasons": [
+      "first author '' not in citation",
+      "title coverage 0.50 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1016/b978-0-12-717006-0.50012-8",
+     "crossref_title": "AUTHOR INDEX",
+     "title_coverage": 0.5,
+     "reasons": [
+      "first author '' not in citation",
+      "title coverage 0.50 < 0.9"
+     ]
+    }
+   ]
+  },
+  "|a i golovashkin and g p motulevich optical and electrical properties of tin sov phys jetp 19 310 317 1964|1964": {
+   "citation": "A. I. Golovashkin and G. P. Motulevich. Optical and electrical properties of tin, Sov. Phys. JETP 19, 310-317 (1964)",
+   "candidates": [
+    {
+     "doi": "10.1070/pu1964v007n01abeh003645",
+     "crossref_title": "APPLICATION OF THE STATISTICAL METHOD TO CALCULATION OF THE OPTICAL PROPERTIES OF LASERS",
+     "title_coverage": 0.222,
+     "reasons": [
+      "first author 'stepanov' not in citation",
+      "title coverage 0.22 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1088/0031-9112/15/1/009",
+     "crossref_title": "Electrical and Magnetic Properties of Metals",
+     "title_coverage": 0.6,
+     "reasons": [
+      "first author 'raynor' not in citation",
+      "title coverage 0.60 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1143/jjap.3.617",
+     "crossref_title": "Optical and Electrical Properties of ZnO Crystals",
+     "title_coverage": 0.667,
+     "reasons": [
+      "first author 'watanabe' not in citation",
+      "title coverage 0.67 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1103/revmodphys.36.317",
+     "crossref_title": "Critical Fields and Hysteresis Effects in Tin Films",
+     "title_coverage": 0.286,
+     "reasons": [
+      "first author 'baldwin' not in citation",
+      "title coverage 0.29 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.2172/4681117",
+     "crossref_title": "THE ELECTRICAL, MAGNETIC, AND OPTICAL PROPERTIES OF SOME COMPLEX ORGANIC SYSTEMS (thesis)",
+     "title_coverage": 0.364,
+     "reasons": [
+      "first author 'ilten' not in citation",
+      "title coverage 0.36 < 0.9"
+     ]
+    }
+   ]
+  },
+  "|a i golovashkin i e leksina g p motulevich and a a shubin the optical properties of niobium sov phys jetp 29 27 34 1969|1969": {
+   "citation": "A. I. Golovashkin, I. E. Leksina, G. P. Motulevich and A. A. Shubin. The optical properties of niobium, Sov. Phys. JETP 29, 27-34 (1969)",
+   "candidates": [
+    {
+     "doi": "10.1070/pu1969v012n01abeh003919",
+     "crossref_title": "OPTICAL PROPERTIES OF POLYVALENT NON-TRANSITION METALS",
+     "title_coverage": 0.333,
+     "reasons": [
+      "title coverage 0.33 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.3367/ufnr.0097.196902b.0211",
+     "crossref_title": "Optical properties of polyvalent non-transition metals",
+     "title_coverage": 0.333,
+     "reasons": [
+      "title coverage 0.33 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1070/pu1969v011n06abeh003779",
+     "crossref_title": "OPTICAL FREQUENCY STANDARDS",
+     "title_coverage": 0.333,
+     "reasons": [
+      "first author 'basov' not in citation",
+      "title coverage 0.33 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1070/pu1969v011n04abeh003768",
+     "crossref_title": "MECHANICAL PROPERTIES OF METALLIC FILMS",
+     "title_coverage": 0.25,
+     "reasons": [
+      "first author 'palatnik' not in citation",
+      "title coverage 0.25 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1070/pu1969v011n05abeh003749",
+     "crossref_title": "SOME NEW DATA ON THE SUPERCONDUCTING PROPERTIES OF METALLIC URANIUM",
+     "title_coverage": 0.25,
+     "reasons": [
+      "first author 'maksimov' not in citation",
+      "title coverage 0.25 < 0.9"
+     ]
+    }
+   ]
+  },
+  "|a i golovashkin i s levchenko g p motulevich a a shubin the optical properties of indium sov phys jetp 24 1093 1100 1967|1967": {
+   "citation": "A. I. Golovashkin, I. S. Levchenko, G. P. Motulevich, A .A. Shubin. The optical properties of indium, Sov. Phys. JETP 24, 1093-1100 (1967)",
+   "candidates": [
+    {
+     "doi": "10.1088/0370-1328/90/4/325",
+     "crossref_title": "The optical properties of indium, gallium and thallium",
+     "title_coverage": 0.571,
+     "reasons": [
+      "first author 'bor' not in citation",
+      "title coverage 0.57 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1070/pu1967v009n05abeh003222",
+     "crossref_title": "DEMONSTRATION OF THE COHERENT PROPERTIES OF A GAS LASER",
+     "title_coverage": 0.333,
+     "reasons": [
+      "first author 'kaliteevskii' not in citation",
+      "title coverage 0.33 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1070/pu1967v009n06abeh003228",
+     "crossref_title": "DOUBLE BETA DECAY AND THE PROPERTIES OF THE NEUTRINO",
+     "title_coverage": 0.375,
+     "reasons": [
+      "first author 'lazarenko' not in citation",
+      "title coverage 0.38 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1016/0042-207x(67)92200-2",
+     "crossref_title": "2.3 Influence of dielectric films on the optical properties of indium and aluminum layers",
+     "title_coverage": 0.4,
+     "reasons": [
+      "first author 'dobierzewska mozrymas' not in citation",
+      "title coverage 0.40 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1080/00018736700101785",
+     "crossref_title": "The optical properties and electronic structure of liquid mercury and mercury-indium alloys",
+     "title_coverage": 0.333,
+     "reasons": [
+      "first author 'hodgson' not in citation",
+      "title coverage 0.33 < 0.9"
+     ]
+    }
+   ]
+  },
+  "|d f edwards and r h white beryllium oxide in e d palik ed handbook of optical constants of solids ii academic press orlando 1991 pp 805 814|": {
+   "citation": "D. F. Edwards and R. H. White, \"Beryllium Oxide,\" in E. D. Palik (ed.), Handbook of Optical Constants of Solids II, Academic Press, Orlando, 1991, pp. 805-814.",
+   "candidates": [
+    {
+     "doi": "10.1016/b978-012544415-6/50081-9",
+     "crossref_title": "Beryllium Oxide (BeO)",
+     "title_coverage": 0.667,
+     "reasons": [
+      "year 1997 != None",
+      "title coverage 0.67 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1016/b978-0-08-055630-7.50050-x",
+     "crossref_title": "Beryllium Oxide (BeO)",
+     "title_coverage": 0.667,
+     "reasons": [
+      "year 1998 != None",
+      "title coverage 0.67 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1016/b978-012544415-6.50081-9",
+     "crossref_title": "Beryllium Oxide (BeO)",
+     "title_coverage": 0.667,
+     "reasons": [
+      "year 1997 != None",
+      "title coverage 0.67 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1016/b978-012544415-6.50109-6",
+     "crossref_title": "Bismuth Silicon Oxide (Bi12SiO20) Bismuth Germanium Oxide (Bi12GeO20)",
+     "title_coverage": 0.25,
+     "reasons": [
+      "year 1997 != None",
+      "title coverage 0.25 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1016/b978-012544415-6/50109-6",
+     "crossref_title": "Bismuth Silicon Oxide (Bi12SiO20) Bismuth Germanium Oxide (Bi12GeO20)",
+     "title_coverage": 0.25,
+     "reasons": [
+      "year 1997 != None",
+      "title coverage 0.25 < 0.9"
+     ]
+    }
+   ]
+  },
+  "|d j segelstein the complex refractive index of water master thesis 1981 note this is a continuation of work of hale and querry 1973 providing improved data and extended range|1981": {
+   "citation": "D. J. Segelstein. The complex refractive index of water, Master Thesis (1981)Note: This is a continuation of work of Hale and Querry (1973) providing improved data and extended range.",
+   "candidates": [
+    {
+     "doi": "10.1177/072551368100200103",
+     "crossref_title": "Theory and History: A Note on the Anderson/Thompson Debate",
+     "title_coverage": 0.375,
+     "reasons": [
+      "first author 'neale' not in citation",
+      "title coverage 0.38 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1016/0141-9382(81)90039-1",
+     "crossref_title": "Matrix range extended",
+     "title_coverage": 0.667,
+     "reasons": [
+      "first author '' not in citation",
+      "title coverage 0.67 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1002/pssb.2221080151",
+     "crossref_title": "Simple Formulas for the Complex Refractive Index of Gaussian Type",
+     "title_coverage": 0.444,
+     "reasons": [
+      "first author 'peiponen' not in citation",
+      "title coverage 0.44 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1002/pssb.2221070147",
+     "crossref_title": "On the properties of the complex refractive index of Gaussian type",
+     "title_coverage": 0.625,
+     "reasons": [
+      "first author 'peiponen' not in citation",
+      "title coverage 0.62 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1080/01418638108222583",
+     "crossref_title": "Complex-refractive-index profiles of 4 MeV Ge ion-irradiation damage in silicon",
+     "title_coverage": 0.333,
+     "reasons": [
+      "first author 'heidemann' not in citation",
+      "title coverage 0.33 < 0.9"
+     ]
+    }
+   ]
+  },
+  "|handbook of optical constants of solids edward d palik ed academic press boston 1985|": {
+   "citation": "Handbook of Optical Constants of Solids, Edward D. Palik, ed. Academic Press, Boston, 1985",
+   "candidates": [
+    {
+     "doi": "10.1016/b978-0-08-054721-3.50005-8",
+     "crossref_title": "Preface",
+     "title_coverage": 0.0,
+     "reasons": [
+      "year 1985 != None",
+      "title coverage 0.00 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1016/b978-0-08-054721-3.50006-x",
+     "crossref_title": "Introductory Remarks",
+     "title_coverage": 0.0,
+     "reasons": [
+      "year 1985 != None",
+      "title coverage 0.00 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1016/b978-0-08-054721-3.50020-4",
+     "crossref_title": "Gallium Arsenide (GaAs)",
+     "title_coverage": 0.0,
+     "reasons": [
+      "year 1985 != None",
+      "title coverage 0.00 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1016/b978-0-08-054721-3.50037-x",
+     "crossref_title": "Lithium Niobate (LiNbO3)",
+     "title_coverage": 0.0,
+     "reasons": [
+      "year 1985 != None",
+      "title coverage 0.00 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1016/b978-0-08-054721-3.50038-1",
+     "crossref_title": "Potassium Chloride (KCl)",
+     "title_coverage": 0.0,
+     "reasons": [
+      "year 1985 != None",
+      "title coverage 0.00 < 0.9"
+     ]
+    }
+   ]
+  },
+  "|i h malitson and m j dodge refraction and dispersion of lead fluoride j opt soc am 59 500a 1969 as cited in handbook of optics 2nd edition vol 2 mcgraw hill 1994|1969": {
+   "citation": "I. H. Malitson and M. J. Dodge. Refraction and dispersion of lead fluoride, J. Opt. Soc. Am. 59, 500A (1969) (as cited in Handbook of Optics, 2nd edition, Vol. 2. McGraw-Hill 1994)",
+   "candidates": [
+    {
+     "doi": "10.1364/ao.8.001703",
+     "crossref_title": "A Special Method for Precise Refractive Index Measurement of Uniaxial Optical Media",
+     "title_coverage": 0.0,
+     "reasons": [
+      "title coverage 0.00 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1364/josa.59.001567",
+     "crossref_title": "Internal Conical Refraction*",
+     "title_coverage": 0.333,
+     "reasons": [
+      "first author 'portigal' not in citation",
+      "title coverage 0.33 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1364/josa.59.000114",
+     "crossref_title": "Refraction of Wavefronts: A Special Case",
+     "title_coverage": 0.25,
+     "reasons": [
+      "first author 'stavroudis' not in citation",
+      "title coverage 0.25 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1364/josa.59.000072",
+     "crossref_title": "Index of Refraction of Single-Crystal Selenium",
+     "title_coverage": 0.2,
+     "reasons": [
+      "first author 'gampel' not in citation",
+      "title coverage 0.20 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1364/josa.59.000199",
+     "crossref_title": "Dispersion of Helium",
+     "title_coverage": 0.5,
+     "reasons": [
+      "first author 'mansfield' not in citation",
+      "title coverage 0.50 < 0.9"
+     ]
+    }
+   ]
+  },
+  "|i h malitson as cited in handbook of optics 3rd edition vol 4 mcgraw hill 2009 data fit by handbook of optics|": {
+   "citation": "I. H. Malitson, as cited in Handbook of Optics, 3rd edition, Vol. 4. McGraw-Hill 2009. Data fit by Handbook of Optics.",
+   "candidates": [
+    {
+     "doi": "10.1007/978-1-349-07397-9",
+     "crossref_title": "Energy Data Conversion Handbook",
+     "title_coverage": 0.5,
+     "reasons": [
+      "year 1984 != None",
+      "first author '' not in citation",
+      "title coverage 0.50 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1007/978-1-349-07397-9_1",
+     "crossref_title": "Introduction",
+     "title_coverage": 0.0,
+     "reasons": [
+      "year 1984 != None",
+      "first author '' not in citation",
+      "title coverage 0.00 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1007/978-1-349-07397-9_6",
+     "crossref_title": "Power",
+     "title_coverage": 0.0,
+     "reasons": [
+      "year 1984 != None",
+      "first author '' not in citation",
+      "title coverage 0.00 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1007/978-1-349-07397-9_3",
+     "crossref_title": "Volume",
+     "title_coverage": 0.0,
+     "reasons": [
+      "year 1984 != None",
+      "first author '' not in citation",
+      "title coverage 0.00 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1007/978-1-349-07397-9_8",
+     "crossref_title": "Liquid Fuels",
+     "title_coverage": 0.0,
+     "reasons": [
+      "year 1984 != None",
+      "first author '' not in citation",
+      "title coverage 0.00 < 0.9"
+     ]
+    }
+   ]
+  },
+  "|m gospodinov et al physical properties of cubic bi12sio20 bulgarian j phys 15 140 143 1988 cited in handbook of optics 3rd edition vol 4 mcgraw hill 2009|1988": {
+   "citation": "M. Gospodinov et al.. Physical properties of cubic Bi12SiO20, Bulgarian J. Phys. 15, 140-143 (1988). Cited in Handbook of Optics, 3rd edition, Vol. 4. McGraw-Hill 2009",
+   "candidates": [
+    {
+     "doi": "10.1111/j.1742-1241.1988.tb08538.x",
+     "crossref_title": "Harrison's Principles of Internal Medicine, 11th edition, Companion Handbook, McGraw‐Hill Inc, New York, £9.95.",
+     "title_coverage": 0.167,
+     "reasons": [
+      "first author 'trimmer' not in citation",
+      "title coverage 0.17 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1007/978-1-349-10292-1_29",
+     "crossref_title": "F",
+     "title_coverage": 0.0,
+     "reasons": [
+      "first author 'turner' not in citation",
+      "title coverage 0.00 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1103/physrevlett.60.140",
+     "crossref_title": "Resonant Inverse Photoemission via Plasmons",
+     "title_coverage": 0.0,
+     "reasons": [
+      "first author 'drube' not in citation",
+      "title coverage 0.00 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.7748/ns.2.32.52.s81",
+     "crossref_title": "Patient Care Guidelines for Nurse Practitioners, 3rd edition edited by A Hoole et alPatient Care Guidelines for Nurse Practitioners, 3rd edition edited by A Hoole et al Hoole A Published by<b>372pp</b><b>£14.50</b>ISBN0-673-39376-3",
+     "title_coverage": 0.154,
+     "reasons": [
+      "first author 'williams' not in citation",
+      "title coverage 0.15 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1103/physrevb.37.7777",
+     "crossref_title": "Magnetic and thermodynamical properties of the simple-cubic Hubbard model",
+     "title_coverage": 0.222,
+     "reasons": [
+      "first author 'kakehashi' not in citation",
+      "title coverage 0.22 < 0.9"
+     ]
+    }
+   ]
+  },
+  "|m r querry optical constants contractor report crdc cr 85034 1985|1985": {
+   "citation": "M. R. Querry. Optical constants, Contractor Report CRDC-CR-85034 (1985)",
+   "candidates": [
+    {
+     "doi": "10.1364/oam.1985.wy5",
+     "crossref_title": "Optical properties of graphite pellets",
+     "title_coverage": 0.25,
+     "reasons": [
+      "title coverage 0.25 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.2172/5686057",
+     "crossref_title": "Radiation exposures for DOE and DOE contractor employees, 1984. Seventeenth annual report",
+     "title_coverage": 0.167,
+     "reasons": [
+      "first author '' not in citation",
+      "title coverage 0.17 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1016/c2009-0-20920-2",
+     "crossref_title": "Handbook of Optical Constants of Solids",
+     "title_coverage": 0.5,
+     "reasons": [
+      "first author '' not in citation",
+      "title coverage 0.50 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1016/b978-0-08-054721-3.50009-5",
+     "crossref_title": "Measurement of Optical Constants in the Vacuum Ultraviolet Spectral Region",
+     "title_coverage": 0.25,
+     "reasons": [
+      "first author 'hunter' not in citation",
+      "title coverage 0.25 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1016/b978-0-08-054721-3.50002-2",
+     "crossref_title": "Copyright",
+     "title_coverage": 0.0,
+     "reasons": [
+      "first author '' not in citation",
+      "title coverage 0.00 < 0.9"
+     ]
+    }
+   ]
+  },
+  "|m r querry optical constants of minerals and other materials from the millimeter to the ultraviolet contractor report crdec cr 88009 1987|1987": {
+   "citation": "M. R. Querry. Optical constants of minerals and other materials from the millimeter to the ultraviolet, Contractor Report CRDEC-CR-88009 (1987)",
+   "candidates": [
+    {
+     "doi": "10.1080/14041048709409301",
+     "crossref_title": "Book Review",
+     "title_coverage": 0.0,
+     "reasons": [
+      "first author '' not in citation",
+      "title coverage 0.00 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1080/14041048709409314",
+     "crossref_title": "CIPEC",
+     "title_coverage": 0.0,
+     "reasons": [
+      "first author 'rmr' not in citation",
+      "title coverage 0.00 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1080/14041048709409311",
+     "crossref_title": "Books received",
+     "title_coverage": 0.0,
+     "reasons": [
+      "first author '' not in citation",
+      "title coverage 0.00 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1080/14041048709409321",
+     "crossref_title": "Books received",
+     "title_coverage": 0.0,
+     "reasons": [
+      "first author '' not in citation",
+      "title coverage 0.00 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1080/14041048709409302",
+     "crossref_title": "Books received",
+     "title_coverage": 0.0,
+     "reasons": [
+      "first author '' not in citation",
+      "title coverage 0.00 < 0.9"
+     ]
+    }
+   ]
+  },
+  "|micro resist epocore and epoclad datasheet 2015|": {
+   "citation": "Micro resist EpoCore and EpoClad datasheet, 2015",
+   "candidates": [
+    {
+     "doi": "10.1088/0960-1317/23/12/125005",
+     "crossref_title": "An EpoClad/EpoCore-based platform for MOEMS fabrication",
+     "title_coverage": 0.286,
+     "reasons": [
+      "year 2013 != None",
+      "first author 'guan' not in citation",
+      "title coverage 0.29 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1109/embc.2014.6943622",
+     "crossref_title": "Suitability of SU-8, EpoClad and EpoCore for flexible waveguides on implantable neural probes",
+     "title_coverage": 0.3,
+     "reasons": [
+      "year 2014 != None",
+      "first author 'fiedler' not in citation",
+      "title coverage 0.30 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1016/j.sna.2012.12.030",
+     "crossref_title": "MOEMS uniaxial accelerometer based on EpoClad/EpoCore photoresists with built-in fiber clamp",
+     "title_coverage": 0.182,
+     "reasons": [
+      "year 2013 != None",
+      "first author 'guan' not in citation",
+      "title coverage 0.18 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1051/epjconf/202430500028",
+     "crossref_title": "Design and fabrication of asymmetric Mach-Zehnder interferometers based on EpoClad and EpoCore strip waveguides",
+     "title_coverage": 0.308,
+     "reasons": [
+      "year 2024 != None",
+      "first author 'magalhaes' not in citation",
+      "title coverage 0.31 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1016/j.snb.2016.08.113",
+     "crossref_title": "Hemocompatibility of EpoCore/EpoClad photoresists on COC substrate for optofluidic integrated Bragg sensors",
+     "title_coverage": 0.182,
+     "reasons": [
+      "year 2017 != None",
+      "first author 'hessler' not in citation",
+      "title coverage 0.18 < 0.9"
+     ]
+    }
+   ]
+  },
+  "|microchem pmma datasheet 2001|": {
+   "citation": "Microchem PMMA Datasheet, 2001",
+   "candidates": [
+    {
+     "doi": "10.3389/fbioe.2022.978211.s001",
+     "crossref_title": "DataSheet-1.docx",
+     "title_coverage": 0.5,
+     "reasons": [
+      "year None != None",
+      "first author '' not in citation",
+      "title coverage 0.50 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.3389/fmolb.2021.717969.s001",
+     "crossref_title": "DataSheet-1.zip",
+     "title_coverage": 0.5,
+     "reasons": [
+      "year None != None",
+      "first author '' not in citation",
+      "title coverage 0.50 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.3389/fphar.2020.584875.s001",
+     "crossref_title": "datasheet 1.docx",
+     "title_coverage": 0.5,
+     "reasons": [
+      "year None != None",
+      "first author '' not in citation",
+      "title coverage 0.50 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.3389/fphar.2020.561674.s001",
+     "crossref_title": "DataSheet 1_v1.DOCX",
+     "title_coverage": 0.5,
+     "reasons": [
+      "year None != None",
+      "first author '' not in citation",
+      "title coverage 0.50 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.2172/1778635",
+     "crossref_title": "FT3L core datasheet",
+     "title_coverage": 0.333,
+     "reasons": [
+      "year 2019 != None",
+      "first author 'moon' not in citation",
+      "title coverage 0.33 < 0.9"
+     ]
+    }
+   ]
+  },
+  "|microchem su 8 3000 data sheet 2011|": {
+   "citation": "Microchem SU-8 3000 Data Sheet, 2011",
+   "candidates": [
+    {
+     "doi": "10.1016/b978-1-4377-4471-2.00030-x",
+     "crossref_title": "Purchase data/specification sheet",
+     "title_coverage": 0.5,
+     "reasons": [
+      "year 2011 != None",
+      "first author '' not in citation",
+      "title coverage 0.50 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1007/978-3-642-17204-5_1",
+     "crossref_title": "Prolog: 3000 Jahre Analysis",
+     "title_coverage": 0.25,
+     "reasons": [
+      "year 2011 != None",
+      "first author 'sonar' not in citation",
+      "title coverage 0.25 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.2307/j.ctvh1dn65.5",
+     "crossref_title": "The years around 3000 BC",
+     "title_coverage": 0.25,
+     "reasons": [
+      "year 2011 != None",
+      "first author '' not in citation",
+      "title coverage 0.25 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.5860/choice.48-3000",
+     "crossref_title": "Seeking spatial justice",
+     "title_coverage": 0.0,
+     "reasons": [
+      "year 2011 != None",
+      "first author '' not in citation",
+      "title coverage 0.00 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.21236/ada550279",
+     "crossref_title": "Design Data Sheet: Calculation of Surface Ship Endurance Fuel Requirements",
+     "title_coverage": 0.222,
+     "reasons": [
+      "year 2011 != None",
+      "first author 'doerry' not in citation",
+      "title coverage 0.22 < 0.9"
+     ]
+    }
+   ]
+  },
+  "|v v nemoshkalenko v n antonov vi n antonov m m kirillova a e krasovskii l v nomerovannaya the structure of the energy bands and optical absorption in osmium sov phys jetp 63 115 119 1968|1968": {
+   "citation": "V. V. Nemoshkalenko, V. N. Antonov, VI. N. Antonov, M. M. Kirillova, A. E. Krasovskii, L. V. Nomerovannaya. The structure of the energy bands and optical absorption in osmium, Sov. Phys. JETP. 63, 115-119 (1968)",
+   "candidates": [
+    {
+     "doi": "10.1143/jpsj.24.1082",
+     "crossref_title": "Method of Moments for Optical Absorption Bands of Impurities in Solids",
+     "title_coverage": 0.375,
+     "reasons": [
+      "first author 'honma' not in citation",
+      "title coverage 0.38 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1070/pu1968v011n03abeh003841",
+     "crossref_title": "OPTICAL INVESTIGATIONS OF ATMOSPHERIC AEROSOL",
+     "title_coverage": 0.25,
+     "reasons": [
+      "first author 'rozenberg' not in citation",
+      "title coverage 0.25 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1088/0022-3719/1/5/318",
+     "crossref_title": "The electronic structure of the noble metals I. The energy bands",
+     "title_coverage": 0.667,
+     "reasons": [
+      "first author 'jacobs' not in citation",
+      "title coverage 0.67 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1103/physrev.170.683",
+     "crossref_title": "Band Structure and Interband Optical Absorption in Diamond",
+     "title_coverage": 0.571,
+     "reasons": [
+      "first author 'saravia' not in citation",
+      "title coverage 0.57 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1515/9783112496305-035",
+     "crossref_title": "Polarization of Optical Absorption and Emission Bands due to Donor-Acceptor Associates in Wurtzite Type Crystals",
+     "title_coverage": 0.308,
+     "reasons": [
+      "first author 'boyn' not in citation",
+      "title coverage 0.31 < 0.9"
+     ]
+    }
+   ]
+  },
+  "|w j tropf and m e thomas magnesium aluminum spinel mgalo4 in e d palik ed handbook of optical constants of solids ii academic press orlando 1991 pp 881 8952 handbook of optics 3rd edition vol 4 mcgraw hill 2009 ref 2 provides improved sellmeier equation based on data from ref 1|": {
+   "citation": "W. J. Tropf and M. E. Thomas, Magnesium aluminum spinel (MgAlO4), in E. D. Palik (ed.), Handbook of Optical Constants of Solids II, Academic Press, Orlando, 1991, pp. 881-8952) Handbook of Optics, 3rd edition, Vol. 4. McGraw-Hill 2009* Ref. 2 provides improved Sellmeier equation based on data from Ref. 1",
+   "candidates": [
+    {
+     "doi": "10.1016/b978-012544415-6/50086-8",
+     "crossref_title": "Magnesium Aluminum Spinel (MgAl2O4)",
+     "title_coverage": 0.75,
+     "reasons": [
+      "year 1997 != None",
+      "title coverage 0.75 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1016/b978-0-08-055630-7.50055-9",
+     "crossref_title": "Magnesium Aluminum Spinel (MgAl2O4)",
+     "title_coverage": 0.75,
+     "reasons": [
+      "year 1998 != None",
+      "title coverage 0.75 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1016/b978-012544415-6.50086-8",
+     "crossref_title": "Magnesium Aluminum Spinel (MgAl2O4)",
+     "title_coverage": 0.75,
+     "reasons": [
+      "year 1997 != None",
+      "title coverage 0.75 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1016/b978-012544415-6/50079-0",
+     "crossref_title": "Aluminum Oxynitride (ALON) Spinel",
+     "title_coverage": 0.5,
+     "reasons": [
+      "year 1997 != None",
+      "title coverage 0.50 < 0.9"
+     ]
+    },
+    {
+     "doi": "10.1016/b978-0-08-055630-7.50048-1",
+     "crossref_title": "Aluminum Oxynitride (ALON) Spinel",
+     "title_coverage": 0.5,
+     "reasons": [
+      "year 1998 != None",
+      "title coverage 0.50 < 0.9"
+     ]
+    }
+   ]
+  }
+ }
+}

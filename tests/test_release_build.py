@@ -392,3 +392,39 @@ def test_model_fits_never_vote_and_model_only_materials_have_no_consensus(releas
     ins = dict(q(release, "SELECT property_name, consensus_value FROM consensus_properties c JOIN materials m USING(material_id) "
                           "WHERE m.name='Indium antimonide'"))
     assert ins["n_633nm"] == pytest.approx(4.290, abs=2e-3)  # Aspnes & Studna only; Adachi's model (4.77) does not vote
+
+
+# ---------------------------------------------------------------- sources and synonyms (release_curation.py)
+
+def test_no_two_sources_are_identical_and_every_doi_is_unique_and_well_formed(release):
+    rows = q(release, "SELECT doi, title, authors, journal, year, technique, url, uncertainty, notes FROM sources")
+    assert len(rows) == len(set(rows))
+    dois = [d for (d, *_) in rows if d]
+    assert len(dois) == len(set(dois)) and all(d.startswith("10.") for d in dois)
+    facts = release["facts"]["source_curation"]
+    assert facts["merged_identical_rows"] > 0 and len(facts["dois_added"]) >= 5
+    for d in facts["dois_added"]:
+        assert q(release, "SELECT doi FROM sources WHERE source_id=?", (d["source_id"],))[0][0] == d["doi"]
+
+
+def test_every_accepted_crossref_doi_passed_all_three_checks():
+    import fetch_source_dois as fsd
+    cache = json.loads((ROOT / "data" / "descriptors" / "source_dois.json").read_text())
+    for key, v in cache["accepted"].items():
+        assert v["doi"].startswith("10.") and v["title_coverage"] >= fsd.TITLE_COVERAGE, key
+
+
+def test_synonyms_are_unambiguous_and_never_repeat_the_name_or_formula(release):
+    rows = q(release, "SELECT s.synonym, m.material_id, m.name, m.formula FROM material_synonyms s JOIN materials m USING(material_id)")
+    facts = release["facts"]["synonyms"]
+    assert len(rows) == facts["synonyms"] > 150
+    owners = {}
+    for syn, mid, name, formula in rows:
+        owners.setdefault(syn.casefold(), set()).add(mid)
+        assert syn.casefold() not in (name.casefold(), (formula or "").casefold()), (syn, name)
+    assert all(len(v) == 1 for v in owners.values())
+    names = {n.casefold(): mid for mid, n in q(release, "SELECT material_id, name FROM materials")}
+    assert not [s for s, mid, *_ in rows if s.casefold() in names and names[s.casefold()] != mid]  # never another material's name
+    get = lambda n: {s for (s,) in q(release, "SELECT synonym FROM material_synonyms JOIN materials USING(material_id) WHERE name=?", (n,))}
+    assert {"ZGP"} <= get("Zinc germanium phosphide (ZGP)") and {"galena"} <= get("Lead(II) sulfide (galena)")
+    assert {"Heavy water", "Deuterium Oxide"} <= get("Heavy water (D2O)") and "heavy water" not in {s.casefold() for s in get("Water")}
