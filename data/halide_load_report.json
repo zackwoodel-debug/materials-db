@@ -14,27 +14,7 @@
   "conflicts": [],
   "skipped": [],
   "warnings": [],
-  "notes": [
-    "polymorph differs between optical (None) and physical properties ('rock-salt (Fm-3m)') for AgCl -- their dataset_label prefixes will not match",
-    "polymorph differs between optical (None) and physical properties ('CsCl-type (Pm-3m)') for CsCl -- their dataset_label prefixes will not match",
-    "polymorph differs between optical (None) and physical properties ('zincblende (F-43m)') for CuCl -- their dataset_label prefixes will not match",
-    "polymorph differs between optical (None) and physical properties ('rock-salt (Fm-3m)') for KCl -- their dataset_label prefixes will not match",
-    "polymorph differs between optical (None) and physical properties ('rock-salt (Fm-3m)') for LiCl -- their dataset_label prefixes will not match",
-    "polymorph differs between optical (None) and physical properties ('rock-salt (Fm-3m)') for NaCl -- their dataset_label prefixes will not match",
-    "polymorph differs between optical (None) and physical properties ('rock-salt (Fm-3m)') for RbCl -- their dataset_label prefixes will not match",
-    "polymorph differs between optical (None) and physical properties ('CsCl-type (Pm-3m)') for TlCl -- their dataset_label prefixes will not match",
-    "polymorph differs between optical (None) and physical properties ('rock-salt (Fm-3m)') for AgBr -- their dataset_label prefixes will not match",
-    "polymorph differs between optical (None) and physical properties ('CsCl-type (Pm-3m)') for CsBr -- their dataset_label prefixes will not match",
-    "polymorph differs between optical (None) and physical properties ('rock-salt (Fm-3m)') for KBr -- their dataset_label prefixes will not match",
-    "polymorph differs between optical (None) and physical properties ('rock-salt (Fm-3m)') for LiBr -- their dataset_label prefixes will not match",
-    "polymorph differs between optical (None) and physical properties ('rock-salt (Fm-3m)') for NaBr -- their dataset_label prefixes will not match",
-    "polymorph differs between optical (None) and physical properties ('rock-salt (Fm-3m)') for RbBr -- their dataset_label prefixes will not match",
-    "polymorph differs between optical (None) and physical properties ('CsCl-type (Pm-3m)') for TlBr -- their dataset_label prefixes will not match",
-    "polymorph differs between optical (None) and physical properties ('CsCl-type (Pm-3m)') for CsI -- their dataset_label prefixes will not match",
-    "polymorph differs between optical (None) and physical properties ('rock-salt (Fm-3m)') for KI -- their dataset_label prefixes will not match",
-    "polymorph differs between optical (None) and physical properties ('rock-salt (Fm-3m)') for LiI -- their dataset_label prefixes will not match",
-    "polymorph differs between optical (None) and physical properties ('rock-salt (Fm-3m)') for NaI -- their dataset_label prefixes will not match",
-    "polymorph differs between optical (None) and physical properties ('CdI2-type 2H (P-3m1)') for PbI2 -- their dataset_label prefixes will not match",
-    "polymorph differs between optical (None) and physical properties ('rock-salt (Fm-3m)') for RbI -- their dataset_label prefixes will not match"
-  ]
+  "notes": [],
+  "deferred": [],
+  "collapsed": []
 }

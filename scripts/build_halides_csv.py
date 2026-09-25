@@ -109,9 +109,10 @@ def main():
                 if len(near_sg) == 1:
                     d = near_sg[0]
                     row.update(mp_id=str(d.material_id), mp_space_group=f"{d.symmetry.symbol} (#{d.symmetry.number})",
-                               mp_energy_above_hull_ev=float(d.energy_above_hull), density_g_cm3=float(d.density), density_source="MP_DFT",
-                               polymorph=f"{sname} ({sg_sym})")
-                    flags.append(f"density = MP DFT (calculated, not measured) for the ambient structure {sname} ({sg_sym}), {d.material_id}, "
+                               mp_energy_above_hull_ev=float(d.energy_above_hull), density_g_cm3=float(d.density), density_source="MP_DFT")
+                    # NOT put in `polymorph`: that column becomes the physical row's dataset_label prefix, and the optical labels carry no polymorph
+                    # (RI.info does not state one), so the exporter could not pair density with optical data. The structure is kept in mp_space_group + flags.
+                    flags.append(f"density = MP DFT (calculated, not measured) for the ambient structure {sname} ({sg_sym}), {d.material_id} ({d.symmetry.symbol} #{d.symmetry.number}), "
                                  f"{d.energy_above_hull * 1000:.1f} meV/atom above the hull; the ambient structure is standard crystallography, "
                                  "not stated on the RI.info page")
                     if d is not docs[0]:
