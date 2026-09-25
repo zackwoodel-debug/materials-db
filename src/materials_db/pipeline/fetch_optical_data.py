@@ -424,6 +424,16 @@ def eval_formula(
         n = A + B / L + C / L**2 + D * lam**2 + E * lam**4 + F * lam**6
         return n, None
 
+    if ftype == "formula 8":
+        # Retro (Lorentz-Lorenz):  (n²−1)/(n²+2) = c₀ + c₁·λ²/(λ²−c₂) + c₃·λ²
+        x = np.full_like(lam, c[0])
+        if len(c) > 2:
+            x = x + c[1] * lam**2 / (lam**2 - c[2])
+        if len(c) > 3:
+            x = x + c[3] * lam**2
+        n2 = (1.0 + 2.0 * x) / (1.0 - x)
+        return np.sqrt(np.clip(n2, 1e-30, None)), None
+
     raise ValueError(f"Unsupported formula type: '{ftype}'")
 
 

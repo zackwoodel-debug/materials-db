@@ -1,0 +1,3 @@
+key,name,gap_kind,reason,evidence
+LiIO3,LiIO3,out_of_family,"iodate, not a halide; already loaded as Lithium_iodate by the oxide family",
+MoOCl2,MoOCl2,out_of_family,"oxychloride, layered 2D-type crystal (thin-flake sheet effects): belongs with the graphene/2D follow-up",
