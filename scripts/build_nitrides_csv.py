@@ -97,7 +97,8 @@ def si3n4_row(cand, match):
         flags += [f"[{ax['page']}] {f}" for f in interp.pop("flags")]
         if i == 1:
             row.update(ri_shelf="main", ri_book="Si3N4", ri_page_primary=ax["page"], axis_primary=ax["axis"],
-                       n_633=interp["n_633"], k_633=interp["k_633"])
+                       n_633=interp["n_633"], k_633=interp["k_633"],
+                       ri_wl_min_nm=interp["wl_min_nm"], ri_wl_max_nm=interp["wl_max_nm"])
         else:
             row.update({f"axis_{i}": ax["axis"], f"n_633_axis{i}": interp["n_633"], f"k_633_axis{i}": interp["k_633"],
                         f"ri_page_axis{i}": ax["page"]})
@@ -109,6 +110,7 @@ def si3n4_row(cand, match):
 def main():
     base.ensure_dirs()
     matches = {m["selection_key"]: m for m in json.loads((DATA / "nitride_ri_matches.json").read_text())}
+    selections = json.loads((DATA / "step1_selections_nitrides.json").read_text())
     rows, gaps = [], []
     for i, c in enumerate(CANDIDATES, start=1):
         m = matches[c["selection_key"]]
@@ -120,6 +122,9 @@ def main():
                              reason=m.get("note") or "no RI.info dataset and no in-repo density source; not fabricated"))
             continue
         row = carried_row(c) if m["prior_selection"] else si3n4_row(c, m)
+        if m["prior_selection"]:  # batch 2/3b never recorded the range; take it from the carried primary axis's data
+            interp = base.interpolate_axis(selections[c["selection_key"]]["axes"][0]["data_path"])
+            row.update(ri_wl_min_nm=interp["wl_min_nm"], ri_wl_max_nm=interp["wl_max_nm"])
         row.update(idx=i, polymorph_hint=c["polymorph_hint"], materialclass="nitride", selection_key=c["selection_key"])
         rows.append(row)
 

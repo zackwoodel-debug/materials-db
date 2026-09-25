@@ -135,6 +135,7 @@ def main():
                 interp["n_633"] = exact_formula_n633(a["data_path"], interp["n_633"])
                 if j == 0:
                     row["n_633"], row["k_633"] = interp["n_633"], interp["k_633"]
+                    row["ri_wl_min_nm"], row["ri_wl_max_nm"] = interp["wl_min_nm"], interp["wl_max_nm"]
                 else:  # a further PAPER (cubic halides are isotropic): its n(633 nm) is evidence in flags, not an axis column
                     flags.append(f"additional source {a['dataset_label']}: n(633 nm)={interp['n_633']}"
                                  + (f", k={interp['k_633']}" if interp["k_633"] is not None else ""))
