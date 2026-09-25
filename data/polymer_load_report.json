@@ -1,10 +1,10 @@
 {
   "family": "polymer",
   "inserted": {
-    "materials": 14,
+    "materials": 39,
     "physical_properties": 0,
-    "optical_dispersion": 6543,
-    "sources": 10
+    "optical_dispersion": 27329,
+    "sources": 20
   },
   "unchanged": {
     "materials": 0,
@@ -15,38 +15,7 @@
   "skipped": [],
   "warnings": [],
   "notes": [],
-  "deferred": [
-    {
-      "key": "Kapton",
-      "name": null,
-      "reason": "8 loadable datasets across products (H/HN/DuPont sheet) and non-overlapping ranges; product not chosen",
-      "in_catalog": false
-    },
-    {
-      "key": "PDMS",
-      "name": null,
-      "reason": "10 datasets that are likely distinct materials (cure ratios 5:1-20:1, RTV615/Sylgard 184, UV-curable, SF-96 fluid)",
-      "in_catalog": false
-    },
-    {
-      "key": "PMMA",
-      "name": null,
-      "reason": "12 datasets (bulk, thin film, microspheres, 950k resist grade, Microchem 495/950); grades not resolved",
-      "in_catalog": false
-    },
-    {
-      "key": "PS",
-      "name": null,
-      "reason": "5 datasets (bulk, powder, microspheres, two n+k); no dataset chosen this PR",
-      "in_catalog": false
-    },
-    {
-      "key": "PVA",
-      "name": null,
-      "reason": "2 different films (10 um on glass vs thin film on Si); not resolved",
-      "in_catalog": false
-    }
-  ],
+  "deferred": [],
   "collapsed": [
     {
       "data_path": "organic/(C6H9NO)n - polyvinylpyrrolidone/nk/Konig.yml",

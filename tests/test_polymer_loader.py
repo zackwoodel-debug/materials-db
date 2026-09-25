@@ -80,34 +80,42 @@ def test_null_formula_still_needs_a_name_and_a_selection_key(tmp_path):
         fam.load_catalog(cat, allow_null_formula=True)
 
 
-def test_polymer_catalog_loads_null_formula_only_for_the_four_grade_materials(loaded):
+def test_polymer_catalog_loads_null_formula_only_for_the_twelve_grade_materials(loaded):
     c = sqlite3.connect(str(loaded[0]))
     nulls = {r[0] for r in c.execute("SELECT name FROM materials WHERE formula IS NULL")}
     assert nulls == set(pd.read_csv(poly.CSV_PATH).query("formula != formula")["name"])  # NaN rows == NULL rows
-    assert len(nulls) == 4 and c.execute("SELECT COUNT(*) FROM materials WHERE lower(coalesce(formula,'x')) IN ('nan','none','unspecified','')").fetchone()[0] == 0
+    assert len(nulls) == 12 and c.execute("SELECT COUNT(*) FROM materials WHERE lower(coalesce(formula,'x')) IN ('nan','none','unspecified','')").fetchone()[0] == 0
     c.close()
 
 
 # ---------------------------------------------------------------- deferred
 
+DEFER = dict(selection=None, deferred=True, reason="synthetic deferral for this test")
+
+
 def test_deferred_entry_produces_zero_rows_and_is_reported_not_warned(tmp_path):
-    sel = dict(_pvp_sel(), PS=SEL["PS"])  # PS is deferred in the real file
+    sel = dict(_pvp_sel(), DEFERRED_X=DEFER)
     cat, s = _mini(tmp_path, [dict(name="Polyvinylpyrrolidone", formula="(C6H9NO)n", selection_key="PVP"),
-                              dict(name="Polystyrene", formula="(C8H8)n", selection_key="PS")], sel)
+                              dict(name="Deferred X", formula="(CH2)n", selection_key="DEFERRED_X")], sel)
     db = tmp_path / "d.db"
     rep = fam.run_family("polymer", cat, s, db, strict=True, **KW)  # strict must NOT fail on a deferral
     c = sqlite3.connect(str(db))
-    assert c.execute("SELECT COUNT(*) FROM materials WHERE name='Polystyrene'").fetchone()[0] == 0
-    assert c.execute("SELECT COUNT(*) FROM optical_dispersion o JOIN materials m USING(material_id) WHERE m.name='Polystyrene'").fetchone()[0] == 0
+    assert c.execute("SELECT COUNT(*) FROM materials WHERE name='Deferred X'").fetchone()[0] == 0
+    assert c.execute("SELECT COUNT(*) FROM optical_dispersion o JOIN materials m USING(material_id) WHERE m.name='Deferred X'").fetchone()[0] == 0
     assert c.execute("SELECT COUNT(*) FROM materials").fetchone()[0] == 1
     c.close()
-    assert [d["key"] for d in rep.deferred] == ["PS"] and rep.deferred[0]["in_catalog"] and not rep.warnings and not rep.skipped
+    assert [d["key"] for d in rep.deferred] == ["DEFERRED_X"] and rep.deferred[0]["in_catalog"] and not rep.warnings and not rep.skipped
 
 
-def test_deferred_keys_absent_from_the_catalog_are_recorded_without_a_warning(loaded):
-    rep = loaded[1]
-    assert sorted(d["key"] for d in rep.deferred) == ["Kapton", "PDMS", "PMMA", "PS", "PVA"]
-    assert all(d["in_catalog"] is False for d in rep.deferred) and rep.warnings == []
+def test_deferred_keys_absent_from_the_catalog_are_recorded_without_a_warning(tmp_path):
+    cat, s = _mini(tmp_path, [dict(name="Polyvinylpyrrolidone", formula="(C6H9NO)n", selection_key="PVP")],
+                   dict(_pvp_sel(), A=DEFER, B=DEFER))
+    rep = fam.run_family("polymer", cat, s, tmp_path / "e.db", strict=True, **KW)
+    assert sorted((d["key"], d["in_catalog"]) for d in rep.deferred) == [("A", False), ("B", False)] and rep.warnings == []
+
+
+def test_the_real_polymer_load_defers_nothing(loaded):
+    assert loaded[1].deferred == [] and loaded[1].warnings == []
 
 
 # ---------------------------------------------------------------- idempotency and the dedupe key
@@ -196,14 +204,18 @@ def test_real_load_facts_and_scope(loaded):
     db, rep = loaded
     c = sqlite3.connect(str(db))
     assert c.execute("PRAGMA integrity_check").fetchone()[0] == "ok" and c.execute("PRAGMA foreign_key_check").fetchall() == []
-    assert c.execute("SELECT COUNT(*) FROM materials").fetchone()[0] == 14
-    assert c.execute("SELECT COUNT(*) FROM (SELECT 1 FROM optical_dispersion GROUP BY material_id, dataset_label)").fetchone()[0] == 14
+    assert c.execute("SELECT COUNT(*) FROM materials").fetchone()[0] == 39
+    assert c.execute("SELECT COUNT(*) FROM (SELECT 1 FROM optical_dispersion GROUP BY material_id, dataset_label)").fetchone()[0] == 45
     expected = sum(len(fam.parse_file(RI / a["data_path"])[0]) for v in SEL.values() if "axes" in v for a in v["axes"]) - len(rep.collapsed)
-    assert c.execute("SELECT COUNT(*) FROM optical_dispersion").fetchone()[0] == expected == 6543
-    assert rep.skipped == [] and rep.conflicts == [] and rep.warnings == [] and len(rep.collapsed) == 2
+    assert c.execute("SELECT COUNT(*) FROM optical_dispersion").fetchone()[0] == expected
+    assert rep.skipped == [] and rep.conflicts == [] and rep.warnings == [] and len(rep.collapsed) == 2  # only the two PVP boundary rows
     names = {r[0] for r in c.execute("SELECT name FROM materials")}
-    assert {"Polyetherimide (PEI)", "Poly(D-lactic acid) (PDLA)"} <= names and not any("CR-39" in n or "Kapton" in n for n in names)
-    assert {r[0] for r in c.execute("SELECT DISTINCT dataset_label FROM optical_dispersion o JOIN materials m USING(material_id) WHERE m.name='Polycarbonate'")} == {"Zhang2020"}
+    assert {"Polyetherimide (PEI)", "Poly(D-lactic acid) (PDLA)", "Poly(methyl methacrylate) (Tomson)", "Poly(methyl methacrylate) (Mitsubishi)",
+            "Polydimethylsiloxane (Dow Corning, 10:1 mass ratio)", "Kapton HN (polyimide film)", "Linear low-density polyethylene (LLDPE)"} <= names
+    assert not any("CR-39" in n or "Hydroxypropyl" in n or "1:1 mixture" in n or "(uncured)" in n.lower() for n in names)
+    lab = lambda nm: {r[0] for r in c.execute("SELECT DISTINCT dataset_label FROM optical_dispersion o JOIN materials m USING(material_id) WHERE m.name=?", (nm,))}
+    assert lab("Polycarbonate") == {"Zhang2020"} and lab("Polystyrene") == {"Zhang2020"} and lab("F8BT") == {"Kamptner2024 | o-ray", "Kamptner2024 | e-ray"}
+    assert c.execute("SELECT COUNT(*) FROM optical_dispersion o JOIN materials m USING(material_id) WHERE m.name='Polyvinyl alcohol' AND o.dataset_label != 'Schnepf2017'").fetchone()[0] == 0
     c.close()
 
 
@@ -257,8 +269,10 @@ def test_no_self_pairs_in_the_polymer_db_and_the_detector_really_detects_them(lo
     shutil.copy(loaded[0], db)
     c = sqlite3.connect(str(db))
     ids = [r[0] for r in c.execute("SELECT material_id FROM materials")]
-    assert sum(validate_optical_material(c, i) for i in ids) == 0  # one dataset per material: nothing to pair
-    assert c.execute("SELECT COUNT(*) FROM dataset_validation WHERE pearson_r >= 0.999999").fetchone()[0] == 0
+    pairs = sum(validate_optical_material(c, i) for i in ids)
+    assert pairs == 6  # only the six conjugated polymers have two datasets (o- and e-ray of one film): a genuine pair each
+    assert c.execute("SELECT COUNT(*) FROM dataset_validation WHERE pearson_r >= 0.999999").fetchone()[0] == 0  # distinct axes, never identical
+    assert {r[0] for r in c.execute("SELECT DISTINCT dataset_a || ' / ' || dataset_b FROM dataset_validation")} == {"Kamptner2024 | e-ray / Kamptner2024 | o-ray"}
     pc = c.execute("SELECT material_id FROM materials WHERE name='Polycarbonate'").fetchone()[0]
     c.execute("INSERT INTO optical_dispersion(material_id,wavelength_nm,n,k,dataset_label,raw_record_table,raw_record_id,source_id) "
               "SELECT material_id,wavelength_nm,n,k,'DUP-CONTROL','ctrl/'||raw_record_table,raw_record_id,source_id FROM optical_dispersion WHERE material_id=?", (pc,))

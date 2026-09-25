@@ -44,6 +44,11 @@ def main():
         collision = (f"materials_normalized.db already has '{c['key']}' (id {hit[0]}, formula {hit[1]}); separate DB here, matters at merge"
                      if hit else None)
         ds = [d for d in c["datasets"] if d["kind"] != "k-only"]
+        if c["tier"] == 1 and c["status"] == "EXCLUDED":
+            gaps.append(dict(name=c["name"], key=c["key"], gap_kind="excluded_dataset", tier=1, reason=c["excluded_reason"],
+                             ri_match=" ; ".join(f"{d['shelf']}/{d['book']}/{d['page']}" for d in c["datasets"]), citation=None,
+                             note="candidate excluded; no material row"))
+            continue
         if c["tier"] == 1:
             gaps.append(dict(name=c["name"], key=c["key"], gap_kind="density", tier=1, reason=DENSITY_GAP, ri_match=None, citation=None,
                              note=None))
@@ -54,7 +59,7 @@ def main():
                                  note=" ; ".join(x for x in (c["note"], collision) if x) or None))
                 continue
             for ex in c.get("excluded_datasets", []):
-                gaps.append(dict(name=c["name"], key=f"{c['key']}:{ex['page']}", gap_kind="excluded_dataset", tier=1, reason=ex["reason"],
+                gaps.append(dict(name=c["name"], key=ex.get("gap_key", f"{c['key']}:{ex['page']}"), gap_kind="excluded_dataset", tier=1, reason=ex["reason"],
                                  ri_match=ex["page"], citation=None, note="dataset excluded; the material itself is loaded from the selected dataset(s)"))
             formula = c["formula_ri"]  # NULL is valid for a polymer row
             notes = f"grade: {GRADE_NOTES[c['key']]}" if c["key"] in GRADE_NOTES else None
@@ -66,7 +71,7 @@ def main():
                 flags.append(f"k-only pages not counted (no n): {', '.join(c['k_only_datasets'])}")
             chosen = [d for d in ds if d["data_path"] in sel_paths]  # by path: SU-8 2000/3000 both use page id 'specs'
             cat.append(dict(idx=i, name=c["name"], formula=formula, notes=notes, abbreviation=c["key"], polymer_group=c["group"],
-                            materialclass="polymer", tier=1, status=c["status"], selection_key=c["key"],
+                            materialclass=c["materialclass"], tier=1, status=c["status"], selection_key=c["key"],
                             ri_shelf="|".join(sorted({d["shelf"] for d in chosen})), ri_book="|".join(sorted({d["book"] for d in chosen})),
                             n_selected_datasets=len(chosen), needs_specific_formulation=False,
                             density_g_cm3=None, density_source=None, flags=" ; ".join(flags)))

@@ -25,7 +25,7 @@ import yaml
 
 _ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from polymer_material_list import CANDIDATES, DEFERRED, RESOLUTIONS  # noqa: E402
+from polymer_material_list import CANDIDATES, DEFERRED, EXCLUDED_CANDIDATES, RESOLUTIONS  # noqa: E402
 
 RI = _ROOT / "refractiveindex_db" / "database"
 MATCHES_OUT = _ROOT / "data" / "polymer_ri_matches.json"
@@ -162,6 +162,15 @@ def main():
         if r["tier"] != 1:
             continue
         key = r["key"]
+        # datasets of this candidate that are deliberately not loaded (candidate-level list); each must exist on RI.info
+        r["excluded_datasets"] = []
+        for shelf, book, page, why in r["excluded_pages"]:
+            if not any(p["PAGE"] == page for p in books[(shelf, book)]["pages"]):
+                raise SystemExit(f"{key}: excluded page {shelf}/{book}/{page} not in the RI catalog")
+            r["excluded_datasets"].append(dict(page=f"{book}/{page}", reason=why, gap_key=f"{key}:{book}/{page}"))
+        if key in EXCLUDED_CANDIDATES:  # usable dataset exists but the candidate is deliberately not loaded: no material row
+            r["status"], r["excluded_reason"] = "EXCLUDED", EXCLUDED_CANDIDATES[key]
+            continue
         if key in DEFERRED:  # deferred entirely: no dataset picked, no material row
             r["status"] = "DEFERRED"
             r["deferred_reason"] = DEFERRED[key]
@@ -174,7 +183,7 @@ def main():
                 d = next(d for d in r["datasets"] if (d["shelf"], d["book"], d["page"]) == (shelf, book, page))
                 chosen.append(d)
             r["status"] = "SELECTED_BY_USER"
-            r["excluded_datasets"] = [dict(page=pg, reason=why) for pg, why in res["excluded"]]
+            r["excluded_datasets"] += [dict(page=pg, reason=why, gap_key=f"{key}:{pg}") for pg, why in res["excluded"]]
             if res.get("name"):
                 r["name"] = res["name"]
             src = "user decision (this run): " + res["basis"]
@@ -182,11 +191,14 @@ def main():
             chosen, src = [r["datasets"][0]], "auto: the only dispersion-capable RI.info dataset"
         else:
             raise SystemExit(f"{key}: unresolved multi-match reached selection (must be RESOLUTIONS or DEFERRED)")
+        axis_names = list(res["axes"]) if res and res.get("axes") else [None] * len(chosen)
         selections[key] = dict(
             name=r["name"], polymorph=None, effective_polymorph=None, source=src,
             not_stated_by_source=[f"{a}: not stated by source" for a in ATTRS if all(d["attributes_stated"][a] is None for d in chosen)],
-            axes=[dict(page=d["page"], axis=None, data_path=d["data_path"], dataset_label=d["tag"], span_um=d["span_um"],
-                       kind=d["kind"], attributes_stated={a: v for a, v in d["attributes_stated"].items() if v}) for d in chosen])
+            axes=[dict(page=d["page"], axis=axis_names[i], data_path=d["data_path"],
+                       dataset_label=d["tag"] if axis_names[i] is None else f"{d['tag']} | {axis_names[i]}",  # o/e pairs need distinct labels
+                       span_um=d["span_um"], kind=d["kind"], attributes_stated={a: v for a, v in d["attributes_stated"].items() if v})
+                  for i, d in enumerate(chosen)])
     MATCHES_OUT.write_text(json.dumps(dict(candidates=out, extras_found_not_in_pool=extras), indent=1, default=str))
     SELECTIONS_OUT.write_text(json.dumps(selections, indent=1))
 
@@ -199,6 +211,7 @@ def main():
     print("  FOUND (selected):", [r["key"] for r in out if r["status"] == "FOUND"])
     print("  SELECTED_BY_USER:", [r["key"] for r in out if r["status"] == "SELECTED_BY_USER"])
     print("  DEFERRED:", [r["key"] for r in out if r["status"] == "DEFERRED"])
+    print("  EXCLUDED candidates:", [r["key"] for r in out if r["status"] == "EXCLUDED"])
     print("  unresolved MULTIPLE:", [r["key"] for r in out if r["status"] == "MULTIPLE"])
 
 

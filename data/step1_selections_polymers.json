@@ -56,14 +56,88 @@
   ]
  },
  "PS": {
-  "selection": null,
-  "deferred": true,
-  "reason": "5 datasets (bulk, powder, microspheres, two n+k); no dataset chosen this PR"
+  "name": "Polystyrene",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "user decision (this run): Zhang only (user decision, default accepted): it covers Sultanova's range plus the IR",
+  "not_stated_by_source": [
+   "grade: not stated by source",
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source",
+   "cure_ratio: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "Zhang",
+    "axis": null,
+    "data_path": "organic/(C8H8)n - polystyrene/nk/Zhang.yml",
+    "dataset_label": "Zhang2020",
+    "span_um": [
+     0.4,
+     19.942
+    ],
+    "kind": "nk",
+    "attributes_stated": {
+     "supplier": "Manufacturer : ShanghaiHuineng Industry, China"
+    }
+   }
+  ]
  },
- "PMMA": {
-  "selection": null,
-  "deferred": true,
-  "reason": "12 datasets (bulk, thin film, microspheres, 950k resist grade, Microchem 495/950); grades not resolved"
+ "PMMA-Tomson": {
+  "name": "Poly(methyl methacrylate) (Tomson)",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "auto: the only dispersion-capable RI.info dataset",
+  "not_stated_by_source": [
+   "grade: not stated by source",
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source",
+   "cure_ratio: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "Zhang-Tomson",
+    "axis": null,
+    "data_path": "organic/(C5H8O2)n - poly(methyl methacrylate)/nk/Zhang-Tomson.yml",
+    "dataset_label": "Zhang2020",
+    "span_um": [
+     0.4,
+     19.942
+    ],
+    "kind": "nk",
+    "attributes_stated": {
+     "supplier": "Manufacturer: Tomson, China"
+    }
+   }
+  ]
+ },
+ "PMMA-Mitsubishi": {
+  "name": "Poly(methyl methacrylate) (Mitsubishi)",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "auto: the only dispersion-capable RI.info dataset",
+  "not_stated_by_source": [
+   "grade: not stated by source",
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source",
+   "cure_ratio: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "Zhang-Mitsubishi",
+    "axis": null,
+    "data_path": "organic/(C5H8O2)n - poly(methyl methacrylate)/nk/Zhang-Mitsubishi.yml",
+    "dataset_label": "Zhang2020",
+    "span_um": [
+     0.4,
+     19.942
+    ],
+    "kind": "nk",
+    "attributes_stated": {
+     "supplier": "Manufacturer: Mitsubishi, Japan"
+    }
+   }
+  ]
  },
  "PC": {
   "name": "Polycarbonate",
@@ -122,9 +196,31 @@
   ]
  },
  "PVA": {
-  "selection": null,
-  "deferred": true,
-  "reason": "2 different films (10 um on glass vs thin film on Si); not resolved"
+  "name": "Polyvinyl alcohol",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "user decision (this run): Schnepf only (user decision, default accepted): the wider range (0.3-1.5 um)",
+  "not_stated_by_source": [
+   "grade: not stated by source",
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source",
+   "cure_ratio: not stated by source",
+   "supplier: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "Schnepf",
+    "axis": null,
+    "data_path": "organic/(C2H4O)n - polyvinyl alcohol/nk/Schnepf.yml",
+    "dataset_label": "Schnepf2017",
+    "span_um": [
+     0.3,
+     1.5
+    ],
+    "kind": "n",
+    "attributes_stated": {}
+   }
+  ]
  },
  "PVP": {
   "name": "Polyvinylpyrrolidone",
@@ -208,10 +304,117 @@
    }
   ]
  },
- "PDMS": {
-  "selection": null,
-  "deferred": true,
-  "reason": "10 datasets that are likely distinct materials (cure ratios 5:1-20:1, RTV615/Sylgard 184, UV-curable, SF-96 fluid)"
+ "PDMS-5-1": {
+  "name": "Polydimethylsiloxane (Dow Corning, 5:1 mass ratio)",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "auto: the only dispersion-capable RI.info dataset",
+  "not_stated_by_source": [
+   "grade: not stated by source",
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "Zhang-5-1",
+    "axis": null,
+    "data_path": "organic/(C2H6OSi)n - polydimethylsiloxane/nk/Zhang-5-1.yml",
+    "dataset_label": "Zhang2020",
+    "span_um": [
+     0.4,
+     19.942
+    ],
+    "kind": "nk",
+    "attributes_stated": {
+     "cure_ratio": "2020: 5:1",
+     "supplier": "Manufacturer: Dow Corning, USA"
+    }
+   }
+  ]
+ },
+ "PDMS-10-1": {
+  "name": "Polydimethylsiloxane (Dow Corning, 10:1 mass ratio)",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "auto: the only dispersion-capable RI.info dataset",
+  "not_stated_by_source": [
+   "grade: not stated by source",
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "Zhang-10-1",
+    "axis": null,
+    "data_path": "organic/(C2H6OSi)n - polydimethylsiloxane/nk/Zhang-10-1.yml",
+    "dataset_label": "Zhang2020",
+    "span_um": [
+     0.4,
+     19.942
+    ],
+    "kind": "nk",
+    "attributes_stated": {
+     "cure_ratio": "2020: 10:1",
+     "supplier": "Manufacturer: Dow Corning, USA"
+    }
+   }
+  ]
+ },
+ "PDMS-15-1": {
+  "name": "Polydimethylsiloxane (Dow Corning, 15:1 mass ratio)",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "auto: the only dispersion-capable RI.info dataset",
+  "not_stated_by_source": [
+   "grade: not stated by source",
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "Zhang-15-1",
+    "axis": null,
+    "data_path": "organic/(C2H6OSi)n - polydimethylsiloxane/nk/Zhang-15-1.yml",
+    "dataset_label": "Zhang2020",
+    "span_um": [
+     0.4,
+     19.942
+    ],
+    "kind": "nk",
+    "attributes_stated": {
+     "cure_ratio": "2020: 15:1",
+     "supplier": "Manufacturer: Dow Corning, USA"
+    }
+   }
+  ]
+ },
+ "PDMS-20-1": {
+  "name": "Polydimethylsiloxane (Dow Corning, 20:1 mass ratio)",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "auto: the only dispersion-capable RI.info dataset",
+  "not_stated_by_source": [
+   "grade: not stated by source",
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "Zhang-20-1",
+    "axis": null,
+    "data_path": "organic/(C2H6OSi)n - polydimethylsiloxane/nk/Zhang-20-1.yml",
+    "dataset_label": "Zhang2020",
+    "span_um": [
+     0.4,
+     19.942
+    ],
+    "kind": "nk",
+    "attributes_stated": {
+     "cure_ratio": "2020: 20:1",
+     "supplier": "Manufacturer: Dow Corning, USA"
+    }
+   }
+  ]
  },
  "SU-8": {
   "name": "SU-8 3000 (epoxy photoresist)",
@@ -351,9 +554,32 @@
   ]
  },
  "Kapton": {
-  "selection": null,
-  "deferred": true,
-  "reason": "8 loadable datasets across products (H/HN/DuPont sheet) and non-overlapping ranges; product not chosen"
+  "name": "Kapton HN (polyimide film)",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "user decision (this run): Kapton HN, French only (user decision, default accepted): one product, one range",
+  "not_stated_by_source": [
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source",
+   "cure_ratio: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "French",
+    "axis": null,
+    "data_path": "other/commercial polymers/Kapton/nk/French.yml",
+    "dataset_label": "French2009",
+    "span_um": [
+     0.19,
+     2.49
+    ],
+    "kind": "nk",
+    "attributes_stated": {
+     "grade": "Kapton HN",
+     "supplier": "DuPont"
+    }
+   }
+  ]
  },
  "PLA": {
   "name": "Poly(D-lactic acid) (PDLA)",
@@ -407,6 +633,516 @@
     ],
     "kind": "n",
     "attributes_stated": {}
+   }
+  ]
+ },
+ "PE-LLDPE": {
+  "name": "Linear low-density polyethylene (LLDPE)",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "auto: the only dispersion-capable RI.info dataset",
+  "not_stated_by_source": [
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source",
+   "cure_ratio: not stated by source",
+   "supplier: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "David",
+    "axis": null,
+    "data_path": "organic/(C2H4)n - polyethylene/nk/David.yml",
+    "dataset_label": "David2022",
+    "span_um": [
+     1.999965,
+     12.25747
+    ],
+    "kind": "nk",
+    "attributes_stated": {
+     "grade": "LLDPE"
+    }
+   }
+  ]
+ },
+ "PCTFE": {
+  "name": "Polychlorotrifluoroethylene (PCTFE)",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "auto: the only dispersion-capable RI.info dataset",
+  "not_stated_by_source": [
+   "grade: not stated by source",
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source",
+   "cure_ratio: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "Smith",
+    "axis": null,
+    "data_path": "organic/(C2ClF3)n - polychlorotrifluoroethylene/nk/Smith.yml",
+    "dataset_label": "Smith1975",
+    "span_um": [
+     28.5714,
+     200.0
+    ],
+    "kind": "nk",
+    "attributes_stated": {
+     "supplier": "Manufactured by Allied Chemical under the name Aclar"
+    }
+   }
+  ]
+ },
+ "PNIPAM": {
+  "name": "Poly(N-isopropylacrylamide) (PNIPAM)",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "auto: the only dispersion-capable RI.info dataset",
+  "not_stated_by_source": [
+   "grade: not stated by source",
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source",
+   "cure_ratio: not stated by source",
+   "supplier: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "Brasse",
+    "axis": null,
+    "data_path": "organic/(C6H11NO)n - poly(N-isopropylacrylamide)/nk/Brasse.yml",
+    "dataset_label": "Brasse2018",
+    "span_um": [
+     0.245581,
+     1.688431
+    ],
+    "kind": "nk",
+    "attributes_stated": {}
+   }
+  ]
+ },
+ "Surlyn-A1601": {
+  "name": "Surlyn A-1601 (DuPont ionomer resin)",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "auto: the only dispersion-capable RI.info dataset",
+  "not_stated_by_source": [
+   "grade: not stated by source",
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source",
+   "cure_ratio: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "Smith",
+    "axis": null,
+    "data_path": "other/commercial polymers/Surlyn A-1601/nk/Smith.yml",
+    "dataset_label": "Smith1975",
+    "span_um": [
+     28.5714,
+     200.0
+    ],
+    "kind": "nk",
+    "attributes_stated": {
+     "supplier": "manufactured by DuPont under the name Surlyn A-1601"
+    }
+   }
+  ]
+ },
+ "MDMO-PPV": {
+  "name": "MDMO-PPV",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "user decision (this run): one paper (Kamptner 2024): ordinary and extraordinary rays of the same film, loaded as one material with two axes",
+  "not_stated_by_source": [
+   "grade: not stated by source",
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source",
+   "cure_ratio: not stated by source",
+   "supplier: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "Kamptner-o",
+    "axis": "o-ray",
+    "data_path": "organic/(C19H28O2)n - MDMO-PPV/nk/Kamptner-o.yml",
+    "dataset_label": "Kamptner2024 | o-ray",
+    "span_um": [
+     0.19146,
+     1.68869
+    ],
+    "kind": "nk",
+    "attributes_stated": {}
+   },
+   {
+    "page": "Kamptner-e",
+    "axis": "e-ray",
+    "data_path": "organic/(C19H28O2)n - MDMO-PPV/nk/Kamptner-e.yml",
+    "dataset_label": "Kamptner2024 | e-ray",
+    "span_um": [
+     0.19146,
+     1.68869
+    ],
+    "kind": "nk",
+    "attributes_stated": {}
+   }
+  ]
+ },
+ "ZZ50": {
+  "name": "ZZ50",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "user decision (this run): one paper (Kamptner 2024): ordinary and extraordinary rays of the same film, loaded as one material with two axes",
+  "not_stated_by_source": [
+   "grade: not stated by source",
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source",
+   "cure_ratio: not stated by source",
+   "supplier: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "Kamptner-o",
+    "axis": "o-ray",
+    "data_path": "organic/(C31H38N2S3)n - ZZ50/nk/Kamptner-o.yml",
+    "dataset_label": "Kamptner2024 | o-ray",
+    "span_um": [
+     0.19146,
+     1.68869
+    ],
+    "kind": "nk",
+    "attributes_stated": {}
+   },
+   {
+    "page": "Kamptner-e",
+    "axis": "e-ray",
+    "data_path": "organic/(C31H38N2S3)n - ZZ50/nk/Kamptner-e.yml",
+    "dataset_label": "Kamptner2024 | e-ray",
+    "span_um": [
+     0.19146,
+     1.68869
+    ],
+    "kind": "nk",
+    "attributes_stated": {}
+   }
+  ]
+ },
+ "F8BT": {
+  "name": "F8BT",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "user decision (this run): one paper (Kamptner 2024): ordinary and extraordinary rays of the same film, loaded as one material with two axes",
+  "not_stated_by_source": [
+   "grade: not stated by source",
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source",
+   "cure_ratio: not stated by source",
+   "supplier: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "Kamptner-o",
+    "axis": "o-ray",
+    "data_path": "organic/(C35H42N2S)n - F8BT/nk/Kamptner-o.yml",
+    "dataset_label": "Kamptner2024 | o-ray",
+    "span_um": [
+     0.19146,
+     1.68869
+    ],
+    "kind": "nk",
+    "attributes_stated": {}
+   },
+   {
+    "page": "Kamptner-e",
+    "axis": "e-ray",
+    "data_path": "organic/(C35H42N2S)n - F8BT/nk/Kamptner-e.yml",
+    "dataset_label": "Kamptner2024 | e-ray",
+    "span_um": [
+     0.19146,
+     1.68869
+    ],
+    "kind": "nk",
+    "attributes_stated": {}
+   }
+  ]
+ },
+ "PTB7": {
+  "name": "PTB7",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "user decision (this run): one paper (Kamptner 2024): ordinary and extraordinary rays of the same film, loaded as one material with two axes",
+  "not_stated_by_source": [
+   "grade: not stated by source",
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source",
+   "cure_ratio: not stated by source",
+   "supplier: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "Kamptner-o",
+    "axis": "o-ray",
+    "data_path": "organic/(C41H53FO4S4)n - PTB7/nk/Kamptner-o.yml",
+    "dataset_label": "Kamptner2024 | o-ray",
+    "span_um": [
+     0.19146,
+     1.68869
+    ],
+    "kind": "nk",
+    "attributes_stated": {}
+   },
+   {
+    "page": "Kamptner-e",
+    "axis": "e-ray",
+    "data_path": "organic/(C41H53FO4S4)n - PTB7/nk/Kamptner-e.yml",
+    "dataset_label": "Kamptner2024 | e-ray",
+    "span_um": [
+     0.19146,
+     1.68869
+    ],
+    "kind": "nk",
+    "attributes_stated": {}
+   }
+  ]
+ },
+ "PDCBT": {
+  "name": "PDCBT",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "user decision (this run): one paper (Kamptner 2024): ordinary and extraordinary rays of the same film, loaded as one material with two axes",
+  "not_stated_by_source": [
+   "grade: not stated by source",
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source",
+   "cure_ratio: not stated by source",
+   "supplier: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "Kamptner-o",
+    "axis": "o-ray",
+    "data_path": "organic/(C42H56O4S2)n - PDCBT/nk/Kamptner-o.yml",
+    "dataset_label": "Kamptner2024 | o-ray",
+    "span_um": [
+     0.19146,
+     1.68869
+    ],
+    "kind": "nk",
+    "attributes_stated": {}
+   },
+   {
+    "page": "Kamptner-e",
+    "axis": "e-ray",
+    "data_path": "organic/(C42H56O4S2)n - PDCBT/nk/Kamptner-e.yml",
+    "dataset_label": "Kamptner2024 | e-ray",
+    "span_um": [
+     0.19146,
+     1.68869
+    ],
+    "kind": "nk",
+    "attributes_stated": {}
+   }
+  ]
+ },
+ "PBDB-T-2F": {
+  "name": "PBDB-T-2F",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "user decision (this run): one paper (Kamptner 2024): ordinary and extraordinary rays of the same film, loaded as one material with two axes",
+  "not_stated_by_source": [
+   "grade: not stated by source",
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source",
+   "cure_ratio: not stated by source",
+   "supplier: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "Kamptner-o",
+    "axis": "o-ray",
+    "data_path": "organic/(C68H76F2O2S8)n - PBDB-T-2F/nk/Kamptner-o.yml",
+    "dataset_label": "Kamptner2024 | o-ray",
+    "span_um": [
+     0.19146,
+     1.68869
+    ],
+    "kind": "nk",
+    "attributes_stated": {}
+   },
+   {
+    "page": "Kamptner-e",
+    "axis": "e-ray",
+    "data_path": "organic/(C68H76F2O2S8)n - PBDB-T-2F/nk/Kamptner-e.yml",
+    "dataset_label": "Kamptner2024 | e-ray",
+    "span_um": [
+     0.19146,
+     1.68869
+    ],
+    "kind": "nk",
+    "attributes_stated": {}
+   }
+  ]
+ },
+ "maN-1407": {
+  "name": "Micro resist ma-N 1407 (negative resist)",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "auto: the only dispersion-capable RI.info dataset",
+  "not_stated_by_source": [
+   "grade: not stated by source",
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source",
+   "cure_ratio: not stated by source",
+   "supplier: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "Sarkar",
+    "axis": null,
+    "data_path": "other/resists/Micro resist ma-N 1407/nk/Sarkar.yml",
+    "dataset_label": "Sarkar2019",
+    "span_um": [
+     0.3014,
+     1.688
+    ],
+    "kind": "nk",
+    "attributes_stated": {}
+   }
+  ]
+ },
+ "EpoClad": {
+  "name": "Micro resist EpoClad (negative photoresist)",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "auto: the only dispersion-capable RI.info dataset",
+  "not_stated_by_source": [
+   "grade: not stated by source",
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source",
+   "cure_ratio: not stated by source",
+   "supplier: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "specs",
+    "axis": null,
+    "data_path": "other/resists/Micro resist EpoClad/nk/specs.yml",
+    "dataset_label": "microresistEpoClad",
+    "span_um": [
+     0.45,
+     1.55
+    ],
+    "kind": "n",
+    "attributes_stated": {}
+   }
+  ]
+ },
+ "EpoCore": {
+  "name": "Micro resist EpoCore (negative photoresist)",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "auto: the only dispersion-capable RI.info dataset",
+  "not_stated_by_source": [
+   "grade: not stated by source",
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source",
+   "cure_ratio: not stated by source",
+   "supplier: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "specs",
+    "axis": null,
+    "data_path": "other/resists/Micro resist EpoCore/nk/specs.yml",
+    "dataset_label": "microresistEpoCore",
+    "span_um": [
+     0.45,
+     1.55
+    ],
+    "kind": "n",
+    "attributes_stated": {}
+   }
+  ]
+ },
+ "Microchem-8.5mEL": {
+  "name": "Microchem 8.5 mEL (copolymer resist)",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "auto: the only dispersion-capable RI.info dataset",
+  "not_stated_by_source": [
+   "grade: not stated by source",
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source",
+   "cure_ratio: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "specs",
+    "axis": null,
+    "data_path": "other/resists/Microchem 8.5 mEL/nk/specs.yml",
+    "dataset_label": "Microchem85mEL",
+    "span_um": [
+     0.2,
+     1.1
+    ],
+    "kind": "n",
+    "attributes_stated": {
+     "supplier": "Microchem"
+    }
+   }
+  ]
+ },
+ "IP-S": {
+  "name": "Nanoscribe IP-S (cured)",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "auto: the only dispersion-capable RI.info dataset",
+  "not_stated_by_source": [
+   "grade: not stated by source",
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source",
+   "supplier: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "Mavrona-cured",
+    "axis": null,
+    "data_path": "other/resists/Nanoscribe IP-S/nk/Mavrona-cured.yml",
+    "dataset_label": "Mavrona2023",
+    "span_um": [
+     199.861,
+     997.678
+    ],
+    "kind": "nk",
+    "attributes_stated": {
+     "cure_ratio": "cured"
+    }
+   }
+  ]
+ },
+ "IP-Dip": {
+  "name": "Nanoscribe IP-Dip (cured)",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "auto: the only dispersion-capable RI.info dataset",
+  "not_stated_by_source": [
+   "grade: not stated by source",
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source",
+   "supplier: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "Mavrona-cured",
+    "axis": null,
+    "data_path": "other/resists/Nanoscribe IP-Dip/nk/Mavrona-cured.yml",
+    "dataset_label": "Mavrona2023",
+    "span_um": [
+     199.861,
+     997.678
+    ],
+    "kind": "nk",
+    "attributes_stated": {
+     "cure_ratio": "cured"
+    }
    }
   ]
  }
