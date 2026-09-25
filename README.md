@@ -57,6 +57,12 @@ python -m materials_db.calculators.xrr_engine --material PMMA
 2. `python -m materials_db.verify_all` — 15 assertions covering DB round-trips, CSV parsing, and Parratt physics (TER plateau, high-Q decay); exits 0 on success.
 3. `sqlite3 data/materials.db "SELECT * FROM spr_data LIMIT 5;"` — should return n and k values at 633, 785, and 980 nm for at least Water and Gold; NULL means no optical data within 10 nm of the target wavelength.
 
+### Tests and CI
+
+`pip install -r requirements-test.txt` (exact versions), clone refractiveindex.info into `refractiveindex_db/` at the commit in
+`refractiveindex_commit.txt`, then `python3 -m pytest tests -q`. GitHub Actions (`.github/workflows/tests.yml`) runs exactly this
+on every pull request and push to main.
+
 ### Downloadable dataset (releases)
 
 `python3 scripts/build_release.py --version X.Y.Z` builds one SQLite database holding every curated family (oxides,

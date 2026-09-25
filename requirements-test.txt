@@ -1,0 +1,13 @@
+# Exact versions the test suite and release build are verified with (CI installs these; see .github/workflows/tests.yml).
+# requirements.txt lists the wider app/tooling dependencies and is not needed to run the tests.
+numpy==2.4.6
+pandas==2.3.3
+scipy==1.17.1
+pyarrow==24.0.0
+PyYAML==6.0.3
+rdkit==2026.3.3
+pymatgen==2026.5.4
+periodictable==2.1.0
+python-dotenv==1.2.2
+pydantic==2.13.4
+pytest==9.0.2
