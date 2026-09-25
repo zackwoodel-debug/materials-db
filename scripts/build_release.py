@@ -20,6 +20,8 @@ Stages, all reproducible from committed inputs (no API key, no network):
   3b. validation cross-source agreement (dataset_validation) and measured consensus at 633 nm (consensus_properties) for
                   like-for-like datasets: same material, phase, axis and temperature (scripts/release_validation.py)
   4. descriptors  one chemical_descriptors row per material (scripts/release_descriptors.py)
+  4b. dielectric  Materials Project DFPT static and electronic dielectric constants as physical_properties rows, only where the
+                  MP entry is the material itself and MP's band gap >= 0.5 eV (scripts/release_dielectric.py)
   5. validate     integrity, foreign keys, no duplicate rows, optical sanity; any failure stops the build
   6. package
 
@@ -53,13 +55,14 @@ sys.path.insert(0, str(_ROOT / "src"))
 import load_family_db as fam  # noqa: E402
 import release_curation as rcur  # noqa: E402
 import release_descriptors as rd  # noqa: E402
+import release_dielectric as rdl  # noqa: E402
 import release_validation as rv  # noqa: E402
 
 BASE_DB = _ROOT / "data" / "materials_oxide_test.db"
 FAMILY_CSVS = ["oxides_50", "batch2_31", "batch3b_4", "pure_elements_50", "nitrides", "polymers", "inorganic3", "halides",
                "chalcogenides", "liquids", "semiconductors"]
 GAP_CSVS = ["nitride_gaps", "polymer_gaps", "inorganic3_gaps", "halide_gaps", "chalcogenide_gaps", "liquid_gaps", "semiconductor_gaps"]
-DESCRIPTOR_INPUTS = ["mp_structural.json", "polymer_repeat_units.csv", "formula_issues.csv", "source_dois.json", "pubchem_titles.json"]
+DESCRIPTOR_INPUTS = ["mp_structural.json", "polymer_repeat_units.csv", "formula_issues.csv", "source_dois.json", "pubchem_titles.json", "mp_dielectric.json"]
 # Same allow-list as tests/test_family_optical_sanity.py (a test keeps them equal): measurement noise around k = 0 in tabulated sources.
 NEGATIVE_K_ALLOWED = {
     ("Copper(I) oxide", "cuprite | Querry1985"): -0.03,
@@ -236,11 +239,13 @@ def build_db(db_path):
         synonyms = rcur.populate_synonyms(conn, family_rows())
         cross_source = rv.populate(conn)
         coverage = populate_descriptors(conn)
+        dielectric = rdl.populate(conn)
     source_repeats = validate(conn)
     conn.execute("VACUUM")
     conn.close()
     return dict(family_merges=merged, removed_duplicate_physical_rows=removed, removed_unreferenced_sources=orphans,
                 descriptor_coverage=coverage, cross_source_validation=cross_source, source_curation=sources, synonyms=synonyms,
+                dielectric=dielectric,
                 optical_wavelengths_repeated_in_source=source_repeats)
 
 
@@ -302,7 +307,7 @@ def write_readme(path, version, facts, c, mp_version):
     fam_lines = "\n".join(f"| {k} | {v['materials']} | {v['datasets']} | {v['optical_rows']:,} | {v['with_density']} |" for k, v in c["per_family"].items())
     cov = facts["descriptor_coverage"]
     xs = facts["cross_source_validation"]
-    sc, sy = facts["source_curation"], facts["synonyms"]
+    sc, sy, de = facts["source_curation"], facts["synonyms"], facts["dielectric"]
     n_mat = c["tables"]["materials"]
     path.write_text(f"""# materials-db v{version}
 
@@ -332,7 +337,7 @@ which source, which Materials Project entry, disagreements between sources, and 
 |---|---|---|
 | materials | {c['tables']['materials']} | name (unique), formula, SMILES / InChIKey / CAS / PubChem CID where PubChem has the substance |
 | optical_dispersion | {c['tables']['optical_dispersion']:,} | n and k against wavelength (nm). `dataset_label` = "phase \\| source \\| axis"; `raw_record_table` is the refractiveindex.info file each row came from |
-| physical_properties | {c['tables']['physical_properties']} | density (g/cm3); x-ray SLD at Cu K-alpha and neutron SLD (thermal), in 1e-6 / A^2; `dataset_label` says whether a density is `MP_DFT` (calculated), `bulk_elemental_approximation` (a bulk value standing in for a film) or literature |
+| physical_properties | {c['tables']['physical_properties']} | density (g/cm3); x-ray SLD at Cu K-alpha and neutron SLD (thermal), in 1e-6 / A^2; `dataset_label` says whether a density is `MP_DFT` (calculated), `bulk_elemental_approximation` (a bulk value standing in for a film) or literature; calculated dielectric constants (`MP_DFPT`, see below) |
 | sources | {c['tables']['sources']} | every citation (DOI where one exists) |
 | chemical_descriptors | {c['tables']['chemical_descriptors']} | one row per material; see below |
 
@@ -368,6 +373,18 @@ temperature, over the wavelengths both cover, at their own data points (nothing 
   classification on the spread (max - min) / median with the thresholds above (`single_source` for one), and
   `confidence_score` = (1 - 0.5^sources) x (1 - spread / 10%), so one source scores 0.5 and a 5% spread halves the score;
   counts {xs['consensus']}. A material with only model fits at 633 nm (e.g. CdTe) has no consensus row.
+
+## Dielectric constants (`physical_properties.dielectric_constant`)
+
+{de['materials']} materials have two **calculated** values from Materials Project (density functional perturbation theory,
+Petousis et al., *Sci. Data* 4, 160134 (2017); MP database {de['mp_database_version']}): `dielectric_static_total | MP_DFPT`
+(static, electronic + ionic, `frequency_hz` = 0) and `dielectric_electronic | MP_DFPT` (clamped-ion, i.e. epsilon_inf). Each is
+the mean of the tensor's principal values; the full tensors are in `descriptor_inputs/mp_dielectric.json`. They are 0 K DFT
+values and mostly run high: against measured static values, -3% to +11% for wide-gap insulators (LiF -3%, KCl -1%, diamond
++2%, CaF2 +4%, MgO +10%, NaCl +11%) and +11% to +26% for semiconductors (Si, AlSb, ZnS, AlAs, GaP, ZnSe, CdTe). Not stored: materials whose MP entry is only a crystalline
+reference for an amorphous or film sample ({len(de['not_stored_reference_only'])}), and materials whose MP band gap is below
+{de['min_gap_ev']} eV ({len(de['not_stored_narrow_gap'])}: {', '.join(x['material'] for x in de['not_stored_narrow_gap'])}), where the
+calculation overestimates by 30-60%.
 
 ## Finding a material and its citations (`material_synonyms`, `sources`)
 

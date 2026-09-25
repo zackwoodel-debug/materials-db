@@ -64,6 +64,12 @@ Generic loader: scripts/load_family_db.py (--family/--catalog/--selections/--db/
 14. Naming ambiguity in our own data: Bi12GeO20 is "Bismuth germanate" and Bi4Ge3O12 is "Bismuth germanate (BGO)"; RI.info calls
    both "Bismuth germanate, BGO". Consider renaming Bi12GeO20 (e.g. "Bismuth germanium oxide (sillenite)").
 
+15. DONE: MP DFPT dielectric constants (scripts/fetch_mp_dielectric.py -> data/descriptors/mp_dielectric.json; build stage 4b
+   scripts/release_dielectric.py): static + electronic epsilon for 86 materials. Not stored: 5 where the MP entry is only a
+   crystalline reference (film/amorphous), 10 with MP band gap < 0.5 eV (Ge, GaAs, InP, GaSb, InSb, PbS, PbSe, Te, AGSe, hematite:
+   +30..+62% vs measured). Kept values: -3..+11% for insulators, +11..+26% for semiconductors. Possible next: experimental static
+   epsilon from literature for the semiconductors, and dielectric as ML features/targets.
+
 ## FOLLOW-UP (logged, NOT started): graphene / 2D carbon as its own family -- materialclass must NOT be 'polymer'
 - RI.info main/C, verified read-only: monolayer graphene = Weber 2010 (0.21-1.0 um, exfoliated flake, 3.4 A, on Si/98 nm SiO2), Song 2018 "Graphene"
   (0.193-1.69, CVD mono), Tikuisis 2023 (0.226-4.40, epitaxial on 6H-SiC), El-Sayed 2021 (0.24-1.0, CVD): four, not three. Song 2018 also holds 4 bulk-HOPG pages (graphite).
