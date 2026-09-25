@@ -84,7 +84,15 @@ def main():
                                            "offers -- consistent with amorphous boron. See "
                                            "density_citation_* columns in data/batch3b_4.csv.",
         )
-        stats["sources"] += 4
+        bulk_approx_source_id = base.get_or_create_source(
+            conn, source_cache, "bulk_approx_density_batch3b",
+            title="MP bulk DFT density used as a film approximation (batch-3b materials)",
+            technique="MP bulk DFT density used as film approximation",
+            notes="Used for Sn: density_source=bulk_elemental_approximation, i.e. Materials Project's bulk-crystal "
+                  "DFT density (mp_id per material in data/batch3b_4.csv) standing in for a thin-film sample whose own "
+                  "density is not stated. Calculated, not measured. See the flags column in data/batch3b_4.csv.",
+        )
+        stats["sources"] += 5
 
         # materials.inchikey is UNIQUE (schema frozen, no migration -- see
         # data/CHECKPOINT_2_report.md / the standing schema-approval
@@ -131,6 +139,7 @@ def main():
             base.load_physical_properties(
                 conn, material_id, row, mp_source_id, literature_source_id, periodictable_source_id,
                 effective_polymorph, source_cache=source_cache, get_source_fn=base.get_or_create_source,
+                bulk_approx_source_id=bulk_approx_source_id,
             )
             stats["physical_properties"] += conn.execute(
                 "SELECT COUNT(*) FROM physical_properties WHERE material_id = ?", (material_id,)
