@@ -1,0 +1,1035 @@
+{
+ "candidates": [
+  {
+   "key": "AgCl",
+   "name": "Silver chloride",
+   "formula": "AgCl",
+   "book": "AgCl",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "halide",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Tilton et al. 1950: n 0.578\u201320.6 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Tilton",
+     "title": "Tilton et al. 1950: n 0.578\u201320.6 \u00b5m",
+     "paper": "Tilton et al. 1950: n 0.578\u201320.6 \u00b5m",
+     "data_path": "main/AgCl/nk/Tilton.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.578,
+      20.6
+     ],
+     "single_point": false,
+     "comments": "23.9 \u00b0C\n",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "AgCl (Silver chloride)"
+  },
+  {
+   "key": "CsCl",
+   "name": "Cesium chloride",
+   "formula": "CsCl",
+   "book": "CsCl",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "halide",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Li 1976: n 0.18\u201340 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Li",
+     "title": "Li 1976: n 0.18\u201340 \u00b5m",
+     "paper": "Li 1976: n 0.18\u201340 \u00b5m",
+     "data_path": "main/CsCl/nk/Li.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.18,
+      40.0
+     ],
+     "single_point": false,
+     "comments": "297 K (24 \u00b0C).\n",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "CsCl (Cesium chloride)"
+  },
+  {
+   "key": "CuCl",
+   "name": "Copper(I) chloride",
+   "formula": "CuCl",
+   "book": "CuCl",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "halide",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Feldman and Horowitz 1969: n 0.43\u20132.5 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Feldman",
+     "title": "Feldman and Horowitz 1969: n 0.43\u20132.5 \u00b5m",
+     "paper": "Feldman and Horowitz 1969: n 0.43\u20132.5 \u00b5m",
+     "data_path": "main/CuCl/nk/Feldman.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.43,
+      2.5
+     ],
+     "single_point": false,
+     "comments": "Room temperature\n",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "CuCl (Cuprous chloride)"
+  },
+  {
+   "key": "KCl",
+   "name": "Potassium chloride",
+   "formula": "KCl",
+   "book": "KCl",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "halide",
+   "page_polymorph": {
+    "Li": null,
+    "Querry": null
+   },
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = widest span",
+   "status": "SELECTED_BY_USER",
+   "n_pages": 2,
+   "n_papers": 2,
+   "papers": [
+    "Li 1976: n 0.18\u201335 \u00b5m",
+    "Querry 1987: n,k 0.22\u2013167 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Li",
+     "title": "Li 1976: n 0.18\u201335 \u00b5m",
+     "paper": "Li 1976: n 0.18\u201335 \u00b5m",
+     "data_path": "main/KCl/nk/Li.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.18,
+      35.0
+     ],
+     "single_point": false,
+     "comments": "297 K (24 \u00b0C).\n",
+     "conditions": ""
+    },
+    {
+     "page": "Querry",
+     "title": "Querry 1987: n,k 0.22\u2013167 \u00b5m",
+     "paper": "Querry 1987: n,k 0.22\u2013167 \u00b5m",
+     "data_path": "main/KCl/nk/Querry.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.22,
+      166.6667
+     ],
+     "single_point": false,
+     "comments": "",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "KCl (Potassium chloride)"
+  },
+  {
+   "key": "LiCl",
+   "name": "Lithium chloride",
+   "formula": "LiCl",
+   "book": "LiCl",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "halide",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Li 1976: n 0.17\u201316 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Li",
+     "title": "Li 1976: n 0.17\u201316 \u00b5m",
+     "paper": "Li 1976: n 0.17\u201316 \u00b5m",
+     "data_path": "main/LiCl/nk/Li.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.17,
+      16.0
+     ],
+     "single_point": false,
+     "comments": "297 K (24 \u00b0C).\n",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "LiCl (Lithium chloride)"
+  },
+  {
+   "key": "NaCl",
+   "name": "Sodium chloride",
+   "formula": "NaCl",
+   "book": "NaCl",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "halide",
+   "page_polymorph": {
+    "Li": null,
+    "Querry": null
+   },
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = widest span",
+   "status": "SELECTED_BY_USER",
+   "n_pages": 2,
+   "n_papers": 2,
+   "papers": [
+    "Li 1976: n 0.20\u201330 \u00b5m",
+    "Querry 1987: n,k 0.22\u2013167 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Li",
+     "title": "Li 1976: n 0.20\u201330 \u00b5m",
+     "paper": "Li 1976: n 0.20\u201330 \u00b5m",
+     "data_path": "main/NaCl/nk/Li.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.2,
+      30.0
+     ],
+     "single_point": false,
+     "comments": "297 K (24 \u00b0C).\n",
+     "conditions": ""
+    },
+    {
+     "page": "Querry",
+     "title": "Querry 1987: n,k 0.22\u2013167 \u00b5m",
+     "paper": "Querry 1987: n,k 0.22\u2013167 \u00b5m",
+     "data_path": "main/NaCl/nk/Querry.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.22,
+      166.6667
+     ],
+     "single_point": false,
+     "comments": "",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "NaCl (Sodium chloride)"
+  },
+  {
+   "key": "RbCl",
+   "name": "Rubidium chloride",
+   "formula": "RbCl",
+   "book": "RbCl",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "halide",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Li 1976: n 0.18\u201340 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Li",
+     "title": "Li 1976: n 0.18\u201340 \u00b5m",
+     "paper": "Li 1976: n 0.18\u201340 \u00b5m",
+     "data_path": "main/RbCl/nk/Li.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.18,
+      40.0
+     ],
+     "single_point": false,
+     "comments": "297 K (24 \u00b0C).\n",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "RbCl (Rubidium chloride)"
+  },
+  {
+   "key": "TlCl",
+   "name": "Thallium(I) chloride",
+   "formula": "TlCl",
+   "book": "TlCl",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "halide",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Schr\u00f6ter 1931: n 0.43\u20130.66 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Schroter",
+     "title": "Schr\u00f6ter 1931: n 0.43\u20130.66 \u00b5m",
+     "paper": "Schr\u00f6ter 1931: n 0.43\u20130.66 \u00b5m",
+     "data_path": "main/TlCl/nk/Schroter.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.43,
+      0.66
+     ],
+     "single_point": false,
+     "comments": "",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "TlCl (Thallium chloride)"
+  },
+  {
+   "key": "AgBr",
+   "name": "Silver bromide",
+   "formula": "AgBr",
+   "book": "AgBr",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "halide",
+   "page_polymorph": {
+    "Schr\u00f6ter": null,
+    "Polyanskiy": null
+   },
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = widest span",
+   "status": "SELECTED_BY_USER",
+   "n_pages": 2,
+   "n_papers": 2,
+   "papers": [
+    "Polyanskiy et al. 2024: n 0.495\u201312.7 \u00b5m",
+    "Schr\u00f6ter 1931: n 0.495\u20130.67 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Schr\u00f6ter",
+     "title": "Schr\u00f6ter 1931: n 0.495\u20130.67 \u00b5m",
+     "paper": "Schr\u00f6ter 1931: n 0.495\u20130.67 \u00b5m",
+     "data_path": "main/AgBr/nk/Schroter.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.495,
+      0.67
+     ],
+     "single_point": false,
+     "comments": "",
+     "conditions": ""
+    },
+    {
+     "page": "Polyanskiy",
+     "title": "Polyanskiy et al. 2024: n 0.495\u201312.7 \u00b5m",
+     "paper": "Polyanskiy et al. 2024: n 0.495\u201312.7 \u00b5m",
+     "data_path": "main/AgBr/nk/Polyanskiy.yml",
+     "axis": null,
+     "phase_words": [
+      "Polyanskiy"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.495,
+      12.7
+     ],
+     "single_point": false,
+     "comments": "",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "AgBr (Silver bromide)"
+  },
+  {
+   "key": "CsBr",
+   "name": "Cesium bromide",
+   "formula": "CsBr",
+   "book": "CsBr",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "halide",
+   "page_polymorph": {
+    "Li": null,
+    "Querry": null,
+    "Rodney": null
+   },
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = widest span",
+   "status": "SELECTED_BY_USER",
+   "n_pages": 3,
+   "n_papers": 3,
+   "papers": [
+    "Li 1976: n 0.21\u201355 \u00b5m",
+    "Querry 1987: n,k 0.213\u2013149 \u00b5m",
+    "Rodney and Spindler 1953: n 0.365\u201339 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Li",
+     "title": "Li 1976: n 0.21\u201355 \u00b5m; 20 \u00b0C",
+     "paper": "Li 1976: n 0.21\u201355 \u00b5m",
+     "data_path": "main/CsBr/nk/Li.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.21,
+      55.0
+     ],
+     "single_point": false,
+     "comments": "297 K (24 \u00b0C).\n",
+     "conditions": ""
+    },
+    {
+     "page": "Querry",
+     "title": "Querry 1987: n,k 0.213\u2013149 \u00b5m",
+     "paper": "Querry 1987: n,k 0.213\u2013149 \u00b5m",
+     "data_path": "main/CsBr/nk/Querry.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.213,
+      149.2537
+     ],
+     "single_point": false,
+     "comments": "",
+     "conditions": ""
+    },
+    {
+     "page": "Rodney",
+     "title": "Rodney and Spindler 1953: n 0.365\u201339 \u00b5m; 27 \u00b0C",
+     "paper": "Rodney and Spindler 1953: n 0.365\u201339 \u00b5m",
+     "data_path": "main/CsBr/nk/Rodney.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.365,
+      39.0
+     ],
+     "single_point": false,
+     "comments": "27 \u00b0C\n",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "CsBr (Cesium bromide)"
+  },
+  {
+   "key": "KBr",
+   "name": "Potassium bromide",
+   "formula": "KBr",
+   "book": "KBr",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "halide",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Li 1976: n 0.20\u201342 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Li",
+     "title": "Li 1976: n 0.20\u201342 \u00b5m",
+     "paper": "Li 1976: n 0.20\u201342 \u00b5m",
+     "data_path": "main/KBr/nk/Li.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.2,
+      42.0
+     ],
+     "single_point": false,
+     "comments": "297 K (24 \u00b0C).\n",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "KBr (Potassium bromide)"
+  },
+  {
+   "key": "LiBr",
+   "name": "Lithium bromide",
+   "formula": "LiBr",
+   "book": "LiBr",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "halide",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Li 1976: n 0.21\u201320 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Li",
+     "title": "Li 1976: n 0.21\u201320 \u00b5m",
+     "paper": "Li 1976: n 0.21\u201320 \u00b5m",
+     "data_path": "main/LiBr/nk/Li.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.21,
+      20.0
+     ],
+     "single_point": false,
+     "comments": "297 K (24 \u00b0C).\n",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "LiBr (Lithium bromide)"
+  },
+  {
+   "key": "NaBr",
+   "name": "Sodium bromide",
+   "formula": "NaBr",
+   "book": "NaBr",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "halide",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Li 1976: n 0.21\u201334 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Li",
+     "title": "Li 1976: n 0.21\u201334 \u00b5m",
+     "paper": "Li 1976: n 0.21\u201334 \u00b5m",
+     "data_path": "main/NaBr/nk/Li.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.21,
+      34.0
+     ],
+     "single_point": false,
+     "comments": "297 K (24 \u00b0C).\n",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "NaBr (Sodium bromide)"
+  },
+  {
+   "key": "RbBr",
+   "name": "Rubidium bromide",
+   "formula": "RbBr",
+   "book": "RbBr",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "halide",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Li 1976: n 0.21\u201350 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Li",
+     "title": "Li 1976: n 0.21\u201350 \u00b5m",
+     "paper": "Li 1976: n 0.21\u201350 \u00b5m",
+     "data_path": "main/RbBr/nk/Li.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.21,
+      50.0
+     ],
+     "single_point": false,
+     "comments": "297 K (24 \u00b0C).\n",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "RbBr (Rubidium bromide)"
+  },
+  {
+   "key": "TlBr",
+   "name": "Thallium(I) bromide",
+   "formula": "TlBr",
+   "book": "TlBr",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "halide",
+   "page_polymorph": {
+    "Palik": null,
+    "Schroter": null
+   },
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = widest span",
+   "status": "SELECTED_BY_USER",
+   "n_pages": 2,
+   "n_papers": 2,
+   "papers": [
+    "Palik 1985: n 0.57\u201339.4 \u00b5m",
+    "Schr\u00f6ter 1931: n 0.54\u20130.65 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Palik",
+     "title": "Palik 1985: n 0.57\u201339.4 \u00b5m",
+     "paper": "Palik 1985: n 0.57\u201339.4 \u00b5m",
+     "data_path": "main/TlBr/nk/Palik.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.57,
+      39.4
+     ],
+     "single_point": false,
+     "comments": "25 \u00b0C\n",
+     "conditions": ""
+    },
+    {
+     "page": "Schroter",
+     "title": "Schr\u00f6ter 1931: n 0.54\u20130.65 \u00b5m",
+     "paper": "Schr\u00f6ter 1931: n 0.54\u20130.65 \u00b5m",
+     "data_path": "main/TlBr/nk/Schroter.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.54,
+      0.65
+     ],
+     "single_point": false,
+     "comments": "",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "TlBr (Thallium bromide)"
+  },
+  {
+   "key": "CsI",
+   "name": "Cesium iodide",
+   "formula": "CsI",
+   "book": "CsI",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "halide",
+   "page_polymorph": {
+    "Li": null,
+    "Querry": null,
+    "Rodney": null
+   },
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = widest span",
+   "status": "SELECTED_BY_USER",
+   "n_pages": 3,
+   "n_papers": 3,
+   "papers": [
+    "Li 1976: n 0.25\u201367 \u00b5m",
+    "Querry 1987: n,k 0.22\u2013167 \u00b5m",
+    "Rodney 1955: n 0.2967\u201350 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Li",
+     "title": "Li 1976: n 0.25\u201367 \u00b5m",
+     "paper": "Li 1976: n 0.25\u201367 \u00b5m",
+     "data_path": "main/CsI/nk/Li.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.25,
+      67.0
+     ],
+     "single_point": false,
+     "comments": "297 K (24 \u00b0C).\n",
+     "conditions": ""
+    },
+    {
+     "page": "Querry",
+     "title": "Querry 1987: n,k 0.22\u2013167 \u00b5m",
+     "paper": "Querry 1987: n,k 0.22\u2013167 \u00b5m",
+     "data_path": "main/CsI/nk/Querry.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.22,
+      166.6667
+     ],
+     "single_point": false,
+     "comments": "",
+     "conditions": ""
+    },
+    {
+     "page": "Rodney",
+     "title": "Rodney 1955: n 0.2967\u201350 \u00b5m",
+     "paper": "Rodney 1955: n 0.2967\u201350 \u00b5m",
+     "data_path": "main/CsI/nk/Rodney.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.2967,
+      50.0
+     ],
+     "single_point": false,
+     "comments": "24 \u00b0C\n",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "CsI (Cesium iodide)"
+  },
+  {
+   "key": "KI",
+   "name": "Potassium iodide",
+   "formula": "KI",
+   "book": "KI",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "halide",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Li 1976: n 0.25\u201350 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Li",
+     "title": "Li 1976: n 0.25\u201350 \u00b5m",
+     "paper": "Li 1976: n 0.25\u201350 \u00b5m",
+     "data_path": "main/KI/nk/Li.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.25,
+      50.0
+     ],
+     "single_point": false,
+     "comments": "297 K (24 \u00b0C).\n",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "KI (Potassium iodide)"
+  },
+  {
+   "key": "LiI",
+   "name": "Lithium iodide",
+   "formula": "LiI",
+   "book": "LiI",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "halide",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Li 1976: n 0.25\u201325 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Li",
+     "title": "Li 1976: n 0.25\u201325 \u00b5m",
+     "paper": "Li 1976: n 0.25\u201325 \u00b5m",
+     "data_path": "main/LiI/nk/Li.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.25,
+      25.0
+     ],
+     "single_point": false,
+     "comments": "297 K (24 \u00b0C).\n",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "LiI (Lithium iodide)"
+  },
+  {
+   "key": "NaI",
+   "name": "Sodium iodide",
+   "formula": "NaI",
+   "book": "NaI",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "halide",
+   "page_polymorph": {
+    "Jellison": null,
+    "Li": null
+   },
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = widest span",
+   "status": "SELECTED_BY_USER",
+   "n_pages": 2,
+   "n_papers": 2,
+   "papers": [
+    "Jellison et al. 2012: n 0.436\u20130.633 \u00b5m",
+    "Li 1976: n 0.25\u201340 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Jellison",
+     "title": "Jellison et al. 2012: n 0.436\u20130.633 \u00b5m",
+     "paper": "Jellison et al. 2012: n 0.436\u20130.633 \u00b5m",
+     "data_path": "main/NaI/nk/Jellison.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.436,
+      0.633
+     ],
+     "single_point": false,
+     "comments": "Room temperature\n",
+     "conditions": ""
+    },
+    {
+     "page": "Li",
+     "title": "Li 1976: n 0.25\u201340 \u00b5m",
+     "paper": "Li 1976: n 0.25\u201340 \u00b5m",
+     "data_path": "main/NaI/nk/Li.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.25,
+      40.0
+     ],
+     "single_point": false,
+     "comments": "297 K (23.85 \u00b0C).\n",
+     "conditions": "{'temperature': 297}"
+    }
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "NaI (Sodium iodide)"
+  },
+  {
+   "key": "PbI2",
+   "name": "Lead(II) iodide",
+   "formula": "PbI2",
+   "book": "PbI2",
+   "shelf": "main",
+   "note": "layered, birefringent crystal",
+   "materialclass": "halide",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Frisenda et al. 2017: n,k 0.423\u20130.794 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Frisenda",
+     "title": "Frisenda et al. 2017: n,k 0.423\u20130.794 \u00b5m",
+     "paper": "Frisenda et al. 2017: n,k 0.423\u20130.794 \u00b5m",
+     "data_path": "main/PbI2/nk/Frisenda.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.4234589,
+      0.7935374
+     ],
+     "single_point": false,
+     "comments": "Optical constants derived from reflectance spectra of 10-170 nm PbI2 films on SiO2/Si substrate.\n",
+     "conditions": "{'substrate': 'SiO2/Si'}"
+    }
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "PbI2 (Lead iodide)"
+  },
+  {
+   "key": "RbI",
+   "name": "Rubidium iodide",
+   "formula": "RbI",
+   "book": "RbI",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "halide",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Li 1976: n 0.24\u201364 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Li",
+     "title": "Li 1976: n 0.24\u201364 \u00b5m",
+     "paper": "Li 1976: n 0.24\u201364 \u00b5m",
+     "data_path": "main/RbI/nk/Li.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.24,
+      64.0
+     ],
+     "single_point": false,
+     "comments": "297 K (24 \u00b0C).\n",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "RbI (Rubidium iodide)"
+  }
+ ],
+ "out_of_family": {
+  "LiIO3": "iodate, not a halide; already loaded as Lithium_iodate by the oxide family",
+  "MoOCl2": "oxychloride, layered 2D-type crystal (thin-flake sheet effects): belongs with the graphene/2D follow-up"
+ }
+}
