@@ -8,7 +8,7 @@ ones RI.info prints in the book title. Fluorides are not part of this run (CdF2 
 """
 
 
-MULTI_BASIS = "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = widest span"
+MULTI_BASIS = "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = measured before model fits, then widest span"
 
 
 def _c(key, name, formula, book, note=None, materialclass="halide", page_polymorph=None, basis=None):

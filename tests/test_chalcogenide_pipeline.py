@@ -137,14 +137,19 @@ def test_selections_none_null_labels_unique_and_multi_paper_materials_keep_every
         assert MATCHES[k]["status"] == "SELECTED_BY_USER"
 
 
-def test_multi_paper_primary_is_the_widest_page_covering_633nm_when_any_does():
-    """Single-paper materials keep the source's page order (o before e); the widest-span rule chooses between PAPERS."""
+def test_multi_paper_primary_is_measured_then_the_widest_page_covering_633nm():
+    """Single-paper materials keep the source's page order (o before e). Between PAPERS: measured data before model fits
+    (dataset_kind.py), then the widest page covering 633 nm, else the widest."""
+    from dataset_kind import is_model_fit
     for k in MULTI_PAPER:
         v = SEL[k]
-        covering = [a for a in v["axes"] if a["span_um"][0] <= 0.633 <= a["span_um"][1]]
-        if covering:
-            first = v["axes"][0]
-            assert first in covering and (first["span_um"][1] - first["span_um"][0]) == max(a["span_um"][1] - a["span_um"][0] for a in covering), k
+        first = v["axes"][0]
+        measured = [a for a in v["axes"] if not is_model_fit(a["data_path"])]
+        pool = measured or v["axes"]
+        assert first in pool, k
+        covering = [a for a in pool if a["span_um"][0] <= 0.633 <= a["span_um"][1]] or pool
+        assert first in covering and (first["span_um"][1] - first["span_um"][0]) == max(a["span_um"][1] - a["span_um"][0] for a in covering), k
+    assert [SEL[k]["axes"][0]["tag"] for k in ("CdSe", "PbSe")] == ["Lisitsa1969", "Zemel1965"]  # measured, not the Adachi-group fits
 
 
 def test_cugas2_temperature_series_and_cdse_phases_are_labelled_from_the_source():

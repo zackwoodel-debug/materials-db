@@ -9,7 +9,7 @@ publish them as GitHub release assets, not commits).
 
 Stages, all reproducible from committed inputs (no API key, no network):
   1. base         copy data/materials_oxide_test.db (oxides, batch 2, batch 3b, pure elements; formula-4 remediated)
-  2. families     upsert nitride, polymer, inorganic3, halide and chalcogenide through load_family_db.run_family with the same
+  2. families     upsert nitride, polymer, inorganic3, halide, chalcogenide, liquid and semiconductor through load_family_db.run_family with the same
                   options as their wrappers (conflicts are reported, never overwritten)
   3. dedupe       physical rows a later family re-loaded with identical values (the five nitrides batch 2 already held): keep
                   one, preferring the source whose title/notes name the material, else the older source; then drop sources
@@ -50,14 +50,15 @@ import release_descriptors as rd  # noqa: E402
 
 BASE_DB = _ROOT / "data" / "materials_oxide_test.db"
 FAMILY_CSVS = ["oxides_50", "batch2_31", "batch3b_4", "pure_elements_50", "nitrides", "polymers", "inorganic3", "halides",
-               "chalcogenides", "liquids"]
-GAP_CSVS = ["nitride_gaps", "polymer_gaps", "inorganic3_gaps", "halide_gaps", "chalcogenide_gaps", "liquid_gaps"]
+               "chalcogenides", "liquids", "semiconductors"]
+GAP_CSVS = ["nitride_gaps", "polymer_gaps", "inorganic3_gaps", "halide_gaps", "chalcogenide_gaps", "liquid_gaps", "semiconductor_gaps"]
 DESCRIPTOR_INPUTS = ["mp_structural.json", "polymer_repeat_units.csv", "formula_issues.csv"]
 # Same allow-list as tests/test_family_optical_sanity.py (a test keeps them equal): measurement noise around k = 0 in tabulated sources.
 NEGATIVE_K_ALLOWED = {
     ("Copper(I) oxide", "cuprite | Querry1985"): -0.03,
     ("Hematite", "hematite | Querry1985 | o-ray"): -0.15,
     ("Micro resist ma-N 1407 (negative resist)", "Sarkar2019"): -0.03,
+    ("Gallium phosphide", "Jellison1992"): -0.003,
 }
 N_MIN = 1e-3
 BUILD_INPUTS = ["data", "scripts", "src", "DATA_LICENSE.md"]  # what the build reads; other files (e.g. NOTES.md) cannot change the release
@@ -75,11 +76,12 @@ def family_jobs():
     import load_liquids_db as liq
     import load_nitrides_db as nit
     import load_polymers_db as pol  # noqa: F401  (kwargs below mirror its main())
+    import load_semiconductors_db as sem
     lit = lambda m: dict(literature_title=m.LITERATURE_TITLE, literature_technique=m.LITERATURE_TECHNIQUE, literature_note=m.LITERATURE_NOTE)
     return [("nitride", nit, lit(nit)),
             ("polymer", pol, dict(allow_null_formula=True, reference_sources=False, collapse_block_duplicates=True)),
             ("inorganic3", i3, lit(i3)), ("halide", hal, lit(hal)), ("chalcogenide", chl, lit(chl)),
-            ("liquid", liq, dict(lit(liq), allow_null_formula=True))]
+            ("liquid", liq, dict(lit(liq), allow_null_formula=True)), ("semiconductor", sem, lit(sem))]
 
 
 def family_rows():
@@ -292,8 +294,8 @@ def write_readme(path, version, facts, c, mp_version):
     path.write_text(f"""# materials-db v{version}
 
 Optical constants (n, k), densities, x-ray and neutron scattering length densities, and compositional, structural and
-molecular descriptors for **{n_mat} materials** (inorganic crystals and glasses, metals, polymers, molecular liquids and
-biomolecules): {c['datasets']} optical datasets and {c['tables']['optical_dispersion']:,} optical
+molecular descriptors for **{n_mat} materials** (inorganic crystals and glasses, compound semiconductors, metals, polymers,
+molecular liquids and biomolecules): {c['datasets']} optical datasets and {c['tables']['optical_dispersion']:,} optical
 data points. All of it is in one SQLite file, `materials-db-v{version}.sqlite`, and every table is also exported as CSV in `csv/`.
 
 Licence: **CC BY 4.0**. Cite this dataset and the upstream sources listed in `DATA_LICENSE.md` (refractiveindex.info,
@@ -348,6 +350,13 @@ is NULL, and `descriptor_json` explains why.
   descriptors. CS2's Chemnitz 2017 fit is excluded (same problem as GaSe). The legacy benchmark set is not included: water,
   ethanol and DMSO come from the liquids family instead; DPPC, BSA, PTFE, PEEK, nylon 6,6, PEG and polyethylenimine are not in
   refractiveindex.info; ITO is (other/In2O3-SnO2) and belongs with a later mixed-oxides batch.
+- Semiconductors: several papers per material are loaded as separate datasets, including temperature series (e.g. GaAs at
+  300-440 K and 600 degC, ZnGeP2 at 100-500 K; `optical_dispersion.temperature_c`). Ge2Sb2Te5 is deferred (its crystalline
+  density needs a structure choice).
+- Primary dataset (the family tables' n_633 / k_633) in the automatically selected families (halides, chalcogenides,
+  liquids, semiconductors): measured data before model fits of the dielectric function, then the widest range covering
+  633 nm. A page is a model fit only when its source says so (scripts/dataset_kind.py). Model datasets (e.g. Adachi's) are
+  still loaded; CdTe, CdSe and PbSe have no measured data at 633 nm, so their primary n_633 is empty.
 - Liquid densities carry their temperature (`physical_properties.temperature_c`). They come from the CIPM water formula, NIST
   reference equations of state, or PubChem records that are all physically consistent with each other; otherwise they are
   left empty.

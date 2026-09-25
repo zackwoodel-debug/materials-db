@@ -17,7 +17,7 @@ def _c(key, name, formula, book, materialclass, note=None, page_polymorph=None, 
 
 
 MULTI_BASIS = ("multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and "
-               "the halides); none is dropped or merged; primary = widest span")
+               "the halides); none is dropped or merged; primary = measured before model fits, then widest span covering 633 nm")
 
 CANDIDATES = [
     # sulfides

@@ -62,7 +62,7 @@
  "KCl": {
   "name": "Potassium chloride",
   "formula": "KCl",
-  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = widest span",
+  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = measured before model fits, then widest span",
   "axes": [
    {
     "page": "Querry",
@@ -115,7 +115,7 @@
  "NaCl": {
   "name": "Sodium chloride",
   "formula": "NaCl",
-  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = widest span",
+  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = measured before model fits, then widest span",
   "axes": [
    {
     "page": "Querry",
@@ -188,7 +188,7 @@
  "AgBr": {
   "name": "Silver bromide",
   "formula": "AgBr",
-  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = widest span",
+  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = measured before model fits, then widest span",
   "axes": [
    {
     "page": "Polyanskiy",
@@ -221,7 +221,7 @@
  "CsBr": {
   "name": "Cesium bromide",
   "formula": "CsBr",
-  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = widest span",
+  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = measured before model fits, then widest span",
   "axes": [
    {
     "page": "Querry",
@@ -347,7 +347,7 @@
  "TlBr": {
   "name": "Thallium(I) bromide",
   "formula": "TlBr",
-  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = widest span",
+  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = measured before model fits, then widest span",
   "axes": [
    {
     "page": "Palik",
@@ -380,7 +380,7 @@
  "CsI": {
   "name": "Cesium iodide",
   "formula": "CsI",
-  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = widest span",
+  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = measured before model fits, then widest span",
   "axes": [
    {
     "page": "Querry",
@@ -466,7 +466,7 @@
  "NaI": {
   "name": "Sodium iodide",
   "formula": "NaI",
-  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = widest span",
+  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = measured before model fits, then widest span",
   "axes": [
    {
     "page": "Li",

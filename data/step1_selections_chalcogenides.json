@@ -39,7 +39,7 @@
  "AgGaS2": {
   "name": "Silver gallium sulfide (AGS)",
   "formula": "AgGaS2",
-  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = widest span",
+  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = measured before model fits, then widest span covering 633 nm",
   "axes": [
    {
     "page": "Kato-o",
@@ -136,7 +136,7 @@
  "BaGa4S7": {
   "name": "Barium gallium sulfide (BGS)",
   "formula": "BaGa4S7",
-  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = widest span",
+  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = measured before model fits, then widest span covering 633 nm",
   "axes": [
    {
     "page": "Badikov-\u03b1",
@@ -426,7 +426,7 @@
  "AgGaSe2": {
   "name": "Silver gallium selenide (AGSe)",
   "formula": "AgGaSe2",
-  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = widest span",
+  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = measured before model fits, then widest span covering 633 nm",
   "axes": [
    {
     "page": "Kato-o",
@@ -523,7 +523,7 @@
  "As2Se3": {
   "name": "Arsenic triselenide",
   "formula": "As2Se3",
-  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = widest span",
+  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = measured before model fits, then widest span covering 633 nm",
   "axes": [
    {
     "page": "Joseph-400nm",
@@ -597,7 +597,7 @@
  "BaGa4Se7": {
   "name": "Barium gallium selenide (BGSe)",
   "formula": "BaGa4Se7",
-  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = widest span",
+  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = measured before model fits, then widest span covering 633 nm",
   "axes": [
    {
     "page": "Badikov-\u03b1",
@@ -694,53 +694,8 @@
  "CdSe": {
   "name": "Cadmium selenide",
   "formula": "CdSe",
-  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = widest span; phase labels only where the source page states one",
+  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = measured before model fits, then widest span covering 633 nm; phase labels only where the source page states one",
   "axes": [
-   {
-    "page": "Ninomiya-o",
-    "axis": "o-ray",
-    "phase": "hexagonal",
-    "data_path": "main/CdSe/nk/Ninomiya-o.yml",
-    "span_um": [
-     0.23393,
-     1.0332
-    ],
-    "kind": "nk",
-    "dispersion": "tabulated",
-    "comments": "Hexagonal CdSe. Fit of author's experimental data to a simplified model of the interband transitions (MDF). Ordinary ray (o), room temperature.\n",
-    "tag": "Ninomiya1995",
-    "dataset_label": "hexagonal | Ninomiya1995 | o-ray"
-   },
-   {
-    "page": "Ninomiya-e",
-    "axis": "e-ray",
-    "phase": "hexagonal",
-    "data_path": "main/CdSe/nk/Ninomiya-e.yml",
-    "span_um": [
-     0.23393,
-     1.0332
-    ],
-    "kind": "nk",
-    "dispersion": "tabulated",
-    "comments": "Hexagonal CdSe.\nFit of author's experimental data to a simplified model of the interband transitions (MDF).\nExtraordinary ray (e), room temperature.\n",
-    "tag": "Ninomiya1995",
-    "dataset_label": "hexagonal | Ninomiya1995 | e-ray"
-   },
-   {
-    "page": "Ninomiya-cubic",
-    "axis": null,
-    "phase": "cubic",
-    "data_path": "main/CdSe/nk/Ninomiya-cubic.yml",
-    "span_um": [
-     0.20664,
-     0.82656
-    ],
-    "kind": "nk",
-    "dispersion": "tabulated",
-    "comments": "Cubic CdSe. Room temperature.\n",
-    "tag": "Ninomiya1995",
-    "dataset_label": "cubic | Ninomiya1995"
-   },
    {
     "page": "Lisitsa-o",
     "axis": "o-ray",
@@ -800,29 +755,59 @@
     "comments": "Extraordinary ray (e); Room temperature.\n",
     "tag": "Bond1965",
     "dataset_label": "Bond1965 | e-ray"
+   },
+   {
+    "page": "Ninomiya-o",
+    "axis": "o-ray",
+    "phase": "hexagonal",
+    "data_path": "main/CdSe/nk/Ninomiya-o.yml",
+    "span_um": [
+     0.23393,
+     1.0332
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Hexagonal CdSe. Fit of author's experimental data to a simplified model of the interband transitions (MDF). Ordinary ray (o), room temperature.\n",
+    "tag": "Ninomiya1995",
+    "dataset_label": "hexagonal | Ninomiya1995 | o-ray"
+   },
+   {
+    "page": "Ninomiya-e",
+    "axis": "e-ray",
+    "phase": "hexagonal",
+    "data_path": "main/CdSe/nk/Ninomiya-e.yml",
+    "span_um": [
+     0.23393,
+     1.0332
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Hexagonal CdSe.\nFit of author's experimental data to a simplified model of the interband transitions (MDF).\nExtraordinary ray (e), room temperature.\n",
+    "tag": "Ninomiya1995",
+    "dataset_label": "hexagonal | Ninomiya1995 | e-ray"
+   },
+   {
+    "page": "Ninomiya-cubic",
+    "axis": null,
+    "phase": "cubic",
+    "data_path": "main/CdSe/nk/Ninomiya-cubic.yml",
+    "span_um": [
+     0.20664,
+     0.82656
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Cubic CdSe. Room temperature.\n",
+    "tag": "Ninomiya1995",
+    "dataset_label": "cubic | Ninomiya1995"
    }
   ]
  },
  "PbSe": {
   "name": "Lead selenide",
   "formula": "PbSe",
-  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = widest span",
+  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = measured before model fits, then widest span covering 633 nm",
   "axes": [
-   {
-    "page": "Suzuki",
-    "axis": null,
-    "phase": null,
-    "data_path": "main/PbSe/nk/Suzuki.yml",
-    "span_um": [
-     0.2296,
-     1.0781
-    ],
-    "kind": "nk",
-    "dispersion": "tabulated",
-    "comments": "Fit of author's experimental data to a simplified model of the interband transitions (MDF). Room Temperature.\n",
-    "tag": "Suzuki1995",
-    "dataset_label": "Suzuki1995"
-   },
    {
     "page": "Zemel",
     "axis": null,
@@ -837,6 +822,21 @@
     "comments": "300 K (27 \u00b0C)\n",
     "tag": "Zemel1965",
     "dataset_label": "Zemel1965"
+   },
+   {
+    "page": "Suzuki",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/PbSe/nk/Suzuki.yml",
+    "span_um": [
+     0.2296,
+     1.0781
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Fit of author's experimental data to a simplified model of the interband transitions (MDF). Room Temperature.\n",
+    "tag": "Suzuki1995",
+    "dataset_label": "Suzuki1995"
    }
   ]
  },
@@ -917,7 +917,7 @@
  "ZnSe": {
   "name": "Zinc selenide",
   "formula": "ZnSe",
-  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = widest span",
+  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = measured before model fits, then widest span covering 633 nm",
   "axes": [
    {
     "page": "Querry",
