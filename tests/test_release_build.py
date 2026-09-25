@@ -29,7 +29,11 @@ import build_release as br  # noqa: E402
 import release_descriptors as rd  # noqa: E402
 
 AVOGADRO = 6.02214076e23
-BENCHMARK_ONLY = ["Water", "Ethanol", "DMSO", "DPPC", "BSA", "ITO", "PEG", "PEI", "PTFE", "PEEK", "Nylon66"]
+# the legacy benchmark DB's own rows are not merged: its water/ethanol/DMSO come in through the liquids family under their own names
+BENCHMARK_ONLY = ["DMSO", "DPPC", "BSA", "ITO", "PEG", "PEI", "PTFE", "PEEK", "Nylon66"]
+N_MATERIALS = sum(len(pd.read_csv(ROOT / "data" / f"{stem}.csv")) for stem in br.FAMILY_CSVS) - 5  # the 5 batch-2 nitrides are in two tables
+POLYMERS = set(pd.read_csv(ROOT / "data" / "polymers.csv").name)
+LIQUIDS = pd.read_csv(ROOT / "data" / "liquids.csv")
 
 
 @pytest.fixture(scope="module")
@@ -60,8 +64,8 @@ def descriptors(release):
 def test_every_family_material_is_in_the_release_once_and_nothing_else_is(release):
     names = [n for (n,) in q(release, "SELECT name FROM materials")]
     expected = set(br.family_rows())
-    assert len(names) == len(set(names)) == len(expected) == 228 and set(names) == expected
-    assert not set(BENCHMARK_ONLY) & set(names)  # the legacy benchmark set is deliberately not in v0.1
+    assert len(names) == len(set(names)) == len(expected) == N_MATERIALS == 303 and set(names) == expected
+    assert not set(BENCHMARK_ONLY) & set(names)  # the legacy benchmark rows are not merged
 
 
 @pytest.fixture(scope="module")
@@ -90,13 +94,13 @@ def _optical(db, name):
 def test_optical_rows_of_every_material_equal_its_origin_database_exactly(release, family_dbs):
     origin = {"batch2_31": br.BASE_DB, "oxides_50": br.BASE_DB, "batch3b_4": br.BASE_DB, "pure_elements_50": br.BASE_DB,
               "nitrides": family_dbs["nitride"], "polymers": family_dbs["polymer"], "inorganic3": family_dbs["inorganic3"],
-              "halides": family_dbs["halide"], "chalcogenides": family_dbs["chalcogenide"]}
+              "halides": family_dbs["halide"], "chalcogenides": family_dbs["chalcogenide"], "liquids": family_dbs["liquid"]}
     total = 0
     for name, (stem, _) in br.family_rows().items():
         got = _optical(release["db"], name)
         assert got == _optical(origin[stem], name), name
         total += sum(got.values())
-    assert total == q(release, "SELECT COUNT(*) FROM optical_dispersion")[0][0] == 212782
+    assert total == q(release, "SELECT COUNT(*) FROM optical_dispersion")[0][0]
 
 
 def test_duplicate_physical_rows_are_gone_and_each_removed_value_survives_once(release):
@@ -127,7 +131,9 @@ def test_repeated_wavelengths_are_exactly_the_ones_the_source_files_repeat(relea
     reps = release["facts"]["optical_wavelengths_repeated_in_source"]
     assert {(r["material"], r["wavelength_nm"]) for r in reps} == {
         ("Copper(II) oxide", 13.6), ("Copper(II) oxide", 14.0), ("Copper(II) oxide", 14.5), ("Copper(I) oxide", 3268.0),
-        ("Copper(I) oxide", 3322.3), ("Hematite", 1950.0), ("Hematite", 4149.4), ("Potassium chloride", 1160.0)}
+        ("Copper(I) oxide", 3322.3), ("Hematite", 1950.0), ("Hematite", 4149.4), ("Potassium chloride", 1160.0),
+        ("Ethylene glycol", 666.7), ("Diethyl phthalate", 4464.3), ("Dimethyl methylphosphonate", 1729.5),
+        ("Diethyl sulfite", 720.0), ("Diethyl sulfite", 2840.9), ("Diethyl sulfite", 3134.8)}
     for r in reps:
         assert br.source_repeat_count(r["source_file"], r["wavelength_nm"]) == r["rows"] == 2
 
@@ -165,7 +171,7 @@ def test_validation_stops_the_build_on_each_kind_of_bad_data(release, tmp_path, 
 
 def test_every_material_has_one_descriptor_row_and_every_null_is_explained(release):
     d = descriptors(release)
-    assert len(d) == 228
+    assert len(d) == N_MATERIALS
     for name, (cols, doc) in d.items():
         for section in ("compositional", "structural", "molecular"):
             filled = not ({"unavailable", "not_applicable"} & set(doc[section]))
@@ -179,18 +185,24 @@ def test_every_material_has_one_descriptor_row_and_every_null_is_explained(relea
     kinds = Counter(doc["material_kind"] for _, doc in d.values())
     formulas = dict(q(release, "SELECT name, formula FROM materials"))
     polymers = set(pd.read_csv(ROOT / "data" / "polymers.csv").name)
-    elements = {n for n, f in formulas.items() if n not in polymers and len(set(re.findall(r"[A-Z][a-z]?", f))) == 1}
-    assert kinds == {"polymer": len(polymers), "element": len(elements), "inorganic compound": 228 - len(polymers) - len(elements)}
+    elements = {n for n, f in formulas.items() if f and n not in polymers and len(set(re.findall(r"[A-Z][a-z]?", f))) == 1}
+    molecules = set(LIQUIDS[LIQUIDS.smiles.notna() & (LIQUIDS.formula != "Hg")].name)
+    biomacro = set(LIQUIDS[LIQUIDS.formula.isna()].name)
+    elements |= {"Mercury (liquid)"}
+    assert kinds == {"polymer": len(polymers), "element": len(elements), "molecule": len(molecules), "biomacromolecule": len(biomacro),
+                     "inorganic compound": N_MATERIALS - len(polymers) - len(elements) - len(molecules) - len(biomacro)}
     assert {"Diamond", "Graphite", "Gold", "Silicon"} <= elements
 
 
 def test_descriptor_coverage_is_what_the_inputs_allow(release):
     cov = release["facts"]["descriptor_coverage"]
-    assert cov == {"compositional": 214, "structural": 171, "molecular": 25}
+    no_formula = len(pd.read_csv(ROOT / "data" / "polymers.csv").pipe(lambda p: p[p.formula.isna()])) + 2 + int(LIQUIDS.formula.isna().sum())
+    assert cov == {"compositional": N_MATERIALS - no_formula, "structural": 171,
+                   "molecular": len(pd.read_csv(rd.REPEAT_UNITS)) + int((LIQUIDS.smiles.notna() & (LIQUIDS.formula != "Hg")).sum())}
     d = descriptors(release)
     no_comp = {n for n, (_, doc) in d.items() if "unavailable" in doc["compositional"]}
     pol = pd.read_csv(ROOT / "data" / "polymers.csv")
-    assert no_comp == set(pol[pol.formula.isna()].name) | {"Styrene-acrylonitrile copolymer", "PDCBT"}
+    assert no_comp == set(pol[pol.formula.isna()].name) | {"Styrene-acrylonitrile copolymer", "PDCBT"} | set(LIQUIDS[LIQUIDS.formula.isna()].name)
 
 
 def test_every_curated_repeat_unit_matches_the_source_formula_and_has_two_attachment_points():
@@ -238,14 +250,14 @@ def test_compositional_statistics_match_periodictable_element_data(release):
         comp = doc["compositional"]
         if "unavailable" in comp:
             continue
-        c = Composition(comp["formula_unit"])
-        fr = {el.symbol: c.get_atomic_fraction(el) for el in c.elements}
-        z = sum(f * pt.elements.symbol(s).number for s, f in fr.items())
-        m = sum(f * pt.elements.symbol(s).mass for s, f in fr.items())
+        atoms = pt.formula(comp["formula_unit"]).atoms  # periodictable keeps deuterium as D (mass 2.014), as pymatgen does
+        total = sum(atoms.values())
+        z = sum(n * el.number for el, n in atoms.items()) / total
+        m = sum(n * el.mass for el, n in atoms.items()) / total
         assert comp["atomic_number"]["mean"] == pytest.approx(z, abs=1e-5), name
         assert comp["atomic_mass"]["mean"] == pytest.approx(m, rel=1e-3), name
         checked += 1
-    assert checked == 214
+    assert checked == release["facts"]["descriptor_coverage"]["compositional"]
     nacl = d["Sodium chloride"][1]["compositional"]
     assert nacl["electronegativity_pauling"]["mean"] == pytest.approx((0.93 + 3.16) / 2) and nacl["electronegativity_pauling"]["range"] == pytest.approx(2.23)
 

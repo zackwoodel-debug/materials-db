@@ -12,8 +12,8 @@ descriptor_json sections:
   structural     crystal-structure descriptors of the Materials Project entry the family build already chose (cached by
                  scripts/fetch_mp_structure_descriptors.py). 'applies_to' says whether that entry IS the material or is only a
                  crystalline reference for a film / amorphous / non-bulk sample.
-  molecular      RDKit descriptors of a polymer repeat unit (data/descriptors/polymer_repeat_units.csv, each checked against the
-                 source formula). Not computed for extended inorganic solids: a PubChem SMILES such as [Na+].[Cl-] is formula-unit
+  molecular      RDKit descriptors of a molecule (liquids and biomolecules: PubChem's SMILES) or of a polymer repeat unit
+                 (data/descriptors/polymer_repeat_units.csv, each checked against the source formula). Not computed for extended inorganic solids: a PubChem SMILES such as [Na+].[Cl-] is formula-unit
                  notation, and TPSA / logP / H-bond counts of it describe no property of the solid.
 
 exact_mass and heavy_atom_count are defined for any formula unit, so inorganic materials get them from the formula
@@ -137,7 +137,10 @@ def _structural_scope(density_source, label_words):
     return "crystalline reference (the density comes from the literature or experimental lattice parameters, not from this entry)"
 
 
-def descriptor_row(name, formula, family, csv_row, optical_labels, mp, units, issues):
+MOLECULAR_FAMILIES = {"liquids"}  # families whose materials are discrete molecules (described by their PubChem SMILES)
+
+
+def descriptor_row(name, formula, family, csv_row, optical_labels, mp, units, issues, smiles=None):
     """Return (columns dict, descriptor_json dict) for one material."""
     cols = {c: None for c in ["exact_mass", "heavy_atom_count"] + MOLECULAR_COLUMNS}
     is_polymer = family == "polymers"
@@ -159,6 +162,16 @@ def descriptor_row(name, formula, family, csv_row, optical_labels, mp, units, is
     elif is_polymer:
         doc["material_kind"] = "polymer"
         doc["molecular"] = dict(unavailable=why or "repeat-unit structure not curated")
+    elif family in MOLECULAR_FAMILIES and rf and smiles and len(re.findall(r"[A-Z][a-z]?", rf)) > 1:
+        cols.update(molecular(smiles))
+        doc["material_kind"] = "molecule"
+        doc["molecular"] = dict(basis="the molecule (PubChem isomeric SMILES; isotopes and stereochemistry as PubChem records them)",
+                                smiles=smiles, morgan_radius=MORGAN_RADIUS, morgan_bits=MORGAN_BITS, source="RDKit")
+    elif family in MOLECULAR_FAMILIES and not rf:
+        doc["material_kind"] = "biomacromolecule"
+        doc["molecular"] = dict(unavailable=why or "no single molecular structure")
+    elif family in MOLECULAR_FAMILIES:
+        doc["molecular"] = dict(not_applicable="a liquid element (metal), not a molecule")
     else:
         doc["molecular"] = dict(not_applicable="extended inorganic solid: molecular descriptors (TPSA, logP, H-bond counts, "
                                                "rotatable bonds, fingerprints) describe discrete molecules, not a crystal or glass")
@@ -167,12 +180,12 @@ def descriptor_row(name, formula, family, csv_row, optical_labels, mp, units, is
     if rf:
         comp = compositional(rf)
         doc["compositional"] = comp
-        if not is_polymer:
+        if not is_polymer and doc.get("material_kind") != "molecule":
             doc["material_kind"] = "element" if comp["n_elements"] == 1 else "inorganic compound"
         if cols["exact_mass"] is None:
             cols["exact_mass"], cols["heavy_atom_count"] = formula_mass_and_heavy_atoms(rf)
     else:
-        doc["compositional"] = dict(unavailable=why)
+        doc["compositional"] = dict(unavailable=why or "no single molecular formula")
         doc.setdefault("material_kind", "polymer" if is_polymer else "unknown")
 
     # structural
@@ -180,6 +193,10 @@ def descriptor_row(name, formula, family, csv_row, optical_labels, mp, units, is
     mp_id = None if mp_id is None or (isinstance(mp_id, float) and math.isnan(mp_id)) else str(mp_id)
     if is_polymer:
         doc["structural"] = dict(not_applicable="polymer: no crystal structure (amorphous or semicrystalline solid)")
+    elif family in MOLECULAR_FAMILIES and (csv_row or {}).get("materialclass") == "liquid":
+        doc["structural"] = dict(not_applicable="liquid: no crystal structure (any ice / solid datasets of it are labelled by phase)")
+    elif family in MOLECULAR_FAMILIES:
+        doc["structural"] = dict(unavailable="molecular solid or biomolecule film/powder: no Materials Project entry is used for molecular crystals")
     elif mp_id and mp_id in mp["entries"]:
         e = dict(mp["entries"][mp_id])
         e.pop("space_group_number_recomputed", None)

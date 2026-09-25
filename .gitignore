@@ -35,3 +35,6 @@ release/
 
 # macOS Finder metadata
 .DS_Store
+
+# regenerable from data/liquids.csv + data/step1_selections_liquids.json (scripts/load_liquids_db.py)
+data/materials_liquid_test.db

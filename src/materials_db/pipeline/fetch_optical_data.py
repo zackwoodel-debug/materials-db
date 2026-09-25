@@ -434,6 +434,13 @@ def eval_formula(
         n2 = (1.0 + 2.0 * x) / (1.0 - x)
         return np.sqrt(np.clip(n2, 1e-30, None)), None
 
+    if ftype == "formula 9":
+        # Exotic (refractiveindex.info doc "Dispersion formulas", 2014-06-29):
+        #   n² = C1 + C2/(λ²−C3) + C4(λ−C5)/((λ−C5)² + C6)
+        C1, C2, C3, C4, C5, C6 = (float(c[i]) if i < len(c) else 0.0 for i in range(6))
+        n2 = C1 + C2 / (lam**2 - C3) + C4 * (lam - C5) / ((lam - C5) ** 2 + C6)
+        return np.sqrt(np.clip(n2, 1e-30, None)), None
+
     raise ValueError(f"Unsupported formula type: '{ftype}'")
 
 
@@ -481,7 +488,9 @@ def parse_file(
     if isinstance(cond, dict) and "temperature" in cond and temp is None:
         try:
             t_k = float(cond["temperature"])
-            temp = t_k - 273.15 if t_k > 200 else t_k
+            # refractiveindex.info's CONDITIONS temperature is in kelvin (93 of the 95 pages at <= 200 K say "K" in their own text);
+            # the old "<= 200 means degC" guess turned 10 K amorphous ice into +10 degC
+            temp = t_k - 273.15
         except (ValueError, TypeError):
             pass
 

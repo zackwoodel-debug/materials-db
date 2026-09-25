@@ -185,10 +185,11 @@ def _find_material(conn, name):
 # here are words like "rutile"/"wurtzite"/"K2NiF4-type", never
 # Letters+4-digits), optionally followed by a page qualifier when one paper has
 # several same-axis pages: "Boyd1971-20C" / "Boyd1971-120C" (a temperature
-# series), "Chen2009-n" / "Chen2009-nk" (formula vs table).
+# series), "Chen2009-n" / "Chen2009-nk" (formula vs table), "Daimon2007-19.0C",
+# "Bucciarelli2018-FPP_FA_Ex" (sample preparations of one paper).
 _QUANTITY_MARKERS = ("density_", "xray_sld_real", "xray_sld_imag",
                      "neutron_sld_real", "neutron_sld_imag")
-_SOURCE_LABEL_RE = re.compile(r"^[A-Za-z]+\d{4}(?:-[A-Za-z0-9]+)?$")
+_SOURCE_LABEL_RE = re.compile(r"^[A-Za-z]+\d{4}(?:-[A-Za-z0-9_.]+)?$")
 
 
 def _polymorph_prefix(dataset_label: str) -> Optional[str]:

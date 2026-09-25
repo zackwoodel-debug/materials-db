@@ -108,7 +108,7 @@ def test_every_family_lists_a_db_and_csvs_whose_names_are_unique_within_the_fami
     for fam, (db, csvs, out) in _mod.FAMILIES.items():
         materials = _mod._discover_materials([ROOT / "data" / c for c in csvs])  # raises on a duplicate name inside ONE family
         assert len(materials) > 0, fam
-    assert set(_mod.FAMILIES) == {"oxide", "nitride", "polymer", "inorganic3", "halide"}
+    assert set(_mod.FAMILIES) == {"oxide", "nitride", "polymer", "inorganic3", "halide", "chalcogenide", "liquid"}
     assert len({v[2] for v in _mod.FAMILIES.values()}) == len(_mod.FAMILIES), "each family exports to its own folder"
 
 

@@ -1,0 +1,23 @@
+{
+  "family": "liquid",
+  "inserted": {
+    "materials": 75,
+    "physical_properties": 250,
+    "optical_dispersion": 345824,
+    "sources": 94
+  },
+  "unchanged": {
+    "materials": 0,
+    "physical_properties": 0,
+    "optical_dispersion": 0
+  },
+  "conflicts": [],
+  "skipped": [],
+  "warnings": [],
+  "notes": [
+    "polymorph differs between optical (None) and physical properties ('liquid') for H2O -- their dataset_label prefixes will not match",
+    "polymorph differs between optical (None) and physical properties ('liquid') for D2O -- their dataset_label prefixes will not match"
+  ],
+  "deferred": [],
+  "collapsed": []
+}
