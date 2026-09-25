@@ -6,7 +6,7 @@
   "n_features_fp": 512,
   "fp_radius": 2,
   "fp_bits": 512,
-  "fp_available_count": 19,
+  "fp_available_count": 16,
   "optical_ref_wl_nm": 633.0,
   "target_columns": [
     "target_dielectric_static",
