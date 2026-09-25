@@ -23,3 +23,6 @@ data/materials_polymer_test.db
 
 # regenerable from data/inorganic3.csv + data/step1_selections_inorganic3.json (scripts/load_inorganic3_db.py)
 data/materials_inorganic3_test.db
+
+# regenerable from data/chalcogenides.csv + data/step1_selections_chalcogenides.json (scripts/load_chalcogenides_db.py)
+data/materials_chalcogenide_test.db

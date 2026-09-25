@@ -1,0 +1,1565 @@
+{
+ "candidates": [
+  {
+   "key": "Ag3AsS3",
+   "name": "Silver arsenic sulfide (proustite)",
+   "formula": "Ag3AsS3",
+   "book": "Ag3AsS3",
+   "shelf": "main",
+   "note": "birefringent",
+   "materialclass": "sulfide",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 2,
+   "n_papers": 1,
+   "papers": [
+    "Hulme et al. 1967"
+   ],
+   "datasets": [
+    {
+     "page": "Hulme-o",
+     "title": "Hulme et al. 1967: n(o) 0.63\u20134.6 \u00b5m",
+     "paper": "Hulme et al. 1967",
+     "data_path": "main/Ag3AsS3/nk/Hulme-o.yml",
+     "axis": "o-ray",
+     "phase_words": [
+      "Ordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.63,
+      4.6
+     ],
+     "single_point": false,
+     "comments": "Ordinary ray (o), 20 \u00b0C\n",
+     "conditions": "{'temperature': 293, 'direction': 'o'}"
+    },
+    {
+     "page": "Hulme-e",
+     "title": "Hulme et al. 1967: n(e) 0.59\u20134.6 \u00b5m",
+     "paper": "Hulme et al. 1967",
+     "data_path": "main/Ag3AsS3/nk/Hulme-e.yml",
+     "axis": "e-ray",
+     "phase_words": [
+      "Extraordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.59,
+      4.6
+     ],
+     "single_point": false,
+     "comments": "Extraordinary ray (e), 20 \u00b0C\n",
+     "conditions": "{'temperature': 293, 'direction': 'e'}"
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "Ag3AsS3 (Silver arsenic sulfide)"
+  },
+  {
+   "key": "AgGaS2",
+   "name": "Silver gallium sulfide (AGS)",
+   "formula": "AgGaS2",
+   "book": "AgGaS2",
+   "shelf": "main",
+   "note": "birefringent",
+   "materialclass": "sulfide",
+   "page_polymorph": {
+    "Takaoka-o": null,
+    "Takaoka-e": null,
+    "Kato-o": null,
+    "Kato-e": null,
+    "Boyd-o": null,
+    "Boyd-e": null
+   },
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = widest span",
+   "status": "SELECTED_BY_USER",
+   "n_pages": 6,
+   "n_papers": 3,
+   "papers": [
+    "Boyd et al. 1971",
+    "Kato and Shirahata 1996",
+    "Takaoka and Kato 1999"
+   ],
+   "datasets": [
+    {
+     "page": "Takaoka-o",
+     "title": "Takaoka and Kato 1999: n(o) 0.58\u201310.59 \u00b5m",
+     "paper": "Takaoka and Kato 1999",
+     "data_path": "main/AgGaS2/nk/Takaoka-o.yml",
+     "axis": "o-ray",
+     "phase_words": [
+      "Ordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.58,
+      10.59
+     ],
+     "single_point": false,
+     "comments": "Ordinary ray (o); 20.0 \u00b0C\n",
+     "conditions": "{'temperature': 293, 'direction': 'o'}"
+    },
+    {
+     "page": "Takaoka-e",
+     "title": "Takaoka and Kato 1999: n(e) 0.58\u201310.59 \u00b5m",
+     "paper": "Takaoka and Kato 1999",
+     "data_path": "main/AgGaS2/nk/Takaoka-e.yml",
+     "axis": "e-ray",
+     "phase_words": [
+      "Extraordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.58,
+      10.59
+     ],
+     "single_point": false,
+     "comments": "Extraordinary ray (e); 20.0 \u00b0C\n",
+     "conditions": "{'temperature': 293, 'direction': 'e'}"
+    },
+    {
+     "page": "Kato-o",
+     "title": "Kato and Shirahata 1996: n(o) 0.54\u201312.9 \u00b5m",
+     "paper": "Kato and Shirahata 1996",
+     "data_path": "main/AgGaS2/nk/Kato-o.yml",
+     "axis": "o-ray",
+     "phase_words": [
+      "Ordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.54,
+      12.9
+     ],
+     "single_point": false,
+     "comments": "Ordinary ray (o); 20.0 \u00b0C\n",
+     "conditions": "{'temperature': 293, 'direction': 'o'}"
+    },
+    {
+     "page": "Kato-e",
+     "title": "Kato and Shirahata 1996: n(e) 0.54\u201312.9 \u00b5m",
+     "paper": "Kato and Shirahata 1996",
+     "data_path": "main/AgGaS2/nk/Kato-e.yml",
+     "axis": "e-ray",
+     "phase_words": [
+      "Extraordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.54,
+      12.9
+     ],
+     "single_point": false,
+     "comments": "Extraordinary ray (e); 20.0 \u00b0C\n",
+     "conditions": "{'temperature': 294, 'direction': 'e'}"
+    },
+    {
+     "page": "Boyd-o",
+     "title": "Boyd et al. 1971: n(o) 0.49\u201312 \u00b5m",
+     "paper": "Boyd et al. 1971",
+     "data_path": "main/AgGaS2/nk/Boyd-o.yml",
+     "axis": "o-ray",
+     "phase_words": [
+      "Ordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.49,
+      12.0
+     ],
+     "single_point": false,
+     "comments": "Ordinary ray (e)\n",
+     "conditions": "{'direction': 'o'}"
+    },
+    {
+     "page": "Boyd-e",
+     "title": "Boyd et al. 1971: n(e) 0.49\u201312 \u00b5m",
+     "paper": "Boyd et al. 1971",
+     "data_path": "main/AgGaS2/nk/Boyd-e.yml",
+     "axis": "e-ray",
+     "phase_words": [
+      "Extraordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.49,
+      12.0
+     ],
+     "single_point": false,
+     "comments": "Extraordinary ray(e)\n",
+     "conditions": "{'direction': 'e'}"
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "AgGaS2 (Silver gallium sulfide, AGS)"
+  },
+  {
+   "key": "BaGa4S7",
+   "name": "Barium gallium sulfide (BGS)",
+   "formula": "BaGa4S7",
+   "book": "BaGa4S7",
+   "shelf": "main",
+   "note": "birefringent",
+   "materialclass": "sulfide",
+   "page_polymorph": {
+    "Badikov-\u03b1": null,
+    "Badikov-\u03b2": null,
+    "Badikov-\u03b3": null,
+    "Kato-\u03b1": null,
+    "Kato-\u03b2": null,
+    "Kato-\u03b3": null
+   },
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = widest span",
+   "status": "SELECTED_BY_USER",
+   "n_pages": 6,
+   "n_papers": 2,
+   "papers": [
+    "Badikov et al 2010",
+    "Kato et al 2021"
+   ],
+   "datasets": [
+    {
+     "page": "Badikov-\u03b1",
+     "title": "Badikov et al 2010: n(\u03b1) 0.420\u20139.50 \u00b5m",
+     "paper": "Badikov et al 2010",
+     "data_path": "main/BaGa4S7/nk/Badikov-alpha.yml",
+     "axis": "alpha-axis",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.42,
+      9.5
+     ],
+     "single_point": false,
+     "comments": "n\u03b1; room temperature.\n",
+     "conditions": "{'direction': 'alpha'}"
+    },
+    {
+     "page": "Badikov-\u03b2",
+     "title": "Badikov et al 2010: n(\u03b2) 0.420\u20139.50 \u00b5m",
+     "paper": "Badikov et al 2010",
+     "data_path": "main/BaGa4S7/nk/Badikov-beta.yml",
+     "axis": "beta-axis",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.42,
+      9.5
+     ],
+     "single_point": false,
+     "comments": "n\u03b2; room temperature.\n",
+     "conditions": "{'direction': 'beta'}"
+    },
+    {
+     "page": "Badikov-\u03b3",
+     "title": "Badikov et al 2010: n(\u03b3) 0.420\u20139.50 \u00b5m",
+     "paper": "Badikov et al 2010",
+     "data_path": "main/BaGa4S7/nk/Badikov-gamma.yml",
+     "axis": "gamma-axis",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.42,
+      9.5
+     ],
+     "single_point": false,
+     "comments": "n\u03b3; room temperature.\n",
+     "conditions": "{'direction': 'gamma'}"
+    },
+    {
+     "page": "Kato-\u03b1",
+     "title": "Kato et al 2021: n(\u03b1) 0.633\u20138.82 \u00b5m",
+     "paper": "Kato et al 2021",
+     "data_path": "main/BaGa4S7/nk/Kato-alpha.yml",
+     "axis": "alpha-axis",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.633,
+      8.82
+     ],
+     "single_point": false,
+     "comments": "n\u03b1; room temperature.\n",
+     "conditions": "{'direction': 'alpha'}"
+    },
+    {
+     "page": "Kato-\u03b2",
+     "title": "Kato et al 2021: n(\u03b2) 0.633\u20138.82 \u00b5m",
+     "paper": "Kato et al 2021",
+     "data_path": "main/BaGa4S7/nk/Kato-beta.yml",
+     "axis": "beta-axis",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.633,
+      8.82
+     ],
+     "single_point": false,
+     "comments": "n\u03b2; room temperature.\n",
+     "conditions": "{'direction': 'beta'}"
+    },
+    {
+     "page": "Kato-\u03b3",
+     "title": "Kato et al 2021: n(\u03b3) 0.633\u20138.82 \u00b5m",
+     "paper": "Kato et al 2021",
+     "data_path": "main/BaGa4S7/nk/Kato-gamma.yml",
+     "axis": "gamma-axis",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.633,
+      8.82
+     ],
+     "single_point": false,
+     "comments": "n\u03b3; room temperature.\n",
+     "conditions": "{'direction': 'gamma'}"
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "BaGa4S7 (Barium gallium sulfide, BGS)"
+  },
+  {
+   "key": "CdGa2S4",
+   "name": "Cadmium gallium sulfide",
+   "formula": "CdGa2S4",
+   "book": "CdGa2S4",
+   "shelf": "main",
+   "note": "birefringent",
+   "materialclass": "sulfide",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 2,
+   "n_papers": 1,
+   "papers": [
+    "Kato et al. 2017"
+   ],
+   "datasets": [
+    {
+     "page": "Kato-o",
+     "title": "Kato et al. 2017: n(o) 0.490\u20137.52 \u00b5m",
+     "paper": "Kato et al. 2017",
+     "data_path": "main/CdGa2S4/nk/Kato-o.yml",
+     "axis": "o-ray",
+     "phase_words": [
+      "Ordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.49,
+      7.519
+     ],
+     "single_point": false,
+     "comments": "Room temperature. Ordinary ray (o).\n",
+     "conditions": "{'direction': 'o'}"
+    },
+    {
+     "page": "Kato-e",
+     "title": "Kato et al. 2017: n(e) 0.490\u20137.52 \u00b5m",
+     "paper": "Kato et al. 2017",
+     "data_path": "main/CdGa2S4/nk/Kato-e.yml",
+     "axis": "e-ray",
+     "phase_words": [
+      "Extraordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.49,
+      7.519
+     ],
+     "single_point": false,
+     "comments": "Room temperature. Extraordinary ray (e).\n",
+     "conditions": "{'direction': 'e'}"
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "CdGa2S4 (Cadmium gallium sulfide)"
+  },
+  {
+   "key": "CuGaS2",
+   "name": "Copper gallium sulfide",
+   "formula": "CuGaS2",
+   "book": "CuGaS2",
+   "shelf": "main",
+   "note": "birefringent",
+   "materialclass": "sulfide",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 4,
+   "n_papers": 1,
+   "papers": [
+    "Boyd et al. 1971"
+   ],
+   "datasets": [
+    {
+     "page": "Boyd-20-o",
+     "title": "Boyd et al. 1971: n(o) 0.55\u201311.5 \u00b5m; 20 \u00b0C",
+     "paper": "Boyd et al. 1971",
+     "data_path": "main/CuGaS2/nk/Boyd-20-o.yml",
+     "axis": "o-ray",
+     "phase_words": [
+      "Ordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.55,
+      11.5
+     ],
+     "single_point": false,
+     "comments": "Ordinary ray (o); 20 \u00b0C\n",
+     "conditions": "{'temperature': 293, 'direction': 'o'}"
+    },
+    {
+     "page": "Boyd-20-e",
+     "title": "Boyd et al. 1971: n(e) 0.55\u201311.5 \u00b5m; 20 \u00b0C",
+     "paper": "Boyd et al. 1971",
+     "data_path": "main/CuGaS2/nk/Boyd-20-e.yml",
+     "axis": "e-ray",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.55,
+      11.5
+     ],
+     "single_point": false,
+     "comments": "Extrardinary ray (e); 20 \u00b0C\n",
+     "conditions": ""
+    },
+    {
+     "page": "Boyd-120-o",
+     "title": "Boyd et al. 1971: n(o) 0.55\u201311.5 \u00b5m; 120 \u00b0C",
+     "paper": "Boyd et al. 1971",
+     "data_path": "main/CuGaS2/nk/Boyd-120-o.yml",
+     "axis": "o-ray",
+     "phase_words": [
+      "Ordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.55,
+      11.5
+     ],
+     "single_point": false,
+     "comments": "Ordinary ray (o); 120 \u00b0C\n",
+     "conditions": "{'temperature': 393, 'direction': 'o'}"
+    },
+    {
+     "page": "Boyd-120-e",
+     "title": "Boyd et al. 1971: n(e) 0.55\u201311.5 \u00b5m; 120 \u00b0C",
+     "paper": "Boyd et al. 1971",
+     "data_path": "main/CuGaS2/nk/Boyd-120-e.yml",
+     "axis": "e-ray",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.55,
+      11.5
+     ],
+     "single_point": false,
+     "comments": "Extrardinary ray (e); 120 \u00b0C\n",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "CuGaS2 (Copper gallium sulfide)"
+  },
+  {
+   "key": "HgGa2S4",
+   "name": "Mercury gallium sulfide",
+   "formula": "HgGa2S4",
+   "book": "HgGa2S4",
+   "shelf": "main",
+   "note": "birefringent",
+   "materialclass": "sulfide",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 2,
+   "n_papers": 1,
+   "papers": [
+    "Kato et al. 2016"
+   ],
+   "datasets": [
+    {
+     "page": "Kato-o",
+     "title": "Kato et al. 2016: n(o) 0.633\u201310.6 \u00b5m",
+     "paper": "Kato et al. 2016",
+     "data_path": "main/HgGa2S4/nk/Kato-o.yml",
+     "axis": "o-ray",
+     "phase_words": [
+      "Ordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.6328,
+      10.591
+     ],
+     "single_point": false,
+     "comments": "Room temperature. Ordinary ray (o).\n",
+     "conditions": "{'direction': 'o'}"
+    },
+    {
+     "page": "Kato-e",
+     "title": "Kato et al. 2016: n(e) 0.633\u201310.6 \u00b5m",
+     "paper": "Kato et al. 2016",
+     "data_path": "main/HgGa2S4/nk/Kato-e.yml",
+     "axis": "e-ray",
+     "phase_words": [
+      "Extraordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.6328,
+      10.591
+     ],
+     "single_point": false,
+     "comments": "Room temperature. Extraordinary ray (e).\n",
+     "conditions": "{'direction': 'e'}"
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "HgGa2S4 (Mercury gallium sulfide)"
+  },
+  {
+   "key": "LiGaS2",
+   "name": "Lithium gallium sulfide (LGS)",
+   "formula": "LiGaS2",
+   "book": "LiGaS2",
+   "shelf": "main",
+   "note": "biaxial",
+   "materialclass": "sulfide",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 3,
+   "n_papers": 1,
+   "papers": [
+    "Kato et al. 2017"
+   ],
+   "datasets": [
+    {
+     "page": "Kato-\u03b1",
+     "title": "Kato et al. 2017: n(\u03b1) 1.025\u201310.591 \u00b5m",
+     "paper": "Kato et al. 2017",
+     "data_path": "main/LiGaS2/nk/Kato-alpha.yml",
+     "axis": "alpha-axis",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      1.025,
+      10.591
+     ],
+     "single_point": false,
+     "comments": "n\u03b1; room temperature.\n",
+     "conditions": "{'direction': 'alpha'}"
+    },
+    {
+     "page": "Kato-\u03b2",
+     "title": "Kato et al. 2017: n(\u03b2) 1.025\u201310.591 \u00b5m",
+     "paper": "Kato et al. 2017",
+     "data_path": "main/LiGaS2/nk/Kato-beta.yml",
+     "axis": "beta-axis",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      1.025,
+      10.591
+     ],
+     "single_point": false,
+     "comments": "n\u03b2; room temperature.\n",
+     "conditions": "{'direction': 'beta'}"
+    },
+    {
+     "page": "Kato-\u03b3",
+     "title": "Kato et al. 2017: n(\u03b3) 1.025\u201310.591 \u00b5m",
+     "paper": "Kato et al. 2017",
+     "data_path": "main/LiGaS2/nk/Kato-gamma.yml",
+     "axis": "gamma-axis",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      1.025,
+      10.591
+     ],
+     "single_point": false,
+     "comments": "n\u03b3; room temperature.\n",
+     "conditions": "{'direction': 'gamma'}"
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "LiGaS2 (Lithium gallium sulfide, LGS)"
+  },
+  {
+   "key": "AgGaSe2",
+   "name": "Silver gallium selenide (AGSe)",
+   "formula": "AgGaSe2",
+   "book": "AgGaSe2",
+   "shelf": "main",
+   "note": "birefringent",
+   "materialclass": "selenide",
+   "page_polymorph": {
+    "Kato-o": null,
+    "Kato-e": null,
+    "Harasaki-o": null,
+    "Harasaki-e": null,
+    "Boyd-o": null,
+    "Boyd-e": null
+   },
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = widest span",
+   "status": "SELECTED_BY_USER",
+   "n_pages": 6,
+   "n_papers": 3,
+   "papers": [
+    "Boyd et al. 1972",
+    "Harasaki and Kato 1997",
+    "Kato et al. 2021"
+   ],
+   "datasets": [
+    {
+     "page": "Kato-o",
+     "title": "Kato et al. 2021: n(o) 0.81\u201318 \u00b5m",
+     "paper": "Kato et al. 2021",
+     "data_path": "main/AgGaSe2/nk/Kato-o.yml",
+     "axis": "o-ray",
+     "phase_words": [
+      "Ordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.81,
+      18.0
+     ],
+     "single_point": false,
+     "comments": "Ordinary ray (o) 20\u201322 \u00b0C.\n",
+     "conditions": "{'temperature': 294, 'direction': 'o'}"
+    },
+    {
+     "page": "Kato-e",
+     "title": "Kato et al. 2021: n(e) 0.81\u201318 \u00b5m",
+     "paper": "Kato et al. 2021",
+     "data_path": "main/AgGaSe2/nk/Kato-e.yml",
+     "axis": "e-ray",
+     "phase_words": [
+      "Extraordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.81,
+      18.0
+     ],
+     "single_point": false,
+     "comments": "Extraordinary ray (e). 20\u201322 \u00b0C.\n",
+     "conditions": "{'temperature': 294, 'direction': 'e'}"
+    },
+    {
+     "page": "Harasaki-o",
+     "title": "Harasaki and Kato 1997: n(o) 0.81\u201316 \u00b5m",
+     "paper": "Harasaki and Kato 1997",
+     "data_path": "main/AgGaSe2/nk/Harasaki-o.yml",
+     "axis": "o-ray",
+     "phase_words": [
+      "Ordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.81,
+      16.0
+     ],
+     "single_point": false,
+     "comments": "Ordinary ray (o)\n",
+     "conditions": "{'direction': 'o'}"
+    },
+    {
+     "page": "Harasaki-e",
+     "title": "Harasaki and Kato 1997: n(e) 0.81\u201316 \u00b5m",
+     "paper": "Harasaki and Kato 1997",
+     "data_path": "main/AgGaSe2/nk/Harasaki-e.yml",
+     "axis": "e-ray",
+     "phase_words": [
+      "Extraordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.81,
+      16.0
+     ],
+     "single_point": false,
+     "comments": "Extraordinary ray (e)\n",
+     "conditions": "{'direction': 'e'}"
+    },
+    {
+     "page": "Boyd-o",
+     "title": "Boyd et al. 1972: n(o) 0.725\u201313.5 \u00b5m",
+     "paper": "Boyd et al. 1972",
+     "data_path": "main/AgGaSe2/nk/Boyd-o.yml",
+     "axis": "o-ray",
+     "phase_words": [
+      "Ordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.725,
+      13.5
+     ],
+     "single_point": false,
+     "comments": "Ordinary ray (e)\n",
+     "conditions": "{'direction': 'o'}"
+    },
+    {
+     "page": "Boyd-e",
+     "title": "Boyd et al. 1972: n(e) 0.725\u201313.5 \u00b5m",
+     "paper": "Boyd et al. 1972",
+     "data_path": "main/AgGaSe2/nk/Boyd-e.yml",
+     "axis": "e-ray",
+     "phase_words": [
+      "Extraordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.725,
+      13.5
+     ],
+     "single_point": false,
+     "comments": "Extraordinary ray(e)\n",
+     "conditions": "{'direction': 'e'}"
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "AgGaSe2 (Silver gallium selenide, AGSe)"
+  },
+  {
+   "key": "As2Se3",
+   "name": "Arsenic triselenide",
+   "formula": "As2Se3",
+   "book": "As2Se3",
+   "shelf": "main",
+   "note": "RI.info pages are 400 nm and 700 nm amorphous films on glass (two papers); density is a bulk approximation",
+   "materialclass": "selenide",
+   "page_polymorph": {
+    "Joseph-400nm": null,
+    "Joseph-700nm": null
+   },
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = widest span",
+   "status": "SELECTED_BY_USER",
+   "n_pages": 2,
+   "n_papers": 2,
+   "papers": [
+    "Joseph et al. 2020: 700-nm film",
+    "Joseph et al. 2021: 400-nm film"
+   ],
+   "datasets": [
+    {
+     "page": "Joseph-400nm",
+     "title": "Joseph et al. 2021: 400-nm film; n,k 0.246\u20131.69 \u00b5m",
+     "paper": "Joseph et al. 2021: 400-nm film",
+     "data_path": "main/As2Se3/nk/Joseph-400nm.yml",
+     "axis": null,
+     "phase_words": [
+      "film"
+     ],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.2458,
+      1.688
+     ],
+     "single_point": false,
+     "comments": "400 nm film on glass substrate.\n",
+     "conditions": "{'film_thickness': '400e-9', 'substrate': 'glass'}"
+    },
+    {
+     "page": "Joseph-700nm",
+     "title": "Joseph et al. 2020: 700-nm film; n,k 0.246\u20131.69 \u00b5m",
+     "paper": "Joseph et al. 2020: 700-nm film",
+     "data_path": "main/As2Se3/nk/Joseph-700nm.yml",
+     "axis": null,
+     "phase_words": [
+      "film"
+     ],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.2458,
+      1.688
+     ],
+     "single_point": false,
+     "comments": "700 nm film on glass substrate.\n",
+     "conditions": "{'film_thickness': '700e-9', 'substrate': 'glass'}"
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "As2Se3 (Arsenic triselenide)"
+  },
+  {
+   "key": "BaGa2GeSe6",
+   "name": "Barium gallium germanium selenide (BGGSe)",
+   "formula": "BaGa2GeSe6",
+   "book": "BaGa2GeSe6",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "selenide",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 2,
+   "n_papers": 1,
+   "papers": [
+    "Kato et al. 2018"
+   ],
+   "datasets": [
+    {
+     "page": "Kato-o",
+     "title": "Kato et al. 2018: n(o) 0.778\u201310.6 \u00b5m",
+     "paper": "Kato et al. 2018",
+     "data_path": "main/BaGa2GeSe6/nk/Kato-o.yml",
+     "axis": "o-ray",
+     "phase_words": [
+      "Ordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.778,
+      10.6
+     ],
+     "single_point": false,
+     "comments": "Ordinary ray (o); room temperature.\n",
+     "conditions": "{'direction': 'o'}"
+    },
+    {
+     "page": "Kato-e",
+     "title": "Kato et al. 2018: n(e) 0.778\u201310.6 \u00b5m",
+     "paper": "Kato et al. 2018",
+     "data_path": "main/BaGa2GeSe6/nk/Kato-e.yml",
+     "axis": "e-ray",
+     "phase_words": [
+      "Extraordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.778,
+      10.6
+     ],
+     "single_point": false,
+     "comments": "Extraordinary ray (e); room temperature.\n",
+     "conditions": "{'direction': 'e'}"
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "BaGa2GeSe6 (BGGSe)"
+  },
+  {
+   "key": "BaGa4Se7",
+   "name": "Barium gallium selenide (BGSe)",
+   "formula": "BaGa4Se7",
+   "book": "BaGa4Se7",
+   "shelf": "main",
+   "note": "biaxial",
+   "materialclass": "selenide",
+   "page_polymorph": {
+    "Badikov-\u03b1": null,
+    "Badikov-\u03b2": null,
+    "Badikov-\u03b3": null,
+    "Kato-\u03b1": null,
+    "Kato-\u03b2": null,
+    "Kato-\u03b3": null
+   },
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = widest span",
+   "status": "SELECTED_BY_USER",
+   "n_pages": 6,
+   "n_papers": 2,
+   "papers": [
+    "Badikov et al 2010",
+    "Kato et al 2017"
+   ],
+   "datasets": [
+    {
+     "page": "Badikov-\u03b1",
+     "title": "Badikov et al 2010: n(\u03b1) 0.480\u201310.4 \u00b5m",
+     "paper": "Badikov et al 2010",
+     "data_path": "main/BaGa4Se7/nk/Badikov-alpha.yml",
+     "axis": "alpha-axis",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.48,
+      10.4
+     ],
+     "single_point": false,
+     "comments": "n\u03b1; room temperature.\n",
+     "conditions": "{'direction': 'alpha'}"
+    },
+    {
+     "page": "Badikov-\u03b2",
+     "title": "Badikov et al 2010: n(\u03b2) 0.480\u201310.4 \u00b5m",
+     "paper": "Badikov et al 2010",
+     "data_path": "main/BaGa4Se7/nk/Badikov-beta.yml",
+     "axis": "beta-axis",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.48,
+      10.4
+     ],
+     "single_point": false,
+     "comments": "n\u03b2; room temperature.\n",
+     "conditions": "{'direction': 'beta'}"
+    },
+    {
+     "page": "Badikov-\u03b3",
+     "title": "Badikov et al 2010: n(\u03b3) 0.480\u201310.4 \u00b5m",
+     "paper": "Badikov et al 2010",
+     "data_path": "main/BaGa4Se7/nk/Badikov-gamma.yml",
+     "axis": "gamma-axis",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.48,
+      10.4
+     ],
+     "single_point": false,
+     "comments": "n\u03b3; room temperature.\n",
+     "conditions": "{'direction': 'gamma'}"
+    },
+    {
+     "page": "Kato-\u03b1",
+     "title": "Kato et al 2017: n(\u03b1) 0.901\u201310.6 \u00b5m",
+     "paper": "Kato et al 2017",
+     "data_path": "main/BaGa4Se7/nk/Kato-alpha.yml",
+     "axis": "alpha-axis",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.901,
+      10.591
+     ],
+     "single_point": false,
+     "comments": "n\u03b1; room temperature.\n",
+     "conditions": "{'direction': 'alpha'}"
+    },
+    {
+     "page": "Kato-\u03b2",
+     "title": "Kato et al 2017: n(\u03b2) 0.901\u201310.6 \u00b5m",
+     "paper": "Kato et al 2017",
+     "data_path": "main/BaGa4Se7/nk/Kato-beta.yml",
+     "axis": "beta-axis",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.901,
+      10.591
+     ],
+     "single_point": false,
+     "comments": "n\u03b2; room temperature.\n",
+     "conditions": "{'direction': 'beta'}"
+    },
+    {
+     "page": "Kato-\u03b3",
+     "title": "Kato et al 2017: n(\u03b3) 0.901\u201310.6 \u00b5m",
+     "paper": "Kato et al 2017",
+     "data_path": "main/BaGa4Se7/nk/Kato-gamma.yml",
+     "axis": "gamma-axis",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.901,
+      10.591
+     ],
+     "single_point": false,
+     "comments": "n\u03b3; room temperature.\n",
+     "conditions": "{'direction': 'gamma'}"
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "BaGa4Se7 (Barium gallium selenide, BGSe)"
+  },
+  {
+   "key": "CdSe",
+   "name": "Cadmium selenide",
+   "formula": "CdSe",
+   "book": "CdSe",
+   "shelf": "main",
+   "note": "Ninomiya & Adachi states the phase on its pages (hexagonal o/e, cubic); Lisitsa and Bond state only o/e rays, no phase",
+   "materialclass": "selenide",
+   "page_polymorph": {
+    "Lisitsa-o": null,
+    "Lisitsa-e": null,
+    "Bond-o": null,
+    "Bond-e": null,
+    "Ninomiya-o": "hexagonal",
+    "Ninomiya-e": "hexagonal",
+    "Ninomiya-cubic": "cubic"
+   },
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = widest span; phase labels only where the source page states one",
+   "status": "SELECTED_BY_USER",
+   "n_pages": 7,
+   "n_papers": 4,
+   "papers": [
+    "Bond et al. 1965",
+    "Lisitsa et al. 1969",
+    "Ninomiya and Adachi 1995",
+    "Ninomiya and Adachi 1995: Cubic"
+   ],
+   "datasets": [
+    {
+     "page": "Lisitsa-o",
+     "title": "Lisitsa et al. 1969: n(o) 1.01\u201322.0 \u00b5m",
+     "paper": "Lisitsa et al. 1969",
+     "data_path": "main/CdSe/nk/Lisitsa-o.yml",
+     "axis": "o-ray",
+     "phase_words": [
+      "Ordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      1.01,
+      22.0
+     ],
+     "single_point": false,
+     "comments": "Ordinary ray (o)\n",
+     "conditions": "{'direction': 'o'}"
+    },
+    {
+     "page": "Lisitsa-e",
+     "title": "Lisitsa et al. 1969: n(e) 1.01\u201322.0 \u00b5m",
+     "paper": "Lisitsa et al. 1969",
+     "data_path": "main/CdSe/nk/Lisitsa-e.yml",
+     "axis": "e-ray",
+     "phase_words": [
+      "Extraordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      1.01,
+      22.0
+     ],
+     "single_point": false,
+     "comments": "Extraordinary ray (e)\n",
+     "conditions": "{'direction': 'e'}"
+    },
+    {
+     "page": "Bond-o",
+     "title": "Bond et al. 1965: n(o) 0.80\u20134.0 \u00b5m",
+     "paper": "Bond et al. 1965",
+     "data_path": "main/CdSe/nk/Bond-o.yml",
+     "axis": "o-ray",
+     "phase_words": [
+      "Ordinary"
+     ],
+     "kind": "n",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.8,
+      4.0
+     ],
+     "single_point": false,
+     "comments": "Ordinary ray (o); Room temperature.\n",
+     "conditions": "{'direction': 'o'}"
+    },
+    {
+     "page": "Bond-e",
+     "title": "Bond et al. 1965: n(e) 0.80\u20134.0 \u00b5m",
+     "paper": "Bond et al. 1965",
+     "data_path": "main/CdSe/nk/Bond-e.yml",
+     "axis": "e-ray",
+     "phase_words": [
+      "Extraordinary"
+     ],
+     "kind": "n",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.8,
+      4.0
+     ],
+     "single_point": false,
+     "comments": "Extraordinary ray (e); Room temperature.\n",
+     "conditions": "{'direction': 'e'}"
+    },
+    {
+     "page": "Ninomiya-o",
+     "title": "Ninomiya and Adachi 1995: n,k(o) 0.234\u20131.03 \u00b5m",
+     "paper": "Ninomiya and Adachi 1995",
+     "data_path": "main/CdSe/nk/Ninomiya-o.yml",
+     "axis": "o-ray",
+     "phase_words": [
+      "Ordinary"
+     ],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.23393,
+      1.0332
+     ],
+     "single_point": false,
+     "comments": "Hexagonal CdSe. Fit of author's experimental data to a simplified model of the interband transitions (MDF). Ordinary ray (o), room temperature.\n",
+     "conditions": "{'direction': 'o'}"
+    },
+    {
+     "page": "Ninomiya-e",
+     "title": "Ninomiya and Adachi 1995: n,k(e) 0.234\u20131.03 \u00b5m",
+     "paper": "Ninomiya and Adachi 1995",
+     "data_path": "main/CdSe/nk/Ninomiya-e.yml",
+     "axis": "e-ray",
+     "phase_words": [
+      "Extraordinary"
+     ],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.23393,
+      1.0332
+     ],
+     "single_point": false,
+     "comments": "Hexagonal CdSe.\nFit of author's experimental data to a simplified model of the interband transitions (MDF).\nExtraordinary ray (e), room temperature.\n",
+     "conditions": "{'direction': 'e'}"
+    },
+    {
+     "page": "Ninomiya-cubic",
+     "title": "Ninomiya and Adachi 1995: Cubic; n,k 0.207\u20130.827 \u00b5m",
+     "paper": "Ninomiya and Adachi 1995: Cubic",
+     "data_path": "main/CdSe/nk/Ninomiya-cubic.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.20664,
+      0.82656
+     ],
+     "single_point": false,
+     "comments": "Cubic CdSe. Room temperature.\n",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "CdSe (Cadmium selenide)"
+  },
+  {
+   "key": "PbSe",
+   "name": "Lead selenide",
+   "formula": "PbSe",
+   "book": "PbSe",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "selenide",
+   "page_polymorph": {
+    "Zemel": null,
+    "Suzuki": null
+   },
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = widest span",
+   "status": "SELECTED_BY_USER",
+   "n_pages": 2,
+   "n_papers": 2,
+   "papers": [
+    "Suzuki et al. 1995: n,k 0.230\u20131.08 \u00b5m",
+    "Zemel et al. 1965: n 5\u201310 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Zemel",
+     "title": "Zemel et al. 1965: n 5\u201310 \u00b5m",
+     "paper": "Zemel et al. 1965: n 5\u201310 \u00b5m",
+     "data_path": "main/PbSe/nk/Zemel.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      5.0,
+      10.0
+     ],
+     "single_point": false,
+     "comments": "300 K (27 \u00b0C)\n",
+     "conditions": ""
+    },
+    {
+     "page": "Suzuki",
+     "title": "Suzuki et al. 1995: n,k 0.230\u20131.08 \u00b5m",
+     "paper": "Suzuki et al. 1995: n,k 0.230\u20131.08 \u00b5m",
+     "data_path": "main/PbSe/nk/Suzuki.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.2296,
+      1.0781
+     ],
+     "single_point": false,
+     "comments": "Fit of author's experimental data to a simplified model of the interband transitions (MDF). Room Temperature.\n",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "PbSe (Lead selenide)"
+  },
+  {
+   "key": "SnSe",
+   "name": "Tin selenide",
+   "formula": "SnSe",
+   "book": "SnSe",
+   "shelf": "main",
+   "note": "biaxial; RI.info does not state the sample form (crystal vs film)",
+   "materialclass": "selenide",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 3,
+   "n_papers": 1,
+   "papers": [
+    "Guo et al. 2022"
+   ],
+   "datasets": [
+    {
+     "page": "Guo-\u03b1",
+     "title": "Guo et al. 2022: n,k(\u03b1) 0.193\u20131.69 \u00b5m",
+     "paper": "Guo et al. 2022",
+     "data_path": "main/SnSe/nk/Guo-alpha.yml",
+     "axis": "alpha-axis",
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.193,
+      1.69
+     ],
+     "single_point": false,
+     "comments": "n\u03b1, k\u03b1; room temperature.\n",
+     "conditions": "{'direction': 'alpha'}"
+    },
+    {
+     "page": "Guo-\u03b2",
+     "title": "Guo et al. 2022: n,k(\u03b2) 0.193\u20131.69 \u00b5m",
+     "paper": "Guo et al. 2022",
+     "data_path": "main/SnSe/nk/Guo-beta.yml",
+     "axis": "beta-axis",
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.193,
+      1.69
+     ],
+     "single_point": false,
+     "comments": "n\u03b2, k\u03b2; room temperature.\n",
+     "conditions": "{'direction': 'beta'}"
+    },
+    {
+     "page": "Guo-\u03b3",
+     "title": "Guo et al. 2022: n,k(\u03b3) 0.193\u20131.69 \u00b5m",
+     "paper": "Guo et al. 2022",
+     "data_path": "main/SnSe/nk/Guo-gamma.yml",
+     "axis": "gamma-axis",
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.193,
+      1.69
+     ],
+     "single_point": false,
+     "comments": "n\u03b3, k\u03b3; room temperature.\n",
+     "conditions": "{'direction': 'gamma'}"
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [
+    "Guo-\u03b1"
+   ],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "SnSe (Tin selenide)"
+  },
+  {
+   "key": "Tl3AsSe3",
+   "name": "Thallium arsenic selenide (TAS)",
+   "formula": "Tl3AsSe3",
+   "book": "Tl3AsSe3",
+   "shelf": "main",
+   "note": "birefringent",
+   "materialclass": "selenide",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 2,
+   "n_papers": 1,
+   "papers": [
+    "Ewbank et al. 1980"
+   ],
+   "datasets": [
+    {
+     "page": "Ewbank-o",
+     "title": "Ewbank et al. 1980: n(o) 2\u201312 \u00b5m",
+     "paper": "Ewbank et al. 1980",
+     "data_path": "main/Tl3AsSe3/nk/Ewbank-o.yml",
+     "axis": "o-ray",
+     "phase_words": [
+      "Ordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      2.0,
+      12.0
+     ],
+     "single_point": false,
+     "comments": "Ordinary ray (o)\n",
+     "conditions": "{'direction': 'o'}"
+    },
+    {
+     "page": "Ewbank-e",
+     "title": "Ewbank et al. 1980: n(e) 2\u201312 \u00b5m",
+     "paper": "Ewbank et al. 1980",
+     "data_path": "main/Tl3AsSe3/nk/Ewbank-e.yml",
+     "axis": "e-ray",
+     "phase_words": [
+      "Extraordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      2.0,
+      12.0
+     ],
+     "single_point": false,
+     "comments": "Extraordinary ray (e)\n",
+     "conditions": "{'direction': 'e'}"
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "Tl3AsSe3 (Thallium arsenic selenide, TAS)"
+  },
+  {
+   "key": "ZnSe",
+   "name": "Zinc selenide",
+   "formula": "ZnSe",
+   "book": "ZnSe",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "selenide",
+   "page_polymorph": {
+    "Marple": null,
+    "Amotchkina": null,
+    "Querry": null,
+    "Connolly": null,
+    "Adachi": null
+   },
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = widest span",
+   "status": "SELECTED_BY_USER",
+   "n_pages": 5,
+   "n_papers": 5,
+   "papers": [
+    "Adachi and Taguchi 1991: n,k 0.234\u20130.827 \u00b5m",
+    "Amotchkina et al, 2020: n 0.400\u201313.9 \u00b5m, k 0.4-0.888  \u00b5m",
+    "Connolly et al. 1979: n 0.54\u201318.2 \u00b5m",
+    "Marple 1964: n 0.48\u20132.5 \u00b5m",
+    "Querry 1987: n,k 0.500\u201321.7 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Marple",
+     "title": "Marple 1964: n 0.48\u20132.5 \u00b5m",
+     "paper": "Marple 1964: n 0.48\u20132.5 \u00b5m",
+     "data_path": "main/ZnSe/nk/Marple.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.48,
+      2.5
+     ],
+     "single_point": false,
+     "comments": "Room temperature\n",
+     "conditions": ""
+    },
+    {
+     "page": "Amotchkina",
+     "title": "Amotchkina et al, 2020: n 0.400\u201313.9 \u00b5m, k 0.4-0.888  \u00b5m",
+     "paper": "Amotchkina et al, 2020: n 0.400\u201313.9 \u00b5m, k 0.4-0.888  \u00b5m",
+     "data_path": "main/ZnSe/nk/Amotchkina.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "formula+tabulated",
+     "span_um": [
+      0.4,
+      13.9
+     ],
+     "single_point": false,
+     "comments": "",
+     "conditions": ""
+    },
+    {
+     "page": "Querry",
+     "title": "Querry 1987: n,k 0.500\u201321.7 \u00b5m",
+     "paper": "Querry 1987: n,k 0.500\u201321.7 \u00b5m",
+     "data_path": "main/ZnSe/nk/Querry.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.5,
+      21.7391
+     ],
+     "single_point": false,
+     "comments": "",
+     "conditions": ""
+    },
+    {
+     "page": "Connolly",
+     "title": "Connolly et al. 1979: n 0.54\u201318.2 \u00b5m",
+     "paper": "Connolly et al. 1979: n 0.54\u201318.2 \u00b5m",
+     "data_path": "main/ZnSe/nk/Connolly.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.54,
+      18.2
+     ],
+     "single_point": false,
+     "comments": "CVD ZnSe, 23 \u00b0C\n",
+     "conditions": ""
+    },
+    {
+     "page": "Adachi",
+     "title": "Adachi and Taguchi 1991: n,k 0.234\u20130.827 \u00b5m",
+     "paper": "Adachi and Taguchi 1991: n,k 0.234\u20130.827 \u00b5m",
+     "data_path": "main/ZnSe/nk/Adachi.yml",
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.23393,
+      0.82656
+     ],
+     "single_point": false,
+     "comments": "",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "ZnSe (Zinc selenide)"
+  }
+ ],
+ "out_of_family": {
+  "CS2": "liquid",
+  "MoS2": "layered van der Waals material measured as nm-scale film / few-layer / exfoliated flake: n,k depend on thickness and substrate (2D / thin-film follow-up)",
+  "WS2": "layered van der Waals material measured as nm-scale film / few-layer / exfoliated flake: n,k depend on thickness and substrate (2D / thin-film follow-up)",
+  "ReS2": "layered van der Waals material measured as nm-scale film / few-layer / exfoliated flake: n,k depend on thickness and substrate (2D / thin-film follow-up)",
+  "TaS2": "layered van der Waals material measured as nm-scale film / few-layer / exfoliated flake: n,k depend on thickness and substrate (2D / thin-film follow-up)",
+  "PtS2": "layered van der Waals material measured as nm-scale film / few-layer / exfoliated flake: n,k depend on thickness and substrate (2D / thin-film follow-up)",
+  "SnS2": "layered van der Waals material measured as nm-scale film / few-layer / exfoliated flake: n,k depend on thickness and substrate (2D / thin-film follow-up)",
+  "NiPS3": "layered van der Waals material measured as nm-scale film / few-layer / exfoliated flake: n,k depend on thickness and substrate (2D / thin-film follow-up)",
+  "MoSe2": "layered van der Waals material measured as nm-scale film / few-layer / exfoliated flake: n,k depend on thickness and substrate (2D / thin-film follow-up)",
+  "WSe2": "layered van der Waals material measured as nm-scale film / few-layer / exfoliated flake: n,k depend on thickness and substrate (2D / thin-film follow-up)",
+  "NbSe2": "layered van der Waals material measured as nm-scale film / few-layer / exfoliated flake: n,k depend on thickness and substrate (2D / thin-film follow-up)",
+  "TaSe2": "layered van der Waals material measured as nm-scale film / few-layer / exfoliated flake: n,k depend on thickness and substrate (2D / thin-film follow-up)",
+  "PtSe2": "layered van der Waals material measured as nm-scale film / few-layer / exfoliated flake: n,k depend on thickness and substrate (2D / thin-film follow-up)",
+  "PdSe2": "layered van der Waals material measured as nm-scale film / few-layer / exfoliated flake: n,k depend on thickness and substrate (2D / thin-film follow-up)",
+  "SnSe2": "layered van der Waals material measured as nm-scale film / few-layer / exfoliated flake: n,k depend on thickness and substrate (2D / thin-film follow-up)",
+  "HfSe2": "layered van der Waals material measured as nm-scale film / few-layer / exfoliated flake: n,k depend on thickness and substrate (2D / thin-film follow-up)",
+  "ZrSe2": "layered van der Waals material measured as nm-scale film / few-layer / exfoliated flake: n,k depend on thickness and substrate (2D / thin-film follow-up)",
+  "In2Se3": "layered van der Waals material measured as nm-scale film / few-layer / exfoliated flake: n,k depend on thickness and substrate (2D / thin-film follow-up)",
+  "MnPSe3": "layered van der Waals material measured as nm-scale film / few-layer / exfoliated flake: n,k depend on thickness and substrate (2D / thin-film follow-up)",
+  "Bi2Se3": "layered van der Waals material measured as nm-scale film / few-layer / exfoliated flake: n,k depend on thickness and substrate (2D / thin-film follow-up)"
+ },
+ "deferred": {
+  "GaSe": "all four GaSe formula pages give n^2 <= 0 inside their own stated ranges (reststrahlen band: Kato 2013 o 39.4-47.1 um, e 37.3-44.6 um; Chen 2009 n-formula o 39.2-46.8 um and 511.6-512.0 um, e 40.7-42.2 um), which the pipeline would store as floored n ~1e-15; Kato 2013 page title says 0.8-162 um but its data file says 0.8-1620 um; density needs a polytype choice (MP: P6_3mc mp-568263, P6_3/mmc mp-1943, P-6m2 (epsilon) mp-1572, R3m (gamma) mp-11342 all within 1.5 meV of the hull). Recommended: drop n^2<=0 samples instead of flooring, use the narrower 0.8-162 um range, epsilon-GaSe (P-6m2) density."
+ },
+ "excluded_pages": {
+  "SnSe:Guo-\u03b1": "alpha-axis data is physically implausible for SnSe (narrow-gap semiconductor, epsilon_inf > 10 on every axis): the source gives n = 1.24-1.49 and k = 0.000 exactly over 0.19-1.7 um, while its beta and gamma axes have n ~2.5-2.7, k ~1.5-1.9 at 0.6 um. Not loaded (the DB cannot carry a warning); beta and gamma are loaded. Reversible user decision."
+ }
+}
