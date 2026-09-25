@@ -19,9 +19,11 @@ against the live DB's own materials count, not a hardcoded number that
 also needs manual updating every batch.
 """
 
+import argparse
 import glob
 import json
 import re
+import shutil
 import sys
 from pathlib import Path
 
@@ -35,6 +37,18 @@ from materials_db.export.modalfit import export_layer, ExportError, KNOWN_EXCLUS
 DB_PATH = _ROOT / "data" / "materials_oxide_test.db"
 OUT_DIR = _ROOT / "data" / "modalfit_export"
 
+# One row per database. A DB is exported with ITS OWN enrichment CSVs only: the CSVs of different families overlap by name
+# (nitrides.csv repeats five materials that batch 2 already put in the oxide DB) and each family DB holds only its own materials,
+# so globbing every data/*.csv against one DB can never match. Family scratch DBs are built by scripts/load_<family>_db.py.
+FAMILIES = {
+    "oxide": ("materials_oxide_test.db", ["oxides_50.csv", "batch2_31.csv", "batch3b_4.csv", "pure_elements_50.csv"], "modalfit_export"),
+    "nitride": ("materials_nitride_test.db", ["nitrides.csv"], "modalfit_export_nitride"),
+    "polymer": ("materials_polymer_test.db", ["polymers.csv"], "modalfit_export_polymer"),
+    "inorganic3": ("materials_inorganic3_test.db", ["inorganic3.csv"], "modalfit_export_inorganic3"),
+    "halide": ("materials_halide_test.db", ["halides.csv"], "modalfit_export_halide"),
+}
+OWNER_MARKER = ".modalfit_export_owned"  # written into an output dir this script created; only such a dir may be wiped
+
 
 def _safe_dirname(name: str) -> str:
     """Filesystem-safe directory name derived from a material's `name`
@@ -47,14 +61,15 @@ def _safe_dirname(name: str) -> str:
     return re.sub(r"[^A-Za-z0-9_.-]+", "_", name).strip("_")
 
 
-def _discover_materials() -> "pd.DataFrame":
+def _discover_materials(csv_paths=None) -> "pd.DataFrame":
+    """csv_paths: the family's CSVs. None globs data/*.csv (legacy behaviour, kept for callers that pass nothing)."""
     frames = []
-    for csv_path in sorted(glob.glob(str(_ROOT / "data" / "*.csv"))):
+    for csv_path in (sorted(glob.glob(str(_ROOT / "data" / "*.csv"))) if csv_paths is None else [str(x) for x in csv_paths]):
         df = pd.read_csv(csv_path)
         if "formula" in df.columns and "name" in df.columns:
             frames.append(df[["formula", "name"]])
     if not frames:
-        raise RuntimeError(f"No enrichment CSVs with formula/name columns found under {_ROOT / 'data'}")
+        raise RuntimeError(f"No enrichment CSVs with formula/name columns found ({'under ' + str(_ROOT / 'data') if csv_paths is None else csv_paths})")
     materials = pd.concat(frames, ignore_index=True)
 
     # `name` is the schema's real UNIQUE identity key (materials.name);
@@ -85,11 +100,35 @@ def _discover_materials() -> "pd.DataFrame":
     return materials
 
 
-def main():
-    materials = _discover_materials()
+def prepare_out_dir(out_dir: Path) -> None:
+    """Create `out_dir` fresh. An existing dir is wiped ONLY if this script created it (marker file present): a rebuild still makes the
+    stale-directory collision class impossible, but a folder someone else populated (e.g. a hand-curated data/modalfit_export with
+    copies) is refused, never deleted."""
+    out_dir = Path(out_dir)
+    if out_dir.exists():
+        if not (out_dir / OWNER_MARKER).exists():
+            if any(out_dir.iterdir()):
+                raise SystemExit(f"Refusing to wipe {out_dir}: it is not empty and was not created by this script (no {OWNER_MARKER}). "
+                                 f"Pass --out-dir to a new or empty folder.")
+        else:
+            shutil.rmtree(out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    (out_dir / OWNER_MARKER).write_text("created by scripts/export_all_materials_modalfit.py; safe to wipe on the next run\n")
+
+
+def main(argv=None):
+    ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
+    ap.add_argument("--family", choices=sorted(FAMILIES), default="oxide")
+    ap.add_argument("--strict", action="store_true", help="non-oxide families: fail on ANY skipped material (default: report them and exit 0)")
+    ap.add_argument("--out-dir", type=Path, default=None, help="default: data/modalfit_export[_<family>]")
+    a = ap.parse_args(argv)
+    db_name, csv_names, out_name = FAMILIES[a.family]
+    db_path = _ROOT / "data" / db_name
+    out_dir = a.out_dir or (_ROOT / "data" / out_name)
+    materials = _discover_materials([_ROOT / "data" / c for c in csv_names])
 
     import sqlite3
-    conn = sqlite3.connect(str(DB_PATH))
+    conn = sqlite3.connect(f"{db_path.as_uri()}?mode=ro", uri=True)
     db_count = conn.execute("SELECT COUNT(*) FROM materials").fetchone()[0]
     conn.close()
     assert len(materials) == db_count, (
@@ -106,24 +145,21 @@ def main():
     # leftover formula-keyed "TiN/" directory collided with this run's
     # name-keyed "Tin/" and got overwritten. A full rebuild each run makes
     # that class of collision structurally impossible, not just unlikely.
-    import shutil
-    if OUT_DIR.exists():
-        shutil.rmtree(OUT_DIR)
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    prepare_out_dir(out_dir)
 
     results = []
     for _, row in materials.iterrows():
         formula = row["formula"]
         name = row["name"]
         dirname = _safe_dirname(name)
-        mat_dir = OUT_DIR / dirname
+        mat_dir = out_dir / dirname
         try:
             # Look up by `name`, not `formula`: name is the schema's real
             # UNIQUE key, and passing a formula shared by multiple
             # materials (batch 3b's "C") would hit _find_material's
             # ambiguity ExportError for every such material, not just the
             # ones actually ambiguous.
-            layer = export_layer(str(DB_PATH), name, nk_csv_dir=mat_dir, label=name)
+            layer = export_layer(str(db_path), name, nk_csv_dir=mat_dir, label=name)
             layer_path = mat_dir / f"{dirname}_layer.json"
             mat_dir.mkdir(parents=True, exist_ok=True)
             layer_path.write_text(json.dumps(layer, indent=2))
@@ -138,7 +174,7 @@ def main():
                                  xray_sld_real=None, path=None, error=str(e)))
 
     report = pd.DataFrame(results)
-    report_path = OUT_DIR / "export_report_all.csv"
+    report_path = out_dir / "export_report_all.csv"
     report.to_csv(report_path, index=False)
 
     n_ok = (report["status"] == "OK").sum()
@@ -151,7 +187,15 @@ def main():
             print(f"  {r['formula']}: {r['error']}")
 
     actual_skips = set(report[report["status"] == "SKIPPED"]["formula"])
-    expected_skips = set(KNOWN_EXCLUSIONS)
+    if a.family != "oxide":
+        # KNOWN_EXCLUSIONS is the oxide DB's curated invariant. Other families skip for reasons that are properties of their data (no density
+        # row -> no SLD -> no layer; optical/physical phase mismatch such as amorphous Si3N4 film vs crystalline beta density): reported, not asserted.
+        print(f"\n{a.family}: {n_ok}/{len(materials)} exported; {n_skip} skipped (reasons in {report_path.name}).")
+        if a.strict and n_skip:
+            raise SystemExit(f"--strict: {n_skip} material(s) skipped")
+        return report
+    in_family = set(materials["formula"])
+    expected_skips = set(KNOWN_EXCLUSIONS) & in_family  # exclusions that belong to another family's DB cannot be skipped here
 
     unexpected_skips = actual_skips - expected_skips
     if unexpected_skips:
@@ -169,10 +213,10 @@ def main():
             f"let this pass silently."
         )
 
-    expected_ok = len(materials) - len(KNOWN_EXCLUSIONS)
+    expected_ok = len(materials) - len(expected_skips)
     assert n_ok == expected_ok, (
         f"Expected exactly {expected_ok}/{len(materials)} successful exports "
-        f"({len(materials)} materials minus {len(KNOWN_EXCLUSIONS)} known exclusions), got {n_ok}."
+        f"({len(materials)} materials minus {len(expected_skips)} known exclusions), got {n_ok}."
     )
     print(f"\nAsserted OK: {n_ok}/{len(materials)} exported, "
           f"skip set matches KNOWN_EXCLUSIONS exactly ({sorted(expected_skips)}).")

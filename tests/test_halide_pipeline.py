@@ -118,7 +118,6 @@ def test_every_selected_page_exists_and_has_a_dispersion_type_the_pipeline_suppo
 
 # ---------------------------------------------------------------- density and SLD rules
 
-AMBIENT = {"rock-salt (Fm-3m)": 225, "CsCl-type (Pm-3m)": 221, "zincblende (F-43m)": 216, "CdI2-type 2H (P-3m1)": 164}
 # textbook densities (g/cm3, experiment) as a coarse sanity bound on the DFT value: catches a wrong-phase pick (wurtzite Li halides, rock-salt CsI)
 TEXTBOOK_RHO = {"AgCl": 5.56, "CsCl": 3.99, "CuCl": 4.14, "KCl": 1.98, "LiCl": 2.07, "NaCl": 2.17, "RbCl": 2.80, "TlCl": 7.0, "AgBr": 6.47,
                 "CsBr": 4.44, "KBr": 2.75, "LiBr": 3.46, "NaBr": 3.21, "RbBr": 3.35, "TlBr": 7.56, "CsI": 4.51, "KI": 3.12, "LiI": 4.08,
@@ -128,8 +127,9 @@ TEXTBOOK_RHO = {"AgCl": 5.56, "CsCl": 3.99, "CuCl": 4.14, "KCl": 1.98, "LiCl": 2
 def test_every_halide_has_a_calculated_mp_density_of_its_ambient_structure_and_it_is_labelled():
     assert CAT["density_g_cm3"].notna().all() and (CAT["density_source"] == "MP_DFT").all() and CAT["mp_id"].notna().all()
     for r in CAT.itertuples():
-        assert AMBIENT[r.polymorph] == lst.AMBIENT_STRUCTURE[r.selection_key][1]
-        assert f"#{AMBIENT[r.polymorph]}" in r.mp_space_group, r.formula
+        assert f"#{lst.AMBIENT_STRUCTURE[r.selection_key][1]}" in r.mp_space_group, r.formula
+        assert pd.isna(r.polymorph), "polymorph must stay empty: the optical labels carry none, and a mismatch stops the exporter pairing them"
+        assert lst.AMBIENT_STRUCTURE[r.selection_key][0] in r.flags
         assert "calculated, not measured" in r.flags and "not stated on the RI.info page" in r.flags
 
 
@@ -137,7 +137,7 @@ def test_wrong_phase_picks_are_gone_and_densities_are_within_12pct_of_textbook()
     for r in CAT.itertuples():
         assert abs(r.density_g_cm3 / TEXTBOOK_RHO[r.formula] - 1) < 0.12, (r.formula, r.density_g_cm3)
     assert CAT[CAT.formula == "LiCl"].iloc[0]["density_g_cm3"] == pytest.approx(2.14, abs=0.01)  # not the theoretical wurtzite 1.66
-    assert CAT[CAT.formula == "CsI"].iloc[0]["polymorph"].startswith("CsCl-type")                 # not the DFT-lowest rock-salt 3.62
+    assert "#221" in CAT[CAT.formula == "CsI"].iloc[0]["mp_space_group"]                          # CsCl-type, not the DFT-lowest rock-salt 3.62
 
 
 def test_csv_sld_equals_an_independent_periodictable_recompute():
