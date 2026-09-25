@@ -1,0 +1,330 @@
+"""Tests for the downloadable release (scripts/build_release.py, scripts/release_descriptors.py).
+
+The release is built once into a temp folder. Every family's data in it is compared row by row with the database that
+family's own loader builds, and every descriptor is recomputed by an independent route (periodictable instead of pymatgen for
+element data, formula masses instead of SMILES, the legacy RDKit fingerprint call, lattice geometry for density).
+"""
+import csv
+import gzip
+import hashlib
+import json
+import math
+import re
+import shutil
+import sqlite3
+import sys
+import zipfile
+from collections import Counter
+from pathlib import Path
+
+import pandas as pd
+import pytest
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "scripts"))
+sys.path.insert(0, str(ROOT / "src"))
+sys.path.insert(0, str(ROOT / "tests"))
+
+import build_release as br  # noqa: E402
+import release_descriptors as rd  # noqa: E402
+
+AVOGADRO = 6.02214076e23
+BENCHMARK_ONLY = ["Water", "Ethanol", "DMSO", "DPPC", "BSA", "ITO", "PEG", "PEI", "PTFE", "PEEK", "Nylon66"]
+
+
+@pytest.fixture(scope="module")
+def release(tmp_path_factory):
+    tmp = tmp_path_factory.mktemp("release")
+    db = tmp / "build.sqlite"
+    facts = br.build_db(db)
+    out, zpath, manifest = br.package(db, "0.0.0-test", facts, out_root=tmp)
+    return dict(db=out / "materials-db-v0.0.0-test.sqlite", out=out, zip=zpath, manifest=manifest, facts=facts)
+
+
+def q(release, sql, args=()):
+    c = sqlite3.connect(f"{Path(release['db']).as_uri()}?mode=ro", uri=True)
+    try:
+        return c.execute(sql, args).fetchall()
+    finally:
+        c.close()
+
+
+def descriptors(release):
+    return {name: (cols, json.loads(doc)) for name, *cols, doc in q(
+        release, "SELECT m.name, d.exact_mass, d.heavy_atom_count, d.tpsa, d.logp, d.rotatable_bonds, d.hbond_donors, d.hbond_acceptors, "
+                 "d.aromatic_rings, d.morgan_fp, d.descriptor_json FROM chemical_descriptors d JOIN materials m USING(material_id)")}
+
+
+# ---------------------------------------------------------------- the data itself: nothing lost, nothing altered
+
+def test_every_family_material_is_in_the_release_once_and_nothing_else_is(release):
+    names = [n for (n,) in q(release, "SELECT name FROM materials")]
+    expected = set(br.family_rows())
+    assert len(names) == len(set(names)) == len(expected) == 228 and set(names) == expected
+    assert not set(BENCHMARK_ONLY) & set(names)  # the legacy benchmark set is deliberately not in v0.1
+
+
+@pytest.fixture(scope="module")
+def family_dbs(tmp_path_factory):
+    """Each non-oxide family built on its own by its wrapper, exactly as before the release existed."""
+    dbs = {}
+    for name, mod, _ in br.family_jobs():
+        db = tmp_path_factory.mktemp(name) / f"{name}.db"
+        old, mod.DB_PATH = mod.DB_PATH, db
+        try:
+            mod.main()
+        finally:
+            mod.DB_PATH = old
+        dbs[name] = db
+    return dbs
+
+
+def _optical(db, name):
+    c = sqlite3.connect(f"{Path(db).as_uri()}?mode=ro", uri=True)
+    rows = Counter(c.execute("SELECT o.dataset_label, o.wavelength_nm, o.n, o.k, o.raw_record_table FROM optical_dispersion o "
+                             "JOIN materials m USING(material_id) WHERE m.name = ?", (name,)).fetchall())
+    c.close()
+    return rows
+
+
+def test_optical_rows_of_every_material_equal_its_origin_database_exactly(release, family_dbs):
+    origin = {"batch2_31": br.BASE_DB, "oxides_50": br.BASE_DB, "batch3b_4": br.BASE_DB, "pure_elements_50": br.BASE_DB,
+              "nitrides": family_dbs["nitride"], "polymers": family_dbs["polymer"], "inorganic3": family_dbs["inorganic3"],
+              "halides": family_dbs["halide"], "chalcogenides": family_dbs["chalcogenide"]}
+    total = 0
+    for name, (stem, _) in br.family_rows().items():
+        got = _optical(release["db"], name)
+        assert got == _optical(origin[stem], name), name
+        total += sum(got.values())
+    assert total == q(release, "SELECT COUNT(*) FROM optical_dispersion")[0][0] == 212782
+
+
+def test_duplicate_physical_rows_are_gone_and_each_removed_value_survives_once(release):
+    removed = release["facts"]["removed_duplicate_physical_rows"]
+    assert len(removed) == 22 and {r["material"] for r in removed} == {"Aluminium nitride", "Boron nitride (hexagonal)", "Gallium nitride",
+                                                                          "Titanium nitride", "Vanadium nitride"}
+    assert q(release, "SELECT COUNT(*) FROM (SELECT 1 FROM physical_properties GROUP BY material_id, dataset_label, density_g_cm3, "
+                      "xray_sld, neutron_sld, dielectric_constant HAVING COUNT(*) > 1)")[0][0] == 0
+    for r in removed:
+        assert q(release, "SELECT COUNT(*) FROM physical_properties p JOIN materials m USING(material_id) WHERE m.name=? AND p.dataset_label=?",
+                 (r["material"], r["dataset_label"]))[0][0] == 1
+    # TiN / VN density now cites the source whose notes name them, not the batch-2 note about As2S3 and HgS
+    for f in ("TiN", "VN"):
+        notes = q(release, "SELECT s.notes FROM physical_properties p JOIN materials m USING(material_id) JOIN sources s USING(source_id) "
+                           "WHERE m.formula=? AND p.density_g_cm3 IS NOT NULL", (f,))
+        assert len(notes) == 1 and re.search(rf"\b{f}\b", notes[0][0]) and "As2S3" not in notes[0][0]
+
+
+def test_sources_keep_one_pubchem_citation_and_no_placeholder(release):
+    titles = [t or "" for (t,) in q(release, "SELECT title FROM sources")]
+    assert titles.count("PubChem") == 1 and not any(t.startswith("unused") for t in titles)
+    unreferenced = q(release, "SELECT title FROM sources s WHERE NOT EXISTS (SELECT 1 FROM optical_dispersion o WHERE o.source_id=s.source_id) "
+                              "AND NOT EXISTS (SELECT 1 FROM physical_properties p WHERE p.source_id=s.source_id)")
+    assert unreferenced == [("PubChem",)]
+
+
+def test_repeated_wavelengths_are_exactly_the_ones_the_source_files_repeat(release):
+    reps = release["facts"]["optical_wavelengths_repeated_in_source"]
+    assert {(r["material"], r["wavelength_nm"]) for r in reps} == {
+        ("Copper(II) oxide", 13.6), ("Copper(II) oxide", 14.0), ("Copper(II) oxide", 14.5), ("Copper(I) oxide", 3268.0),
+        ("Copper(I) oxide", 3322.3), ("Hematite", 1950.0), ("Hematite", 4149.4), ("Potassium chloride", 1160.0)}
+    for r in reps:
+        assert br.source_repeat_count(r["source_file"], r["wavelength_nm"]) == r["rows"] == 2
+
+
+def test_negative_k_allow_list_is_the_same_as_the_family_battery():
+    import test_family_optical_sanity as battery
+    assert br.NEGATIVE_K_ALLOWED == battery.NEGATIVE_K_ALLOWED
+
+
+@pytest.mark.parametrize("plant", ["floored_n", "duplicate_not_in_source", "duplicate_physical", "missing_descriptor_row"])
+def test_validation_stops_the_build_on_each_kind_of_bad_data(release, tmp_path, plant):
+    db = tmp_path / "bad.sqlite"
+    shutil.copy(release["db"], db)
+    c = sqlite3.connect(str(db))
+    mid, label, table, src = c.execute("SELECT material_id, dataset_label, raw_record_table, source_id FROM optical_dispersion LIMIT 1").fetchone()
+    if plant == "floored_n":
+        c.execute("DROP TRIGGER IF EXISTS trg_optical_check_ins")
+        c.execute("INSERT INTO optical_dispersion(material_id,wavelength_nm,n,k,dataset_label,raw_record_table,raw_record_id,source_id) "
+                  "VALUES (?,41000.0,1e-15,0.0,?,?,-1,?)", (mid, label, table, src))
+    elif plant == "duplicate_not_in_source":
+        c.execute("INSERT INTO optical_dispersion(material_id,wavelength_nm,n,k,dataset_label,raw_record_table,raw_record_id,source_id) "
+                  "SELECT material_id,wavelength_nm,n,k,dataset_label,'ctrl/'||raw_record_table,raw_record_id,source_id FROM optical_dispersion LIMIT 1")
+    elif plant == "duplicate_physical":
+        c.execute("INSERT INTO physical_properties(material_id,density_g_cm3,xray_sld,neutron_sld,dielectric_constant,dataset_label,raw_record_table,raw_record_id,source_id) "
+                  "SELECT material_id,density_g_cm3,xray_sld,neutron_sld,dielectric_constant,dataset_label,'ctrl',-1,source_id FROM physical_properties LIMIT 1")
+    else:
+        c.execute("DELETE FROM chemical_descriptors WHERE material_id = ?", (mid,))
+    c.commit()
+    with pytest.raises(br.ReleaseError):
+        br.validate(c)
+    c.close()
+
+
+# ---------------------------------------------------------------- descriptors
+
+def test_every_material_has_one_descriptor_row_and_every_null_is_explained(release):
+    d = descriptors(release)
+    assert len(d) == 228
+    for name, (cols, doc) in d.items():
+        for section in ("compositional", "structural", "molecular"):
+            filled = not ({"unavailable", "not_applicable"} & set(doc[section]))
+            reason = doc[section].get("unavailable") or doc[section].get("not_applicable")
+            assert filled != bool(reason), (name, section)
+        exact_mass, heavy, tpsa, logp, rot, hbd, hba, arom, fp = cols
+        if tpsa is None:
+            assert set(doc["null_columns_reason"]) == set(rd.MOLECULAR_COLUMNS), name
+        if exact_mass is None:
+            assert "unavailable" in doc["compositional"], name
+    kinds = Counter(doc["material_kind"] for _, doc in d.values())
+    formulas = dict(q(release, "SELECT name, formula FROM materials"))
+    polymers = set(pd.read_csv(ROOT / "data" / "polymers.csv").name)
+    elements = {n for n, f in formulas.items() if n not in polymers and len(set(re.findall(r"[A-Z][a-z]?", f))) == 1}
+    assert kinds == {"polymer": len(polymers), "element": len(elements), "inorganic compound": 228 - len(polymers) - len(elements)}
+    assert {"Diamond", "Graphite", "Gold", "Silicon"} <= elements
+
+
+def test_descriptor_coverage_is_what_the_inputs_allow(release):
+    cov = release["facts"]["descriptor_coverage"]
+    assert cov == {"compositional": 214, "structural": 171, "molecular": 25}
+    d = descriptors(release)
+    no_comp = {n for n, (_, doc) in d.items() if "unavailable" in doc["compositional"]}
+    pol = pd.read_csv(ROOT / "data" / "polymers.csv")
+    assert no_comp == set(pol[pol.formula.isna()].name) | {"Styrene-acrylonitrile copolymer", "PDCBT"}
+
+
+def test_every_curated_repeat_unit_matches_the_source_formula_and_has_two_attachment_points():
+    from pymatgen.core import Composition
+    from rdkit import Chem
+    from rdkit.Chem.rdMolDescriptors import CalcMolFormula
+    units = pd.read_csv(rd.REPEAT_UNITS)
+    pol = pd.read_csv(ROOT / "data" / "polymers.csv").set_index("name")
+    assert len(units) == 25 and units.material_name.is_unique and set(units.material_name) <= set(pol.index)
+    for u in units.itertuples():
+        mol = Chem.MolFromSmiles(u.repeat_unit_smiles)
+        assert sum(a.GetAtomicNum() == 0 for a in mol.GetAtoms()) == 2, u.material_name
+        heavy = Chem.RWMol(mol)
+        for i in sorted((a.GetIdx() for a in heavy.GetAtoms() if a.GetAtomicNum() == 0), reverse=True):
+            heavy.RemoveAtom(i)
+        assert Composition(CalcMolFormula(heavy.GetMol())) == Composition(pol.loc[u.material_name, "formula"].strip("()n")), u.material_name
+
+
+def test_molecular_columns_match_an_independent_recomputation(release):
+    """Exact mass from the repeat-unit FORMULA (not the SMILES); fingerprint from the legacy RDKit call."""
+    import periodictable as pt  # noqa: F401
+    from rdkit import Chem, RDLogger
+    from rdkit.Chem import AllChem
+    RDLogger.DisableLog("rdApp.*")
+    units = pd.read_csv(rd.REPEAT_UNITS).set_index("material_name")
+    pol = pd.read_csv(ROOT / "data" / "polymers.csv").set_index("name")
+    d = descriptors(release)
+    for name, u in units.iterrows():
+        (exact_mass, heavy, tpsa, logp, rot, hbd, hba, arom, fp), doc = d[name]
+        mass, n_heavy = rd.formula_mass_and_heavy_atoms(pol.loc[name, "formula"].strip("()n"))
+        assert exact_mass == pytest.approx(mass, abs=1e-4) and heavy == n_heavy, name
+        legacy = AllChem.GetMorganFingerprintAsBitVect(Chem.MolFromSmiles(u.repeat_unit_smiles), radius=2, nBits=2048).ToBitString()
+        assert fp == legacy and len(fp) == 2048, name
+    ps = d["Polystyrene"][0]
+    assert (ps[4], ps[7]) == (2, 1)  # two backbone-side rotatable bonds, one aromatic ring per styrene unit
+
+
+def test_compositional_statistics_match_periodictable_element_data(release):
+    """Atomic number and mass statistics recomputed with periodictable (a different element-data source than pymatgen)."""
+    import periodictable as pt
+    from pymatgen.core import Composition
+    d = descriptors(release)
+    checked = 0
+    for name, (_, doc) in d.items():
+        comp = doc["compositional"]
+        if "unavailable" in comp:
+            continue
+        c = Composition(comp["formula_unit"])
+        fr = {el.symbol: c.get_atomic_fraction(el) for el in c.elements}
+        z = sum(f * pt.elements.symbol(s).number for s, f in fr.items())
+        m = sum(f * pt.elements.symbol(s).mass for s, f in fr.items())
+        assert comp["atomic_number"]["mean"] == pytest.approx(z, abs=1e-5), name
+        assert comp["atomic_mass"]["mean"] == pytest.approx(m, rel=1e-3), name
+        checked += 1
+    assert checked == 214
+    nacl = d["Sodium chloride"][1]["compositional"]
+    assert nacl["electronegativity_pauling"]["mean"] == pytest.approx((0.93 + 3.16) / 2) and nacl["electronegativity_pauling"]["range"] == pytest.approx(2.23)
+
+
+def test_inorganic_exact_mass_is_the_monoisotopic_formula_unit_mass(release):
+    d = descriptors(release)
+    assert d["Sodium chloride"][0][0] == pytest.approx(22.989770 + 34.968853, abs=1e-5)  # 23Na + 35Cl
+    assert d["Sodium chloride"][0][1] == 2 and d["Titanium nitride"][0][1] == 2 and d["Silicon nitride"][0][1] == 7
+
+
+def test_structural_density_equals_lattice_geometry_and_the_family_density(release):
+    """rho = Z * M / (N_A * V) from the cached conventional cell must reproduce MP's density; and where a family took its density
+    from MP (density_source MP_DFT), the same entry must give the same number (a drift check between MP versions)."""
+    import periodictable as pt
+    from pymatgen.core import Composition
+    d = descriptors(release)
+    rows = br.family_rows()
+    drift = []
+    for name, (_, doc) in d.items():
+        st = doc["structural"]
+        if "mp_id" not in st:
+            continue
+        m = sum(n * pt.elements.symbol(el.symbol).mass for el, n in Composition(st["formula_pretty"]).items())
+        rho = st["formula_units_per_conventional_cell"] * m / (AVOGADRO * st["conventional_cell_volume_angstrom3"] * 1e-24)
+        assert rho == pytest.approx(st["density_g_cm3"], rel=2e-3), name
+        csv_row = rows[name][1]
+        assert str(csv_row.get("mp_id")) == st["mp_id"], name
+        if csv_row.get("density_source") == "MP_DFT" and abs(csv_row["density_g_cm3"] / st["density_g_cm3"] - 1) > 1e-4:
+            drift.append((name, csv_row["density_g_cm3"], st["density_g_cm3"]))
+    assert drift == [], f"MP density changed since the family was built: {drift}"
+
+
+def test_structural_scope_says_when_the_mp_entry_is_only_a_reference(release):
+    d = descriptors(release)
+    assert d["Sodium chloride"][1]["structural"]["applies_to"].startswith("the material")
+    assert "amorphous" in d["Silicon nitride"][1]["structural"]["applies_to"] and d["Silicon nitride"][1]["structural"]["mp_id"] == "mp-988"
+    assert d["Titanium nitride"][1]["structural"]["applies_to"].startswith("crystalline reference only")
+    assert all("not_applicable" in doc["structural"] for _, doc in d.values() if doc["family"] == "polymers")
+
+
+# ---------------------------------------------------------------- the package
+
+def test_package_files_checksums_and_counts(release):
+    out = release["out"]
+    for rel in ("materials-db-v0.0.0-test.sqlite", "README.md", "DATA_LICENSE.md", "MANIFEST.json", "SHA256SUMS", "csv/optical_dispersion.csv.gz",
+                "csv/materials.csv", "csv/chemical_descriptors.csv", "family_tables/halides.csv", "descriptor_inputs/mp_structural.json"):
+        assert (out / rel).is_file(), rel
+    for line in (out / "SHA256SUMS").read_text().splitlines():
+        digest, rel = line.split("  ", 1)
+        assert hashlib.sha256((out / rel).read_bytes()).hexdigest() == digest, rel
+    listed = {ln.split("  ", 1)[1] for ln in (out / "SHA256SUMS").read_text().splitlines()}
+    assert listed == {str(p.relative_to(out)) for p in out.rglob("*") if p.is_file() and p.name != "SHA256SUMS"}
+    m = json.loads((out / "MANIFEST.json").read_text())
+    tables = dict(q(release, "SELECT name, 0 FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'"))
+    for t in tables:
+        n = q(release, f"SELECT COUNT(*) FROM {t}")[0][0]
+        assert m["counts"]["tables"][t] == n
+        path = out / "csv" / (f"{t}.csv.gz" if t == "optical_dispersion" else f"{t}.csv")
+        with (gzip.open(path, "rt", newline="") if path.suffix == ".gz" else open(path, newline="")) as f:
+            assert sum(1 for _ in csv.reader(f)) - 1 == n == m["csv_rows"][path.name], t
+    assert m["license"] == "CC-BY-4.0" and m["materials_project_database_version"] and m["refractiveindex_info_commit"]
+    with zipfile.ZipFile(release["zip"]) as z:
+        assert {Path(n).relative_to(out.name).as_posix() for n in z.namelist()} == {p.relative_to(out).as_posix() for p in out.rglob("*") if p.is_file()}
+
+
+def test_package_text_has_the_licence_the_caveats_and_no_local_paths_or_secrets(release):
+    out = release["out"]
+    readme = (out / "README.md").read_text()
+    assert "CC BY 4.0" in readme and "calculated, not measured" in readme and "not included" in readme
+    key = next((ln.split("=", 1)[1].strip().strip('"') for ln in (ROOT / ".env").read_text().splitlines() if ln.startswith("MP_API_KEY=")), None) \
+        if (ROOT / ".env").exists() else None
+    for p in out.rglob("*"):
+        if p.is_file() and p.suffix in (".md", ".json", ".csv", ""):
+            text = p.read_text(errors="ignore")
+            assert "/Users/" not in text, p.name
+            assert not key or key not in text, p.name
+
+
+def test_package_database_opens_clean_and_matches_the_built_one(release):
+    c = sqlite3.connect(f"{Path(release['db']).as_uri()}?mode=ro", uri=True)
+    assert c.execute("PRAGMA integrity_check").fetchone()[0] == "ok" and c.execute("PRAGMA foreign_key_check").fetchall() == []
+    c.close()

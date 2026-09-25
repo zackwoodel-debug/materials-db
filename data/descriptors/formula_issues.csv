@@ -1,0 +1,2 @@
+material_name,recorded_formula,issue,likely_correct_formula
+PDCBT,(C42H56O4S2)n,"RI.info's about.yml gives the formula (C42H56O4S2)n but names the polymer as a quaterthiophene (Poly[2,2''''-bis[[(2-butyloctyl)oxy]carbonyl][2,2':5',2'':5'',2'''-quaterthiophene]-5,5'''-diyl]), which has four sulfur atoms per repeat unit. Formula-based descriptors are withheld until the recorded formula is confirmed.",(C42H56O4S4)n

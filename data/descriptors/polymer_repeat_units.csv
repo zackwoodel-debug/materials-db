@@ -1,0 +1,26 @@
+material_name,repeat_unit_smiles,structure_basis,note
+High-density polyethylene (HDPE),*CC*,standard polymer chemistry,
+Polyvinyl chloride,*CC(*)Cl,standard polymer chemistry,
+Polystyrene,*CC(*)c1ccccc1,standard polymer chemistry,tacticity not encoded
+Poly(methyl methacrylate) (Tomson),*CC(*)(C)C(=O)OC,standard polymer chemistry,tacticity not encoded
+Poly(methyl methacrylate) (Mitsubishi),*CC(*)(C)C(=O)OC,standard polymer chemistry,tacticity not encoded
+Polycarbonate,*Oc1ccc(cc1)C(C)(C)c1ccc(cc1)OC(*)=O,standard polymer chemistry,bisphenol-A polycarbonate (the only PC consistent with the source formula C16H14O3)
+Polyethylene terephthalate,*OCCOC(=O)c1ccc(cc1)C(*)=O,standard polymer chemistry,
+Polyvinyl alcohol,*CC(*)O,standard polymer chemistry,fully hydrolysed form (degree of hydrolysis not stated by the source)
+Polyvinylpyrrolidone,*CC(*)N1CCCC1=O,standard polymer chemistry,
+Polyetherimide (PEI),*c1cccc(c1)N1C(=O)c2ccc(cc2C1=O)Oc1ccc(cc1)C(C)(C)c1ccc(cc1)Oc1ccc2C(=O)N(*)C(=O)c2c1,standard polymer chemistry,BPADA / m-phenylenediamine polyetherimide (Ultem-type)
+"Polydimethylsiloxane (Dow Corning, 5:1 mass ratio)",*O[Si](C)(C)*,standard polymer chemistry,base repeat unit only; curing agent and crosslinks not represented
+"Polydimethylsiloxane (Dow Corning, 10:1 mass ratio)",*O[Si](C)(C)*,standard polymer chemistry,base repeat unit only; curing agent and crosslinks not represented
+"Polydimethylsiloxane (Dow Corning, 15:1 mass ratio)",*O[Si](C)(C)*,standard polymer chemistry,base repeat unit only; curing agent and crosslinks not represented
+"Polydimethylsiloxane (Dow Corning, 20:1 mass ratio)",*O[Si](C)(C)*,standard polymer chemistry,base repeat unit only; curing agent and crosslinks not represented
+Polymethylpentene (TPX),*CC(*)CC(C)C,standard polymer chemistry,poly(4-methyl-1-pentene)
+Poly(D-lactic acid) (PDLA),*OC(C)C(*)=O,standard polymer chemistry,D configuration not encoded
+Cellulose,*OC1C(CO)OC(*)C(O)C1O,standard polymer chemistry,"anhydroglucose unit; beta-1,4 stereochemistry not encoded"
+Linear low-density polyethylene (LLDPE),*CC*,standard polymer chemistry,per the source formula (C2H4)n; the alpha-olefin comonomer is not stated
+Polychlorotrifluoroethylene (PCTFE),*C(F)(F)C(*)(F)Cl,standard polymer chemistry,
+Poly(N-isopropylacrylamide) (PNIPAM),*CC(*)C(=O)NC(C)C,standard polymer chemistry,
+MDMO-PPV,*C=Cc1cc(OCCC(C)CCCC(C)C)c(*)cc1OC,IUPAC name on the RI.info page,
+ZZ50,*c1cc2c(s1)-c1sc(cc1C2(CC(CC)CCCC)CC(CC)CCCC)-c1ccc(*)c2nsnc12,IUPAC name on the RI.info page,c-PCPDTBT
+F8BT,*c1ccc2c(c1)C(CCCCCCCC)(CCCCCCCC)c1cc(ccc1-2)-c1ccc(*)c2nsnc12,IUPAC name on the RI.info page,
+PTB7,*c1cc2c(OCC(CC)CCCC)c3sc(cc3c(OCC(CC)CCCC)c2s1)-c1sc(*)c2sc(C(=O)OCC(CC)CCCC)c(F)c12,IUPAC name on the RI.info page,ester side chain as required by the source formula (O4); the page name '(2-ethylhexyl)carbonyl' omits the ester oxygen
+PBDB-T-2F,*c1cc2c(-c3cc(F)c(CC(CC)CCCC)s3)c3sc(-c4ccc(-c5sc(-c6ccc(*)s6)c6C(=O)c7c(CC(CC)CCCC)sc(CC(CC)CCCC)c7C(=O)c56)s4)cc3c(-c3cc(F)c(CC(CC)CCCC)s3)c2s1,IUPAC name on the RI.info page,PM6
