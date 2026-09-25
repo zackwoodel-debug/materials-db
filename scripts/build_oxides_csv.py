@@ -485,7 +485,7 @@ def strong_neutron_absorber(formula: str) -> bool:
 # ---- RI.info interpolation --------------------------------------------------
 
 def interpolate_axis(data_path: str) -> dict:
-    out = dict(n_633=None, k_633=None, flags=[])
+    out = dict(n_633=None, k_633=None, wl_min_nm=None, wl_max_nm=None, flags=[])
     yaml_path = RI_DATA_ROOT / data_path
     if not yaml_path.exists():
         out["flags"].append(f"RI.info file missing on disk: {data_path}")
@@ -497,6 +497,7 @@ def interpolate_axis(data_path: str) -> dict:
         out["flags"].append(f"RI.info parse failed for {data_path}: {type(e).__name__}, quarantined")
         return out
 
+    out["wl_min_nm"], out["wl_max_nm"] = float(np.min(wl_nm)), float(np.max(wl_nm))
     n633 = np.interp(633.0, wl_nm, n_val, left=np.nan, right=np.nan)
     out["n_633"] = None if np.isnan(n633) else float(n633)
     if out["n_633"] is None:

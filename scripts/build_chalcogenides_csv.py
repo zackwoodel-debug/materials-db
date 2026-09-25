@@ -163,6 +163,7 @@ def main():
                 interp["n_633"] = exact_formula_n633(a["data_path"], interp["n_633"])
                 if j == 1:
                     row["n_633"], row["k_633"] = interp["n_633"], interp["k_633"]
+                    row["ri_wl_min_nm"], row["ri_wl_max_nm"] = interp["wl_min_nm"], interp["wl_max_nm"]
                 else:
                     row.update({f"axis_{j}": a["axis"], f"n_633_axis{j}": interp["n_633"], f"k_633_axis{j}": interp["k_633"], f"ri_page_axis{j}": a["page"]})
             if len(primary_paper) > 3:
