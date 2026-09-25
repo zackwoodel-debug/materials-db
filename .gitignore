@@ -26,3 +26,12 @@ data/materials_inorganic3_test.db
 
 # regenerable from data/chalcogenides.csv + data/step1_selections_chalcogenides.json (scripts/load_chalcogenides_db.py)
 data/materials_chalcogenide_test.db
+
+# regenerable from data/halides.csv + data/step1_selections_halides.json (scripts/load_halides_db.py)
+data/materials_halide_test.db
+
+# release packages built by scripts/build_release.py (publish as GitHub release assets, not commits)
+release/
+
+# macOS Finder metadata
+.DS_Store

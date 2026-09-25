@@ -56,3 +56,15 @@ python -m materials_db.calculators.xrr_engine --material PMMA
 1. `python -m materials_db.core.audit` — all checks should print PASS or WARN; any FAIL indicates a missing material row or a broken unit-conversion in the fetch pipeline.
 2. `python -m materials_db.verify_all` — 15 assertions covering DB round-trips, CSV parsing, and Parratt physics (TER plateau, high-Q decay); exits 0 on success.
 3. `sqlite3 data/materials.db "SELECT * FROM spr_data LIMIT 5;"` — should return n and k values at 633, 785, and 980 nm for at least Water and Gold; NULL means no optical data within 10 nm of the target wavelength.
+
+### Downloadable dataset (releases)
+
+`python3 scripts/build_release.py --version X.Y.Z` builds one SQLite database holding every curated family (oxides,
+nitrides, polymers, inorganic batch 3, halides, chalcogenides), plus compositional, structural and molecular descriptors.
+It also writes a CSV of every table, the family tables with their per-material flags, a data card, a manifest and
+checksums. The output goes to `release/` (not committed); publish it as a GitHub release. The build runs offline and
+stops if any validation check fails. Descriptor inputs and their rules are in `data/descriptors/README.md`.
+
+### License
+
+Code: MIT (`LICENSE`). Data: CC BY 4.0, with attribution to the upstream sources (`DATA_LICENSE.md`).
