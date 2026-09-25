@@ -14,6 +14,8 @@ Stages, all reproducible from committed inputs (no API key, no network):
   3. dedupe       physical rows a later family re-loaded with identical values (the five nitrides batch 2 already held): keep
                   one, preferring the source whose title/notes name the material, else the older source; then drop sources
                   nothing references. Every removal is recorded in MANIFEST.json.
+  3b. validation cross-source agreement (dataset_validation) and measured consensus at 633 nm (consensus_properties) for
+                  like-for-like datasets: same material, phase, axis and temperature (scripts/release_validation.py)
   4. descriptors  one chemical_descriptors row per material (scripts/release_descriptors.py)
   5. validate     integrity, foreign keys, no duplicate rows, optical sanity; any failure stops the build
   6. package
@@ -47,6 +49,7 @@ sys.path.insert(0, str(_ROOT / "src"))
 
 import load_family_db as fam  # noqa: E402
 import release_descriptors as rd  # noqa: E402
+import release_validation as rv  # noqa: E402
 
 BASE_DB = _ROOT / "data" / "materials_oxide_test.db"
 FAMILY_CSVS = ["oxides_50", "batch2_31", "batch3b_4", "pure_elements_50", "nitrides", "polymers", "inorganic3", "halides",
@@ -225,12 +228,14 @@ def build_db(db_path):
     conn.execute("PRAGMA foreign_keys = ON")
     with conn:
         removed, orphans = dedupe_physical(conn)
+        cross_source = rv.populate(conn)
         coverage = populate_descriptors(conn)
     source_repeats = validate(conn)
     conn.execute("VACUUM")
     conn.close()
     return dict(family_merges=merged, removed_duplicate_physical_rows=removed, removed_unreferenced_sources=orphans,
-                descriptor_coverage=coverage, optical_wavelengths_repeated_in_source=source_repeats)
+                descriptor_coverage=coverage, cross_source_validation=cross_source,
+                optical_wavelengths_repeated_in_source=source_repeats)
 
 
 # ---------------------------------------------------------------- packaging
@@ -290,6 +295,7 @@ def export_csvs(db_path, out_dir):
 def write_readme(path, version, facts, c, mp_version):
     fam_lines = "\n".join(f"| {k} | {v['materials']} | {v['datasets']} | {v['optical_rows']:,} | {v['with_density']} |" for k, v in c["per_family"].items())
     cov = facts["descriptor_coverage"]
+    xs = facts["cross_source_validation"]
     n_mat = c["tables"]["materials"]
     path.write_text(f"""# materials-db v{version}
 
@@ -340,10 +346,27 @@ is NULL, and `descriptor_json` explains why.
   biomolecules, from PubChem's SMILES) and on polymer repeat units, each checked against the source's formula. They are not computed for inorganic solids, because those are not
   molecules; exact mass and heavy-atom count still come from their formula.
 
+## How far the sources agree (`dataset_validation`, `consensus_properties`)
+
+Datasets of one material are compared only like for like: same phase and optical axis (from `dataset_label`) and the same
+temperature, over the wavelengths both cover, at their own data points (nothing extrapolated).
+
+- **dataset_validation** ({sum(xs['pairs'].values())} comparisons over {xs['materials_compared']} materials): for each pair and for n
+  (and k where both give it), the mean relative error, RMSE and Pearson r, classified `excellent` (< 2%), `warning` (< 10%) or
+  `suspicious` (>= 10%); counts {xs['pairs']}. `notes` gives the overlap and whether each side is a measurement or a model
+  fit of the dielectric function. For k the error is scaled to the largest k in the overlap; where k < 0.01 throughout, the
+  absolute difference is used (excellent < 0.002, warning < 0.01).
+- **consensus_properties** (n and k at 633 nm, per phase and axis, e.g. `n_633nm | wurtzite | o-ray`): the median of the
+  MEASURED ambient-temperature datasets that cover 633 nm (model fits never vote), their standard deviation and count, a
+  classification on the spread (max - min) / median with the thresholds above (`single_source` for one), and
+  `confidence_score` = (1 - 0.5^sources) x (1 - spread / 10%), so one source scores 0.5 and a 5% spread halves the score;
+  counts {xs['consensus']}. A material with only model fits at 633 nm (e.g. CdTe) has no consensus row.
+
 ## Calculated vs measured, and caveats
 
 - DFT densities, all SLDs and all descriptors are calculated. Optical data are published measurements or fits to them.
-- Several materials have more than one optical source. Each source is its own dataset, and none is preferred.
+- Several materials have more than one optical source. Each source is its own dataset; how far they agree is in
+  `dataset_validation` and `consensus_properties` (above).
 - Materials without a density (no reliable value) have no SLD. The family tables' `flags` say why.
 - Known open items: GaSe is deferred (its formulas go non-physical inside their stated range). The SnSe alpha axis is
   excluded (the source data is not physical). PDCBT's recorded formula conflicts with its own name, so it has no formula

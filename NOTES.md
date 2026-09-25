@@ -48,6 +48,12 @@ Generic loader: scripts/load_family_db.py (--family/--catalog/--selections/--db/
    n_633: RI.info has no MEASURED data at 633 nm for them (only Adachi-group model fits, still loaded). The ML set takes the
    primary from each release's own family table. Ge2Sb2Te5 deferred.
 
+11. DONE: cross-source validation (scripts/release_validation.py, build stage 3b). dataset_validation: 351 like-for-like pairs over
+   52 materials (291 excellent / 51 warning / 9 suspicious); consensus_properties: 424 rows, n and k at 633 nm per phase/axis from
+   measured ambient datasets only. Real findings surfaced: InP Panah2016 vs Pettit1965 differ 11% at 5-10 um (both measured);
+   As2Se3 400 vs 700 nm films differ 17% in k. Next depth steps (see chat plan): per-dataset metadata table (Aiden), recorded
+   uncertainties, synonyms + missing DOIs (99/317), CI.
+
 ## FOLLOW-UP (logged, NOT started): graphene / 2D carbon as its own family -- materialclass must NOT be 'polymer'
 - RI.info main/C, verified read-only: monolayer graphene = Weber 2010 (0.21-1.0 um, exfoliated flake, 3.4 A, on Si/98 nm SiO2), Song 2018 "Graphene"
   (0.193-1.69, CVD mono), Tikuisis 2023 (0.226-4.40, epitaxial on 6H-SiC), El-Sayed 2021 (0.24-1.0, CVD): four, not three. Song 2018 also holds 4 bulk-HOPG pages (graphite).
