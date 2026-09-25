@@ -5,7 +5,7 @@ scripts/match_ri_info_semiconductors.py
 Matches scripts/semiconductor_material_list.CANDIDATES against the local RI.info catalog (authoritative) and writes
 data/semiconductor_ri_matches.json + data/step1_selections_semiconductors.json. Same policy as match_ri_info_chalcogenides.py; in
 addition every axis records the temperature its page states (temperature_c, for the loader) and the primary dataset is chosen among
-ambient-temperature pages only (a 600 degC or 80 K series is never the material's primary).
+ambient-temperature pages only (a 600 degC or 80 K series is never the material's primary), measured data before model fits.
 
 Selection policy (never auto-pick among alternatives):
   * pages are grouped into PAPERS by their title before the ';' (o/e/alpha/beta/gamma axis pages of one paper share it);
@@ -23,6 +23,7 @@ import yaml
 
 _ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from dataset_kind import is_model_fit  # noqa: E402
 from match_ri_info_liquids import page_temperature_c  # noqa: E402
 from semiconductor_material_list import CANDIDATES, DEFERRED, EXCLUDED_PAGES, OUT_OF_FAMILY  # noqa: E402
 
@@ -60,8 +61,8 @@ def ambient(d):
 
 
 def primary_order(d):
-    """Primary = ambient first, then covering 633 nm, then widest span."""
-    return (not ambient(d), not d["span_um"][0] <= 0.633 <= d["span_um"][1], d["span_um"][0] - d["span_um"][1])
+    """Primary = ambient first, then measured before model fits (dataset_kind.py), then covering 633 nm, then widest span."""
+    return (not ambient(d), is_model_fit(d["data_path"]), not d["span_um"][0] <= 0.633 <= d["span_um"][1], d["span_um"][0] - d["span_um"][1])
 
 
 def strip(s):

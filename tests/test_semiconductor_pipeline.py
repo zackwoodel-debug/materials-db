@@ -80,14 +80,17 @@ def test_selections_complete_labels_unique_and_every_listed_page_loaded():
 
 # ---------------------------------------------------------------- temperature and the primary dataset
 
-def test_primary_is_ambient_and_covers_633_nm_when_any_ambient_page_does():
+def test_primary_is_ambient_measured_then_widest_covering_633_nm():
+    from dataset_kind import is_model_fit
     for k, v in SEL.items():
         first, axes = v["axes"][0], v["axes"]
         assert ambient(first), k
-        covering = [a for a in axes if ambient(a) and a["span_um"][0] <= 0.633 <= a["span_um"][1]]
-        if covering:
-            assert first["span_um"][0] <= 0.633 <= first["span_um"][1], k
-            assert (first["span_um"][1] - first["span_um"][0]) == max(a["span_um"][1] - a["span_um"][0] for a in covering), k
+        pool = [a for a in axes if ambient(a) and not is_model_fit(a["data_path"])] or [a for a in axes if ambient(a)]
+        assert first in pool, k
+        covering = [a for a in pool if a["span_um"][0] <= 0.633 <= a["span_um"][1]] or pool
+        assert first in covering and (first["span_um"][1] - first["span_um"][0]) == max(a["span_um"][1] - a["span_um"][0] for a in covering), k
+    # the III-V primaries are the Aspnes & Studna ellipsometry, not Adachi's model (NOTES #10)
+    assert {k: SEL[k]["axes"][0]["tag"] for k in ("GaSb", "InAs", "InP", "InSb")} == dict.fromkeys(("GaSb", "InAs", "InP", "InSb"), "Aspnes1983")
 
 
 def test_temperature_series_carry_their_stated_temperature():

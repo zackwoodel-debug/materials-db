@@ -351,9 +351,12 @@ is NULL, and `descriptor_json` explains why.
   ethanol and DMSO come from the liquids family instead; DPPC, BSA, PTFE, PEEK, nylon 6,6, PEG and polyethylenimine are not in
   refractiveindex.info; ITO is (other/In2O3-SnO2) and belongs with a later mixed-oxides batch.
 - Semiconductors: several papers per material are loaded as separate datasets, including temperature series (e.g. GaAs at
-  300-440 K and 600 degC, ZnGeP2 at 100-500 K; `optical_dispersion.temperature_c`). The primary dataset is the widest
-  ambient-temperature one covering 633 nm, which for most III-Vs is Adachi's model fit; the Aspnes & Studna ellipsometry
-  datasets are loaded alongside. Ge2Sb2Te5 is deferred (its crystalline density needs a structure choice).
+  300-440 K and 600 degC, ZnGeP2 at 100-500 K; `optical_dispersion.temperature_c`). Ge2Sb2Te5 is deferred (its crystalline
+  density needs a structure choice).
+- Primary dataset (the family tables' n_633 / k_633) in the automatically selected families (halides, chalcogenides,
+  liquids, semiconductors): measured data before model fits of the dielectric function, then the widest range covering
+  633 nm. A page is a model fit only when its source says so (scripts/dataset_kind.py). Model datasets (e.g. Adachi's) are
+  still loaded; CdTe, CdSe and PbSe have no measured data at 633 nm, so their primary n_633 is empty.
 - Liquid densities carry their temperature (`physical_properties.temperature_c`). They come from the CIPM water formula, NIST
   reference equations of state, or PubChem records that are all physically consistent with each other; otherwise they are
   left empty.

@@ -13,7 +13,7 @@
     "Gadras": null,
     "Rakic": null
    },
-   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = widest span covering 633 nm at ambient temperature",
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = ambient temperature, measured before model fits, then widest span covering 633 nm",
    "status": "SELECTED_BY_USER",
    "n_pages": 3,
    "n_papers": 3,
@@ -97,7 +97,7 @@
     "Adachi": null,
     "Djurisic": null
    },
-   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = widest span covering 633 nm at ambient temperature",
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = ambient temperature, measured before model fits, then widest span covering 633 nm",
    "status": "SELECTED_BY_USER",
    "n_pages": 3,
    "n_papers": 3,
@@ -233,7 +233,7 @@
     "Rakic": null,
     "Ozaki": null
    },
-   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = widest span covering 633 nm at ambient temperature",
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = ambient temperature, measured before model fits, then widest span covering 633 nm",
    "status": "SELECTED_BY_USER",
    "n_pages": 13,
    "n_papers": 13,
@@ -510,7 +510,7 @@
     "Bond": null,
     "Adachi": null
    },
-   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = widest span covering 633 nm at ambient temperature",
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = ambient temperature, measured before model fits, then widest span covering 633 nm",
    "status": "SELECTED_BY_USER",
    "n_pages": 6,
    "n_papers": 6,
@@ -651,7 +651,7 @@
     "Adachi": null,
     "Djurisic": null
    },
-   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = widest span covering 633 nm at ambient temperature",
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = ambient temperature, measured before model fits, then widest span covering 633 nm",
    "status": "SELECTED_BY_USER",
    "n_pages": 4,
    "n_papers": 3,
@@ -757,7 +757,7 @@
     "Lorimor": null,
     "Adachi": null
    },
-   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = widest span covering 633 nm at ambient temperature",
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = ambient temperature, measured before model fits, then widest span covering 633 nm",
    "status": "SELECTED_BY_USER",
    "n_pages": 3,
    "n_papers": 3,
@@ -842,7 +842,7 @@
     "Pettit": null,
     "Adachi": null
    },
-   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = widest span covering 633 nm at ambient temperature",
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = ambient temperature, measured before model fits, then widest span covering 633 nm",
    "status": "SELECTED_BY_USER",
    "n_pages": 4,
    "n_papers": 4,
@@ -945,7 +945,7 @@
     "Adachi": null,
     "Djurisic": null
    },
-   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = widest span covering 633 nm at ambient temperature",
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = ambient temperature, measured before model fits, then widest span covering 633 nm",
    "status": "SELECTED_BY_USER",
    "n_pages": 3,
    "n_papers": 3,
@@ -1031,7 +1031,7 @@
     "DeBell-20K": null,
     "Adachi": null
    },
-   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = widest span covering 633 nm at ambient temperature",
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = ambient temperature, measured before model fits, then widest span covering 633 nm",
    "status": "SELECTED_BY_USER",
    "n_pages": 6,
    "n_papers": 3,
@@ -1176,7 +1176,7 @@
     "Li": null,
     "Sato": null
    },
-   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = widest span covering 633 nm at ambient temperature",
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = ambient temperature, measured before model fits, then widest span covering 633 nm",
    "status": "SELECTED_BY_USER",
    "n_pages": 3,
    "n_papers": 3,
@@ -1260,7 +1260,7 @@
     "Weiting-130K": null,
     "Weiting-80K": null
    },
-   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = widest span covering 633 nm at ambient temperature",
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = ambient temperature, measured before model fits, then widest span covering 633 nm",
    "status": "SELECTED_BY_USER",
    "n_pages": 3,
    "n_papers": 2,
@@ -1530,7 +1530,7 @@
     "Ghosh-500K-o": null,
     "Ghosh-500K-e": null
    },
-   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = widest span covering 633 nm at ambient temperature",
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = ambient temperature, measured before model fits, then widest span covering 633 nm",
    "status": "SELECTED_BY_USER",
    "n_pages": 26,
    "n_papers": 4,

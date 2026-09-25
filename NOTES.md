@@ -41,10 +41,12 @@ Generic loader: scripts/load_family_db.py (--family/--catalog/--selections/--db/
 9. Negative k: already decided before this note. build_release.NEGATIVE_K_ALLOWED (kept equal to tests/test_family_optical_sanity.py)
    allow-lists noise around k = 0 per dataset with a floor: Cu2O Querry, Fe2O3 Querry-o, ma-N 1407 Sarkar, and now GaP Jellison1992
    (-0.003, 500-815 nm). The ML set flags them (meta_primary_has_negative_k). Nothing to do.
-10. Semiconductor family (scripts/*semiconductor*): 16 materials, 84 datasets. OPEN QUESTION: the primary-dataset rule (widest
-   ambient page covering 633 nm) picks Adachi 1989's model fit for most III-Vs, which is 2-12% off the Aspnes & Studna 1983
-   ellipsometry at 633 nm (InSb 11.6%, InP 6.1%, GaAs 3.8%). Both are loaded; only the primary (family-table n_633, ML target)
-   is affected. Decide whether measured data should outrank a wider model fit (would apply to every family). Ge2Sb2Te5 deferred.
+10. DONE (user decision 2026-09-25): primary rule is now "measured before model fits, then widest range" in the auto-selected
+   families (halides, chalcogenides, liquids, semiconductors); scripts/dataset_kind.py classifies a page as a model fit only on
+   explicit source evidence (RI.info calculation script, "fit ... to a simplified model", or a title whose subject is a model).
+   Changed primaries: 9 semiconductors (4 III-Vs now Aspnes & Studna 1983) + CdSe, PbSe. CdTe, CdSe, PbSe now have no primary
+   n_633: RI.info has no MEASURED data at 633 nm for them (only Adachi-group model fits, still loaded). The ML set takes the
+   primary from each release's own family table. Ge2Sb2Te5 deferred.
 
 ## FOLLOW-UP (logged, NOT started): graphene / 2D carbon as its own family -- materialclass must NOT be 'polymer'
 - RI.info main/C, verified read-only: monolayer graphene = Weber 2010 (0.21-1.0 um, exfoliated flake, 3.4 A, on Si/98 nm SiO2), Song 2018 "Graphene"

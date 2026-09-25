@@ -2,24 +2,8 @@
  "AlAs": {
   "name": "Aluminium arsenide",
   "formula": "AlAs",
-  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = widest span covering 633 nm at ambient temperature",
+  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = ambient temperature, measured before model fits, then widest span covering 633 nm",
   "axes": [
-   {
-    "page": "Rakic",
-    "axis": null,
-    "phase": null,
-    "data_path": "main/AlAs/nk/Rakic.yml",
-    "span_um": [
-     0.2214,
-     2.4797
-    ],
-    "kind": "nk",
-    "dispersion": "tabulated",
-    "comments": "",
-    "temperature_c": null,
-    "tag": "Rakic1996",
-    "dataset_label": "Rakic1996"
-   },
    {
     "page": "Fern",
     "axis": null,
@@ -35,6 +19,22 @@
     "temperature_c": null,
     "tag": "Fern1971",
     "dataset_label": "Fern1971"
+   },
+   {
+    "page": "Rakic",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/AlAs/nk/Rakic.yml",
+    "span_um": [
+     0.2214,
+     2.4797
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "",
+    "temperature_c": null,
+    "tag": "Rakic1996",
+    "dataset_label": "Rakic1996"
    },
    {
     "page": "Gadras",
@@ -57,8 +57,24 @@
  "AlSb": {
   "name": "Aluminium antimonide",
   "formula": "AlSb",
-  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = widest span covering 633 nm at ambient temperature",
+  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = ambient temperature, measured before model fits, then widest span covering 633 nm",
   "axes": [
+   {
+    "page": "Zollner",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/AlSb/nk/Zollner.yml",
+    "span_um": [
+     0.2138,
+     0.8856
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "300 K\n",
+    "temperature_c": 26.85,
+    "tag": "Zollner1989",
+    "dataset_label": "Zollner1989"
+   },
    {
     "page": "Adachi",
     "axis": null,
@@ -90,22 +106,6 @@
     "temperature_c": null,
     "tag": "Djurisic2000",
     "dataset_label": "Djurisic2000"
-   },
-   {
-    "page": "Zollner",
-    "axis": null,
-    "phase": null,
-    "data_path": "main/AlSb/nk/Zollner.yml",
-    "span_um": [
-     0.2138,
-     0.8856
-    ],
-    "kind": "nk",
-    "dispersion": "tabulated",
-    "comments": "300 K\n",
-    "temperature_c": 26.85,
-    "tag": "Zollner1989",
-    "dataset_label": "Zollner1989"
    }
   ]
  },
@@ -135,40 +135,8 @@
  "GaAs": {
   "name": "Gallium arsenide",
   "formula": "GaAs",
-  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = widest span covering 633 nm at ambient temperature",
+  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = ambient temperature, measured before model fits, then widest span covering 633 nm",
   "axes": [
-   {
-    "page": "Adachi",
-    "axis": null,
-    "phase": null,
-    "data_path": "main/GaAs/nk/Adachi.yml",
-    "span_um": [
-     0.20664,
-     12.398
-    ],
-    "kind": "nk",
-    "dispersion": "tabulated",
-    "comments": "",
-    "temperature_c": null,
-    "tag": "Adachi1989",
-    "dataset_label": "Adachi1989"
-   },
-   {
-    "page": "Rakic",
-    "axis": null,
-    "phase": null,
-    "data_path": "main/GaAs/nk/Rakic.yml",
-    "span_um": [
-     0.20664,
-     12.398
-    ],
-    "kind": "nk",
-    "dispersion": "tabulated",
-    "comments": "",
-    "temperature_c": null,
-    "tag": "Rakic1996",
-    "dataset_label": "Rakic1996"
-   },
    {
     "page": "Papatryfonos",
     "axis": null,
@@ -184,22 +152,6 @@
     "temperature_c": null,
     "tag": "Papatryfonos2021",
     "dataset_label": "Papatryfonos2021"
-   },
-   {
-    "page": "Ozaki",
-    "axis": null,
-    "phase": null,
-    "data_path": "main/GaAs/nk/Ozaki.yml",
-    "span_um": [
-     0.2214,
-     1.0332
-    ],
-    "kind": "nk",
-    "dispersion": "tabulated",
-    "comments": "Fit of author's experimental data to a simplified model of the interband transitions (MDF). Room Temperature.\n",
-    "temperature_c": null,
-    "tag": "Ozaki1995",
-    "dataset_label": "Ozaki1995"
    },
    {
     "page": "Aspnes",
@@ -232,22 +184,6 @@
     "temperature_c": null,
     "tag": "Jellison1992",
     "dataset_label": "Jellison1992"
-   },
-   {
-    "page": "Franta-300K",
-    "axis": null,
-    "phase": null,
-    "data_path": "main/GaAs/nk/Franta-300K.yml",
-    "span_um": [
-     0.895234,
-     399.638
-    ],
-    "kind": "nk",
-    "dispersion": "tabulated",
-    "comments": "Undoped GaAs.\nHeterogenous data processing combining ellipsometric and spectrophotometric measurements with previously published refractive index.\nTemperature 300 K.\n",
-    "temperature_c": 26.85,
-    "tag": "Franta2026-300K",
-    "dataset_label": "Franta2026-300K"
    },
    {
     "page": "Skauli",
@@ -296,6 +232,70 @@
     "temperature_c": 21.85,
     "tag": "Perner2023",
     "dataset_label": "Perner2023"
+   },
+   {
+    "page": "Adachi",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/GaAs/nk/Adachi.yml",
+    "span_um": [
+     0.20664,
+     12.398
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "",
+    "temperature_c": null,
+    "tag": "Adachi1989",
+    "dataset_label": "Adachi1989"
+   },
+   {
+    "page": "Rakic",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/GaAs/nk/Rakic.yml",
+    "span_um": [
+     0.20664,
+     12.398
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "",
+    "temperature_c": null,
+    "tag": "Rakic1996",
+    "dataset_label": "Rakic1996"
+   },
+   {
+    "page": "Ozaki",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/GaAs/nk/Ozaki.yml",
+    "span_um": [
+     0.2214,
+     1.0332
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Fit of author's experimental data to a simplified model of the interband transitions (MDF). Room Temperature.\n",
+    "temperature_c": null,
+    "tag": "Ozaki1995",
+    "dataset_label": "Ozaki1995"
+   },
+   {
+    "page": "Franta-300K",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/GaAs/nk/Franta-300K.yml",
+    "span_um": [
+     0.895234,
+     399.638
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Undoped GaAs.\nHeterogenous data processing combining ellipsometric and spectrophotometric measurements with previously published refractive index.\nTemperature 300 K.\n",
+    "temperature_c": 26.85,
+    "tag": "Franta2026-300K",
+    "dataset_label": "Franta2026-300K"
    },
    {
     "page": "Gadras",
@@ -350,24 +350,8 @@
  "GaP": {
   "name": "Gallium phosphide",
   "formula": "GaP",
-  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = widest span covering 633 nm at ambient temperature",
+  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = ambient temperature, measured before model fits, then widest span covering 633 nm",
   "axes": [
-   {
-    "page": "Adachi",
-    "axis": null,
-    "phase": null,
-    "data_path": "main/GaP/nk/Adachi.yml",
-    "span_um": [
-     0.20664,
-     12.398
-    ],
-    "kind": "nk",
-    "dispersion": "tabulated",
-    "comments": "",
-    "temperature_c": null,
-    "tag": "Adachi1989",
-    "dataset_label": "Adachi1989"
-   },
    {
     "page": "Bond",
     "axis": null,
@@ -447,14 +431,46 @@
     "temperature_c": null,
     "tag": "Parsons1971",
     "dataset_label": "Parsons1971"
+   },
+   {
+    "page": "Adachi",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/GaP/nk/Adachi.yml",
+    "span_um": [
+     0.20664,
+     12.398
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "",
+    "temperature_c": null,
+    "tag": "Adachi1989",
+    "dataset_label": "Adachi1989"
    }
   ]
  },
  "GaSb": {
   "name": "Gallium antimonide",
   "formula": "GaSb",
-  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = widest span covering 633 nm at ambient temperature",
+  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = ambient temperature, measured before model fits, then widest span covering 633 nm",
   "axes": [
+   {
+    "page": "Aspnes",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/GaSb/nk/Aspnes.yml",
+    "span_um": [
+     0.2066,
+     0.8266
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Crysal orientation: ; Doping: 1.5\u00d71017 cm-3, p; Room temperature\n",
+    "temperature_c": null,
+    "tag": "Aspnes1983",
+    "dataset_label": "Aspnes1983"
+   },
    {
     "page": "Adachi",
     "axis": null,
@@ -486,46 +502,14 @@
     "temperature_c": null,
     "tag": "Djurisic2000",
     "dataset_label": "Djurisic2000"
-   },
-   {
-    "page": "Aspnes",
-    "axis": null,
-    "phase": null,
-    "data_path": "main/GaSb/nk/Aspnes.yml",
-    "span_um": [
-     0.2066,
-     0.8266
-    ],
-    "kind": "nk",
-    "dispersion": "tabulated",
-    "comments": "Crysal orientation: ; Doping: 1.5\u00d71017 cm-3, p; Room temperature\n",
-    "temperature_c": null,
-    "tag": "Aspnes1983",
-    "dataset_label": "Aspnes1983"
    }
   ]
  },
  "InAs": {
   "name": "Indium arsenide",
   "formula": "InAs",
-  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = widest span covering 633 nm at ambient temperature",
+  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = ambient temperature, measured before model fits, then widest span covering 633 nm",
   "axes": [
-   {
-    "page": "Adachi",
-    "axis": null,
-    "phase": null,
-    "data_path": "main/InAs/nk/Adachi.yml",
-    "span_um": [
-     0.20664,
-     12.398
-    ],
-    "kind": "nk",
-    "dispersion": "tabulated",
-    "comments": "",
-    "temperature_c": null,
-    "tag": "Adachi1989",
-    "dataset_label": "Adachi1989"
-   },
    {
     "page": "Aspnes",
     "axis": null,
@@ -557,19 +541,12 @@
     "temperature_c": null,
     "tag": "Lorimor1965",
     "dataset_label": "Lorimor1965"
-   }
-  ]
- },
- "InP": {
-  "name": "Indium phosphide",
-  "formula": "InP",
-  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = widest span covering 633 nm at ambient temperature",
-  "axes": [
+   },
    {
     "page": "Adachi",
     "axis": null,
     "phase": null,
-    "data_path": "main/InP/nk/Adachi.yml",
+    "data_path": "main/InAs/nk/Adachi.yml",
     "span_um": [
      0.20664,
      12.398
@@ -580,7 +557,14 @@
     "temperature_c": null,
     "tag": "Adachi1989",
     "dataset_label": "Adachi1989"
-   },
+   }
+  ]
+ },
+ "InP": {
+  "name": "Indium phosphide",
+  "formula": "InP",
+  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = ambient temperature, measured before model fits, then widest span covering 633 nm",
+  "axes": [
    {
     "page": "Aspnes",
     "axis": null,
@@ -628,14 +612,46 @@
     "temperature_c": null,
     "tag": "Pettit1965",
     "dataset_label": "Pettit1965"
+   },
+   {
+    "page": "Adachi",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/InP/nk/Adachi.yml",
+    "span_um": [
+     0.20664,
+     12.398
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "",
+    "temperature_c": null,
+    "tag": "Adachi1989",
+    "dataset_label": "Adachi1989"
    }
   ]
  },
  "InSb": {
   "name": "Indium antimonide",
   "formula": "InSb",
-  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = widest span covering 633 nm at ambient temperature",
+  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = ambient temperature, measured before model fits, then widest span covering 633 nm",
   "axes": [
+   {
+    "page": "Aspnes",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/InSb/nk/Aspnes.yml",
+    "span_um": [
+     0.2066,
+     0.8266
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Crysal orientation: ; Doping: 8\u00d71015 cm-3, n; Room temperature\n",
+    "temperature_c": null,
+    "tag": "Aspnes1983",
+    "dataset_label": "Aspnes1983"
+   },
    {
     "page": "Adachi",
     "axis": null,
@@ -667,46 +683,14 @@
     "temperature_c": null,
     "tag": "Djurisic2000",
     "dataset_label": "Djurisic2000"
-   },
-   {
-    "page": "Aspnes",
-    "axis": null,
-    "phase": null,
-    "data_path": "main/InSb/nk/Aspnes.yml",
-    "span_um": [
-     0.2066,
-     0.8266
-    ],
-    "kind": "nk",
-    "dispersion": "tabulated",
-    "comments": "Crysal orientation: ; Doping: 8\u00d71015 cm-3, n; Room temperature\n",
-    "temperature_c": null,
-    "tag": "Aspnes1983",
-    "dataset_label": "Aspnes1983"
    }
   ]
  },
  "CdTe": {
   "name": "Cadmium telluride",
   "formula": "CdTe",
-  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = widest span covering 633 nm at ambient temperature",
+  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = ambient temperature, measured before model fits, then widest span covering 633 nm",
   "axes": [
-   {
-    "page": "Adachi",
-    "axis": null,
-    "phase": null,
-    "data_path": "main/CdTe/nk/Adachi.yml",
-    "span_um": [
-     0.2214,
-     1.1271
-    ],
-    "kind": "nk",
-    "dispersion": "tabulated",
-    "comments": "",
-    "temperature_c": null,
-    "tag": "Adachi1993",
-    "dataset_label": "Adachi1993"
-   },
    {
     "page": "DeBell-300K",
     "axis": null,
@@ -738,6 +722,22 @@
     "temperature_c": null,
     "tag": "Marple1964",
     "dataset_label": "Marple1964"
+   },
+   {
+    "page": "Adachi",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/CdTe/nk/Adachi.yml",
+    "span_um": [
+     0.2214,
+     1.1271
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "",
+    "temperature_c": null,
+    "tag": "Adachi1993",
+    "dataset_label": "Adachi1993"
    },
    {
     "page": "DeBell-80K",
@@ -776,7 +776,7 @@
  "ZnTe": {
   "name": "Zinc telluride",
   "formula": "ZnTe",
-  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = widest span covering 633 nm at ambient temperature",
+  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = ambient temperature, measured before model fits, then widest span covering 633 nm",
   "axes": [
    {
     "page": "Li",
@@ -831,7 +831,7 @@
  "PbTe": {
   "name": "Lead telluride",
   "formula": "PbTe",
-  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = widest span covering 633 nm at ambient temperature",
+  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = ambient temperature, measured before model fits, then widest span covering 633 nm",
   "axes": [
    {
     "page": "Weiting-300K",
@@ -996,7 +996,7 @@
  "ZnGeP2": {
   "name": "Zinc germanium phosphide (ZGP)",
   "formula": "ZnGeP2",
-  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = widest span covering 633 nm at ambient temperature",
+  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = ambient temperature, measured before model fits, then widest span covering 633 nm",
   "axes": [
    {
     "page": "Boyd-20C-o",

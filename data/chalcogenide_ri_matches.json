@@ -78,7 +78,7 @@
     "Boyd-o": null,
     "Boyd-e": null
    },
-   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = widest span",
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = measured before model fits, then widest span covering 633 nm",
    "status": "SELECTED_BY_USER",
    "n_pages": 6,
    "n_papers": 3,
@@ -225,7 +225,7 @@
     "Kato-\u03b2": null,
     "Kato-\u03b3": null
    },
-   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = widest span",
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = measured before model fits, then widest span covering 633 nm",
    "status": "SELECTED_BY_USER",
    "n_pages": 6,
    "n_papers": 2,
@@ -654,7 +654,7 @@
     "Boyd-o": null,
     "Boyd-e": null
    },
-   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = widest span",
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = measured before model fits, then widest span covering 633 nm",
    "status": "SELECTED_BY_USER",
    "n_pages": 6,
    "n_papers": 3,
@@ -797,7 +797,7 @@
     "Joseph-400nm": null,
     "Joseph-700nm": null
    },
-   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = widest span",
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = measured before model fits, then widest span covering 633 nm",
    "status": "SELECTED_BY_USER",
    "n_pages": 2,
    "n_papers": 2,
@@ -929,7 +929,7 @@
     "Kato-\u03b2": null,
     "Kato-\u03b3": null
    },
-   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = widest span",
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = measured before model fits, then widest span covering 633 nm",
    "status": "SELECTED_BY_USER",
    "n_pages": 6,
    "n_papers": 2,
@@ -1064,7 +1064,7 @@
     "Ninomiya-e": "hexagonal",
     "Ninomiya-cubic": "cubic"
    },
-   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = widest span; phase labels only where the source page states one",
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = measured before model fits, then widest span covering 633 nm; phase labels only where the source page states one",
    "status": "SELECTED_BY_USER",
    "n_pages": 7,
    "n_papers": 4,
@@ -1225,7 +1225,7 @@
     "Zemel": null,
     "Suzuki": null
    },
-   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = widest span",
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = measured before model fits, then widest span covering 633 nm",
    "status": "SELECTED_BY_USER",
    "n_pages": 2,
    "n_papers": 2,
@@ -1429,7 +1429,7 @@
     "Connolly": null,
     "Adachi": null
    },
-   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = widest span",
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = measured before model fits, then widest span covering 633 nm",
    "status": "SELECTED_BY_USER",
    "n_pages": 5,
    "n_papers": 5,

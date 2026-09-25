@@ -17,8 +17,9 @@ Columns
   has_*      whether a descriptor block exists for the material (its absence is explained in descriptor_json)
 
 Rules
-  * Primary optical dataset = the first axis of the selection the family was built from (data/step1_selections*.json, or
-    the batch-2 / pure-element material lists), matched to optical_dispersion.raw_record_table exactly. A material in two
+  * Primary optical dataset = the page the release's family table names (ri_page_primary), resolved to its exact data_path
+    through the selection the family was built from (data/step1_selections*.json, or the batch-2 / pure-element material
+    lists) and matched to optical_dispersion.raw_record_table exactly. A material in two
     family tables uses the first, as the release does. The family tables' n_633 cross-checks the choice.
   * n, k at 633 nm are interpolated inside the primary dataset's own wavelength range only; outside it they are NaN.
     k is NaN when the dataset gives no k. Nothing is extrapolated, imputed or zero-filled. A negative k is the source's own
@@ -74,19 +75,20 @@ def latest_release():
     return dirs[-1]
 
 
-def _selection_paths():
-    """family -> {material name: primary data_path}, from the inputs each family was built from (first axis = primary)."""
+def _selection_axes():
+    """family -> {material name: [(page, data_path), ...]}, from the inputs each family was built from."""
     sys.path.insert(0, str(_ROOT / "scripts"))
     from fluoride_nitride_sulfide_material_list import MATERIALS_31
     from pure_element_material_list import MATERIALS_PURE_ELEMENTS
 
     def from_json(fn):
-        return {v["name"]: v["axes"][0]["data_path"] for v in json.loads((_ROOT / "data" / fn).read_text()).values()
+        return {v["name"]: [(a["page"], a["data_path"]) for a in v["axes"]] for v in json.loads((_ROOT / "data" / fn).read_text()).values()
                 if v.get("axes")}
-    elements = {m["name"]: m["ri_axes"][0]["data_path"] for m in MATERIALS_PURE_ELEMENTS if m.get("ri_axes")}
+    from_list = lambda ms: {m["name"]: [(a["page"], a["data_path"]) for a in m["ri_axes"]] for m in ms if m.get("ri_axes")}
+    elements = from_list(MATERIALS_PURE_ELEMENTS)
     return {
         "oxides_50": from_json("step1_selections.json"),
-        "batch2_31": {m["name"]: m["ri_axes"][0]["data_path"] for m in MATERIALS_31 if m.get("ri_axes")},
+        "batch2_31": from_list(MATERIALS_31),
         "batch3b_4": elements, "pure_elements_50": elements,
         **{fam: from_json(f"step1_selections_{fam}.json")
            for fam in ["nitrides", "polymers", "inorganic3", "halides", "chalcogenides", "liquids", "semiconductors"]},
@@ -99,13 +101,22 @@ def release_families(release_dir):
 
 
 def primary_pages(release_dir):
-    """material name -> (family, primary data_path). A material in two family tables belongs to the first."""
-    sel = _selection_paths()
+    """material name -> (family, primary data_path). The primary PAGE is the one the release's own family table names
+    (ri_page_primary), so the ML set follows the release it is built from even after a selection rule changes; the selection
+    inputs resolve that page to its exact data_path (page names and file names differ, e.g. "Walling-\u03b1" / Walling-alpha.yml).
+    Polymers have no ri_page_primary column: their first selected axis. A material in two family tables belongs to the first."""
+    sel = _selection_axes()
     out = {}
     for fam in release_families(release_dir):
-        for name in pd.read_csv(release_dir / "family_tables" / f"{fam}.csv")["name"]:
-            if name not in out:
-                out[name] = (fam, sel[fam].get(name))
+        table = pd.read_csv(release_dir / "family_tables" / f"{fam}.csv")
+        for _, r in table.iterrows():
+            name = r["name"]
+            if name in out:
+                continue
+            axes = sel[fam].get(name) or []
+            page = r.get("ri_page_primary")
+            hit = [path for pg, path in axes if pg == page] if pd.notna(page) else [path for _, path in axes[:1]]
+            out[name] = (fam, hit[0] if hit else None)
     return out
 
 

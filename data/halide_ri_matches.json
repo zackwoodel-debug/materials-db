@@ -132,7 +132,7 @@
     "Li": null,
     "Querry": null
    },
-   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = widest span",
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = measured before model fits, then widest span",
    "status": "SELECTED_BY_USER",
    "n_pages": 2,
    "n_papers": 2,
@@ -233,7 +233,7 @@
     "Li": null,
     "Querry": null
    },
-   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = widest span",
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = measured before model fits, then widest span",
    "status": "SELECTED_BY_USER",
    "n_pages": 2,
    "n_papers": 2,
@@ -374,7 +374,7 @@
     "Schr\u00f6ter": null,
     "Polyanskiy": null
    },
-   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = widest span",
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = measured before model fits, then widest span",
    "status": "SELECTED_BY_USER",
    "n_pages": 2,
    "n_papers": 2,
@@ -438,7 +438,7 @@
     "Querry": null,
     "Rodney": null
    },
-   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = widest span",
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = measured before model fits, then widest span",
    "status": "SELECTED_BY_USER",
    "n_pages": 3,
    "n_papers": 3,
@@ -677,7 +677,7 @@
     "Palik": null,
     "Schroter": null
    },
-   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = widest span",
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = measured before model fits, then widest span",
    "status": "SELECTED_BY_USER",
    "n_pages": 2,
    "n_papers": 2,
@@ -739,7 +739,7 @@
     "Querry": null,
     "Rodney": null
    },
-   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = widest span",
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = measured before model fits, then widest span",
    "status": "SELECTED_BY_USER",
    "n_pages": 3,
    "n_papers": 3,
@@ -898,7 +898,7 @@
     "Jellison": null,
     "Li": null
    },
-   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = widest span",
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC); none is dropped or merged; primary = measured before model fits, then widest span",
    "status": "SELECTED_BY_USER",
    "n_pages": 2,
    "n_papers": 2,

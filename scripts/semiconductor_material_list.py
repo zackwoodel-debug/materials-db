@@ -20,7 +20,7 @@ def _c(key, name, formula, materialclass, pages=None, note=None, book=None):
 
 
 MULTI_BASIS = ("multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, "
-               "the halides and chalcogenides); none is dropped or merged; primary = widest span covering 633 nm at ambient temperature")
+               "the halides and chalcogenides); none is dropped or merged; primary = ambient temperature, measured before model fits, then widest span covering 633 nm")
 
 CANDIDATES = [
     # III-V

@@ -8,7 +8,8 @@ data/liquid_ri_matches.json + data/step1_selections_liquids.json.
 Rules:
   * a candidate owns every dispersion-capable page of its book, or exactly the `pages` it names (books holding several compounds);
     pages in EXCLUDED_PAGES are never loaded; k-only and single-point pages are listed, not loaded;
-  * several papers -> all loaded as separate datasets (standing rule); primary = the widest page covering 633 nm, else the widest;
+  * several papers -> all loaded as separate datasets (standing rule); primary = measured before model fits (dataset_kind.py), then the
+    widest page covering 633 nm, else the widest;
   * phase labels only where the candidate maps a page to the phase that page states (water);
   * pages of one paper that share (phase, author-year, axis) get the page qualifier: Kerl1995-293K, Sani2016-formula, Querry1987-NIR;
   * every book in the scanned areas must be a candidate or in OUT_OF_FAMILY (nothing silently skipped);
@@ -25,6 +26,7 @@ import yaml
 _ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.path.insert(0, str(_ROOT / "src"))
+from dataset_kind import is_model_fit  # noqa: E402
 from liquid_material_list import CANDIDATES, EXCLUDED_PAGES, OUT_OF_FAMILY  # noqa: E402
 
 RI = _ROOT / "refractiveindex_db" / "database"
@@ -204,7 +206,7 @@ def main():
                         about_yml_formula=af, about_yml_formula_matches=about_ok))
         if not disp:
             continue
-        chosen = sorted(disp, key=lambda d: (not d["span_um"][0] <= 0.633 <= d["span_um"][1], d["span_um"][0] - d["span_um"][1]))
+        chosen = sorted(disp, key=lambda d: (is_model_fit(d["data_path"]), not d["span_um"][0] <= 0.633 <= d["span_um"][1], d["span_um"][0] - d["span_um"][1]))
         axes = [dict(page=d["page"], axis=d["axis"], phase=d["phase"], data_path=d["data_path"], span_um=d["span_um"], kind=d["kind"],
                      dispersion=d["dispersion"], comments=d["comments"], temperature_c=d["temperature_c"], tag=tag_of(d["page"], d["title"]),
                      dataset_label=label_of(d["phase"], tag_of(d["page"], d["title"]), d["axis"])) for d in chosen]
