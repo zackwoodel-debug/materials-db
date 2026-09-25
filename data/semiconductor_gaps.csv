@@ -1,0 +1,8 @@
+key,name,gap_kind,reason,evidence
+Ge2Sb2Te5,Ge2Sb2Te5,deferred_decision,"phase-change material: Frantz 2024 gives crystalline and amorphous Ge2Sb2Te5 (one paper, two phases). The crystalline density needs a structure choice (metastable rock-salt vs stable trigonal GST) and the amorphous phase has no density source; load after that decision.",
+CdTe,CdTe page Treharne,excluded_page,"sputtered film: 'A CdTe film was deposited on to a soda-lime glass substrate using RF magnetron sputtering' (film n,k depend on deposition; scope rule). Bulk papers Marple, DeBell, Adachi are loaded.",
+GaSb,GaSb page Ferrini,excluded_page,"film: 'Thin film grown by molecular beam epitaxy on a GaSb substrate' (the page also mislabels x = 0 as GaAs); scope rule. Bulk papers Aspnes, Adachi, Djurisic are loaded.",
+Bi2Te3,Bi2Te3,out_of_family,"CVD flakes on Si/SiO2 (Ermolaev 2024): thickness/substrate-dependent, 2D / thin-film follow-up",
+MoTe2,MoTe2,out_of_family,layered van der Waals telluride measured as flake / few-layer film: 2D / thin-film follow-up,
+WTe2,WTe2,out_of_family,layered van der Waals telluride measured as flake / few-layer film: 2D / thin-film follow-up,
+ZrTe5,ZrTe5,out_of_family,layered van der Waals telluride measured as flake / few-layer film: 2D / thin-film follow-up,

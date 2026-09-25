@@ -64,7 +64,7 @@ def descriptors(release):
 def test_every_family_material_is_in_the_release_once_and_nothing_else_is(release):
     names = [n for (n,) in q(release, "SELECT name FROM materials")]
     expected = set(br.family_rows())
-    assert len(names) == len(set(names)) == len(expected) == N_MATERIALS == 303 and set(names) == expected
+    assert len(names) == len(set(names)) == len(expected) == N_MATERIALS == 319 and set(names) == expected
     assert not set(BENCHMARK_ONLY) & set(names)  # the legacy benchmark rows are not merged
 
 
@@ -94,7 +94,8 @@ def _optical(db, name):
 def test_optical_rows_of_every_material_equal_its_origin_database_exactly(release, family_dbs):
     origin = {"batch2_31": br.BASE_DB, "oxides_50": br.BASE_DB, "batch3b_4": br.BASE_DB, "pure_elements_50": br.BASE_DB,
               "nitrides": family_dbs["nitride"], "polymers": family_dbs["polymer"], "inorganic3": family_dbs["inorganic3"],
-              "halides": family_dbs["halide"], "chalcogenides": family_dbs["chalcogenide"], "liquids": family_dbs["liquid"]}
+              "halides": family_dbs["halide"], "chalcogenides": family_dbs["chalcogenide"], "liquids": family_dbs["liquid"],
+              "semiconductors": family_dbs["semiconductor"]}
     total = 0
     for name, (stem, _) in br.family_rows().items():
         got = _optical(release["db"], name)
@@ -197,7 +198,7 @@ def test_every_material_has_one_descriptor_row_and_every_null_is_explained(relea
 def test_descriptor_coverage_is_what_the_inputs_allow(release):
     cov = release["facts"]["descriptor_coverage"]
     no_formula = len(pd.read_csv(ROOT / "data" / "polymers.csv").pipe(lambda p: p[p.formula.isna()])) + 2 + int(LIQUIDS.formula.isna().sum())
-    assert cov == {"compositional": N_MATERIALS - no_formula, "structural": 171,
+    assert cov == {"compositional": N_MATERIALS - no_formula, "structural": 187,
                    "molecular": len(pd.read_csv(rd.REPEAT_UNITS)) + int((LIQUIDS.smiles.notna() & (LIQUIDS.formula != "Hg")).sum())}
     d = descriptors(release)
     no_comp = {n for n, (_, doc) in d.items() if "unavailable" in doc["compositional"]}

@@ -48,7 +48,7 @@ REF_WL_NM = 633.0
 FP_BITS = 512
 # release family order (build_release.py): a material in two tables belongs to the first
 FAMILY_ORDER = ["oxides_50", "batch2_31", "batch3b_4", "pure_elements_50", "nitrides", "polymers", "inorganic3", "halides",
-                "chalcogenides", "liquids"]
+                "chalcogenides", "liquids", "semiconductors"]
 COMP_PROPS = ["atomic_mass", "atomic_number", "atomic_radius", "electronegativity_pauling", "group", "mendeleev_number", "period"]
 COMP_STATS = ["min", "max", "mean", "range", "mean_abs_deviation"]
 COMP_SCALARS = ["n_elements", "atoms_per_formula_unit", "stoichiometry_l2_norm", "stoichiometry_l3_norm"]
@@ -89,15 +89,20 @@ def _selection_paths():
         "batch2_31": {m["name"]: m["ri_axes"][0]["data_path"] for m in MATERIALS_31 if m.get("ri_axes")},
         "batch3b_4": elements, "pure_elements_50": elements,
         **{fam: from_json(f"step1_selections_{fam}.json")
-           for fam in ["nitrides", "polymers", "inorganic3", "halides", "chalcogenides", "liquids"]},
+           for fam in ["nitrides", "polymers", "inorganic3", "halides", "chalcogenides", "liquids", "semiconductors"]},
     }
+
+
+def release_families(release_dir):
+    """FAMILY_ORDER restricted to the families this release has (an older release predates later families)."""
+    return [f for f in FAMILY_ORDER if (Path(release_dir) / "family_tables" / f"{f}.csv").exists()]
 
 
 def primary_pages(release_dir):
     """material name -> (family, primary data_path). A material in two family tables belongs to the first."""
     sel = _selection_paths()
     out = {}
-    for fam in FAMILY_ORDER:
+    for fam in release_families(release_dir):
         for name in pd.read_csv(release_dir / "family_tables" / f"{fam}.csv")["name"]:
             if name not in out:
                 out[name] = (fam, sel[fam].get(name))
@@ -226,7 +231,7 @@ def check(df, release_dir):
     primary dataset, exactly for formula pages). Returns the worst relative deviation; stops on a real disagreement."""
     worst = 0.0
     seen = set()
-    for fam in FAMILY_ORDER:
+    for fam in release_families(release_dir):
         t = pd.read_csv(Path(release_dir) / "family_tables" / f"{fam}.csv")
         if "n_633" not in t:
             continue

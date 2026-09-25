@@ -1,0 +1,20 @@
+{
+  "family": "semiconductor",
+  "inserted": {
+    "materials": 16,
+    "physical_properties": 80,
+    "optical_dispersion": 57256,
+    "sources": 38
+  },
+  "unchanged": {
+    "materials": 0,
+    "physical_properties": 0,
+    "optical_dispersion": 0
+  },
+  "conflicts": [],
+  "skipped": [],
+  "warnings": [],
+  "notes": [],
+  "deferred": [],
+  "collapsed": []
+}

@@ -20,9 +20,10 @@ NEGATIVE_K_ALLOWED = {  # (material name, dataset_label) -> most negative k acce
     ("Copper(I) oxide", "cuprite | Querry1985"): -0.03,
     ("Hematite", "hematite | Querry1985 | o-ray"): -0.15,
     ("Micro resist ma-N 1407 (negative resist)", "Sarkar2019"): -0.03,
+    ("Gallium phosphide", "Jellison1992"): -0.003,  # transparent below the gap: noise around k = 0 (500-815 nm)
 }
 FAMILY_WRAPPERS = {"nitride": "load_nitrides_db", "polymer": "load_polymers_db", "inorganic3": "load_inorganic3_db", "halide": "load_halides_db",
-                   "chalcogenide": "load_chalcogenides_db", "liquid": "load_liquids_db"}
+                   "chalcogenide": "load_chalcogenides_db", "liquid": "load_liquids_db", "semiconductor": "load_semiconductors_db"}
 
 
 def optical_violations(conn):
@@ -56,7 +57,7 @@ def family_dbs(tmp_path_factory):
     return dbs
 
 
-@pytest.mark.parametrize("fam", ["oxide", "nitride", "polymer", "inorganic3", "halide", "chalcogenide", "liquid"])
+@pytest.mark.parametrize("fam", ["oxide", "nitride", "polymer", "inorganic3", "halide", "chalcogenide", "liquid", "semiconductor"])
 def test_family_has_no_floored_nonphysical_or_unexplained_negative_optical_rows(family_dbs, fam):
     conn = sqlite3.connect(f"{Path(family_dbs[fam]).as_uri()}?mode=ro", uri=True)
     assert conn.execute("SELECT COUNT(*) FROM optical_dispersion").fetchone()[0] > 1000

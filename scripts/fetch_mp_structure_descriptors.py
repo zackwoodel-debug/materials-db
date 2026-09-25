@@ -19,7 +19,7 @@ import pandas as pd
 
 _ROOT = Path(__file__).resolve().parents[1]
 FAMILY_CSVS = ["oxides_50.csv", "batch2_31.csv", "batch3b_4.csv", "pure_elements_50.csv", "nitrides.csv", "polymers.csv",
-               "inorganic3.csv", "halides.csv", "chalcogenides.csv"]
+               "inorganic3.csv", "halides.csv", "chalcogenides.csv", "semiconductors.csv"]
 OUT = _ROOT / "data" / "descriptors" / "mp_structural.json"
 FIELDS = ["material_id", "formula_pretty", "symmetry", "structure", "nsites", "nelements", "volume", "density", "density_atomic",
           "energy_above_hull", "formation_energy_per_atom", "band_gap", "is_gap_direct", "is_metal", "is_magnetic", "ordering",

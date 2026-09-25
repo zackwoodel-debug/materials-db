@@ -38,8 +38,13 @@ Generic loader: scripts/load_family_db.py (--family/--catalog/--selections/--db/
    targets n,k at 633 nm + density; features = compositional/structural/molecular descriptors; unscaled; no target leaks into
    features). The legacy generate_ml_training_set.py / ML_feature_matrix.parquet stay with the frozen benchmark DB.
    Regenerate after every release build; tests/test_ml_release_set.py checks it matches the newest local release.
-9. Negative k in the release: 496 rows in 3 datasets (Cu2O Querry and Fe2O3 Querry-o far-IR tails, ma-N 1407 Sarkar 460-1532 nm).
-   Kept as the source gives them; build_release validation does not flag k < 0. Decide: flag, exclude, or document.
+9. Negative k: already decided before this note. build_release.NEGATIVE_K_ALLOWED (kept equal to tests/test_family_optical_sanity.py)
+   allow-lists noise around k = 0 per dataset with a floor: Cu2O Querry, Fe2O3 Querry-o, ma-N 1407 Sarkar, and now GaP Jellison1992
+   (-0.003, 500-815 nm). The ML set flags them (meta_primary_has_negative_k). Nothing to do.
+10. Semiconductor family (scripts/*semiconductor*): 16 materials, 84 datasets. OPEN QUESTION: the primary-dataset rule (widest
+   ambient page covering 633 nm) picks Adachi 1989's model fit for most III-Vs, which is 2-12% off the Aspnes & Studna 1983
+   ellipsometry at 633 nm (InSb 11.6%, InP 6.1%, GaAs 3.8%). Both are loaded; only the primary (family-table n_633, ML target)
+   is affected. Decide whether measured data should outrank a wider model fit (would apply to every family). Ge2Sb2Te5 deferred.
 
 ## FOLLOW-UP (logged, NOT started): graphene / 2D carbon as its own family -- materialclass must NOT be 'polymer'
 - RI.info main/C, verified read-only: monolayer graphene = Weber 2010 (0.21-1.0 um, exfoliated flake, 3.4 A, on Si/98 nm SiO2), Song 2018 "Graphene"

@@ -1,0 +1,2109 @@
+{
+ "candidates": [
+  {
+   "key": "AlAs",
+   "name": "Aluminium arsenide",
+   "formula": "AlAs",
+   "book": "AlAs",
+   "shelf": "main",
+   "note": "Gadras 2025 is AlxGa1-xAs with x = 1.0 at 600 degC (temperature on the rows)",
+   "materialclass": "III-V semiconductor",
+   "page_polymorph": {
+    "Fern": null,
+    "Gadras": null,
+    "Rakic": null
+   },
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = widest span covering 633 nm at ambient temperature",
+   "status": "SELECTED_BY_USER",
+   "n_pages": 3,
+   "n_papers": 3,
+   "papers": [
+    "Fern and Onton 1971: n 0.56\u20132.2 \u00b5m",
+    "Gadras et al. 2025: n,k 0.450\u20131.40 \u00b5m",
+    "Raki\u0107 and Majewski 1996: n,k 0.221\u20132.48 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Fern",
+     "title": "Fern and Onton 1971: n 0.56\u20132.2 \u00b5m",
+     "paper": "Fern and Onton 1971: n 0.56\u20132.2 \u00b5m",
+     "data_path": "main/AlAs/nk/Fern.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.56,
+      2.2
+     ],
+     "single_point": false,
+     "comments": "",
+     "conditions": ""
+    },
+    {
+     "page": "Gadras",
+     "title": "Gadras et al. 2025: n,k 0.450\u20131.40 \u00b5m; 600 \u00b0C",
+     "paper": "Gadras et al. 2025: n,k 0.450\u20131.40 \u00b5m",
+     "data_path": "main/AlAs/nk/Gadras.yml",
+     "temperature_c": 599.85,
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.4502291,
+      1.399642
+     ],
+     "single_point": false,
+     "comments": "AlxGa1-xAs; x=1.0; 600 \u00b0C\n",
+     "conditions": "{'temperature': 873}"
+    },
+    {
+     "page": "Rakic",
+     "title": "Raki\u0107 and Majewski 1996: n,k 0.221\u20132.48 \u00b5m",
+     "paper": "Raki\u0107 and Majewski 1996: n,k 0.221\u20132.48 \u00b5m",
+     "data_path": "main/AlAs/nk/Rakic.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.2214,
+      2.4797
+     ],
+     "single_point": false,
+     "comments": "",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "AlAs (Aluminium arsenide)"
+  },
+  {
+   "key": "AlSb",
+   "name": "Aluminium antimonide",
+   "formula": "AlSb",
+   "book": "AlSb",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "III-V semiconductor",
+   "page_polymorph": {
+    "Zollner": null,
+    "Adachi": null,
+    "Djurisic": null
+   },
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = widest span covering 633 nm at ambient temperature",
+   "status": "SELECTED_BY_USER",
+   "n_pages": 3,
+   "n_papers": 3,
+   "papers": [
+    "Adachi 1990: n,k 0.207\u201312.4 \u00b5m",
+    "Djuri\u0161i\u0107 et al. 2000: n,k 0.207\u201312.4 \u00b5m",
+    "Zollner et al. 1989: n,k 0.214\u20130.886 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Zollner",
+     "title": "Zollner et al. 1989: n,k 0.214\u20130.886 \u00b5m",
+     "paper": "Zollner et al. 1989: n,k 0.214\u20130.886 \u00b5m",
+     "data_path": "main/AlSb/nk/Zollner.yml",
+     "temperature_c": 26.85,
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.2138,
+      0.8856
+     ],
+     "single_point": false,
+     "comments": "300 K\n",
+     "conditions": ""
+    },
+    {
+     "page": "Adachi",
+     "title": "Adachi 1990: n,k 0.207\u201312.4 \u00b5m",
+     "paper": "Adachi 1990: n,k 0.207\u201312.4 \u00b5m",
+     "data_path": "main/AlSb/nk/Adachi.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.20664,
+      12.398
+     ],
+     "single_point": false,
+     "comments": "",
+     "conditions": ""
+    },
+    {
+     "page": "Djurisic",
+     "title": "Djuri\u0161i\u0107 et al. 2000: n,k 0.207\u201312.4 \u00b5m",
+     "paper": "Djuri\u0161i\u0107 et al. 2000: n,k 0.207\u201312.4 \u00b5m",
+     "data_path": "main/AlSb/nk/Djurisic.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.20664,
+      12.398
+     ],
+     "single_point": false,
+     "comments": "",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "AlSb (Aluminium antimonide)"
+  },
+  {
+   "key": "BP",
+   "name": "Boron phosphide",
+   "formula": "BP",
+   "book": "BP",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "III-V semiconductor",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 1,
+   "n_papers": 1,
+   "papers": [
+    "Wettling and Windscheif 1984: n 0.45\u20130.63 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Wettling",
+     "title": "Wettling and Windscheif 1984: n 0.45\u20130.63 \u00b5m",
+     "paper": "Wettling and Windscheif 1984: n 0.45\u20130.63 \u00b5m",
+     "data_path": "main/BP/nk/Wettling.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.4545,
+      0.6328
+     ],
+     "single_point": false,
+     "comments": "Room temperature\n",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "BP (Boron phosphide)"
+  },
+  {
+   "key": "GaAs",
+   "name": "Gallium arsenide",
+   "formula": "GaAs",
+   "book": "GaAs",
+   "shelf": "main",
+   "note": "Franta 2026 is a 300/370/440 K series; Gadras 2025 is AlxGa1-xAs with x = 0.0 at 600 degC",
+   "materialclass": "III-V semiconductor",
+   "page_polymorph": {
+    "Aspnes": null,
+    "Franta-300K": null,
+    "Franta-370K": null,
+    "Franta-440K": null,
+    "Gadras": null,
+    "Perner": null,
+    "Papatryfonos": null,
+    "Skauli": null,
+    "Jellison": null,
+    "Kachare": null,
+    "Adachi": null,
+    "Rakic": null,
+    "Ozaki": null
+   },
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = widest span covering 633 nm at ambient temperature",
+   "status": "SELECTED_BY_USER",
+   "n_pages": 13,
+   "n_papers": 13,
+   "papers": [
+    "Adachi 1989: n,k 0.207\u201312.4 \u00b5m",
+    "Aspnes et al. 1986: n,k 0.207\u20130.827 \u00b5m",
+    "Franta et al. 2026: n,k 0.895\u2013400 \u00b5m",
+    "Franta et al. 2026: n,k 0.922\u2013400 \u00b5m",
+    "Franta et al. 2026: n,k 0.952\u2013400 \u00b5m",
+    "Gadras et al. 2025: n,k 0.450\u20131.40 \u00b5m",
+    "Jellison 1992: n,k 0.234\u20130.840 \u00b5m",
+    "Kachare et al. 1976: n 1.4\u201311 \u00b5m",
+    "Ozaki and Adachi 1995: n,k 0.221\u20131.03 \u00b5m",
+    "Papatryfonos et al. 2021: n,k 0.260\u20131.88 \u00b5m",
+    "Perner et al. 2023: n 2.0\u20137.1 \u00b5m",
+    "Raki\u0107 and Majewski 1996: n,k 0.207\u201312.4 \u00b5m",
+    "Skauli et al. 2003: n 0.97\u201317 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Aspnes",
+     "title": "Aspnes et al. 1986: n,k 0.207\u20130.827 \u00b5m",
+     "paper": "Aspnes et al. 1986: n,k 0.207\u20130.827 \u00b5m",
+     "data_path": "main/GaAs/nk/Aspnes.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.2066,
+      0.8266
+     ],
+     "single_point": false,
+     "comments": "Crysal orientation: ; Doping: 1.7\u00d71017 cm-3, n; Room temperature\n",
+     "conditions": ""
+    },
+    {
+     "page": "Franta-300K",
+     "title": "Franta et al. 2026: n,k 0.895\u2013400 \u00b5m; 300 K",
+     "paper": "Franta et al. 2026: n,k 0.895\u2013400 \u00b5m",
+     "data_path": "main/GaAs/nk/Franta-300K.yml",
+     "temperature_c": 26.85,
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.895234,
+      399.638
+     ],
+     "single_point": false,
+     "comments": "Undoped GaAs.\nHeterogenous data processing combining ellipsometric and spectrophotometric measurements with previously published refractive index.\nTemperature 300 K.\n",
+     "conditions": "{'temperature': 300}"
+    },
+    {
+     "page": "Franta-370K",
+     "title": "Franta et al. 2026: n,k 0.922\u2013400 \u00b5m; 370 K",
+     "paper": "Franta et al. 2026: n,k 0.922\u2013400 \u00b5m",
+     "data_path": "main/GaAs/nk/Franta-370K.yml",
+     "temperature_c": 96.85,
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.922322,
+      399.638
+     ],
+     "single_point": false,
+     "comments": "Undoped GaAs.\nHeterogenous data processing combining ellipsometric and spectrophotometric measurements with previously published refractive index.\nTemperature 370 K.\n",
+     "conditions": "{'temperature': 370}"
+    },
+    {
+     "page": "Franta-440K",
+     "title": "Franta et al. 2026: n,k 0.952\u2013400 \u00b5m; 440 K",
+     "paper": "Franta et al. 2026: n,k 0.952\u2013400 \u00b5m",
+     "data_path": "main/GaAs/nk/Franta-440K.yml",
+     "temperature_c": 166.85,
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.952058,
+      399.638
+     ],
+     "single_point": false,
+     "comments": "Undoped GaAs.\nHeterogenous data processing combining ellipsometric and spectrophotometric measurements with previously published refractive index.\nTemperature 440 K.\n",
+     "conditions": "{'temperature': 440}"
+    },
+    {
+     "page": "Gadras",
+     "title": "Gadras et al. 2025: n,k 0.450\u20131.40 \u00b5m; 600 \u00b0C",
+     "paper": "Gadras et al. 2025: n,k 0.450\u20131.40 \u00b5m",
+     "data_path": "main/GaAs/nk/Gadras.yml",
+     "temperature_c": 599.85,
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.4502291,
+      1.399642
+     ],
+     "single_point": false,
+     "comments": "AlxGa1-xAs; x=0.0; 600 \u00b0C\n",
+     "conditions": "{'temperature': 873}"
+    },
+    {
+     "page": "Perner",
+     "title": "Perner et al. 2023: n 2.0\u20137.1 \u00b5m",
+     "paper": "Perner et al. 2023: n 2.0\u20137.1 \u00b5m",
+     "data_path": "main/GaAs/nk/Perner.yml",
+     "temperature_c": 21.85,
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      2.0,
+      7.1
+     ],
+     "single_point": false,
+     "comments": "Relative standard uncertainty \u22643.3\u00d710-4 over whole range. Optical measurements at 2.21 mbar and 22 \u00b0C.\n",
+     "conditions": "{'temperature': 295}"
+    },
+    {
+     "page": "Papatryfonos",
+     "title": "Papatryfonos et al. 2021: n,k 0.260\u20131.88 \u00b5m",
+     "paper": "Papatryfonos et al. 2021: n,k 0.260\u20131.88 \u00b5m",
+     "data_path": "main/GaAs/nk/Papatryfonos.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.26049,
+      1.87868
+     ],
+     "single_point": false,
+     "comments": "",
+     "conditions": ""
+    },
+    {
+     "page": "Skauli",
+     "title": "Skauli et al. 2003: n 0.97\u201317 \u00b5m",
+     "paper": "Skauli et al. 2003: n 0.97\u201317 \u00b5m",
+     "data_path": "main/GaAs/nk/Skauli.yml",
+     "temperature_c": 22.0,
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.97,
+      17.0
+     ],
+     "single_point": false,
+     "comments": "22 \u00b0C. See the original publication for temperature dependence of refractive index.\n",
+     "conditions": ""
+    },
+    {
+     "page": "Jellison",
+     "title": "Jellison 1992: n,k 0.234\u20130.840 \u00b5m",
+     "paper": "Jellison 1992: n,k 0.234\u20130.840 \u00b5m",
+     "data_path": "main/GaAs/nk/Jellison.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.234,
+      0.84
+     ],
+     "single_point": false,
+     "comments": "Crysal orientation: ; Room temperature\n",
+     "conditions": ""
+    },
+    {
+     "page": "Kachare",
+     "title": "Kachare et al. 1976: n 1.4\u201311 \u00b5m",
+     "paper": "Kachare et al. 1976: n 1.4\u201311 \u00b5m",
+     "data_path": "main/GaAs/nk/Kachare.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      1.4,
+      11.0
+     ],
+     "single_point": false,
+     "comments": "Room temperature\n",
+     "conditions": ""
+    },
+    {
+     "page": "Adachi",
+     "title": "Adachi 1989: n,k 0.207\u201312.4 \u00b5m",
+     "paper": "Adachi 1989: n,k 0.207\u201312.4 \u00b5m",
+     "data_path": "main/GaAs/nk/Adachi.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.20664,
+      12.398
+     ],
+     "single_point": false,
+     "comments": "",
+     "conditions": ""
+    },
+    {
+     "page": "Rakic",
+     "title": "Raki\u0107 and Majewski 1996: n,k 0.207\u201312.4 \u00b5m",
+     "paper": "Raki\u0107 and Majewski 1996: n,k 0.207\u201312.4 \u00b5m",
+     "data_path": "main/GaAs/nk/Rakic.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.20664,
+      12.398
+     ],
+     "single_point": false,
+     "comments": "",
+     "conditions": ""
+    },
+    {
+     "page": "Ozaki",
+     "title": "Ozaki and Adachi 1995: n,k 0.221\u20131.03 \u00b5m",
+     "paper": "Ozaki and Adachi 1995: n,k 0.221\u20131.03 \u00b5m",
+     "data_path": "main/GaAs/nk/Ozaki.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.2214,
+      1.0332
+     ],
+     "single_point": false,
+     "comments": "Fit of author's experimental data to a simplified model of the interband transitions (MDF). Room Temperature.\n",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "GaAs (Gallium arsenide)"
+  },
+  {
+   "key": "GaP",
+   "name": "Gallium phosphide",
+   "formula": "GaP",
+   "book": "GaP",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "III-V semiconductor",
+   "page_polymorph": {
+    "Aspnes": null,
+    "Khmelevskaia": null,
+    "Jellison": null,
+    "Parsons": null,
+    "Bond": null,
+    "Adachi": null
+   },
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = widest span covering 633 nm at ambient temperature",
+   "status": "SELECTED_BY_USER",
+   "n_pages": 6,
+   "n_papers": 6,
+   "papers": [
+    "Adachi 1989: n,k 0.207\u201312.4 \u00b5m",
+    "Aspnes and Studna 1983: n,k 0.21\u20130.83 \u00b5m",
+    "Bond 1965: n 0.5\u20134.0 \u00b5m",
+    "Jellison 1992: n,k 0.234\u20130.840 \u00b5m",
+    "Khmelevskaia et al. 2021: n 0.235-1.70, k 0.235\u20130.686 \u00b5m",
+    "Parsons and Coleman 1971: n 54.4\u2013366 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Aspnes",
+     "title": "Aspnes and Studna 1983: n,k 0.21\u20130.83 \u00b5m",
+     "paper": "Aspnes and Studna 1983: n,k 0.21\u20130.83 \u00b5m",
+     "data_path": "main/GaP/nk/Aspnes.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.2066,
+      0.8266
+     ],
+     "single_point": false,
+     "comments": "Crysal orientation: ; Undoped; Room temperature\n",
+     "conditions": ""
+    },
+    {
+     "page": "Khmelevskaia",
+     "title": "Khmelevskaia et al. 2021: n 0.235-1.70, k 0.235\u20130.686 \u00b5m",
+     "paper": "Khmelevskaia et al. 2021: n 0.235-1.70, k 0.235\u20130.686 \u00b5m",
+     "data_path": "main/GaP/nk/Khmelevskaia.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.235,
+      1.7
+     ],
+     "single_point": false,
+     "comments": "",
+     "conditions": ""
+    },
+    {
+     "page": "Jellison",
+     "title": "Jellison 1992: n,k 0.234\u20130.840 \u00b5m",
+     "paper": "Jellison 1992: n,k 0.234\u20130.840 \u00b5m",
+     "data_path": "main/GaP/nk/Jellison.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.234,
+      0.84
+     ],
+     "single_point": false,
+     "comments": "Crysal orientation: ; Room temperature\n",
+     "conditions": ""
+    },
+    {
+     "page": "Parsons",
+     "title": "Parsons and Coleman 1971: n 54.4\u2013366 \u00b5m",
+     "paper": "Parsons and Coleman 1971: n 54.4\u2013366 \u00b5m",
+     "data_path": "main/GaP/nk/Parsons.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "tabulated",
+     "span_um": [
+      54.369,
+      366.03
+     ],
+     "single_point": false,
+     "comments": "Room temperature\n",
+     "conditions": ""
+    },
+    {
+     "page": "Bond",
+     "title": "Bond 1965: n 0.5\u20134.0 \u00b5m",
+     "paper": "Bond 1965: n 0.5\u20134.0 \u00b5m",
+     "data_path": "main/GaP/nk/Bond.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.5,
+      4.0
+     ],
+     "single_point": false,
+     "comments": "Room temperature.\n",
+     "conditions": ""
+    },
+    {
+     "page": "Adachi",
+     "title": "Adachi 1989: n,k 0.207\u201312.4 \u00b5m",
+     "paper": "Adachi 1989: n,k 0.207\u201312.4 \u00b5m",
+     "data_path": "main/GaP/nk/Adachi.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.20664,
+      12.398
+     ],
+     "single_point": false,
+     "comments": "",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "GaP (Gallium phosphide)"
+  },
+  {
+   "key": "GaSb",
+   "name": "Gallium antimonide",
+   "formula": "GaSb",
+   "book": "GaSb",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "III-V semiconductor",
+   "page_polymorph": {
+    "Aspnes": null,
+    "Adachi": null,
+    "Djurisic": null
+   },
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = widest span covering 633 nm at ambient temperature",
+   "status": "SELECTED_BY_USER",
+   "n_pages": 4,
+   "n_papers": 3,
+   "papers": [
+    "Adachi 1989: n,k 0.207\u201312.4 \u00b5m",
+    "Aspnes and Studna 1983: n,k 0.207\u20130.827 \u00b5m",
+    "Djuri\u0161i\u0107 et al. 2000: n,k 0.207\u20132.48 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Aspnes",
+     "title": "Aspnes and Studna 1983: n,k 0.207\u20130.827 \u00b5m",
+     "paper": "Aspnes and Studna 1983: n,k 0.207\u20130.827 \u00b5m",
+     "data_path": "main/GaSb/nk/Aspnes.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.2066,
+      0.8266
+     ],
+     "single_point": false,
+     "comments": "Crysal orientation: ; Doping: 1.5\u00d71017 cm-3, p; Room temperature\n",
+     "conditions": ""
+    },
+    {
+     "page": "Ferrini",
+     "title": "Ferrini et al. 1998: n,k 0.207\u20132.48 \u00b5m",
+     "paper": "Ferrini et al. 1998: n,k 0.207\u20132.48 \u00b5m",
+     "data_path": "other/semiconductor alloys/AlSb-GaSb/nk/Ferrini-0.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [
+      "Thin film"
+     ],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.207,
+      2.48
+     ],
+     "single_point": false,
+     "comments": "AlxGa1\u2212xSb, x = 0 (GaAs). Thin film grown by molecular beam epitaxy on a GaSb substrate.\n",
+     "conditions": ""
+    },
+    {
+     "page": "Adachi",
+     "title": "Adachi 1989: n,k 0.207\u201312.4 \u00b5m",
+     "paper": "Adachi 1989: n,k 0.207\u201312.4 \u00b5m",
+     "data_path": "main/GaSb/nk/Adachi.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.20664,
+      12.398
+     ],
+     "single_point": false,
+     "comments": "",
+     "conditions": ""
+    },
+    {
+     "page": "Djurisic",
+     "title": "Djuri\u0161i\u0107 et al. 2000: n,k 0.207\u20132.48 \u00b5m",
+     "paper": "Djuri\u0161i\u0107 et al. 2000: n,k 0.207\u20132.48 \u00b5m",
+     "data_path": "main/GaSb/nk/Djurisic.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.20664,
+      2.4797
+     ],
+     "single_point": false,
+     "comments": "",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [
+    "Ferrini"
+   ],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "GaSb (Gallium antimonide)"
+  },
+  {
+   "key": "InAs",
+   "name": "Indium arsenide",
+   "formula": "InAs",
+   "book": "InAs",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "III-V semiconductor",
+   "page_polymorph": {
+    "Aspnes": null,
+    "Lorimor": null,
+    "Adachi": null
+   },
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = widest span covering 633 nm at ambient temperature",
+   "status": "SELECTED_BY_USER",
+   "n_pages": 3,
+   "n_papers": 3,
+   "papers": [
+    "Adachi 1989: n,k 0.207\u201312.4 \u00b5m",
+    "Aspnes and Studna 1983: n,k 0.21\u20130.83 \u00b5m",
+    "Lorimor and Spitzer 1965: n 3.7\u201331.3 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Aspnes",
+     "title": "Aspnes and Studna 1983: n,k 0.21\u20130.83 \u00b5m",
+     "paper": "Aspnes and Studna 1983: n,k 0.21\u20130.83 \u00b5m",
+     "data_path": "main/InAs/nk/Aspnes.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.2066,
+      0.8266
+     ],
+     "single_point": false,
+     "comments": "Crysal orientation: ; Doping: 2.7\u00d71016 cm-3, n; Room temperature\n",
+     "conditions": ""
+    },
+    {
+     "page": "Lorimor",
+     "title": "Lorimor and Spitzer 1965: n 3.7\u201331.3 \u00b5m",
+     "paper": "Lorimor and Spitzer 1965: n 3.7\u201331.3 \u00b5m",
+     "data_path": "main/InAs/nk/Lorimor.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      3.7,
+      31.3
+     ],
+     "single_point": false,
+     "comments": "Room temperature\n",
+     "conditions": ""
+    },
+    {
+     "page": "Adachi",
+     "title": "Adachi 1989: n,k 0.207\u201312.4 \u00b5m",
+     "paper": "Adachi 1989: n,k 0.207\u201312.4 \u00b5m",
+     "data_path": "main/InAs/nk/Adachi.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.20664,
+      12.398
+     ],
+     "single_point": false,
+     "comments": "",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "InAs (Indium arsenide)"
+  },
+  {
+   "key": "InP",
+   "name": "Indium phosphide",
+   "formula": "InP",
+   "book": "InP",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "III-V semiconductor",
+   "page_polymorph": {
+    "Aspnes": null,
+    "Panah": null,
+    "Pettit": null,
+    "Adachi": null
+   },
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = widest span covering 633 nm at ambient temperature",
+   "status": "SELECTED_BY_USER",
+   "n_pages": 4,
+   "n_papers": 4,
+   "papers": [
+    "Adachi 1989: n,k 0.207\u201312.4 \u00b5m",
+    "Aspnes and Studna 1983: n,k 0.21\u20130.83 \u00b5m",
+    "Panah et al. 2016: n,k 5.0\u201330 \u00b5m",
+    "Pettit and Turner 1965: n 0.95\u201310 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Aspnes",
+     "title": "Aspnes and Studna 1983: n,k 0.21\u20130.83 \u00b5m",
+     "paper": "Aspnes and Studna 1983: n,k 0.21\u20130.83 \u00b5m",
+     "data_path": "main/InP/nk/Aspnes.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.2066,
+      0.8266
+     ],
+     "single_point": false,
+     "comments": "Crysal orientation: ; Undoped; Room temperature\n",
+     "conditions": ""
+    },
+    {
+     "page": "Panah",
+     "title": "Panah et al. 2016: n,k 5.0\u201330 \u00b5m",
+     "paper": "Panah et al. 2016: n,k 5.0\u201330 \u00b5m",
+     "data_path": "main/InP/nk/Panah.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      5.0,
+      30.0
+     ],
+     "single_point": false,
+     "comments": "Undoped indium phosphide (InP) substrate.\n",
+     "conditions": ""
+    },
+    {
+     "page": "Pettit",
+     "title": "Pettit and Turner 1965: n 0.95\u201310 \u00b5m",
+     "paper": "Pettit and Turner 1965: n 0.95\u201310 \u00b5m",
+     "data_path": "main/InP/nk/Pettit.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.95,
+      10.0
+     ],
+     "single_point": false,
+     "comments": "Room temperature\n",
+     "conditions": ""
+    },
+    {
+     "page": "Adachi",
+     "title": "Adachi 1989: n,k 0.207\u201312.4 \u00b5m",
+     "paper": "Adachi 1989: n,k 0.207\u201312.4 \u00b5m",
+     "data_path": "main/InP/nk/Adachi.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.20664,
+      12.398
+     ],
+     "single_point": false,
+     "comments": "",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "InP (Indium phosphide)"
+  },
+  {
+   "key": "InSb",
+   "name": "Indium antimonide",
+   "formula": "InSb",
+   "book": "InSb",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "III-V semiconductor",
+   "page_polymorph": {
+    "Aspnes": null,
+    "Adachi": null,
+    "Djurisic": null
+   },
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = widest span covering 633 nm at ambient temperature",
+   "status": "SELECTED_BY_USER",
+   "n_pages": 3,
+   "n_papers": 3,
+   "papers": [
+    "Adachi 1989: n,k 0.207\u201312.4 \u00b5m",
+    "Aspnes and Studna 1983: n,k 0.207\u20130.827 \u00b5m",
+    "Djuri\u0161i\u0107 et al. 2000: n,k 0.207\u20130.827 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Aspnes",
+     "title": "Aspnes and Studna 1983: n,k 0.207\u20130.827 \u00b5m",
+     "paper": "Aspnes and Studna 1983: n,k 0.207\u20130.827 \u00b5m",
+     "data_path": "main/InSb/nk/Aspnes.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.2066,
+      0.8266
+     ],
+     "single_point": false,
+     "comments": "Crysal orientation: ; Doping: 8\u00d71015 cm-3, n; Room temperature\n",
+     "conditions": ""
+    },
+    {
+     "page": "Adachi",
+     "title": "Adachi 1989: n,k 0.207\u201312.4 \u00b5m",
+     "paper": "Adachi 1989: n,k 0.207\u201312.4 \u00b5m",
+     "data_path": "main/InSb/nk/Adachi.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.20664,
+      12.398
+     ],
+     "single_point": false,
+     "comments": "",
+     "conditions": ""
+    },
+    {
+     "page": "Djurisic",
+     "title": "Djuri\u0161i\u0107 et al. 2000: n,k 0.207\u20130.827 \u00b5m",
+     "paper": "Djuri\u0161i\u0107 et al. 2000: n,k 0.207\u20130.827 \u00b5m",
+     "data_path": "main/InSb/nk/Djurisic.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.20664,
+      1.2398
+     ],
+     "single_point": false,
+     "comments": "",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "InSb (Indium antimonide)"
+  },
+  {
+   "key": "CdTe",
+   "name": "Cadmium telluride",
+   "formula": "CdTe",
+   "book": "CdTe",
+   "shelf": "main",
+   "note": "DeBell 1979 is a 300/80/20 K series",
+   "materialclass": "II-VI semiconductor",
+   "page_polymorph": {
+    "Marple": null,
+    "DeBell-300K": null,
+    "DeBell-80K": null,
+    "DeBell-20K": null,
+    "Adachi": null
+   },
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = widest span covering 633 nm at ambient temperature",
+   "status": "SELECTED_BY_USER",
+   "n_pages": 6,
+   "n_papers": 3,
+   "papers": [
+    "Adachi et al. 1993: n,k 0.221\u20131.13 \u00b5m",
+    "DeBell et al. 1979: n 6\u201322 \u00b5m",
+    "Marple 1964: n 0.86\u20132.5 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Marple",
+     "title": "Marple 1964: n 0.86\u20132.5 \u00b5m",
+     "paper": "Marple 1964: n 0.86\u20132.5 \u00b5m",
+     "data_path": "main/CdTe/nk/Marple.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.86,
+      2.5
+     ],
+     "single_point": false,
+     "comments": "Room temperature\n",
+     "conditions": ""
+    },
+    {
+     "page": "Treharne",
+     "title": "Treharne et al. 2011: n,k 0.3\u20131.5 \u00b5m",
+     "paper": "Treharne et al. 2011: n,k 0.3\u20131.5 \u00b5m",
+     "data_path": "main/CdTe/nk/Treharne.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [
+      "a-l",
+      "e-a",
+      "film",
+      "i-o"
+     ],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.30141754,
+      1.4979382
+     ],
+     "single_point": false,
+     "comments": "A CdTe film was deposited on to a soda-lime glass substrate using RF magnetron sputtering. A variable-angle ellipsometer was used to take amplitude and phase change measurements. The refractive index and extinction coefficient was extracted from a multi-oscillator model fit to the ellipsometry data, as a function of wavelength, from 300 to 1500 nm\n",
+     "conditions": ""
+    },
+    {
+     "page": "DeBell-300K",
+     "title": "DeBell et al. 1979: n 6\u201322 \u00b5m; 300 K",
+     "paper": "DeBell et al. 1979: n 6\u201322 \u00b5m",
+     "data_path": "main/CdTe/nk/DeBell-300K.yml",
+     "temperature_c": 26.85,
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      6.0,
+      22.0
+     ],
+     "single_point": false,
+     "comments": "300 K (26.85 \u00b0C)\n",
+     "conditions": ""
+    },
+    {
+     "page": "DeBell-80K",
+     "title": "DeBell et al. 1979: n 6\u201322 \u00b5m; 80 K",
+     "paper": "DeBell et al. 1979: n 6\u201322 \u00b5m",
+     "data_path": "main/CdTe/nk/DeBell-80K.yml",
+     "temperature_c": -193.15,
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      6.0,
+      22.0
+     ],
+     "single_point": false,
+     "comments": "80 K (-193.1 \u00b0C)\n",
+     "conditions": ""
+    },
+    {
+     "page": "DeBell-20K",
+     "title": "DeBell et al. 1979: n 6\u201322 \u00b5m; 20 K",
+     "paper": "DeBell et al. 1979: n 6\u201322 \u00b5m",
+     "data_path": "main/CdTe/nk/DeBell-20K.yml",
+     "temperature_c": -253.15,
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      6.0,
+      22.0
+     ],
+     "single_point": false,
+     "comments": "20 K (-253.1 \u00b0C)\n",
+     "conditions": ""
+    },
+    {
+     "page": "Adachi",
+     "title": "Adachi et al. 1993: n,k 0.221\u20131.13 \u00b5m",
+     "paper": "Adachi et al. 1993: n,k 0.221\u20131.13 \u00b5m",
+     "data_path": "main/CdTe/nk/Adachi.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.2214,
+      1.1271
+     ],
+     "single_point": false,
+     "comments": "",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [
+    "Treharne"
+   ],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "CdTe (Cadmium telluride)"
+  },
+  {
+   "key": "ZnTe",
+   "name": "Zinc telluride",
+   "formula": "ZnTe",
+   "book": "ZnTe",
+   "shelf": "main",
+   "note": null,
+   "materialclass": "II-VI semiconductor",
+   "page_polymorph": {
+    "Marple": null,
+    "Li": null,
+    "Sato": null
+   },
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = widest span covering 633 nm at ambient temperature",
+   "status": "SELECTED_BY_USER",
+   "n_pages": 3,
+   "n_papers": 3,
+   "papers": [
+    "Li 1984: n 0.55\u201330 \u00b5m",
+    "Marple 1964: n 0.58\u20132.5 \u00b5m",
+    "Sato and Adachi 1993: n,k 0.221\u20130.827 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Marple",
+     "title": "Marple 1964: n 0.58\u20132.5 \u00b5m",
+     "paper": "Marple 1964: n 0.58\u20132.5 \u00b5m",
+     "data_path": "main/ZnTe/nk/Marple.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.58,
+      2.5
+     ],
+     "single_point": false,
+     "comments": "Room temperature\n",
+     "conditions": ""
+    },
+    {
+     "page": "Li",
+     "title": "Li 1984: n 0.55\u201330 \u00b5m;",
+     "paper": "Li 1984: n 0.55\u201330 \u00b5m",
+     "data_path": "main/ZnTe/nk/Li.yml",
+     "temperature_c": 19.85,
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.55,
+      30.0
+     ],
+     "single_point": false,
+     "comments": "293 K (20 \u00b0C).\n",
+     "conditions": ""
+    },
+    {
+     "page": "Sato",
+     "title": "Sato and Adachi 1993: n,k 0.221\u20130.827 \u00b5m",
+     "paper": "Sato and Adachi 1993: n,k 0.221\u20130.827 \u00b5m",
+     "data_path": "main/ZnTe/nk/Sato.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.2214,
+      0.82656
+     ],
+     "single_point": false,
+     "comments": "Fit of author's experimental data to a simplified model of the interband transitions (MDF). Room Temperature.\n",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "ZnTe (Zinc telluride)"
+  },
+  {
+   "key": "PbTe",
+   "name": "Lead telluride",
+   "formula": "PbTe",
+   "book": "PbTe",
+   "shelf": "main",
+   "note": "one paper, a 300/130/80 K series (its title's range differs per temperature, so the pages are listed)",
+   "materialclass": "IV-VI semiconductor",
+   "page_polymorph": {
+    "Weiting-300K": null,
+    "Weiting-130K": null,
+    "Weiting-80K": null
+   },
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = widest span covering 633 nm at ambient temperature",
+   "status": "SELECTED_BY_USER",
+   "n_pages": 3,
+   "n_papers": 2,
+   "papers": [
+    "Weiting and Yixun 1990: n 4.10\u201312.5 \u00b5m",
+    "Weiting and Yixun 1990: n 5.19\u201312.5 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Weiting-300K",
+     "title": "Weiting and Yixun 1990: n 4.10\u201312.5 \u00b5m; 300 K",
+     "paper": "Weiting and Yixun 1990: n 4.10\u201312.5 \u00b5m",
+     "data_path": "main/PbTe/nk/Weiting-300K.yml",
+     "temperature_c": 26.85,
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      4.099,
+      12.51
+     ],
+     "single_point": false,
+     "comments": "300 K (27 \u00b0C)\n",
+     "conditions": ""
+    },
+    {
+     "page": "Weiting-130K",
+     "title": "Weiting and Yixun 1990: n 5.19\u201312.5 \u00b5m; 130 K",
+     "paper": "Weiting and Yixun 1990: n 5.19\u201312.5 \u00b5m",
+     "data_path": "main/PbTe/nk/Weiting-130K.yml",
+     "temperature_c": -143.15,
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      5.189,
+      12.51
+     ],
+     "single_point": false,
+     "comments": "130 K (-143 \u00b0C)\n",
+     "conditions": ""
+    },
+    {
+     "page": "Weiting-80K",
+     "title": "Weiting and Yixun 1990: n 5.19\u201312.5 \u00b5m; 80 K",
+     "paper": "Weiting and Yixun 1990: n 5.19\u201312.5 \u00b5m",
+     "data_path": "main/PbTe/nk/Weiting-80K.yml",
+     "temperature_c": -193.15,
+     "axis": null,
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      5.189,
+      12.51
+     ],
+     "single_point": false,
+     "comments": "80 K (-193 \u00b0C)\n",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "PbTe (Lead telluride)"
+  },
+  {
+   "key": "CdGeAs2",
+   "name": "Cadmium germanium arsenide",
+   "formula": "CdGeAs2",
+   "book": "CdGeAs2",
+   "shelf": "main",
+   "note": "birefringent",
+   "materialclass": "chalcopyrite semiconductor",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 2,
+   "n_papers": 1,
+   "papers": [
+    "Boyd et al. 1972"
+   ],
+   "datasets": [
+    {
+     "page": "Boyd-o",
+     "title": "Boyd et al. 1972: n(o) 2.4\u201311.5 \u00b5m",
+     "paper": "Boyd et al. 1972",
+     "data_path": "main/CdGeAs2/nk/Boyd-o.yml",
+     "temperature_c": null,
+     "axis": "o-ray",
+     "phase_words": [
+      "Ordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      2.4,
+      11.5
+     ],
+     "single_point": false,
+     "comments": "Ordinary ray (o)\n",
+     "conditions": "{'direction': 'o'}"
+    },
+    {
+     "page": "Boyd-e",
+     "title": "Boyd et al. 1972: n(e) 2.4\u201311.5 \u00b5m",
+     "paper": "Boyd et al. 1972",
+     "data_path": "main/CdGeAs2/nk/Boyd-e.yml",
+     "temperature_c": null,
+     "axis": "e-ray",
+     "phase_words": [
+      "Extraordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      2.4,
+      11.5
+     ],
+     "single_point": false,
+     "comments": "Extraordinary ray (e)\n",
+     "conditions": "{'direction': 'e'}"
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "CdGeAs2 (Cadmium germanium arsenide)"
+  },
+  {
+   "key": "CdGeP2",
+   "name": "Cadmium germanium phosphide",
+   "formula": "CdGeP2",
+   "book": "CdGeP2",
+   "shelf": "main",
+   "note": "birefringent; Boyd 1972 is a 20/118 degC series",
+   "materialclass": "chalcopyrite semiconductor",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 4,
+   "n_papers": 1,
+   "papers": [
+    "Boyd et al. 1972"
+   ],
+   "datasets": [
+    {
+     "page": "Boyd-20-o",
+     "title": "Boyd et al. 1972: n(o) 0.8\u201312.5 \u00b5m; 20 \u00b0C",
+     "paper": "Boyd et al. 1972",
+     "data_path": "main/CdGeP2/nk/Boyd-20-o.yml",
+     "temperature_c": 19.85,
+     "axis": "o-ray",
+     "phase_words": [
+      "Ordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.8,
+      12.5
+     ],
+     "single_point": false,
+     "comments": "Ordinary ray (o); 20 \u00b0C\n",
+     "conditions": "{'temperature': 293, 'direction': 'o'}"
+    },
+    {
+     "page": "Boyd-20-e",
+     "title": "Boyd et al. 1972: n(e) 0.8\u201312.5 \u00b5m; 20 \u00b0C",
+     "paper": "Boyd et al. 1972",
+     "data_path": "main/CdGeP2/nk/Boyd-20-e.yml",
+     "temperature_c": 20.0,
+     "axis": "e-ray",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.8,
+      12.5
+     ],
+     "single_point": false,
+     "comments": "Extrardinary ray (e); 20 \u00b0C\n",
+     "conditions": ""
+    },
+    {
+     "page": "Boyd-118-o",
+     "title": "Boyd et al. 1972: n(o) 0.8\u201312.5 \u00b5m; 118 \u00b0C",
+     "paper": "Boyd et al. 1972",
+     "data_path": "main/CdGeP2/nk/Boyd-118-o.yml",
+     "temperature_c": 117.85,
+     "axis": "o-ray",
+     "phase_words": [
+      "Ordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.8,
+      12.5
+     ],
+     "single_point": false,
+     "comments": "Ordinary ray (o); 118 \u00b0C\n",
+     "conditions": "{'temperature': 391, 'direction': 'o'}"
+    },
+    {
+     "page": "Boyd-118-e",
+     "title": "Boyd et al. 1972: n(e) 0.8\u201312.5 \u00b5m; 118 \u00b0C",
+     "paper": "Boyd et al. 1972",
+     "data_path": "main/CdGeP2/nk/Boyd-118-e.yml",
+     "temperature_c": 118.0,
+     "axis": "e-ray",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.8,
+      12.5
+     ],
+     "single_point": false,
+     "comments": "Extrardinary ray (e); 118 \u00b0C\n",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "CdGeP2 (Cadmium germanium phosphide)"
+  },
+  {
+   "key": "ZnGeP2",
+   "name": "Zinc germanium phosphide (ZGP)",
+   "formula": "ZnGeP2",
+   "book": "ZnGeP2",
+   "shelf": "main",
+   "note": "birefringent; Boyd 1971 20/70 degC and Ghosh 1998 100-500 K series",
+   "materialclass": "chalcopyrite semiconductor",
+   "page_polymorph": {
+    "Boyd-20C-o": null,
+    "Boyd-20C-e": null,
+    "Boyd-70C-o": null,
+    "Boyd-70C-e": null,
+    "Das-o": null,
+    "Das-e": null,
+    "Zelmon-o": null,
+    "Zelmon-e": null,
+    "Ghosh-100K-o": null,
+    "Ghosh-100K-e": null,
+    "Ghosh-150K-o": null,
+    "Ghosh-150K-e": null,
+    "Ghosh-200K-o": null,
+    "Ghosh-200K-e": null,
+    "Ghosh-250K-o": null,
+    "Ghosh-250K-e": null,
+    "Ghosh-300K-o": null,
+    "Ghosh-300K-e": null,
+    "Ghosh-350K-o": null,
+    "Ghosh-350K-e": null,
+    "Ghosh-400K-o": null,
+    "Ghosh-400K-e": null,
+    "Ghosh-450K-o": null,
+    "Ghosh-450K-e": null,
+    "Ghosh-500K-o": null,
+    "Ghosh-500K-e": null
+   },
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = widest span covering 633 nm at ambient temperature",
+   "status": "SELECTED_BY_USER",
+   "n_pages": 26,
+   "n_papers": 4,
+   "papers": [
+    "Boyd et al. 1971",
+    "Das et al. 2003",
+    "Ghosh 1998",
+    "Zelmon et al. 2001"
+   ],
+   "datasets": [
+    {
+     "page": "Boyd-20C-o",
+     "title": "Boyd et al. 1971: n(o) 0.64\u201312 \u00b5m; 20 \u00b0C",
+     "paper": "Boyd et al. 1971",
+     "data_path": "main/ZnGeP2/nk/Boyd-20C-o.yml",
+     "temperature_c": 20.0,
+     "axis": "o-ray",
+     "phase_words": [
+      "Ordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.64,
+      12.0
+     ],
+     "single_point": false,
+     "comments": "Ordinary ray (o); 20 \u00b0C\n",
+     "conditions": "{'temperature': 293, 'direction': 'o'}"
+    },
+    {
+     "page": "Boyd-20C-e",
+     "title": "Boyd et al. 1971: n(e) 0.64\u201312 \u00b5m; 20 \u00b0C",
+     "paper": "Boyd et al. 1971",
+     "data_path": "main/ZnGeP2/nk/Boyd-20C-e.yml",
+     "temperature_c": 20.0,
+     "axis": "e-ray",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.64,
+      12.0
+     ],
+     "single_point": false,
+     "comments": "Extrardinary ray (e); 20 \u00b0C\n",
+     "conditions": "{'temperature': 293, 'direction': 'e'}"
+    },
+    {
+     "page": "Boyd-70C-o",
+     "title": "Boyd et al. 1971: n(o) 0.64\u201312 \u00b5m; 70 \u00b0C",
+     "paper": "Boyd et al. 1971",
+     "data_path": "main/ZnGeP2/nk/Boyd-70C-o.yml",
+     "temperature_c": 70.0,
+     "axis": "o-ray",
+     "phase_words": [
+      "Ordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.64,
+      12.0
+     ],
+     "single_point": false,
+     "comments": "Ordinary ray (o); 70 \u00b0C\n",
+     "conditions": "{'temperature': 343, 'direction': 'o'}"
+    },
+    {
+     "page": "Boyd-70C-e",
+     "title": "Boyd et al. 1971: n(e) 0.64\u201312 \u00b5m; 70 \u00b0C",
+     "paper": "Boyd et al. 1971",
+     "data_path": "main/ZnGeP2/nk/Boyd-70C-e.yml",
+     "temperature_c": 70.0,
+     "axis": "e-ray",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.64,
+      12.0
+     ],
+     "single_point": false,
+     "comments": "Extrardinary ray (e); 70 \u00b0C\n",
+     "conditions": "{'temperature': 343, 'direction': 'e'}"
+    },
+    {
+     "page": "Das-o",
+     "title": "Das et al. 2003: n(o) 1.32\u201311 \u00b5m",
+     "paper": "Das et al. 2003",
+     "data_path": "main/ZnGeP2/nk/Das-o.yml",
+     "temperature_c": null,
+     "axis": "o-ray",
+     "phase_words": [
+      "Ordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      1.32,
+      11.0
+     ],
+     "single_point": false,
+     "comments": "Ordinary ray (o)\n",
+     "conditions": "{'direction': 'o'}"
+    },
+    {
+     "page": "Das-e",
+     "title": "Das et al. 2003: n(e) 1.32\u201311 \u00b5m",
+     "paper": "Das et al. 2003",
+     "data_path": "main/ZnGeP2/nk/Das-e.yml",
+     "temperature_c": null,
+     "axis": "e-ray",
+     "phase_words": [
+      "Extraordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      1.32,
+      11.0
+     ],
+     "single_point": false,
+     "comments": "Extraordinary ray (e)\n",
+     "conditions": "{'direction': 'e'}"
+    },
+    {
+     "page": "Zelmon-o",
+     "title": "Zelmon et al. 2001: n(o) 2\u20139 \u00b5m",
+     "paper": "Zelmon et al. 2001",
+     "data_path": "main/ZnGeP2/nk/Zelmon-o.yml",
+     "temperature_c": 20.85,
+     "axis": "o-ray",
+     "phase_words": [
+      "Ordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      2.0,
+      9.0
+     ],
+     "single_point": false,
+     "comments": "Ordinary ray (o); 21-22 \u00b0C.\n",
+     "conditions": "{'temperature': 294, 'direction': 'o'}"
+    },
+    {
+     "page": "Zelmon-e",
+     "title": "Zelmon et al. 2001: n(e) 2\u20139 \u00b5m",
+     "paper": "Zelmon et al. 2001",
+     "data_path": "main/ZnGeP2/nk/Zelmon-e.yml",
+     "temperature_c": 20.85,
+     "axis": "e-ray",
+     "phase_words": [
+      "Extraordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      2.0,
+      9.0
+     ],
+     "single_point": false,
+     "comments": "Extraordinary ray (e); 21-22 \u00b0C.\n",
+     "conditions": "{'temperature': 294, 'direction': 'e'}"
+    },
+    {
+     "page": "Ghosh-100K-o",
+     "title": "Ghosh 1998: n(o) 0.7\u201312 \u00b5m; 100 K",
+     "paper": "Ghosh 1998",
+     "data_path": "main/ZnGeP2/nk/Ghosh-100K-o.yml",
+     "temperature_c": -173.15,
+     "axis": "o-ray",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.7,
+      12.0
+     ],
+     "single_point": false,
+     "comments": "Critical analysis of experimental data from multiple sources.\n",
+     "conditions": "{'temperature': 100, 'direction': 'o'}"
+    },
+    {
+     "page": "Ghosh-100K-e",
+     "title": "Ghosh 1998: n(e) 0.7\u201312 \u00b5m; 100 K",
+     "paper": "Ghosh 1998",
+     "data_path": "main/ZnGeP2/nk/Ghosh-100K-e.yml",
+     "temperature_c": -173.15,
+     "axis": "e-ray",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.7,
+      12.0
+     ],
+     "single_point": false,
+     "comments": "Critical analysis of experimental data from multiple sources.\n",
+     "conditions": "{'temperature': 100, 'direction': 'e'}"
+    },
+    {
+     "page": "Ghosh-150K-o",
+     "title": "Ghosh 1998: n(o) 0.7\u201312 \u00b5m; 150 K",
+     "paper": "Ghosh 1998",
+     "data_path": "main/ZnGeP2/nk/Ghosh-150K-o.yml",
+     "temperature_c": -123.15,
+     "axis": "o-ray",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.7,
+      12.0
+     ],
+     "single_point": false,
+     "comments": "Critical analysis of experimental data from multiple sources.\n",
+     "conditions": "{'temperature': 150, 'direction': 'o'}"
+    },
+    {
+     "page": "Ghosh-150K-e",
+     "title": "Ghosh 1998: n(e) 0.7\u201312 \u00b5m; 150 K",
+     "paper": "Ghosh 1998",
+     "data_path": "main/ZnGeP2/nk/Ghosh-150K-e.yml",
+     "temperature_c": -123.15,
+     "axis": "e-ray",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.7,
+      12.0
+     ],
+     "single_point": false,
+     "comments": "Critical analysis of experimental data from multiple sources.\n",
+     "conditions": "{'temperature': 150, 'direction': 'e'}"
+    },
+    {
+     "page": "Ghosh-200K-o",
+     "title": "Ghosh 1998: n(o) 0.7\u201312 \u00b5m; 200 K",
+     "paper": "Ghosh 1998",
+     "data_path": "main/ZnGeP2/nk/Ghosh-200K-o.yml",
+     "temperature_c": -73.15,
+     "axis": "o-ray",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.7,
+      12.0
+     ],
+     "single_point": false,
+     "comments": "Critical analysis of experimental data from multiple sources.\n",
+     "conditions": "{'temperature': 200, 'direction': 'o'}"
+    },
+    {
+     "page": "Ghosh-200K-e",
+     "title": "Ghosh 1998: n(e) 0.7\u201312 \u00b5m; 200 K",
+     "paper": "Ghosh 1998",
+     "data_path": "main/ZnGeP2/nk/Ghosh-200K-e.yml",
+     "temperature_c": -73.15,
+     "axis": "e-ray",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.7,
+      12.0
+     ],
+     "single_point": false,
+     "comments": "Critical analysis of experimental data from multiple sources.\n",
+     "conditions": "{'temperature': 200, 'direction': 'e'}"
+    },
+    {
+     "page": "Ghosh-250K-o",
+     "title": "Ghosh 1998: n(o) 0.7\u201312 \u00b5m; 250 K",
+     "paper": "Ghosh 1998",
+     "data_path": "main/ZnGeP2/nk/Ghosh-250K-o.yml",
+     "temperature_c": -23.15,
+     "axis": "o-ray",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.7,
+      12.0
+     ],
+     "single_point": false,
+     "comments": "Critical analysis of experimental data from multiple sources.\n",
+     "conditions": "{'temperature': 250, 'direction': 'o'}"
+    },
+    {
+     "page": "Ghosh-250K-e",
+     "title": "Ghosh 1998: n(e) 0.7\u201312 \u00b5m; 250 K",
+     "paper": "Ghosh 1998",
+     "data_path": "main/ZnGeP2/nk/Ghosh-250K-e.yml",
+     "temperature_c": -23.15,
+     "axis": "e-ray",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.7,
+      12.0
+     ],
+     "single_point": false,
+     "comments": "Critical analysis of experimental data from multiple sources.\n",
+     "conditions": "{'temperature': 250, 'direction': 'e'}"
+    },
+    {
+     "page": "Ghosh-300K-o",
+     "title": "Ghosh 1998: n(o) 0.7\u201312 \u00b5m; 300 K",
+     "paper": "Ghosh 1998",
+     "data_path": "main/ZnGeP2/nk/Ghosh-300K-o.yml",
+     "temperature_c": 26.85,
+     "axis": "o-ray",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.7,
+      12.0
+     ],
+     "single_point": false,
+     "comments": "Critical analysis of experimental data from multiple sources.\n",
+     "conditions": "{'temperature': 300, 'direction': 'o'}"
+    },
+    {
+     "page": "Ghosh-300K-e",
+     "title": "Ghosh 1998: n(e) 0.7\u201312 \u00b5m; 300 K",
+     "paper": "Ghosh 1998",
+     "data_path": "main/ZnGeP2/nk/Ghosh-300K-e.yml",
+     "temperature_c": 26.85,
+     "axis": "e-ray",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.7,
+      12.0
+     ],
+     "single_point": false,
+     "comments": "Critical analysis of experimental data from multiple sources.\n",
+     "conditions": "{'temperature': 300, 'direction': 'e'}"
+    },
+    {
+     "page": "Ghosh-350K-o",
+     "title": "Ghosh 1998: n(o) 0.7\u201312 \u00b5m; 350 K",
+     "paper": "Ghosh 1998",
+     "data_path": "main/ZnGeP2/nk/Ghosh-350K-o.yml",
+     "temperature_c": 76.85,
+     "axis": "o-ray",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.7,
+      12.0
+     ],
+     "single_point": false,
+     "comments": "Critical analysis of experimental data from multiple sources.\n",
+     "conditions": "{'temperature': 350, 'direction': 'o'}"
+    },
+    {
+     "page": "Ghosh-350K-e",
+     "title": "Ghosh 1998: n(e) 0.7\u201312 \u00b5m; 350 K",
+     "paper": "Ghosh 1998",
+     "data_path": "main/ZnGeP2/nk/Ghosh-350K-e.yml",
+     "temperature_c": 76.85,
+     "axis": "e-ray",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.7,
+      12.0
+     ],
+     "single_point": false,
+     "comments": "Critical analysis of experimental data from multiple sources.\n",
+     "conditions": "{'temperature': 350, 'direction': 'e'}"
+    },
+    {
+     "page": "Ghosh-400K-o",
+     "title": "Ghosh 1998: n(o) 0.7\u201312 \u00b5m; 400 K",
+     "paper": "Ghosh 1998",
+     "data_path": "main/ZnGeP2/nk/Ghosh-400K-o.yml",
+     "temperature_c": 126.85,
+     "axis": "o-ray",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.7,
+      12.0
+     ],
+     "single_point": false,
+     "comments": "Critical analysis of experimental data from multiple sources.\n",
+     "conditions": "{'temperature': 400, 'direction': 'o'}"
+    },
+    {
+     "page": "Ghosh-400K-e",
+     "title": "Ghosh 1998: n(e) 0.7\u201312 \u00b5m; 400 K",
+     "paper": "Ghosh 1998",
+     "data_path": "main/ZnGeP2/nk/Ghosh-400K-e.yml",
+     "temperature_c": 126.85,
+     "axis": "e-ray",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.7,
+      12.0
+     ],
+     "single_point": false,
+     "comments": "Critical analysis of experimental data from multiple sources.\n",
+     "conditions": "{'temperature': 400, 'direction': 'e'}"
+    },
+    {
+     "page": "Ghosh-450K-o",
+     "title": "Ghosh 1998: n(o) 0.7\u201312 \u00b5m; 450 K",
+     "paper": "Ghosh 1998",
+     "data_path": "main/ZnGeP2/nk/Ghosh-450K-o.yml",
+     "temperature_c": 176.85,
+     "axis": "o-ray",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.7,
+      12.0
+     ],
+     "single_point": false,
+     "comments": "Critical analysis of experimental data from multiple sources.\n",
+     "conditions": "{'temperature': 450, 'direction': 'o'}"
+    },
+    {
+     "page": "Ghosh-450K-e",
+     "title": "Ghosh 1998: n(e) 0.7\u201312 \u00b5m; 450 K",
+     "paper": "Ghosh 1998",
+     "data_path": "main/ZnGeP2/nk/Ghosh-450K-e.yml",
+     "temperature_c": 176.85,
+     "axis": "e-ray",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.7,
+      12.0
+     ],
+     "single_point": false,
+     "comments": "Critical analysis of experimental data from multiple sources.\n",
+     "conditions": "{'temperature': 450, 'direction': 'e'}"
+    },
+    {
+     "page": "Ghosh-500K-o",
+     "title": "Ghosh 1998: n(o) 0.7\u201312 \u00b5m; 500 K",
+     "paper": "Ghosh 1998",
+     "data_path": "main/ZnGeP2/nk/Ghosh-500K-o.yml",
+     "temperature_c": 226.85,
+     "axis": "o-ray",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.7,
+      12.0
+     ],
+     "single_point": false,
+     "comments": "Critical analysis of experimental data from multiple sources.\n",
+     "conditions": "{'temperature': 500, 'direction': 'o'}"
+    },
+    {
+     "page": "Ghosh-500K-e",
+     "title": "Ghosh 1998: n(e) 0.7\u201312 \u00b5m; 500 K",
+     "paper": "Ghosh 1998",
+     "data_path": "main/ZnGeP2/nk/Ghosh-500K-e.yml",
+     "temperature_c": 226.85,
+     "axis": "e-ray",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.7,
+      12.0
+     ],
+     "single_point": false,
+     "comments": "Critical analysis of experimental data from multiple sources.\n",
+     "conditions": "{'temperature': 500, 'direction': 'e'}"
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "ZnGeP2 (Zinc germanium phosphide, ZGP)"
+  },
+  {
+   "key": "ZnSiAs2",
+   "name": "Zinc silicon arsenide",
+   "formula": "ZnSiAs2",
+   "book": "ZnSiAs2",
+   "shelf": "main",
+   "note": "birefringent",
+   "materialclass": "chalcopyrite semiconductor",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 2,
+   "n_papers": 1,
+   "papers": [
+    "Boyd et al. 1972"
+   ],
+   "datasets": [
+    {
+     "page": "Boyd-o",
+     "title": "Boyd et al. 1972: n(o) 0.7\u201311.5 \u00b5m",
+     "paper": "Boyd et al. 1972",
+     "data_path": "main/ZnSiAs2/nk/Boyd-o.yml",
+     "temperature_c": null,
+     "axis": "o-ray",
+     "phase_words": [
+      "Ordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.7,
+      11.5
+     ],
+     "single_point": false,
+     "comments": "Ordinary ray (o)\n",
+     "conditions": "{'direction': 'o'}"
+    },
+    {
+     "page": "Boyd-e",
+     "title": "Boyd et al. 1972: n(e) 0.7\u201311.5 \u00b5m",
+     "paper": "Boyd et al. 1972",
+     "data_path": "main/ZnSiAs2/nk/Boyd-e.yml",
+     "temperature_c": null,
+     "axis": "e-ray",
+     "phase_words": [
+      "Extraordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.7,
+      11.5
+     ],
+     "single_point": false,
+     "comments": "Extraordinary ray(e)\n",
+     "conditions": "{'direction': 'e'}"
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "ZnSiAs2 (Zinc silicon arsenide)"
+  }
+ ],
+ "out_of_family": {
+  "Bi2Te3": "CVD flakes on Si/SiO2 (Ermolaev 2024): thickness/substrate-dependent, 2D / thin-film follow-up",
+  "MoTe2": "layered van der Waals telluride measured as flake / few-layer film: 2D / thin-film follow-up",
+  "WTe2": "layered van der Waals telluride measured as flake / few-layer film: 2D / thin-film follow-up",
+  "ZrTe5": "layered van der Waals telluride measured as flake / few-layer film: 2D / thin-film follow-up"
+ },
+ "deferred": {
+  "Ge2Sb2Te5": "phase-change material: Frantz 2024 gives crystalline and amorphous Ge2Sb2Te5 (one paper, two phases). The crystalline density needs a structure choice (metastable rock-salt vs stable trigonal GST) and the amorphous phase has no density source; load after that decision."
+ },
+ "excluded_pages": {
+  "CdTe:Treharne": "sputtered film: 'A CdTe film was deposited on to a soda-lime glass substrate using RF magnetron sputtering' (film n,k depend on deposition; scope rule). Bulk papers Marple, DeBell, Adachi are loaded.",
+  "GaSb:Ferrini": "film: 'Thin film grown by molecular beam epitaxy on a GaSb substrate' (the page also mislabels x = 0 as GaAs); scope rule. Bulk papers Aspnes, Adachi, Djurisic are loaded."
+ }
+}
