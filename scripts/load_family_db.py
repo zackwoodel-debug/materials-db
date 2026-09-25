@@ -348,7 +348,7 @@ def load_optical_axis(conn, material_id, source_id, axis_entry, effective_polymo
 
 def load_physical_properties(conn, material_id, row, mp_source_id, literature_source_id, periodictable_source_id,
                              effective_polymorph, source_cache=None, get_source_fn=None, report=None,
-                             catalog_name="oxides_50.csv"):
+                             catalog_name="oxides_50.csv", bulk_approx_source_id=None):
     report = report or Report("adhoc")
     density = row.get("density_g_cm3")
     density_source = row.get("density_source")
@@ -375,7 +375,9 @@ def load_physical_properties(conn, material_id, row, mp_source_id, literature_so
                       + (f" {extra}" if pd.notna(extra) else ""),
             )
         else:
-            src = mp_source_id if density_source == "MP_DFT" else literature_source_id
+            src = (mp_source_id if density_source == "MP_DFT" else
+                   bulk_approx_source_id if density_source == "bulk_elemental_approximation" and bulk_approx_source_id else
+                   literature_source_id)
         _insert_physical(conn, report, material_id, label_join(effective_polymorph, f"density_{density_source}"),
                          src, density_g_cm3=float(density), **at_t)
 
