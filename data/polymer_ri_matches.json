@@ -1,0 +1,3231 @@
+{
+ "candidates": [
+  {
+   "key": "PE-LDPE",
+   "name": "Low-density polyethylene (LDPE)",
+   "group": "commodity",
+   "ri_books": [
+    [
+     "organic",
+     "polyethylene"
+    ]
+   ],
+   "include_re": "(?<![Ll])LDPE",
+   "exclude_re": null,
+   "blocked": false,
+   "note": "RI.info's only low-density page is LLDPE (linear), a distinct polymer; not substituted",
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": "(C2H4)n",
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PE-HDPE",
+   "name": "High-density polyethylene (HDPE)",
+   "group": "commodity",
+   "ri_books": [
+    [
+     "organic",
+     "polyethylene"
+    ]
+   ],
+   "include_re": "HDPE",
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 1,
+   "status": "FOUND",
+   "formula_ri": "(C2H4)n",
+   "n_dispersion_datasets": 1,
+   "datasets": [
+    {
+     "shelf": "organic",
+     "book": "polyethylene",
+     "page": "Smith",
+     "page_name": "Smith and Loewenstein 1975: HDPE; n,k 40.0\u2013200 \u00b5m",
+     "data_path": "organic/(C2H4)n - polyethylene/nk/Smith.yml",
+     "tag": "Smith1975",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": "HDPE",
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": null
+     },
+     "signals": [
+      "physical_form",
+      "linear_or_branched"
+     ],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      40.0,
+      200.0
+     ],
+     "single_point": false,
+     "comments": "HDPE. Measured using approximately 1 mm thick film.\n"
+    }
+   ],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PP",
+   "name": "Polypropylene",
+   "group": "commodity",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PVC",
+   "name": "Polyvinyl chloride",
+   "group": "commodity",
+   "ri_books": [
+    [
+     "organic",
+     "polyvinil_chloride"
+    ]
+   ],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 1,
+   "status": "FOUND",
+   "formula_ri": "(C2H3Cl)n",
+   "n_dispersion_datasets": 1,
+   "datasets": [
+    {
+     "shelf": "organic",
+     "book": "polyvinil_chloride",
+     "page": "Zhang",
+     "page_name": "Zhang et al. 2020: n,k 0.4\u201320 \u00b5m",
+     "data_path": "organic/(C2H3Cl)n - polyvinyl chloride/nk/Zhang.yml",
+     "tag": "Zhang2020",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": "Manufacturer: Jubang plastic material, China"
+     },
+     "signals": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.4,
+      19.942
+     ],
+     "single_point": false,
+     "comments": "Normal temperature and pressure. Manufacturer: Jubang plastic material, China.\n"
+    }
+   ],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PS",
+   "name": "Polystyrene",
+   "group": "commodity",
+   "ri_books": [
+    [
+     "organic",
+     "polystyrene"
+    ]
+   ],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 1,
+   "status": "DEFERRED",
+   "formula_ri": "(C8H8)n",
+   "n_dispersion_datasets": 5,
+   "datasets": [
+    {
+     "shelf": "organic",
+     "book": "polystyrene",
+     "page": "Sultanova",
+     "page_name": "Sultanova et al. 2009: n 0.437\u20131.05 \u00b5m",
+     "data_path": "organic/(C8H8)n - polystyrene/nk/Sultanova.yml",
+     "tag": "Sultanova2009",
+     "also_listed_in": "3d/plastics/ps",
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": null
+     },
+     "signals": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4368,
+      1.052
+     ],
+     "single_point": false,
+     "comments": "20 \u00b0C\n"
+    },
+    {
+     "shelf": "organic",
+     "book": "polystyrene",
+     "page": "Juntunen",
+     "page_name": "Juntunen et al. 2024: n 1.10\u20131.65 \u00b5m",
+     "data_path": "organic/(C8H8)n - polystyrene/nk/Juntunen.yml",
+     "tag": "Juntunen2024",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": null
+     },
+     "signals": [
+      "physical_form"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      1.1,
+      1.65
+     ],
+     "single_point": false,
+     "comments": "Powder. 23 \u00b0C\n"
+    },
+    {
+     "shelf": "organic",
+     "book": "polystyrene",
+     "page": "Nyakuchena",
+     "page_name": "Nyakuchena et al. 2023: n 1.10\u20131.65 \u00b5m",
+     "data_path": "organic/(C8H8)n - polystyrene/nk/Nyakuchena.yml",
+     "tag": "Nyakuchena2023",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": null
+     },
+     "signals": [
+      "physical_form"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      1.1,
+      1.65
+     ],
+     "single_point": false,
+     "comments": "Polymer microspheres. 23 \u00b0C\n"
+    },
+    {
+     "shelf": "organic",
+     "book": "polystyrene",
+     "page": "Zhang",
+     "page_name": "Zhang et al. 2020: n,k 0.4\u201320 \u00b5m",
+     "data_path": "organic/(C8H8)n - polystyrene/nk/Zhang.yml",
+     "tag": "Zhang2020",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": "Manufacturer : ShanghaiHuineng Industry, China"
+     },
+     "signals": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.4,
+      19.942
+     ],
+     "single_point": false,
+     "comments": "Normal temperature and pressure. Manufacturer : ShanghaiHuineng Industry, China.\n"
+    },
+    {
+     "shelf": "organic",
+     "book": "polystyrene",
+     "page": "Myers",
+     "page_name": "Myers et al. 2018: n,k 1.28\u201325.0 \u00b5m",
+     "data_path": "organic/(C8H8)n - polystyrene/nk/Myers.yml",
+     "tag": "Myers2018",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": null
+     },
+     "signals": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      1.28246,
+      25.0194
+     ],
+     "single_point": false,
+     "comments": "Isopropanol. 26 \u00b0C.\n"
+    }
+   ],
+   "single_point_datasets": [],
+   "k_only_datasets": [],
+   "deferred_reason": "5 datasets (bulk, powder, microspheres, two n+k); no dataset chosen this PR"
+  },
+  {
+   "key": "PMMA",
+   "name": "Poly(methyl methacrylate)",
+   "group": "commodity",
+   "ri_books": [
+    [
+     "organic",
+     "poly_methyl_methacrylate"
+    ],
+    [
+     "other",
+     "Microchem495"
+    ],
+    [
+     "other",
+     "Microchem950"
+    ]
+   ],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 1,
+   "status": "DEFERRED",
+   "formula_ri": "(C5H8O2)n",
+   "n_dispersion_datasets": 12,
+   "datasets": [
+    {
+     "shelf": "organic",
+     "book": "poly_methyl_methacrylate",
+     "page": "Sultanova",
+     "page_name": "Sultanova et al. 2009: n 0.437\u20131.052 \u00b5m",
+     "data_path": "organic/(C5H8O2)n - poly(methyl methacrylate)/nk/Sultanova.yml",
+     "tag": "Sultanova2009",
+     "also_listed_in": "3d/plastics/pmma",
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": null
+     },
+     "signals": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4368,
+      1.052
+     ],
+     "single_point": false,
+     "comments": "20 \u00b0C\n"
+    },
+    {
+     "shelf": "organic",
+     "book": "poly_methyl_methacrylate",
+     "page": "Nyakuchena",
+     "page_name": "Nyakuchena et al. 2023: n 1.10\u20131.65 \u00b5m",
+     "data_path": "organic/(C5H8O2)n - poly(methyl methacrylate)/nk/Nyakuchena.yml",
+     "tag": "Nyakuchena2023",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": null
+     },
+     "signals": [
+      "physical_form"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      1.1,
+      1.65
+     ],
+     "single_point": false,
+     "comments": "Polymer microspheres. 23 \u00b0C\n"
+    },
+    {
+     "shelf": "organic",
+     "book": "poly_methyl_methacrylate",
+     "page": "Zhang-Tomson",
+     "page_name": "Zhang et al. 2020: Tomson; n,k 0.4\u201320 \u00b5m",
+     "data_path": "organic/(C5H8O2)n - poly(methyl methacrylate)/nk/Zhang-Tomson.yml",
+     "tag": "Zhang2020",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": "Manufacturer: Tomson, China"
+     },
+     "signals": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.4,
+      19.942
+     ],
+     "single_point": false,
+     "comments": "Normal temperature and pressure. Manufacturer: Tomson, China.\n"
+    },
+    {
+     "shelf": "organic",
+     "book": "poly_methyl_methacrylate",
+     "page": "Zhang-Mitsubishi",
+     "page_name": "Zhang et al. 2020: Mitsubishi; n,k 0.4\u201320 \u00b5m",
+     "data_path": "organic/(C5H8O2)n - poly(methyl methacrylate)/nk/Zhang-Mitsubishi.yml",
+     "tag": "Zhang2020",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": "Manufacturer: Mitsubishi, Japan"
+     },
+     "signals": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.4,
+      19.942
+     ],
+     "single_point": false,
+     "comments": "Normal temperature and pressure. Manufacturer: Mitsubishi, Japan.\n"
+    },
+    {
+     "shelf": "organic",
+     "book": "poly_methyl_methacrylate",
+     "page": "Tsuda",
+     "page_name": "Tsuda et al. 2018: n 0.6\u20131.0 \u00b5m",
+     "data_path": "organic/(C5H8O2)n - poly(methyl methacrylate)/nk/Tsuda.yml",
+     "tag": "Tsuda2018",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": "molecular weight of 950,000",
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": "MicroChem"
+     },
+     "signals": [
+      "resist_grade",
+      "molecular_weight"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.6,
+      1.0
+     ],
+     "single_point": false,
+     "comments": "MicroChem PMMA resist with a molecular weight of 950,000; Baked at 100 \u00b0C for 10 min on a hot plate.\n"
+    },
+    {
+     "shelf": "organic",
+     "book": "poly_methyl_methacrylate",
+     "page": "Tsuda-LD",
+     "page_name": "Tsuda et al. 2018: Lorentz-Drude model; n,k 2.50\u201318.2 \u00b5m",
+     "data_path": "organic/(C5H8O2)n - poly(methyl methacrylate)/nk/Tsuda-LD.yml",
+     "tag": "Tsuda2018",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": "molecular weight of 950,000",
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": "MicroChem"
+     },
+     "signals": [
+      "resist_grade",
+      "molecular_weight"
+     ],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      2.5,
+      18.18
+     ],
+     "single_point": false,
+     "comments": "MicroChem PMMA resist with a molecular weight of 950,000; Baked at 100 \u00b0C for 10 min on a hot plate; Lorentz-Drude model parameters provided in Table 1 of manuscript.\n"
+    },
+    {
+     "shelf": "organic",
+     "book": "poly_methyl_methacrylate",
+     "page": "Tsuda-BB",
+     "page_name": "Tsuda et al. 2018: Brendel-Bormann model; n,k 2.50\u201318.2 \u00b5m",
+     "data_path": "organic/(C5H8O2)n - poly(methyl methacrylate)/nk/Tsuda-BB.yml",
+     "tag": "Tsuda2018",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": "molecular weight of 950,000",
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": "MicroChem"
+     },
+     "signals": [
+      "resist_grade",
+      "molecular_weight"
+     ],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      2.5,
+      18.18
+     ],
+     "single_point": false,
+     "comments": "MicroChem PMMA resist with a molecular weight of 950,000; Baked at 100 \u00b0C for 10 min on a hot plate; Brendel-Bormann model parameters provided in Table 2 of manuscript.\n"
+    },
+    {
+     "shelf": "organic",
+     "book": "poly_methyl_methacrylate",
+     "page": "Bodurov",
+     "page_name": "Bodurov et al. 2016: n 0.405\u20130.635 \u00b5m",
+     "data_path": "organic/(C5H8O2)n - poly(methyl methacrylate)/nk/Bodurov.yml",
+     "tag": "Bodurov2016",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": null
+     },
+     "signals": [
+      "physical_form"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.405,
+      0.635
+     ],
+     "single_point": false,
+     "comments": "20-\u03bcm film on glass substrate. 24 \u00b0C.\n"
+    },
+    {
+     "shelf": "organic",
+     "book": "poly_methyl_methacrylate",
+     "page": "Beadie",
+     "page_name": "Beadie et al. 2015: n 0.42\u20131.62 \u00b5m",
+     "data_path": "organic/(C5H8O2)n - poly(methyl methacrylate)/nk/Beadie.yml",
+     "tag": "Beadie2015",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": null
+     },
+     "signals": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.42,
+      1.62
+     ],
+     "single_point": false,
+     "comments": "20.1 \u00b0C. Absolute accuracy -4.\n"
+    },
+    {
+     "shelf": "organic",
+     "book": "poly_methyl_methacrylate",
+     "page": "Szczurowski",
+     "page_name": "Szczurowski 2013: n 0.405\u20131.08 \u00b5m",
+     "data_path": "organic/(C5H8O2)n - poly(methyl methacrylate)/nk/Szczurowski.yml",
+     "tag": "Szczurowski2013",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": null
+     },
+     "signals": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4047,
+      1.083
+     ],
+     "single_point": false,
+     "comments": "23 \u00b0C. PMMA synthesized in Marie-Curie University in Lublin, Poland\n"
+    },
+    {
+     "shelf": "other",
+     "book": "Microchem495",
+     "page": "specs",
+     "page_name": "Spec sheet: n 0.2\u20131.1 \u00b5m",
+     "data_path": "other/resists/Microchem 495/nk/specs.yml",
+     "tag": "Microchem495",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": "Microchem"
+     },
+     "signals": [
+      "resist_grade",
+      "physical_form"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.2,
+      1.1
+     ],
+     "single_point": false,
+     "comments": "Microchem 495 PMMA resist\n"
+    },
+    {
+     "shelf": "other",
+     "book": "Microchem950",
+     "page": "specs",
+     "page_name": "Spec sheet: n 0.2\u20131.1 \u00b5m",
+     "data_path": "other/resists/Microchem 950/nk/specs.yml",
+     "tag": "Microchem950",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": "Microchem"
+     },
+     "signals": [
+      "resist_grade",
+      "physical_form"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.2,
+      1.1
+     ],
+     "single_point": false,
+     "comments": "Microchem 950 PMMA resist\n"
+    }
+   ],
+   "single_point_datasets": [],
+   "k_only_datasets": [],
+   "deferred_reason": "12 datasets (bulk, thin film, microspheres, 950k resist grade, Microchem 495/950); grades not resolved"
+  },
+  {
+   "key": "PC",
+   "name": "Polycarbonate",
+   "group": "commodity",
+   "ri_books": [
+    [
+     "organic",
+     "polycarbonate"
+    ]
+   ],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 1,
+   "status": "SELECTED_BY_USER",
+   "formula_ri": "(C16H14O3)n",
+   "n_dispersion_datasets": 2,
+   "datasets": [
+    {
+     "shelf": "organic",
+     "book": "polycarbonate",
+     "page": "Sultanova",
+     "page_name": "Sultanova et al. 2009: n 0.437\u20131.05 \u00b5m",
+     "data_path": "organic/(C16H14O3)n - polycarbonate/nk/Sultanova.yml",
+     "tag": "Sultanova2009",
+     "also_listed_in": "3d/plastics/pc",
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": null
+     },
+     "signals": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4368,
+      1.052
+     ],
+     "single_point": false,
+     "comments": "20 \u00b0C\n"
+    },
+    {
+     "shelf": "organic",
+     "book": "polycarbonate",
+     "page": "Zhang",
+     "page_name": "Zhang et al. 2020: n,k 0.4\u201320 \u00b5m",
+     "data_path": "organic/(C16H14O3)n - polycarbonate/nk/Zhang.yml",
+     "tag": "Zhang2020",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": "Manufacturer: Dedicated Plastic, China"
+     },
+     "signals": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.4,
+      19.942
+     ],
+     "single_point": false,
+     "comments": "Normal temperature and pressure. Manufacturer: Dedicated Plastic, China.\n"
+    }
+   ],
+   "single_point_datasets": [],
+   "k_only_datasets": [],
+   "excluded_datasets": [
+    {
+     "page": "Sultanova",
+     "reason": "subset of Zhang range, disagrees ~0.4% at 633 nm, deferred to dataset-comparison PR"
+    }
+   ]
+  },
+  {
+   "key": "PET",
+   "name": "Polyethylene terephthalate",
+   "group": "commodity",
+   "ri_books": [
+    [
+     "organic",
+     "polyethylene_terephthalate"
+    ]
+   ],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 1,
+   "status": "FOUND",
+   "formula_ri": "(C10H8O4)n",
+   "n_dispersion_datasets": 1,
+   "datasets": [
+    {
+     "shelf": "organic",
+     "book": "polyethylene_terephthalate",
+     "page": "Zhang",
+     "page_name": "Zhang et al. 2020: n,k 0.4\u201320 \u00b5m",
+     "data_path": "organic/(C10H8O4)n - polyethylene terephthalate/nk/Zhang.yml",
+     "tag": "Zhang2020",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": "Manufacturer: Chenghang plastic material, China"
+     },
+     "signals": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.4,
+      19.942
+     ],
+     "single_point": false,
+     "comments": "Normal temperature and pressure. Manufacturer: Chenghang plastic material, China.\n"
+    }
+   ],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PEN",
+   "name": "Polyethylene naphthalate",
+   "group": "commodity",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PVA",
+   "name": "Polyvinyl alcohol",
+   "group": "commodity",
+   "ri_books": [
+    [
+     "organic",
+     "polyvinyl_alcohol"
+    ]
+   ],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 1,
+   "status": "DEFERRED",
+   "formula_ri": "(C2H4O)n",
+   "n_dispersion_datasets": 2,
+   "datasets": [
+    {
+     "shelf": "organic",
+     "book": "polyvinyl_alcohol",
+     "page": "Schnepf",
+     "page_name": "Schnepf et al. 2017: n 0.3\u20131.5 \u00b5m",
+     "data_path": "organic/(C2H4O)n - polyvinyl alcohol/nk/Schnepf.yml",
+     "tag": "Schnepf2017",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": null
+     },
+     "signals": [
+      "physical_form"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.3,
+      1.5
+     ],
+     "single_point": false,
+     "comments": "Isotropic PVA (polyvinyl alcohol) thin film on silicon substrate.k = 0.0050\u00b10.0004\n"
+    },
+    {
+     "shelf": "organic",
+     "book": "polyvinyl_alcohol",
+     "page": "Bodurov",
+     "page_name": "Bodurov et al. 2016: n 0.405\u20130.635 \u00b5m",
+     "data_path": "organic/(C2H4O)n - polyvinyl alcohol/nk/Bodurov.yml",
+     "tag": "Bodurov2016",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": null
+     },
+     "signals": [
+      "physical_form"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.405,
+      0.635
+     ],
+     "single_point": false,
+     "comments": "10-\u03bcm film on glass substrate. 24 \u00b0C.\n"
+    }
+   ],
+   "single_point_datasets": [],
+   "k_only_datasets": [],
+   "deferred_reason": "2 different films (10 um on glass vs thin film on Si); not resolved"
+  },
+  {
+   "key": "PVAc",
+   "name": "Polyvinyl acetate",
+   "group": "commodity",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PVP",
+   "name": "Polyvinylpyrrolidone",
+   "group": "commodity",
+   "ri_books": [
+    [
+     "organic",
+     "polyvinylpyrrolidone"
+    ]
+   ],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 1,
+   "status": "FOUND",
+   "formula_ri": "(C6H9NO)n",
+   "n_dispersion_datasets": 1,
+   "datasets": [
+    {
+     "shelf": "organic",
+     "book": "polyvinylpyrrolidone",
+     "page": "Konig",
+     "page_name": "K\u00f6nig et al. 2014: n,k 0.375\u20131.0 \u00b5m",
+     "data_path": "organic/(C6H9NO)n - polyvinylpyrrolidone/nk/Konig.yml",
+     "tag": "Konig2014",
+     "also_listed_in": "3d/plastics/pvp",
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": null
+     },
+     "signals": [],
+     "kind": "nk",
+     "dispersion": "formula+tabulated",
+     "span_um": [
+      0.375,
+      1.0
+     ],
+     "single_point": false,
+     "comments": "Optical constants of poly(vinylpyrrolidone) (PVP)\n"
+    }
+   ],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PTFE",
+   "name": "Polytetrafluoroethylene",
+   "group": "commodity",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": "in-DB legacy row has an unreferenced density and single-point n; not traceable",
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PVDF",
+   "name": "Polyvinylidene fluoride",
+   "group": "commodity",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PVDC",
+   "name": "Polyvinylidene chloride",
+   "group": "commodity",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PVF",
+   "name": "Polyvinyl fluoride",
+   "group": "commodity",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "FEP",
+   "name": "Fluorinated ethylene propylene",
+   "group": "commodity",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PFA",
+   "name": "Perfluoroalkoxy alkane",
+   "group": "commodity",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "ETFE",
+   "name": "Ethylene tetrafluoroethylene",
+   "group": "commodity",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PA6",
+   "name": "Polyamide 6",
+   "group": "engineering",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PA66",
+   "name": "Polyamide 66",
+   "group": "engineering",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": "in-DB legacy 'Nylon66' row has an unreferenced density and single-point n; not traceable",
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PA12",
+   "name": "Polyamide 12",
+   "group": "engineering",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "POM",
+   "name": "Polyoxymethylene",
+   "group": "engineering",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PBT",
+   "name": "Polybutylene terephthalate",
+   "group": "engineering",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PEEK",
+   "name": "Polyether ether ketone",
+   "group": "engineering",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": "in-DB legacy row has an unreferenced density and single-point n; not traceable",
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PEI",
+   "name": "Polyetherimide (PEI)",
+   "group": "engineering",
+   "ri_books": [
+    [
+     "organic",
+     "polyetherimide"
+    ]
+   ],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": "NAME COLLISION: the DB's existing 'PEI' row is (C2H5N)n = polyethylenimine, a different polymer",
+   "citations": [],
+   "tier": 1,
+   "status": "FOUND",
+   "formula_ri": "(C37H24O6N2)n",
+   "n_dispersion_datasets": 1,
+   "datasets": [
+    {
+     "shelf": "organic",
+     "book": "polyetherimide",
+     "page": "Zhang",
+     "page_name": "Zhang et al. 2020: n,k 0.4\u201320 \u00b5m",
+     "data_path": "organic/(C37H24O6N2)n - polyetherimide/nk/Zhang.yml",
+     "tag": "Zhang2020",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": "Manufacturer: Winning engineering plastic, China"
+     },
+     "signals": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.4,
+      19.942
+     ],
+     "single_point": false,
+     "comments": "Normal temperature and pressure. Manufacturer: Winning engineering plastic, China.\n"
+    }
+   ],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PSU",
+   "name": "Polysulfone",
+   "group": "engineering",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PES",
+   "name": "Polyethersulfone",
+   "group": "engineering",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PPSU",
+   "name": "Polyphenylsulfone",
+   "group": "engineering",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PPS",
+   "name": "Polyphenylene sulfide",
+   "group": "engineering",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PPO",
+   "name": "Polyphenylene oxide",
+   "group": "engineering",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PAI",
+   "name": "Polyamide-imide",
+   "group": "engineering",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PBI",
+   "name": "Polybenzimidazole",
+   "group": "engineering",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PAR",
+   "name": "Polyarylate",
+   "group": "engineering",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "ABS",
+   "name": "Acrylonitrile butadiene styrene",
+   "group": "engineering",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "SAN",
+   "name": "Styrene-acrylonitrile copolymer",
+   "group": "engineering",
+   "ri_books": [
+    [
+     "other",
+     "C8H8_n-C3H3N_m"
+    ]
+   ],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 1,
+   "status": "FOUND",
+   "formula_ri": "(C8H8)n-(C3H3N)m",
+   "n_dispersion_datasets": 1,
+   "datasets": [
+    {
+     "shelf": "other",
+     "book": "C8H8_n-C3H3N_m",
+     "page": "Sultanova",
+     "page_name": "Sultanova et al. 2009: n 0.4368\u20131.052 \u00b5m",
+     "data_path": "other/mixed organic/(C8H8)n-(C3H3N)m/nk/Sultanova.yml",
+     "tag": "Sultanova2009",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": null
+     },
+     "signals": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4368,
+      1.052
+     ],
+     "single_point": false,
+     "comments": "20 \u00b0C\n"
+    }
+   ],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "NAS",
+   "name": "NAS (generic styrene-methyl methacrylate copolymer)",
+   "group": "engineering",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": "only the NAS-21 grade exists on RI.info; generic NAS not substituted",
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PDMS",
+   "name": "Polydimethylsiloxane",
+   "group": "optical",
+   "ri_books": [
+    [
+     "organic",
+     "polydimethylsiloxane"
+    ]
+   ],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 1,
+   "status": "DEFERRED",
+   "formula_ri": "(C2H6OSi)n",
+   "n_dispersion_datasets": 10,
+   "datasets": [
+    {
+     "shelf": "organic",
+     "book": "polydimethylsiloxane",
+     "page": "Schneider-RTV615",
+     "page_name": "Schneider et al. 2009: RTV 615; n 0.35\u20130.70 \u00b5m",
+     "data_path": "organic/(C2H6OSi)n - polydimethylsiloxane/nk/Schneider-RTV615.yml",
+     "tag": "Schneider2009",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": "RTV615",
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": "Bayer"
+     },
+     "signals": [
+      "product"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.35,
+      0.7
+     ],
+     "single_point": false,
+     "comments": "RTV 615 (Bayer Silicones, now Momentive)\n"
+    },
+    {
+     "shelf": "organic",
+     "book": "polydimethylsiloxane",
+     "page": "Schneider-Sylgard184",
+     "page_name": "Schneider et al. 2009: Sylgard 184; n 0.35\u20130.70 \u00b5m",
+     "data_path": "organic/(C2H6OSi)n - polydimethylsiloxane/nk/Schneider-Sylgard184.yml",
+     "tag": "Schneider2009",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": "Sylgard184",
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": "Dow"
+     },
+     "signals": [
+      "product"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.35,
+      0.7
+     ],
+     "single_point": false,
+     "comments": "Sylgard 184 (Dow)\n"
+    },
+    {
+     "shelf": "organic",
+     "book": "polydimethylsiloxane",
+     "page": "Zhang-5-1",
+     "page_name": "Zhang et al. 2020: 5:1; n,k 0.4\u201320 \u00b5m",
+     "data_path": "organic/(C2H6OSi)n - polydimethylsiloxane/nk/Zhang-5-1.yml",
+     "tag": "Zhang2020",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": "2020: 5:1",
+      "supplier": "Manufacturer: Dow Corning, USA"
+     },
+     "signals": [
+      "cure_ratio"
+     ],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.4,
+      19.942
+     ],
+     "single_point": false,
+     "comments": "Normal temperature and pressure. Mass (main agent) : Mass (curing agent) = 5:1. Manufacturer: Dow Corning, USA.\n"
+    },
+    {
+     "shelf": "organic",
+     "book": "polydimethylsiloxane",
+     "page": "Zhang-10-1",
+     "page_name": "Zhang et al. 2020: 10:1; n,k 0.4\u201320 \u00b5m",
+     "data_path": "organic/(C2H6OSi)n - polydimethylsiloxane/nk/Zhang-10-1.yml",
+     "tag": "Zhang2020",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": "2020: 10:1",
+      "supplier": "Manufacturer: Dow Corning, USA"
+     },
+     "signals": [
+      "cure_ratio"
+     ],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.4,
+      19.942
+     ],
+     "single_point": false,
+     "comments": "Normal temperature and pressure. Mass (main agent) : Mass (curing agent) = 10:1. Manufacturer: Dow Corning, USA.\n"
+    },
+    {
+     "shelf": "organic",
+     "book": "polydimethylsiloxane",
+     "page": "Zhang-15-1",
+     "page_name": "Zhang et al. 2020: 15:1; n,k 0.4\u201320 \u00b5m",
+     "data_path": "organic/(C2H6OSi)n - polydimethylsiloxane/nk/Zhang-15-1.yml",
+     "tag": "Zhang2020",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": "2020: 15:1",
+      "supplier": "Manufacturer: Dow Corning, USA"
+     },
+     "signals": [
+      "cure_ratio"
+     ],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.4,
+      19.942
+     ],
+     "single_point": false,
+     "comments": "Normal temperature and pressure. Mass (main agent) : Mass (curing agent) = 15:1. Manufacturer: Dow Corning, USA.\n"
+    },
+    {
+     "shelf": "organic",
+     "book": "polydimethylsiloxane",
+     "page": "Zhang-20-1",
+     "page_name": "Zhang et al. 2020: 20:1; n,k 0.4\u201320 \u00b5m",
+     "data_path": "organic/(C2H6OSi)n - polydimethylsiloxane/nk/Zhang-20-1.yml",
+     "tag": "Zhang2020",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": "2020: 20:1",
+      "supplier": "Manufacturer: Dow Corning, USA"
+     },
+     "signals": [
+      "cure_ratio"
+     ],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.4,
+      19.942
+     ],
+     "single_point": false,
+     "comments": "Normal temperature and pressure. Mass (main agent) : Mass (curing agent) = 20:1. Manufacturer: Dow Corning, USA.\n"
+    },
+    {
+     "shelf": "organic",
+     "book": "polydimethylsiloxane",
+     "page": "Gupta",
+     "page_name": "Gupta et al. 2019: n 0.30\u20131.69 \u00b5m",
+     "data_path": "organic/(C2H6OSi)n - polydimethylsiloxane/nk/Gupta.yml",
+     "tag": "Gupta2019",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": "Sylgard 184",
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": null
+     },
+     "signals": [
+      "cure_ratio",
+      "product",
+      "physical_form"
+     ],
+     "kind": "n",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.3,
+      1.69
+     ],
+     "single_point": false,
+     "comments": "Polydimethylphenylsiloxane (PDMS) substrate. Hardner (Sylgard 184) to PDMS ratio is 1 to 10.\n"
+    },
+    {
+     "shelf": "organic",
+     "book": "polydimethylsiloxane",
+     "page": "Gupta-UV",
+     "page_name": "Gupta et al. 2019: UV PDMS; n 0.30\u20130.90 \u00b5m",
+     "data_path": "organic/(C2H6OSi)n - polydimethylsiloxane/nk/Gupta-UV.yml",
+     "tag": "Gupta2019",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": null
+     },
+     "signals": [
+      "physical_form"
+     ],
+     "kind": "n",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.3,
+      0.9
+     ],
+     "single_point": false,
+     "comments": "Ultra violet (UV) curable Polydimethylphenylsiloxane (PDMS) substrate\n"
+    },
+    {
+     "shelf": "organic",
+     "book": "polydimethylsiloxane",
+     "page": "Querry-NIR",
+     "page_name": "Querry 1987: SF-96 fluid; n,k 0.82\u20132.5 \u00b5m",
+     "data_path": "organic/(C2H6OSi)n - polydimethylsiloxane/nk/Querry-NIR.yml",
+     "tag": "Querry1987",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": null
+     },
+     "signals": [
+      "product",
+      "physical_form"
+     ],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.819,
+      2.499
+     ],
+     "single_point": false,
+     "comments": "SF-96 polydimethylsiloxane fluid\n"
+    },
+    {
+     "shelf": "organic",
+     "book": "polydimethylsiloxane",
+     "page": "Querry-IR",
+     "page_name": "Querry 1987: SF-96 fluid; n,k 2.5\u201356 \u00b5m",
+     "data_path": "organic/(C2H6OSi)n - polydimethylsiloxane/nk/Querry-IR.yml",
+     "tag": "Querry1987",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": null
+     },
+     "signals": [
+      "product",
+      "physical_form"
+     ],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      2.5,
+      55.5556
+     ],
+     "single_point": false,
+     "comments": "SF-96 polydimethylsiloxane fluid\n"
+    }
+   ],
+   "single_point_datasets": [],
+   "k_only_datasets": [],
+   "deferred_reason": "10 datasets that are likely distinct materials (cure ratios 5:1-20:1, RTV615/Sylgard 184, UV-curable, SF-96 fluid)"
+  },
+  {
+   "key": "SU-8",
+   "name": "SU-8 3000 (epoxy photoresist)",
+   "group": "optical",
+   "ri_books": [
+    [
+     "other",
+     "Microchem_SU8_2000"
+    ],
+    [
+     "other",
+     "Microchem_SU8_3000"
+    ]
+   ],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 1,
+   "status": "SELECTED_BY_USER",
+   "formula_ri": null,
+   "n_dispersion_datasets": 2,
+   "datasets": [
+    {
+     "shelf": "other",
+     "book": "Microchem_SU8_2000",
+     "page": "specs",
+     "page_name": "Spec sheet: n 0.32\u20130.80 \u00b5m",
+     "data_path": "other/resists/Microchem SU-8 2000/nk/specs.yml",
+     "tag": "Microchem_SU8_2000",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": "SU-8 2000",
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": "cured",
+      "supplier": "Microchem"
+     },
+     "signals": [
+      "cure_ratio",
+      "resist_grade",
+      "physical_form"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.32,
+      0.8
+     ],
+     "single_point": false,
+     "comments": "Microchem SU-8 2000 permanent epoxy negative photoresist. Uncured.\n"
+    },
+    {
+     "shelf": "other",
+     "book": "Microchem_SU8_3000",
+     "page": "specs",
+     "page_name": "Spec sheet: n 0.32\u20131.7 \u00b5m",
+     "data_path": "other/resists/Microchem SU-8 3000/nk/specs.yml",
+     "tag": "Microchem_SU8_3000",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": "SU-8 3000",
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": "Microchem"
+     },
+     "signals": [
+      "resist_grade",
+      "physical_form"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.32,
+      1.7
+     ],
+     "single_point": false,
+     "comments": "Microchem SU-8 3000 permanent epoxy negative photoresist\n"
+    }
+   ],
+   "single_point_datasets": [],
+   "k_only_datasets": [],
+   "excluded_datasets": [
+    {
+     "page": "Microchem_SU8_2000",
+     "reason": "source states 'Uncured'; uncured resist n is not a material constant (user decision)"
+    }
+   ]
+  },
+  {
+   "key": "COP-Zeonex-E48R",
+   "name": "Zeonex E48R (cyclo olefin polymer)",
+   "group": "optical",
+   "ri_books": [
+    [
+     "other",
+     "ZeonexE48R"
+    ]
+   ],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 1,
+   "status": "FOUND",
+   "formula_ri": null,
+   "n_dispersion_datasets": 1,
+   "datasets": [
+    {
+     "shelf": "other",
+     "book": "ZeonexE48R",
+     "page": "Sultanova",
+     "page_name": "Sultanova et al. 2009: n 0.4368\u20131.052 \u00b5m",
+     "data_path": "other/commercial polymers/ZeonexE48R/nk/Sultanova.yml",
+     "tag": "Sultanova2009",
+     "also_listed_in": "3d/plastics/ZeonexE48R",
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": null
+     },
+     "signals": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4368,
+      1.052
+     ],
+     "single_point": false,
+     "comments": "20 \u00b0C\n"
+    }
+   ],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "COC-Topas",
+   "name": "Topas (cyclic olefin copolymer)",
+   "group": "optical",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "Optorez-1330",
+   "name": "Optorez 1330",
+   "group": "optical",
+   "ri_books": [
+    [
+     "other",
+     "Optorez1330"
+    ]
+   ],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 1,
+   "status": "FOUND",
+   "formula_ri": null,
+   "n_dispersion_datasets": 1,
+   "datasets": [
+    {
+     "shelf": "other",
+     "book": "Optorez1330",
+     "page": "Sultanova",
+     "page_name": "Sultanova et al. 2009: n 0.4368\u20131.052 \u00b5m",
+     "data_path": "other/commercial polymers/Optorez1330/nk/Sultanova.yml",
+     "tag": "Sultanova2009",
+     "also_listed_in": "3d/plastics/Optorez1330",
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": null
+     },
+     "signals": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4368,
+      1.052
+     ],
+     "single_point": false,
+     "comments": "20 \u00b0C\n"
+    }
+   ],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "NAS-21",
+   "name": "NAS-21",
+   "group": "optical",
+   "ri_books": [
+    [
+     "other",
+     "NAS-21"
+    ]
+   ],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 1,
+   "status": "FOUND",
+   "formula_ri": null,
+   "n_dispersion_datasets": 1,
+   "datasets": [
+    {
+     "shelf": "other",
+     "book": "NAS-21",
+     "page": "Sultanova",
+     "page_name": "Sultanova et al. 2009: n 0.4368\u20131.052 \u00b5m",
+     "data_path": "other/commercial polymers/NAS-21/nk/Sultanova.yml",
+     "tag": "Sultanova2009",
+     "also_listed_in": "3d/plastics/NAS-21",
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": null
+     },
+     "signals": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4368,
+      1.052
+     ],
+     "single_point": false,
+     "comments": "20 \u00b0C\n"
+    }
+   ],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PMP",
+   "name": "Polymethylpentene (TPX)",
+   "group": "optical",
+   "ri_books": [
+    [
+     "organic",
+     "C6H12_n - polymethylpentene"
+    ]
+   ],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 1,
+   "status": "FOUND",
+   "formula_ri": "(C6H12)n",
+   "n_dispersion_datasets": 1,
+   "datasets": [
+    {
+     "shelf": "organic",
+     "book": "C6H12_n - polymethylpentene",
+     "page": "Smith",
+     "page_name": "Smith and Loewenstein 1975: n,k 29.4\u2013200 \u00b5m",
+     "data_path": "organic/(C6H12)n - polymethylpentene/nk/Smith.yml",
+     "tag": "Smith1975",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": "TPX",
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": "Manufactured by Imperial Chemical Industries under the name TPX"
+     },
+     "signals": [
+      "product"
+     ],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      29.4118,
+      200.0
+     ],
+     "single_point": false,
+     "comments": "Manufactured by Imperial Chemical Industries under the name TPX.\n"
+    }
+   ],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "Rexolite",
+   "name": "Rexolite",
+   "group": "optical",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "CR-39",
+   "name": "CR-39 (polymer)",
+   "group": "optical",
+   "ri_books": [
+    [
+     "other",
+     "CR-39"
+    ]
+   ],
+   "include_re": null,
+   "exclude_re": "Monomer",
+   "blocked": false,
+   "note": "RI.info's other CR-39 page is the monomer, a different material; excluded",
+   "citations": [],
+   "tier": 3,
+   "status": "SINGLE_POINT",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [
+    {
+     "shelf": "other",
+     "book": "CR-39",
+     "page": "poly",
+     "page_name": "Polymer: n 0.58929 \u00b5m",
+     "data_path": "other/commercial polymers/CR-39/nk/poly.yml",
+     "tag": "poly",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": null
+     },
+     "signals": [],
+     "kind": "n",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.58929,
+      0.58929
+     ],
+     "single_point": true,
+     "comments": "20 \u00b0C\n"
+    }
+   ],
+   "single_point_datasets": [
+    "poly"
+   ],
+   "k_only_datasets": []
+  },
+  {
+   "key": "Parylene-C",
+   "name": "Parylene C",
+   "group": "optical",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "Parylene-N",
+   "name": "Parylene N",
+   "group": "optical",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "Kapton",
+   "name": "Kapton (polyimide film)",
+   "group": "optical",
+   "ri_books": [
+    [
+     "other",
+     "Kapton"
+    ]
+   ],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 1,
+   "status": "DEFERRED",
+   "formula_ri": null,
+   "n_dispersion_datasets": 8,
+   "datasets": [
+    {
+     "shelf": "other",
+     "book": "Kapton",
+     "page": "Cunningham",
+     "page_name": "Cunningham et al. 2011: n 30\u2013490 \u00b5m, k 30\u2013470 \u00b5m",
+     "data_path": "other/commercial polymers/Kapton/nk/Cunningham.yml",
+     "tag": "Cunningham2011",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": "Kapton sheet",
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": null
+     },
+     "signals": [
+      "product",
+      "physical_form"
+     ],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      30.0,
+      490.0
+     ],
+     "single_point": false,
+     "comments": "Kapton sheet from Dupont\n"
+    },
+    {
+     "shelf": "other",
+     "book": "Kapton",
+     "page": "Sahin",
+     "page_name": "Sahin et al. 2019: n,k 160\u20133000 \u00b5m",
+     "data_path": "other/commercial polymers/Kapton/nk/Sahin.yml",
+     "tag": "Sahin2019",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": "Kapton HN",
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": "DuPont"
+     },
+     "signals": [
+      "product",
+      "physical_form"
+     ],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      160.0,
+      3000.0
+     ],
+     "single_point": false,
+     "comments": "125-\u03bcm-thick Kapton HN general purpose polyimide film sample provided by DuPont\n"
+    },
+    {
+     "shelf": "other",
+     "book": "Kapton",
+     "page": "Kumar",
+     "page_name": "Kumar et al. 2011: n 0.41\u20130.65 \u00b5m, k 0.49\u20130.78 \u00b5m",
+     "data_path": "other/commercial polymers/Kapton/nk/Kumar.yml",
+     "tag": "Kumar2011",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": "Kapton-H",
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": null
+     },
+     "signals": [
+      "product"
+     ],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.41,
+      0.78
+     ],
+     "single_point": false,
+     "comments": "Kapton-H polyimide \n"
+    },
+    {
+     "shelf": "other",
+     "book": "Kapton",
+     "page": "French",
+     "page_name": "French et al. 2009: n 0.19\u20131.59 \u00b5m, k 0.48\u20132.49 \u00b5m",
+     "data_path": "other/commercial polymers/Kapton/nk/French.yml",
+     "tag": "French2009",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": "Kapton HN",
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": "DuPont"
+     },
+     "signals": [
+      "product"
+     ],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.19,
+      2.49
+     ],
+     "single_point": false,
+     "comments": "Kapton HN from DuPont Electronic Technologies\n"
+    },
+    {
+     "shelf": "other",
+     "book": "Kapton",
+     "page": "Kawka",
+     "page_name": "Kawka and Buckius 2001: n 1.44\u20134.97 \u00b5m, k 1.82\u20134.98 \u00b5m",
+     "data_path": "other/commercial polymers/Kapton/nk/Kawka.yml",
+     "tag": "Kawka2001",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": "cured",
+      "supplier": null
+     },
+     "signals": [
+      "physical_form"
+     ],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      1.44,
+      4.98
+     ],
+     "single_point": false,
+     "comments": "Fourier transform infrared (FTIR) spectroscopy is used to measure the bidirectional reflectivity of polyimide films on gold substrates in the infrared. The optical constants of cured polyimide are determined in the infrared region using a Lorentz model to characterize the absorption bands.\n"
+    },
+    {
+     "shelf": "other",
+     "book": "Kapton",
+     "page": "Zhang",
+     "page_name": "Zhang et al. 1998: n,k 1.67\u201320.0 \u00b5m",
+     "data_path": "other/commercial polymers/Kapton/nk/Zhang.yml",
+     "tag": "Zhang1998",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": null
+     },
+     "signals": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      1.667,
+      20.0
+     ],
+     "single_point": false,
+     "comments": "Lorentz-Drude  model\n"
+    },
+    {
+     "shelf": "other",
+     "book": "Kapton",
+     "page": "Philipp",
+     "page_name": "Philipp et al. 1986: k 0.18\u20130.33 \u00b5m",
+     "data_path": "other/commercial polymers/Kapton/nk/Philipp.yml",
+     "tag": "Philipp1986",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": "Pyralin PI-2540",
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": null
+     },
+     "signals": [
+      "product"
+     ],
+     "kind": "k-only",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.18,
+      0.33
+     ],
+     "single_point": false,
+     "comments": "Polyimide (Pyralin PI-2540)\n"
+    },
+    {
+     "shelf": "other",
+     "book": "Kapton",
+     "page": "Brannon",
+     "page_name": "Brannon et al. 1985: k 0.19\u20130.39 \u00b5m",
+     "data_path": "other/commercial polymers/Kapton/nk/Brannon.yml",
+     "tag": "Brannon1985",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": "Kapton thin",
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": null
+     },
+     "signals": [
+      "product",
+      "physical_form"
+     ],
+     "kind": "k-only",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.19,
+      0.39
+     ],
+     "single_point": false,
+     "comments": "Polyimide thin films which are chemically identical to Kapton thin films.\n"
+    },
+    {
+     "shelf": "other",
+     "book": "Kapton",
+     "page": "Arakawa",
+     "page_name": "Arakawa et al. 1981: n 0.02\u20131.49 \u00b5m, k 0.02\u20130.43 \u00b5m",
+     "data_path": "other/commercial polymers/Kapton/nk/Arakawa.yml",
+     "tag": "Arakawa1981",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": "Kapton type",
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": null
+     },
+     "signals": [
+      "product",
+      "physical_form"
+     ],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.02,
+      1.49
+     ],
+     "single_point": false,
+     "comments": "Kapton type H polyimide film\n"
+    },
+    {
+     "shelf": "other",
+     "book": "Kapton",
+     "page": "Smith",
+     "page_name": "Smith and Loewenstein 1975: n,k 28.6\u2013182 \u00b5m",
+     "data_path": "other/commercial polymers/Kapton/nk/Smith.yml",
+     "tag": "Smith1975",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": "Kapton",
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": "manufactured by DuPont under the name Kapton"
+     },
+     "signals": [
+      "product"
+     ],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      28.5714,
+      181.8182
+     ],
+     "single_point": false,
+     "comments": "Polyimide manufactured by DuPont under the name Kapton.\n"
+    }
+   ],
+   "single_point_datasets": [],
+   "k_only_datasets": [
+    "Philipp",
+    "Brannon"
+   ],
+   "deferred_reason": "8 loadable datasets across products (H/HN/DuPont sheet) and non-overlapping ranges; product not chosen"
+  },
+  {
+   "key": "PLA",
+   "name": "Poly(D-lactic acid) (PDLA)",
+   "group": "bio",
+   "ri_books": [
+    [
+     "organic",
+     "polylactic_acid"
+    ]
+   ],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": "the only RI.info dataset is PDLA (poly-D-lactic acid), narrower than generic PLA; stereochemistry not generalized",
+   "citations": [],
+   "tier": 1,
+   "status": "FOUND",
+   "formula_ri": "(C3H4O2)n",
+   "n_dispersion_datasets": 1,
+   "datasets": [
+    {
+     "shelf": "organic",
+     "book": "polylactic_acid",
+     "page": "Bodurov",
+     "page_name": "Bodurov et al. 2016: PDLA; n 0.405\u20130.635 \u00b5m",
+     "data_path": "organic/(C3H4O2)n - polylactic acid/nk/Bodurov.yml",
+     "tag": "Bodurov2016",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": "PDLA",
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": null
+     },
+     "signals": [
+      "physical_form"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.405,
+      0.635
+     ],
+     "single_point": false,
+     "comments": "PDLA. 45-\u03bcm film on glass substrate. 24 \u00b0C.\n"
+    }
+   ],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PGA",
+   "name": "Polyglycolic acid",
+   "group": "bio",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PCL",
+   "name": "Polycaprolactone",
+   "group": "bio",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PAN",
+   "name": "Polyacrylonitrile",
+   "group": "bio",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "cellulose",
+   "name": "Cellulose",
+   "group": "bio",
+   "ri_books": [
+    [
+     "organic",
+     "cellulose"
+    ]
+   ],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 1,
+   "status": "SELECTED_BY_USER",
+   "formula_ri": "(C6H10O5)n",
+   "n_dispersion_datasets": 2,
+   "datasets": [
+    {
+     "shelf": "organic",
+     "book": "cellulose",
+     "page": "Sultanova",
+     "page_name": "Sultanova et al. 2009: n 0.437\u20131.05 \u00b5m",
+     "data_path": "organic/(C6H10O5)n - cellulose/nk/Sultanova.yml",
+     "tag": "Sultanova2009",
+     "also_listed_in": "3d/plastics/Cellulose",
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": null
+     },
+     "signals": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4368,
+      1.052
+     ],
+     "single_point": false,
+     "comments": "20 \u00b0C\n"
+    },
+    {
+     "shelf": "organic",
+     "book": "cellulose",
+     "page": "Juntunen",
+     "page_name": "Juntunen et al. 2024: microcrystalline; n 1.10\u20131.65 \u00b5m",
+     "data_path": "organic/(C6H10O5)n - cellulose/nk/Juntunen.yml",
+     "tag": "Juntunen2024",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": "PH102",
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": null
+     },
+     "signals": [
+      "product",
+      "physical_form"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      1.1,
+      1.65
+     ],
+     "single_point": false,
+     "comments": "Avicel PH102 microcrystalline cellulose. Powder. 23 \u00b0C\n"
+    }
+   ],
+   "single_point_datasets": [],
+   "k_only_datasets": [],
+   "excluded_datasets": [
+    {
+     "page": "Juntunen",
+     "reason": "microcrystalline Avicel PH102 powder: powder n is a packing artifact (user decision)"
+    }
+   ]
+  },
+  {
+   "key": "cellulose-acetate",
+   "name": "Cellulose acetate",
+   "group": "bio",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "cellulose-nitrate",
+   "name": "Cellulose nitrate",
+   "group": "bio",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "chitosan",
+   "name": "Chitosan",
+   "group": "bio",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PEG",
+   "name": "Polyethylene glycol / oxide (PEO/PEG)",
+   "group": "bio",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": "in-DB 'PEG' row carries formula C2H6O2 (ethylene glycol), not a repeat unit",
+   "citations": [
+    "Shah et al., Surf. Sci. Spectra 27, 016001 (2020); MW 285-315 g/mol (150 optical points, in materials_normalized.db)",
+    "Brandrup et al., Polymer Handbook 4th ed. (1999) (single point, 589 nm, in materials_normalized.db)"
+   ],
+   "tier": 2,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PVB",
+   "name": "Polyvinyl butyral",
+   "group": "bio",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": null,
+   "citations": [],
+   "tier": 4,
+   "status": "MISSING",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PU",
+   "name": "Polyurethane",
+   "group": "blocked",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": true,
+   "note": null,
+   "citations": [],
+   "tier": "BLOCKED",
+   "status": "BLOCKED",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "TPU",
+   "name": "Thermoplastic polyurethane",
+   "group": "blocked",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": true,
+   "note": null,
+   "citations": [],
+   "tier": "BLOCKED",
+   "status": "BLOCKED",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "LCP",
+   "name": "Liquid crystal polymer",
+   "group": "blocked",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": true,
+   "note": null,
+   "citations": [],
+   "tier": "BLOCKED",
+   "status": "BLOCKED",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "EVA",
+   "name": "Ethylene-vinyl acetate",
+   "group": "blocked",
+   "ri_books": [
+    [
+     "other",
+     "EVASKY_S87"
+    ],
+    [
+     "other",
+     "EVASKY_S88"
+    ]
+   ],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": true,
+   "note": "RI.info has EVASKY S87/S88 (specific products); a generic EVA identity is still undefined",
+   "citations": [],
+   "tier": "BLOCKED",
+   "status": "BLOCKED",
+   "formula_ri": null,
+   "n_dispersion_datasets": 2,
+   "datasets": [
+    {
+     "shelf": "other",
+     "book": "EVASKY_S87",
+     "page": "Vogt",
+     "page_name": "Vogt et al. 2016: n,k 0.25\u20132.5 \u00b5m",
+     "data_path": "other/commercial polymers/EVASKY S87/nk/Vogt.yml",
+     "tag": "Vogt2016",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": null
+     },
+     "signals": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.25,
+      2.5
+     ],
+     "single_point": false,
+     "comments": "Ethylene-vinyl acetate (EVA) with enhanced UV transmission. Room temperature.\n"
+    },
+    {
+     "shelf": "other",
+     "book": "EVASKY_S88",
+     "page": "Vogt",
+     "page_name": "Vogt et al. 2016: n,k 0.25\u20132.5 \u00b5m",
+     "data_path": "other/commercial polymers/EVASKY S88/nk/Vogt.yml",
+     "tag": "Vogt2016",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": null
+     },
+     "signals": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.25,
+      2.5
+     ],
+     "single_point": false,
+     "comments": "Conventional ethylene-vinyl acetate (EVA) with high UV absorption. Room temperature.\n"
+    }
+   ],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PLGA",
+   "name": "Poly(lactic-co-glycolic acid)",
+   "group": "blocked",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": true,
+   "note": null,
+   "citations": [],
+   "tier": "BLOCKED",
+   "status": "BLOCKED",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "EVOH",
+   "name": "Ethylene vinyl alcohol",
+   "group": "blocked",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": true,
+   "note": null,
+   "citations": [],
+   "tier": "BLOCKED",
+   "status": "BLOCKED",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PANI",
+   "name": "Polyaniline",
+   "group": "blocked",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": true,
+   "note": null,
+   "citations": [],
+   "tier": "BLOCKED",
+   "status": "BLOCKED",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PPy",
+   "name": "Polypyrrole",
+   "group": "blocked",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": true,
+   "note": null,
+   "citations": [],
+   "tier": "BLOCKED",
+   "status": "BLOCKED",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "PEDOT-PSS",
+   "name": "PEDOT:PSS",
+   "group": "blocked",
+   "ri_books": [
+    [
+     "other",
+     "PEDOT-PSS"
+    ]
+   ],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": true,
+   "note": "RI.info has one PEDOT:PSS page; composition/doping not defined",
+   "citations": [],
+   "tier": "BLOCKED",
+   "status": "BLOCKED",
+   "formula_ri": null,
+   "n_dispersion_datasets": 1,
+   "datasets": [
+    {
+     "shelf": "other",
+     "book": "PEDOT-PSS",
+     "page": "Chen",
+     "page_name": "Chen et al. 2015: n,k 0.3\u20131.1 \u00b5m",
+     "data_path": "other/mixed organic/PEDOT-PSS/nk/Chen.yml",
+     "tag": "Chen2015",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": null
+     },
+     "signals": [
+      "physical_form"
+     ],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.3019,
+      1.0977
+     ],
+     "single_point": false,
+     "comments": "PEDOT:PSS (Clevios AI 4083) thin film.\n"
+    }
+   ],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "epoxy",
+   "name": "Epoxy (generic)",
+   "group": "blocked",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": true,
+   "note": null,
+   "citations": [],
+   "tier": "BLOCKED",
+   "status": "BLOCKED",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  },
+  {
+   "key": "polyimide",
+   "name": "Polyimide (generic)",
+   "group": "blocked",
+   "ri_books": [],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": true,
+   "note": "Kapton is a specific product and is handled as its own candidate",
+   "citations": [],
+   "tier": "BLOCKED",
+   "status": "BLOCKED",
+   "formula_ri": null,
+   "n_dispersion_datasets": 0,
+   "datasets": [],
+   "single_point_datasets": [],
+   "k_only_datasets": []
+  }
+ ],
+ "extras_found_not_in_pool": [
+  {
+   "shelf": "organic",
+   "book": "polyethylene",
+   "page": "David",
+   "page_name": "David et al. 2022: LLDPE film; n,k 2.00\u201312.3 \u00b5m",
+   "data_path": "organic/(C2H4)n - polyethylene/nk/David.yml"
+  },
+  {
+   "shelf": "organic",
+   "book": "C2ClF3_n - polychlorotrifluoroethylene",
+   "page": "Smith",
+   "page_name": "Smith and Loewenstein 1975: n,k 28.6\u2013200 \u00b5m",
+   "data_path": "organic/(C2ClF3)n - polychlorotrifluoroethylene/nk/Smith.yml"
+  },
+  {
+   "shelf": "organic",
+   "book": "poly_N-isopropylacrylamide",
+   "page": "Brasse",
+   "page_name": "Brasse et al. 2018: n,k 0.246\u20131.69 \u00b5m",
+   "data_path": "organic/(C6H11NO)n - poly(N-isopropylacrylamide)/nk/Brasse.yml"
+  },
+  {
+   "shelf": "organic",
+   "book": "MDMO-PPV",
+   "page": "Kamptner-o",
+   "page_name": "Kamptner et al. 2024: n,k(o) 0.191\u20131.69 \u00b5m",
+   "data_path": "organic/(C19H28O2)n - MDMO-PPV/nk/Kamptner-o.yml"
+  },
+  {
+   "shelf": "organic",
+   "book": "MDMO-PPV",
+   "page": "Kamptner-e",
+   "page_name": "Kamptner et al. 2024: n,k(e) 0.191\u20131.69 \u00b5m",
+   "data_path": "organic/(C19H28O2)n - MDMO-PPV/nk/Kamptner-e.yml"
+  },
+  {
+   "shelf": "organic",
+   "book": "ZZ50",
+   "page": "Kamptner-o",
+   "page_name": "Kamptner et al. 2024: n,k(o) 0.191\u20131.69 \u00b5m",
+   "data_path": "organic/(C31H38N2S3)n - ZZ50/nk/Kamptner-o.yml"
+  },
+  {
+   "shelf": "organic",
+   "book": "ZZ50",
+   "page": "Kamptner-e",
+   "page_name": "Kamptner et al. 2024: n,k(e) 0.191\u20131.69 \u00b5m",
+   "data_path": "organic/(C31H38N2S3)n - ZZ50/nk/Kamptner-e.yml"
+  },
+  {
+   "shelf": "organic",
+   "book": "F8BT",
+   "page": "Kamptner-o",
+   "page_name": "Kamptner et al. 2024: n,k(o) 0.191\u20131.69 \u00b5m",
+   "data_path": "organic/(C35H42N2S)n - F8BT/nk/Kamptner-o.yml"
+  },
+  {
+   "shelf": "organic",
+   "book": "F8BT",
+   "page": "Kamptner-e",
+   "page_name": "Kamptner et al. 2024: n,k(e) 0.191\u20131.69 \u00b5m",
+   "data_path": "organic/(C35H42N2S)n - F8BT/nk/Kamptner-e.yml"
+  },
+  {
+   "shelf": "organic",
+   "book": "PTB7",
+   "page": "Kamptner-o",
+   "page_name": "Kamptner et al. 2024: n,k(o) 0.191\u20131.69 \u00b5m",
+   "data_path": "organic/(C41H53FO4S4)n - PTB7/nk/Kamptner-o.yml"
+  },
+  {
+   "shelf": "organic",
+   "book": "PTB7",
+   "page": "Kamptner-e",
+   "page_name": "Kamptner et al. 2024: n,k(e) 0.191\u20131.69 \u00b5m",
+   "data_path": "organic/(C41H53FO4S4)n - PTB7/nk/Kamptner-e.yml"
+  },
+  {
+   "shelf": "organic",
+   "book": "PDCBT",
+   "page": "Kamptner-o",
+   "page_name": "Kamptner et al. 2024: n,k(o) 0.191\u20131.69 \u00b5m",
+   "data_path": "organic/(C42H56O4S2)n - PDCBT/nk/Kamptner-o.yml"
+  },
+  {
+   "shelf": "organic",
+   "book": "PDCBT",
+   "page": "Kamptner-e",
+   "page_name": "Kamptner et al. 2024: n,k(e) 0.191\u20131.69 \u00b5m",
+   "data_path": "organic/(C42H56O4S2)n - PDCBT/nk/Kamptner-e.yml"
+  },
+  {
+   "shelf": "organic",
+   "book": "PBDB-T-2F",
+   "page": "Kamptner-o",
+   "page_name": "Kamptner et al. 2024: n,k(o) 0.191\u20131.69 \u00b5m",
+   "data_path": "organic/(C68H76F2O2S8)n - PBDB-T-2F/nk/Kamptner-o.yml"
+  },
+  {
+   "shelf": "organic",
+   "book": "PBDB-T-2F",
+   "page": "Kamptner-e",
+   "page_name": "Kamptner et al. 2024: n,k(e) 0.191\u20131.69 \u00b5m",
+   "data_path": "organic/(C68H76F2O2S8)n - PBDB-T-2F/nk/Kamptner-e.yml"
+  },
+  {
+   "shelf": "other",
+   "book": "CR-39",
+   "page": "mono",
+   "page_name": "Monomer: n 0.58929 \u00b5m",
+   "data_path": "other/commercial polymers/CR-39/nk/mono.yml"
+  },
+  {
+   "shelf": "other",
+   "book": "Pharmacoat606",
+   "page": "Juntunen",
+   "page_name": "Juntunen et al. 2024: n 1.10\u20131.65 \u00b5m",
+   "data_path": "other/commercial polymers/Pharmacoat 606/nk/Juntunen.yml"
+  },
+  {
+   "shelf": "other",
+   "book": "SurlynA1601",
+   "page": "Smith",
+   "page_name": "Smith and Loewenstein 1975: n,k 28.6\u2013200 \u00b5m",
+   "data_path": "other/commercial polymers/Surlyn A-1601/nk/Smith.yml"
+  },
+  {
+   "shelf": "other",
+   "book": "Microchem85mEL",
+   "page": "specs",
+   "page_name": "Spec sheet: n 0.2\u20131.1 \u00b5m",
+   "data_path": "other/resists/Microchem 8.5 mEL/nk/specs.yml"
+  },
+  {
+   "shelf": "other",
+   "book": "microresistEpoClad",
+   "page": "specs",
+   "page_name": "Spec sheet: n 0.45\u20131.55 \u00b5m",
+   "data_path": "other/resists/Micro resist EpoClad/nk/specs.yml"
+  },
+  {
+   "shelf": "other",
+   "book": "microresistEpoCore",
+   "page": "specs",
+   "page_name": "Spec sheet: n 0.45\u20131.55 \u00b5m",
+   "data_path": "other/resists/Micro resist EpoCore/nk/specs.yml"
+  },
+  {
+   "shelf": "other",
+   "book": "microresist_ma-N405_ma-T1050",
+   "page": "Sarkar",
+   "page_name": "Sarkar et al. 2019: n,k 0.375\u20131.69 \u00b5m",
+   "data_path": "other/resists/Micro resist ma-N 405, ma-T 1050/nk/Sarkar.yml"
+  },
+  {
+   "shelf": "other",
+   "book": "microresist_ma-N1407",
+   "page": "Sarkar",
+   "page_name": "Sarkar et al. 2019: n,k 0.301\u20131.69 \u00b5m",
+   "data_path": "other/resists/Micro resist ma-N 1407/nk/Sarkar.yml"
+  },
+  {
+   "shelf": "other",
+   "book": "Nanoscribe_IP-S",
+   "page": "Mavrona-uncured",
+   "page_name": "Mavrona et al. 2023: Uncured; n,k 200\u2013998 \u00b5m",
+   "data_path": "other/resists/Nanoscribe IP-S/nk/Mavrona-uncured.yml"
+  },
+  {
+   "shelf": "other",
+   "book": "Nanoscribe_IP-S",
+   "page": "Mavrona-cured",
+   "page_name": "Mavrona et al. 2023: Cured; n,k 200\u2013998 \u00b5m",
+   "data_path": "other/resists/Nanoscribe IP-S/nk/Mavrona-cured.yml"
+  },
+  {
+   "shelf": "other",
+   "book": "Nanoscribe_IP-Dip",
+   "page": "Mavrona-uncured",
+   "page_name": "Mavrona et al. 2023: Uncured; n,k 200\u2013998 \u00b5m",
+   "data_path": "other/resists/Nanoscribe IP-Dip/nk/Mavrona-uncured.yml"
+  },
+  {
+   "shelf": "other",
+   "book": "Nanoscribe_IP-Dip",
+   "page": "Mavrona-cured",
+   "page_name": "Mavrona et al. 2023: Cured; n,k 200\u2013998 \u00b5m",
+   "data_path": "other/resists/Nanoscribe IP-Dip/nk/Mavrona-cured.yml"
+  }
+ ]
+}

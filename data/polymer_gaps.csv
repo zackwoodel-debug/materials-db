@@ -1,0 +1,79 @@
+name,key,gap_kind,tier,reason,ri_match,citation,note
+Low-density polyethylene (LDPE),PE-LDPE,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,"RI.info's only low-density page is LLDPE (linear), a distinct polymer; not substituted"
+High-density polyethylene (HDPE),PE-HDPE,density,1,"no traceable density source: RI.info pages state none, and the DB's legacy density values are tagged 'Migration fallback for legacy records without reference'. Left NULL; SLD not derived.",,,
+Polypropylene,PP,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,
+Polyvinyl chloride,PVC,density,1,"no traceable density source: RI.info pages state none, and the DB's legacy density values are tagged 'Migration fallback for legacy records without reference'. Left NULL; SLD not derived.",,,
+Polystyrene,PS,density,1,"no traceable density source: RI.info pages state none, and the DB's legacy density values are tagged 'Migration fallback for legacy records without reference'. Left NULL; SLD not derived.",,,
+Polystyrene,PS,deferred,1,"DEFERRED (not covered by this PR): 5 datasets (bulk, powder, microspheres, two n+k); no dataset chosen this PR",5 dispersion-capable datasets; selection left null,,"materials_normalized.db already has 'PS' (id 4, formula (C8H8)n); separate DB here, matters at merge"
+Poly(methyl methacrylate),PMMA,density,1,"no traceable density source: RI.info pages state none, and the DB's legacy density values are tagged 'Migration fallback for legacy records without reference'. Left NULL; SLD not derived.",,,
+Poly(methyl methacrylate),PMMA,deferred,1,"DEFERRED (not covered by this PR): 12 datasets (bulk, thin film, microspheres, 950k resist grade, Microchem 495/950); grades not resolved",12 dispersion-capable datasets; selection left null,,"materials_normalized.db already has 'PMMA' (id 6, formula (C5H8O2)n); separate DB here, matters at merge"
+Polycarbonate,PC,density,1,"no traceable density source: RI.info pages state none, and the DB's legacy density values are tagged 'Migration fallback for legacy records without reference'. Left NULL; SLD not derived.",,,
+Polycarbonate,PC:Sultanova,excluded_dataset,1,"subset of Zhang range, disagrees ~0.4% at 633 nm, deferred to dataset-comparison PR",Sultanova,,dataset excluded; the material itself is loaded from the selected dataset(s)
+Polyethylene terephthalate,PET,density,1,"no traceable density source: RI.info pages state none, and the DB's legacy density values are tagged 'Migration fallback for legacy records without reference'. Left NULL; SLD not derived.",,,
+Polyethylene naphthalate,PEN,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,
+Polyvinyl alcohol,PVA,density,1,"no traceable density source: RI.info pages state none, and the DB's legacy density values are tagged 'Migration fallback for legacy records without reference'. Left NULL; SLD not derived.",,,
+Polyvinyl alcohol,PVA,deferred,1,DEFERRED (not covered by this PR): 2 different films (10 um on glass vs thin film on Si); not resolved,2 dispersion-capable datasets; selection left null,,"materials_normalized.db already has 'PVA' (id 26, formula C2H4O); separate DB here, matters at merge"
+Polyvinyl acetate,PVAc,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,
+Polyvinylpyrrolidone,PVP,density,1,"no traceable density source: RI.info pages state none, and the DB's legacy density values are tagged 'Migration fallback for legacy records without reference'. Left NULL; SLD not derived.",,,
+Polytetrafluoroethylene,PTFE,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,"in-DB legacy row has an unreferenced density and single-point n; not traceable ; materials_normalized.db already has 'PTFE' (id 24, formula C2F4); separate DB here, matters at merge"
+Polyvinylidene fluoride,PVDF,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,
+Polyvinylidene chloride,PVDC,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,
+Polyvinyl fluoride,PVF,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,
+Fluorinated ethylene propylene,FEP,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,
+Perfluoroalkoxy alkane,PFA,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,
+Ethylene tetrafluoroethylene,ETFE,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,
+Polyamide 6,PA6,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,
+Polyamide 66,PA66,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,"in-DB legacy 'Nylon66' row has an unreferenced density and single-point n; not traceable ; materials_normalized.db already has 'PA66' (id 27, formula C12H22N2O2); separate DB here, matters at merge"
+Polyamide 12,PA12,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,
+Polyoxymethylene,POM,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,
+Polybutylene terephthalate,PBT,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,
+Polyether ether ketone,PEEK,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,"in-DB legacy row has an unreferenced density and single-point n; not traceable ; materials_normalized.db already has 'PEEK' (id 25, formula C19H12O3); separate DB here, matters at merge"
+Polyetherimide (PEI),PEI,density,1,"no traceable density source: RI.info pages state none, and the DB's legacy density values are tagged 'Migration fallback for legacy records without reference'. Left NULL; SLD not derived.",,,
+Polysulfone,PSU,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,
+Polyethersulfone,PES,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,
+Polyphenylsulfone,PPSU,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,
+Polyphenylene sulfide,PPS,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,
+Polyphenylene oxide,PPO,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,
+Polyamide-imide,PAI,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,
+Polybenzimidazole,PBI,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,
+Polyarylate,PAR,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,
+Acrylonitrile butadiene styrene,ABS,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,
+Styrene-acrylonitrile copolymer,SAN,density,1,"no traceable density source: RI.info pages state none, and the DB's legacy density values are tagged 'Migration fallback for legacy records without reference'. Left NULL; SLD not derived.",,,
+NAS (generic styrene-methyl methacrylate copolymer),NAS,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,only the NAS-21 grade exists on RI.info; generic NAS not substituted
+Polydimethylsiloxane,PDMS,density,1,"no traceable density source: RI.info pages state none, and the DB's legacy density values are tagged 'Migration fallback for legacy records without reference'. Left NULL; SLD not derived.",,,
+Polydimethylsiloxane,PDMS,deferred,1,"DEFERRED (not covered by this PR): 10 datasets that are likely distinct materials (cure ratios 5:1-20:1, RTV615/Sylgard 184, UV-curable, SF-96 fluid)",10 dispersion-capable datasets; selection left null,,"materials_normalized.db already has 'PDMS' (id 16, formula (C2H6OSi)n); separate DB here, matters at merge"
+SU-8 3000 (epoxy photoresist),SU-8,density,1,"no traceable density source: RI.info pages state none, and the DB's legacy density values are tagged 'Migration fallback for legacy records without reference'. Left NULL; SLD not derived.",,,
+SU-8 3000 (epoxy photoresist),SU-8:Microchem_SU8_2000,excluded_dataset,1,source states 'Uncured'; uncured resist n is not a material constant (user decision),Microchem_SU8_2000,,dataset excluded; the material itself is loaded from the selected dataset(s)
+Zeonex E48R (cyclo olefin polymer),COP-Zeonex-E48R,density,1,"no traceable density source: RI.info pages state none, and the DB's legacy density values are tagged 'Migration fallback for legacy records without reference'. Left NULL; SLD not derived.",,,
+Topas (cyclic olefin copolymer),COC-Topas,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,
+Optorez 1330,Optorez-1330,density,1,"no traceable density source: RI.info pages state none, and the DB's legacy density values are tagged 'Migration fallback for legacy records without reference'. Left NULL; SLD not derived.",,,
+NAS-21,NAS-21,density,1,"no traceable density source: RI.info pages state none, and the DB's legacy density values are tagged 'Migration fallback for legacy records without reference'. Left NULL; SLD not derived.",,,
+Polymethylpentene (TPX),PMP,density,1,"no traceable density source: RI.info pages state none, and the DB's legacy density values are tagged 'Migration fallback for legacy records without reference'. Left NULL; SLD not derived.",,,
+Rexolite,Rexolite,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,
+CR-39 (polymer),CR-39,material,3,"single-point n only, no dispersion; no traceable density source, so no material row",other/CR-39/poly,,"RI.info's other CR-39 page is the monomer, a different material; excluded"
+Parylene C,Parylene-C,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,
+Parylene N,Parylene-N,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,
+Kapton (polyimide film),Kapton,density,1,"no traceable density source: RI.info pages state none, and the DB's legacy density values are tagged 'Migration fallback for legacy records without reference'. Left NULL; SLD not derived.",,,
+Kapton (polyimide film),Kapton,deferred,1,DEFERRED (not covered by this PR): 8 loadable datasets across products (H/HN/DuPont sheet) and non-overlapping ranges; product not chosen,8 dispersion-capable datasets; selection left null,,
+Poly(D-lactic acid) (PDLA),PLA,density,1,"no traceable density source: RI.info pages state none, and the DB's legacy density values are tagged 'Migration fallback for legacy records without reference'. Left NULL; SLD not derived.",,,
+Polyglycolic acid,PGA,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,
+Polycaprolactone,PCL,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,
+Polyacrylonitrile,PAN,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,
+Cellulose,cellulose,density,1,"no traceable density source: RI.info pages state none, and the DB's legacy density values are tagged 'Migration fallback for legacy records without reference'. Left NULL; SLD not derived.",,,
+Cellulose,cellulose:Juntunen,excluded_dataset,1,microcrystalline Avicel PH102 powder: powder n is a packing artifact (user decision),Juntunen,,dataset excluded; the material itself is loaded from the selected dataset(s)
+Cellulose acetate,cellulose-acetate,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,
+Cellulose nitrate,cellulose-nitrate,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,
+Chitosan,chitosan,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,
+Polyethylene glycol / oxide (PEO/PEG),PEG,material,2,"dispersion exists in citable literature but not on RI.info; citation logged only, NOT transcribed or fetched this run",,"Shah et al., Surf. Sci. Spectra 27, 016001 (2020); MW 285-315 g/mol (150 optical points, in materials_normalized.db) | Brandrup et al., Polymer Handbook 4th ed. (1999) (single point, 589 nm, in materials_normalized.db)","in-DB 'PEG' row carries formula C2H6O2 (ethylene glycol), not a repeat unit ; materials_normalized.db already has 'PEG' (id 9, formula C2H6O2); separate DB here, matters at merge"
+Polyvinyl butyral,PVB,material,4,no RI.info dataset and no traceable in-repo source; no material row,,,
+Polyurethane,PU,material,BLOCKED,needs_specific_formulation: identity undefined without composition / doping / cure state; never auto-loaded,,,
+Thermoplastic polyurethane,TPU,material,BLOCKED,needs_specific_formulation: identity undefined without composition / doping / cure state; never auto-loaded,,,
+Liquid crystal polymer,LCP,material,BLOCKED,needs_specific_formulation: identity undefined without composition / doping / cure state; never auto-loaded,,,
+Ethylene-vinyl acetate,EVA,material,BLOCKED,needs_specific_formulation: identity undefined without composition / doping / cure state; never auto-loaded,other/EVASKY_S87/Vogt ; other/EVASKY_S88/Vogt,,RI.info has EVASKY S87/S88 (specific products); a generic EVA identity is still undefined
+Poly(lactic-co-glycolic acid),PLGA,material,BLOCKED,needs_specific_formulation: identity undefined without composition / doping / cure state; never auto-loaded,,,
+Ethylene vinyl alcohol,EVOH,material,BLOCKED,needs_specific_formulation: identity undefined without composition / doping / cure state; never auto-loaded,,,
+Polyaniline,PANI,material,BLOCKED,needs_specific_formulation: identity undefined without composition / doping / cure state; never auto-loaded,,,
+Polypyrrole,PPy,material,BLOCKED,needs_specific_formulation: identity undefined without composition / doping / cure state; never auto-loaded,,,
+PEDOT:PSS,PEDOT-PSS,material,BLOCKED,needs_specific_formulation: identity undefined without composition / doping / cure state; never auto-loaded,other/PEDOT-PSS/Chen,,RI.info has one PEDOT:PSS page; composition/doping not defined
+Epoxy (generic),epoxy,material,BLOCKED,needs_specific_formulation: identity undefined without composition / doping / cure state; never auto-loaded,,,
+Polyimide (generic),polyimide,material,BLOCKED,needs_specific_formulation: identity undefined without composition / doping / cure state; never auto-loaded,,,Kapton is a specific product and is handled as its own candidate
