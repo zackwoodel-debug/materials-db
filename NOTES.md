@@ -77,6 +77,13 @@ Generic loader: scripts/load_family_db.py (--family/--catalog/--selections/--db/
    The main shelf is now exhausted except gases, 2D/layered books and logged deferrals. fetch_source_dois.py now only grows its cache
    (a rebuilt release carries the cached DOIs, which the old version then dropped).
 
+17. DONE: glasses family (scripts/glass_material_list.py, build_glasses_csv.py, load_glasses_db.py): 11 glasses, 23 datasets.
+   Soda-lime (window glass clear/low-iron/bronze/grey/green + far-IR, microscope slide air/tin side, Fe2O3 5/10/703 ppm, Optiwhite
+   float) as one material with variant-labelled datasets; SCHOTT N-BK7 (+ Lane BK7 IR), B 270, BOROFLOAT 33, D 263 T eco, AF 32 eco,
+   ZERODUR; Corning EAGLE XG; LZOS K108; BGG; ZBLAN. Formula NULL (no SLD/structure); density only from datasheets (4). DURAN
+   excluded (single n point; page nd 1.527 contradicts its n 1.473). Next coverage without decisions: IR chalcogenide glasses need
+   mapping onto As2S3/As2Se3 + composition convention; resists/adhesives/immersion oils/index liquids/commercial polymers next.
+
 ## FOLLOW-UP (logged, NOT started): graphene / 2D carbon as its own family -- materialclass must NOT be 'polymer'
 - RI.info main/C, verified read-only: monolayer graphene = Weber 2010 (0.21-1.0 um, exfoliated flake, 3.4 A, on Si/98 nm SiO2), Song 2018 "Graphene"
   (0.193-1.69, CVD mono), Tikuisis 2023 (0.226-4.40, epitaxial on 6H-SiC), El-Sayed 2021 (0.24-1.0, CVD): four, not three. Song 2018 also holds 4 bulk-HOPG pages (graphite).

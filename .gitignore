@@ -47,3 +47,6 @@ data/materials_semiconductor_test.db
 
 # regenerable from data/inorganic4.csv + data/step1_selections_inorganic4.json (scripts/load_inorganic4_db.py)
 data/materials_inorganic4_test.db
+
+# regenerable from data/glasses.csv + data/step1_selections_glasses.json (scripts/load_glasses_db.py)
+data/materials_glass_test.db

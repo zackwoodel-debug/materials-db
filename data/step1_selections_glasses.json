@@ -1,0 +1,493 @@
+{
+ "soda-lime": {
+  "name": "Soda-lime silica glass",
+  "formula": null,
+  "source": "glass_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Rubin-clear",
+    "axis": null,
+    "phase": "clear window glass",
+    "data_path": "glass/misc/soda-lime/nk/Rubin-clear.yml",
+    "span_um": [
+     0.31,
+     4.6
+    ],
+    "kind": "nk",
+    "dispersion": "formula+tabulated",
+    "comments": "Clear soda lime silica window glass\n",
+    "temperature_c": null,
+    "tag": "Rubin1985",
+    "dataset_label": "clear window glass | Rubin1985",
+    "shelf": "glass",
+    "book": "soda-lime"
+   },
+   {
+    "page": "Rubin-lowiron",
+    "axis": null,
+    "phase": "low-iron window glass",
+    "data_path": "glass/misc/soda-lime/nk/Rubin-lowiron.yml",
+    "span_um": [
+     0.31,
+     4.6
+    ],
+    "kind": "nk",
+    "dispersion": "formula+tabulated",
+    "comments": "Low-iron soda lime silica window glass\n",
+    "temperature_c": null,
+    "tag": "Rubin1985",
+    "dataset_label": "low-iron window glass | Rubin1985",
+    "shelf": "glass",
+    "book": "soda-lime"
+   },
+   {
+    "page": "Rubin-bronze",
+    "axis": null,
+    "phase": "bronze window glass",
+    "data_path": "glass/misc/soda-lime/nk/Rubin-bronze.yml",
+    "span_um": [
+     0.32,
+     4.6
+    ],
+    "kind": "nk",
+    "dispersion": "formula+tabulated",
+    "comments": "Bronze soda lime silica window glass\n",
+    "temperature_c": null,
+    "tag": "Rubin1985",
+    "dataset_label": "bronze window glass | Rubin1985",
+    "shelf": "glass",
+    "book": "soda-lime"
+   },
+   {
+    "page": "Rubin-grey",
+    "axis": null,
+    "phase": "grey window glass",
+    "data_path": "glass/misc/soda-lime/nk/Rubin-grey.yml",
+    "span_um": [
+     0.32,
+     4.6
+    ],
+    "kind": "nk",
+    "dispersion": "formula+tabulated",
+    "comments": "Grey soda lime silica window glass\n",
+    "temperature_c": null,
+    "tag": "Rubin1985",
+    "dataset_label": "grey window glass | Rubin1985",
+    "shelf": "glass",
+    "book": "soda-lime"
+   },
+   {
+    "page": "Rubin-green",
+    "axis": null,
+    "phase": "green window glass",
+    "data_path": "glass/misc/soda-lime/nk/Rubin-green.yml",
+    "span_um": [
+     0.32,
+     4.6
+    ],
+    "kind": "nk",
+    "dispersion": "formula+tabulated",
+    "comments": "Green soda lime silica window glass\n",
+    "temperature_c": null,
+    "tag": "Rubin1985",
+    "dataset_label": "green window glass | Rubin1985",
+    "shelf": "glass",
+    "book": "soda-lime"
+   },
+   {
+    "page": "Kamptner",
+    "axis": null,
+    "phase": "microscope slide, air side",
+    "data_path": "glass/misc/soda-lime/nk/Kamptner.yml",
+    "span_um": [
+     0.19146,
+     1.68869
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Glass objective slide (Marienfeld, 7.5 cm x 2.5 cm, 1 mm thick). \"Air\" side of the float glass. Float glass is produced by pouring molten glass onto liquid tin, so that the glass floats on top of the liquid tin while it cools down forming very flat sheets. Some tin diffuses into the glass surface facing the tin bath during the cooling procedure. This side of the glass, the \"tin\" side, receives different surface optical properties compared to the other side, the \"air\" side.\"\n",
+    "temperature_c": null,
+    "tag": "Kamptner2024",
+    "dataset_label": "microscope slide, air side | Kamptner2024",
+    "shelf": "glass",
+    "book": "soda-lime"
+   },
+   {
+    "page": "Kamptner-tin-side",
+    "axis": null,
+    "phase": "microscope slide, tin side",
+    "data_path": "glass/misc/soda-lime/nk/Kamptner-tin-side.yml",
+    "span_um": [
+     0.19146,
+     1.68869
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Glass objective slide (Marienfeld, 7.5 cm x 2.5 cm, 1 mm thick). \"Tin\" side of the float glass. Float glass is produced by pouring molten glass onto liquid tin, so that the glass floats on top of the liquid tin while it cools down forming very flat sheets. Some tin diffuses into the glass surface facing the tin bath during the cooling procedure. This side of the glass, the \"tin\" side, receives different surface optical properties compared to the other side, the \"air\" side.\"\n",
+    "temperature_c": null,
+    "tag": "Kamptner2024",
+    "dataset_label": "microscope slide, tin side | Kamptner2024",
+    "shelf": "glass",
+    "book": "soda-lime"
+   },
+   {
+    "page": "Vogt-10ppm",
+    "axis": null,
+    "phase": "10 ppm Fe2O3",
+    "data_path": "glass/misc/soda-lime/nk/Vogt-10ppm.yml",
+    "span_um": [
+     0.25,
+     1.7
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Fe2O3 content 0.01‰ (10 ppm). Room temperature.\n",
+    "temperature_c": null,
+    "tag": "Vogt2016",
+    "dataset_label": "10 ppm Fe2O3 | Vogt2016",
+    "shelf": "glass",
+    "book": "soda-lime"
+   },
+   {
+    "page": "Vogt-5ppm",
+    "axis": null,
+    "phase": "5 ppm Fe2O3",
+    "data_path": "glass/misc/soda-lime/nk/Vogt-5ppm.yml",
+    "span_um": [
+     0.3,
+     1.69
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Fe2O3 content 0.005‰ (5 ppm). Room temperature.\n",
+    "temperature_c": null,
+    "tag": "Vogt2016",
+    "dataset_label": "5 ppm Fe2O3 | Vogt2016",
+    "shelf": "glass",
+    "book": "soda-lime"
+   },
+   {
+    "page": "Vogt-703ppm",
+    "axis": null,
+    "phase": "703 ppm Fe2O3",
+    "data_path": "glass/misc/soda-lime/nk/Vogt-703ppm.yml",
+    "span_um": [
+     0.3,
+     1.69
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Fe2O3 content 0.703‰ (703 ppm). Room temperature.\n",
+    "temperature_c": null,
+    "tag": "Vogt2016",
+    "dataset_label": "703 ppm Fe2O3 | Vogt2016",
+    "shelf": "glass",
+    "book": "soda-lime"
+   },
+   {
+    "page": "Treharne",
+    "axis": null,
+    "phase": "low-iron float glass (Pilkington Optiwhite)",
+    "data_path": "glass/misc/Pilkington-Optiwhite/nk/Treharne.yml",
+    "span_um": [
+     0.30141754,
+     1.4979382
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Variable-angle ellipsometer was used to take amplitude and phase change measurements. The refractive index and extinction coefficient was extracted for NSG Opti-White (low-Fe) glass from a multi-oscillator model fit to the ellipsometry data, as a function of wavelength, from 300 to 1500 nm\n",
+    "temperature_c": null,
+    "tag": "Treharne2011",
+    "dataset_label": "low-iron float glass (Pilkington Optiwhite) | Treharne2011",
+    "shelf": "glass",
+    "book": "Pilkington-Optiwhite"
+   },
+   {
+    "page": "Rubin-IR",
+    "axis": null,
+    "phase": "window glass",
+    "data_path": "glass/misc/soda-lime/nk/Rubin-IR.yml",
+    "span_um": [
+     5.0,
+     300.0
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Soda lime silica window glass in the far-infrared. Opticsl constants are same for clear, colored (bronze, grey, green) and low-iron glass.\n",
+    "temperature_c": null,
+    "tag": "Rubin1985",
+    "dataset_label": "window glass | Rubin1985",
+    "shelf": "glass",
+    "book": "soda-lime"
+   }
+  ]
+ },
+ "N-BK7": {
+  "name": "N-BK7 borosilicate crown glass (SCHOTT)",
+  "formula": null,
+  "source": "glass_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "N-BK7",
+    "axis": null,
+    "phase": "N-BK7",
+    "data_path": "specs/schott/optical/N-BK7.yml",
+    "span_um": [
+     0.3,
+     2.5
+    ],
+    "kind": "nk",
+    "dispersion": "formula+tabulated",
+    "comments": "step 0.5 available\n",
+    "temperature_c": 19.85,
+    "tag": "SCHOTT2017",
+    "dataset_label": "N-BK7 | SCHOTT2017",
+    "shelf": "specs",
+    "book": "SCHOTT-optical"
+   },
+   {
+    "page": "Lane",
+    "axis": null,
+    "phase": "BK7",
+    "data_path": "glass/optical/BK7/nk/Lane.yml",
+    "span_um": [
+     5.0,
+     33.333
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "",
+    "temperature_c": null,
+    "tag": "Lane1990",
+    "dataset_label": "BK7 | Lane1990",
+    "shelf": "glass",
+    "book": "BK7-Schott"
+   }
+  ]
+ },
+ "B270": {
+  "name": "B 270 Superwite crown glass (SCHOTT)",
+  "formula": null,
+  "source": "glass_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "B270",
+    "axis": null,
+    "phase": null,
+    "data_path": "specs/schott/misc/B270.yml",
+    "span_um": [
+     0.43583,
+     0.65627
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "20 °C. Clear high transmission crown glass (modified soda-lime glass) available in form of sheets, profile rods strips and blanks.\n",
+    "temperature_c": 19.85,
+    "tag": "SCHOTT1993",
+    "dataset_label": "SCHOTT1993",
+    "shelf": "specs",
+    "book": "SCHOTT-misc"
+   }
+  ]
+ },
+ "BOROFLOAT33": {
+  "name": "BOROFLOAT 33 borosilicate glass (SCHOTT)",
+  "formula": null,
+  "source": "glass_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "BOROFLOAT33",
+    "axis": null,
+    "phase": null,
+    "data_path": "specs/schott/misc/BOROFLOAT33.yml",
+    "span_um": [
+     0.24,
+     2.8
+    ],
+    "kind": "nk",
+    "dispersion": "formula+tabulated",
+    "comments": "Room temperature.\n",
+    "temperature_c": null,
+    "tag": "SCHOTT2021",
+    "dataset_label": "SCHOTT2021",
+    "shelf": "specs",
+    "book": "SCHOTT-misc"
+   }
+  ]
+ },
+ "D263TECO": {
+  "name": "D 263 T eco thin borosilicate glass (SCHOTT)",
+  "formula": null,
+  "source": "glass_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "D263TECO",
+    "axis": null,
+    "phase": null,
+    "data_path": "specs/schott/misc/D263TECO.yml",
+    "span_um": [
+     0.334,
+     2.325
+    ],
+    "kind": "nk",
+    "dispersion": "formula+tabulated",
+    "comments": "Clear borosilicate glass of high chemical resistance\n",
+    "temperature_c": 19.85,
+    "tag": "SCHOTT2017",
+    "dataset_label": "SCHOTT2017",
+    "shelf": "specs",
+    "book": "SCHOTT-misc"
+   }
+  ]
+ },
+ "AF32ECO": {
+  "name": "AF 32 eco alkali-free thin glass (SCHOTT)",
+  "formula": null,
+  "source": "glass_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "AF32ECO",
+    "axis": null,
+    "phase": null,
+    "data_path": "specs/schott/misc/AF32ECO.yml",
+    "span_um": [
+     0.31,
+     2.325
+    ],
+    "kind": "nk",
+    "dispersion": "formula+tabulated",
+    "comments": "Alkali free alumino borosilicate glass\n",
+    "temperature_c": 19.85,
+    "tag": "SCHOTT2017",
+    "dataset_label": "SCHOTT2017",
+    "shelf": "specs",
+    "book": "SCHOTT-misc"
+   }
+  ]
+ },
+ "ZERODUR": {
+  "name": "ZERODUR glass-ceramic (SCHOTT)",
+  "formula": null,
+  "source": "glass_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "ZERODUR",
+    "axis": null,
+    "phase": null,
+    "data_path": "specs/schott/misc/ZERODUR.yml",
+    "span_um": [
+     0.365,
+     2.325
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "",
+    "temperature_c": null,
+    "tag": "SCHOTT2007",
+    "dataset_label": "SCHOTT2007",
+    "shelf": "specs",
+    "book": "SCHOTT-misc"
+   }
+  ]
+ },
+ "EagleXG": {
+  "name": "EAGLE XG display glass (Corning)",
+  "formula": null,
+  "source": "glass_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "EagleXG",
+    "axis": null,
+    "phase": null,
+    "data_path": "specs/corning/EagleXG.yml",
+    "span_um": [
+     0.4358,
+     0.6438
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "",
+    "temperature_c": null,
+    "tag": "CORNING2006",
+    "dataset_label": "CORNING2006",
+    "shelf": "specs",
+    "book": "CORNING-display"
+   }
+  ]
+ },
+ "K108": {
+  "name": "K108 crown glass (LZOS)",
+  "formula": null,
+  "source": "glass_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Bassarab",
+    "axis": null,
+    "phase": null,
+    "data_path": "glass/optical/LZOS K108/nk/Bassarab.yml",
+    "span_um": [
+     0.18503,
+     150000.0
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "",
+    "temperature_c": null,
+    "tag": "Bassarab2023",
+    "dataset_label": "Bassarab2023",
+    "shelf": "glass",
+    "book": "K108-LZOS"
+   }
+  ]
+ },
+ "BGG": {
+  "name": "Barium gallogermanate glass (BGG)",
+  "formula": null,
+  "source": "glass_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Zelmon",
+    "axis": null,
+    "phase": null,
+    "data_path": "glass/misc/BGG/nk/Zelmon.yml",
+    "span_um": [
+     0.4,
+     5.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "BaO : Ga2O3 : GeO2 = 42.9 : 17.0 : 40.1.\n",
+    "temperature_c": null,
+    "tag": "Zelmon2002",
+    "dataset_label": "Zelmon2002",
+    "shelf": "glass",
+    "book": "BGG"
+   }
+  ]
+ },
+ "ZBLAN": {
+  "name": "ZBLAN fluoride glass",
+  "formula": null,
+  "source": "glass_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Gan",
+    "axis": null,
+    "phase": null,
+    "data_path": "glass/misc/ZBLAN/nk/Gan.yml",
+    "span_um": [
+     0.365,
+     3.5
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Room temperature.\n",
+    "temperature_c": null,
+    "tag": "Gan1995",
+    "dataset_label": "Gan1995",
+    "shelf": "glass",
+    "book": "ZBLAN"
+   }
+  ]
+ }
+}

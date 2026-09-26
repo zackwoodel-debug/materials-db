@@ -60,7 +60,7 @@ python -m materials_db.calculators.xrr_engine --material PMMA
 ### Downloadable dataset (releases)
 
 `python3 scripts/build_release.py --version X.Y.Z` builds one SQLite database holding every curated family (oxides,
-nitrides, polymers, inorganic batch 3, halides, chalcogenides, liquids, semiconductors, inorganic batch 4), plus compositional, structural and molecular descriptors.
+nitrides, polymers, inorganic batch 3, halides, chalcogenides, liquids, semiconductors, inorganic batch 4, glasses), plus compositional, structural and molecular descriptors.
 It also writes a CSV of every table, the family tables with their per-material flags, a data card, a manifest and
 checksums. The output goes to `release/` (not committed); publish it as a GitHub release. The build runs offline and
 stops if any validation check fails. Descriptor inputs and their rules are in `data/descriptors/README.md`.

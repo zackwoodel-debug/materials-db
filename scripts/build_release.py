@@ -9,7 +9,7 @@ publish them as GitHub release assets, not commits).
 
 Stages, all reproducible from committed inputs (no API key, no network):
   1. base         copy data/materials_oxide_test.db (oxides, batch 2, batch 3b, pure elements; formula-4 remediated)
-  2. families     upsert nitride, polymer, inorganic3, halide, chalcogenide, liquid, semiconductor and inorganic4 through load_family_db.run_family with the same
+  2. families     upsert nitride, polymer, inorganic3, halide, chalcogenide, liquid, semiconductor, inorganic4 and glass through load_family_db.run_family with the same
                   options as their wrappers (conflicts are reported, never overwritten)
   3. dedupe       physical rows a later family re-loaded with identical values (the five nitrides batch 2 already held): keep
                   one, preferring the source whose title/notes name the material, else the older source; then drop sources
@@ -60,8 +60,8 @@ import release_validation as rv  # noqa: E402
 
 BASE_DB = _ROOT / "data" / "materials_oxide_test.db"
 FAMILY_CSVS = ["oxides_50", "batch2_31", "batch3b_4", "pure_elements_50", "nitrides", "polymers", "inorganic3", "halides",
-               "chalcogenides", "liquids", "semiconductors", "inorganic4"]
-GAP_CSVS = ["nitride_gaps", "polymer_gaps", "inorganic3_gaps", "halide_gaps", "chalcogenide_gaps", "liquid_gaps", "semiconductor_gaps", "inorganic4_gaps"]
+               "chalcogenides", "liquids", "semiconductors", "inorganic4", "glasses"]
+GAP_CSVS = ["nitride_gaps", "polymer_gaps", "inorganic3_gaps", "halide_gaps", "chalcogenide_gaps", "liquid_gaps", "semiconductor_gaps", "inorganic4_gaps", "glass_gaps"]
 DESCRIPTOR_INPUTS = ["mp_structural.json", "polymer_repeat_units.csv", "formula_issues.csv", "source_dois.json", "pubchem_titles.json", "mp_dielectric.json"]
 # Same allow-list as tests/test_family_optical_sanity.py (a test keeps them equal): measurement noise around k = 0 in tabulated sources.
 NEGATIVE_K_ALLOWED = {
@@ -81,6 +81,7 @@ class ReleaseError(RuntimeError):
 
 def family_jobs():
     import load_chalcogenides_db as chl
+    import load_glasses_db as gla
     import load_halides_db as hal
     import load_inorganic3_db as i3
     import load_inorganic4_db as i4
@@ -93,7 +94,7 @@ def family_jobs():
             ("polymer", pol, dict(allow_null_formula=True, reference_sources=False, collapse_block_duplicates=True)),
             ("inorganic3", i3, lit(i3)), ("halide", hal, lit(hal)), ("chalcogenide", chl, lit(chl)),
             ("liquid", liq, dict(lit(liq), allow_null_formula=True)), ("semiconductor", sem, lit(sem)),
-            ("inorganic4", i4, lit(i4))]
+            ("inorganic4", i4, lit(i4)), ("glass", gla, dict(lit(gla), allow_null_formula=True))]
 
 
 def family_rows():
@@ -314,8 +315,8 @@ def write_readme(path, version, facts, c, mp_version):
     path.write_text(f"""# materials-db v{version}
 
 Optical constants (n, k), densities, x-ray and neutron scattering length densities, and compositional, structural and
-molecular descriptors for **{n_mat} materials** (inorganic crystals and glasses, compound semiconductors, metals, polymers,
-molecular liquids and biomolecules): {c['datasets']} optical datasets and {c['tables']['optical_dispersion']:,} optical
+molecular descriptors for **{n_mat} materials** (inorganic crystals, compound semiconductors, metals, substrate and window
+glasses, polymers, molecular liquids and biomolecules): {c['datasets']} optical datasets and {c['tables']['optical_dispersion']:,} optical
 data points. All of it is in one SQLite file, `materials-db-v{version}.sqlite`, and every table is also exported as CSV in `csv/`.
 
 Licence: **CC BY 4.0**. Cite this dataset and the upstream sources listed in `DATA_LICENSE.md` (refractiveindex.info,
@@ -419,6 +420,10 @@ calculation overestimates by 30-60%.
 - Inorganic batch 4 (phosphate and sulfate crystals: berlinite, anhydrite, KDP, ADP, KTP, RTP). ZrO2 is deferred: its
   refractiveindex.info pages are yttria-stabilized zirconia (a different composition), an oscillator-model fit and
   nanoparticles in water, none of which is bulk ZrO2.
+- Glasses (soda-lime window/slide/float glass variants, SCHOTT N-BK7, B 270, BOROFLOAT 33, D 263 T eco, AF 32 eco, ZERODUR,
+  Corning EAGLE XG, LZOS K108, BGG, ZBLAN) have no formula, so no SLD or structure; density only where the manufacturer
+  states it. Soda-lime variants are separate datasets labelled by variant. Fused silica is the amorphous dataset of SiO2.
+  DURAN is excluded: one refractive-index point only, and its page's nd (1.527) contradicts its own data (1.473).
 - Primary dataset (the family tables' n_633 / k_633) in the automatically selected families (halides, chalcogenides,
   liquids, semiconductors): measured data before model fits of the dielectric function, then the widest range covering
   633 nm. A page is a model fit only when its source says so (scripts/dataset_kind.py). Model datasets (e.g. Adachi's) are
