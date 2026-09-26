@@ -1,0 +1,20 @@
+{
+  "family": "optical_media",
+  "inserted": {
+    "materials": 8,
+    "physical_properties": 5,
+    "optical_dispersion": 4000,
+    "sources": 16
+  },
+  "unchanged": {
+    "materials": 0,
+    "physical_properties": 0,
+    "optical_dispersion": 0
+  },
+  "conflicts": [],
+  "skipped": [],
+  "warnings": [],
+  "notes": [],
+  "deferred": [],
+  "collapsed": []
+}

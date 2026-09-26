@@ -90,6 +90,12 @@ Generic loader: scripts/load_family_db.py (--family/--catalog/--selections/--db/
    decision); ma-N 405 : ma-T 1050 1:1 mixture stays BLOCKED. match_ri_info_polymers RESOLUTIONS accept an optional `labels` list.
    The 950 resist's formula (C5H8O2)n comes from the RI.info PMMA book; the 495 book states none (source-only rule).
 
+19. DONE: optical media (scripts/optical_media_material_list.py, build_optical_media_csv.py, load_optical_media_db.py): Cargille
+   BK7 / fused silica 06350 / 50350 / acrylic / acrylic double matching liquids (densities at 25 degC), Norland NOA 61 (cured spec
+   sheet), Eukitt and FluorSave mounting media (NIR only). The glass builder is now the shared scripts/listed_family.py (glass
+   outputs byte-identical). Deferred: Loctite 3526, NOA 170, NOA 1348 (Iezzi 2020 films, cure state not stated) and NOA 61 Joseph
+   (uncured). Immersion oils: k only, nothing to load. Cross-check: each matching liquid's n(633) equals its target material.
+
 ## FOLLOW-UP (logged, NOT started): graphene / 2D carbon as its own family -- materialclass must NOT be 'polymer'
 - RI.info main/C, verified read-only: monolayer graphene = Weber 2010 (0.21-1.0 um, exfoliated flake, 3.4 A, on Si/98 nm SiO2), Song 2018 "Graphene"
   (0.193-1.69, CVD mono), Tikuisis 2023 (0.226-4.40, epitaxial on 6H-SiC), El-Sayed 2021 (0.24-1.0, CVD): four, not three. Song 2018 also holds 4 bulk-HOPG pages (graphite).

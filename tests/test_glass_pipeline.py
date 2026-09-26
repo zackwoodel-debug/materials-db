@@ -17,7 +17,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 sys.path.insert(0, str(ROOT / "src"))
 sys.path.insert(0, str(ROOT / "tests"))
 
-import build_glasses_csv as bld  # noqa: E402
+import listed_family as bld  # noqa: E402
 import glass_material_list as lst  # noqa: E402
 import load_family_db as fam  # noqa: E402
 import load_glasses_db as wrap  # noqa: E402

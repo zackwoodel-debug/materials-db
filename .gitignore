@@ -50,3 +50,6 @@ data/materials_inorganic4_test.db
 
 # regenerable from data/glasses.csv + data/step1_selections_glasses.json (scripts/load_glasses_db.py)
 data/materials_glass_test.db
+
+# regenerable from data/optical_media.csv + data/step1_selections_optical_media.json (scripts/load_optical_media_db.py)
+data/materials_optical_media_test.db

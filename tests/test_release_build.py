@@ -35,6 +35,7 @@ N_MATERIALS = sum(len(pd.read_csv(ROOT / "data" / f"{stem}.csv")) for stem in br
 POLYMERS = set(pd.read_csv(ROOT / "data" / "polymers.csv").name)
 LIQUIDS = pd.read_csv(ROOT / "data" / "liquids.csv")
 GLASSES = pd.read_csv(ROOT / "data" / "glasses.csv")
+OPTICAL_MEDIA = pd.read_csv(ROOT / "data" / "optical_media.csv")
 
 
 @pytest.fixture(scope="module")
@@ -65,7 +66,7 @@ def descriptors(release):
 def test_every_family_material_is_in_the_release_once_and_nothing_else_is(release):
     names = [n for (n,) in q(release, "SELECT name FROM materials")]
     expected = set(br.family_rows())
-    assert len(names) == len(set(names)) == len(expected) == N_MATERIALS == 338 and set(names) == expected
+    assert len(names) == len(set(names)) == len(expected) == N_MATERIALS == 346 and set(names) == expected
     assert not set(BENCHMARK_ONLY) & set(names)  # the legacy benchmark rows are not merged
 
 
@@ -97,7 +98,7 @@ def test_optical_rows_of_every_material_equal_its_origin_database_exactly(releas
               "nitrides": family_dbs["nitride"], "polymers": family_dbs["polymer"], "inorganic3": family_dbs["inorganic3"],
               "halides": family_dbs["halide"], "chalcogenides": family_dbs["chalcogenide"], "liquids": family_dbs["liquid"],
               "semiconductors": family_dbs["semiconductor"], "inorganic4": family_dbs["inorganic4"],
-              "glasses": family_dbs["glass"]}
+              "glasses": family_dbs["glass"], "optical_media": family_dbs["optical_media"]}
     total = 0
     for name, (stem, _) in br.family_rows().items():
         got = _optical(release["db"], name)
@@ -193,22 +194,23 @@ def test_every_material_has_one_descriptor_row_and_every_null_is_explained(relea
     biomacro = set(LIQUIDS[LIQUIDS.formula.isna()].name)
     elements |= {"Mercury (liquid)"}
     assert kinds == {"polymer": len(polymers), "element": len(elements), "molecule": len(molecules), "biomacromolecule": len(biomacro),
-                     "glass": len(GLASSES),
-                     "inorganic compound": N_MATERIALS - len(polymers) - len(elements) - len(molecules) - len(biomacro) - len(GLASSES)}
+                     "glass": len(GLASSES), "commercial formulation": len(OPTICAL_MEDIA),
+                     "inorganic compound": N_MATERIALS - len(polymers) - len(elements) - len(molecules) - len(biomacro) - len(GLASSES)
+                     - len(OPTICAL_MEDIA)}
     assert {"Diamond", "Graphite", "Gold", "Silicon"} <= elements
 
 
 def test_descriptor_coverage_is_what_the_inputs_allow(release):
     cov = release["facts"]["descriptor_coverage"]
     no_formula = len(pd.read_csv(ROOT / "data" / "polymers.csv").pipe(lambda p: p[p.formula.isna()])) + 2 + int(LIQUIDS.formula.isna().sum()) \
-        + len(pd.read_csv(ROOT / "data" / "glasses.csv"))
+        + len(pd.read_csv(ROOT / "data" / "glasses.csv")) + len(OPTICAL_MEDIA)
     assert cov == {"compositional": N_MATERIALS - no_formula, "structural": 193,
                    "molecular": len(pd.read_csv(rd.REPEAT_UNITS)) + int((LIQUIDS.smiles.notna() & (LIQUIDS.formula != "Hg")).sum())}
     d = descriptors(release)
     no_comp = {n for n, (_, doc) in d.items() if "unavailable" in doc["compositional"]}
     pol = pd.read_csv(ROOT / "data" / "polymers.csv")
     assert no_comp == set(pol[pol.formula.isna()].name) | {"Styrene-acrylonitrile copolymer", "PDCBT"} | set(LIQUIDS[LIQUIDS.formula.isna()].name) \
-        | set(GLASSES.name)
+        | set(GLASSES.name) | set(OPTICAL_MEDIA.name)
 
 
 def test_every_curated_repeat_unit_matches_the_source_formula_and_has_two_attachment_points():

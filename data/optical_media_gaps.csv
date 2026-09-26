@@ -1,0 +1,6 @@
+key,name,gap_kind,reason
+other/Norland_NOA-61/Joseph,Joseph,excluded_page,"source states the film is uncured; uncured resin n is not a material constant (user decision, as for SU-8 2000)"
+Loctite 3526 (Iezzi 2020),Loctite 3526 (Iezzi 2020),out_of_family,2 um spin-coated film whose cure state the page does not state; for a UV-curable adhesive n depends on the cure (user decision on uncured resins): deferred until the paper confirms the state
+Norland NOA 170 (Iezzi 2020),Norland NOA 170 (Iezzi 2020),out_of_family,2 um spin-coated film whose cure state the page does not state; for a UV-curable adhesive n depends on the cure (user decision on uncured resins): deferred until the paper confirms the state
+Norland NOA 1348 (Iezzi 2020),Norland NOA 1348 (Iezzi 2020),out_of_family,2 um spin-coated film whose cure state the page does not state; for a UV-curable adhesive n depends on the cure (user decision on uncured resins): deferred until the paper confirms the state
+"immersion oils (Leica Type F, Olympus IMMOIL-F30CC, Sigma Aldrich M5904)","immersion oils (Leica Type F, Olympus IMMOIL-F30CC, Sigma Aldrich M5904)",out_of_family,"k only (Wang 2017, 1.2-1.9 um): no refractive index to load"

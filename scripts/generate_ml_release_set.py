@@ -49,7 +49,7 @@ REF_WL_NM = 633.0
 FP_BITS = 512
 # release family order (build_release.py): a material in two tables belongs to the first
 FAMILY_ORDER = ["oxides_50", "batch2_31", "batch3b_4", "pure_elements_50", "nitrides", "polymers", "inorganic3", "halides",
-                "chalcogenides", "liquids", "semiconductors", "inorganic4", "glasses"]
+                "chalcogenides", "liquids", "semiconductors", "inorganic4", "glasses", "optical_media"]
 COMP_PROPS = ["atomic_mass", "atomic_number", "atomic_radius", "electronegativity_pauling", "group", "mendeleev_number", "period"]
 COMP_STATS = ["min", "max", "mean", "range", "mean_abs_deviation"]
 COMP_SCALARS = ["n_elements", "atoms_per_formula_unit", "stoichiometry_l2_norm", "stoichiometry_l3_norm"]
@@ -92,7 +92,7 @@ def _selection_axes():
         "batch3b_4": elements, "pure_elements_50": elements,
         **{fam: from_json(f"step1_selections_{fam}.json")
            for fam in ["nitrides", "polymers", "inorganic3", "halides", "chalcogenides", "liquids", "semiconductors", "inorganic4",
-                       "glasses"]},
+                       "glasses", "optical_media"]},
     }
 
 

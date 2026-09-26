@@ -1,0 +1,202 @@
+{
+ "Cargille-BK7": {
+  "name": "Cargille BK7 matching liquid",
+  "formula": null,
+  "source": "optical_media_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "BK7_matching_liquid",
+    "axis": null,
+    "phase": null,
+    "data_path": "specs/cargille/index-matching liquids/nk/BK7_matching_liquid.yml",
+    "span_um": [
+     0.35,
+     1.55
+    ],
+    "kind": "nk",
+    "dispersion": "formula+tabulated",
+    "comments": "25 °C\n",
+    "temperature_c": 24.85,
+    "tag": "CARGILLE2023",
+    "dataset_label": "CARGILLE2023",
+    "shelf": "specs",
+    "book": "Cargille"
+   }
+  ]
+ },
+ "Cargille-06350": {
+  "name": "Cargille fused silica matching liquid 06350",
+  "formula": null,
+  "source": "optical_media_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Cargille-06350",
+    "axis": null,
+    "phase": null,
+    "data_path": "specs/cargille/index-matching liquids/nk/fused_silica_matching_liquid-06350.yml",
+    "span_um": [
+     0.225,
+     1.55
+    ],
+    "kind": "nk",
+    "dispersion": "formula+tabulated",
+    "comments": "25 °C.\n",
+    "temperature_c": 24.85,
+    "tag": "CARGILLE2017",
+    "dataset_label": "CARGILLE2017",
+    "shelf": "specs",
+    "book": "Cargille"
+   }
+  ]
+ },
+ "Cargille-50350": {
+  "name": "Cargille fused silica matching liquid 50350",
+  "formula": null,
+  "source": "optical_media_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Cargille-50350",
+    "axis": null,
+    "phase": null,
+    "data_path": "specs/cargille/index-matching liquids/nk/fused_silica_matching_liquid-50350.yml",
+    "span_um": [
+     0.225,
+     1.55
+    ],
+    "kind": "nk",
+    "dispersion": "formula+tabulated",
+    "comments": "25 °C.\n",
+    "temperature_c": 24.85,
+    "tag": "CARGILLE2017",
+    "dataset_label": "CARGILLE2017",
+    "shelf": "specs",
+    "book": "Cargille"
+   }
+  ]
+ },
+ "Cargille-acrylic": {
+  "name": "Cargille acrylic matching liquid",
+  "formula": null,
+  "source": "optical_media_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "acrylic_matching_liquid",
+    "axis": null,
+    "phase": null,
+    "data_path": "specs/cargille/index-matching liquids/nk/acrylic_matching_liquid.yml",
+    "span_um": [
+     0.31,
+     1.55
+    ],
+    "kind": "nk",
+    "dispersion": "formula+tabulated",
+    "comments": "25 °C\n",
+    "temperature_c": 24.85,
+    "tag": "CARGILLE2017",
+    "dataset_label": "CARGILLE2017",
+    "shelf": "specs",
+    "book": "Cargille"
+   }
+  ]
+ },
+ "Cargille-acrylic-double": {
+  "name": "Cargille acrylic double matching liquid",
+  "formula": null,
+  "source": "optical_media_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "acrylic_double_matching_liquid",
+    "axis": null,
+    "phase": null,
+    "data_path": "specs/cargille/index-matching liquids/nk/acrylic_double_matching_liquid.yml",
+    "span_um": [
+     0.31,
+     1.55
+    ],
+    "kind": "nk",
+    "dispersion": "formula+tabulated",
+    "comments": "25 °C\n",
+    "temperature_c": 24.85,
+    "tag": "CARGILLE2017",
+    "dataset_label": "CARGILLE2017",
+    "shelf": "specs",
+    "book": "Cargille"
+   }
+  ]
+ },
+ "NOA61": {
+  "name": "Norland NOA 61 optical adhesive (cured)",
+  "formula": null,
+  "source": "optical_media_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Norland",
+    "axis": null,
+    "phase": null,
+    "data_path": "other/optical adhesives/NOA-61/nk/Norland.yml",
+    "span_um": [
+     0.45,
+     1.55
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "",
+    "temperature_c": null,
+    "tag": "Norland",
+    "dataset_label": "Norland",
+    "shelf": "other",
+    "book": "Norland_NOA-61"
+   }
+  ]
+ },
+ "Eukitt": {
+  "name": "Eukitt mounting medium",
+  "formula": null,
+  "source": "optical_media_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Nyakuchena",
+    "axis": null,
+    "phase": null,
+    "data_path": "other/microscopy mounting media/Eukitt/nk/Nyakuchena.yml",
+    "span_um": [
+     1.1,
+     1.65
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "23 °C\n",
+    "temperature_c": 22.85,
+    "tag": "Nyakuchena2023",
+    "dataset_label": "Nyakuchena2023",
+    "shelf": "other",
+    "book": "Eukitt"
+   }
+  ]
+ },
+ "FluorSave": {
+  "name": "FluorSave mounting medium",
+  "formula": null,
+  "source": "optical_media_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Nyakuchena",
+    "axis": null,
+    "phase": null,
+    "data_path": "other/microscopy mounting media/FluorSave/nk/Nyakuchena.yml",
+    "span_um": [
+     1.1,
+     1.65
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "23 °C\n",
+    "temperature_c": 22.85,
+    "tag": "Nyakuchena2023",
+    "dataset_label": "Nyakuchena2023",
+    "shelf": "other",
+    "book": "FluorSave"
+   }
+  ]
+ }
+}
