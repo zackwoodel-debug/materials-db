@@ -84,6 +84,12 @@ Generic loader: scripts/load_family_db.py (--family/--catalog/--selections/--db/
    excluded (single n point; page nd 1.527 contradicts its n 1.473). Next coverage without decisions: IR chalcogenide glasses need
    mapping onto As2S3/As2Se3 + composition convention; resists/adhesives/immersion oils/index liquids/commercial polymers next.
 
+18. DONE: MicroChem PMMA resists as polymer-family photoresists: PMMA-495-resist (spec sheet) and PMMA-950-resist (spec sheet
+   primary + Tsuda 2018 950k film baked 100 degC + its Lorentz-Drude and Brendel-Bormann IR fits). They were deferred only to keep
+   them out of BULK PMMA. Unchanged earlier decisions: uncured SU-8 2000 / IP-S / IP-Dip are not material constants (user
+   decision); ma-N 405 : ma-T 1050 1:1 mixture stays BLOCKED. match_ri_info_polymers RESOLUTIONS accept an optional `labels` list.
+   The 950 resist's formula (C5H8O2)n comes from the RI.info PMMA book; the 495 book states none (source-only rule).
+
 ## FOLLOW-UP (logged, NOT started): graphene / 2D carbon as its own family -- materialclass must NOT be 'polymer'
 - RI.info main/C, verified read-only: monolayer graphene = Weber 2010 (0.21-1.0 um, exfoliated flake, 3.4 A, on Si/98 nm SiO2), Song 2018 "Graphene"
   (0.193-1.69, CVD mono), Tikuisis 2023 (0.226-4.40, epitaxial on 6H-SiC), El-Sayed 2021 (0.24-1.0, CVD): four, not three. Song 2018 also holds 4 bulk-HOPG pages (graphite).

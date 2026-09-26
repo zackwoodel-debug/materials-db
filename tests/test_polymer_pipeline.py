@@ -33,20 +33,21 @@ SELECTED = [(k, a) for k, v in SEL.items() if "axes" in v for a in v["axes"]]
 
 # ---- catalog rules -----------------------------------------------------------------------------------------------
 
-def test_catalog_is_39_rows_with_the_three_classes_assigned_from_the_candidate_list():
-    assert len(CAT) == 39 and CAT["abbreviation"].is_unique
-    assert CAT["materialclass"].value_counts().to_dict() == {"polymer": 26, "photoresist": 7, "organic_semiconductor": 6}
+def test_catalog_rows_and_the_three_classes_assigned_from_the_candidate_list():
+    assert len(CAT) == 41 and CAT["abbreviation"].is_unique
+    assert CAT["materialclass"].value_counts().to_dict() == {"polymer": 26, "photoresist": 9, "organic_semiconductor": 6}
     expect = {c["key"]: c["materialclass"] for c in pml.CANDIDATES}
     assert all(expect[r.abbreviation] == r.materialclass for r in CAT.itertuples())
     assert set(CAT[CAT.materialclass == "organic_semiconductor"].abbreviation) == {"MDMO-PPV", "ZZ50", "F8BT", "PTB7", "PDCBT", "PBDB-T-2F"}
-    assert set(CAT[CAT.materialclass == "photoresist"].abbreviation) == {"SU-8", "maN-1407", "EpoClad", "EpoCore", "Microchem-8.5mEL", "IP-S", "IP-Dip"}
+    assert set(CAT[CAT.materialclass == "photoresist"].abbreviation) == {"SU-8", "maN-1407", "EpoClad", "EpoCore", "Microchem-8.5mEL", "IP-S", "IP-Dip",
+                                                                                "PMMA-495-resist", "PMMA-950-resist"}
 
 
-def test_null_formula_is_valid_only_for_the_twelve_grade_materials_and_grade_lives_in_notes_not_a_column():
+def test_null_formula_is_valid_only_for_the_grade_materials_and_grade_lives_in_notes_not_a_column():
     assert "grade" not in CAT.columns, "the grade column was withdrawn (no schema change)"
     assert "grade" not in (ROOT / "updated_sql_schema.sql").read_text().lower(), "the schema of record must stay untouched"
     null_formula = CAT[CAT["formula"].isna()]
-    assert set(null_formula["abbreviation"]) == set(pml.GRADE_NOTES) and len(null_formula) == 12
+    assert set(null_formula["abbreviation"]) == set(pml.GRADE_NOTES) and len(null_formula) == 13
     assert dict(zip(null_formula["abbreviation"], null_formula["notes"])) == {k: f"grade: {v}" for k, v in pml.GRADE_NOTES.items()}  # one line each
     assert CAT[CAT["formula"].notna()]["notes"].isna().all()
 
@@ -60,7 +61,7 @@ def test_no_placeholder_formula_tokens():
 def test_density_is_null_for_every_polymer_and_every_one_is_logged_as_a_density_gap():
     assert CAT["density_g_cm3"].isna().all() and CAT["density_source"].isna().all()
     dens = GAPS[GAPS["gap_kind"] == "density"]
-    assert len(dens) == 39 and dens["reason"].str.contains("no traceable density source").all()
+    assert len(dens) == 41 and dens["reason"].str.contains("no traceable density source").all()
     assert set(CAT["abbreviation"]) == set(dens["key"])
 
 
@@ -78,7 +79,7 @@ def test_catalog_excluded_candidates_and_gaps_partition_the_92_candidate_pool_wi
     whole = set(GAPS[GAPS["gap_kind"] == "material"]["key"])
     cat = set(CAT["abbreviation"])
     excluded_cands = set(pml.EXCLUDED_CANDIDATES)
-    assert len(cat) + len(excluded_cands) + len(whole) == 92 == len(pml.CANDIDATES)
+    assert len(cat) + len(excluded_cands) + len(whole) == 94 == len(pml.CANDIDATES)
     assert not cat & whole and not cat & excluded_cands and not excluded_cands & whole
     assert cat | excluded_cands | whole == {c["key"] for c in pml.CANDIDATES}
 
@@ -151,7 +152,7 @@ def test_identity_flags_pei_collision_pla_is_pdla_ldpe_is_a_gap_and_lldpe_is_its
 
 def test_no_selected_dataset_is_ambiguous_or_shared_between_materials():
     paths = [a["data_path"] for _, a in SELECTED]
-    assert len(paths) == len(set(paths)) == 45  # 39 materials: 33 single-dataset + 6 conjugated polymers with two axes each
+    assert len(paths) == len(set(paths)) == 50  # 41 materials: 34 single-dataset + 6 conjugated polymers with two axes each + the 950 PMMA resist's 4
     assert all(a["dataset_label"] for _, a in SELECTED)
     for k, v in SEL.items():
         labels = [a["dataset_label"] for a in v["axes"]]
@@ -256,7 +257,7 @@ def test_pmma_is_one_row_per_supplier_and_every_stated_percent_is_re_derived_fro
         n = _n633(monkeypatch, (shelf, book, page))
         assert (n - tom) / tom * 100 == pytest.approx(float(m.group(1)), abs=0.01) and (n - mit) / mit * 100 == pytest.approx(float(m.group(2)), abs=0.01), page
     keys = {k for k in GAPS[GAPS["gap_kind"] == "excluded_dataset"]["key"] if k.startswith("PMMA-Tomson:")}
-    assert len(keys) == 10 == len(pml.PMMA_EXCLUDED) and len(set(keys)) == 10  # 'specs' appears twice: keys must still be unique
+    assert len(keys) == 5 == len(pml.PMMA_EXCLUDED) and len(set(keys)) == 5  # the 5 resist pages moved to PMMA-495/950-resist
 
 
 def test_pdms_is_one_row_per_cure_ratio_and_the_ratio_is_stated_by_each_source_file():
@@ -292,3 +293,19 @@ def test_resists_ip_cured_only_hpmc_powder_excluded_and_the_mixture_is_blocked()
     assert "HPMC" not in set(CAT["abbreviation"]) and "Powder" in yaml.safe_load(open(RI / MATCHES["HPMC"]["datasets"][0]["data_path"]))["COMMENTS"]
     assert GAPS[GAPS["key"] == "HPMC"].iloc[0]["gap_kind"] == "excluded_dataset"
     assert GAPS[GAPS["key"] == "maN-405-T1050"].iloc[0]["tier"] == "BLOCKED" and "maN-405-T1050" not in set(CAT["abbreviation"])
+
+
+def test_pmma_resists_are_their_own_materials_with_the_uncured_and_mixture_decisions_intact():
+    """The MicroChem PMMA resists are loaded as photoresists, never as bulk PMMA; the earlier decisions stand: uncured resists
+    (SU-8 2000, IP-S / IP-Dip uncured) are not material constants and the ma-N 405 : ma-T 1050 mixture stays blocked."""
+    from dataset_kind import is_model_fit
+    r950 = SEL["PMMA-950-resist"]["axes"]
+    assert [a["dataset_label"] for a in r950][0] == "Microchem-datasheet-2001" and not is_model_fit(r950[0]["data_path"])
+    assert {a["page"] for a in r950} == {"specs", "Tsuda", "Tsuda-LD", "Tsuda-BB"}
+    assert [is_model_fit(a["data_path"]) for a in r950] == [False, False, True, True]  # the LD / BB pages are model fits
+    assert [a["page"] for a in SEL["PMMA-495-resist"]["axes"]] == ["specs"]
+    for key in ("PMMA-Tomson", "PMMA-Mitsubishi"):
+        assert not {a["data_path"] for a in SEL[key]["axes"]} & {a["data_path"] for a in r950}
+    loaded = {a["data_path"] for v in SEL.values() if v and v.get("axes") for a in v["axes"]}
+    assert not [p for p in loaded if "SU-8 2000" in p or "uncured" in p.lower() or "ma-N 405" in p or "ma-N405" in p]
+    assert "maN-405-T1050" not in SEL or SEL["maN-405-T1050"] is None

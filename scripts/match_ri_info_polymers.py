@@ -192,11 +192,14 @@ def main():
         else:
             raise SystemExit(f"{key}: unresolved multi-match reached selection (must be RESOLUTIONS or DEFERRED)")
         axis_names = list(res["axes"]) if res and res.get("axes") else [None] * len(chosen)
+        labels = list(res["labels"]) if res and res.get("labels") else None  # pages of one paper sharing a tag need distinct labels
+        if labels and len(labels) != len(chosen):
+            raise SystemExit(f"{key}: {len(labels)} labels for {len(chosen)} pages")
         selections[key] = dict(
             name=r["name"], polymorph=None, effective_polymorph=None, source=src,
             not_stated_by_source=[f"{a}: not stated by source" for a in ATTRS if all(d["attributes_stated"][a] is None for d in chosen)],
             axes=[dict(page=d["page"], axis=axis_names[i], data_path=d["data_path"],
-                       dataset_label=d["tag"] if axis_names[i] is None else f"{d['tag']} | {axis_names[i]}",  # o/e pairs need distinct labels
+                       dataset_label=labels[i] if labels else d["tag"] if axis_names[i] is None else f"{d['tag']} | {axis_names[i]}",
                        span_um=d["span_um"], kind=d["kind"], attributes_stated={a: v for a, v in d["attributes_stated"].items() if v})
                   for i, d in enumerate(chosen)])
     MATCHES_OUT.write_text(json.dumps(dict(candidates=out, extras_found_not_in_pool=extras), indent=1, default=str))

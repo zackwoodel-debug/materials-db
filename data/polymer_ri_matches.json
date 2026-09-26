@@ -375,36 +375,6 @@
      "poly_methyl_methacrylate",
      "Bodurov",
      "20 um film on glass (thin film), not a bulk sample; deferred"
-    ],
-    [
-     "organic",
-     "poly_methyl_methacrylate",
-     "Tsuda",
-     "MicroChem PMMA resist, Mw 950,000, baked: resist grade, not bulk; deferred"
-    ],
-    [
-     "organic",
-     "poly_methyl_methacrylate",
-     "Tsuda-LD",
-     "MicroChem PMMA resist (950k) Lorentz-Drude model fit: resist grade, not bulk; deferred"
-    ],
-    [
-     "organic",
-     "poly_methyl_methacrylate",
-     "Tsuda-BB",
-     "MicroChem PMMA resist (950k) Brendel-Bormann model fit: resist grade, not bulk; deferred"
-    ],
-    [
-     "other",
-     "Microchem495",
-     "specs",
-     "Microchem 495 PMMA resist spec sheet: resist grade (not bulk); deferred"
-    ],
-    [
-     "other",
-     "Microchem950",
-     "specs",
-     "Microchem 950 PMMA resist spec sheet: resist grade (not bulk); deferred"
     ]
    ],
    "tier": 1,
@@ -465,31 +435,6 @@
      "page": "poly_methyl_methacrylate/Bodurov",
      "reason": "20 um film on glass (thin film), not a bulk sample; deferred",
      "gap_key": "PMMA-Tomson:poly_methyl_methacrylate/Bodurov"
-    },
-    {
-     "page": "poly_methyl_methacrylate/Tsuda",
-     "reason": "MicroChem PMMA resist, Mw 950,000, baked: resist grade, not bulk; deferred",
-     "gap_key": "PMMA-Tomson:poly_methyl_methacrylate/Tsuda"
-    },
-    {
-     "page": "poly_methyl_methacrylate/Tsuda-LD",
-     "reason": "MicroChem PMMA resist (950k) Lorentz-Drude model fit: resist grade, not bulk; deferred",
-     "gap_key": "PMMA-Tomson:poly_methyl_methacrylate/Tsuda-LD"
-    },
-    {
-     "page": "poly_methyl_methacrylate/Tsuda-BB",
-     "reason": "MicroChem PMMA resist (950k) Brendel-Bormann model fit: resist grade, not bulk; deferred",
-     "gap_key": "PMMA-Tomson:poly_methyl_methacrylate/Tsuda-BB"
-    },
-    {
-     "page": "Microchem495/specs",
-     "reason": "Microchem 495 PMMA resist spec sheet: resist grade (not bulk); deferred",
-     "gap_key": "PMMA-Tomson:Microchem495/specs"
-    },
-    {
-     "page": "Microchem950/specs",
-     "reason": "Microchem 950 PMMA resist spec sheet: resist grade (not bulk); deferred",
-     "gap_key": "PMMA-Tomson:Microchem950/specs"
     }
    ]
   },
@@ -3824,6 +3769,204 @@
    ]
   },
   {
+   "key": "PMMA-495-resist",
+   "name": "Microchem 495 PMMA resist",
+   "group": "resists",
+   "ri_books": [
+    [
+     "other",
+     "Microchem495"
+    ]
+   ],
+   "include_re": null,
+   "exclude_re": null,
+   "blocked": false,
+   "note": "positive e-beam / deep-UV resist, PMMA of Mw 495,000; spec-sheet dispersion (not the bulk PMMA of PMMA-Tomson/Mitsubishi)",
+   "citations": [],
+   "materialclass": "photoresist",
+   "excluded_pages": [],
+   "tier": 1,
+   "status": "FOUND",
+   "formula_ri": null,
+   "n_dispersion_datasets": 1,
+   "datasets": [
+    {
+     "shelf": "other",
+     "book": "Microchem495",
+     "page": "specs",
+     "page_name": "Spec sheet: n 0.2\u20131.1 \u00b5m",
+     "data_path": "other/resists/Microchem 495/nk/specs.yml",
+     "tag": "Microchem495",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": "Microchem"
+     },
+     "signals": [
+      "resist_grade",
+      "physical_form"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.2,
+      1.1
+     ],
+     "single_point": false,
+     "comments": "Microchem 495 PMMA resist\n"
+    }
+   ],
+   "single_point_datasets": [],
+   "k_only_datasets": [],
+   "excluded_datasets": []
+  },
+  {
+   "key": "PMMA-950-resist",
+   "name": "Microchem 950 PMMA resist",
+   "group": "resists",
+   "ri_books": [
+    [
+     "other",
+     "Microchem950"
+    ],
+    [
+     "organic",
+     "poly_methyl_methacrylate"
+    ]
+   ],
+   "include_re": "specs|Tsuda",
+   "exclude_re": null,
+   "blocked": false,
+   "note": "positive e-beam / deep-UV resist, PMMA of Mw 950,000 (not the bulk PMMA of PMMA-Tomson/Mitsubishi)",
+   "citations": [],
+   "materialclass": "photoresist",
+   "excluded_pages": [],
+   "tier": 1,
+   "status": "SELECTED_BY_USER",
+   "formula_ri": "(C5H8O2)n",
+   "n_dispersion_datasets": 4,
+   "datasets": [
+    {
+     "shelf": "other",
+     "book": "Microchem950",
+     "page": "specs",
+     "page_name": "Spec sheet: n 0.2\u20131.1 \u00b5m",
+     "data_path": "other/resists/Microchem 950/nk/specs.yml",
+     "tag": "Microchem950",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": null,
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": "Microchem"
+     },
+     "signals": [
+      "resist_grade",
+      "physical_form"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.2,
+      1.1
+     ],
+     "single_point": false,
+     "comments": "Microchem 950 PMMA resist\n"
+    },
+    {
+     "shelf": "organic",
+     "book": "poly_methyl_methacrylate",
+     "page": "Tsuda",
+     "page_name": "Tsuda et al. 2018: n 0.6\u20131.0 \u00b5m",
+     "data_path": "organic/(C5H8O2)n - poly(methyl methacrylate)/nk/Tsuda.yml",
+     "tag": "Tsuda2018",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": "molecular weight of 950,000",
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": "MicroChem"
+     },
+     "signals": [
+      "resist_grade",
+      "molecular_weight"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.6,
+      1.0
+     ],
+     "single_point": false,
+     "comments": "MicroChem PMMA resist with a molecular weight of 950,000; Baked at 100 \u00b0C for 10 min on a hot plate.\n"
+    },
+    {
+     "shelf": "organic",
+     "book": "poly_methyl_methacrylate",
+     "page": "Tsuda-LD",
+     "page_name": "Tsuda et al. 2018: Lorentz-Drude model; n,k 2.50\u201318.2 \u00b5m",
+     "data_path": "organic/(C5H8O2)n - poly(methyl methacrylate)/nk/Tsuda-LD.yml",
+     "tag": "Tsuda2018",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": "molecular weight of 950,000",
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": "MicroChem"
+     },
+     "signals": [
+      "resist_grade",
+      "molecular_weight"
+     ],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      2.5,
+      18.18
+     ],
+     "single_point": false,
+     "comments": "MicroChem PMMA resist with a molecular weight of 950,000; Baked at 100 \u00b0C for 10 min on a hot plate; Lorentz-Drude model parameters provided in Table 1 of manuscript.\n"
+    },
+    {
+     "shelf": "organic",
+     "book": "poly_methyl_methacrylate",
+     "page": "Tsuda-BB",
+     "page_name": "Tsuda et al. 2018: Brendel-Bormann model; n,k 2.50\u201318.2 \u00b5m",
+     "data_path": "organic/(C5H8O2)n - poly(methyl methacrylate)/nk/Tsuda-BB.yml",
+     "tag": "Tsuda2018",
+     "also_listed_in": null,
+     "attributes_stated": {
+      "grade": null,
+      "molecular_weight": "molecular weight of 950,000",
+      "tacticity": null,
+      "cure_ratio": null,
+      "supplier": "MicroChem"
+     },
+     "signals": [
+      "resist_grade",
+      "molecular_weight"
+     ],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      2.5,
+      18.18
+     ],
+     "single_point": false,
+     "comments": "MicroChem PMMA resist with a molecular weight of 950,000; Baked at 100 \u00b0C for 10 min on a hot plate; Brendel-Bormann model parameters provided in Table 2 of manuscript.\n"
+    }
+   ],
+   "single_point_datasets": [],
+   "k_only_datasets": [],
+   "excluded_datasets": []
+  },
+  {
    "key": "HPMC",
    "name": "Hydroxypropyl methylcellulose (Pharmacoat 606)",
    "group": "batch2",
@@ -4306,27 +4449,6 @@
   {
    "shelf": "organic",
    "book": "poly_methyl_methacrylate",
-   "page": "Tsuda",
-   "page_name": "Tsuda et al. 2018: n 0.6\u20131.0 \u00b5m",
-   "data_path": "organic/(C5H8O2)n - poly(methyl methacrylate)/nk/Tsuda.yml"
-  },
-  {
-   "shelf": "organic",
-   "book": "poly_methyl_methacrylate",
-   "page": "Tsuda-LD",
-   "page_name": "Tsuda et al. 2018: Lorentz-Drude model; n,k 2.50\u201318.2 \u00b5m",
-   "data_path": "organic/(C5H8O2)n - poly(methyl methacrylate)/nk/Tsuda-LD.yml"
-  },
-  {
-   "shelf": "organic",
-   "book": "poly_methyl_methacrylate",
-   "page": "Tsuda-BB",
-   "page_name": "Tsuda et al. 2018: Brendel-Bormann model; n,k 2.50\u201318.2 \u00b5m",
-   "data_path": "organic/(C5H8O2)n - poly(methyl methacrylate)/nk/Tsuda-BB.yml"
-  },
-  {
-   "shelf": "organic",
-   "book": "poly_methyl_methacrylate",
    "page": "Bodurov",
    "page_name": "Bodurov et al. 2016: n 0.405\u20130.635 \u00b5m",
    "data_path": "organic/(C5H8O2)n - poly(methyl methacrylate)/nk/Bodurov.yml"
@@ -4351,20 +4473,6 @@
    "page": "mono",
    "page_name": "Monomer: n 0.58929 \u00b5m",
    "data_path": "other/commercial polymers/CR-39/nk/mono.yml"
-  },
-  {
-   "shelf": "other",
-   "book": "Microchem495",
-   "page": "specs",
-   "page_name": "Spec sheet: n 0.2\u20131.1 \u00b5m",
-   "data_path": "other/resists/Microchem 495/nk/specs.yml"
-  },
-  {
-   "shelf": "other",
-   "book": "Microchem950",
-   "page": "specs",
-   "page_name": "Spec sheet: n 0.2\u20131.1 \u00b5m",
-   "data_path": "other/resists/Microchem 950/nk/specs.yml"
   },
   {
    "shelf": "other",

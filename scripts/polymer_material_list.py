@@ -30,11 +30,8 @@ PMMA_EXCLUDED = [
     (ORG, "poly_methyl_methacrylate", "Szczurowski", "bulk n-only 0.405-1.08 um; differs +0.39% (Tomson) / -0.13% (Mitsubishi) at 633 nm; deferred to dataset-comparison PR"),
     (ORG, "poly_methyl_methacrylate", "Nyakuchena", "polymer microspheres: a particle sample, not a bulk material constant"),
     (ORG, "poly_methyl_methacrylate", "Bodurov", "20 um film on glass (thin film), not a bulk sample; deferred"),
-    (ORG, "poly_methyl_methacrylate", "Tsuda", "MicroChem PMMA resist, Mw 950,000, baked: resist grade, not bulk; deferred"),
-    (ORG, "poly_methyl_methacrylate", "Tsuda-LD", "MicroChem PMMA resist (950k) Lorentz-Drude model fit: resist grade, not bulk; deferred"),
-    (ORG, "poly_methyl_methacrylate", "Tsuda-BB", "MicroChem PMMA resist (950k) Brendel-Bormann model fit: resist grade, not bulk; deferred"),
-    (OTH, "Microchem495", "specs", "Microchem 495 PMMA resist spec sheet: resist grade (not bulk); deferred"),
-    (OTH, "Microchem950", "specs", "Microchem 950 PMMA resist spec sheet: resist grade (not bulk); deferred"),
+    # the MicroChem PMMA resist pages (Tsuda 950k baked film and its two IR model fits; the 495 / 950 spec sheets) are not bulk PMMA:
+    # they are loaded as their own photoresist materials, PMMA-495-resist and PMMA-950-resist
 ]
 PDMS_EXCLUDED = [
     (ORG, "polydimethylsiloxane", "Schneider-RTV615", "product-specific dataset (RTV 615, Bayer/Momentive; n only 0.35-0.70 um) overlapping the Zhang rows; deferred"),
@@ -152,6 +149,11 @@ CANDIDATES = [
     _c("IP-Dip", "Nanoscribe IP-Dip (cured)", "batch2", [(OTH, "Nanoscribe_IP-Dip")], include_re=r"Mavrona-cured", materialclass="photoresist",
        note="far-IR / THz data (200-998 um)",
        excluded_pages=[(OTH, "Nanoscribe_IP-Dip", "Mavrona-uncured", "source states 'Uncured'; uncured resist n is not a material constant (same rule as SU-8 2000)")]),
+    _c("PMMA-495-resist", "Microchem 495 PMMA resist", "resists", [(OTH, "Microchem495")], materialclass="photoresist",
+       note="positive e-beam / deep-UV resist, PMMA of Mw 495,000; spec-sheet dispersion (not the bulk PMMA of PMMA-Tomson/Mitsubishi)"),
+    _c("PMMA-950-resist", "Microchem 950 PMMA resist", "resists", [(OTH, "Microchem950"), (ORG, "poly_methyl_methacrylate")],
+       include_re=r"specs|Tsuda", materialclass="photoresist",
+       note="positive e-beam / deep-UV resist, PMMA of Mw 950,000 (not the bulk PMMA of PMMA-Tomson/Mitsubishi)"),
     _c("HPMC", "Hydroxypropyl methylcellulose (Pharmacoat 606)", "batch2", [(OTH, "Pharmacoat606")], materialclass="polymer"),
     _c("maN-405-T1050", "ma-N 405 : ma-T 1050 (1:1 mixture)", "batch2", [(OTH, "microresist_ma-N405_ma-T1050")], blocked=True, materialclass="photoresist",
        note="a 1:1 mixture of two components, not a single material"),
@@ -180,6 +182,13 @@ CANDIDATES = [
 # `excluded` = (page, reason) recorded as gap rows.
 KAMPTNER = "one paper (Kamptner 2024): ordinary and extraordinary rays of the same film, loaded as one material with two axes"
 RESOLUTIONS = {
+    "PMMA-950-resist": dict(pages=[(OTH, "Microchem950", "specs"), (ORG, "poly_methyl_methacrylate", "Tsuda"),
+                                   (ORG, "poly_methyl_methacrylate", "Tsuda-LD"), (ORG, "poly_methyl_methacrylate", "Tsuda-BB")],
+                            labels=["Microchem-datasheet-2001", "Tsuda2018 baked film", "Tsuda2018 Lorentz-Drude fit",
+                                    "Tsuda2018 Brendel-Bormann fit"],
+                            name=None, excluded=[],
+                            basis="standing rule (every paper its own dataset): the spec sheet (0.2-1.1 um) is primary, measured and "
+                                  "widest; Tsuda's 950k film baked 100 degC (0.6-1.0 um) and its two IR model fits (2.5-18 um) are kept"),
     "PC": dict(pages=[(ORG, "polycarbonate", "Zhang")], name=None,
                excluded=[("Sultanova", "subset of Zhang range, disagrees ~0.4% at 633 nm, deferred to dataset-comparison PR")],
                basis="Zhang only (user decision): Sultanova (0.437-1.052 um) lies entirely inside Zhang (0.4-19.94 um)"),
@@ -223,4 +232,5 @@ DEFERRED = {}
 # No `grade` column (withdrawn; no schema change): the grade is a single "grade: <name>" line in the notes field.
 GRADE_NOTES = {"COP-Zeonex-E48R": "Zeonex E48R", "Optorez-1330": "Optorez 1330", "NAS-21": "NAS-21", "SU-8": "SU-8 3000",
                "Kapton": "Kapton HN", "Surlyn-A1601": "Surlyn A-1601", "maN-1407": "ma-N 1407", "EpoClad": "EpoClad", "EpoCore": "EpoCore",
-               "Microchem-8.5mEL": "Microchem 8.5 mEL", "IP-S": "Nanoscribe IP-S", "IP-Dip": "Nanoscribe IP-Dip"}
+               "Microchem-8.5mEL": "Microchem 8.5 mEL", "IP-S": "Nanoscribe IP-S", "IP-Dip": "Nanoscribe IP-Dip",
+               "PMMA-495-resist": "Microchem 495 PMMA resist"}
