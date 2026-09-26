@@ -428,3 +428,24 @@ def test_synonyms_are_unambiguous_and_never_repeat_the_name_or_formula(release):
     get = lambda n: {s for (s,) in q(release, "SELECT synonym FROM material_synonyms JOIN materials USING(material_id) WHERE name=?", (n,))}
     assert {"ZGP"} <= get("Zinc germanium phosphide (ZGP)") and {"galena"} <= get("Lead(II) sulfide (galena)")
     assert {"Heavy water", "Deuterium Oxide"} <= get("Heavy water (D2O)") and "heavy water" not in {s.casefold() for s in get("Water")}
+
+
+# ---------------------------------------------------------------- dielectric constants (release_dielectric.py)
+
+def test_dielectric_rows_match_the_cache_and_respect_the_exclusions(release):
+    import release_dielectric as rdl
+    cache = json.loads(rdl.CACHE.read_text())["entries"]
+    facts = release["facts"]["dielectric"]
+    rows = q(release, "SELECT m.name, p.dielectric_constant, p.frequency_hz, p.dataset_label, d.descriptor_json FROM physical_properties p "
+                      "JOIN materials m USING(material_id) JOIN chemical_descriptors d USING(material_id) WHERE p.dielectric_constant IS NOT NULL")
+    assert len(rows) == facts["rows"] == 2 * facts["materials"] > 150
+    for name, eps, freq, label, doc in rows:
+        s = json.loads(doc)["structural"]
+        assert s["applies_to"].startswith("the material") and s["band_gap_ev"] >= rdl.MIN_GAP_EV, name
+        e = cache[s["mp_id"]]
+        if label.endswith("dielectric_static_total | MP_DFPT"):
+            assert (eps, freq) == (pytest.approx(e["e_total"]), 0.0), name
+        else:
+            assert label.endswith("dielectric_electronic | MP_DFPT") and eps == pytest.approx(e["e_electronic"]) and freq is None, name
+    skipped = {x["material"] for x in facts["not_stored_narrow_gap"]}
+    assert {"Germanium", "Gallium arsenide", "Indium antimonide"} <= skipped and not skipped & {r[0] for r in rows}
