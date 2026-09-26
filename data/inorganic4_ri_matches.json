@@ -1,0 +1,441 @@
+{
+ "candidates": [
+  {
+   "key": "AlPO4",
+   "name": "Aluminium phosphate (berlinite)",
+   "formula": "AlPO4",
+   "book": "AlPO4",
+   "shelf": "main",
+   "note": "birefringent (trigonal, quartz-like)",
+   "materialclass": "phosphate",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 2,
+   "n_papers": 1,
+   "papers": [
+    "Bond et al. 1965"
+   ],
+   "datasets": [
+    {
+     "page": "Bond-o",
+     "title": "Bond et al. 1965: n(o) 0.40\u20132.6 \u00b5m",
+     "paper": "Bond et al. 1965",
+     "data_path": "main/AlPO4/nk/Bond-o.yml",
+     "temperature_c": null,
+     "axis": "o-ray",
+     "phase_words": [
+      "Ordinary"
+     ],
+     "kind": "n",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.4,
+      2.6
+     ],
+     "single_point": false,
+     "comments": "Ordinary ray (o); Room temperature.\n",
+     "conditions": "{'direction': 'o'}"
+    },
+    {
+     "page": "Bond-e",
+     "title": "Bond et al. 1965: n(e) 0.40\u20132.6 \u00b5m",
+     "paper": "Bond et al. 1965",
+     "data_path": "main/AlPO4/nk/Bond-e.yml",
+     "temperature_c": null,
+     "axis": "e-ray",
+     "phase_words": [
+      "Extraordinary"
+     ],
+     "kind": "n",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.4,
+      2.6
+     ],
+     "single_point": false,
+     "comments": "Extraordinary ray (e); Room temperature.\n",
+     "conditions": "{'direction': 'e'}"
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "AlPO4 (Aluminium phosphate)"
+  },
+  {
+   "key": "CaSO4",
+   "name": "Calcium sulfate (anhydrite)",
+   "formula": "CaSO4",
+   "book": "CaSO4",
+   "shelf": "main",
+   "note": "biaxial; infrared only (2.5-55.6 um)",
+   "materialclass": "sulfate",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 3,
+   "n_papers": 1,
+   "papers": [
+    "Querry 1987"
+   ],
+   "datasets": [
+    {
+     "page": "Querry-\u03b1",
+     "title": "Querry 1987: n,k(\u03b1) 2.50\u201355.6 \u00b5m",
+     "paper": "Querry 1987",
+     "data_path": "main/CaSO4/nk/Querry-alpha.yml",
+     "temperature_c": null,
+     "axis": "alpha-axis",
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      2.5,
+      55.5556
+     ],
+     "single_point": false,
+     "comments": "n\u03b1, k\u03b1.\n",
+     "conditions": "{'direction': 'alpha'}"
+    },
+    {
+     "page": "Querry-\u03b2",
+     "title": "Querry 1987: n,k(\u03b2) 2.50\u201355.6 \u00b5m",
+     "paper": "Querry 1987",
+     "data_path": "main/CaSO4/nk/Querry-beta.yml",
+     "temperature_c": null,
+     "axis": "beta-axis",
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      2.5,
+      55.5556
+     ],
+     "single_point": false,
+     "comments": "n\u03b2, k\u03b2.\n",
+     "conditions": "{'direction': 'beta'}"
+    },
+    {
+     "page": "Querry-\u03b3",
+     "title": "Querry 1987: n,k(\u03b3) 2.50\u201355.6 \u00b5m",
+     "paper": "Querry 1987",
+     "data_path": "main/CaSO4/nk/Querry-gamma.yml",
+     "temperature_c": null,
+     "axis": "gamma-axis",
+     "phase_words": [],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      2.5,
+      55.5556
+     ],
+     "single_point": false,
+     "comments": "n\u03b3, k\u03b3.\n",
+     "conditions": "{'direction': 'gamma'}"
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "CaSO4 (Calcium sulfate)"
+  },
+  {
+   "key": "KH2PO4",
+   "name": "Potassium dihydrogen phosphate (KDP)",
+   "formula": "KH2PO4",
+   "book": "KH2PO4",
+   "shelf": "main",
+   "note": "birefringent nonlinear-optical crystal",
+   "materialclass": "phosphate",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 2,
+   "n_papers": 1,
+   "papers": [
+    "Zernike et al. 1964"
+   ],
+   "datasets": [
+    {
+     "page": "Zernike-o",
+     "title": "Zernike et al. 1964: n(o) 0.214\u20131.53 \u00b5m",
+     "paper": "Zernike et al. 1964",
+     "data_path": "main/KH2PO4/nk/Zernike-o.yml",
+     "temperature_c": 24.8,
+     "axis": "o-ray",
+     "phase_words": [
+      "Ordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.2138,
+      1.529
+     ],
+     "single_point": false,
+     "comments": "24.8 \u00b0C. Ordinary ray (o).\n",
+     "conditions": "{'temperature': 297.95, 'direction': 'o'}"
+    },
+    {
+     "page": "Zernike-e",
+     "title": "Zernike et al. 1964: n(e) 0.214\u20131.53 \u00b5m",
+     "paper": "Zernike et al. 1964",
+     "data_path": "main/KH2PO4/nk/Zernike-e.yml",
+     "temperature_c": 24.8,
+     "axis": "e-ray",
+     "phase_words": [
+      "Extraordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.2138,
+      1.529
+     ],
+     "single_point": false,
+     "comments": "24.8 \u00b0C. Extraordinary ray (e).\n",
+     "conditions": "{'temperature': 297.95, 'direction': 'e'}"
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "KH2PO4 (Potassium dihydrogen phosphate, KDP)"
+  },
+  {
+   "key": "NH4H2PO4",
+   "name": "Ammonium dihydrogen phosphate (ADP)",
+   "formula": "NH4H2PO4",
+   "book": "NH4H2PO4",
+   "shelf": "main",
+   "note": "birefringent nonlinear-optical crystal",
+   "materialclass": "phosphate",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 2,
+   "n_papers": 1,
+   "papers": [
+    "Zernike et al. 1964"
+   ],
+   "datasets": [
+    {
+     "page": "Zernike-o",
+     "title": "Zernike et al. 1964: n(o) 0.214\u20131.53 \u00b5m",
+     "paper": "Zernike et al. 1964",
+     "data_path": "main/NH4H2PO4/nk/Zernike-o.yml",
+     "temperature_c": 24.8,
+     "axis": "o-ray",
+     "phase_words": [
+      "Ordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.2138,
+      1.529
+     ],
+     "single_point": false,
+     "comments": "24.8 \u00b0C. Ordinary ray (o).\n",
+     "conditions": "{'temperature': 297.95, 'direction': 'o'}"
+    },
+    {
+     "page": "Zernike-e",
+     "title": "Zernike et al. 1964: n(e) 0.214\u20131.53 \u00b5m",
+     "paper": "Zernike et al. 1964",
+     "data_path": "main/NH4H2PO4/nk/Zernike-e.yml",
+     "temperature_c": 24.8,
+     "axis": "e-ray",
+     "phase_words": [
+      "Extraordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.2138,
+      1.529
+     ],
+     "single_point": false,
+     "comments": "24.8 \u00b0C. Extraordinary ray (e).\n",
+     "conditions": "{'temperature': 297.95, 'direction': 'e'}"
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "NH4H2PO4 (Ammonium dihydrogen phosphate, ADP)"
+  },
+  {
+   "key": "KTiOPO4",
+   "name": "Potassium titanyl phosphate (KTP)",
+   "formula": "KTiOPO4",
+   "book": "KTiOPO4",
+   "shelf": "main",
+   "note": "biaxial nonlinear-optical crystal",
+   "materialclass": "phosphate",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 3,
+   "n_papers": 1,
+   "papers": [
+    "Kato and Takaoka 2002"
+   ],
+   "datasets": [
+    {
+     "page": "Kato-\u03b1",
+     "title": "Kato and Takaoka 2002: n(\u03b1) 0.43\u20133.54 \u00b5m",
+     "paper": "Kato and Takaoka 2002",
+     "data_path": "main/KTiOPO4/nk/Kato-alpha.yml",
+     "temperature_c": 19.85,
+     "axis": "alpha-axis",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.43,
+      3.54
+     ],
+     "single_point": false,
+     "comments": "n\u03b1; 20 \u00b0C.\n",
+     "conditions": "{'temperature': 293, 'direction': 'alpha'}"
+    },
+    {
+     "page": "Kato-\u03b2",
+     "title": "Kato and Takaoka 2002: n(\u03b2) 0.43\u20133.54 \u00b5m",
+     "paper": "Kato and Takaoka 2002",
+     "data_path": "main/KTiOPO4/nk/Kato-beta.yml",
+     "temperature_c": 19.85,
+     "axis": "beta-axis",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.43,
+      3.54
+     ],
+     "single_point": false,
+     "comments": "n\u03b2; 20 \u00b0C.\n",
+     "conditions": "{'temperature': 293, 'direction': 'beta'}"
+    },
+    {
+     "page": "Kato-\u03b3",
+     "title": "Kato and Takaoka 2002: n(\u03b3) 0.43\u20133.54 \u00b5m",
+     "paper": "Kato and Takaoka 2002",
+     "data_path": "main/KTiOPO4/nk/Kato-gamma.yml",
+     "temperature_c": 19.85,
+     "axis": "gamma-axis",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.43,
+      3.54
+     ],
+     "single_point": false,
+     "comments": "n\u03b3; 20 \u00b0C.\n",
+     "conditions": "{'temperature': 293, 'direction': 'gamma'}"
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "KTiOPO4 (Potassium titanyl phosphate, KTP)"
+  },
+  {
+   "key": "RbTiOPO4",
+   "name": "Rubidium titanyl phosphate (RTP)",
+   "formula": "RbTiOPO4",
+   "book": "RbTiOPO4",
+   "shelf": "main",
+   "note": "biaxial nonlinear-optical crystal",
+   "materialclass": "phosphate",
+   "page_polymorph": {},
+   "basis": null,
+   "status": "FOUND",
+   "n_pages": 3,
+   "n_papers": 1,
+   "papers": [
+    "Carvajal et al. 2007"
+   ],
+   "datasets": [
+    {
+     "page": "Carvajal-\u03b1",
+     "title": "Carvajal et al. 2007: n(\u03b1) 0.4\u20131.5 \u00b5m",
+     "paper": "Carvajal et al. 2007",
+     "data_path": "main/RbTiOPO4/nk/Carvajal-alpha.yml",
+     "temperature_c": 19.85,
+     "axis": "alpha-axis",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      1.5
+     ],
+     "single_point": false,
+     "comments": "n\u03b1; 293 K (20 \u00b0C).\n",
+     "conditions": "{'temperature': 293, 'direction': 'alpha'}"
+    },
+    {
+     "page": "Carvajal-\u03b2",
+     "title": "Carvajal et al. 2007: n(\u03b2) 0.4\u20131.5 \u00b5m",
+     "paper": "Carvajal et al. 2007",
+     "data_path": "main/RbTiOPO4/nk/Carvajal-beta.yml",
+     "temperature_c": 19.85,
+     "axis": "beta-axis",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      1.5
+     ],
+     "single_point": false,
+     "comments": "n\u03b2; 293 K (20 \u00b0C).\n",
+     "conditions": "{'temperature': 293, 'direction': 'beta'}"
+    },
+    {
+     "page": "Carvajal-\u03b3",
+     "title": "Carvajal et al. 2007: n(\u03b3) 0.4\u20131.5 \u00b5m",
+     "paper": "Carvajal et al. 2007",
+     "data_path": "main/RbTiOPO4/nk/Carvajal-gamma.yml",
+     "temperature_c": 19.85,
+     "axis": "gamma-axis",
+     "phase_words": [],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.4,
+      1.5
+     ],
+     "single_point": false,
+     "comments": "n\u03b3; 293 K (20 \u00b0C).\n",
+     "conditions": "{'temperature': 293, 'direction': 'gamma'}"
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "RbTiOPO4 (Rubidium titanyl phosphate, RTP)"
+  }
+ ],
+ "out_of_family": {
+  "MgH2": "200 nm thin film under 7 bar H2 (Palm 2018): film-only data, thin-film follow-up",
+  "TiH2": "200 nm thin film under 7 bar H2 (Palm 2018): film-only data, thin-film follow-up",
+  "Ti3C2": "MXene (2D): 2D / thin-film follow-up",
+  "MoOCl2": "layered van der Waals crystal measured by a 2D-materials group, sample form not stated: 2D / thin-film follow-up",
+  "CO": "gas"
+ },
+ "deferred": {
+  "ZrO2": "no page is bulk ZrO2 as such: Wood 1982 is cubic zirconia stabilized with 12 mol% Y2O3 (a different composition, needs the composition convention pending with Aiden), Synowicki 2004 states 'Data generated from oscillator model' (a model fit, and the stabilizer is not stated), Bodurov 2016 is <100 nm nanoparticles dispersed in water (not bulk)."
+ },
+ "excluded_pages": {}
+}
