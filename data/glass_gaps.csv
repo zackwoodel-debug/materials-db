@@ -1,0 +1,8 @@
+key,name,gap_kind,reason
+glass/soda-lime/Nyakuchena,Nyakuchena,excluded_page,"glass microspheres, not a bulk glass (scope rule)"
+specs/SCHOTT-misc/DURAN,DURAN,excluded_page,"one refractive-index point only (n = 1.473 at 587.6 nm) plus k digitised from a transmission figure: no dispersion. Its PROPERTIES say nd = 1.527, contradicting its own n; the page itself says to use BOROFLOAT 33's data (loaded)"
+specs/SCHOTT-misc/LITHOSIL-Q,LITHOSIL-Q,excluded_page,obsolete fused silica grade; fused silica is the amorphous dataset of SiO2
+specs/SCHOTT-misc/LITHOTEC-CAF2,LITHOTEC-CAF2,excluded_page,obsolete CaF2 crystal grade; CaF2 is already a material
+"infrared chalcogenide glasses (AMTIR, IG, IRG, BD)","infrared chalcogenide glasses (AMTIR, IG, IRG, BD)",out_of_family,"several are loaded materials under a product name (AMTIR-6 = As2S3, IG6 = As2Se3) and the others have non-integer compositions (Ge33As12Se55): a separate batch with the composition convention"
+"optical-glass catalogs (SCHOTT, OHARA, HIKARI, CDGM, HOYA, SUMITA, LZOS; ~1,680 glasses)","optical-glass catalogs (SCHOTT, OHARA, HIKARI, CDGM, HOYA, SUMITA, LZOS; ~1,680 glasses)",out_of_family,lens-design glasses; only substrate glasses are in this family (N-BK7)
+"HIKARI miscellaneous (NIFS, NICF, numbered)","HIKARI miscellaneous (NIFS, NICF, numbered)",out_of_family,NICF is CaF2 crystal (loaded); the rest are lens materials

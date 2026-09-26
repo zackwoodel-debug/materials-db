@@ -59,6 +59,8 @@ def _hand_n(path, lam_um=0.633):
                 if len(c) >= 9:
                     n2 += c[5] * lam_um ** c[6] / (l2 - c[7] ** c[8])
                 return (n2 + sum(c[i] * lam_um ** c[i + 1] for i in range(9, len(c) - 1, 2))) ** 0.5
+            if t == "formula 5":  # Cauchy: n = C1 + C2 lam^C3 + C4 lam^C5 + ...
+                return c[0] + sum(c[i] * lam_um ** c[i + 1] for i in range(1, len(c) - 1, 2))
             raise AssertionError(f"unsupported formula type {t}")
         rows = [[float(x) for x in ln.split()] for ln in b["data"].strip().splitlines()]
         if rows[0][0] <= lam_um <= rows[-1][0]:

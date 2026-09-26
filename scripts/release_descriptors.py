@@ -137,7 +137,8 @@ def _structural_scope(density_source, label_words):
     return "crystalline reference (the density comes from the literature or experimental lattice parameters, not from this entry)"
 
 
-MOLECULAR_FAMILIES = {"liquids"}  # families whose materials are discrete molecules (described by their PubChem SMILES)
+MOLECULAR_FAMILIES = {"liquids"}
+GLASS_FAMILIES = {"glasses"}  # multicomponent glasses: no single formula, no crystal structure  # families whose materials are discrete molecules (described by their PubChem SMILES)
 
 
 def descriptor_row(name, formula, family, csv_row, optical_labels, mp, units, issues, smiles=None):
@@ -184,6 +185,9 @@ def descriptor_row(name, formula, family, csv_row, optical_labels, mp, units, is
             doc["material_kind"] = "element" if comp["n_elements"] == 1 else "inorganic compound"
         if cols["exact_mass"] is None:
             cols["exact_mass"], cols["heavy_atom_count"] = formula_mass_and_heavy_atoms(rf)
+    elif family in GLASS_FAMILIES:
+        doc["compositional"] = dict(unavailable="multicomponent glass: no single formula (composition proprietary or given as oxide ratios)")
+        doc["material_kind"] = "glass"
     else:
         doc["compositional"] = dict(unavailable=why or "no single molecular formula")
         doc.setdefault("material_kind", "polymer" if is_polymer else "unknown")
@@ -197,6 +201,8 @@ def descriptor_row(name, formula, family, csv_row, optical_labels, mp, units, is
         doc["structural"] = dict(not_applicable="liquid: no crystal structure (any ice / solid datasets of it are labelled by phase)")
     elif family in MOLECULAR_FAMILIES:
         doc["structural"] = dict(unavailable="molecular solid or biomolecule film/powder: no Materials Project entry is used for molecular crystals")
+    elif family in GLASS_FAMILIES:
+        doc["structural"] = dict(not_applicable="glass: amorphous, no crystal structure")
     elif mp_id and mp_id in mp["entries"]:
         e = dict(mp["entries"][mp_id])
         e.pop("space_group_number_recomputed", None)

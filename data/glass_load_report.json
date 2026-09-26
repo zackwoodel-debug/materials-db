@@ -1,0 +1,20 @@
+{
+  "family": "glass",
+  "inserted": {
+    "materials": 11,
+    "physical_properties": 4,
+    "optical_dispersion": 27436,
+    "sources": 22
+  },
+  "unchanged": {
+    "materials": 0,
+    "physical_properties": 0,
+    "optical_dispersion": 0
+  },
+  "conflicts": [],
+  "skipped": [],
+  "warnings": [],
+  "notes": [],
+  "deferred": [],
+  "collapsed": []
+}
