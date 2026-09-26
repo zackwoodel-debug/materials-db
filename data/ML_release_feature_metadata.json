@@ -1,9 +1,9 @@
 {
-  "source_release": "0.7.0",
-  "source_release_git_commit": "577588f97aaa80742e4d763f3af77858600a8846",
-  "source_sqlite": "materials-db-v0.7.0.sqlite",
-  "source_sqlite_sha256": "b28f7bb1b532e70d27969c4545b74afad601f4dd3e07bf0f53555a835a033c24",
-  "n_materials": 325,
+  "source_release": "0.8.0",
+  "source_release_git_commit": "b592668b5b47f97fd5c6ea27144e9457949c4ac4",
+  "source_sqlite": "materials-db-v0.8.0.sqlite",
+  "source_sqlite_sha256": "c931347c95167dc4ce42bb42f870e52fd10c952d11ae3e40e529550b57f7dca3",
+  "n_materials": 336,
   "optical_ref_wl_nm": 633.0,
   "scaled": false,
   "target_columns": [
@@ -12,9 +12,9 @@
     "target_density_g_cm3"
   ],
   "target_present": {
-    "target_n_633nm": 254,
-    "target_k_633nm": 96,
-    "target_density_g_cm3": 254
+    "target_n_633nm": 265,
+    "target_k_633nm": 102,
+    "target_density_g_cm3": 258
   },
   "feature_columns": [
     "feat_comp_n_elements",
@@ -701,6 +701,7 @@
     "inorganic3": 16,
     "chalcogenides": 16,
     "semiconductors": 16,
+    "glasses": 11,
     "inorganic4": 6,
     "batch3b_4": 4,
     "nitrides": 1
