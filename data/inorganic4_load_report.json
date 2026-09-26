@@ -1,0 +1,20 @@
+{
+  "family": "inorganic4",
+  "inserted": {
+    "materials": 6,
+    "physical_properties": 30,
+    "optical_dispersion": 6177,
+    "sources": 11
+  },
+  "unchanged": {
+    "materials": 0,
+    "physical_properties": 0,
+    "optical_dispersion": 0
+  },
+  "conflicts": [],
+  "skipped": [],
+  "warnings": [],
+  "notes": [],
+  "deferred": [],
+  "collapsed": []
+}

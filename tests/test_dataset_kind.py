@@ -13,6 +13,7 @@ from dataset_kind import is_model_fit, model_fit_reason  # noqa: E402
     "main/GaAs/nk/Rakic.yml",       # "Modeling the optical dielectric function ... Extension of Adachi's model"
     "main/GaAs/nk/Ozaki.yml",       # "Fit of author's experimental data to a simplified model"
     "main/GaAs/nk/Franta-300K.yml",  # "Dispersion models describing coupled systems ..."
+    "main/ZrO2/nk/Synowicki.yml",   # "Data generated from oscillator model."
 ])
 def test_model_fits(path):
     assert is_model_fit(path), path

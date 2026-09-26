@@ -1,0 +1,7 @@
+key,name,gap_kind,reason,evidence
+ZrO2,ZrO2,deferred_decision,"no page is bulk ZrO2 as such: Wood 1982 is cubic zirconia stabilized with 12 mol% Y2O3 (a different composition, needs the composition convention pending with Aiden), Synowicki 2004 states 'Data generated from oscillator model' (a model fit, and the stabilizer is not stated), Bodurov 2016 is <100 nm nanoparticles dispersed in water (not bulk).",
+MgH2,MgH2,out_of_family,"200 nm thin film under 7 bar H2 (Palm 2018): film-only data, thin-film follow-up",
+TiH2,TiH2,out_of_family,"200 nm thin film under 7 bar H2 (Palm 2018): film-only data, thin-film follow-up",
+Ti3C2,Ti3C2,out_of_family,MXene (2D): 2D / thin-film follow-up,
+MoOCl2,MoOCl2,out_of_family,"layered van der Waals crystal measured by a 2D-materials group, sample form not stated: 2D / thin-film follow-up",
+CO,CO,out_of_family,gas,

@@ -43,7 +43,7 @@ NAME_SYNONYMS = {
     "isopropanol", "BBO", "BGGSe", "BGSe", "BGS", "BGO", "BSO", "BiBO", "hexanoic acid", "octanoic acid", "heptanoic acid",
     "nonanoic acid", "CLBO", "calcium magnesium carbonate", "D2O", "HDPE", "LLDPE", "3-methyl-1-butanol", "2-methyl-1-propanol",
     "2,2,4-trimethylpentane", "2-methylbutane", "galena", "cinnabar", "proustite", "LiCAF", "LGS", "LBO", "SCAM", "PDLA", "PNIPAM",
-    "PCTFE", "PEI", "TPX", "AGSe", "AGS", "TAS", "YLF", "ZGP",
+    "PCTFE", "PEI", "TPX", "AGSe", "AGS", "TAS", "YLF", "ZGP", "berlinite", "anhydrite", "KDP", "ADP", "KTP", "RTP",
 }
 NAME_QUALIFIERS = {
     "hexagonal", "liquid", "rutile / anatase", "sodium salt, calf thymus", "polyimide film", "negative photoresist", "negative resist",

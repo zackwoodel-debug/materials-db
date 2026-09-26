@@ -70,6 +70,13 @@ Generic loader: scripts/load_family_db.py (--family/--catalog/--selections/--db/
    +30..+62% vs measured). Kept values: -3..+11% for insulators, +11..+26% for semiconductors. Possible next: experimental static
    epsilon from literature for the semiconductors, and dielectric as ML features/targets.
 
+16. DONE: inorganic batch 4 (scripts/*inorganic4*): AlPO4 berlinite, CaSO4 anhydrite, KDP, ADP, KTP, RTP (6 materials, 15
+   datasets). Earlier "remaining crystals" estimate was wrong: CaO, SrO, Ga2O3, Er2O3, Gd3Ga5O12, YAlO3, KTiOAsO4, DyScO3 hold only
+   nonlinear n2 data (catalog-n2.yml). ZrO2 deferred (YSZ 12 mol% Y2O3 in other/mixed crystals, an oscillator-model fit,
+   nanoparticles): with the composition convention. MgH2/TiH2 (films), Ti3C2 (MXene), MoOCl2 (layered) -> 2D/thin-film follow-up.
+   The main shelf is now exhausted except gases, 2D/layered books and logged deferrals. fetch_source_dois.py now only grows its cache
+   (a rebuilt release carries the cached DOIs, which the old version then dropped).
+
 ## FOLLOW-UP (logged, NOT started): graphene / 2D carbon as its own family -- materialclass must NOT be 'polymer'
 - RI.info main/C, verified read-only: monolayer graphene = Weber 2010 (0.21-1.0 um, exfoliated flake, 3.4 A, on Si/98 nm SiO2), Song 2018 "Graphene"
   (0.193-1.69, CVD mono), Tikuisis 2023 (0.226-4.40, epitaxial on 6H-SiC), El-Sayed 2021 (0.24-1.0, CVD): four, not three. Song 2018 also holds 4 bulk-HOPG pages (graphite).

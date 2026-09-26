@@ -1,0 +1,284 @@
+{
+ "AlPO4": {
+  "name": "Aluminium phosphate (berlinite)",
+  "formula": "AlPO4",
+  "source": "auto: exactly one paper on RI.info (all its pages are axes of it)",
+  "axes": [
+   {
+    "page": "Bond-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "main/AlPO4/nk/Bond-o.yml",
+    "span_um": [
+     0.4,
+     2.6
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Ordinary ray (o); Room temperature.\n",
+    "temperature_c": null,
+    "tag": "Bond1965",
+    "dataset_label": "Bond1965 | o-ray"
+   },
+   {
+    "page": "Bond-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "main/AlPO4/nk/Bond-e.yml",
+    "span_um": [
+     0.4,
+     2.6
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Extraordinary ray (e); Room temperature.\n",
+    "temperature_c": null,
+    "tag": "Bond1965",
+    "dataset_label": "Bond1965 | e-ray"
+   }
+  ]
+ },
+ "CaSO4": {
+  "name": "Calcium sulfate (anhydrite)",
+  "formula": "CaSO4",
+  "source": "auto: exactly one paper on RI.info (all its pages are axes of it)",
+  "axes": [
+   {
+    "page": "Querry-\u03b1",
+    "axis": "alpha-axis",
+    "phase": null,
+    "data_path": "main/CaSO4/nk/Querry-alpha.yml",
+    "span_um": [
+     2.5,
+     55.5556
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "n\u03b1, k\u03b1.\n",
+    "temperature_c": null,
+    "tag": "Querry1987",
+    "dataset_label": "Querry1987 | alpha-axis"
+   },
+   {
+    "page": "Querry-\u03b2",
+    "axis": "beta-axis",
+    "phase": null,
+    "data_path": "main/CaSO4/nk/Querry-beta.yml",
+    "span_um": [
+     2.5,
+     55.5556
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "n\u03b2, k\u03b2.\n",
+    "temperature_c": null,
+    "tag": "Querry1987",
+    "dataset_label": "Querry1987 | beta-axis"
+   },
+   {
+    "page": "Querry-\u03b3",
+    "axis": "gamma-axis",
+    "phase": null,
+    "data_path": "main/CaSO4/nk/Querry-gamma.yml",
+    "span_um": [
+     2.5,
+     55.5556
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "n\u03b3, k\u03b3.\n",
+    "temperature_c": null,
+    "tag": "Querry1987",
+    "dataset_label": "Querry1987 | gamma-axis"
+   }
+  ]
+ },
+ "KH2PO4": {
+  "name": "Potassium dihydrogen phosphate (KDP)",
+  "formula": "KH2PO4",
+  "source": "auto: exactly one paper on RI.info (all its pages are axes of it)",
+  "axes": [
+   {
+    "page": "Zernike-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "main/KH2PO4/nk/Zernike-o.yml",
+    "span_um": [
+     0.2138,
+     1.529
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "24.8 \u00b0C. Ordinary ray (o).\n",
+    "temperature_c": 24.8,
+    "tag": "Zernike1964",
+    "dataset_label": "Zernike1964 | o-ray"
+   },
+   {
+    "page": "Zernike-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "main/KH2PO4/nk/Zernike-e.yml",
+    "span_um": [
+     0.2138,
+     1.529
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "24.8 \u00b0C. Extraordinary ray (e).\n",
+    "temperature_c": 24.8,
+    "tag": "Zernike1964",
+    "dataset_label": "Zernike1964 | e-ray"
+   }
+  ]
+ },
+ "NH4H2PO4": {
+  "name": "Ammonium dihydrogen phosphate (ADP)",
+  "formula": "NH4H2PO4",
+  "source": "auto: exactly one paper on RI.info (all its pages are axes of it)",
+  "axes": [
+   {
+    "page": "Zernike-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "main/NH4H2PO4/nk/Zernike-o.yml",
+    "span_um": [
+     0.2138,
+     1.529
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "24.8 \u00b0C. Ordinary ray (o).\n",
+    "temperature_c": 24.8,
+    "tag": "Zernike1964",
+    "dataset_label": "Zernike1964 | o-ray"
+   },
+   {
+    "page": "Zernike-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "main/NH4H2PO4/nk/Zernike-e.yml",
+    "span_um": [
+     0.2138,
+     1.529
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "24.8 \u00b0C. Extraordinary ray (e).\n",
+    "temperature_c": 24.8,
+    "tag": "Zernike1964",
+    "dataset_label": "Zernike1964 | e-ray"
+   }
+  ]
+ },
+ "KTiOPO4": {
+  "name": "Potassium titanyl phosphate (KTP)",
+  "formula": "KTiOPO4",
+  "source": "auto: exactly one paper on RI.info (all its pages are axes of it)",
+  "axes": [
+   {
+    "page": "Kato-\u03b1",
+    "axis": "alpha-axis",
+    "phase": null,
+    "data_path": "main/KTiOPO4/nk/Kato-alpha.yml",
+    "span_um": [
+     0.43,
+     3.54
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "n\u03b1; 20 \u00b0C.\n",
+    "temperature_c": 19.85,
+    "tag": "Kato2002",
+    "dataset_label": "Kato2002 | alpha-axis"
+   },
+   {
+    "page": "Kato-\u03b2",
+    "axis": "beta-axis",
+    "phase": null,
+    "data_path": "main/KTiOPO4/nk/Kato-beta.yml",
+    "span_um": [
+     0.43,
+     3.54
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "n\u03b2; 20 \u00b0C.\n",
+    "temperature_c": 19.85,
+    "tag": "Kato2002",
+    "dataset_label": "Kato2002 | beta-axis"
+   },
+   {
+    "page": "Kato-\u03b3",
+    "axis": "gamma-axis",
+    "phase": null,
+    "data_path": "main/KTiOPO4/nk/Kato-gamma.yml",
+    "span_um": [
+     0.43,
+     3.54
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "n\u03b3; 20 \u00b0C.\n",
+    "temperature_c": 19.85,
+    "tag": "Kato2002",
+    "dataset_label": "Kato2002 | gamma-axis"
+   }
+  ]
+ },
+ "RbTiOPO4": {
+  "name": "Rubidium titanyl phosphate (RTP)",
+  "formula": "RbTiOPO4",
+  "source": "auto: exactly one paper on RI.info (all its pages are axes of it)",
+  "axes": [
+   {
+    "page": "Carvajal-\u03b1",
+    "axis": "alpha-axis",
+    "phase": null,
+    "data_path": "main/RbTiOPO4/nk/Carvajal-alpha.yml",
+    "span_um": [
+     0.4,
+     1.5
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "n\u03b1; 293 K (20 \u00b0C).\n",
+    "temperature_c": 19.85,
+    "tag": "Carvajal2007",
+    "dataset_label": "Carvajal2007 | alpha-axis"
+   },
+   {
+    "page": "Carvajal-\u03b2",
+    "axis": "beta-axis",
+    "phase": null,
+    "data_path": "main/RbTiOPO4/nk/Carvajal-beta.yml",
+    "span_um": [
+     0.4,
+     1.5
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "n\u03b2; 293 K (20 \u00b0C).\n",
+    "temperature_c": 19.85,
+    "tag": "Carvajal2007",
+    "dataset_label": "Carvajal2007 | beta-axis"
+   },
+   {
+    "page": "Carvajal-\u03b3",
+    "axis": "gamma-axis",
+    "phase": null,
+    "data_path": "main/RbTiOPO4/nk/Carvajal-gamma.yml",
+    "span_um": [
+     0.4,
+     1.5
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "n\u03b3; 293 K (20 \u00b0C).\n",
+    "temperature_c": 19.85,
+    "tag": "Carvajal2007",
+    "dataset_label": "Carvajal2007 | gamma-axis"
+   }
+  ]
+ }
+}

@@ -49,6 +49,7 @@ FAMILIES = {
     "chalcogenide": ("materials_chalcogenide_test.db", ["chalcogenides.csv"], "modalfit_export_chalcogenide"),
     "liquid": ("materials_liquid_test.db", ["liquids.csv"], "modalfit_export_liquid"),
     "semiconductor": ("materials_semiconductor_test.db", ["semiconductors.csv"], "modalfit_export_semiconductor"),
+    "inorganic4": ("materials_inorganic4_test.db", ["inorganic4.csv"], "modalfit_export_inorganic4"),
 }
 OWNER_MARKER = ".modalfit_export_owned"  # written into an output dir this script created; only such a dir may be wiped
 

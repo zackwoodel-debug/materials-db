@@ -81,9 +81,13 @@ def main(argv=None):
     from generate_ml_release_set import latest_release
     rel = a.release or latest_release()
     db = next(Path(rel).glob("materials-db-v*.sqlite"))
-    rows = sqlite3.connect(str(db)).execute(
+    # The cache only GROWS: a release built with it already carries its DOIs, so its accepted entries are kept as they are and
+    # only citations that are neither accepted nor already looked up are sent to Crossref.
+    old = json.loads(OUT.read_text()) if OUT.exists() else dict(accepted={}, unmatched={})
+    accepted, rejected = dict(old["accepted"]), dict(old["unmatched"])
+    rows = [r for r in sqlite3.connect(str(db)).execute(
         "SELECT DISTINCT title, authors, year FROM sources WHERE (doi IS NULL OR doi = '') AND technique = 'refractiveindex.info'").fetchall()
-    accepted, rejected = {}, {}
+        if citation_key(*r) not in accepted and citation_key(*r) not in rejected]
     for title, authors, year in rows:
         key = citation_key(title, authors, year)
         query = f"{title or ''} {authors or ''}".strip()
@@ -108,8 +112,10 @@ def main(argv=None):
         source="Crossref REST API (api.crossref.org); accepted only on year + first author + >=90% title-word match",
         retrieved_utc=datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), release=Path(rel).name,
         looked_up=len(rows), accepted=dict(sorted(accepted.items())), unmatched=dict(sorted(rejected.items()))), indent=1, ensure_ascii=False) + "\n")
-    print(f"{len(rows)} citations without DOI: {len(accepted)} matched, {len(rejected)} unmatched -> {OUT.relative_to(_ROOT)}")
-    for v in accepted.values():
+    new = [v for k, v in accepted.items() if k not in old["accepted"]]
+    print(f"{len(rows)} new citations looked up: {len(new)} matched; cache now {len(accepted)} accepted, {len(rejected)} unmatched "
+          f"-> {OUT.relative_to(_ROOT)}")
+    for v in new:
         print(f"  + {v['doi']}  <- {v['citation'][:100]}")
     return 0
 
