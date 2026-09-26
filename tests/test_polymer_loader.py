@@ -80,11 +80,12 @@ def test_null_formula_still_needs_a_name_and_a_selection_key(tmp_path):
         fam.load_catalog(cat, allow_null_formula=True)
 
 
-def test_polymer_catalog_loads_null_formula_only_for_the_twelve_grade_materials(loaded):
+def test_polymer_catalog_loads_null_formula_only_for_the_grade_materials(loaded):
     c = sqlite3.connect(str(loaded[0]))
     nulls = {r[0] for r in c.execute("SELECT name FROM materials WHERE formula IS NULL")}
     assert nulls == set(pd.read_csv(poly.CSV_PATH).query("formula != formula")["name"])  # NaN rows == NULL rows
-    assert len(nulls) == 12 and c.execute("SELECT COUNT(*) FROM materials WHERE lower(coalesce(formula,'x')) IN ('nan','none','unspecified','')").fetchone()[0] == 0
+    assert len(nulls) == 13  # 12 grade materials + Microchem 495 PMMA resist (its book states no formula)
+    assert c.execute("SELECT COUNT(*) FROM materials WHERE lower(coalesce(formula,'x')) IN ('nan','none','unspecified','')").fetchone()[0] == 0
     c.close()
 
 
@@ -204,8 +205,8 @@ def test_real_load_facts_and_scope(loaded):
     db, rep = loaded
     c = sqlite3.connect(str(db))
     assert c.execute("PRAGMA integrity_check").fetchone()[0] == "ok" and c.execute("PRAGMA foreign_key_check").fetchall() == []
-    assert c.execute("SELECT COUNT(*) FROM materials").fetchone()[0] == 39
-    assert c.execute("SELECT COUNT(*) FROM (SELECT 1 FROM optical_dispersion GROUP BY material_id, dataset_label)").fetchone()[0] == 45
+    assert c.execute("SELECT COUNT(*) FROM materials").fetchone()[0] == 41
+    assert c.execute("SELECT COUNT(*) FROM (SELECT 1 FROM optical_dispersion GROUP BY material_id, dataset_label)").fetchone()[0] == 50
     expected = sum(len(fam.parse_file(RI / a["data_path"])[0]) for v in SEL.values() if "axes" in v for a in v["axes"]) - len(rep.collapsed)
     assert c.execute("SELECT COUNT(*) FROM optical_dispersion").fetchone()[0] == expected
     assert rep.skipped == [] and rep.conflicts == [] and rep.warnings == [] and len(rep.collapsed) == 2  # only the two PVP boundary rows
@@ -270,9 +271,10 @@ def test_no_self_pairs_in_the_polymer_db_and_the_detector_really_detects_them(lo
     c = sqlite3.connect(str(db))
     ids = [r[0] for r in c.execute("SELECT material_id FROM materials")]
     pairs = sum(validate_optical_material(c, i) for i in ids)
-    assert pairs == 6  # only the six conjugated polymers have two datasets (o- and e-ray of one film): a genuine pair each
+    assert pairs == 8  # the six conjugated polymers (o- and e-ray of one film) + the 950 PMMA resist (spec sheet vs Tsuda film; LD vs BB fit)
     assert c.execute("SELECT COUNT(*) FROM dataset_validation WHERE pearson_r >= 0.999999").fetchone()[0] == 0  # distinct axes, never identical
-    assert {r[0] for r in c.execute("SELECT DISTINCT dataset_a || ' / ' || dataset_b FROM dataset_validation")} == {"Kamptner2024 | e-ray / Kamptner2024 | o-ray"}
+    assert {r[0] for r in c.execute("SELECT DISTINCT dataset_a || ' / ' || dataset_b FROM dataset_validation")} == {"Kamptner2024 | e-ray / Kamptner2024 | o-ray",
+        "Microchem-datasheet-2001 / Tsuda2018 baked film", "Tsuda2018 Brendel-Bormann fit / Tsuda2018 Lorentz-Drude fit"}
     pc = c.execute("SELECT material_id FROM materials WHERE name='Polycarbonate'").fetchone()[0]
     c.execute("INSERT INTO optical_dispersion(material_id,wavelength_nm,n,k,dataset_label,raw_record_table,raw_record_id,source_id) "
               "SELECT material_id,wavelength_nm,n,k,'DUP-CONTROL','ctrl/'||raw_record_table,raw_record_id,source_id FROM optical_dispersion WHERE material_id=?", (pc,))

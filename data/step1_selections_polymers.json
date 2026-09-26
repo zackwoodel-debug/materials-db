@@ -1145,5 +1145,105 @@
     }
    }
   ]
+ },
+ "PMMA-495-resist": {
+  "name": "Microchem 495 PMMA resist",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "auto: the only dispersion-capable RI.info dataset",
+  "not_stated_by_source": [
+   "grade: not stated by source",
+   "molecular_weight: not stated by source",
+   "tacticity: not stated by source",
+   "cure_ratio: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "specs",
+    "axis": null,
+    "data_path": "other/resists/Microchem 495/nk/specs.yml",
+    "dataset_label": "Microchem495",
+    "span_um": [
+     0.2,
+     1.1
+    ],
+    "kind": "n",
+    "attributes_stated": {
+     "supplier": "Microchem"
+    }
+   }
+  ]
+ },
+ "PMMA-950-resist": {
+  "name": "Microchem 950 PMMA resist",
+  "polymorph": null,
+  "effective_polymorph": null,
+  "source": "user decision (this run): standing rule (every paper its own dataset): the spec sheet (0.2-1.1 um) is primary, measured and widest; Tsuda's 950k film baked 100 degC (0.6-1.0 um) and its two IR model fits (2.5-18 um) are kept",
+  "not_stated_by_source": [
+   "grade: not stated by source",
+   "tacticity: not stated by source",
+   "cure_ratio: not stated by source"
+  ],
+  "axes": [
+   {
+    "page": "specs",
+    "axis": null,
+    "data_path": "other/resists/Microchem 950/nk/specs.yml",
+    "dataset_label": "Microchem-datasheet-2001",
+    "span_um": [
+     0.2,
+     1.1
+    ],
+    "kind": "n",
+    "attributes_stated": {
+     "supplier": "Microchem"
+    }
+   },
+   {
+    "page": "Tsuda",
+    "axis": null,
+    "data_path": "organic/(C5H8O2)n - poly(methyl methacrylate)/nk/Tsuda.yml",
+    "dataset_label": "Tsuda2018 baked film",
+    "span_um": [
+     0.6,
+     1.0
+    ],
+    "kind": "n",
+    "attributes_stated": {
+     "molecular_weight": "molecular weight of 950,000",
+     "supplier": "MicroChem"
+    }
+   },
+   {
+    "page": "Tsuda-LD",
+    "axis": null,
+    "data_path": "organic/(C5H8O2)n - poly(methyl methacrylate)/nk/Tsuda-LD.yml",
+    "dataset_label": "Tsuda2018 Lorentz-Drude fit",
+    "span_um": [
+     2.5,
+     18.18
+    ],
+    "kind": "nk",
+    "attributes_stated": {
+     "molecular_weight": "molecular weight of 950,000",
+     "supplier": "MicroChem"
+    }
+   },
+   {
+    "page": "Tsuda-BB",
+    "axis": null,
+    "data_path": "organic/(C5H8O2)n - poly(methyl methacrylate)/nk/Tsuda-BB.yml",
+    "dataset_label": "Tsuda2018 Brendel-Bormann fit",
+    "span_um": [
+     2.5,
+     18.18
+    ],
+    "kind": "nk",
+    "attributes_stated": {
+     "molecular_weight": "molecular weight of 950,000",
+     "supplier": "MicroChem"
+    }
+   }
+  ]
  }
 }
