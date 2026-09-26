@@ -138,7 +138,8 @@ def _structural_scope(density_source, label_words):
 
 
 MOLECULAR_FAMILIES = {"liquids"}
-GLASS_FAMILIES = {"glasses"}  # multicomponent glasses: no single formula, no crystal structure  # families whose materials are discrete molecules (described by their PubChem SMILES)
+GLASS_FAMILIES = {"glasses"}  # multicomponent glasses: no single formula, no crystal structure
+FORMULATION_FAMILIES = {"optical_media"}  # proprietary liquids / cured resins: no single formula, no crystal structure  # families whose materials are discrete molecules (described by their PubChem SMILES)
 
 
 def descriptor_row(name, formula, family, csv_row, optical_labels, mp, units, issues, smiles=None):
@@ -188,6 +189,9 @@ def descriptor_row(name, formula, family, csv_row, optical_labels, mp, units, is
     elif family in GLASS_FAMILIES:
         doc["compositional"] = dict(unavailable="multicomponent glass: no single formula (composition proprietary or given as oxide ratios)")
         doc["material_kind"] = "glass"
+    elif family in FORMULATION_FAMILIES:
+        doc["compositional"] = dict(unavailable="proprietary commercial formulation: no single formula")
+        doc["material_kind"] = "commercial formulation"
     else:
         doc["compositional"] = dict(unavailable=why or "no single molecular formula")
         doc.setdefault("material_kind", "polymer" if is_polymer else "unknown")
@@ -203,6 +207,8 @@ def descriptor_row(name, formula, family, csv_row, optical_labels, mp, units, is
         doc["structural"] = dict(unavailable="molecular solid or biomolecule film/powder: no Materials Project entry is used for molecular crystals")
     elif family in GLASS_FAMILIES:
         doc["structural"] = dict(not_applicable="glass: amorphous, no crystal structure")
+    elif family in FORMULATION_FAMILIES:
+        doc["structural"] = dict(not_applicable="liquid or cured resin formulation: no crystal structure")
     elif mp_id and mp_id in mp["entries"]:
         e = dict(mp["entries"][mp_id])
         e.pop("space_group_number_recomputed", None)
