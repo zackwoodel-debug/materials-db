@@ -1,0 +1,1912 @@
+{
+ "description": "Permanent material ids (scripts/material_registry.py). Never edit an id; never reuse one.",
+ "seeded_from": "materials-db v0.13.0",
+ "next_id": 382,
+ "materials": {
+  "oxides_50:Al2O3@corundum/sapphire": {
+   "id": 1,
+   "name": "Aluminium oxide / sapphire",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:BeO@wurtzite": {
+   "id": 2,
+   "name": "Beryllium oxide",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:BeAl2O4@chrysoberyl": {
+   "id": 3,
+   "name": "Chrysoberyl",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:BeAl6O10": {
+   "id": 4,
+   "name": "Beryllium hexaaluminate",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:CaGdAlO4@K2NiF4-type": {
+   "id": 5,
+   "name": "Calcium gadolinium aluminate",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:CaYAlO4@K2NiF4-type": {
+   "id": 6,
+   "name": "Calcium yttrium aluminate",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:MgAl2O4@spinel": {
+   "id": 7,
+   "name": "Spinel",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:LaAlO3": {
+   "id": 8,
+   "name": "Lanthanum aluminate",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:BaB2O4@beta-BBO": {
+   "id": 9,
+   "name": "Barium borate (BBO)",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:BiB3O6@alpha-BiBO": {
+   "id": 10,
+   "name": "Bismuth triborate (BiBO)",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:LiB3O5": {
+   "id": 11,
+   "name": "Lithium triborate (LBO)",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:CsLiB6O10": {
+   "id": 12,
+   "name": "Cesium lithium borate (CLBO)",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:LuAl3(BO3)4": {
+   "id": 13,
+   "name": "Lutetium aluminium borate",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:CaCO3@calcite": {
+   "id": 14,
+   "name": "Calcite",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:CuO@tenorite": {
+   "id": 15,
+   "name": "Copper(II) oxide",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:Cu2O@cuprite": {
+   "id": 16,
+   "name": "Copper(I) oxide",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:Dy2O3@bixbyite": {
+   "id": 17,
+   "name": "Dysprosium oxide",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:Fe2O3@hematite": {
+   "id": 18,
+   "name": "Hematite",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:Fe3O4@magnetite": {
+   "id": 19,
+   "name": "Magnetite",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:GeO2": {
+   "id": 20,
+   "name": "Germanium dioxide",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:Bi12GeO20@BGO": {
+   "id": 21,
+   "name": "Bismuth germanate",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:Pb5Ge3O11": {
+   "id": 22,
+   "name": "Lead germanate",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:HfO2": {
+   "id": 23,
+   "name": "Hafnium dioxide",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:LiIO3": {
+   "id": 24,
+   "name": "Lithium iodate",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:Lu2O3@bixbyite": {
+   "id": 25,
+   "name": "Lutetium oxide",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:Lu3Al5O12@garnet": {
+   "id": 26,
+   "name": "LuAG",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:MgO@rock salt": {
+   "id": 27,
+   "name": "Magnesium oxide",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:MoO2": {
+   "id": 28,
+   "name": "Molybdenum dioxide",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:MoO3": {
+   "id": 29,
+   "name": "Molybdenum trioxide",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:CaMoO4@scheelite": {
+   "id": 30,
+   "name": "Calcium molybdate",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:PbMoO4@scheelite/wulfenite": {
+   "id": 31,
+   "name": "Lead molybdate",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:SrMoO4@scheelite": {
+   "id": 32,
+   "name": "Strontium molybdate",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:Nb2O5@amorphous": {
+   "id": 33,
+   "name": "Niobium pentoxide",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:KNbO3": {
+   "id": 34,
+   "name": "Potassium niobate",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:LiNbO3": {
+   "id": 35,
+   "name": "Lithium niobate",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:Sc2O3@bixbyite": {
+   "id": 36,
+   "name": "Scandium oxide",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:SiO@amorphous": {
+   "id": 37,
+   "name": "Silicon monoxide",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:SiO2@amorphous": {
+   "id": 38,
+   "name": "Silicon dioxide / quartz",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:Ta2O5@amorphous": {
+   "id": 39,
+   "name": "Tantalum pentoxide",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:Tb3Ga5O12@garnet": {
+   "id": 40,
+   "name": "TGG",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:TeO2@paratellurite": {
+   "id": 41,
+   "name": "Tellurium dioxide",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:TiO2@rutile": {
+   "id": 42,
+   "name": "Titanium dioxide (rutile / anatase)",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:BaTiO3": {
+   "id": 43,
+   "name": "Barium titanate",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:SrTiO3": {
+   "id": 44,
+   "name": "Strontium titanate",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:VO2@M1 (insulating)": {
+   "id": 45,
+   "name": "Vanadium dioxide",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:YVO4@zircon": {
+   "id": 46,
+   "name": "Yttrium orthovanadate",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:WO3": {
+   "id": 47,
+   "name": "Tungsten trioxide",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:Y2O3@bixbyite": {
+   "id": 48,
+   "name": "Yttrium oxide",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:Y3Al5O12@garnet": {
+   "id": 49,
+   "name": "YAG",
+   "registered_in": "0.13.0"
+  },
+  "oxides_50:ZnO@wurtzite": {
+   "id": 50,
+   "name": "Zinc oxide",
+   "registered_in": "0.13.0"
+  },
+  "batch2_31:BaF2": {
+   "id": 51,
+   "name": "Barium fluoride",
+   "registered_in": "0.13.0"
+  },
+  "batch2_31:CaF2": {
+   "id": 52,
+   "name": "Calcium fluoride",
+   "registered_in": "0.13.0"
+  },
+  "batch2_31:CdF2": {
+   "id": 53,
+   "name": "Cadmium fluoride",
+   "registered_in": "0.13.0"
+  },
+  "batch2_31:CeF3@tysonite": {
+   "id": 54,
+   "name": "Cerium(III) fluoride",
+   "registered_in": "0.13.0"
+  },
+  "batch2_31:CsF": {
+   "id": 55,
+   "name": "Cesium fluoride",
+   "registered_in": "0.13.0"
+  },
+  "batch2_31:GdF3": {
+   "id": 56,
+   "name": "Gadolinium(III) fluoride",
+   "registered_in": "0.13.0"
+  },
+  "batch2_31:KF": {
+   "id": 57,
+   "name": "Potassium fluoride",
+   "registered_in": "0.13.0"
+  },
+  "batch2_31:LaF3@tysonite": {
+   "id": 58,
+   "name": "Lanthanum fluoride",
+   "registered_in": "0.13.0"
+  },
+  "batch2_31:LiCaAlF6@colquiriite": {
+   "id": 59,
+   "name": "Lithium calcium aluminum fluoride (LiCAF)",
+   "registered_in": "0.13.0"
+  },
+  "batch2_31:LiF": {
+   "id": 60,
+   "name": "Lithium fluoride",
+   "registered_in": "0.13.0"
+  },
+  "batch2_31:MgF2@rutile": {
+   "id": 61,
+   "name": "Magnesium fluoride",
+   "registered_in": "0.13.0"
+  },
+  "batch2_31:NaF": {
+   "id": 62,
+   "name": "Sodium fluoride",
+   "registered_in": "0.13.0"
+  },
+  "batch2_31:PbF2": {
+   "id": 63,
+   "name": "Lead(II) fluoride",
+   "registered_in": "0.13.0"
+  },
+  "batch2_31:RbF": {
+   "id": 64,
+   "name": "Rubidium fluoride",
+   "registered_in": "0.13.0"
+  },
+  "batch2_31:SrF2": {
+   "id": 65,
+   "name": "Strontium fluoride",
+   "registered_in": "0.13.0"
+  },
+  "batch2_31:ThF4": {
+   "id": 66,
+   "name": "Thorium(IV) fluoride",
+   "registered_in": "0.13.0"
+  },
+  "batch2_31:YLiF4@scheelite": {
+   "id": 67,
+   "name": "Yttrium lithium fluoride (YLF)",
+   "registered_in": "0.13.0"
+  },
+  "batch2_31:YbF3@YF3-type": {
+   "id": 68,
+   "name": "Ytterbium(III) fluoride",
+   "registered_in": "0.13.0"
+  },
+  "batch2_31:AlN@wurtzite": {
+   "id": 69,
+   "name": "Aluminium nitride",
+   "registered_in": "0.13.0"
+  },
+  "batch2_31:BN@h-BN": {
+   "id": 70,
+   "name": "Boron nitride (hexagonal)",
+   "registered_in": "0.13.0"
+  },
+  "batch2_31:GaN@wurtzite": {
+   "id": 71,
+   "name": "Gallium nitride",
+   "registered_in": "0.13.0"
+  },
+  "batch2_31:As2S3@amorphous": {
+   "id": 72,
+   "name": "Arsenic trisulfide",
+   "registered_in": "0.13.0"
+  },
+  "batch2_31:CdS@greenockite": {
+   "id": 73,
+   "name": "Cadmium sulfide",
+   "registered_in": "0.13.0"
+  },
+  "batch2_31:GaS@beta-GaS (2H)": {
+   "id": 74,
+   "name": "Gallium sulfide",
+   "registered_in": "0.13.0"
+  },
+  "batch2_31:GeS2": {
+   "id": 75,
+   "name": "Germanium disulfide",
+   "registered_in": "0.13.0"
+  },
+  "batch2_31:HgS@cinnabar": {
+   "id": 76,
+   "name": "Mercury(II) sulfide (cinnabar)",
+   "registered_in": "0.13.0"
+  },
+  "batch2_31:PbS@rock salt": {
+   "id": 77,
+   "name": "Lead(II) sulfide (galena)",
+   "registered_in": "0.13.0"
+  },
+  "batch2_31:ZnS@sphalerite": {
+   "id": 78,
+   "name": "Zinc sulfide",
+   "registered_in": "0.13.0"
+  },
+  "batch2_31:TiN@rock salt": {
+   "id": 79,
+   "name": "Titanium nitride",
+   "registered_in": "0.13.0"
+  },
+  "batch2_31:VN@rock salt": {
+   "id": 80,
+   "name": "Vanadium nitride",
+   "registered_in": "0.13.0"
+  },
+  "batch2_31:EuS@rock salt": {
+   "id": 81,
+   "name": "Europium sulfide",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Au": {
+   "id": 82,
+   "name": "Gold",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Se@trigonal": {
+   "id": 83,
+   "name": "Selenium",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Te@trigonal": {
+   "id": 84,
+   "name": "Tellurium",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Ag@fcc": {
+   "id": 85,
+   "name": "Silver",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Al@fcc": {
+   "id": 86,
+   "name": "Aluminium",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Be@hcp": {
+   "id": 87,
+   "name": "Beryllium",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Bi@rhombohedral (A7)": {
+   "id": 88,
+   "name": "Bismuth",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Ca@fcc": {
+   "id": 89,
+   "name": "Calcium",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Ce@fcc (gamma-Ce)": {
+   "id": 90,
+   "name": "Cerium",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Co@hcp": {
+   "id": 91,
+   "name": "Cobalt",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Cr@bcc": {
+   "id": 92,
+   "name": "Chromium",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Cs@bcc": {
+   "id": 93,
+   "name": "Cesium",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Cu@fcc": {
+   "id": 94,
+   "name": "Copper",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Er@hcp": {
+   "id": 95,
+   "name": "Erbium",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Eu@bcc": {
+   "id": 96,
+   "name": "Europium",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Fe@bcc (alpha-Fe)": {
+   "id": 97,
+   "name": "Iron",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Ge@diamond cubic": {
+   "id": 98,
+   "name": "Germanium",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Hf@hcp": {
+   "id": 99,
+   "name": "Hafnium",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Ho@hcp": {
+   "id": 100,
+   "name": "Holmium",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:In@face-centered tetragonal": {
+   "id": 101,
+   "name": "Indium",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Ir@fcc": {
+   "id": 102,
+   "name": "Iridium",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:K@bcc": {
+   "id": 103,
+   "name": "Potassium",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Li@bcc": {
+   "id": 104,
+   "name": "Lithium",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Lu@hcp": {
+   "id": 105,
+   "name": "Lutetium",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Mg@hcp": {
+   "id": 106,
+   "name": "Magnesium",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Mn@alpha-Mn (complex cubic)": {
+   "id": 107,
+   "name": "Manganese",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Mo@bcc": {
+   "id": 108,
+   "name": "Molybdenum",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Na@bcc": {
+   "id": 109,
+   "name": "Sodium",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Nb@bcc": {
+   "id": 110,
+   "name": "Niobium",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Ni@fcc": {
+   "id": 111,
+   "name": "Nickel",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Os@hcp": {
+   "id": 112,
+   "name": "Osmium",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Pb@fcc": {
+   "id": 113,
+   "name": "Lead",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Pd@fcc": {
+   "id": 114,
+   "name": "Palladium",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Pr@dhcp": {
+   "id": 115,
+   "name": "Praseodymium",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Pt@fcc": {
+   "id": 116,
+   "name": "Platinum",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Rb@bcc": {
+   "id": 117,
+   "name": "Rubidium",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Re@hcp": {
+   "id": 118,
+   "name": "Rhenium",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Rh@fcc": {
+   "id": 119,
+   "name": "Rhodium",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Ru@hcp": {
+   "id": 120,
+   "name": "Ruthenium",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Sc@hcp": {
+   "id": 121,
+   "name": "Scandium",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Si@diamond cubic": {
+   "id": 122,
+   "name": "Silicon",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Sr@fcc": {
+   "id": 123,
+   "name": "Strontium",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Ta@bcc": {
+   "id": 124,
+   "name": "Tantalum",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Ti@hcp": {
+   "id": 125,
+   "name": "Titanium",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Tm@hcp": {
+   "id": 126,
+   "name": "Thulium",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:V@bcc": {
+   "id": 127,
+   "name": "Vanadium",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:W@bcc": {
+   "id": 128,
+   "name": "Tungsten",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Yb@fcc": {
+   "id": 129,
+   "name": "Ytterbium",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Zn@hcp": {
+   "id": 130,
+   "name": "Zinc",
+   "registered_in": "0.13.0"
+  },
+  "pure_elements_50:Zr@hcp": {
+   "id": 131,
+   "name": "Zirconium",
+   "registered_in": "0.13.0"
+  },
+  "batch3b_4:C@diamond cubic": {
+   "id": 132,
+   "name": "Diamond",
+   "registered_in": "0.13.0"
+  },
+  "batch3b_4:C@graphite": {
+   "id": 133,
+   "name": "Graphite",
+   "registered_in": "0.13.0"
+  },
+  "batch3b_4:Sn@beta-Sn (tetragonal)": {
+   "id": 134,
+   "name": "Tin",
+   "registered_in": "0.13.0"
+  },
+  "batch3b_4:B@amorphous": {
+   "id": 135,
+   "name": "Boron",
+   "registered_in": "0.13.0"
+  },
+  "nitrides:Si3N4": {
+   "id": 136,
+   "name": "Silicon nitride",
+   "registered_in": "0.13.0"
+  },
+  "polymers:PE-HDPE": {
+   "id": 137,
+   "name": "High-density polyethylene (HDPE)",
+   "registered_in": "0.13.0"
+  },
+  "polymers:PVC": {
+   "id": 138,
+   "name": "Polyvinyl chloride",
+   "registered_in": "0.13.0"
+  },
+  "polymers:PS": {
+   "id": 139,
+   "name": "Polystyrene",
+   "registered_in": "0.13.0"
+  },
+  "polymers:PMMA-Tomson": {
+   "id": 140,
+   "name": "Poly(methyl methacrylate) (Tomson)",
+   "registered_in": "0.13.0"
+  },
+  "polymers:PMMA-Mitsubishi": {
+   "id": 141,
+   "name": "Poly(methyl methacrylate) (Mitsubishi)",
+   "registered_in": "0.13.0"
+  },
+  "polymers:PC": {
+   "id": 142,
+   "name": "Polycarbonate",
+   "registered_in": "0.13.0"
+  },
+  "polymers:PET": {
+   "id": 143,
+   "name": "Polyethylene terephthalate",
+   "registered_in": "0.13.0"
+  },
+  "polymers:PVA": {
+   "id": 144,
+   "name": "Polyvinyl alcohol",
+   "registered_in": "0.13.0"
+  },
+  "polymers:PVP": {
+   "id": 145,
+   "name": "Polyvinylpyrrolidone",
+   "registered_in": "0.13.0"
+  },
+  "polymers:PEI": {
+   "id": 146,
+   "name": "Polyetherimide (PEI)",
+   "registered_in": "0.13.0"
+  },
+  "polymers:SAN": {
+   "id": 147,
+   "name": "Styrene-acrylonitrile copolymer",
+   "registered_in": "0.13.0"
+  },
+  "polymers:PDMS-5-1": {
+   "id": 148,
+   "name": "Polydimethylsiloxane (Dow Corning, 5:1 mass ratio)",
+   "registered_in": "0.13.0"
+  },
+  "polymers:PDMS-10-1": {
+   "id": 149,
+   "name": "Polydimethylsiloxane (Dow Corning, 10:1 mass ratio)",
+   "registered_in": "0.13.0"
+  },
+  "polymers:PDMS-15-1": {
+   "id": 150,
+   "name": "Polydimethylsiloxane (Dow Corning, 15:1 mass ratio)",
+   "registered_in": "0.13.0"
+  },
+  "polymers:PDMS-20-1": {
+   "id": 151,
+   "name": "Polydimethylsiloxane (Dow Corning, 20:1 mass ratio)",
+   "registered_in": "0.13.0"
+  },
+  "polymers:SU-8": {
+   "id": 152,
+   "name": "SU-8 3000 (epoxy photoresist)",
+   "registered_in": "0.13.0"
+  },
+  "polymers:COP-Zeonex-E48R": {
+   "id": 153,
+   "name": "Zeonex E48R (cyclo olefin polymer)",
+   "registered_in": "0.13.0"
+  },
+  "polymers:Optorez-1330": {
+   "id": 154,
+   "name": "Optorez 1330",
+   "registered_in": "0.13.0"
+  },
+  "polymers:NAS-21": {
+   "id": 155,
+   "name": "NAS-21",
+   "registered_in": "0.13.0"
+  },
+  "polymers:PMP": {
+   "id": 156,
+   "name": "Polymethylpentene (TPX)",
+   "registered_in": "0.13.0"
+  },
+  "polymers:Kapton": {
+   "id": 157,
+   "name": "Kapton HN (polyimide film)",
+   "registered_in": "0.13.0"
+  },
+  "polymers:PLA": {
+   "id": 158,
+   "name": "Poly(D-lactic acid) (PDLA)",
+   "registered_in": "0.13.0"
+  },
+  "polymers:cellulose": {
+   "id": 159,
+   "name": "Cellulose",
+   "registered_in": "0.13.0"
+  },
+  "polymers:PE-LLDPE": {
+   "id": 160,
+   "name": "Linear low-density polyethylene (LLDPE)",
+   "registered_in": "0.13.0"
+  },
+  "polymers:PCTFE": {
+   "id": 161,
+   "name": "Polychlorotrifluoroethylene (PCTFE)",
+   "registered_in": "0.13.0"
+  },
+  "polymers:PNIPAM": {
+   "id": 162,
+   "name": "Poly(N-isopropylacrylamide) (PNIPAM)",
+   "registered_in": "0.13.0"
+  },
+  "polymers:Surlyn-A1601": {
+   "id": 163,
+   "name": "Surlyn A-1601 (DuPont ionomer resin)",
+   "registered_in": "0.13.0"
+  },
+  "polymers:MDMO-PPV": {
+   "id": 164,
+   "name": "MDMO-PPV",
+   "registered_in": "0.13.0"
+  },
+  "polymers:ZZ50": {
+   "id": 165,
+   "name": "ZZ50",
+   "registered_in": "0.13.0"
+  },
+  "polymers:F8BT": {
+   "id": 166,
+   "name": "F8BT",
+   "registered_in": "0.13.0"
+  },
+  "polymers:PTB7": {
+   "id": 167,
+   "name": "PTB7",
+   "registered_in": "0.13.0"
+  },
+  "polymers:PDCBT": {
+   "id": 168,
+   "name": "PDCBT",
+   "registered_in": "0.13.0"
+  },
+  "polymers:PBDB-T-2F": {
+   "id": 169,
+   "name": "PBDB-T-2F",
+   "registered_in": "0.13.0"
+  },
+  "polymers:maN-1407": {
+   "id": 170,
+   "name": "Micro resist ma-N 1407 (negative resist)",
+   "registered_in": "0.13.0"
+  },
+  "polymers:EpoClad": {
+   "id": 171,
+   "name": "Micro resist EpoClad (negative photoresist)",
+   "registered_in": "0.13.0"
+  },
+  "polymers:EpoCore": {
+   "id": 172,
+   "name": "Micro resist EpoCore (negative photoresist)",
+   "registered_in": "0.13.0"
+  },
+  "polymers:Microchem-8.5mEL": {
+   "id": 173,
+   "name": "Microchem 8.5 mEL (copolymer resist)",
+   "registered_in": "0.13.0"
+  },
+  "polymers:IP-S": {
+   "id": 174,
+   "name": "Nanoscribe IP-S (cured)",
+   "registered_in": "0.13.0"
+  },
+  "polymers:IP-Dip": {
+   "id": 175,
+   "name": "Nanoscribe IP-Dip (cured)",
+   "registered_in": "0.13.0"
+  },
+  "polymers:PMMA-495-resist": {
+   "id": 176,
+   "name": "Microchem 495 PMMA resist",
+   "registered_in": "0.13.0"
+  },
+  "polymers:PMMA-950-resist": {
+   "id": 177,
+   "name": "Microchem 950 PMMA resist",
+   "registered_in": "0.13.0"
+  },
+  "inorganic3:B4C": {
+   "id": 178,
+   "name": "Boron carbide",
+   "registered_in": "0.13.0"
+  },
+  "inorganic3:SiC": {
+   "id": 179,
+   "name": "Silicon carbide",
+   "registered_in": "0.13.0"
+  },
+  "inorganic3:TiC": {
+   "id": 180,
+   "name": "Titanium carbide",
+   "registered_in": "0.13.0"
+  },
+  "inorganic3:VC": {
+   "id": 181,
+   "name": "Vanadium carbide",
+   "registered_in": "0.13.0"
+  },
+  "inorganic3:CaMgCO32": {
+   "id": 182,
+   "name": "Dolomite (calcium magnesium carbonate)",
+   "registered_in": "0.13.0"
+  },
+  "inorganic3:BiFeO3": {
+   "id": 183,
+   "name": "Bismuth ferrite",
+   "registered_in": "0.13.0"
+  },
+  "inorganic3:Bi4Ge3O12": {
+   "id": 184,
+   "name": "Bismuth germanate (BGO)",
+   "registered_in": "0.13.0"
+  },
+  "inorganic3:Bi12SiO20": {
+   "id": 185,
+   "name": "Bismuth silicate (BSO)",
+   "registered_in": "0.13.0"
+  },
+  "inorganic3:ScAlMgO4": {
+   "id": 186,
+   "name": "Magnesium aluminate scandium oxide (SCAM)",
+   "registered_in": "0.13.0"
+  },
+  "inorganic3:Yb2O3": {
+   "id": 187,
+   "name": "Ytterbium oxide",
+   "registered_in": "0.13.0"
+  },
+  "inorganic3:KTaO3": {
+   "id": 188,
+   "name": "Potassium tantalate",
+   "registered_in": "0.13.0"
+  },
+  "inorganic3:LiTaO3": {
+   "id": 189,
+   "name": "Lithium tantalate",
+   "registered_in": "0.13.0"
+  },
+  "inorganic3:Bi4Ti3O12": {
+   "id": 190,
+   "name": "Bismuth titanate",
+   "registered_in": "0.13.0"
+  },
+  "inorganic3:PbTiO3": {
+   "id": 191,
+   "name": "Lead titanate",
+   "registered_in": "0.13.0"
+  },
+  "inorganic3:CaWO4": {
+   "id": 192,
+   "name": "Calcium tungstate",
+   "registered_in": "0.13.0"
+  },
+  "inorganic3:ZnWO4": {
+   "id": 193,
+   "name": "Zinc tungstate",
+   "registered_in": "0.13.0"
+  },
+  "halides:AgCl": {
+   "id": 194,
+   "name": "Silver chloride",
+   "registered_in": "0.13.0"
+  },
+  "halides:CsCl": {
+   "id": 195,
+   "name": "Cesium chloride",
+   "registered_in": "0.13.0"
+  },
+  "halides:CuCl": {
+   "id": 196,
+   "name": "Copper(I) chloride",
+   "registered_in": "0.13.0"
+  },
+  "halides:KCl": {
+   "id": 197,
+   "name": "Potassium chloride",
+   "registered_in": "0.13.0"
+  },
+  "halides:LiCl": {
+   "id": 198,
+   "name": "Lithium chloride",
+   "registered_in": "0.13.0"
+  },
+  "halides:NaCl": {
+   "id": 199,
+   "name": "Sodium chloride",
+   "registered_in": "0.13.0"
+  },
+  "halides:RbCl": {
+   "id": 200,
+   "name": "Rubidium chloride",
+   "registered_in": "0.13.0"
+  },
+  "halides:TlCl": {
+   "id": 201,
+   "name": "Thallium(I) chloride",
+   "registered_in": "0.13.0"
+  },
+  "halides:AgBr": {
+   "id": 202,
+   "name": "Silver bromide",
+   "registered_in": "0.13.0"
+  },
+  "halides:CsBr": {
+   "id": 203,
+   "name": "Cesium bromide",
+   "registered_in": "0.13.0"
+  },
+  "halides:KBr": {
+   "id": 204,
+   "name": "Potassium bromide",
+   "registered_in": "0.13.0"
+  },
+  "halides:LiBr": {
+   "id": 205,
+   "name": "Lithium bromide",
+   "registered_in": "0.13.0"
+  },
+  "halides:NaBr": {
+   "id": 206,
+   "name": "Sodium bromide",
+   "registered_in": "0.13.0"
+  },
+  "halides:RbBr": {
+   "id": 207,
+   "name": "Rubidium bromide",
+   "registered_in": "0.13.0"
+  },
+  "halides:TlBr": {
+   "id": 208,
+   "name": "Thallium(I) bromide",
+   "registered_in": "0.13.0"
+  },
+  "halides:CsI": {
+   "id": 209,
+   "name": "Cesium iodide",
+   "registered_in": "0.13.0"
+  },
+  "halides:KI": {
+   "id": 210,
+   "name": "Potassium iodide",
+   "registered_in": "0.13.0"
+  },
+  "halides:LiI": {
+   "id": 211,
+   "name": "Lithium iodide",
+   "registered_in": "0.13.0"
+  },
+  "halides:NaI": {
+   "id": 212,
+   "name": "Sodium iodide",
+   "registered_in": "0.13.0"
+  },
+  "halides:PbI2": {
+   "id": 213,
+   "name": "Lead(II) iodide",
+   "registered_in": "0.13.0"
+  },
+  "halides:RbI": {
+   "id": 214,
+   "name": "Rubidium iodide",
+   "registered_in": "0.13.0"
+  },
+  "chalcogenides:Ag3AsS3": {
+   "id": 215,
+   "name": "Silver arsenic sulfide (proustite)",
+   "registered_in": "0.13.0"
+  },
+  "chalcogenides:AgGaS2": {
+   "id": 216,
+   "name": "Silver gallium sulfide (AGS)",
+   "registered_in": "0.13.0"
+  },
+  "chalcogenides:BaGa4S7": {
+   "id": 217,
+   "name": "Barium gallium sulfide (BGS)",
+   "registered_in": "0.13.0"
+  },
+  "chalcogenides:CdGa2S4": {
+   "id": 218,
+   "name": "Cadmium gallium sulfide",
+   "registered_in": "0.13.0"
+  },
+  "chalcogenides:CuGaS2": {
+   "id": 219,
+   "name": "Copper gallium sulfide",
+   "registered_in": "0.13.0"
+  },
+  "chalcogenides:HgGa2S4": {
+   "id": 220,
+   "name": "Mercury gallium sulfide",
+   "registered_in": "0.13.0"
+  },
+  "chalcogenides:LiGaS2": {
+   "id": 221,
+   "name": "Lithium gallium sulfide (LGS)",
+   "registered_in": "0.13.0"
+  },
+  "chalcogenides:AgGaSe2": {
+   "id": 222,
+   "name": "Silver gallium selenide (AGSe)",
+   "registered_in": "0.13.0"
+  },
+  "chalcogenides:As2Se3": {
+   "id": 223,
+   "name": "Arsenic triselenide",
+   "registered_in": "0.13.0"
+  },
+  "chalcogenides:BaGa2GeSe6": {
+   "id": 224,
+   "name": "Barium gallium germanium selenide (BGGSe)",
+   "registered_in": "0.13.0"
+  },
+  "chalcogenides:BaGa4Se7": {
+   "id": 225,
+   "name": "Barium gallium selenide (BGSe)",
+   "registered_in": "0.13.0"
+  },
+  "chalcogenides:CdSe": {
+   "id": 226,
+   "name": "Cadmium selenide",
+   "registered_in": "0.13.0"
+  },
+  "chalcogenides:PbSe": {
+   "id": 227,
+   "name": "Lead selenide",
+   "registered_in": "0.13.0"
+  },
+  "chalcogenides:SnSe": {
+   "id": 228,
+   "name": "Tin selenide",
+   "registered_in": "0.13.0"
+  },
+  "chalcogenides:Tl3AsSe3": {
+   "id": 229,
+   "name": "Thallium arsenic selenide (TAS)",
+   "registered_in": "0.13.0"
+  },
+  "chalcogenides:GaSe": {
+   "id": 230,
+   "name": "Gallium selenide",
+   "registered_in": "0.13.0"
+  },
+  "chalcogenides:ZnSe": {
+   "id": 231,
+   "name": "Zinc selenide",
+   "registered_in": "0.13.0"
+  },
+  "liquids:H2O": {
+   "id": 232,
+   "name": "Water",
+   "registered_in": "0.13.0"
+  },
+  "liquids:D2O": {
+   "id": 233,
+   "name": "Heavy water (D2O)",
+   "registered_in": "0.13.0"
+  },
+  "liquids:CS2": {
+   "id": 234,
+   "name": "Carbon disulfide",
+   "registered_in": "0.13.0"
+  },
+  "liquids:Hg": {
+   "id": 235,
+   "name": "Mercury (liquid)",
+   "registered_in": "0.13.0"
+  },
+  "liquids:n-C5H12": {
+   "id": 236,
+   "name": "n-Pentane",
+   "registered_in": "0.13.0"
+  },
+  "liquids:i-C5H12": {
+   "id": 237,
+   "name": "Isopentane (2-methylbutane)",
+   "registered_in": "0.13.0"
+  },
+  "liquids:n-C6H14": {
+   "id": 238,
+   "name": "n-Hexane",
+   "registered_in": "0.13.0"
+  },
+  "liquids:n-C7H16": {
+   "id": 239,
+   "name": "n-Heptane",
+   "registered_in": "0.13.0"
+  },
+  "liquids:n-C8H18": {
+   "id": 240,
+   "name": "n-Octane",
+   "registered_in": "0.13.0"
+  },
+  "liquids:i-C8H18": {
+   "id": 241,
+   "name": "Isooctane (2,2,4-trimethylpentane)",
+   "registered_in": "0.13.0"
+  },
+  "liquids:CHBr3": {
+   "id": 242,
+   "name": "Bromoform",
+   "registered_in": "0.13.0"
+  },
+  "liquids:CH2Cl2": {
+   "id": 243,
+   "name": "Dichloromethane",
+   "registered_in": "0.13.0"
+  },
+  "liquids:CHCl3": {
+   "id": 244,
+   "name": "Chloroform",
+   "registered_in": "0.13.0"
+  },
+  "liquids:CCl4": {
+   "id": 245,
+   "name": "Carbon tetrachloride",
+   "registered_in": "0.13.0"
+  },
+  "liquids:CBrCl3": {
+   "id": 246,
+   "name": "Bromotrichloromethane",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C6F14": {
+   "id": 247,
+   "name": "Perfluorohexane",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C2Cl4": {
+   "id": 248,
+   "name": "Tetrachloroethylene",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C6H6": {
+   "id": 249,
+   "name": "Benzene",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C4H8OS": {
+   "id": 250,
+   "name": "1,4-Oxathiane",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C5H5N": {
+   "id": 251,
+   "name": "Pyridine",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C6H12": {
+   "id": 252,
+   "name": "Cyclohexane",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C7H8": {
+   "id": 253,
+   "name": "Toluene",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C8H8": {
+   "id": 254,
+   "name": "Styrene",
+   "registered_in": "0.13.0"
+  },
+  "liquids:p-C8H10": {
+   "id": 255,
+   "name": "p-Xylene",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C6H3Cl3": {
+   "id": 256,
+   "name": "1,2,4-Trichlorobenzene",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C6H5NO2": {
+   "id": 257,
+   "name": "Nitrobenzene",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C7F5N": {
+   "id": 258,
+   "name": "Pentafluorobenzonitrile",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C8H11N": {
+   "id": 259,
+   "name": "N,N-Dimethylaniline",
+   "registered_in": "0.13.0"
+  },
+  "liquids:CH3OH": {
+   "id": 260,
+   "name": "Methanol",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C2H5OH": {
+   "id": 261,
+   "name": "Ethanol",
+   "registered_in": "0.13.0"
+  },
+  "liquids:2-C3H7OH": {
+   "id": 262,
+   "name": "2-Propanol (isopropanol)",
+   "registered_in": "0.13.0"
+  },
+  "liquids:1-C3H7OH": {
+   "id": 263,
+   "name": "1-Propanol",
+   "registered_in": "0.13.0"
+  },
+  "liquids:1-C4H9OH": {
+   "id": 264,
+   "name": "1-Butanol",
+   "registered_in": "0.13.0"
+  },
+  "liquids:i-C4H9OH": {
+   "id": 265,
+   "name": "Isobutanol (2-methyl-1-propanol)",
+   "registered_in": "0.13.0"
+  },
+  "liquids:1-C5H11OH": {
+   "id": 266,
+   "name": "1-Pentanol",
+   "registered_in": "0.13.0"
+  },
+  "liquids:i-C5H11OH": {
+   "id": 267,
+   "name": "Isoamyl alcohol (3-methyl-1-butanol)",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C8H17OH": {
+   "id": 268,
+   "name": "1-Octanol",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C2H4(OH)2": {
+   "id": 269,
+   "name": "Ethylene glycol",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C3H6(OH)2": {
+   "id": 270,
+   "name": "Propylene glycol",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C5H10(OH)2": {
+   "id": 271,
+   "name": "1,5-Pentanediol",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C3H5(OH)3": {
+   "id": 272,
+   "name": "Glycerol",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C4H8O": {
+   "id": 273,
+   "name": "Tetrahydrofuran",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C4H8O2-dioxane": {
+   "id": 274,
+   "name": "1,4-Dioxane",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C3H6O": {
+   "id": 275,
+   "name": "Acetone",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C2H4O2": {
+   "id": 276,
+   "name": "Acetic acid",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C5H10O2-valeric": {
+   "id": 277,
+   "name": "Valeric acid",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C6H12O2": {
+   "id": 278,
+   "name": "Caproic acid (hexanoic acid)",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C7H14O2": {
+   "id": 279,
+   "name": "Enanthic acid (heptanoic acid)",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C8H16O2": {
+   "id": 280,
+   "name": "Caprylic acid (octanoic acid)",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C9H18O2": {
+   "id": 281,
+   "name": "Pelargonic acid (nonanoic acid)",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C18H34O2": {
+   "id": 282,
+   "name": "Oleic acid",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C4F6O3": {
+   "id": 283,
+   "name": "Trifluoroacetic anhydride",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C4H8O2-etac": {
+   "id": 284,
+   "name": "Ethyl acetate",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C5H10O2-ipac": {
+   "id": 285,
+   "name": "Isopropyl acetate",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C8H8O3": {
+   "id": 286,
+   "name": "Methyl salicylate",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C9H10O3": {
+   "id": 287,
+   "name": "Ethyl salicylate",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C11H12O2": {
+   "id": 288,
+   "name": "Ethyl cinnamate",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C12H14O4": {
+   "id": 289,
+   "name": "Diethyl phthalate",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C8H19NO": {
+   "id": 290,
+   "name": "2-(Diisopropylamino)ethanol",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C2H3N": {
+   "id": 291,
+   "name": "Acetonitrile",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C2Cl3N": {
+   "id": 292,
+   "name": "Trichloroacetonitrile",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C2H6OS": {
+   "id": 293,
+   "name": "Dimethyl sulfoxide",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C3H7NO": {
+   "id": 294,
+   "name": "N,N-Dimethylformamide",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C3H9O3P": {
+   "id": 295,
+   "name": "Dimethyl methylphosphonate",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C4H10O3S": {
+   "id": 296,
+   "name": "Diethyl sulfite",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C7H17O3P": {
+   "id": 297,
+   "name": "Diisopropyl methylphosphonate",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C9H8O": {
+   "id": 298,
+   "name": "Cinnamaldehyde",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C9H11NO3": {
+   "id": 299,
+   "name": "L-Tyrosine",
+   "registered_in": "0.13.0"
+  },
+  "liquids:CH4N2O": {
+   "id": 300,
+   "name": "Urea",
+   "registered_in": "0.13.0"
+  },
+  "liquids:C12H24O12": {
+   "id": 301,
+   "name": "Lactose monohydrate",
+   "registered_in": "0.13.0"
+  },
+  "liquids:DNA": {
+   "id": 302,
+   "name": "DNA (sodium salt, calf thymus)",
+   "registered_in": "0.13.0"
+  },
+  "liquids:silk-Bm": {
+   "id": 303,
+   "name": "Silk fibroin (Bombyx mori)",
+   "registered_in": "0.13.0"
+  },
+  "liquids:silk-Am": {
+   "id": 304,
+   "name": "Silk fibroin (Antheraea mylitta)",
+   "registered_in": "0.13.0"
+  },
+  "liquids:silk-Sr": {
+   "id": 305,
+   "name": "Silk fibroin (Samia ricini)",
+   "registered_in": "0.13.0"
+  },
+  "liquids:silk-Aa": {
+   "id": 306,
+   "name": "Silk fibroin (Antheraea assamensis)",
+   "registered_in": "0.13.0"
+  },
+  "semiconductors:AlAs": {
+   "id": 307,
+   "name": "Aluminium arsenide",
+   "registered_in": "0.13.0"
+  },
+  "semiconductors:AlSb": {
+   "id": 308,
+   "name": "Aluminium antimonide",
+   "registered_in": "0.13.0"
+  },
+  "semiconductors:BP": {
+   "id": 309,
+   "name": "Boron phosphide",
+   "registered_in": "0.13.0"
+  },
+  "semiconductors:GaAs": {
+   "id": 310,
+   "name": "Gallium arsenide",
+   "registered_in": "0.13.0"
+  },
+  "semiconductors:GaP": {
+   "id": 311,
+   "name": "Gallium phosphide",
+   "registered_in": "0.13.0"
+  },
+  "semiconductors:GaSb": {
+   "id": 312,
+   "name": "Gallium antimonide",
+   "registered_in": "0.13.0"
+  },
+  "semiconductors:InAs": {
+   "id": 313,
+   "name": "Indium arsenide",
+   "registered_in": "0.13.0"
+  },
+  "semiconductors:InP": {
+   "id": 314,
+   "name": "Indium phosphide",
+   "registered_in": "0.13.0"
+  },
+  "semiconductors:InSb": {
+   "id": 315,
+   "name": "Indium antimonide",
+   "registered_in": "0.13.0"
+  },
+  "semiconductors:CdTe": {
+   "id": 316,
+   "name": "Cadmium telluride",
+   "registered_in": "0.13.0"
+  },
+  "semiconductors:ZnTe": {
+   "id": 317,
+   "name": "Zinc telluride",
+   "registered_in": "0.13.0"
+  },
+  "semiconductors:PbTe": {
+   "id": 318,
+   "name": "Lead telluride",
+   "registered_in": "0.13.0"
+  },
+  "semiconductors:CdGeAs2": {
+   "id": 319,
+   "name": "Cadmium germanium arsenide",
+   "registered_in": "0.13.0"
+  },
+  "semiconductors:CdGeP2": {
+   "id": 320,
+   "name": "Cadmium germanium phosphide",
+   "registered_in": "0.13.0"
+  },
+  "semiconductors:ZnGeP2": {
+   "id": 321,
+   "name": "Zinc germanium phosphide (ZGP)",
+   "registered_in": "0.13.0"
+  },
+  "semiconductors:ZnSiAs2": {
+   "id": 322,
+   "name": "Zinc silicon arsenide",
+   "registered_in": "0.13.0"
+  },
+  "semiconductors:Ge2Sb2Te5": {
+   "id": 323,
+   "name": "Germanium antimony telluride (GST)",
+   "registered_in": "0.13.0"
+  },
+  "inorganic4:AlPO4": {
+   "id": 324,
+   "name": "Aluminium phosphate (berlinite)",
+   "registered_in": "0.13.0"
+  },
+  "inorganic4:CaSO4": {
+   "id": 325,
+   "name": "Calcium sulfate (anhydrite)",
+   "registered_in": "0.13.0"
+  },
+  "inorganic4:KH2PO4": {
+   "id": 326,
+   "name": "Potassium dihydrogen phosphate (KDP)",
+   "registered_in": "0.13.0"
+  },
+  "inorganic4:NH4H2PO4": {
+   "id": 327,
+   "name": "Ammonium dihydrogen phosphate (ADP)",
+   "registered_in": "0.13.0"
+  },
+  "inorganic4:KTiOPO4": {
+   "id": 328,
+   "name": "Potassium titanyl phosphate (KTP)",
+   "registered_in": "0.13.0"
+  },
+  "inorganic4:RbTiOPO4": {
+   "id": 329,
+   "name": "Rubidium titanyl phosphate (RTP)",
+   "registered_in": "0.13.0"
+  },
+  "glasses:soda-lime": {
+   "id": 330,
+   "name": "Soda-lime silica glass",
+   "registered_in": "0.13.0"
+  },
+  "glasses:N-BK7": {
+   "id": 331,
+   "name": "N-BK7 borosilicate crown glass (SCHOTT)",
+   "registered_in": "0.13.0"
+  },
+  "glasses:B270": {
+   "id": 332,
+   "name": "B 270 Superwite crown glass (SCHOTT)",
+   "registered_in": "0.13.0"
+  },
+  "glasses:BOROFLOAT33": {
+   "id": 333,
+   "name": "BOROFLOAT 33 borosilicate glass (SCHOTT)",
+   "registered_in": "0.13.0"
+  },
+  "glasses:D263TECO": {
+   "id": 334,
+   "name": "D 263 T eco thin borosilicate glass (SCHOTT)",
+   "registered_in": "0.13.0"
+  },
+  "glasses:AF32ECO": {
+   "id": 335,
+   "name": "AF 32 eco alkali-free thin glass (SCHOTT)",
+   "registered_in": "0.13.0"
+  },
+  "glasses:ZERODUR": {
+   "id": 336,
+   "name": "ZERODUR glass-ceramic (SCHOTT)",
+   "registered_in": "0.13.0"
+  },
+  "glasses:EagleXG": {
+   "id": 337,
+   "name": "EAGLE XG display glass (Corning)",
+   "registered_in": "0.13.0"
+  },
+  "glasses:K108": {
+   "id": 338,
+   "name": "K108 crown glass (LZOS)",
+   "registered_in": "0.13.0"
+  },
+  "glasses:BGG": {
+   "id": 339,
+   "name": "Barium gallogermanate glass (BGG)",
+   "registered_in": "0.13.0"
+  },
+  "glasses:ZBLAN": {
+   "id": 340,
+   "name": "ZBLAN fluoride glass",
+   "registered_in": "0.13.0"
+  },
+  "optical_media:Cargille-BK7": {
+   "id": 341,
+   "name": "Cargille BK7 matching liquid",
+   "registered_in": "0.13.0"
+  },
+  "optical_media:Cargille-06350": {
+   "id": 342,
+   "name": "Cargille fused silica matching liquid 06350",
+   "registered_in": "0.13.0"
+  },
+  "optical_media:Cargille-50350": {
+   "id": 343,
+   "name": "Cargille fused silica matching liquid 50350",
+   "registered_in": "0.13.0"
+  },
+  "optical_media:Cargille-acrylic": {
+   "id": 344,
+   "name": "Cargille acrylic matching liquid",
+   "registered_in": "0.13.0"
+  },
+  "optical_media:Cargille-acrylic-double": {
+   "id": 345,
+   "name": "Cargille acrylic double matching liquid",
+   "registered_in": "0.13.0"
+  },
+  "optical_media:NOA61": {
+   "id": 346,
+   "name": "Norland NOA 61 optical adhesive (cured)",
+   "registered_in": "0.13.0"
+  },
+  "optical_media:Eukitt": {
+   "id": 347,
+   "name": "Eukitt mounting medium",
+   "registered_in": "0.13.0"
+  },
+  "optical_media:FluorSave": {
+   "id": 348,
+   "name": "FluorSave mounting medium",
+   "registered_in": "0.13.0"
+  },
+  "liquid_crystals:5CB": {
+   "id": 349,
+   "name": "5CB (4-pentyl-4'-cyanobiphenyl)",
+   "registered_in": "0.13.0"
+  },
+  "liquid_crystals:5PCH": {
+   "id": 350,
+   "name": "5PCH (4-trans-pentylcyclohexylcyanobenzene)",
+   "registered_in": "0.13.0"
+  },
+  "liquid_crystals:E7": {
+   "id": 351,
+   "name": "E7 liquid crystal mixture",
+   "registered_in": "0.13.0"
+  },
+  "liquid_crystals:E44": {
+   "id": 352,
+   "name": "E44 liquid crystal mixture",
+   "registered_in": "0.13.0"
+  },
+  "liquid_crystals:MLC-6241-000": {
+   "id": 353,
+   "name": "MLC-6241-000 liquid crystal mixture",
+   "registered_in": "0.13.0"
+  },
+  "liquid_crystals:MLC-6608": {
+   "id": 354,
+   "name": "MLC-6608 liquid crystal mixture",
+   "registered_in": "0.13.0"
+  },
+  "liquid_crystals:MLC-9200-000": {
+   "id": 355,
+   "name": "MLC-9200-000 liquid crystal mixture",
+   "registered_in": "0.13.0"
+  },
+  "liquid_crystals:MLC-9200-100": {
+   "id": 356,
+   "name": "MLC-9200-100 liquid crystal mixture",
+   "registered_in": "0.13.0"
+  },
+  "liquid_crystals:TL-216": {
+   "id": 357,
+   "name": "TL-216 liquid crystal mixture",
+   "registered_in": "0.13.0"
+  },
+  "bio_media:PBS": {
+   "id": 358,
+   "name": "Phosphate-buffered saline (PBS)",
+   "registered_in": "0.13.0"
+  },
+  "bio_media:DMEM": {
+   "id": 359,
+   "name": "Dulbecco's modified Eagle's medium (DMEM)",
+   "registered_in": "0.13.0"
+  },
+  "bio_media:blood": {
+   "id": 360,
+   "name": "Human blood",
+   "registered_in": "0.13.0"
+  },
+  "bio_media:adipose": {
+   "id": 361,
+   "name": "Human adipose tissue",
+   "registered_in": "0.13.0"
+  },
+  "bio_media:liver": {
+   "id": 362,
+   "name": "Human liver tissue",
+   "registered_in": "0.13.0"
+  },
+  "bio_media:colon": {
+   "id": 363,
+   "name": "Human colon tissue",
+   "registered_in": "0.13.0"
+  },
+  "gases:Air": {
+   "id": 364,
+   "name": "Air",
+   "registered_in": "0.13.0"
+  },
+  "gases:N2": {
+   "id": 365,
+   "name": "Nitrogen",
+   "registered_in": "0.13.0"
+  },
+  "gases:O2": {
+   "id": 366,
+   "name": "Oxygen",
+   "registered_in": "0.13.0"
+  },
+  "gases:Ar": {
+   "id": 367,
+   "name": "Argon",
+   "registered_in": "0.13.0"
+  },
+  "gases:He": {
+   "id": 368,
+   "name": "Helium",
+   "registered_in": "0.13.0"
+  },
+  "gases:Ne": {
+   "id": 369,
+   "name": "Neon",
+   "registered_in": "0.13.0"
+  },
+  "gases:Kr": {
+   "id": 370,
+   "name": "Krypton",
+   "registered_in": "0.13.0"
+  },
+  "gases:Xe": {
+   "id": 371,
+   "name": "Xenon",
+   "registered_in": "0.13.0"
+  },
+  "gases:H2": {
+   "id": 372,
+   "name": "Hydrogen",
+   "registered_in": "0.13.0"
+  },
+  "gases:D2": {
+   "id": 373,
+   "name": "Deuterium",
+   "registered_in": "0.13.0"
+  },
+  "gases:CO": {
+   "id": 374,
+   "name": "Carbon monoxide",
+   "registered_in": "0.13.0"
+  },
+  "gases:CO2": {
+   "id": 375,
+   "name": "Carbon dioxide",
+   "registered_in": "0.13.0"
+  },
+  "gases:NH3": {
+   "id": 376,
+   "name": "Ammonia",
+   "registered_in": "0.13.0"
+  },
+  "gases:SF6": {
+   "id": 377,
+   "name": "Sulfur hexafluoride",
+   "registered_in": "0.13.0"
+  },
+  "gases:CH4": {
+   "id": 378,
+   "name": "Methane",
+   "registered_in": "0.13.0"
+  },
+  "gases:C2H6": {
+   "id": 379,
+   "name": "Ethane",
+   "registered_in": "0.13.0"
+  },
+  "gases:C2H4": {
+   "id": 380,
+   "name": "Ethylene",
+   "registered_in": "0.13.0"
+  },
+  "gases:C2H2": {
+   "id": 381,
+   "name": "Acetylene",
+   "registered_in": "0.13.0"
+  }
+ }
+}

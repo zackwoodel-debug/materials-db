@@ -10,7 +10,8 @@ family tables. The legacy set (scripts/generate_ml_training_set.py -> data/ML_fe
     -> data/ML_release_feature_matrix.parquet, data/ML_release_feature_metadata.json
 
 Columns
-  meta_*     identity and provenance: name, formula, family, class, primary optical dataset, density kind
+  meta_*     identity and provenance: stable key (material_registry.csv), name, formula, family, class, primary optical
+             dataset, density kind. material_id is permanent from v0.13.0 (scripts/material_registry.py)
   target_*   n and k at 633 nm and density. Nothing that is a target is also a feature.
   feat_*     compositional (formula statistics + element fractions), structural (Materials Project entry) and molecular
              (RDKit columns + 512-bit Morgan fingerprint) descriptors from chemical_descriptors
@@ -153,6 +154,12 @@ def build(release_dir):
     con.close()
 
     primaries = primary_pages(release_dir)
+    reg_csv = release_dir / "material_registry.csv"  # stable keys; v0.13.0 (whose ids seeded the registry) predates the file
+    if reg_csv.exists():
+        stable_key = dict(pd.read_csv(reg_csv)[["name", "key"]].values)
+    else:
+        reg = json.loads((_ROOT / "data" / "material_registry.json").read_text())["materials"]
+        stable_key = {v["name"]: k for k, v in reg.items()}
     missing = set(mats["name"]) - set(primaries)
     if missing:
         raise MLSetError(f"materials in no family table: {sorted(missing)[:5]}")
@@ -177,7 +184,7 @@ def build(release_dir):
 
         dj = json.loads(desc.at[mid, "descriptor_json"])
         comp, struct, mol = dj["compositional"], dj["structural"], dj["molecular"]
-        rec = dict(material_id=mid, meta_name=name, meta_formula=m["formula"], meta_family=fam,
+        rec = dict(material_id=mid, meta_key=stable_key.get(name), meta_name=name, meta_formula=m["formula"], meta_family=fam,
                    meta_material_class=dj.get("material_class"), meta_material_kind=dj.get("material_kind"),
                    meta_primary_dataset=hit[0], meta_primary_dataset_label=prim["dataset_label"].iloc[0],
                    meta_n_optical_datasets=len(tables),

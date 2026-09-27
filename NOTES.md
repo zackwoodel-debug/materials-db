@@ -126,6 +126,15 @@ Generic loader: scripts/load_family_db.py (--family/--catalog/--selections/--db/
    drop_nonphysical_n and formula_range_um (parse_file override), epsilon-GaSe mp-1572 density. (d) Liquid crystals prefer a
    stated temperature (5CB -> Wu1993-25.1C, E7 -> Li2005). (e) Iezzi adhesive films of unstated cure: stay deferred.
 
+24. DONE: permanent material ids (scripts/material_registry.py, data/material_registry.json, seeded from v0.13.0): the build
+   renumbers every material to its registry id (stage 1b); an unregistered material stops the build unless
+   `build_release.py --register-new` (then commit the registry). Stable key <family table>:<selection_key> or
+   <family table>:<formula>@<polymorph>. Releases ship material_registry.csv; the ML set has meta_key. Before this, 150/379 ids
+   changed between v0.12.0 and v0.13.0.
+   WARNING: the repo lives in an iCloud-synced Desktop. iCloud created 66 " 2" conflict copies of files written this session
+   (moved to ../materials-db_icloud_conflict_copies_2026-09-27; all identical to current or earlier committed versions) and
+   likely caused a stalled git push and a stalled test run. Move the repo out of iCloud (e.g. ~/code) to avoid corruption.
+
 ## FOLLOW-UP (logged, NOT started): graphene / 2D carbon as its own family -- materialclass must NOT be 'polymer'
 - RI.info main/C, verified read-only: monolayer graphene = Weber 2010 (0.21-1.0 um, exfoliated flake, 3.4 A, on Si/98 nm SiO2), Song 2018 "Graphene"
   (0.193-1.69, CVD mono), Tikuisis 2023 (0.226-4.40, epitaxial on 6H-SiC), El-Sayed 2021 (0.24-1.0, CVD): four, not three. Song 2018 also holds 4 bulk-HOPG pages (graphite).
