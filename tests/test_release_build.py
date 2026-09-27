@@ -466,3 +466,17 @@ def test_dielectric_rows_match_the_cache_and_respect_the_exclusions(release):
             assert label.endswith("dielectric_electronic | MP_DFPT") and eps == pytest.approx(e["e_electronic"]) and freq is None, name
     skipped = {x["material"] for x in facts["not_stored_narrow_gap"]}
     assert {"Germanium", "Gallium arsenide", "Indium antimonide"} <= skipped and not skipped & {r[0] for r in rows}
+
+
+
+# ---------------------------------------------------------------- permanent material ids (material_registry.py)
+
+def test_every_material_has_its_registry_id_and_the_package_lists_the_keys(release):
+    import material_registry as mreg
+    reg = json.loads(mreg.REGISTRY.read_text())["materials"]
+    keys = mreg.keys_by_name(br.family_rows())
+    ids = dict(q(release, "SELECT name, material_id FROM materials"))
+    assert ids == {name: reg[keys[name]]["id"] for name in ids}
+    listed = pd.read_csv(release["out"] / "material_registry.csv")
+    assert dict(zip(listed.name, listed.material_id)) == ids and dict(zip(listed.name, listed.key)) == {n: keys[n] for n in ids}
+    assert release["facts"]["material_ids"]["registered_now"] == []  # the committed registry already covers this build

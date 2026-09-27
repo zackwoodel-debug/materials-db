@@ -11,6 +11,8 @@ Stages, all reproducible from committed inputs (no API key, no network):
   1. base         copy data/materials_oxide_test.db (oxides, batch 2, batch 3b, pure elements; formula-4 remediated)
   2. families     upsert nitride, polymer, inorganic3, halide, chalcogenide, liquid, semiconductor, inorganic4, glass, optical_media, liquid_crystal, bio_media and gas through load_family_db.run_family with the same
                   options as their wrappers (conflicts are reported, never overwritten)
+  1b. ids        every material renumbered to its permanent id from data/material_registry.json (scripts/material_registry.py);
+                  an unregistered material stops the build unless --register-new
   3. dedupe       physical rows a later family re-loaded with identical values (the five nitrides batch 2 already held): keep
                   one, preferring the source whose title/notes name the material, else the older source; then drop sources
                   nothing references. Every removal is recorded in MANIFEST.json.
@@ -53,6 +55,7 @@ sys.path.insert(0, str(_ROOT / "scripts"))
 sys.path.insert(0, str(_ROOT / "src"))
 
 import load_family_db as fam  # noqa: E402
+import material_registry as mreg  # noqa: E402
 import release_curation as rcur  # noqa: E402
 import release_descriptors as rd  # noqa: E402
 import release_dielectric as rdl  # noqa: E402
@@ -229,7 +232,7 @@ def source_repeat_count(data_path, wavelength_nm):
     return n
 
 
-def build_db(db_path):
+def build_db(db_path, version="unreleased", register_new=False):
     """Stages 1-5. Returns the build facts for the manifest."""
     db_path = Path(db_path)
     if db_path.exists():
@@ -244,6 +247,12 @@ def build_db(db_path):
             raise ReleaseError(f"{name}: conflicts={rep.conflicts[:3]} skipped={rep.skipped[:3]} warnings={rep.warnings[:3]}")
         merged[name] = dict(inserted=dict(rep.inserted), unchanged=dict(rep.unchanged))
     conn = sqlite3.connect(str(db_path))
+    conn.execute("PRAGMA foreign_keys = OFF")  # renumbering touches parent and child tables together; checked right after
+    with conn:
+        material_ids = mreg.assign(conn, family_rows(), version, register_new=register_new)
+    bad_fk = conn.execute("PRAGMA foreign_key_check").fetchall()
+    if bad_fk:
+        raise ReleaseError(f"renumbering to permanent ids broke references: {bad_fk[:5]}")
     conn.execute("PRAGMA foreign_keys = ON")
     with conn:
         removed, orphans = dedupe_physical(conn)
@@ -257,7 +266,7 @@ def build_db(db_path):
     conn.close()
     return dict(family_merges=merged, removed_duplicate_physical_rows=removed, removed_unreferenced_sources=orphans,
                 descriptor_coverage=coverage, cross_source_validation=cross_source, source_curation=sources, synonyms=synonyms,
-                dielectric=dielectric,
+                dielectric=dielectric, material_ids=material_ids,
                 optical_wavelengths_repeated_in_source=source_repeats)
 
 
@@ -386,6 +395,15 @@ temperature, over the wavelengths both cover, at their own data points (nothing 
   `confidence_score` = (1 - 0.5^sources) x (1 - spread / 10%), so one source scores 0.5 and a 5% spread halves the score;
   counts {xs['consensus']}. A material with only model fits at 633 nm (e.g. CdTe) has no consensus row.
 
+## Permanent material ids (`material_registry.csv`)
+
+`materials.material_id` is permanent: a material keeps its id in every release, a new material gets a new id, and an id is never
+reused. Keys, models and label files built on `material_id` stay valid across versions. `material_registry.csv` also gives each
+material a stable text key, `<family table>:<selection key>` or, for the earliest families, `<family table>:<formula>@<polymorph>`
+(e.g. `semiconductors:GaAs`, `oxides_50:TiO2@rutile`). Ids {facts['material_ids']['materials']} materials; next new id
+{facts['material_ids']['next_id']}. (Up to v0.12.0 ids followed the load order and changed between releases; they are permanent
+from v0.13.0, whose ids were kept.)
+
 ## Dielectric constants (`physical_properties.dielectric_constant`)
 
 {de['materials']} materials have two **calculated** values from Materials Project (density functional perturbation theory,
@@ -477,6 +495,7 @@ def package(db_path, version, facts, out_root=None):
     sqlite_name = f"materials-db-v{version}.sqlite"
     shutil.copy(db_path, out / sqlite_name)
     csv_rows = export_csvs(out / sqlite_name, out / "csv")
+    mreg.export_csv(sqlite3.connect(str(out / sqlite_name)), out / "material_registry.csv", family_rows())
     for stem in FAMILY_CSVS + GAP_CSVS:
         shutil.copy(_ROOT / "data" / f"{stem}.csv", out / "family_tables" / f"{stem}.csv")
     for f in DESCRIPTOR_INPUTS:
@@ -510,10 +529,12 @@ def package(db_path, version, facts, out_root=None):
 def main(argv=None):
     ap = argparse.ArgumentParser(description="Build the downloadable materials-db release.")
     ap.add_argument("--version", required=True, help="e.g. 0.1.0")
+    ap.add_argument("--register-new", action="store_true",
+                    help="give materials without a permanent id the next ids (then commit data/material_registry.json)")
     a = ap.parse_args(argv)
     work = _ROOT / "release" / f".build-{a.version}.sqlite"
     work.parent.mkdir(exist_ok=True)
-    facts = build_db(work)
+    facts = build_db(work, version=a.version, register_new=a.register_new)
     out, zpath, manifest = package(work, a.version, facts)
     work.unlink()
     c = manifest["counts"]
