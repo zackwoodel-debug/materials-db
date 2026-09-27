@@ -5,6 +5,8 @@ versions follow the release tags. Counts are materials / optical datasets.
 
 ## [Unreleased]
 
+## [0.14.0] - 2026-09-27 (381 / 831)
+
 ### Added
 - Permanent material ids: `material_id` no longer changes between releases (it used to follow the load order: 150 of 379
   materials changed id between v0.12.0 and v0.13.0). v0.13.0's ids are kept; new materials get new ids; ids are never
@@ -13,6 +15,8 @@ versions follow the release tags. Counts are materials / optical datasets.
   meaning), the label grammar and the vocabularies found in the data; the build stops if they drift from the schema.
 - This changelog, shipped in the package; a versioned build requires an entry for its version.
 - ML set: `meta_key` (the stable key).
+
+No data values changed from v0.13.0.
 
 ## [0.13.0] - 2026-09-27 (381 / 831)
 
