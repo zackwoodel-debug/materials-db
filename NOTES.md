@@ -113,6 +113,13 @@ Generic loader: scripts/load_family_db.py (--family/--catalog/--selections/--db/
    note, not a data value); now "a mixture ..., not a single molecule". (A material_kind slip made during this branch was
    caught by the release test before any release.)
 
+22. DONE: gases (scripts/gas_material_list.py, build_gases_csv.py, load_gases_db.py): air, N2, O2, Ar, He, Ne, Kr, Xe, H2, D2, CO,
+   CO2, NH3, SF6, CH4, C2H6, C2H4, C2H2 (18 materials, 95 datasets). Pressure lives in the variant label (no pressure column):
+   "gas, 101.325 kPa", "gas, 100 kPa", "gas" (unstated); Ar/Kr/Xe liquid and solid phases labelled by phase. listed_family.py
+   gained per-page temperature_c overrides (Koch's "lambda_air at 15 degC" is not the gas temperature) and per-material
+   not_primary variants (a gas at unstated conditions or a condensed phase is never primary). Excluded: Martonchik 1994 methane
+   (liquid pages carry the solid comment; the source warns against interpolation). D2 has no PubChem record (written as H2).
+
 ## FOLLOW-UP (logged, NOT started): graphene / 2D carbon as its own family -- materialclass must NOT be 'polymer'
 - RI.info main/C, verified read-only: monolayer graphene = Weber 2010 (0.21-1.0 um, exfoliated flake, 3.4 A, on Si/98 nm SiO2), Song 2018 "Graphene"
   (0.193-1.69, CVD mono), Tikuisis 2023 (0.226-4.40, epitaxial on 6H-SiC), El-Sayed 2021 (0.24-1.0, CVD): four, not three. Song 2018 also holds 4 bulk-HOPG pages (graphite).
