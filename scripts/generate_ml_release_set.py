@@ -197,9 +197,9 @@ def build(release_dir):
         if rec["has_composition"]:
             for c in COMP_SCALARS:
                 rec[f"feat_comp_{c}"] = float(comp[c])
-            for p in COMP_PROPS:
+            for p in COMP_PROPS:  # a property undefined for an element (e.g. Pauling electronegativity of He, Ne, Ar) stays NaN
                 for s in COMP_STATS:
-                    rec[f"feat_comp_{p}_{s}"] = float(comp[p][s])
+                    rec[f"feat_comp_{p}_{s}"] = float(comp[p][s]) if p in comp else np.nan
             for el, frac in comp["element_fractions"].items():
                 rec[f"feat_frac_{el}"] = float(frac)
 
