@@ -10,6 +10,8 @@ versions follow the release tags. Counts are materials / optical datasets.
   k on a 128-point log grid (200 nm - 25 um), masks where the dataset has no data or a gap > 1.5x, no extrapolation.
 - Grouped ML splits (`data/ML_splits.csv`): train / validation / test and 5 folds per group of materials (identical
   composition, or one product line), assigned by hash so a material keeps its split in later releases.
+- ML package (`scripts/package_ml_dataset.py` -> `release/ml-dataset-vX.Y.Z.zip`): per-split Parquet, MLCommons Croissant
+  1.1 metadata, a Hugging Face dataset card, Zenodo metadata; `CITATION.cff` at the repository root.
 
 ## [0.14.0] - 2026-09-27 (381 / 831)
 
