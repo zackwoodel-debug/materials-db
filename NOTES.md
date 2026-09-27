@@ -135,6 +135,11 @@ Generic loader: scripts/load_family_db.py (--family/--catalog/--selections/--db/
    (moved to ../materials-db_icloud_conflict_copies_2026-09-27; all identical to current or earlier committed versions) and
    likely caused a stalled git push and a stalled test run. Move the repo out of iCloud (e.g. ~/code) to avoid corruption.
 
+25. DONE: data dictionary (scripts/release_dictionary.py -> data_dictionary.json + DATA_DICTIONARY.md in every package) and
+   CHANGELOG.md (shipped; a versioned build needs a '## [X.Y.Z]' entry, checked before building; 0.0.0* exempt). The dictionary is
+   introspected from the release DB + curated descriptions in release_dictionary.TABLES; an undescribed or vanished column stops
+   the build. When adding a column or table, describe it there. Before each release: move [Unreleased] notes under the version.
+
 ## FOLLOW-UP (logged, NOT started): graphene / 2D carbon as its own family -- materialclass must NOT be 'polymer'
 - RI.info main/C, verified read-only: monolayer graphene = Weber 2010 (0.21-1.0 um, exfoliated flake, 3.4 A, on Si/98 nm SiO2), Song 2018 "Graphene"
   (0.193-1.69, CVD mono), Tikuisis 2023 (0.226-4.40, epitaxial on 6H-SiC), El-Sayed 2021 (0.24-1.0, CVD): four, not three. Song 2018 also holds 4 bulk-HOPG pages (graphite).

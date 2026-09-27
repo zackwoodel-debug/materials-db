@@ -58,6 +58,7 @@ import load_family_db as fam  # noqa: E402
 import material_registry as mreg  # noqa: E402
 import release_curation as rcur  # noqa: E402
 import release_descriptors as rd  # noqa: E402
+import release_dictionary as rdict  # noqa: E402
 import release_dielectric as rdl  # noqa: E402
 import release_validation as rv  # noqa: E402
 
@@ -75,7 +76,7 @@ NEGATIVE_K_ALLOWED = {
     ("Human blood", "whole blood | Rowe2017"): -0.005,
 }
 N_MIN = 1e-3
-BUILD_INPUTS = ["data", "scripts", "src", "DATA_LICENSE.md"]  # what the build reads; other files (e.g. NOTES.md) cannot change the release
+BUILD_INPUTS = ["data", "scripts", "src", "DATA_LICENSE.md", "CHANGELOG.md"]  # what the build reads; other files (e.g. NOTES.md) cannot change the release
 RI_DATA = _ROOT / "refractiveindex_db" / "database" / "data"
 
 
@@ -480,9 +481,19 @@ calculation overestimates by 30-60%.
 
 ## Files
 
-`MANIFEST.json` has the build facts: git commit, refractiveindex.info commit, Materials Project database version, row counts
+`DATA_DICTIONARY.md` / `data_dictionary.json` describe every table and column (type, key, unit, meaning), the label grammar
+and the vocabularies found in the data. `CHANGELOG.md` lists what changed in each release. `MANIFEST.json` has the build facts: git commit, refractiveindex.info commit, Materials Project database version, row counts
 and every duplicate the build removed. `SHA256SUMS` lets you check the download (`shasum -a 256 -c SHA256SUMS`).
 """)
+
+
+def check_changelog(version, path=None):
+    """A versioned release needs its own CHANGELOG.md entry ('## [X.Y.Z]'); scratch and test builds (0.0.0...) are exempt."""
+    if version.startswith("0.0.0"):
+        return
+    text = Path(path or _ROOT / "CHANGELOG.md").read_text()
+    if f"## [{version}]" not in text:
+        raise ReleaseError(f"CHANGELOG.md has no '## [{version}]' entry: move the [Unreleased] notes under it before releasing")
 
 
 def package(db_path, version, facts, out_root=None):
@@ -501,6 +512,9 @@ def package(db_path, version, facts, out_root=None):
     for f in DESCRIPTOR_INPUTS:
         shutil.copy(_ROOT / "data" / "descriptors" / f, out / "descriptor_inputs" / f)
     shutil.copy(_ROOT / "DATA_LICENSE.md", out / "DATA_LICENSE.md")
+    shutil.copy(_ROOT / "CHANGELOG.md", out / "CHANGELOG.md")
+    check_changelog(version)
+    facts["data_dictionary"] = rdict.write(sqlite3.connect(str(out / sqlite_name)), out, version)
     c = counts(out / sqlite_name)
     mp_version = json.loads(rd.MP_CACHE.read_text())["mp_database_version"]
     write_readme(out / "README.md", version, facts, c, mp_version)
@@ -532,6 +546,7 @@ def main(argv=None):
     ap.add_argument("--register-new", action="store_true",
                     help="give materials without a permanent id the next ids (then commit data/material_registry.json)")
     a = ap.parse_args(argv)
+    check_changelog(a.version)  # fail before the (slow) build, not after it
     work = _ROOT / "release" / f".build-{a.version}.sqlite"
     work.parent.mkdir(exist_ok=True)
     facts = build_db(work, version=a.version, register_new=a.register_new)
