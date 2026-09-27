@@ -418,14 +418,17 @@ calculation overestimates by 30-60%.
 - Several materials have more than one optical source. Each source is its own dataset; how far they agree is in
   `dataset_validation` and `consensus_properties` (above).
 - Materials without a density (no reliable value) have no SLD. The family tables' `flags` say why.
-- Known open items: GaSe is deferred (its formulas go non-physical inside their stated range). The SnSe alpha axis is
+- GaSe: its formula pages go non-physical (n^2 <= 0) in the 39-47 um reststrahlen band; those samples are dropped rather than
+  stored floored, Kato 2013 is sampled over the 0.8-162 um its page states (its file says 1620 um), and the density is
+  epsilon-GaSe (P-6m2). No GaSe dataset reaches 633 nm.
+- Known open items: the SnSe alpha axis is
   excluded (the source data is not physical). PDCBT's recorded formula conflicts with its own name, so it has no formula
   descriptors. CS2's Chemnitz 2017 fit is excluded (same problem as GaSe). The legacy benchmark set is not included: water,
   ethanol and DMSO come from the liquids family instead; DPPC, BSA, PTFE, PEEK, nylon 6,6, PEG and polyethylenimine are not in
   refractiveindex.info; ITO is (other/In2O3-SnO2) and belongs with a later mixed-oxides batch.
 - Semiconductors: several papers per material are loaded as separate datasets, including temperature series (e.g. GaAs at
-  300-440 K and 600 degC, ZnGeP2 at 100-500 K; `optical_dispersion.temperature_c`). Ge2Sb2Te5 is deferred (its crystalline
-  density needs a structure choice).
+  300-440 K and 600 degC, ZnGeP2 at 100-500 K; `optical_dispersion.temperature_c`). Ge2Sb2Te5 (GST) has crystalline and
+  amorphous datasets as its source labels them and no density: the page does not state the crystal structure.
 - Inorganic batch 4 (phosphate and sulfate crystals: berlinite, anhydrite, KDP, ADP, KTP, RTP). ZrO2 is deferred: its
   refractiveindex.info pages are yttria-stabilized zirconia (a different composition), an oscillator-model fit and
   nanoparticles in water, none of which is bulk ZrO2.
@@ -450,8 +453,9 @@ calculation overestimates by 30-60%.
   temperatures, labelled by phase. The primary is always a gas at stated conditions.
 - Primary dataset (the family tables' n_633 / k_633) in the automatically selected families (halides, chalcogenides,
   liquids, semiconductors): measured data before model fits of the dielectric function, then the widest range covering
-  633 nm. A page is a model fit only when its source says so (scripts/dataset_kind.py). Model datasets (e.g. Adachi's) are
-  still loaded; CdTe, CdSe and PbSe have no measured data at 633 nm, so their primary n_633 is empty.
+  633 nm. A page is a model fit only when its source says so (scripts/dataset_kind.py). A model fit covering 633 nm is primary
+  only when no measured dataset covers it: CdTe, CdSe and PbSe (Adachi-group fits). Liquid crystals prefer a dataset with a
+  stated temperature.
 - Liquid densities carry their temperature (`physical_properties.temperature_c`). They come from the CIPM water formula, NIST
   reference equations of state, or PubChem records that are all physically consistent with each other; otherwise they are
   left empty.

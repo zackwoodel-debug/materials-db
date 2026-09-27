@@ -31,7 +31,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import build_oxides_csv as base  # noqa: E402
 from build_chalcogenides_csv import HULL_WINDOW_EV, MAX_HULL_EV, evidence, exact_formula_n633, mp_query  # noqa: E402
 from match_ri_info_semiconductors import ambient  # noqa: E402
-from semiconductor_material_list import AMBIENT_STRUCTURE, CANDIDATES, DEFERRED, EXCLUDED_PAGES, OUT_OF_FAMILY  # noqa: E402
+from semiconductor_material_list import AMBIENT_STRUCTURE, CANDIDATES, DEFERRED, EXCLUDED_PAGES, NO_DENSITY, OUT_OF_FAMILY  # noqa: E402
 from load_family_db import parse_ri_references  # noqa: E402
 from materials_db.pipeline.process_condition import BULK_ELEMENTAL_APPROXIMATION  # noqa: E402
 
@@ -74,7 +74,9 @@ def main():
             if docs:
                 flags.append("MP candidates (evidence): " + evidence(docs))
 
-            if stated:  # 1. density stated by the source page
+            if key in NO_DENSITY:  # 0. deliberately none (semiconductor_material_list.NO_DENSITY)
+                flags.append("density/SLD left NULL: " + NO_DENSITY[key])
+            elif stated:  # 1. density stated by the source page
                 page = next(a["page"] for a in axes if re.search(r"Density:", ds[a["page"]]["comments"] or ""))
                 ref = parse_ri_references(ds[page]["data_path"])
                 row.update(density_g_cm3=float(stated.group(1)), density_source="literature (density stated on the RI.info page)",

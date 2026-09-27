@@ -2091,6 +2091,74 @@
    "single_point_pages": [],
    "already_in_135_db": false,
    "ri_book_title": "ZnSiAs2 (Zinc silicon arsenide)"
+  },
+  {
+   "key": "Ge2Sb2Te5",
+   "name": "Germanium antimony telluride (GST)",
+   "formula": "Ge2Sb2Te5",
+   "book": "Ge2Sb2Te5",
+   "shelf": "main",
+   "note": "Frantz 2024: crystalline and amorphous Ge2Sb2Te5, one paper",
+   "materialclass": "phase-change material",
+   "page_polymorph": {
+    "Frantz-crystal": "crystalline",
+    "Frantz-amorphous": "amorphous"
+   },
+   "basis": "one paper, two phases, each its own dataset labelled by the phase its page states",
+   "status": "SELECTED_BY_USER",
+   "n_pages": 2,
+   "n_papers": 2,
+   "papers": [
+    "Frantz et al. 2024: n,k 0.350\u201329.6 \u00b5m",
+    "Frantz et al. 2024: n,k 0.350\u201332.4 \u00b5m"
+   ],
+   "datasets": [
+    {
+     "page": "Frantz-crystal",
+     "title": "Frantz et al. 2024: n,k 0.350\u201332.4 \u00b5m",
+     "paper": "Frantz et al. 2024: n,k 0.350\u201332.4 \u00b5m",
+     "data_path": "main/Ge2Sb2Te5/nk/Frantz-crystal.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [
+      "Crystalline"
+     ],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.35028,
+      32.406
+     ],
+     "single_point": false,
+     "comments": "Crystalline Ge2Sb2Te5.\n",
+     "conditions": ""
+    },
+    {
+     "page": "Frantz-amorphous",
+     "title": "Frantz et al. 2024: n,k 0.350\u201329.6 \u00b5m",
+     "paper": "Frantz et al. 2024: n,k 0.350\u201329.6 \u00b5m",
+     "data_path": "main/Ge2Sb2Te5/nk/Frantz-amorphous.yml",
+     "temperature_c": null,
+     "axis": null,
+     "phase_words": [
+      "Amorphous"
+     ],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      0.35028,
+      29.628
+     ],
+     "single_point": false,
+     "comments": "Amorphous Ge2Sb2Te5.\n",
+     "conditions": ""
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "Ge2Sb2Te5 (Germanium antimony telluride, GST)"
   }
  ],
  "out_of_family": {
@@ -2099,9 +2167,7 @@
   "WTe2": "layered van der Waals telluride measured as flake / few-layer film: 2D / thin-film follow-up",
   "ZrTe5": "layered van der Waals telluride measured as flake / few-layer film: 2D / thin-film follow-up"
  },
- "deferred": {
-  "Ge2Sb2Te5": "phase-change material: Frantz 2024 gives crystalline and amorphous Ge2Sb2Te5 (one paper, two phases). The crystalline density needs a structure choice (metastable rock-salt vs stable trigonal GST) and the amorphous phase has no density source; load after that decision."
- },
+ "deferred": {},
  "excluded_pages": {
   "CdTe:Treharne": "sputtered film: 'A CdTe film was deposited on to a soda-lime glass substrate using RF magnetron sputtering' (film n,k depend on deposition; scope rule). Bulk papers Marple, DeBell, Adachi are loaded.",
   "GaSb:Ferrini": "film: 'Thin film grown by molecular beam epitaxy on a GaSb substrate' (the page also mislabels x = 0 as GaAs); scope rule. Bulk papers Aspnes, Adachi, Djurisic are loaded."

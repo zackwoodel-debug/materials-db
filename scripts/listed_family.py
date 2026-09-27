@@ -26,7 +26,7 @@ sys.path.insert(0, str(_ROOT / "src"))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import build_oxides_csv as base  # noqa: E402
 from build_chalcogenides_csv import exact_formula_n633  # noqa: E402
-from dataset_kind import is_model_fit  # noqa: E402
+from dataset_kind import is_model_fit, primary_rank  # noqa: E402,F401
 from match_ri_info_chalcogenides import label_of, scan_page, strip, tag_of  # noqa: E402
 from match_ri_info_liquids import page_temperature_c  # noqa: E402
 from match_ri_info_semiconductors import ambient  # noqa: E402
@@ -96,8 +96,9 @@ def build(MATERIALS, EXCLUDED_PAGES, OUT_OF_FAMILY, csv_stem, selections_stem, g
                              temperature_c=page_temperature_c(path, title + " " + s["comments"]) if temp is AUTO else temp,
                              tag=tag, dataset_label=label_of(variant, tag, axis), shelf=shelf, book=book))
         not_primary = set(mat.get("not_primary", ()))  # variants that must not be the primary (e.g. a gas at unstated conditions)
-        axes.sort(key=lambda a: (a["phase"] in not_primary, not ambient(a), is_model_fit(a["data_path"]),
-                                 not a["span_um"][0] <= 0.633 <= a["span_um"][1], a["span_um"][0] - a["span_um"][1]))
+        stated_first = bool(mat.get("prefer_stated_temperature"))  # e.g. liquid crystals, whose n depends strongly on temperature
+        axes.sort(key=lambda a: (a["phase"] in not_primary, not ambient(a), stated_first and a["temperature_c"] is None,
+                                 primary_rank(a["data_path"], a["span_um"]), a["span_um"][0] - a["span_um"][1]))
         labels = [a["dataset_label"] for a in axes]
         assert len(labels) == len(set(labels)), labels
         selections[mat["key"]] = dict(name=mat["name"], formula=mat.get("formula"), source=f"{source_label} (every listed page is its own dataset; "

@@ -459,7 +459,7 @@ def _parse_table(data_str: str, ncols: int) -> np.ndarray:
 
 
 def parse_file(
-    yaml_path: Path,
+    yaml_path: Path, formula_range_um: Optional[Tuple[float, float]] = None,
 ) -> Tuple[np.ndarray, np.ndarray, Optional[np.ndarray], str, Optional[float]]:
     """
     Parse a refractiveindex.info YAML file.
@@ -533,6 +533,8 @@ def parse_file(
 
         elif btype.startswith("formula"):
             wr = block.get("wavelength_range", f"{wl_min_um} {wl_max_um}")
+            if formula_range_um is not None:  # a page whose stated range differs from its data file's (recorded per dataset)
+                wr = f"{formula_range_um[0]} {formula_range_um[1]}"
             parts = str(wr).split()
             lo = max(float(parts[0]), wl_min_um)
             hi = min(float(parts[1]), wl_max_um)

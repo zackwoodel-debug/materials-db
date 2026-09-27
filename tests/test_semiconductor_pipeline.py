@@ -48,10 +48,11 @@ def loaded(tmp_path_factory):
 
 # ---------------------------------------------------------------- scope
 
-def test_catalog_is_the_16_candidates_and_nothing_deferred_or_out_of_family_leaks_in():
-    assert list(CAT.selection_key) == [c["key"] for c in lst.CANDIDATES] and len(CAT) == 16
+def test_catalog_is_the_17_candidates_and_nothing_deferred_or_out_of_family_leaks_in():
+    assert list(CAT.selection_key) == [c["key"] for c in lst.CANDIDATES] and len(CAT) == 17
     assert set(CAT.selection_key).isdisjoint(set(lst.DEFERRED) | set(lst.OUT_OF_FAMILY))
-    assert set(GAPS.key) == set(lst.DEFERRED) | {k for k, _ in lst.EXCLUDED_PAGES} | set(lst.OUT_OF_FAMILY)
+    assert set(GAPS.key) == set(lst.DEFERRED) | {k for k, _ in lst.EXCLUDED_PAGES} | set(lst.OUT_OF_FAMILY) | set(lst.NO_DENSITY)
+    assert set(GAPS[GAPS.gap_kind == "density"].key) == set(lst.NO_DENSITY)
 
 
 def test_none_is_already_in_an_earlier_family():
@@ -80,15 +81,17 @@ def test_selections_complete_labels_unique_and_every_listed_page_loaded():
 
 # ---------------------------------------------------------------- temperature and the primary dataset
 
-def test_primary_is_ambient_measured_then_widest_covering_633_nm():
-    from dataset_kind import is_model_fit
+def test_primary_is_ambient_then_primary_rank_then_widest():
+    from dataset_kind import primary_rank
     for k, v in SEL.items():
         first, axes = v["axes"][0], v["axes"]
         assert ambient(first), k
-        pool = [a for a in axes if ambient(a) and not is_model_fit(a["data_path"])] or [a for a in axes if ambient(a)]
-        assert first in pool, k
-        covering = [a for a in pool if a["span_um"][0] <= 0.633 <= a["span_um"][1]] or pool
-        assert first in covering and (first["span_um"][1] - first["span_um"][0]) == max(a["span_um"][1] - a["span_um"][0] for a in covering), k
+        amb = [a for a in axes if ambient(a)]
+        best = min(primary_rank(a["data_path"], a["span_um"]) for a in amb)
+        pool = [a for a in amb if primary_rank(a["data_path"], a["span_um"]) == best]
+        assert first in pool and (first["span_um"][1] - first["span_um"][0]) == max(a["span_um"][1] - a["span_um"][0] for a in pool), k
+    # CdTe has no MEASURED data at 633 nm: its model fit is primary (user decision), so n(633) is not empty
+    assert SEL["CdTe"]["axes"][0]["tag"] == "Adachi1993" and CAT.set_index("selection_key").at["CdTe", "n_633"] > 2.9
     # the III-V primaries are the Aspnes & Studna ellipsometry, not Adachi's model (NOTES #10)
     assert {k: SEL[k]["axes"][0]["tag"] for k in ("GaSb", "InAs", "InP", "InSb")} == dict.fromkeys(("GaSb", "InAs", "InP", "InSb"), "Aspnes1983")
 
@@ -125,6 +128,9 @@ def test_every_selected_page_has_a_supported_type_and_no_nonphysical_formula_val
 
 def test_density_is_the_mp_entry_of_the_ambient_structure_and_near_the_handbook_value():
     for r in CAT.itertuples():
+        if r.selection_key in lst.NO_DENSITY:  # Ge2Sb2Te5: no structure stated, left empty (user decision)
+            assert pd.isna(r.density_g_cm3) and pd.isna(r.xray_sld_real) and "user decision" in r.flags
+            continue
         _, sg, _ = lst.AMBIENT_STRUCTURE[r.selection_key]
         assert r.density_source == "MP_DFT" and f"(#{sg})" in r.mp_space_group, r.formula
         assert -0.08 < (r.density_g_cm3 - TEXTBOOK_RHO[r.formula]) / TEXTBOOK_RHO[r.formula] < 0.02, r.formula
@@ -132,7 +138,7 @@ def test_density_is_the_mp_entry_of_the_ambient_structure_and_near_the_handbook_
 
 def test_csv_sld_equals_an_independent_periodictable_recompute():
     import periodictable as pt
-    for r in CAT.itertuples():
+    for r in CAT[CAT.density_g_cm3.notna()].itertuples():
         fm = pt.formula(r.formula)
         xr, xi = pt.xray_sld(fm, density=r.density_g_cm3, energy=8.048)
         nr, ni, _ = pt.neutron_sld(fm, density=r.density_g_cm3)
@@ -162,11 +168,11 @@ def test_loaded_db_facts(loaded):
     db, rep = loaded
     c = sqlite3.connect(str(db))
     assert c.execute("PRAGMA integrity_check").fetchone()[0] == "ok" and c.execute("PRAGMA foreign_key_check").fetchall() == []
-    assert c.execute("SELECT COUNT(*) FROM materials").fetchone()[0] == 16
+    assert c.execute("SELECT COUNT(*) FROM materials").fetchone()[0] == 17
     assert c.execute("SELECT COUNT(*) FROM (SELECT 1 FROM optical_dispersion GROUP BY material_id, dataset_label)").fetchone()[0] == len(AXES)
     assert c.execute("SELECT COUNT(*) FROM optical_dispersion").fetchone()[0] == sum(len(fod.parse_file(RI / a["data_path"])[0]) for _, a in AXES)
     assert rep.skipped == [] and rep.conflicts == [] and rep.warnings == []
-    assert c.execute("SELECT COUNT(*) FROM physical_properties").fetchone()[0] == 5 * 16
+    assert c.execute("SELECT COUNT(*) FROM physical_properties").fetchone()[0] == 5 * (17 - len(lst.NO_DENSITY))
     neg = c.execute("SELECT DISTINCT m.name, o.dataset_label FROM optical_dispersion o JOIN materials m USING(material_id) WHERE o.k < 0").fetchall()
     assert neg == [("Gallium phosphide", "Jellison1992")]  # noise around k = 0, allow-listed in build_release and the sanity test
     c.close()
@@ -203,3 +209,11 @@ def test_every_dataset_is_preserved_row_by_row_and_n633_agrees_with_hand_evaluat
         assert hand is not None and float(np.interp(633.0, wl, n)) == pytest.approx(hand, abs=5e-3)
     else:
         assert hand is None or not math.isfinite(hand) or wl.min() > 633 or wl.max() < 633
+
+
+def test_ge2sb2te5_phases_are_labelled_as_the_source_states():
+    axes = {a["page"]: a["dataset_label"] for a in SEL["Ge2Sb2Te5"]["axes"]}
+    assert axes == {"Frantz-crystal": "crystalline | Frantz2024", "Frantz-amorphous": "amorphous | Frantz2024"}
+    for page, word in (("Frantz-crystal", "Crystalline"), ("Frantz-amorphous", "Amorphous")):
+        c = yaml.safe_load(open(RI / next(a["data_path"] for a in SEL["Ge2Sb2Te5"]["axes"] if a["page"] == page)))["COMMENTS"]
+        assert word in c

@@ -51,13 +51,19 @@ CANDIDATES = [
        + [f"Ghosh-{t}K-{ax}" for t in (100, 150, 200, 250, 300, 350, 400, 450, 500) for ax in ("o", "e")],
        note="birefringent; Boyd 1971 20/70 degC and Ghosh 1998 100-500 K series"),
     _c("ZnSiAs2", "Zinc silicon arsenide", "ZnSiAs2", "chalcopyrite semiconductor", note="birefringent"),
+    # phase-change material: both phases of one paper, labelled as the source states them (user decision: load, density empty)
+    dict(_c("Ge2Sb2Te5", "Germanium antimony telluride (GST)", "Ge2Sb2Te5", "phase-change material",
+            note="Frantz 2024: crystalline and amorphous Ge2Sb2Te5, one paper"),
+         page_polymorph={"Frantz-crystal": "crystalline", "Frantz-amorphous": "amorphous"},
+         basis="one paper, two phases, each its own dataset labelled by the phase its page states"),
 ]
 
 # Books in scope but NOT loaded in this run because they need a user decision (evidence recorded in data/semiconductor_gaps.csv).
-DEFERRED = {
-    "Ge2Sb2Te5": ("phase-change material: Frantz 2024 gives crystalline and amorphous Ge2Sb2Te5 (one paper, two phases). The crystalline "
-                  "density needs a structure choice (metastable rock-salt vs stable trigonal GST) and the amorphous phase has no density "
-                  "source; load after that decision."),
+DEFERRED = {}
+# Materials loaded WITHOUT a density (the MP rules are not applied), with the reason recorded in flags.
+NO_DENSITY = {
+    "Ge2Sb2Te5": ("user decision: the crystalline page does not state which structure (metastable rock-salt or stable trigonal GST) "
+                  "and the amorphous phase has no density source, so density / SLD are left empty rather than guessed"),
 }
 # Single pages excluded from an otherwise loaded material, with the evidence (the material's bulk papers ARE loaded).
 EXCLUDED_PAGES = {

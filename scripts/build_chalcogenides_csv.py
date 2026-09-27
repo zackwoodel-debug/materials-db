@@ -164,6 +164,8 @@ def main():
                 if j == 1:
                     row["n_633"], row["k_633"] = interp["n_633"], interp["k_633"]
                     row["ri_wl_min_nm"], row["ri_wl_max_nm"] = interp["wl_min_nm"], interp["wl_max_nm"]
+                    if a.get("formula_range_um") is not None:  # the loader samples the formula over the page's stated range
+                        row["ri_wl_min_nm"], row["ri_wl_max_nm"] = (float(x) * 1000.0 for x in a["formula_range_um"])
                 else:
                     row.update({f"axis_{j}": a["axis"], f"n_633_axis{j}": interp["n_633"], f"k_633_axis{j}": interp["k_633"], f"ri_page_axis{j}": a["page"]})
             if len(primary_paper) > 3:

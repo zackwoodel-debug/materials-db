@@ -3,7 +3,7 @@
 scripts/dataset_kind.py
 =======================
 Is an RI.info page MEASURED data or a MODEL FIT of the dielectric function? Used by the family matchers' primary-dataset rule
-(measured before model fits, then widest range).
+(measured before model fits, then widest range; a model fit covering 633 nm only when no measured dataset does: primary_rank).
 
 A page counts as a model fit only when the source says so explicitly:
   * its REFERENCES carry RI.info's "Calculation script" link (the tabulated values were generated from a published model),
@@ -47,3 +47,12 @@ def model_fit_reason(data_path):
 
 def is_model_fit(data_path):
     return model_fit_reason(data_path) is not None
+
+
+def primary_rank(data_path, span_um):
+    """Where a dataset ranks for PRIMARY (lower first): 0 measured covering 633 nm, 1 model fit covering 633 nm, 2 measured not
+    covering it, 3 model fit not covering it. Measured data always win; a model fit is primary only when NO measured dataset covers
+    633 nm (user decision: CdTe, CdSe, PbSe have only model fits there), so n(633 nm) is not left empty for them."""
+    covers = span_um[0] <= 0.633 <= span_um[1]
+    model = is_model_fit(data_path)
+    return (0 if not model else 1) if covers else (2 if not model else 3)
