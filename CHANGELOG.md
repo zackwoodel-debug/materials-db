@@ -5,6 +5,10 @@ versions follow the release tags. Counts are materials / optical datasets.
 
 ## [Unreleased]
 
+### Added
+- Spectral ML set (`data/ML_release_spectra.parquet`, not part of the release package): one row per optical dataset with n and
+  k on a 128-point log grid (200 nm - 25 um), masks where the dataset has no data or a gap > 1.5x, no extrapolation.
+
 ## [0.14.0] - 2026-09-27 (381 / 831)
 
 ### Added
