@@ -1,7 +1,7 @@
 {
  "source": "PubChem PUG REST compound Title (NCBI; public domain)",
- "retrieved_utc": "2026-09-26T02:59:23Z",
- "requested": 234,
+ "retrieved_utc": "2026-09-27T12:38:53Z",
+ "requested": 236,
  "missing": [],
  "titles": {
   "13": "1,2,4-Trichlorobenzene",
@@ -168,9 +168,11 @@
   "91307": "Aluminum antimonide",
   "91500": "Indium arsenide",
   "91501": "Cadmium telluride",
+  "92319": "4-Cyano-4'-pentylbiphenyl",
   "93091": "Titanium mononitride",
   "104730": "Cobalt",
   "104938": "alpha-Lactose monohydrate",
+  "109063": "4-(4-Pentylcyclohexyl)benzonitrile",
   "117559": "Gallium nitride",
   "123279": "Boron carbide",
   "134661": "Scandium oxide (Sc2O3)",

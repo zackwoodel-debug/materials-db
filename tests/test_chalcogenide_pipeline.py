@@ -61,6 +61,10 @@ def _hand_n(path, lam_um=0.633):
                 return (n2 + sum(c[i] * lam_um ** c[i + 1] for i in range(9, len(c) - 1, 2))) ** 0.5
             if t == "formula 5":  # Cauchy: n = C1 + C2 lam^C3 + C4 lam^C5 + ...
                 return c[0] + sum(c[i] * lam_um ** c[i + 1] for i in range(1, len(c) - 1, 2))
+            if t == "formula 3":  # polynomial: n^2 = C1 + C2 lam^C3 + C4 lam^C5 + ...
+                return (c[0] + sum(c[i] * lam_um ** c[i + 1] for i in range(1, len(c) - 1, 2))) ** 0.5
+            if t == "formula 6":  # gases (and the liquid-crystal pages): n - 1 = C1 + C2 / (C3 - lam^-2) + C4 / (C5 - lam^-2) + ...
+                return 1 + c[0] + sum(c[i] / (c[i + 1] - lam_um ** -2) for i in range(1, len(c) - 1, 2))
             raise AssertionError(f"unsupported formula type {t}")
         rows = [[float(x) for x in ln.split()] for ln in b["data"].strip().splitlines()]
         if rows[0][0] <= lam_um <= rows[-1][0]:

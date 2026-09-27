@@ -139,7 +139,8 @@ def _structural_scope(density_source, label_words):
 
 MOLECULAR_FAMILIES = {"liquids"}
 GLASS_FAMILIES = {"glasses"}  # multicomponent glasses: no single formula, no crystal structure
-FORMULATION_FAMILIES = {"optical_media"}  # proprietary liquids / cured resins: no single formula, no crystal structure  # families whose materials are discrete molecules (described by their PubChem SMILES)
+FORMULATION_FAMILIES = {"optical_media"}  # proprietary liquids / cured resins: no single formula, no crystal structure
+LC_FAMILIES = {"liquid_crystals"}  # single compounds are molecules (PubChem SMILES); the commercial mixtures are formulations  # families whose materials are discrete molecules (described by their PubChem SMILES)
 
 
 def descriptor_row(name, formula, family, csv_row, optical_labels, mp, units, issues, smiles=None):
@@ -164,11 +165,14 @@ def descriptor_row(name, formula, family, csv_row, optical_labels, mp, units, is
     elif is_polymer:
         doc["material_kind"] = "polymer"
         doc["molecular"] = dict(unavailable=why or "repeat-unit structure not curated")
-    elif family in MOLECULAR_FAMILIES and rf and smiles and len(re.findall(r"[A-Z][a-z]?", rf)) > 1:
+    elif family in MOLECULAR_FAMILIES | LC_FAMILIES and rf and smiles and len(re.findall(r"[A-Z][a-z]?", rf)) > 1:
         cols.update(molecular(smiles))
         doc["material_kind"] = "molecule"
         doc["molecular"] = dict(basis="the molecule (PubChem isomeric SMILES; isotopes and stereochemistry as PubChem records them)",
                                 smiles=smiles, morgan_radius=MORGAN_RADIUS, morgan_bits=MORGAN_BITS, source="RDKit")
+    elif family in LC_FAMILIES:
+        doc["material_kind"] = "commercial formulation"
+        doc["molecular"] = dict(unavailable="commercial liquid-crystal mixture: no single molecular structure")
     elif family in MOLECULAR_FAMILIES and not rf:
         doc["material_kind"] = "biomacromolecule"
         doc["molecular"] = dict(unavailable=why or "no single molecular structure")
@@ -189,7 +193,7 @@ def descriptor_row(name, formula, family, csv_row, optical_labels, mp, units, is
     elif family in GLASS_FAMILIES:
         doc["compositional"] = dict(unavailable="multicomponent glass: no single formula (composition proprietary or given as oxide ratios)")
         doc["material_kind"] = "glass"
-    elif family in FORMULATION_FAMILIES:
+    elif family in FORMULATION_FAMILIES | LC_FAMILIES:
         doc["compositional"] = dict(unavailable="proprietary commercial formulation: no single formula")
         doc["material_kind"] = "commercial formulation"
     else:
@@ -209,6 +213,8 @@ def descriptor_row(name, formula, family, csv_row, optical_labels, mp, units, is
         doc["structural"] = dict(not_applicable="glass: amorphous, no crystal structure")
     elif family in FORMULATION_FAMILIES:
         doc["structural"] = dict(not_applicable="liquid or cured resin formulation: no crystal structure")
+    elif family in LC_FAMILIES:
+        doc["structural"] = dict(not_applicable="liquid crystal: no crystal structure")
     elif mp_id and mp_id in mp["entries"]:
         e = dict(mp["entries"][mp_id])
         e.pop("space_group_number_recomputed", None)
