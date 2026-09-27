@@ -8,6 +8,8 @@ versions follow the release tags. Counts are materials / optical datasets.
 ### Added
 - Spectral ML set (`data/ML_release_spectra.parquet`, not part of the release package): one row per optical dataset with n and
   k on a 128-point log grid (200 nm - 25 um), masks where the dataset has no data or a gap > 1.5x, no extrapolation.
+- Grouped ML splits (`data/ML_splits.csv`): train / validation / test and 5 folds per group of materials (identical
+  composition, or one product line), assigned by hash so a material keeps its split in later releases.
 
 ## [0.14.0] - 2026-09-27 (381 / 831)
 

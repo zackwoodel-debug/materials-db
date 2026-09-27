@@ -1,0 +1,190 @@
+{
+ "source_release": "0.14.0",
+ "source_sqlite_sha256": "69765aa47e4a6e546716891cbf217db39dc4fb50c632da66e7bf2515fc5f6dec",
+ "assignment": "sha256 of the group id: split = hash('split:'+group) mod 10 (0-7 train, 8 validation, 9 test); fold = hash('fold:'+group) mod 5",
+ "product_lines": {
+  "cargille-matching-liquids": [
+   "optical_media:Cargille-BK7",
+   "optical_media:Cargille-06350",
+   "optical_media:Cargille-50350",
+   "optical_media:Cargille-acrylic",
+   "optical_media:Cargille-acrylic-double"
+  ],
+  "silk-fibroin": [
+   "liquids:silk-Bm",
+   "liquids:silk-Am",
+   "liquids:silk-Sr",
+   "liquids:silk-Aa"
+  ],
+  "merck-mlc-9200": [
+   "liquid_crystals:MLC-9200-000",
+   "liquid_crystals:MLC-9200-100"
+  ],
+  "micro-resist-epoxy": [
+   "polymers:EpoClad",
+   "polymers:EpoCore"
+  ],
+  "nanoscribe-ip": [
+   "polymers:IP-S",
+   "polymers:IP-Dip"
+  ]
+ },
+ "groups": 345,
+ "multi_material_groups": 22,
+ "materials_in_multi_material_groups": 58,
+ "per_split": {
+  "train": {
+   "materials": 303,
+   "groups": 276,
+   "with_target_n_633nm": 250,
+   "with_target_k_633nm": 93,
+   "with_target_density_g_cm3": 206
+  },
+  "validation": {
+   "materials": 42,
+   "groups": 33,
+   "with_target_n_633nm": 29,
+   "with_target_k_633nm": 12,
+   "with_target_density_g_cm3": 28
+  },
+  "test": {
+   "materials": 36,
+   "groups": 36,
+   "with_target_n_633nm": 29,
+   "with_target_k_633nm": 8,
+   "with_target_density_g_cm3": 30
+  }
+ },
+ "per_fold": {
+  "0": 88,
+  "1": 79,
+  "2": 70,
+  "3": 66,
+  "4": 78
+ },
+ "cross_family_groups": {
+  "comp:C0.2857 H0.5714 O0.1429": [
+   "liquids",
+   "polymers"
+  ],
+  "comp:C0.3333 H0.6667": [
+   "gases",
+   "liquids",
+   "polymers"
+  ],
+  "comp:C0.5000 H0.5000": [
+   "gases",
+   "liquids",
+   "polymers"
+  ]
+ },
+ "group_members": {
+  "comp:C0.2000 H0.6000 O0.1000 Si0.1000": [
+   "polymers:PDMS-10-1",
+   "polymers:PDMS-15-1",
+   "polymers:PDMS-20-1",
+   "polymers:PDMS-5-1"
+  ],
+  "comp:C0.2500 H0.5000 O0.2500": [
+   "liquids:C12H24O12",
+   "liquids:C2H4O2"
+  ],
+  "comp:C0.2500 H0.6667 O0.0833": [
+   "liquids:1-C3H7OH",
+   "liquids:2-C3H7OH"
+  ],
+  "comp:C0.2667 H0.6667 O0.0667": [
+   "liquids:1-C4H9OH",
+   "liquids:i-C4H9OH"
+  ],
+  "comp:C0.2778 H0.6667 O0.0556": [
+   "liquids:1-C5H11OH",
+   "liquids:i-C5H11OH"
+  ],
+  "comp:C0.2857 H0.5714 O0.1429": [
+   "liquids:C4H8O2-dioxane",
+   "liquids:C4H8O2-etac",
+   "polymers:PVA"
+  ],
+  "comp:C0.2941 H0.5882 O0.1176": [
+   "liquids:C5H10O2-ipac",
+   "liquids:C5H10O2-valeric"
+  ],
+  "comp:C0.2941 H0.7059": [
+   "liquids:i-C5H12",
+   "liquids:n-C5H12"
+  ],
+  "comp:C0.3000 H0.6000 O0.1000": [
+   "liquids:C3H6O",
+   "liquids:C6H12O2"
+  ],
+  "comp:C0.3077 H0.6154 O0.0769": [
+   "liquids:C4H8O",
+   "liquids:C8H16O2"
+  ],
+  "comp:C0.3077 H0.6923": [
+   "liquids:i-C8H18",
+   "liquids:n-C8H18"
+  ],
+  "comp:C0.3333 H0.5333 O0.1333": [
+   "polymers:PMMA-950-resist",
+   "polymers:PMMA-Mitsubishi",
+   "polymers:PMMA-Tomson"
+  ],
+  "comp:C0.3333 H0.6667": [
+   "gases:C2H4",
+   "liquids:C6H12",
+   "polymers:PE-HDPE",
+   "polymers:PE-LLDPE",
+   "polymers:PMP"
+  ],
+  "comp:C0.5000 H0.5000": [
+   "gases:C2H2",
+   "liquids:C6H6",
+   "liquids:C8H8",
+   "polymers:PS"
+  ],
+  "comp:C1.0000": [
+   "batch3b_4:C@diamond cubic",
+   "batch3b_4:C@graphite"
+  ],
+  "comp:H0.6667 O0.3333": [
+   "liquids:D2O",
+   "liquids:H2O"
+  ],
+  "comp:H1.0000": [
+   "gases:D2",
+   "gases:H2"
+  ],
+  "line:cargille-matching-liquids": [
+   "optical_media:Cargille-06350",
+   "optical_media:Cargille-50350",
+   "optical_media:Cargille-BK7",
+   "optical_media:Cargille-acrylic",
+   "optical_media:Cargille-acrylic-double"
+  ],
+  "line:merck-mlc-9200": [
+   "liquid_crystals:MLC-9200-000",
+   "liquid_crystals:MLC-9200-100"
+  ],
+  "line:micro-resist-epoxy": [
+   "polymers:EpoClad",
+   "polymers:EpoCore"
+  ],
+  "line:nanoscribe-ip": [
+   "polymers:IP-Dip",
+   "polymers:IP-S"
+  ],
+  "line:silk-fibroin": [
+   "liquids:silk-Aa",
+   "liquids:silk-Am",
+   "liquids:silk-Bm",
+   "liquids:silk-Sr"
+  ]
+ },
+ "notes": [
+  "Join on material_id: ML_release_feature_matrix.parquet and ML_release_spectra.parquet.",
+  "Never split rows of one group; use 'group' for any other grouped scheme (e.g. sklearn GroupKFold).",
+  "Fit scalers, imputers and feature selection on the training split only."
+ ]
+}

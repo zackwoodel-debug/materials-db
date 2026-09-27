@@ -1,0 +1,127 @@
+#!/usr/bin/env python3
+"""
+scripts/generate_ml_splits.py
+=============================
+Leak-free, reproducible train / validation / test splits and cross-validation folds for the ML sets (the per-material feature
+matrix and the per-dataset spectra), assigned to GROUPS of materials, never to single rows.
+
+    python3 scripts/generate_ml_splits.py
+    -> data/ML_splits.csv (one row per material), data/ML_splits_metadata.json
+
+Groups: materials a model cannot tell apart, or that are grades of one product, must fall on the same side of a split:
+  * comp:<element fractions>   identical composition (from feat_frac_*): polymorphs (C graphite / diamond), isomers
+                               (1- / 2-propanol), grades (PMMA, PDMS mixing ratios), a monomer and its polymer (ethylene / PE),
+                               H2O / D2O. Composition features are identical for them, so splitting them apart leaks the target.
+  * line:<name>                one product line or one kind of natural material without a formula (PRODUCT_LINES).
+  * key:<stable key>           every other material is its own group.
+Rows of the spectra set (axes, phases, temperatures, sources of one material) follow their material_id.
+
+Assignment: from sha256 of the group id, so a material keeps its split in every later release; a new material never moves an
+existing one. split: hash mod 10 -> 0-7 train, 8 validation, 9 test (about 80 / 10 / 10 of groups). fold: an independent
+hash mod 5 for grouped 5-fold cross-validation. Sizes are therefore near, not exactly, the nominal fractions (reported in the metadata).
+
+For leave-one-family-out, use meta_family, but drop or merge the groups the metadata lists under cross_family_groups
+(one composition in two families, e.g. ethylene gas and polyethylene).
+"""
+import argparse
+import hashlib
+import json
+import sys
+from pathlib import Path
+
+import pandas as pd
+
+_ROOT = Path(__file__).resolve().parents[1]
+FEATURES = _ROOT / "data" / "ML_release_feature_matrix.parquet"
+FEATURE_META = _ROOT / "data" / "ML_release_feature_metadata.json"
+OUT_CSV = _ROOT / "data" / "ML_splits.csv"
+OUT_METADATA = _ROOT / "data" / "ML_splits_metadata.json"
+SPLITS = {**{i: "train" for i in range(8)}, 8: "validation", 9: "test"}
+N_FOLDS = 5
+
+# Materials without a formula that are grades of one product or one kind of natural material.
+PRODUCT_LINES = {
+    "cargille-matching-liquids": ["optical_media:Cargille-BK7", "optical_media:Cargille-06350", "optical_media:Cargille-50350",
+                                  "optical_media:Cargille-acrylic", "optical_media:Cargille-acrylic-double"],
+    "silk-fibroin": ["liquids:silk-Bm", "liquids:silk-Am", "liquids:silk-Sr", "liquids:silk-Aa"],
+    "merck-mlc-9200": ["liquid_crystals:MLC-9200-000", "liquid_crystals:MLC-9200-100"],
+    "micro-resist-epoxy": ["polymers:EpoClad", "polymers:EpoCore"],
+    "nanoscribe-ip": ["polymers:IP-S", "polymers:IP-Dip"],
+}
+
+
+class SplitError(RuntimeError):
+    pass
+
+
+def composition_key(row, frac_cols):
+    parts = [f"{c[len('feat_frac_'):]}{row[c]:.4f}" for c in frac_cols if pd.notna(row[c]) and row[c] > 0]
+    return " ".join(parts) or None
+
+
+def _hash(text, salt):
+    return int(hashlib.sha256(f"{salt}:{text}".encode()).hexdigest(), 16)
+
+
+def assign(df, strict=True):
+    """strict: every PRODUCT_LINES key must be present (a renamed key would silently leave its group)."""
+    frac = sorted(c for c in df.columns if c.startswith("feat_frac_"))
+    line_of = {k: line for line, keys in PRODUCT_LINES.items() for k in keys}
+    unknown = sorted(set(line_of) - set(df.meta_key))
+    if unknown and strict:
+        raise SplitError(f"PRODUCT_LINES names keys not in the feature matrix: {unknown}")
+    rows = []
+    for r in df.itertuples(index=False):
+        ck = composition_key(r._asdict(), frac)
+        if r.meta_key in line_of:
+            if ck:
+                raise SplitError(f"{r.meta_key} has a composition; it belongs to a comp: group, not a product line")
+            gid = f"line:{line_of[r.meta_key]}"
+        else:
+            gid = f"comp:{ck}" if ck else f"key:{r.meta_key}"
+        rows.append(dict(material_id=r.material_id, meta_key=r.meta_key, meta_name=r.meta_name, meta_family=r.meta_family, group=gid,
+                         split=SPLITS[_hash(gid, "split") % 10], fold=_hash(gid, "fold") % N_FOLDS))
+    return pd.DataFrame(rows).sort_values("material_id").reset_index(drop=True)
+
+
+def summary(splits, features):
+    targets = [c for c in features.columns if c.startswith("target_")]
+    f = features.set_index("material_id")[targets]
+    per_split = {}
+    for s in ("train", "validation", "test"):
+        ids = splits.loc[splits.split == s, "material_id"]
+        per_split[s] = dict(materials=len(ids), groups=int(splits.loc[splits.split == s, "group"].nunique()),
+                            **{f"with_{t}": int(f.loc[ids, t].notna().sum()) for t in targets})
+    fams = splits.groupby("group").meta_family.agg(lambda x: sorted(set(x)))
+    multi = splits.groupby("group").size()
+    return dict(
+        groups=int(splits.group.nunique()), multi_material_groups=int((multi > 1).sum()),
+        materials_in_multi_material_groups=int(multi[multi > 1].sum()), per_split=per_split,
+        per_fold={int(k): int(v) for k, v in splits.fold.value_counts().sort_index().items()},
+        cross_family_groups={g: v for g, v in fams.items() if len(v) > 1},
+        group_members={g: sorted(splits.loc[splits.group == g, "meta_key"]) for g in multi[multi > 1].index})
+
+
+def main(argv=None):
+    argparse.ArgumentParser(description=__doc__.split("\n\n")[0]).parse_args(argv)
+    features = pd.read_parquet(FEATURES)
+    splits = assign(features)
+    splits.to_csv(OUT_CSV, index=False)
+    fmeta = json.loads(FEATURE_META.read_text())
+    meta = dict(source_release=fmeta["source_release"], source_sqlite_sha256=fmeta["source_sqlite_sha256"],
+                assignment="sha256 of the group id: split = hash('split:'+group) mod 10 (0-7 train, 8 validation, 9 test); "
+                           f"fold = hash('fold:'+group) mod {N_FOLDS}",
+                product_lines=PRODUCT_LINES, **summary(splits, features),
+                notes=["Join on material_id: ML_release_feature_matrix.parquet and ML_release_spectra.parquet.",
+                       "Never split rows of one group; use 'group' for any other grouped scheme (e.g. sklearn GroupKFold).",
+                       "Fit scalers, imputers and feature selection on the training split only."])
+    OUT_METADATA.write_text(json.dumps(meta, indent=1) + "\n")
+    ps = meta["per_split"]
+    print(f"{len(splits)} materials in {meta['groups']} groups ({meta['multi_material_groups']} with >1 material); "
+          f"train/validation/test = {ps['train']['materials']}/{ps['validation']['materials']}/{ps['test']['materials']} materials; "
+          f"{len(meta['cross_family_groups'])} cross-family groups -> {OUT_CSV.relative_to(_ROOT)}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

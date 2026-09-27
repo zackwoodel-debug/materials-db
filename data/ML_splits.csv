@@ -1,0 +1,382 @@
+material_id,meta_key,meta_name,meta_family,group,split,fold
+1,oxides_50:Al2O3@corundum/sapphire,Aluminium oxide / sapphire,oxides_50,comp:Al0.4000 O0.6000,train,3
+2,oxides_50:BeO@wurtzite,Beryllium oxide,oxides_50,comp:Be0.5000 O0.5000,train,3
+3,oxides_50:BeAl2O4@chrysoberyl,Chrysoberyl,oxides_50,comp:Al0.2857 Be0.1429 O0.5714,train,1
+4,oxides_50:BeAl6O10,Beryllium hexaaluminate,oxides_50,comp:Al0.3529 Be0.0588 O0.5882,train,3
+5,oxides_50:CaGdAlO4@K2NiF4-type,Calcium gadolinium aluminate,oxides_50,comp:Al0.1429 Ca0.1429 Gd0.1429 O0.5714,train,0
+6,oxides_50:CaYAlO4@K2NiF4-type,Calcium yttrium aluminate,oxides_50,comp:Al0.1429 Ca0.1429 O0.5714 Y0.1429,test,2
+7,oxides_50:MgAl2O4@spinel,Spinel,oxides_50,comp:Al0.2857 Mg0.1429 O0.5714,validation,1
+8,oxides_50:LaAlO3,Lanthanum aluminate,oxides_50,comp:Al0.2000 La0.2000 O0.6000,validation,3
+9,oxides_50:BaB2O4@beta-BBO,Barium borate (BBO),oxides_50,comp:B0.2857 Ba0.1429 O0.5714,train,4
+10,oxides_50:BiB3O6@alpha-BiBO,Bismuth triborate (BiBO),oxides_50,comp:B0.3000 Bi0.1000 O0.6000,train,1
+11,oxides_50:LiB3O5,Lithium triborate (LBO),oxides_50,comp:B0.3333 Li0.1111 O0.5556,train,2
+12,oxides_50:CsLiB6O10,Cesium lithium borate (CLBO),oxides_50,comp:B0.3333 Cs0.0556 Li0.0556 O0.5556,train,4
+13,oxides_50:LuAl3(BO3)4,Lutetium aluminium borate,oxides_50,comp:Al0.1500 B0.2000 Lu0.0500 O0.6000,train,2
+14,oxides_50:CaCO3@calcite,Calcite,oxides_50,comp:C0.2000 Ca0.2000 O0.6000,validation,3
+15,oxides_50:CuO@tenorite,Copper(II) oxide,oxides_50,comp:Cu0.5000 O0.5000,train,3
+16,oxides_50:Cu2O@cuprite,Copper(I) oxide,oxides_50,comp:Cu0.6667 O0.3333,test,2
+17,oxides_50:Dy2O3@bixbyite,Dysprosium oxide,oxides_50,comp:Dy0.4000 O0.6000,validation,4
+18,oxides_50:Fe2O3@hematite,Hematite,oxides_50,comp:Fe0.4000 O0.6000,train,1
+19,oxides_50:Fe3O4@magnetite,Magnetite,oxides_50,comp:Fe0.4286 O0.5714,train,2
+20,oxides_50:GeO2,Germanium dioxide,oxides_50,comp:Ge0.3333 O0.6667,train,2
+21,oxides_50:Bi12GeO20@BGO,Bismuth germanate,oxides_50,comp:Bi0.3636 Ge0.0303 O0.6061,train,0
+22,oxides_50:Pb5Ge3O11,Lead germanate,oxides_50,comp:Ge0.1579 O0.5789 Pb0.2632,train,3
+23,oxides_50:HfO2,Hafnium dioxide,oxides_50,comp:Hf0.3333 O0.6667,test,2
+24,oxides_50:LiIO3,Lithium iodate,oxides_50,comp:I0.2000 Li0.2000 O0.6000,train,4
+25,oxides_50:Lu2O3@bixbyite,Lutetium oxide,oxides_50,comp:Lu0.4000 O0.6000,train,3
+26,oxides_50:Lu3Al5O12@garnet,LuAG,oxides_50,comp:Al0.2500 Lu0.1500 O0.6000,train,0
+27,oxides_50:MgO@rock salt,Magnesium oxide,oxides_50,comp:Mg0.5000 O0.5000,train,1
+28,oxides_50:MoO2,Molybdenum dioxide,oxides_50,comp:Mo0.3333 O0.6667,train,0
+29,oxides_50:MoO3,Molybdenum trioxide,oxides_50,comp:Mo0.2500 O0.7500,train,0
+30,oxides_50:CaMoO4@scheelite,Calcium molybdate,oxides_50,comp:Ca0.1667 Mo0.1667 O0.6667,train,1
+31,oxides_50:PbMoO4@scheelite/wulfenite,Lead molybdate,oxides_50,comp:Mo0.1667 O0.6667 Pb0.1667,test,2
+32,oxides_50:SrMoO4@scheelite,Strontium molybdate,oxides_50,comp:Mo0.1667 O0.6667 Sr0.1667,test,1
+33,oxides_50:Nb2O5@amorphous,Niobium pentoxide,oxides_50,comp:Nb0.2857 O0.7143,train,2
+34,oxides_50:KNbO3,Potassium niobate,oxides_50,comp:K0.2000 Nb0.2000 O0.6000,train,0
+35,oxides_50:LiNbO3,Lithium niobate,oxides_50,comp:Li0.2000 Nb0.2000 O0.6000,train,0
+36,oxides_50:Sc2O3@bixbyite,Scandium oxide,oxides_50,comp:O0.6000 Sc0.4000,train,0
+37,oxides_50:SiO@amorphous,Silicon monoxide,oxides_50,comp:O0.5000 Si0.5000,train,0
+38,oxides_50:SiO2@amorphous,Silicon dioxide / quartz,oxides_50,comp:O0.6667 Si0.3333,train,1
+39,oxides_50:Ta2O5@amorphous,Tantalum pentoxide,oxides_50,comp:O0.7143 Ta0.2857,train,4
+40,oxides_50:Tb3Ga5O12@garnet,TGG,oxides_50,comp:Ga0.2500 O0.6000 Tb0.1500,train,2
+41,oxides_50:TeO2@paratellurite,Tellurium dioxide,oxides_50,comp:O0.6667 Te0.3333,train,1
+42,oxides_50:TiO2@rutile,Titanium dioxide (rutile / anatase),oxides_50,comp:O0.6667 Ti0.3333,train,0
+43,oxides_50:BaTiO3,Barium titanate,oxides_50,comp:Ba0.2000 O0.6000 Ti0.2000,validation,1
+44,oxides_50:SrTiO3,Strontium titanate,oxides_50,comp:O0.6000 Sr0.2000 Ti0.2000,train,0
+45,oxides_50:VO2@M1 (insulating),Vanadium dioxide,oxides_50,comp:O0.6667 V0.3333,train,1
+46,oxides_50:YVO4@zircon,Yttrium orthovanadate,oxides_50,comp:O0.6667 V0.1667 Y0.1667,train,4
+47,oxides_50:WO3,Tungsten trioxide,oxides_50,comp:O0.7500 W0.2500,train,3
+48,oxides_50:Y2O3@bixbyite,Yttrium oxide,oxides_50,comp:O0.6000 Y0.4000,train,4
+49,oxides_50:Y3Al5O12@garnet,YAG,oxides_50,comp:Al0.2500 O0.6000 Y0.1500,train,0
+50,oxides_50:ZnO@wurtzite,Zinc oxide,oxides_50,comp:O0.5000 Zn0.5000,train,0
+51,batch2_31:BaF2,Barium fluoride,batch2_31,comp:Ba0.3333 F0.6667,validation,3
+52,batch2_31:CaF2,Calcium fluoride,batch2_31,comp:Ca0.3333 F0.6667,train,0
+53,batch2_31:CdF2,Cadmium fluoride,batch2_31,comp:Cd0.3333 F0.6667,train,1
+54,batch2_31:CeF3@tysonite,Cerium(III) fluoride,batch2_31,comp:Ce0.2500 F0.7500,train,1
+55,batch2_31:CsF,Cesium fluoride,batch2_31,comp:Cs0.5000 F0.5000,train,4
+56,batch2_31:GdF3,Gadolinium(III) fluoride,batch2_31,comp:F0.7500 Gd0.2500,train,0
+57,batch2_31:KF,Potassium fluoride,batch2_31,comp:F0.5000 K0.5000,train,3
+58,batch2_31:LaF3@tysonite,Lanthanum fluoride,batch2_31,comp:F0.7500 La0.2500,train,2
+59,batch2_31:LiCaAlF6@colquiriite,Lithium calcium aluminum fluoride (LiCAF),batch2_31,comp:Al0.1111 Ca0.1111 F0.6667 Li0.1111,train,3
+60,batch2_31:LiF,Lithium fluoride,batch2_31,comp:F0.5000 Li0.5000,train,1
+61,batch2_31:MgF2@rutile,Magnesium fluoride,batch2_31,comp:F0.6667 Mg0.3333,train,2
+62,batch2_31:NaF,Sodium fluoride,batch2_31,comp:F0.5000 Na0.5000,train,2
+63,batch2_31:PbF2,Lead(II) fluoride,batch2_31,comp:F0.6667 Pb0.3333,validation,2
+64,batch2_31:RbF,Rubidium fluoride,batch2_31,comp:F0.5000 Rb0.5000,train,2
+65,batch2_31:SrF2,Strontium fluoride,batch2_31,comp:F0.6667 Sr0.3333,train,2
+66,batch2_31:ThF4,Thorium(IV) fluoride,batch2_31,comp:F0.8000 Th0.2000,test,4
+67,batch2_31:YLiF4@scheelite,Yttrium lithium fluoride (YLF),batch2_31,comp:F0.6667 Li0.1667 Y0.1667,train,4
+68,batch2_31:YbF3@YF3-type,Ytterbium(III) fluoride,batch2_31,comp:F0.7500 Yb0.2500,train,3
+69,batch2_31:AlN@wurtzite,Aluminium nitride,batch2_31,comp:Al0.5000 N0.5000,train,0
+70,batch2_31:BN@h-BN,Boron nitride (hexagonal),batch2_31,comp:B0.5000 N0.5000,train,0
+71,batch2_31:GaN@wurtzite,Gallium nitride,batch2_31,comp:Ga0.5000 N0.5000,train,4
+72,batch2_31:As2S3@amorphous,Arsenic trisulfide,batch2_31,comp:As0.4000 S0.6000,train,2
+73,batch2_31:CdS@greenockite,Cadmium sulfide,batch2_31,comp:Cd0.5000 S0.5000,train,1
+74,batch2_31:GaS@beta-GaS (2H),Gallium sulfide,batch2_31,comp:Ga0.5000 S0.5000,train,0
+75,batch2_31:GeS2,Germanium disulfide,batch2_31,comp:Ge0.3333 S0.6667,train,2
+76,batch2_31:HgS@cinnabar,Mercury(II) sulfide (cinnabar),batch2_31,comp:Hg0.5000 S0.5000,test,3
+77,batch2_31:PbS@rock salt,Lead(II) sulfide (galena),batch2_31,comp:Pb0.5000 S0.5000,train,4
+78,batch2_31:ZnS@sphalerite,Zinc sulfide,batch2_31,comp:S0.5000 Zn0.5000,train,3
+79,batch2_31:TiN@rock salt,Titanium nitride,batch2_31,comp:N0.5000 Ti0.5000,train,4
+80,batch2_31:VN@rock salt,Vanadium nitride,batch2_31,comp:N0.5000 V0.5000,train,2
+81,batch2_31:EuS@rock salt,Europium sulfide,batch2_31,comp:Eu0.5000 S0.5000,train,0
+82,pure_elements_50:Au,Gold,pure_elements_50,comp:Au1.0000,train,3
+83,pure_elements_50:Se@trigonal,Selenium,pure_elements_50,comp:Se1.0000,train,1
+84,pure_elements_50:Te@trigonal,Tellurium,pure_elements_50,comp:Te1.0000,train,0
+85,pure_elements_50:Ag@fcc,Silver,pure_elements_50,comp:Ag1.0000,train,1
+86,pure_elements_50:Al@fcc,Aluminium,pure_elements_50,comp:Al1.0000,train,3
+87,pure_elements_50:Be@hcp,Beryllium,pure_elements_50,comp:Be1.0000,train,4
+88,pure_elements_50:Bi@rhombohedral (A7),Bismuth,pure_elements_50,comp:Bi1.0000,train,0
+89,pure_elements_50:Ca@fcc,Calcium,pure_elements_50,comp:Ca1.0000,test,3
+90,pure_elements_50:Ce@fcc (gamma-Ce),Cerium,pure_elements_50,comp:Ce1.0000,train,1
+91,pure_elements_50:Co@hcp,Cobalt,pure_elements_50,comp:Co1.0000,train,1
+92,pure_elements_50:Cr@bcc,Chromium,pure_elements_50,comp:Cr1.0000,train,2
+93,pure_elements_50:Cs@bcc,Cesium,pure_elements_50,comp:Cs1.0000,train,2
+94,pure_elements_50:Cu@fcc,Copper,pure_elements_50,comp:Cu1.0000,train,2
+95,pure_elements_50:Er@hcp,Erbium,pure_elements_50,comp:Er1.0000,train,3
+96,pure_elements_50:Eu@bcc,Europium,pure_elements_50,comp:Eu1.0000,test,3
+97,pure_elements_50:Fe@bcc (alpha-Fe),Iron,pure_elements_50,comp:Fe1.0000,train,4
+98,pure_elements_50:Ge@diamond cubic,Germanium,pure_elements_50,comp:Ge1.0000,train,0
+99,pure_elements_50:Hf@hcp,Hafnium,pure_elements_50,comp:Hf1.0000,test,1
+100,pure_elements_50:Ho@hcp,Holmium,pure_elements_50,comp:Ho1.0000,train,2
+101,pure_elements_50:In@face-centered tetragonal,Indium,pure_elements_50,comp:In1.0000,train,0
+102,pure_elements_50:Ir@fcc,Iridium,pure_elements_50,comp:Ir1.0000,train,0
+103,pure_elements_50:K@bcc,Potassium,pure_elements_50,comp:K1.0000,validation,2
+104,pure_elements_50:Li@bcc,Lithium,pure_elements_50,comp:Li1.0000,train,2
+105,pure_elements_50:Lu@hcp,Lutetium,pure_elements_50,comp:Lu1.0000,train,0
+106,pure_elements_50:Mg@hcp,Magnesium,pure_elements_50,comp:Mg1.0000,train,1
+107,pure_elements_50:Mn@alpha-Mn (complex cubic),Manganese,pure_elements_50,comp:Mn1.0000,train,4
+108,pure_elements_50:Mo@bcc,Molybdenum,pure_elements_50,comp:Mo1.0000,train,0
+109,pure_elements_50:Na@bcc,Sodium,pure_elements_50,comp:Na1.0000,validation,4
+110,pure_elements_50:Nb@bcc,Niobium,pure_elements_50,comp:Nb1.0000,train,3
+111,pure_elements_50:Ni@fcc,Nickel,pure_elements_50,comp:Ni1.0000,train,2
+112,pure_elements_50:Os@hcp,Osmium,pure_elements_50,comp:Os1.0000,test,4
+113,pure_elements_50:Pb@fcc,Lead,pure_elements_50,comp:Pb1.0000,validation,0
+114,pure_elements_50:Pd@fcc,Palladium,pure_elements_50,comp:Pd1.0000,test,1
+115,pure_elements_50:Pr@dhcp,Praseodymium,pure_elements_50,comp:Pr1.0000,train,3
+116,pure_elements_50:Pt@fcc,Platinum,pure_elements_50,comp:Pt1.0000,train,2
+117,pure_elements_50:Rb@bcc,Rubidium,pure_elements_50,comp:Rb1.0000,validation,0
+118,pure_elements_50:Re@hcp,Rhenium,pure_elements_50,comp:Re1.0000,test,4
+119,pure_elements_50:Rh@fcc,Rhodium,pure_elements_50,comp:Rh1.0000,train,1
+120,pure_elements_50:Ru@hcp,Ruthenium,pure_elements_50,comp:Ru1.0000,train,1
+121,pure_elements_50:Sc@hcp,Scandium,pure_elements_50,comp:Sc1.0000,train,1
+122,pure_elements_50:Si@diamond cubic,Silicon,pure_elements_50,comp:Si1.0000,validation,4
+123,pure_elements_50:Sr@fcc,Strontium,pure_elements_50,comp:Sr1.0000,validation,1
+124,pure_elements_50:Ta@bcc,Tantalum,pure_elements_50,comp:Ta1.0000,train,0
+125,pure_elements_50:Ti@hcp,Titanium,pure_elements_50,comp:Ti1.0000,train,2
+126,pure_elements_50:Tm@hcp,Thulium,pure_elements_50,comp:Tm1.0000,train,2
+127,pure_elements_50:V@bcc,Vanadium,pure_elements_50,comp:V1.0000,test,0
+128,pure_elements_50:W@bcc,Tungsten,pure_elements_50,comp:W1.0000,train,2
+129,pure_elements_50:Yb@fcc,Ytterbium,pure_elements_50,comp:Yb1.0000,train,4
+130,pure_elements_50:Zn@hcp,Zinc,pure_elements_50,comp:Zn1.0000,train,4
+131,pure_elements_50:Zr@hcp,Zirconium,pure_elements_50,comp:Zr1.0000,train,0
+132,batch3b_4:C@diamond cubic,Diamond,batch3b_4,comp:C1.0000,train,3
+133,batch3b_4:C@graphite,Graphite,batch3b_4,comp:C1.0000,train,3
+134,batch3b_4:Sn@beta-Sn (tetragonal),Tin,batch3b_4,comp:Sn1.0000,test,2
+135,batch3b_4:B@amorphous,Boron,batch3b_4,comp:B1.0000,train,2
+136,nitrides:Si3N4,Silicon nitride,nitrides,comp:N0.5714 Si0.4286,test,3
+137,polymers:PE-HDPE,High-density polyethylene (HDPE),polymers,comp:C0.3333 H0.6667,validation,3
+138,polymers:PVC,Polyvinyl chloride,polymers,comp:C0.3333 Cl0.1667 H0.5000,train,2
+139,polymers:PS,Polystyrene,polymers,comp:C0.5000 H0.5000,train,1
+140,polymers:PMMA-Tomson,Poly(methyl methacrylate) (Tomson),polymers,comp:C0.3333 H0.5333 O0.1333,train,0
+141,polymers:PMMA-Mitsubishi,Poly(methyl methacrylate) (Mitsubishi),polymers,comp:C0.3333 H0.5333 O0.1333,train,0
+142,polymers:PC,Polycarbonate,polymers,comp:C0.4848 H0.4242 O0.0909,train,3
+143,polymers:PET,Polyethylene terephthalate,polymers,comp:C0.4545 H0.3636 O0.1818,train,1
+144,polymers:PVA,Polyvinyl alcohol,polymers,comp:C0.2857 H0.5714 O0.1429,train,0
+145,polymers:PVP,Polyvinylpyrrolidone,polymers,comp:C0.3529 H0.5294 N0.0588 O0.0588,train,4
+146,polymers:PEI,Polyetherimide (PEI),polymers,comp:C0.5362 H0.3478 N0.0290 O0.0870,train,1
+147,polymers:SAN,Styrene-acrylonitrile copolymer,polymers,key:polymers:SAN,test,2
+148,polymers:PDMS-5-1,"Polydimethylsiloxane (Dow Corning, 5:1 mass ratio)",polymers,comp:C0.2000 H0.6000 O0.1000 Si0.1000,validation,1
+149,polymers:PDMS-10-1,"Polydimethylsiloxane (Dow Corning, 10:1 mass ratio)",polymers,comp:C0.2000 H0.6000 O0.1000 Si0.1000,validation,1
+150,polymers:PDMS-15-1,"Polydimethylsiloxane (Dow Corning, 15:1 mass ratio)",polymers,comp:C0.2000 H0.6000 O0.1000 Si0.1000,validation,1
+151,polymers:PDMS-20-1,"Polydimethylsiloxane (Dow Corning, 20:1 mass ratio)",polymers,comp:C0.2000 H0.6000 O0.1000 Si0.1000,validation,1
+152,polymers:SU-8,SU-8 3000 (epoxy photoresist),polymers,key:polymers:SU-8,train,0
+153,polymers:COP-Zeonex-E48R,Zeonex E48R (cyclo olefin polymer),polymers,key:polymers:COP-Zeonex-E48R,train,2
+154,polymers:Optorez-1330,Optorez 1330,polymers,key:polymers:Optorez-1330,validation,0
+155,polymers:NAS-21,NAS-21,polymers,key:polymers:NAS-21,train,3
+156,polymers:PMP,Polymethylpentene (TPX),polymers,comp:C0.3333 H0.6667,validation,3
+157,polymers:Kapton,Kapton HN (polyimide film),polymers,key:polymers:Kapton,train,1
+158,polymers:PLA,Poly(D-lactic acid) (PDLA),polymers,comp:C0.3333 H0.4444 O0.2222,train,2
+159,polymers:cellulose,Cellulose,polymers,comp:C0.2857 H0.4762 O0.2381,test,2
+160,polymers:PE-LLDPE,Linear low-density polyethylene (LLDPE),polymers,comp:C0.3333 H0.6667,validation,3
+161,polymers:PCTFE,Polychlorotrifluoroethylene (PCTFE),polymers,comp:C0.3333 Cl0.1667 F0.5000,test,4
+162,polymers:PNIPAM,Poly(N-isopropylacrylamide) (PNIPAM),polymers,comp:C0.3158 H0.5789 N0.0526 O0.0526,train,3
+163,polymers:Surlyn-A1601,Surlyn A-1601 (DuPont ionomer resin),polymers,key:polymers:Surlyn-A1601,train,0
+164,polymers:MDMO-PPV,MDMO-PPV,polymers,comp:C0.3878 H0.5714 O0.0408,validation,0
+165,polymers:ZZ50,ZZ50,polymers,comp:C0.4189 H0.5135 N0.0270 S0.0405,train,4
+166,polymers:F8BT,F8BT,polymers,comp:C0.4375 H0.5250 N0.0250 S0.0125,train,0
+167,polymers:PTB7,PTB7,polymers,comp:C0.3981 F0.0097 H0.5146 O0.0388 S0.0388,train,1
+168,polymers:PDCBT,PDCBT,polymers,key:polymers:PDCBT,train,2
+169,polymers:PBDB-T-2F,PBDB-T-2F,polymers,comp:C0.4359 F0.0128 H0.4872 O0.0128 S0.0513,train,4
+170,polymers:maN-1407,Micro resist ma-N 1407 (negative resist),polymers,key:polymers:maN-1407,train,4
+171,polymers:EpoClad,Micro resist EpoClad (negative photoresist),polymers,line:micro-resist-epoxy,train,4
+172,polymers:EpoCore,Micro resist EpoCore (negative photoresist),polymers,line:micro-resist-epoxy,train,4
+173,polymers:Microchem-8.5mEL,Microchem 8.5 mEL (copolymer resist),polymers,key:polymers:Microchem-8.5mEL,train,2
+174,polymers:IP-S,Nanoscribe IP-S (cured),polymers,line:nanoscribe-ip,train,0
+175,polymers:IP-Dip,Nanoscribe IP-Dip (cured),polymers,line:nanoscribe-ip,train,0
+176,polymers:PMMA-495-resist,Microchem 495 PMMA resist,polymers,key:polymers:PMMA-495-resist,validation,1
+177,polymers:PMMA-950-resist,Microchem 950 PMMA resist,polymers,comp:C0.3333 H0.5333 O0.1333,train,0
+178,inorganic3:B4C,Boron carbide,inorganic3,comp:B0.8000 C0.2000,train,2
+179,inorganic3:SiC,Silicon carbide,inorganic3,comp:C0.5000 Si0.5000,train,4
+180,inorganic3:TiC,Titanium carbide,inorganic3,comp:C0.5000 Ti0.5000,train,1
+181,inorganic3:VC,Vanadium carbide,inorganic3,comp:C0.5000 V0.5000,train,4
+182,inorganic3:CaMgCO32,Dolomite (calcium magnesium carbonate),inorganic3,comp:C0.2000 Ca0.1000 Mg0.1000 O0.6000,train,2
+183,inorganic3:BiFeO3,Bismuth ferrite,inorganic3,comp:Bi0.2000 Fe0.2000 O0.6000,test,2
+184,inorganic3:Bi4Ge3O12,Bismuth germanate (BGO),inorganic3,comp:Bi0.2105 Ge0.1579 O0.6316,train,4
+185,inorganic3:Bi12SiO20,Bismuth silicate (BSO),inorganic3,comp:Bi0.3636 O0.6061 Si0.0303,train,0
+186,inorganic3:ScAlMgO4,Magnesium aluminate scandium oxide (SCAM),inorganic3,comp:Al0.1429 Mg0.1429 O0.5714 Sc0.1429,train,4
+187,inorganic3:Yb2O3,Ytterbium oxide,inorganic3,comp:O0.6000 Yb0.4000,train,1
+188,inorganic3:KTaO3,Potassium tantalate,inorganic3,comp:K0.2000 O0.6000 Ta0.2000,train,4
+189,inorganic3:LiTaO3,Lithium tantalate,inorganic3,comp:Li0.2000 O0.6000 Ta0.2000,test,4
+190,inorganic3:Bi4Ti3O12,Bismuth titanate,inorganic3,comp:Bi0.2105 O0.6316 Ti0.1579,train,0
+191,inorganic3:PbTiO3,Lead titanate,inorganic3,comp:O0.6000 Pb0.2000 Ti0.2000,train,1
+192,inorganic3:CaWO4,Calcium tungstate,inorganic3,comp:Ca0.1667 O0.6667 W0.1667,train,4
+193,inorganic3:ZnWO4,Zinc tungstate,inorganic3,comp:O0.6667 W0.1667 Zn0.1667,train,2
+194,halides:AgCl,Silver chloride,halides,comp:Ag0.5000 Cl0.5000,train,0
+195,halides:CsCl,Cesium chloride,halides,comp:Cl0.5000 Cs0.5000,train,2
+196,halides:CuCl,Copper(I) chloride,halides,comp:Cl0.5000 Cu0.5000,train,1
+197,halides:KCl,Potassium chloride,halides,comp:Cl0.5000 K0.5000,train,2
+198,halides:LiCl,Lithium chloride,halides,comp:Cl0.5000 Li0.5000,train,3
+199,halides:NaCl,Sodium chloride,halides,comp:Cl0.5000 Na0.5000,train,4
+200,halides:RbCl,Rubidium chloride,halides,comp:Cl0.5000 Rb0.5000,train,0
+201,halides:TlCl,Thallium(I) chloride,halides,comp:Cl0.5000 Tl0.5000,train,2
+202,halides:AgBr,Silver bromide,halides,comp:Ag0.5000 Br0.5000,validation,1
+203,halides:CsBr,Cesium bromide,halides,comp:Br0.5000 Cs0.5000,validation,0
+204,halides:KBr,Potassium bromide,halides,comp:Br0.5000 K0.5000,train,1
+205,halides:LiBr,Lithium bromide,halides,comp:Br0.5000 Li0.5000,validation,4
+206,halides:NaBr,Sodium bromide,halides,comp:Br0.5000 Na0.5000,train,2
+207,halides:RbBr,Rubidium bromide,halides,comp:Br0.5000 Rb0.5000,train,0
+208,halides:TlBr,Thallium(I) bromide,halides,comp:Br0.5000 Tl0.5000,train,0
+209,halides:CsI,Cesium iodide,halides,comp:Cs0.5000 I0.5000,train,3
+210,halides:KI,Potassium iodide,halides,comp:I0.5000 K0.5000,validation,2
+211,halides:LiI,Lithium iodide,halides,comp:I0.5000 Li0.5000,train,3
+212,halides:NaI,Sodium iodide,halides,comp:I0.5000 Na0.5000,train,1
+213,halides:PbI2,Lead(II) iodide,halides,comp:I0.6667 Pb0.3333,train,0
+214,halides:RbI,Rubidium iodide,halides,comp:I0.5000 Rb0.5000,train,3
+215,chalcogenides:Ag3AsS3,Silver arsenic sulfide (proustite),chalcogenides,comp:Ag0.4286 As0.1429 S0.4286,test,0
+216,chalcogenides:AgGaS2,Silver gallium sulfide (AGS),chalcogenides,comp:Ag0.2500 Ga0.2500 S0.5000,test,0
+217,chalcogenides:BaGa4S7,Barium gallium sulfide (BGS),chalcogenides,comp:Ba0.0833 Ga0.3333 S0.5833,validation,3
+218,chalcogenides:CdGa2S4,Cadmium gallium sulfide,chalcogenides,comp:Cd0.1429 Ga0.2857 S0.5714,train,2
+219,chalcogenides:CuGaS2,Copper gallium sulfide,chalcogenides,comp:Cu0.2500 Ga0.2500 S0.5000,train,1
+220,chalcogenides:HgGa2S4,Mercury gallium sulfide,chalcogenides,comp:Ga0.2857 Hg0.1429 S0.5714,train,3
+221,chalcogenides:LiGaS2,Lithium gallium sulfide (LGS),chalcogenides,comp:Ga0.2500 Li0.2500 S0.5000,train,1
+222,chalcogenides:AgGaSe2,Silver gallium selenide (AGSe),chalcogenides,comp:Ag0.2500 Ga0.2500 Se0.5000,validation,1
+223,chalcogenides:As2Se3,Arsenic triselenide,chalcogenides,comp:As0.4000 Se0.6000,train,2
+224,chalcogenides:BaGa2GeSe6,Barium gallium germanium selenide (BGGSe),chalcogenides,comp:Ba0.1000 Ga0.2000 Ge0.1000 Se0.6000,train,3
+225,chalcogenides:BaGa4Se7,Barium gallium selenide (BGSe),chalcogenides,comp:Ba0.0833 Ga0.3333 Se0.5833,train,3
+226,chalcogenides:CdSe,Cadmium selenide,chalcogenides,comp:Cd0.5000 Se0.5000,train,0
+227,chalcogenides:PbSe,Lead selenide,chalcogenides,comp:Pb0.5000 Se0.5000,train,4
+228,chalcogenides:SnSe,Tin selenide,chalcogenides,comp:Se0.5000 Sn0.5000,train,4
+229,chalcogenides:Tl3AsSe3,Thallium arsenic selenide (TAS),chalcogenides,comp:As0.1429 Se0.4286 Tl0.4286,train,4
+230,chalcogenides:GaSe,Gallium selenide,chalcogenides,comp:Ga0.5000 Se0.5000,validation,4
+231,chalcogenides:ZnSe,Zinc selenide,chalcogenides,comp:Se0.5000 Zn0.5000,train,3
+232,liquids:H2O,Water,liquids,comp:H0.6667 O0.3333,train,0
+233,liquids:D2O,Heavy water (D2O),liquids,comp:H0.6667 O0.3333,train,0
+234,liquids:CS2,Carbon disulfide,liquids,comp:C0.3333 S0.6667,train,2
+235,liquids:Hg,Mercury (liquid),liquids,comp:Hg1.0000,train,4
+236,liquids:n-C5H12,n-Pentane,liquids,comp:C0.2941 H0.7059,train,3
+237,liquids:i-C5H12,Isopentane (2-methylbutane),liquids,comp:C0.2941 H0.7059,train,3
+238,liquids:n-C6H14,n-Hexane,liquids,comp:C0.3000 H0.7000,train,0
+239,liquids:n-C7H16,n-Heptane,liquids,comp:C0.3043 H0.6957,test,0
+240,liquids:n-C8H18,n-Octane,liquids,comp:C0.3077 H0.6923,validation,0
+241,liquids:i-C8H18,"Isooctane (2,2,4-trimethylpentane)",liquids,comp:C0.3077 H0.6923,validation,0
+242,liquids:CHBr3,Bromoform,liquids,comp:Br0.6000 C0.2000 H0.2000,train,3
+243,liquids:CH2Cl2,Dichloromethane,liquids,comp:C0.2000 Cl0.4000 H0.4000,train,1
+244,liquids:CHCl3,Chloroform,liquids,comp:C0.2000 Cl0.6000 H0.2000,train,4
+245,liquids:CCl4,Carbon tetrachloride,liquids,comp:C0.2000 Cl0.8000,train,0
+246,liquids:CBrCl3,Bromotrichloromethane,liquids,comp:Br0.2000 C0.2000 Cl0.6000,train,3
+247,liquids:C6F14,Perfluorohexane,liquids,comp:C0.3000 F0.7000,train,1
+248,liquids:C2Cl4,Tetrachloroethylene,liquids,comp:C0.3333 Cl0.6667,train,0
+249,liquids:C6H6,Benzene,liquids,comp:C0.5000 H0.5000,train,1
+250,liquids:C4H8OS,"1,4-Oxathiane",liquids,comp:C0.2857 H0.5714 O0.0714 S0.0714,train,4
+251,liquids:C5H5N,Pyridine,liquids,comp:C0.4545 H0.4545 N0.0909,train,1
+252,liquids:C6H12,Cyclohexane,liquids,comp:C0.3333 H0.6667,validation,3
+253,liquids:C7H8,Toluene,liquids,comp:C0.4667 H0.5333,test,4
+254,liquids:C8H8,Styrene,liquids,comp:C0.5000 H0.5000,train,1
+255,liquids:p-C8H10,p-Xylene,liquids,comp:C0.4444 H0.5556,train,4
+256,liquids:C6H3Cl3,"1,2,4-Trichlorobenzene",liquids,comp:C0.5000 Cl0.2500 H0.2500,train,4
+257,liquids:C6H5NO2,Nitrobenzene,liquids,comp:C0.4286 H0.3571 N0.0714 O0.1429,train,0
+258,liquids:C7F5N,Pentafluorobenzonitrile,liquids,comp:C0.5385 F0.3846 N0.0769,train,0
+259,liquids:C8H11N,"N,N-Dimethylaniline",liquids,comp:C0.4000 H0.5500 N0.0500,train,2
+260,liquids:CH3OH,Methanol,liquids,comp:C0.1667 H0.6667 O0.1667,test,4
+261,liquids:C2H5OH,Ethanol,liquids,comp:C0.2222 H0.6667 O0.1111,validation,2
+262,liquids:2-C3H7OH,2-Propanol (isopropanol),liquids,comp:C0.2500 H0.6667 O0.0833,train,1
+263,liquids:1-C3H7OH,1-Propanol,liquids,comp:C0.2500 H0.6667 O0.0833,train,1
+264,liquids:1-C4H9OH,1-Butanol,liquids,comp:C0.2667 H0.6667 O0.0667,train,1
+265,liquids:i-C4H9OH,Isobutanol (2-methyl-1-propanol),liquids,comp:C0.2667 H0.6667 O0.0667,train,1
+266,liquids:1-C5H11OH,1-Pentanol,liquids,comp:C0.2778 H0.6667 O0.0556,train,2
+267,liquids:i-C5H11OH,Isoamyl alcohol (3-methyl-1-butanol),liquids,comp:C0.2778 H0.6667 O0.0556,train,2
+268,liquids:C8H17OH,1-Octanol,liquids,comp:C0.2963 H0.6667 O0.0370,train,4
+269,liquids:C2H4(OH)2,Ethylene glycol,liquids,comp:C0.2000 H0.6000 O0.2000,train,4
+270,liquids:C3H6(OH)2,Propylene glycol,liquids,comp:C0.2308 H0.6154 O0.1538,train,2
+271,liquids:C5H10(OH)2,"1,5-Pentanediol",liquids,comp:C0.2632 H0.6316 O0.1053,train,4
+272,liquids:C3H5(OH)3,Glycerol,liquids,comp:C0.2143 H0.5714 O0.2143,train,1
+273,liquids:C4H8O,Tetrahydrofuran,liquids,comp:C0.3077 H0.6154 O0.0769,validation,1
+274,liquids:C4H8O2-dioxane,"1,4-Dioxane",liquids,comp:C0.2857 H0.5714 O0.1429,train,0
+275,liquids:C3H6O,Acetone,liquids,comp:C0.3000 H0.6000 O0.1000,train,3
+276,liquids:C2H4O2,Acetic acid,liquids,comp:C0.2500 H0.5000 O0.2500,train,4
+277,liquids:C5H10O2-valeric,Valeric acid,liquids,comp:C0.2941 H0.5882 O0.1176,train,4
+278,liquids:C6H12O2,Caproic acid (hexanoic acid),liquids,comp:C0.3000 H0.6000 O0.1000,train,3
+279,liquids:C7H14O2,Enanthic acid (heptanoic acid),liquids,comp:C0.3043 H0.6087 O0.0870,train,4
+280,liquids:C8H16O2,Caprylic acid (octanoic acid),liquids,comp:C0.3077 H0.6154 O0.0769,validation,1
+281,liquids:C9H18O2,Pelargonic acid (nonanoic acid),liquids,comp:C0.3103 H0.6207 O0.0690,train,2
+282,liquids:C18H34O2,Oleic acid,liquids,comp:C0.3333 H0.6296 O0.0370,test,4
+283,liquids:C4F6O3,Trifluoroacetic anhydride,liquids,comp:C0.3077 F0.4615 O0.2308,train,0
+284,liquids:C4H8O2-etac,Ethyl acetate,liquids,comp:C0.2857 H0.5714 O0.1429,train,0
+285,liquids:C5H10O2-ipac,Isopropyl acetate,liquids,comp:C0.2941 H0.5882 O0.1176,train,4
+286,liquids:C8H8O3,Methyl salicylate,liquids,comp:C0.4211 H0.4211 O0.1579,train,0
+287,liquids:C9H10O3,Ethyl salicylate,liquids,comp:C0.4091 H0.4545 O0.1364,train,4
+288,liquids:C11H12O2,Ethyl cinnamate,liquids,comp:C0.4400 H0.4800 O0.0800,train,2
+289,liquids:C12H14O4,Diethyl phthalate,liquids,comp:C0.4000 H0.4667 O0.1333,train,1
+290,liquids:C8H19NO,2-(Diisopropylamino)ethanol,liquids,comp:C0.2759 H0.6552 N0.0345 O0.0345,validation,1
+291,liquids:C2H3N,Acetonitrile,liquids,comp:C0.3333 H0.5000 N0.1667,train,0
+292,liquids:C2Cl3N,Trichloroacetonitrile,liquids,comp:C0.3333 Cl0.5000 N0.1667,train,1
+293,liquids:C2H6OS,Dimethyl sulfoxide,liquids,comp:C0.2000 H0.6000 O0.1000 S0.1000,train,1
+294,liquids:C3H7NO,"N,N-Dimethylformamide",liquids,comp:C0.2500 H0.5833 N0.0833 O0.0833,test,0
+295,liquids:C3H9O3P,Dimethyl methylphosphonate,liquids,comp:C0.1875 H0.5625 O0.1875 P0.0625,train,3
+296,liquids:C4H10O3S,Diethyl sulfite,liquids,comp:C0.2222 H0.5556 O0.1667 S0.0556,train,1
+297,liquids:C7H17O3P,Diisopropyl methylphosphonate,liquids,comp:C0.2500 H0.6071 O0.1071 P0.0357,train,1
+298,liquids:C9H8O,Cinnamaldehyde,liquids,comp:C0.5000 H0.4444 O0.0556,train,3
+299,liquids:C9H11NO3,L-Tyrosine,liquids,comp:C0.3750 H0.4583 N0.0417 O0.1250,train,4
+300,liquids:CH4N2O,Urea,liquids,comp:C0.1250 H0.5000 N0.2500 O0.1250,train,3
+301,liquids:C12H24O12,Lactose monohydrate,liquids,comp:C0.2500 H0.5000 O0.2500,train,4
+302,liquids:DNA,"DNA (sodium salt, calf thymus)",liquids,key:liquids:DNA,train,1
+303,liquids:silk-Bm,Silk fibroin (Bombyx mori),liquids,line:silk-fibroin,train,2
+304,liquids:silk-Am,Silk fibroin (Antheraea mylitta),liquids,line:silk-fibroin,train,2
+305,liquids:silk-Sr,Silk fibroin (Samia ricini),liquids,line:silk-fibroin,train,2
+306,liquids:silk-Aa,Silk fibroin (Antheraea assamensis),liquids,line:silk-fibroin,train,2
+307,semiconductors:AlAs,Aluminium arsenide,semiconductors,comp:Al0.5000 As0.5000,train,4
+308,semiconductors:AlSb,Aluminium antimonide,semiconductors,comp:Al0.5000 Sb0.5000,train,3
+309,semiconductors:BP,Boron phosphide,semiconductors,comp:B0.5000 P0.5000,train,2
+310,semiconductors:GaAs,Gallium arsenide,semiconductors,comp:As0.5000 Ga0.5000,test,4
+311,semiconductors:GaP,Gallium phosphide,semiconductors,comp:Ga0.5000 P0.5000,train,4
+312,semiconductors:GaSb,Gallium antimonide,semiconductors,comp:Ga0.5000 Sb0.5000,train,0
+313,semiconductors:InAs,Indium arsenide,semiconductors,comp:As0.5000 In0.5000,train,1
+314,semiconductors:InP,Indium phosphide,semiconductors,comp:In0.5000 P0.5000,test,2
+315,semiconductors:InSb,Indium antimonide,semiconductors,comp:In0.5000 Sb0.5000,train,3
+316,semiconductors:CdTe,Cadmium telluride,semiconductors,comp:Cd0.5000 Te0.5000,validation,3
+317,semiconductors:ZnTe,Zinc telluride,semiconductors,comp:Te0.5000 Zn0.5000,train,0
+318,semiconductors:PbTe,Lead telluride,semiconductors,comp:Pb0.5000 Te0.5000,train,4
+319,semiconductors:CdGeAs2,Cadmium germanium arsenide,semiconductors,comp:As0.5000 Cd0.2500 Ge0.2500,train,4
+320,semiconductors:CdGeP2,Cadmium germanium phosphide,semiconductors,comp:Cd0.2500 Ge0.2500 P0.5000,train,4
+321,semiconductors:ZnGeP2,Zinc germanium phosphide (ZGP),semiconductors,comp:Ge0.2500 P0.5000 Zn0.2500,train,4
+322,semiconductors:ZnSiAs2,Zinc silicon arsenide,semiconductors,comp:As0.5000 Si0.2500 Zn0.2500,train,1
+323,semiconductors:Ge2Sb2Te5,Germanium antimony telluride (GST),semiconductors,comp:Ge0.2222 Sb0.2222 Te0.5556,train,3
+324,inorganic4:AlPO4,Aluminium phosphate (berlinite),inorganic4,comp:Al0.1667 O0.6667 P0.1667,train,1
+325,inorganic4:CaSO4,Calcium sulfate (anhydrite),inorganic4,comp:Ca0.1667 O0.6667 S0.1667,train,3
+326,inorganic4:KH2PO4,Potassium dihydrogen phosphate (KDP),inorganic4,comp:H0.2500 K0.1250 O0.5000 P0.1250,train,3
+327,inorganic4:NH4H2PO4,Ammonium dihydrogen phosphate (ADP),inorganic4,comp:H0.5000 N0.0833 O0.3333 P0.0833,test,4
+328,inorganic4:KTiOPO4,Potassium titanyl phosphate (KTP),inorganic4,comp:K0.1250 O0.6250 P0.1250 Ti0.1250,train,0
+329,inorganic4:RbTiOPO4,Rubidium titanyl phosphate (RTP),inorganic4,comp:O0.6250 P0.1250 Rb0.1250 Ti0.1250,test,3
+330,glasses:soda-lime,Soda-lime silica glass,glasses,key:glasses:soda-lime,train,1
+331,glasses:N-BK7,N-BK7 borosilicate crown glass (SCHOTT),glasses,key:glasses:N-BK7,test,4
+332,glasses:B270,B 270 Superwite crown glass (SCHOTT),glasses,key:glasses:B270,train,3
+333,glasses:BOROFLOAT33,BOROFLOAT 33 borosilicate glass (SCHOTT),glasses,key:glasses:BOROFLOAT33,train,4
+334,glasses:D263TECO,D 263 T eco thin borosilicate glass (SCHOTT),glasses,key:glasses:D263TECO,test,0
+335,glasses:AF32ECO,AF 32 eco alkali-free thin glass (SCHOTT),glasses,key:glasses:AF32ECO,train,4
+336,glasses:ZERODUR,ZERODUR glass-ceramic (SCHOTT),glasses,key:glasses:ZERODUR,train,3
+337,glasses:EagleXG,EAGLE XG display glass (Corning),glasses,key:glasses:EagleXG,train,0
+338,glasses:K108,K108 crown glass (LZOS),glasses,key:glasses:K108,train,2
+339,glasses:BGG,Barium gallogermanate glass (BGG),glasses,key:glasses:BGG,train,2
+340,glasses:ZBLAN,ZBLAN fluoride glass,glasses,key:glasses:ZBLAN,train,3
+341,optical_media:Cargille-BK7,Cargille BK7 matching liquid,optical_media,line:cargille-matching-liquids,train,0
+342,optical_media:Cargille-06350,Cargille fused silica matching liquid 06350,optical_media,line:cargille-matching-liquids,train,0
+343,optical_media:Cargille-50350,Cargille fused silica matching liquid 50350,optical_media,line:cargille-matching-liquids,train,0
+344,optical_media:Cargille-acrylic,Cargille acrylic matching liquid,optical_media,line:cargille-matching-liquids,train,0
+345,optical_media:Cargille-acrylic-double,Cargille acrylic double matching liquid,optical_media,line:cargille-matching-liquids,train,0
+346,optical_media:NOA61,Norland NOA 61 optical adhesive (cured),optical_media,key:optical_media:NOA61,train,4
+347,optical_media:Eukitt,Eukitt mounting medium,optical_media,key:optical_media:Eukitt,validation,1
+348,optical_media:FluorSave,FluorSave mounting medium,optical_media,key:optical_media:FluorSave,train,2
+349,liquid_crystals:5CB,5CB (4-pentyl-4'-cyanobiphenyl),liquid_crystals,comp:C0.4737 H0.5000 N0.0263,train,2
+350,liquid_crystals:5PCH,5PCH (4-trans-pentylcyclohexylcyanobenzene),liquid_crystals,comp:C0.4091 H0.5682 N0.0227,train,0
+351,liquid_crystals:E7,E7 liquid crystal mixture,liquid_crystals,key:liquid_crystals:E7,train,4
+352,liquid_crystals:E44,E44 liquid crystal mixture,liquid_crystals,key:liquid_crystals:E44,train,1
+353,liquid_crystals:MLC-6241-000,MLC-6241-000 liquid crystal mixture,liquid_crystals,key:liquid_crystals:MLC-6241-000,train,1
+354,liquid_crystals:MLC-6608,MLC-6608 liquid crystal mixture,liquid_crystals,key:liquid_crystals:MLC-6608,train,3
+355,liquid_crystals:MLC-9200-000,MLC-9200-000 liquid crystal mixture,liquid_crystals,line:merck-mlc-9200,train,1
+356,liquid_crystals:MLC-9200-100,MLC-9200-100 liquid crystal mixture,liquid_crystals,line:merck-mlc-9200,train,1
+357,liquid_crystals:TL-216,TL-216 liquid crystal mixture,liquid_crystals,key:liquid_crystals:TL-216,train,4
+358,bio_media:PBS,Phosphate-buffered saline (PBS),bio_media,key:bio_media:PBS,train,0
+359,bio_media:DMEM,Dulbecco's modified Eagle's medium (DMEM),bio_media,key:bio_media:DMEM,train,2
+360,bio_media:blood,Human blood,bio_media,key:bio_media:blood,train,0
+361,bio_media:adipose,Human adipose tissue,bio_media,key:bio_media:adipose,train,2
+362,bio_media:liver,Human liver tissue,bio_media,key:bio_media:liver,train,3
+363,bio_media:colon,Human colon tissue,bio_media,key:bio_media:colon,validation,3
+364,gases:Air,Air,gases,key:gases:Air,train,1
+365,gases:N2,Nitrogen,gases,comp:N1.0000,train,0
+366,gases:O2,Oxygen,gases,comp:O1.0000,train,0
+367,gases:Ar,Argon,gases,comp:Ar1.0000,train,4
+368,gases:He,Helium,gases,comp:He1.0000,test,0
+369,gases:Ne,Neon,gases,comp:Ne1.0000,validation,4
+370,gases:Kr,Krypton,gases,comp:Kr1.0000,train,4
+371,gases:Xe,Xenon,gases,comp:Xe1.0000,train,3
+372,gases:H2,Hydrogen,gases,comp:H1.0000,train,1
+373,gases:D2,Deuterium,gases,comp:H1.0000,train,1
+374,gases:CO,Carbon monoxide,gases,comp:C0.5000 O0.5000,train,0
+375,gases:CO2,Carbon dioxide,gases,comp:C0.3333 O0.6667,train,3
+376,gases:NH3,Ammonia,gases,comp:H0.7500 N0.2500,test,1
+377,gases:SF6,Sulfur hexafluoride,gases,comp:F0.8571 S0.1429,train,0
+378,gases:CH4,Methane,gases,comp:C0.2000 H0.8000,train,4
+379,gases:C2H6,Ethane,gases,comp:C0.2500 H0.7500,train,0
+380,gases:C2H4,Ethylene,gases,comp:C0.3333 H0.6667,validation,3
+381,gases:C2H2,Acetylene,gases,comp:C0.5000 H0.5000,train,1

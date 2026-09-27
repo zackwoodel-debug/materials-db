@@ -143,6 +143,11 @@ Generic loader: scripts/load_family_db.py (--family/--catalog/--selections/--db/
    optical dataset, n/k on 128 log-spaced wavelengths 200-25000 nm, linear in log-wavelength inside the dataset's own range only,
    masked across gaps > 1.5x (MAX_GAP_RATIO). From v0.14.0: 813 datasets / 365 materials, 255 with k, 18 datasets entirely
    outside the grid (listed in the metadata). Regenerate after each release, like the per-material ML set. Split by material_id.
+27. DONE: grouped splits (scripts/generate_ml_splits.py -> data/ML_splits.csv + metadata). Groups: identical element fractions
+   (polymorphs, isomers, grades, monomer/polymer, H2O/D2O), PRODUCT_LINES for formula-less grades (Cargille, silk, MLC-9200,
+   EpoClad/EpoCore, IP-S/IP-Dip), else the material. split = sha256(group) mod 10 (8/1/1), fold = independent hash mod 5: stable
+   across releases. v0.14.0: 345 groups, 303/42/36 materials. When adding a formula-less grade of an existing line, add it to
+   PRODUCT_LINES. Regenerate after the feature matrix.
 
 ## FOLLOW-UP (logged, NOT started): graphene / 2D carbon as its own family -- materialclass must NOT be 'polymer'
 - RI.info main/C, verified read-only: monolayer graphene = Weber 2010 (0.21-1.0 um, exfoliated flake, 3.4 A, on Si/98 nm SiO2), Song 2018 "Graphene"
