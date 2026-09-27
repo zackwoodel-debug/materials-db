@@ -139,6 +139,10 @@ Generic loader: scripts/load_family_db.py (--family/--catalog/--selections/--db/
    CHANGELOG.md (shipped; a versioned build needs a '## [X.Y.Z]' entry, checked before building; 0.0.0* exempt). The dictionary is
    introspected from the release DB + curated descriptions in release_dictionary.TABLES; an undescribed or vanished column stops
    the build. When adding a column or table, describe it there. Before each release: move [Unreleased] notes under the version.
+26. DONE: spectral ML set (scripts/generate_ml_spectra.py -> data/ML_release_spectra.parquet + _metadata.json): one row per
+   optical dataset, n/k on 128 log-spaced wavelengths 200-25000 nm, linear in log-wavelength inside the dataset's own range only,
+   masked across gaps > 1.5x (MAX_GAP_RATIO). From v0.14.0: 813 datasets / 365 materials, 255 with k, 18 datasets entirely
+   outside the grid (listed in the metadata). Regenerate after each release, like the per-material ML set. Split by material_id.
 
 ## FOLLOW-UP (logged, NOT started): graphene / 2D carbon as its own family -- materialclass must NOT be 'polymer'
 - RI.info main/C, verified read-only: monolayer graphene = Weber 2010 (0.21-1.0 um, exfoliated flake, 3.4 A, on Si/98 nm SiO2), Song 2018 "Graphene"
