@@ -12,6 +12,8 @@ versions follow the release tags. Counts are materials / optical datasets.
   composition, or one product line), assigned by hash so a material keeps its split in later releases.
 - ML package (`scripts/package_ml_dataset.py` -> `release/ml-dataset-vX.Y.Z.zip`): per-split Parquet, MLCommons Croissant
   1.1 metadata, a Hugging Face dataset card, Zenodo metadata; `CITATION.cff` at the repository root.
+- Read-only access layer (`materials_db.access`): a Python library, an HTTP API and an MCP server for AI assistants over a
+  release (search, material records with sources, n/k at a wavelength without extrapolation, comparisons, read-only SQL).
 
 ## [0.14.0] - 2026-09-27 (381 / 831)
 
