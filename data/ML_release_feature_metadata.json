@@ -1,9 +1,9 @@
 {
-  "source_release": "0.10.0",
-  "source_release_git_commit": "9b33436df7fede06e33f837cc76b63fd38107f89",
-  "source_sqlite": "materials-db-v0.10.0.sqlite",
-  "source_sqlite_sha256": "8867dc9ce2c1f973245219fa10888c6e112f2af6076dbcab72fea8ad806130bb",
-  "n_materials": 355,
+  "source_release": "0.11.0",
+  "source_release_git_commit": "54fac3e395252734e7dd77015fcddf86a931a572",
+  "source_sqlite": "materials-db-v0.11.0.sqlite",
+  "source_sqlite_sha256": "c3b61254b09d6049700cc261b6ecf69bed67de5cf16c2e762062c50f44747eea",
+  "n_materials": 361,
   "optical_ref_wl_nm": 633.0,
   "scaled": false,
   "target_columns": [
@@ -12,8 +12,8 @@
     "target_density_g_cm3"
   ],
   "target_present": {
-    "target_n_633nm": 282,
-    "target_k_633nm": 107,
+    "target_n_633nm": 288,
+    "target_k_633nm": 109,
     "target_density_g_cm3": 263
   },
   "feature_columns": [
@@ -705,6 +705,7 @@
     "liquid_crystals": 9,
     "optical_media": 8,
     "inorganic4": 6,
+    "bio_media": 6,
     "batch3b_4": 4,
     "nitrides": 1
   },
