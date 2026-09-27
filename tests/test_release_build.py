@@ -72,7 +72,7 @@ def descriptors(release):
 def test_every_family_material_is_in_the_release_once_and_nothing_else_is(release):
     names = [n for (n,) in q(release, "SELECT name FROM materials")]
     expected = set(br.family_rows())
-    assert len(names) == len(set(names)) == len(expected) == N_MATERIALS == 379 and set(names) == expected
+    assert len(names) == len(set(names)) == len(expected) == N_MATERIALS == 381 and set(names) == expected
     assert not set(BENCHMARK_ONLY) & set(names)  # the legacy benchmark rows are not merged
 
 
@@ -213,7 +213,7 @@ def test_descriptor_coverage_is_what_the_inputs_allow(release):
     cov = release["facts"]["descriptor_coverage"]
     no_formula = len(pd.read_csv(ROOT / "data" / "polymers.csv").pipe(lambda p: p[p.formula.isna()])) + 2 + int(LIQUIDS.formula.isna().sum()) \
         + len(pd.read_csv(ROOT / "data" / "glasses.csv")) + len(OPTICAL_MEDIA) + len(LC_MIXTURES) + len(BIO) + len(GAS_MIXTURES)
-    assert cov == {"compositional": N_MATERIALS - no_formula, "structural": 193,
+    assert cov == {"compositional": N_MATERIALS - no_formula, "structural": 194,
                    "molecular": len(pd.read_csv(rd.REPEAT_UNITS)) + int((LIQUIDS.smiles.notna() & (LIQUIDS.formula != "Hg")).sum())
                    + len(LC_COMPOUNDS) + len(GAS_MOLECULES)}
     d = descriptors(release)

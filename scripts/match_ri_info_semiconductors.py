@@ -23,7 +23,7 @@ import yaml
 
 _ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from dataset_kind import is_model_fit  # noqa: E402
+from dataset_kind import is_model_fit, primary_rank  # noqa: E402,F401
 from match_ri_info_liquids import page_temperature_c  # noqa: E402
 from semiconductor_material_list import CANDIDATES, DEFERRED, EXCLUDED_PAGES, OUT_OF_FAMILY  # noqa: E402
 
@@ -61,8 +61,9 @@ def ambient(d):
 
 
 def primary_order(d):
-    """Primary = ambient first, then measured before model fits (dataset_kind.py), then covering 633 nm, then widest span."""
-    return (not ambient(d), is_model_fit(d["data_path"]), not d["span_um"][0] <= 0.633 <= d["span_um"][1], d["span_um"][0] - d["span_um"][1])
+    """Primary = ambient first, then dataset_kind.primary_rank (measured covering 633 nm, model covering it, measured, model),
+    then widest span."""
+    return (not ambient(d), primary_rank(d["data_path"], d["span_um"]), d["span_um"][0] - d["span_um"][1])
 
 
 def strip(s):

@@ -26,7 +26,7 @@ import yaml
 _ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.path.insert(0, str(_ROOT / "src"))
-from dataset_kind import is_model_fit  # noqa: E402
+from dataset_kind import is_model_fit, primary_rank  # noqa: E402,F401
 from liquid_material_list import CANDIDATES, EXCLUDED_PAGES, OUT_OF_FAMILY  # noqa: E402
 
 RI = _ROOT / "refractiveindex_db" / "database"
@@ -206,7 +206,7 @@ def main():
                         about_yml_formula=af, about_yml_formula_matches=about_ok))
         if not disp:
             continue
-        chosen = sorted(disp, key=lambda d: (is_model_fit(d["data_path"]), not d["span_um"][0] <= 0.633 <= d["span_um"][1], d["span_um"][0] - d["span_um"][1]))
+        chosen = sorted(disp, key=lambda d: (primary_rank(d["data_path"], d["span_um"]), d["span_um"][0] - d["span_um"][1]))
         axes = [dict(page=d["page"], axis=d["axis"], phase=d["phase"], data_path=d["data_path"], span_um=d["span_um"], kind=d["kind"],
                      dispersion=d["dispersion"], comments=d["comments"], temperature_c=d["temperature_c"], tag=tag_of(d["page"], d["title"]),
                      dataset_label=label_of(d["phase"], tag_of(d["page"], d["title"]), d["axis"])) for d in chosen]

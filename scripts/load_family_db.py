@@ -298,15 +298,38 @@ def collapse_block_duplicates(data_path, wl_nm, n_val, report):
     return [i for i in range(len(wl_nm)) if i not in drop]
 
 
+NONPHYSICAL_N = 1e-3  # eval_formula floors n^2 <= 0 to 1e-30 (n ~ 1e-15): such a sample is not a refractive index
+
+
+def apply_axis_filters(data_path, axis_entry, wl_nm, n_val, keep, report):
+    """Opt-in per-dataset filters, recorded in the selections file (nothing is filtered unless the axis asks); every drop is
+    listed in report.notes. Kept rows keep parse_file's row index as raw_record_id. (A formula page whose stated range differs from
+    its data file's is sampled over the stated one instead: axis option formula_range_um, passed to parse_file.)
+      drop_nonphysical_n  drop samples where the dispersion formula gives n^2 <= 0 (otherwise stored floored, n ~ 1e-15)"""
+    beyond = 0
+    if axis_entry.get("drop_nonphysical_n"):
+        dropped = [float(wl_nm[i]) for i in keep if n_val[i] <= NONPHYSICAL_N]
+        keep = [i for i in keep if n_val[i] > NONPHYSICAL_N]
+    else:
+        dropped = []
+    if beyond or dropped:
+        report.notes.append(dict(kind="axis_filter", data_path=data_path, beyond_max_wavelength=beyond,
+                                 nonphysical_n_dropped_at_nm=dropped))
+    return keep
+
+
 def load_optical_axis(conn, material_id, source_id, axis_entry, effective_polymorph, report=None,
                       collapse_block_duplicates_flag=False):
     report = report or Report("adhoc")
     data_path = axis_entry["data_path"]
     dataset_label = axis_entry["dataset_label"]
-    wl_nm, n_val, k_val, refs, temp_c = parse_file(RI_DATA_ROOT / data_path)
+    rng = axis_entry.get("formula_range_um")  # passed only when a dataset records one; every other call is unchanged
+    wl_nm, n_val, k_val, refs, temp_c = (parse_file(RI_DATA_ROOT / data_path, formula_range_um=rng) if rng
+                                         else parse_file(RI_DATA_ROOT / data_path))
     if temp_c is None and axis_entry.get("temperature_c") is not None:
         temp_c = float(axis_entry["temperature_c"])  # stated in the page text ("293 K (20 degC)"); only families whose matcher records it
     keep = collapse_block_duplicates(data_path, wl_nm, n_val, report) if collapse_block_duplicates_flag else list(range(len(wl_nm)))
+    keep = apply_axis_filters(data_path, axis_entry, wl_nm, n_val, keep, report)
     total = len(keep)
 
     have, lo, hi = conn.execute(

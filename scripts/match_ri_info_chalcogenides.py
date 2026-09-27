@@ -21,7 +21,7 @@ import yaml
 
 _ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from dataset_kind import is_model_fit  # noqa: E402
+from dataset_kind import is_model_fit, primary_rank  # noqa: E402,F401
 from chalcogenide_material_list import CANDIDATES, DEFERRED, EXCLUDED_PAGES, OUT_OF_FAMILY  # noqa: E402
 
 RI = _ROOT / "refractiveindex_db" / "database"
@@ -131,12 +131,13 @@ def main():
             missing = set(c["page_polymorph"]) - {d["page"] for d in disp}
             if missing:
                 raise SystemExit(f"{c['key']}: pages not found on RI.info: {sorted(missing)}")
-            chosen = sorted((d for d in disp if d["page"] in c["page_polymorph"]), key=lambda d: (is_model_fit(d["data_path"]), not d["span_um"][0] <= 0.633 <= d["span_um"][1], d["span_um"][0] - d["span_um"][1]))  # primary: measured before model fits, then covering 633 nm, then widest
+            chosen = sorted((d for d in disp if d["page"] in c["page_polymorph"]), key=lambda d: (primary_rank(d["data_path"], d["span_um"]), d["span_um"][0] - d["span_um"][1]))  # primary: dataset_kind.primary_rank, then widest
             out[-1]["status"] = "SELECTED_BY_USER"
             selections[c["key"]] = dict(name=c["name"], formula=c["formula"], source="standing rule (user: whatever gives more info): " + c["basis"],
                                         axes=[dict(page=d["page"], axis=d["axis"], phase=c["page_polymorph"][d["page"]], data_path=d["data_path"],
                                                    span_um=d["span_um"], kind=d["kind"], dispersion=d["dispersion"],
-                                                   comments=d["comments"], tag=tag_of(d["page"], d["paper"]), dataset_label=label_of(c["page_polymorph"][d["page"]], tag_of(d["page"], d["paper"]), d["axis"])) for d in chosen])
+                                                   comments=d["comments"], tag=tag_of(d["page"], d["paper"]), dataset_label=label_of(c["page_polymorph"][d["page"]], tag_of(d["page"], d["paper"]), d["axis"]),
+                                                   **c.get("page_options", {}).get(d["page"], {})) for d in chosen])
         elif status == "FOUND":
             selections[c["key"]] = dict(name=c["name"], formula=c["formula"], source="auto: exactly one paper on RI.info (all its pages are axes of it)",
                                         axes=[dict(page=d["page"], axis=d["axis"], phase=None, data_path=d["data_path"], span_um=d["span_um"], kind=d["kind"],

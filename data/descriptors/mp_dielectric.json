@@ -1,8 +1,8 @@
 {
  "source": "Materials Project dielectric (DFPT), CC BY 4.0; Petousis et al., Sci. Data 4, 160134 (2017), doi:10.1038/sdata.2016.134. Calculated, not measured. e_total / e_electronic are the mean of the tensor's principal values.",
  "mp_database_version": "2026.04.13",
- "retrieved_utc": "2026-09-26T02:58:33Z",
- "requested": 193,
+ "retrieved_utc": "2026-09-27T17:18:00Z",
+ "requested": 194,
  "without_dielectric": [
   "mp-1",
   "mp-101",
@@ -910,6 +910,69 @@
      0.0,
      0.0,
      0.0
+    ]
+   ],
+   "last_updated": "2023-10-07"
+  },
+  "mp-1572": {
+   "e_total": 10.304125,
+   "e_electronic": 8.249877,
+   "e_ionic": 2.054248,
+   "n": 2.87226,
+   "eigenvalues_total": [
+    7.939826,
+    11.486271,
+    11.486277
+   ],
+   "total": [
+    [
+     11.486276,
+     2e-06,
+     0.0
+    ],
+    [
+     2e-06,
+     11.486272,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     7.939826
+    ]
+   ],
+   "electronic": [
+    [
+     8.621147,
+     1e-06,
+     0.0
+    ],
+    [
+     1e-06,
+     8.621143,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     7.50734
+    ]
+   ],
+   "ionic": [
+    [
+     2.86513,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     2.865129,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.432486
     ]
    ],
    "last_updated": "2023-10-07"

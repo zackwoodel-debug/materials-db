@@ -1415,6 +1415,174 @@
    "ri_book_title": "Tl3AsSe3 (Thallium arsenic selenide, TAS)"
   },
   {
+   "key": "GaSe",
+   "name": "Gallium selenide",
+   "formula": "GaSe",
+   "book": "GaSe",
+   "shelf": "main",
+   "note": "layered hexagonal crystal (bulk); density of epsilon-GaSe (P-6m2) as recorded in the deferral (user decision). Formula pages: samples with n^2 <= 0 in the reststrahlen band (~39-47 um) are dropped, not floored; Kato 2013 is sampled over 0.8-162 um, the range its page title states (its data file says 1620 um)",
+   "materialclass": "selenide",
+   "page_polymorph": {
+    "Kato-o": null,
+    "Kato-e": null,
+    "Chen-n-o": null,
+    "Chen-n-e": null,
+    "Chen-nk-o": null,
+    "Chen-nk-e": null
+   },
+   "basis": "multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = measured before model fits, then widest span covering 633 nm",
+   "page_options": {
+    "Kato-o": {
+     "drop_nonphysical_n": true,
+     "formula_range_um": [
+      0.8,
+      162.0
+     ]
+    },
+    "Kato-e": {
+     "drop_nonphysical_n": true,
+     "formula_range_um": [
+      0.8,
+      162.0
+     ]
+    },
+    "Chen-n-o": {
+     "drop_nonphysical_n": true
+    },
+    "Chen-n-e": {
+     "drop_nonphysical_n": true
+    }
+   },
+   "status": "SELECTED_BY_USER",
+   "n_pages": 6,
+   "n_papers": 2,
+   "papers": [
+    "Chen et al. 2009",
+    "Kato et al. 2013"
+   ],
+   "datasets": [
+    {
+     "page": "Chen-n-o",
+     "title": "Chen et al. 2009: n(o) 3\u20131500 \u00b5m",
+     "paper": "Chen et al. 2009",
+     "data_path": "main/GaSe/nk/Chen-n-o.yml",
+     "axis": "o-ray",
+     "phase_words": [
+      "Ordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      3.0,
+      1500.0
+     ],
+     "single_point": false,
+     "comments": "Ordinary ray (o)\n",
+     "conditions": "{'direction': 'o'}"
+    },
+    {
+     "page": "Chen-n-e",
+     "title": "Chen et al. 2009: n(e) 3\u20131500 \u00b5m",
+     "paper": "Chen et al. 2009",
+     "data_path": "main/GaSe/nk/Chen-n-e.yml",
+     "axis": "e-ray",
+     "phase_words": [
+      "Extraordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      3.0,
+      1500.0
+     ],
+     "single_point": false,
+     "comments": "Extraordinary ray (e)\n",
+     "conditions": "{'direction': 'e'}"
+    },
+    {
+     "page": "Chen-nk-o",
+     "title": "Chen et al. 2009: n,k(o) 3\u20131500 \u00b5m",
+     "paper": "Chen et al. 2009",
+     "data_path": "main/GaSe/nk/Chen-nk-o.yml",
+     "axis": "o-ray",
+     "phase_words": [
+      "Ordinary"
+     ],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      2.9979,
+      1499.0
+     ],
+     "single_point": false,
+     "comments": "Ordinary ray (o)\n",
+     "conditions": "{'direction': 'o'}"
+    },
+    {
+     "page": "Chen-nk-e",
+     "title": "Chen et al. 2009: n,k(e) 3\u20131500 \u00b5m",
+     "paper": "Chen et al. 2009",
+     "data_path": "main/GaSe/nk/Chen-nk-e.yml",
+     "axis": "e-ray",
+     "phase_words": [
+      "Extraordinary"
+     ],
+     "kind": "nk",
+     "dispersion": "tabulated",
+     "span_um": [
+      2.9979,
+      1499.0
+     ],
+     "single_point": false,
+     "comments": "Extraordinary ray (e)\n",
+     "conditions": "{'direction': 'e'}"
+    },
+    {
+     "page": "Kato-o",
+     "title": "Kato et al. 2013: n(o) 0.8\u2013162 \u00b5m",
+     "paper": "Kato et al. 2013",
+     "data_path": "main/GaSe/nk/Kato-o.yml",
+     "axis": "o-ray",
+     "phase_words": [
+      "Ordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.8,
+      1620.0
+     ],
+     "single_point": false,
+     "comments": "20 \u00b0C, Ordinary ray (o)\n",
+     "conditions": "{'temperature': 293, 'direction': 'o'}"
+    },
+    {
+     "page": "Kato-e",
+     "title": "Kato et al. 2013: n(e) 0.8\u2013162 \u00b5m",
+     "paper": "Kato et al. 2013",
+     "data_path": "main/GaSe/nk/Kato-e.yml",
+     "axis": "e-ray",
+     "phase_words": [
+      "Extraordinary"
+     ],
+     "kind": "n",
+     "dispersion": "formula",
+     "span_um": [
+      0.8,
+      1620.0
+     ],
+     "single_point": false,
+     "comments": "20 \u00b0C, Extraordinary ray (e)\n",
+     "conditions": "{'temperature': 293, 'direction': 'e'}"
+    }
+   ],
+   "k_only_pages": [],
+   "excluded_pages": [],
+   "single_point_pages": [],
+   "already_in_135_db": false,
+   "ri_book_title": "GaSe (Gallium selenide)"
+  },
+  {
    "key": "ZnSe",
    "name": "Zinc selenide",
    "formula": "ZnSe",
@@ -1556,9 +1724,7 @@
   "MnPSe3": "layered van der Waals material measured as nm-scale film / few-layer / exfoliated flake: n,k depend on thickness and substrate (2D / thin-film follow-up)",
   "Bi2Se3": "layered van der Waals material measured as nm-scale film / few-layer / exfoliated flake: n,k depend on thickness and substrate (2D / thin-film follow-up)"
  },
- "deferred": {
-  "GaSe": "all four GaSe formula pages give n^2 <= 0 inside their own stated ranges (reststrahlen band: Kato 2013 o 39.4-47.1 um, e 37.3-44.6 um; Chen 2009 n-formula o 39.2-46.8 um and 511.6-512.0 um, e 40.7-42.2 um), which the pipeline would store as floored n ~1e-15; Kato 2013 page title says 0.8-162 um but its data file says 0.8-1620 um; density needs a polytype choice (MP: P6_3mc mp-568263, P6_3/mmc mp-1943, P-6m2 (epsilon) mp-1572, R3m (gamma) mp-11342 all within 1.5 meV of the hull). Recommended: drop n^2<=0 samples instead of flooring, use the narrower 0.8-162 um range, epsilon-GaSe (P-6m2) density."
- },
+ "deferred": {},
  "excluded_pages": {
   "SnSe:Guo-\u03b1": "alpha-axis data is physically implausible for SnSe (narrow-gap semiconductor, epsilon_inf > 10 on every axis): the source gives n = 1.24-1.49 and k = 0.000 exactly over 0.19-1.7 um, while its beta and gamma axes have n ~2.5-2.7, k ~1.5-1.9 at 0.6 um. Not loaded (the DB cannot carry a warning); beta and gamma are loaded. Reversible user decision."
  }

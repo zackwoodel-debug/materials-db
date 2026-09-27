@@ -21,7 +21,8 @@ def _oe(book, stem, suffix=None, skip=()):
 
 def _lc(key, name, pages, formula=None, pubchem_name=None, note=None):
     return dict(key=key, name=name, pages=pages, formula=formula, pubchem_name=pubchem_name, note=note, density_page=None,
-                materialclass="liquid crystal" if formula else "liquid crystal mixture")
+                materialclass="liquid crystal" if formula else "liquid crystal mixture",
+                prefer_stated_temperature=True)  # user decision: n of a liquid crystal depends strongly on temperature
 
 
 _WU_5CB = [("25.1C", ()), ("27.2C", ("e",)), ("29.9C", ()), ("32.6C", ()), ("34.8C", ())]

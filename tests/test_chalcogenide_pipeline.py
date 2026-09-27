@@ -33,7 +33,7 @@ GAPS = pd.read_csv(DATA / "chalcogenide_gaps.csv")
 SEL = json.loads((DATA / "step1_selections_chalcogenides.json").read_text())
 MATCHES = {c["key"]: c for c in json.loads((DATA / "chalcogenide_ri_matches.json").read_text())["candidates"]}
 AXES = [(k, a) for k, v in SEL.items() for a in v["axes"]]
-MULTI_PAPER = {"AgGaS2": 3, "BaGa4S7": 2, "AgGaSe2": 3, "As2Se3": 2, "BaGa4Se7": 2, "CdSe": 3, "PbSe": 2, "ZnSe": 5}
+MULTI_PAPER = {"AgGaS2": 3, "BaGa4S7": 2, "AgGaSe2": 3, "As2Se3": 2, "BaGa4Se7": 2, "CdSe": 3, "PbSe": 2, "ZnSe": 5, "GaSe": 2}
 NO_DENSITY = {"BaGa2GeSe6"}
 
 
@@ -82,12 +82,21 @@ def loaded(tmp_path_factory):
 
 # ---------------------------------------------------------------- scope: catalog, deferral, exclusion
 
-def test_catalog_is_16_bulk_sulfides_and_selenides_and_nothing_2d_or_deferred_leaks_in():
-    assert len(CAT) == 16 and CAT["formula"].is_unique and CAT["selection_key"].is_unique
-    assert CAT["materialclass"].value_counts().to_dict() == {"selenide": 9, "sulfide": 7}
+def _kept(axis):
+    """What the loader stores for an axis: parse_file over the recorded formula_range_um (if any), minus the n^2 <= 0 samples when
+    the axis asks (drop_nonphysical_n). Row indices are parse_file's, as raw_record_id."""
+    rng = axis.get("formula_range_um")
+    wl, n, *_ = fod.parse_file(RI / axis["data_path"], formula_range_um=rng) if rng else fod.parse_file(RI / axis["data_path"])
+    keep = [i for i in range(len(wl)) if not (axis.get("drop_nonphysical_n") and n[i] <= fam.NONPHYSICAL_N)]
+    return wl, n, keep
+
+
+def test_catalog_is_17_bulk_sulfides_and_selenides_and_nothing_2d_leaks_in():
+    assert len(CAT) == 17 and CAT["formula"].is_unique and CAT["selection_key"].is_unique
+    assert CAT["materialclass"].value_counts().to_dict() == {"selenide": 10, "sulfide": 7}
     assert not (set(lst.OUT_OF_FAMILY) | set(lst.DEFERRED) | set(lst.ALREADY_LOADED)) & set(CAT["formula"])
     assert set(GAPS[GAPS.gap_kind == "out_of_family"].key) == set(lst.OUT_OF_FAMILY)
-    assert set(GAPS[GAPS.gap_kind == "deferred_decision"].key) == {"GaSe"}
+    assert set(GAPS[GAPS.gap_kind == "deferred_decision"].key) == set()  # GaSe is loaded with the recorded fix (user decision)
     assert set(GAPS[GAPS.gap_kind == "excluded_page"].key) == {"SnSe"}
     assert set(GAPS[GAPS.gap_kind == "density"].key) == NO_DENSITY and GAPS["reason"].notna().all()
 
@@ -99,13 +108,12 @@ def test_none_of_the_already_loaded_sulfides_is_duplicated_here():
     assert set(lst.ALREADY_LOADED) <= have and not have & set(CAT["formula"])
 
 
-def test_gase_deferral_reason_is_still_true_in_the_source():
-    """Every GaSe formula page goes non-physical (n^2 <= 0) inside its own stated range, and Kato's title/file ranges disagree."""
-    book = MATCHES.get("GaSe")
-    assert book is None  # not a candidate this run
-    pages = sorted((RI / "main" / "GaSe" / "nk").glob("*.yml"))
+def test_gase_fix_is_still_needed_in_the_source_and_is_applied():
+    """User decision: GaSe loaded with the recorded fix. The source still goes non-physical (n^2 <= 0) inside every formula page's
+    range and Kato's data file still says 1620 um (its title 162 um); the loaded data hold no floored sample and Kato is sampled
+    over the title's range; density is epsilon-GaSe (P-6m2)."""
     formula_pages = 0
-    for p in pages:
+    for p in sorted((RI / "main" / "GaSe" / "nk").glob("*.yml")):
         for b in yaml.safe_load(open(p))["DATA"]:
             if b["type"].startswith("formula"):
                 formula_pages += 1
@@ -117,8 +125,12 @@ def test_gase_deferral_reason_is_still_true_in_the_source():
                 assert (n2 <= 0).any(), p.name
     assert formula_pages == 4
     kato = yaml.safe_load(open(RI / "main" / "GaSe" / "nk" / "Kato-o.yml"))["DATA"][0]["wavelength_range"]
-    assert kato.split()[1] == "1620.0" or float(kato.split()[1]) == 1620.0
-    assert "162 um" in lst.DEFERRED["GaSe"].replace("0.8-162 um", "162 um")
+    assert float(str(kato).split()[1]) == 1620.0
+    axes = {a["page"]: a for a in SEL["GaSe"]["axes"]}
+    assert {p for p, a in axes.items() if a.get("drop_nonphysical_n")} == {"Kato-o", "Kato-e", "Chen-n-o", "Chen-n-e"}
+    assert axes["Kato-o"]["formula_range_um"] == axes["Kato-e"]["formula_range_um"] == [0.8, 162.0]
+    r = CAT.set_index("selection_key").loc["GaSe"]
+    assert r.mp_space_group.endswith("(#187)") and r.density_source == "MP_DFT"
 
 
 def test_snse_alpha_axis_is_excluded_for_the_stated_reason_and_beta_gamma_are_loaded():
@@ -133,7 +145,7 @@ def test_snse_alpha_axis_is_excluded_for_the_stated_reason_and_beta_gamma_are_lo
 # ---------------------------------------------------------------- selections and labels
 
 def test_selections_none_null_labels_unique_and_multi_paper_materials_keep_every_paper():
-    assert all(v is not None for v in SEL.values()) and len(SEL) == 16 and len(AXES) == 59
+    assert all(v is not None for v in SEL.values()) and len(SEL) == 17 and len(AXES) == 65
     for k, v in SEL.items():
         labels = [a["dataset_label"] for a in v["axes"]]
         assert len(labels) == len(set(labels)), k
@@ -143,20 +155,19 @@ def test_selections_none_null_labels_unique_and_multi_paper_materials_keep_every
         assert MATCHES[k]["status"] == "SELECTED_BY_USER"
 
 
-def test_multi_paper_primary_is_measured_then_the_widest_page_covering_633nm():
-    """Single-paper materials keep the source's page order (o before e). Between PAPERS: measured data before model fits
-    (dataset_kind.py), then the widest page covering 633 nm, else the widest."""
-    from dataset_kind import is_model_fit
+def test_multi_paper_primary_follows_primary_rank_then_widest():
+    """Single-paper materials keep the source's page order (o before e). Between PAPERS: dataset_kind.primary_rank (measured
+    covering 633 nm, then a model fit covering it -- only when no measured dataset does, user decision --, then measured, then
+    model), then the widest page."""
+    from dataset_kind import primary_rank
     for k in MULTI_PAPER:
         v = SEL[k]
         first = v["axes"][0]
-        measured = [a for a in v["axes"] if not is_model_fit(a["data_path"])]
-        pool = measured or v["axes"]
-        assert first in pool, k
-        covering = [a for a in pool if a["span_um"][0] <= 0.633 <= a["span_um"][1]] or pool
-        assert first in covering and (first["span_um"][1] - first["span_um"][0]) == max(a["span_um"][1] - a["span_um"][0] for a in covering), k
-    assert [SEL[k]["axes"][0]["tag"] for k in ("CdSe", "PbSe")] == ["Lisitsa1969", "Zemel1965"]  # measured, not the Adachi-group fits
-
+        best = min(primary_rank(a["data_path"], a["span_um"]) for a in v["axes"])
+        pool = [a for a in v["axes"] if primary_rank(a["data_path"], a["span_um"]) == best]
+        assert first in pool and (first["span_um"][1] - first["span_um"][0]) == max(a["span_um"][1] - a["span_um"][0] for a in pool), k
+    # no measured data cover 633 nm for CdSe and PbSe: their model fits are primary, so n(633) is not empty
+    assert [SEL[k]["axes"][0]["tag"] for k in ("CdSe", "PbSe")] == ["Ninomiya1995", "Suzuki1995"]
 
 def test_cugas2_temperature_series_and_cdse_phases_are_labelled_from_the_source():
     assert [a["dataset_label"] for a in SEL["CuGaS2"]["axes"]] == ["Boyd1971-20C | o-ray", "Boyd1971-20C | e-ray", "Boyd1971-120C | o-ray", "Boyd1971-120C | e-ray"]
@@ -170,7 +181,11 @@ def test_cugas2_temperature_series_and_cdse_phases_are_labelled_from_the_source(
 
 
 def test_every_selected_page_has_a_supported_type_and_no_nonphysical_formula_value_in_range():
+    """Except the GaSe formula pages, whose n^2 <= 0 samples the loader drops (drop_nonphysical_n, user decision)."""
     for k, a in AXES:
+        if a.get("drop_nonphysical_n"):
+            assert k == "GaSe"
+            continue
         for b in yaml.safe_load(open(RI / a["data_path"]))["DATA"]:
             assert b["type"] in {"tabulated nk", "tabulated n", "tabulated k", "formula 1", "formula 2", "formula 4"}, a["page"]
             if b["type"].startswith("formula"):
@@ -246,9 +261,9 @@ def test_loaded_db_facts(loaded):
     db, rep = loaded
     c = sqlite3.connect(str(db))
     assert c.execute("PRAGMA integrity_check").fetchone()[0] == "ok" and c.execute("PRAGMA foreign_key_check").fetchall() == []
-    assert c.execute("SELECT COUNT(*) FROM materials").fetchone()[0] == 16
-    assert c.execute("SELECT COUNT(*) FROM (SELECT 1 FROM optical_dispersion GROUP BY material_id, dataset_label)").fetchone()[0] == 59
-    expected = sum(len(fod.parse_file(RI / a["data_path"])[0]) for _, a in AXES)
+    assert c.execute("SELECT COUNT(*) FROM materials").fetchone()[0] == 17
+    assert c.execute("SELECT COUNT(*) FROM (SELECT 1 FROM optical_dispersion GROUP BY material_id, dataset_label)").fetchone()[0] == 65
+    expected = sum(len(_kept(a)[2]) for _, a in AXES)
     assert c.execute("SELECT COUNT(*) FROM optical_dispersion").fetchone()[0] == expected
     assert rep.skipped == [] and rep.conflicts == []
     assert c.execute("SELECT COUNT(*) FROM chemical_descriptors").fetchone()[0] == 0
@@ -261,7 +276,7 @@ def test_loaded_db_facts(loaded):
 
 def test_physical_rows_one_block_per_material_with_a_density(loaded):
     c = sqlite3.connect(str(loaded[0]))
-    assert c.execute("SELECT COUNT(*) FROM physical_properties").fetchone()[0] == 5 * (16 - len(NO_DENSITY))
+    assert c.execute("SELECT COUNT(*) FROM physical_properties").fetchone()[0] == 5 * (17 - len(NO_DENSITY))
     assert c.execute("SELECT COUNT(*) FROM physical_properties WHERE source_id IS NULL").fetchone()[0] == 0
     film = c.execute("SELECT s.technique FROM physical_properties p JOIN materials m USING(material_id) JOIN sources s USING(source_id) "
                      "WHERE m.formula='As2Se3' AND p.density_g_cm3 IS NOT NULL").fetchone()[0]
@@ -281,11 +296,11 @@ def test_reload_adds_zero_rows_and_changes_nothing(loaded, tmp_path):
 
 @pytest.mark.parametrize("key,axis", AXES, ids=[f"{k}:{a['page']}" for k, a in AXES])
 def test_every_dataset_is_preserved_row_by_row_and_n633_agrees_three_ways(loaded, key, axis):
-    wl, n, *_ = fod.parse_file(RI / axis["data_path"])
+    wl, n, keep = _kept(axis)
     c = sqlite3.connect(str(loaded[0]))
     got = c.execute("SELECT raw_record_id, wavelength_nm, n FROM optical_dispersion WHERE raw_record_table=? ORDER BY raw_record_id", (axis["data_path"],)).fetchall()
     c.close()
-    assert len(got) == len(wl) and all(g[0] == i and g[1] == pytest.approx(float(wl[i]), rel=1e-12) and g[2] == pytest.approx(float(n[i]), rel=1e-12) for i, g in enumerate(got))
+    assert [g[0] for g in got] == keep and all(g[1] == pytest.approx(float(wl[g[0]]), rel=1e-12) and g[2] == pytest.approx(float(n[g[0]]), rel=1e-12) for g in got)
     hand = _hand_n(axis["data_path"])
     if wl.min() <= 633 <= wl.max():
         assert hand is not None and float(np.interp(633.0, wl, n)) == pytest.approx(hand, abs=5e-3)
@@ -330,6 +345,6 @@ def test_every_material_with_a_density_exports_and_the_choices_are_the_room_temp
             ok[r.formula] = layer["materials_db"]["optical_dataset_label"]
         except modalfit.ExportError:
             assert r.formula in NO_DENSITY, r.formula
-    assert len(ok) == 16 - len(NO_DENSITY)
+    assert len(ok) == 17 - len(NO_DENSITY)
     assert ok["CuGaS2"] == "Boyd1971-20C | o-ray"             # room temperature, not the 120 degC series
     assert ok["CdSe"].startswith("hexagonal | Ninomiya1995")   # density is hexagonal, so is the paired optical data

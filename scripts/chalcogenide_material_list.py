@@ -41,17 +41,27 @@ CANDIDATES = [
     _c("PbSe", "Lead selenide", "PbSe", "PbSe", "selenide", page_polymorph={"Zemel": None, "Suzuki": None}, basis=MULTI_BASIS),
     _c("SnSe", "Tin selenide", "SnSe", "SnSe", "selenide", note="biaxial; RI.info does not state the sample form (crystal vs film)"),
     _c("Tl3AsSe3", "Thallium arsenic selenide (TAS)", "Tl3AsSe3", "Tl3AsSe3", "selenide", note="birefringent"),
+    dict(_c("GaSe", "Gallium selenide", "GaSe", "GaSe", "selenide",
+            note=("layered hexagonal crystal (bulk); density of epsilon-GaSe (P-6m2) as recorded in the deferral (user decision). "
+                  "Formula pages: samples with n^2 <= 0 in the reststrahlen band (~39-47 um) are dropped, not floored; Kato 2013 is "
+                  "sampled over 0.8-162 um, the range its page title states (its data file says 1620 um)"),
+            page_polymorph={"Kato-o": None, "Kato-e": None, "Chen-n-o": None, "Chen-n-e": None, "Chen-nk-o": None, "Chen-nk-e": None},
+            basis=MULTI_BASIS),
+         page_options={"Kato-o": dict(drop_nonphysical_n=True, formula_range_um=[0.8, 162.0]),
+                       "Kato-e": dict(drop_nonphysical_n=True, formula_range_um=[0.8, 162.0]),
+                       "Chen-n-o": dict(drop_nonphysical_n=True), "Chen-n-e": dict(drop_nonphysical_n=True)}),
     _c("ZnSe", "Zinc selenide", "ZnSe", "ZnSe", "selenide", page_polymorph={"Marple": None, "Amotchkina": None, "Querry": None, "Connolly": None, "Adachi": None}, basis=MULTI_BASIS),
 ]
 
 # Books in scope but NOT loaded in this run because they need a user decision (evidence recorded in data/chalcogenide_gaps.csv).
-DEFERRED = {
+DEFERRED_BEFORE_USER_DECISION = {  # kept for the record: GaSe is now loaded with exactly the recommended fix
     "GaSe": ("all four GaSe formula pages give n^2 <= 0 inside their own stated ranges (reststrahlen band: Kato 2013 o 39.4-47.1 um, e 37.3-44.6 um; "
              "Chen 2009 n-formula o 39.2-46.8 um and 511.6-512.0 um, e 40.7-42.2 um), which the pipeline would store as floored n ~1e-15; "
              "Kato 2013 page title says 0.8-162 um but its data file says 0.8-1620 um; density needs a polytype choice (MP: P6_3mc mp-568263, "
              "P6_3/mmc mp-1943, P-6m2 (epsilon) mp-1572, R3m (gamma) mp-11342 all within 1.5 meV of the hull). "
              "Recommended: drop n^2<=0 samples instead of flooring, use the narrower 0.8-162 um range, epsilon-GaSe (P-6m2) density."),
 }
+DEFERRED = {}
 # Single pages excluded from an otherwise loaded material, with the evidence (the rest of the paper IS loaded).
 EXCLUDED_PAGES = {
     ("SnSe", "Guo-\u03b1"): ("alpha-axis data is physically implausible for SnSe (narrow-gap semiconductor, epsilon_inf > 10 on every axis): the source gives "
@@ -82,4 +92,5 @@ AMBIENT_STRUCTURE = {
     "PbSe": ("rock-salt", 225, "Fm-3m"),
     "SnSe": ("Pnma (GeS-type)", 62, "Pnma"),
     "CdSe": ("wurtzite", 186, "P6_3mc"),
+    "GaSe": ("epsilon-GaSe", 187, "P-6m2"),
 }

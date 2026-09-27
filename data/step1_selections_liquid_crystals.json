@@ -5,42 +5,6 @@
   "source": "liquid_crystal_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
   "axes": [
    {
-    "page": "Tkachenko-o",
-    "axis": "o-ray",
-    "phase": null,
-    "data_path": "other/liquid crystals/5CB/nk/Tkachenko-o.yml",
-    "span_um": [
-     0.532,
-     1.7
-    ],
-    "kind": "n",
-    "dispersion": "formula",
-    "comments": "Ordinary ray (o).\n",
-    "temperature_c": null,
-    "tag": "Tkachenko2006",
-    "dataset_label": "Tkachenko2006 | o-ray",
-    "shelf": "other",
-    "book": "5CB"
-   },
-   {
-    "page": "Tkachenko-e",
-    "axis": "e-ray",
-    "phase": null,
-    "data_path": "other/liquid crystals/5CB/nk/Tkachenko-e.yml",
-    "span_um": [
-     0.532,
-     1.7
-    ],
-    "kind": "n",
-    "dispersion": "formula",
-    "comments": "Extraordinary ray (e).\n",
-    "temperature_c": null,
-    "tag": "Tkachenko2006",
-    "dataset_label": "Tkachenko2006 | e-ray",
-    "shelf": "other",
-    "book": "5CB"
-   },
-   {
     "page": "Wu-25.1C-o",
     "axis": "o-ray",
     "phase": null,
@@ -163,6 +127,42 @@
     "temperature_c": 24.85,
     "tag": "Li2005",
     "dataset_label": "Li2005 | e-ray",
+    "shelf": "other",
+    "book": "5CB"
+   },
+   {
+    "page": "Tkachenko-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/5CB/nk/Tkachenko-o.yml",
+    "span_um": [
+     0.532,
+     1.7
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Ordinary ray (o).\n",
+    "temperature_c": null,
+    "tag": "Tkachenko2006",
+    "dataset_label": "Tkachenko2006 | o-ray",
+    "shelf": "other",
+    "book": "5CB"
+   },
+   {
+    "page": "Tkachenko-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/5CB/nk/Tkachenko-e.yml",
+    "span_um": [
+     0.532,
+     1.7
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Extraordinary ray (e).\n",
+    "temperature_c": null,
+    "tag": "Tkachenko2006",
+    "dataset_label": "Tkachenko2006 | e-ray",
     "shelf": "other",
     "book": "5CB"
    },
@@ -541,42 +541,6 @@
   "source": "liquid_crystal_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
   "axes": [
    {
-    "page": "Tkachenko-o",
-    "axis": "o-ray",
-    "phase": null,
-    "data_path": "other/liquid crystals/E7/nk/Tkachenko-o.yml",
-    "span_um": [
-     0.532,
-     1.7
-    ],
-    "kind": "n",
-    "dispersion": "formula",
-    "comments": "Ordinary ray (o).\n",
-    "temperature_c": null,
-    "tag": "Tkachenko2006",
-    "dataset_label": "Tkachenko2006 | o-ray",
-    "shelf": "other",
-    "book": "E7"
-   },
-   {
-    "page": "Tkachenko-e",
-    "axis": "e-ray",
-    "phase": null,
-    "data_path": "other/liquid crystals/E7/nk/Tkachenko-e.yml",
-    "span_um": [
-     0.532,
-     1.7
-    ],
-    "kind": "n",
-    "dispersion": "formula",
-    "comments": "Extraordinary ray (e).\n",
-    "temperature_c": null,
-    "tag": "Tkachenko2006",
-    "dataset_label": "Tkachenko2006 | e-ray",
-    "shelf": "other",
-    "book": "E7"
-   },
-   {
     "page": "Li-o",
     "axis": "o-ray",
     "phase": null,
@@ -609,6 +573,42 @@
     "temperature_c": 24.85,
     "tag": "Li2005",
     "dataset_label": "Li2005 | e-ray",
+    "shelf": "other",
+    "book": "E7"
+   },
+   {
+    "page": "Tkachenko-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/E7/nk/Tkachenko-o.yml",
+    "span_um": [
+     0.532,
+     1.7
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Ordinary ray (o).\n",
+    "temperature_c": null,
+    "tag": "Tkachenko2006",
+    "dataset_label": "Tkachenko2006 | o-ray",
+    "shelf": "other",
+    "book": "E7"
+   },
+   {
+    "page": "Tkachenko-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/E7/nk/Tkachenko-e.yml",
+    "span_um": [
+     0.532,
+     1.7
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Extraordinary ray (e).\n",
+    "temperature_c": null,
+    "tag": "Tkachenko2006",
+    "dataset_label": "Tkachenko2006 | e-ray",
     "shelf": "other",
     "book": "E7"
    }

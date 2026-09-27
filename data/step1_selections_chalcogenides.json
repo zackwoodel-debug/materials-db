@@ -697,6 +697,51 @@
   "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = measured before model fits, then widest span covering 633 nm; phase labels only where the source page states one",
   "axes": [
    {
+    "page": "Ninomiya-o",
+    "axis": "o-ray",
+    "phase": "hexagonal",
+    "data_path": "main/CdSe/nk/Ninomiya-o.yml",
+    "span_um": [
+     0.23393,
+     1.0332
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Hexagonal CdSe. Fit of author's experimental data to a simplified model of the interband transitions (MDF). Ordinary ray (o), room temperature.\n",
+    "tag": "Ninomiya1995",
+    "dataset_label": "hexagonal | Ninomiya1995 | o-ray"
+   },
+   {
+    "page": "Ninomiya-e",
+    "axis": "e-ray",
+    "phase": "hexagonal",
+    "data_path": "main/CdSe/nk/Ninomiya-e.yml",
+    "span_um": [
+     0.23393,
+     1.0332
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Hexagonal CdSe.\nFit of author's experimental data to a simplified model of the interband transitions (MDF).\nExtraordinary ray (e), room temperature.\n",
+    "tag": "Ninomiya1995",
+    "dataset_label": "hexagonal | Ninomiya1995 | e-ray"
+   },
+   {
+    "page": "Ninomiya-cubic",
+    "axis": null,
+    "phase": "cubic",
+    "data_path": "main/CdSe/nk/Ninomiya-cubic.yml",
+    "span_um": [
+     0.20664,
+     0.82656
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Cubic CdSe. Room temperature.\n",
+    "tag": "Ninomiya1995",
+    "dataset_label": "cubic | Ninomiya1995"
+   },
+   {
     "page": "Lisitsa-o",
     "axis": "o-ray",
     "phase": null,
@@ -755,51 +800,6 @@
     "comments": "Extraordinary ray (e); Room temperature.\n",
     "tag": "Bond1965",
     "dataset_label": "Bond1965 | e-ray"
-   },
-   {
-    "page": "Ninomiya-o",
-    "axis": "o-ray",
-    "phase": "hexagonal",
-    "data_path": "main/CdSe/nk/Ninomiya-o.yml",
-    "span_um": [
-     0.23393,
-     1.0332
-    ],
-    "kind": "nk",
-    "dispersion": "tabulated",
-    "comments": "Hexagonal CdSe. Fit of author's experimental data to a simplified model of the interband transitions (MDF). Ordinary ray (o), room temperature.\n",
-    "tag": "Ninomiya1995",
-    "dataset_label": "hexagonal | Ninomiya1995 | o-ray"
-   },
-   {
-    "page": "Ninomiya-e",
-    "axis": "e-ray",
-    "phase": "hexagonal",
-    "data_path": "main/CdSe/nk/Ninomiya-e.yml",
-    "span_um": [
-     0.23393,
-     1.0332
-    ],
-    "kind": "nk",
-    "dispersion": "tabulated",
-    "comments": "Hexagonal CdSe.\nFit of author's experimental data to a simplified model of the interband transitions (MDF).\nExtraordinary ray (e), room temperature.\n",
-    "tag": "Ninomiya1995",
-    "dataset_label": "hexagonal | Ninomiya1995 | e-ray"
-   },
-   {
-    "page": "Ninomiya-cubic",
-    "axis": null,
-    "phase": "cubic",
-    "data_path": "main/CdSe/nk/Ninomiya-cubic.yml",
-    "span_um": [
-     0.20664,
-     0.82656
-    ],
-    "kind": "nk",
-    "dispersion": "tabulated",
-    "comments": "Cubic CdSe. Room temperature.\n",
-    "tag": "Ninomiya1995",
-    "dataset_label": "cubic | Ninomiya1995"
    }
   ]
  },
@@ -808,21 +808,6 @@
   "formula": "PbSe",
   "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = measured before model fits, then widest span covering 633 nm",
   "axes": [
-   {
-    "page": "Zemel",
-    "axis": null,
-    "phase": null,
-    "data_path": "main/PbSe/nk/Zemel.yml",
-    "span_um": [
-     5.0,
-     10.0
-    ],
-    "kind": "n",
-    "dispersion": "formula",
-    "comments": "300 K (27 \u00b0C)\n",
-    "tag": "Zemel1965",
-    "dataset_label": "Zemel1965"
-   },
    {
     "page": "Suzuki",
     "axis": null,
@@ -837,6 +822,21 @@
     "comments": "Fit of author's experimental data to a simplified model of the interband transitions (MDF). Room Temperature.\n",
     "tag": "Suzuki1995",
     "dataset_label": "Suzuki1995"
+   },
+   {
+    "page": "Zemel",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/PbSe/nk/Zemel.yml",
+    "span_um": [
+     5.0,
+     10.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "300 K (27 \u00b0C)\n",
+    "tag": "Zemel1965",
+    "dataset_label": "Zemel1965"
    }
   ]
  },
@@ -911,6 +911,115 @@
     "comments": "Extraordinary ray (e)\n",
     "tag": "Ewbank1980",
     "dataset_label": "Ewbank1980 | e-ray"
+   }
+  ]
+ },
+ "GaSe": {
+  "name": "Gallium selenide",
+  "formula": "GaSe",
+  "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC and the halides); none is dropped or merged; primary = measured before model fits, then widest span covering 633 nm",
+  "axes": [
+   {
+    "page": "Kato-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "main/GaSe/nk/Kato-o.yml",
+    "span_um": [
+     0.8,
+     1620.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "20 \u00b0C, Ordinary ray (o)\n",
+    "tag": "Kato2013",
+    "dataset_label": "Kato2013 | o-ray",
+    "drop_nonphysical_n": true,
+    "formula_range_um": [
+     0.8,
+     162.0
+    ]
+   },
+   {
+    "page": "Kato-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "main/GaSe/nk/Kato-e.yml",
+    "span_um": [
+     0.8,
+     1620.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "20 \u00b0C, Extraordinary ray (e)\n",
+    "tag": "Kato2013",
+    "dataset_label": "Kato2013 | e-ray",
+    "drop_nonphysical_n": true,
+    "formula_range_um": [
+     0.8,
+     162.0
+    ]
+   },
+   {
+    "page": "Chen-n-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "main/GaSe/nk/Chen-n-o.yml",
+    "span_um": [
+     3.0,
+     1500.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Ordinary ray (o)\n",
+    "tag": "Chen2009-n",
+    "dataset_label": "Chen2009-n | o-ray",
+    "drop_nonphysical_n": true
+   },
+   {
+    "page": "Chen-n-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "main/GaSe/nk/Chen-n-e.yml",
+    "span_um": [
+     3.0,
+     1500.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Extraordinary ray (e)\n",
+    "tag": "Chen2009-n",
+    "dataset_label": "Chen2009-n | e-ray",
+    "drop_nonphysical_n": true
+   },
+   {
+    "page": "Chen-nk-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "main/GaSe/nk/Chen-nk-o.yml",
+    "span_um": [
+     2.9979,
+     1499.0
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Ordinary ray (o)\n",
+    "tag": "Chen2009-nk",
+    "dataset_label": "Chen2009-nk | o-ray"
+   },
+   {
+    "page": "Chen-nk-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "main/GaSe/nk/Chen-nk-e.yml",
+    "span_um": [
+     2.9979,
+     1499.0
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Extraordinary ray (e)\n",
+    "tag": "Chen2009-nk",
+    "dataset_label": "Chen2009-nk | e-ray"
    }
   ]
  },

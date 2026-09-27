@@ -186,54 +186,6 @@
     "dataset_label": "Jellison1992"
    },
    {
-    "page": "Skauli",
-    "axis": null,
-    "phase": null,
-    "data_path": "main/GaAs/nk/Skauli.yml",
-    "span_um": [
-     0.97,
-     17.0
-    ],
-    "kind": "n",
-    "dispersion": "formula",
-    "comments": "22 \u00b0C. See the original publication for temperature dependence of refractive index.\n",
-    "temperature_c": 22.0,
-    "tag": "Skauli2003",
-    "dataset_label": "Skauli2003"
-   },
-   {
-    "page": "Kachare",
-    "axis": null,
-    "phase": null,
-    "data_path": "main/GaAs/nk/Kachare.yml",
-    "span_um": [
-     1.4,
-     11.0
-    ],
-    "kind": "n",
-    "dispersion": "formula",
-    "comments": "Room temperature\n",
-    "temperature_c": null,
-    "tag": "Kachare1976",
-    "dataset_label": "Kachare1976"
-   },
-   {
-    "page": "Perner",
-    "axis": null,
-    "phase": null,
-    "data_path": "main/GaAs/nk/Perner.yml",
-    "span_um": [
-     2.0,
-     7.1
-    ],
-    "kind": "n",
-    "dispersion": "formula",
-    "comments": "Relative standard uncertainty \u22643.3\u00d710-4 over whole range. Optical measurements at 2.21 mbar and 22 \u00b0C.\n",
-    "temperature_c": 21.85,
-    "tag": "Perner2023",
-    "dataset_label": "Perner2023"
-   },
-   {
     "page": "Adachi",
     "axis": null,
     "phase": null,
@@ -280,6 +232,54 @@
     "temperature_c": null,
     "tag": "Ozaki1995",
     "dataset_label": "Ozaki1995"
+   },
+   {
+    "page": "Skauli",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/GaAs/nk/Skauli.yml",
+    "span_um": [
+     0.97,
+     17.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "22 \u00b0C. See the original publication for temperature dependence of refractive index.\n",
+    "temperature_c": 22.0,
+    "tag": "Skauli2003",
+    "dataset_label": "Skauli2003"
+   },
+   {
+    "page": "Kachare",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/GaAs/nk/Kachare.yml",
+    "span_um": [
+     1.4,
+     11.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Room temperature\n",
+    "temperature_c": null,
+    "tag": "Kachare1976",
+    "dataset_label": "Kachare1976"
+   },
+   {
+    "page": "Perner",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/GaAs/nk/Perner.yml",
+    "span_um": [
+     2.0,
+     7.1
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Relative standard uncertainty \u22643.3\u00d710-4 over whole range. Optical measurements at 2.21 mbar and 22 \u00b0C.\n",
+    "temperature_c": 21.85,
+    "tag": "Perner2023",
+    "dataset_label": "Perner2023"
    },
    {
     "page": "Franta-300K",
@@ -417,22 +417,6 @@
     "dataset_label": "Jellison1992"
    },
    {
-    "page": "Parsons",
-    "axis": null,
-    "phase": null,
-    "data_path": "main/GaP/nk/Parsons.yml",
-    "span_um": [
-     54.369,
-     366.03
-    ],
-    "kind": "n",
-    "dispersion": "tabulated",
-    "comments": "Room temperature\n",
-    "temperature_c": null,
-    "tag": "Parsons1971",
-    "dataset_label": "Parsons1971"
-   },
-   {
     "page": "Adachi",
     "axis": null,
     "phase": null,
@@ -447,6 +431,22 @@
     "temperature_c": null,
     "tag": "Adachi1989",
     "dataset_label": "Adachi1989"
+   },
+   {
+    "page": "Parsons",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/GaP/nk/Parsons.yml",
+    "span_um": [
+     54.369,
+     366.03
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Room temperature\n",
+    "temperature_c": null,
+    "tag": "Parsons1971",
+    "dataset_label": "Parsons1971"
    }
   ]
  },
@@ -527,22 +527,6 @@
     "dataset_label": "Aspnes1983"
    },
    {
-    "page": "Lorimor",
-    "axis": null,
-    "phase": null,
-    "data_path": "main/InAs/nk/Lorimor.yml",
-    "span_um": [
-     3.7,
-     31.3
-    ],
-    "kind": "n",
-    "dispersion": "formula",
-    "comments": "Room temperature\n",
-    "temperature_c": null,
-    "tag": "Lorimor1965",
-    "dataset_label": "Lorimor1965"
-   },
-   {
     "page": "Adachi",
     "axis": null,
     "phase": null,
@@ -557,6 +541,22 @@
     "temperature_c": null,
     "tag": "Adachi1989",
     "dataset_label": "Adachi1989"
+   },
+   {
+    "page": "Lorimor",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/InAs/nk/Lorimor.yml",
+    "span_um": [
+     3.7,
+     31.3
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Room temperature\n",
+    "temperature_c": null,
+    "tag": "Lorimor1965",
+    "dataset_label": "Lorimor1965"
    }
   ]
  },
@@ -580,6 +580,22 @@
     "temperature_c": null,
     "tag": "Aspnes1983",
     "dataset_label": "Aspnes1983"
+   },
+   {
+    "page": "Adachi",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/InP/nk/Adachi.yml",
+    "span_um": [
+     0.20664,
+     12.398
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "",
+    "temperature_c": null,
+    "tag": "Adachi1989",
+    "dataset_label": "Adachi1989"
    },
    {
     "page": "Panah",
@@ -612,22 +628,6 @@
     "temperature_c": null,
     "tag": "Pettit1965",
     "dataset_label": "Pettit1965"
-   },
-   {
-    "page": "Adachi",
-    "axis": null,
-    "phase": null,
-    "data_path": "main/InP/nk/Adachi.yml",
-    "span_um": [
-     0.20664,
-     12.398
-    ],
-    "kind": "nk",
-    "dispersion": "tabulated",
-    "comments": "",
-    "temperature_c": null,
-    "tag": "Adachi1989",
-    "dataset_label": "Adachi1989"
    }
   ]
  },
@@ -692,6 +692,22 @@
   "source": "standing rule (user: whatever gives more info): multi-paper: every RI.info paper is loaded as its own labelled dataset (standing rule 'whatever gives more info', as for SiC, the halides and chalcogenides); none is dropped or merged; primary = ambient temperature, measured before model fits, then widest span covering 633 nm",
   "axes": [
    {
+    "page": "Adachi",
+    "axis": null,
+    "phase": null,
+    "data_path": "main/CdTe/nk/Adachi.yml",
+    "span_um": [
+     0.2214,
+     1.1271
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "",
+    "temperature_c": null,
+    "tag": "Adachi1993",
+    "dataset_label": "Adachi1993"
+   },
+   {
     "page": "DeBell-300K",
     "axis": null,
     "phase": null,
@@ -722,22 +738,6 @@
     "temperature_c": null,
     "tag": "Marple1964",
     "dataset_label": "Marple1964"
-   },
-   {
-    "page": "Adachi",
-    "axis": null,
-    "phase": null,
-    "data_path": "main/CdTe/nk/Adachi.yml",
-    "span_um": [
-     0.2214,
-     1.1271
-    ],
-    "kind": "nk",
-    "dispersion": "tabulated",
-    "comments": "",
-    "temperature_c": null,
-    "tag": "Adachi1993",
-    "dataset_label": "Adachi1993"
    },
    {
     "page": "DeBell-80K",
@@ -1452,6 +1452,45 @@
     "temperature_c": null,
     "tag": "Boyd1972",
     "dataset_label": "Boyd1972 | e-ray"
+   }
+  ]
+ },
+ "Ge2Sb2Te5": {
+  "name": "Germanium antimony telluride (GST)",
+  "formula": "Ge2Sb2Te5",
+  "source": "standing rule (user: whatever gives more info): one paper, two phases, each its own dataset labelled by the phase its page states",
+  "axes": [
+   {
+    "page": "Frantz-crystal",
+    "axis": null,
+    "phase": "crystalline",
+    "data_path": "main/Ge2Sb2Te5/nk/Frantz-crystal.yml",
+    "span_um": [
+     0.35028,
+     32.406
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Crystalline Ge2Sb2Te5.\n",
+    "temperature_c": null,
+    "tag": "Frantz2024",
+    "dataset_label": "crystalline | Frantz2024"
+   },
+   {
+    "page": "Frantz-amorphous",
+    "axis": null,
+    "phase": "amorphous",
+    "data_path": "main/Ge2Sb2Te5/nk/Frantz-amorphous.yml",
+    "span_um": [
+     0.35028,
+     29.628
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Amorphous Ge2Sb2Te5.\n",
+    "temperature_c": null,
+    "tag": "Frantz2024",
+    "dataset_label": "amorphous | Frantz2024"
    }
   ]
  }
