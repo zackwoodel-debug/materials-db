@@ -165,13 +165,25 @@ Generic loader: scripts/load_family_db.py (--family/--catalog/--selections/--db/
    (needs the repo's selection inputs; info() reports primary_unavailable otherwise). Ambiguous names raise with candidates
    (MCP: ToolError, since the SDK hides other exceptions' text). Checked end to end over stdio with mcp 2.2.0 (MCPServer) and
    1.30.0 (FastMCP). The legacy api/server.py (MatChat) is untouched and still reads data/materials.db.
-30. OPEN (found 2026-09-27, needs a decision): two n(633 nm) values exist for formula datasets. The family tables' n_633 evaluates
+30. DONE (option b, user decision 2026-09-27): two n(633 nm) values existed for formula datasets. The family tables' n_633 evaluates
    the dispersion formula exactly at 633 nm; optical_dispersion stores the formula SAMPLED, and everything that interpolates the
    stored points (ML target_n_633nm, spectra, validation, consensus, materials_db.access) gets a slightly different number.
    v0.14.0: 109 materials differ; most < 1e-6 relative, ~20 halides/chalcogenides 1e-5..3e-4, ZnTe (Li1984) 1.4e-3, TlBr (Palik)
    1.2e-3. Options: (a) ML target_n_633nm takes the family n_633 where it exists (more accurate; changes 109 targets slightly);
    (b) sample formula pages more densely at build (changes optical_dispersion rows); (c) leave and document. Currently (c); the
    Datasette index shows the family value with n_633_origin.
+   FIX: fetch_optical_data.sample_formula samples a formula ADAPTIVELY: 500 log-spaced points, then midpoints wherever linear
+   interpolation misses the formula by > min(1e-6, 1e-3*|n-1|); only physical intervals (1e-3 < n < 10) are refined, so poles
+   (Xe Bideau-Mehu 146.96 nm, GaSe reststrahlen) keep the base grid and never get n <= 0 samples; the page's tabulated-k
+   wavelengths are forced samples, so stored k reproduces the table exactly (it was an interpolation of an interpolation: CCl4
+   k(633) 2.8% off, Cargille 2.4%). scripts/resample_formula_data.py moved the tracked base DB (98 datasets, 49000 -> 64784 rows)
+   and the CSVs whose numbers came from the old grid (base catalogs' n/k cells; later families' k cells and flag values), each
+   number proven to be the old computation before it is replaced; idempotent. Result (test build): family n_633 vs interpolated
+   stored rows max 4e-7 (was 1.4e-3), k_633 max 3e-14; optical rows 719720 -> 815596; 3 new like-for-like comparisons (GaAs
+   Ozaki/Skauli, NaI Jellison/Li, TlBr Palik/Schroter) and 2 GaSe o-ray comparisons worse (warning -> suspicious, excellent ->
+   warning): the new samples reach closer to the poles, where the fits disagree. Validation self-pair tests now use rmse (CsI
+   Li1976/Rodney1955 correlate at r 0.9999998 with rmse 4e-4). Residual: the Kedenburg k tables stitch overlapping segments
+   (a jump at ~1.15 um can't be one sample per wavelength).
 31. DONE: Datasette browsing (scripts/build_datasette.py -> release/browse-v<rel>/: symlink to the release sqlite, families.db
    with material_index + every family table, metadata.json from the data dictionary with facets and 5 saved queries). Checked in
    Datasette 0.65.5 (all pages/queries 200; a DELETE is refused). Not published: datasette publish cloudrun/vercel/fly is the

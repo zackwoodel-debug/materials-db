@@ -215,9 +215,10 @@ def _expected_point_count(yaml_path: Path) -> int:
     """Number of wavelength points parse_file() should produce for this file.
 
     Only blocks that define the *n* grid count towards the total: 'tabulated
-    n' and 'tabulated nk' contribute their own row count; 'formula*' blocks
-    contribute exactly N_FORMULA (500) samples each (parse_file's fixed
-    sampling density) since our widened WL_MIN_NM/WL_MAX_NM window no longer
+    n' and 'tabulated nk' contribute their own row count; a 'formula*' block
+    contributes what sample_formula gives over its stated range (at least
+    N_FORMULA: the adaptive sampling only adds points, including the page's
+    tabulated-k wavelengths) since our widened WL_MIN_NM/WL_MAX_NM window no longer
     clips any real dataset's native range. A 'tabulated k'-only block (e.g.
     SiO's Hass.yml, which reports n and k as two separately-sized tables)
     contributes nothing to the count -- k gets interpolated onto the n grid,
@@ -230,8 +231,18 @@ def _expected_point_count(yaml_path: Path) -> int:
         if t in ("tabulated n", "tabulated nk"):
             total += _count_block_lines(block)
         elif t.startswith("formula"):
-            total += _fetch_optical_data_n_formula()
+            total += _formula_point_count(block, raw)
     return total
+
+
+def _formula_point_count(block, raw) -> int:
+    import numpy as np
+    from materials_db.pipeline.fetch_optical_data import N_FORMULA, _parse_table, sample_formula
+    lo, hi = (float(x) for x in str(block["wavelength_range"]).split())
+    k_um = [w for b in raw["DATA"] if b.get("type") == "tabulated k" for w in _parse_table(b["data"], 2)[:, 0]]
+    count = len(sample_formula(block, lo, hi, include_um=np.array(k_um))[0])
+    assert count >= N_FORMULA
+    return count
 
 
 def _fetch_optical_data_n_formula() -> int:

@@ -4,10 +4,9 @@ One library, two front ends: materials_db.access.http (a FastAPI app) and materi
 Every answer is plain JSON-able data carrying the release version, and the values come unchanged from the release:
 
   * n, k at a wavelength are interpolated linearly in wavelength between the dataset's stored points, only inside its own range
-    (outside it: no value, never extrapolated), as the validation and the ML feature matrix do. For a dataset that the source
-    gives as a dispersion formula, the release stores the formula sampled at points, so this differs slightly from the formula's
-    exact value (the family tables' n_633 evaluates the formula exactly): below 1e-6 for most, up to ~0.1% where the sampling is
-    coarse near an absorption edge (v0.14.0: ZnTe Li1984 0.14%, TlBr Palik 0.12%).
+    (outside it: no value, never extrapolated), as the validation and the ML feature matrix do. A dataset the source gives as a
+    dispersion formula is stored sampled so that this is within 1e-6 of the formula (from v0.15.0; v0.14.0 and earlier used a
+    fixed 500-point grid that was up to 0.14% off, ZnTe Li1984), except right at a pole of the formula.
   * The default dataset of a material is the release's primary dataset (measured before model fit, covering 633 nm, then the
     widest range; the family tables name it). Every other dataset stays one argument away and is never averaged in.
   * Datasets of different phases, axes or temperatures are separate datasets (dataset_label); nothing merges them.

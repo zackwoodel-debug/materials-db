@@ -437,6 +437,11 @@ calculation overestimates by 30-60%.
 - Several materials have more than one optical source. Each source is its own dataset; how far they agree is in
   `dataset_validation` and `consensus_properties` (above).
 - Materials without a density (no reliable value) have no SLD. The family tables' `flags` say why.
+- Datasets the source gives as a dispersion formula are stored as samples placed so that linear interpolation between stored
+  points is within 1e-6 of the formula in n (and within 0.1% of n-1 for gases); where the formula has a pole inside its stated
+  range (Xe Bideau-Mehu at 146.96 nm, GaSe's reststrahlen band) no sampling can represent it, and the samples stop short of it.
+  A page with a formula n and a tabulated k also has the table's wavelengths as samples, so the stored k interpolates the table
+  exactly. The family tables' n_633 therefore agrees with interpolating the stored rows (to 1e-6).
 - GaSe: its formula pages go non-physical (n^2 <= 0) in the 39-47 um reststrahlen band; those samples are dropped rather than
   stored floored, Kato 2013 is sampled over the 0.8-162 um its page states (its file says 1620 um), and the density is
   epsilon-GaSe (P-6m2). No GaSe dataset reaches 633 nm.

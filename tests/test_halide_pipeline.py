@@ -211,7 +211,7 @@ def test_every_dataset_is_preserved_row_by_row_and_n633_agrees_three_ways(loaded
     assert len(got) == len(wl) and all(g[0] == i and g[1] == pytest.approx(float(wl[i]), rel=1e-12) and g[2] == pytest.approx(float(n[i]), rel=1e-12) for i, g in enumerate(got))
     hand = _hand_n(axis["data_path"])
     if wl.min() <= 633 <= wl.max():
-        assert hand is not None and float(np.interp(633.0, wl, n)) == pytest.approx(hand, abs=5e-3)  # DB == parse_file == hand, up to the 500-point sampling of wide-range formulas (TlBr Palik 0.57-39 um: 3e-3)
+        assert hand is not None and float(np.interp(633.0, wl, n)) == pytest.approx(hand, abs=1.5e-6)  # DB == parse_file == hand, within the formula sampling tolerance (1e-6; the old fixed grid was 3e-3 off for TlBr Palik)
     else:
         assert hand is None
 
@@ -222,11 +222,11 @@ def test_validation_finds_no_self_pairs_and_detects_a_planted_duplicate(loaded, 
     c = sqlite3.connect(str(db))
     for (mid,) in c.execute("SELECT material_id FROM materials").fetchall():
         validate_optical_material(c, mid)
-    assert c.execute("SELECT COUNT(*) FROM dataset_validation WHERE pearson_r >= 0.999999").fetchone()[0] == 0
+    # a self-pair has r ~ 1 AND rmse ~ 0; r alone is not enough (CsI Li1976 vs Rodney1955: r 0.9999998, rmse 4e-4)
     assert c.execute("SELECT COUNT(*) FROM dataset_validation WHERE rmse < 1e-9").fetchone()[0] == 0
     kb = c.execute("SELECT material_id FROM materials WHERE formula='KBr'").fetchone()[0]
     c.execute("INSERT INTO optical_dispersion(material_id,wavelength_nm,n,k,dataset_label,raw_record_table,raw_record_id,source_id) "
               "SELECT material_id,wavelength_nm,n,k,'DUP-CONTROL','ctrl/'||raw_record_table,raw_record_id,source_id FROM optical_dispersion WHERE material_id=?", (kb,))
     validate_optical_material(c, kb)
-    assert c.execute("SELECT COUNT(*) FROM dataset_validation WHERE pearson_r >= 0.999999").fetchone()[0] >= 1
+    assert c.execute("SELECT COUNT(*) FROM dataset_validation WHERE pearson_r >= 0.999999 AND rmse < 1e-9").fetchone()[0] >= 1
     c.close()

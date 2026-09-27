@@ -108,7 +108,7 @@ def test_stored_data_reproduces_published_or_textbook_indices(mat, label, lam, e
 def test_nothing_but_n_of_the_formula4_datasets_differs_from_a_fresh_recompute_and_k_is_intact():
     c = sqlite3.connect(f"{DB.as_uri()}?mode=ro", uri=True)
     assert c.execute("SELECT COUNT(*) FROM optical_dispersion WHERE n IS NOT NULL AND k IS NOT NULL AND (ABS(eps_real-(n*n-k*k))>1e-9 OR ABS(eps_imag-2*n*k)>1e-9)").fetchone()[0] == 0
-    assert c.execute("SELECT COUNT(*) FROM materials").fetchone()[0] == 135 and c.execute("SELECT COUNT(*) FROM optical_dispersion").fetchone()[0] == 124547
+    assert c.execute("SELECT COUNT(*) FROM materials").fetchone()[0] == 135 and c.execute("SELECT COUNT(*) FROM optical_dispersion").fetchone()[0] == 140331  # 124547 before the adaptive formula sampling
     c.close()
 
 
@@ -181,11 +181,12 @@ def test_remediation_corrects_only_the_formula4_dataset_and_is_idempotent(tmp_pa
     p4, p1 = _synthetic_db(db)
     snap = lambda: sqlite3.connect(str(db)).execute("SELECT raw_record_table, raw_record_id, wavelength_nm, n, k FROM optical_dispersion ORDER BY 1,2").fetchall()
     before = snap()
+    n4 = sum(1 for r in before if r[0] == p4)  # every sample of the stale formula-4 dataset
     dry = rem.remediate_db(db, apply=False)
-    assert snap() == before and dry["rows_changed"] == 500  # a dry run writes nothing
+    assert snap() == before and dry["rows_changed"] == n4 >= 500  # a dry run writes nothing
     done = rem.remediate_db(db, apply=True)
     after = snap()
-    assert done["rows_changed"] == 500 and [r for r in after if r[0] == p1] == [r for r in before if r[0] == p1]  # the polycarbonate rows are untouched
+    assert done["rows_changed"] == n4 and [r for r in after if r[0] == p1] == [r for r in before if r[0] == p1]  # the polycarbonate rows are untouched
     blk = next(b for b in yaml.safe_load(open(RI / p4))["DATA"] if b["type"] == "formula 4")
     got = np.array([r[3] for r in after if r[0] == p4])
     assert np.allclose(got, official(blk, np.array([r[2] for r in after if r[0] == p4]) / 1000.0), rtol=1e-9)
