@@ -159,11 +159,23 @@ Generic loader: scripts/load_family_db.py (--family/--catalog/--selections/--db/
      CITATION.cff and the card.
 29. DONE: agent access (src/materials_db/access/: db.py library, http.py FastAPI, mcp_server.py). Read-only three ways: SQLite
    mode=ro + PRAGMA query_only + an authorizer allowing only SELECT/READ/FUNCTION on ad-hoc SQL. n,k at a wavelength: LINEAR in
-   wavelength between the dataset's points, inside its range only -- the release's convention (family tables n_633, validation,
-   ML feature matrix; test checks 60 materials to 1e-9). Only the spectra grid uses log-wavelength. Primary = primary_pages()
+   wavelength between the dataset's stored points, inside its range only, as validation and the ML feature matrix do (test: 60
+   materials to 1e-9). Only the spectra grid uses log-wavelength. CORRECTION (item 30): the family tables' n_633 is NOT this for
+   formula pages; they evaluate the formula exactly. Primary = primary_pages()
    (needs the repo's selection inputs; info() reports primary_unavailable otherwise). Ambiguous names raise with candidates
    (MCP: ToolError, since the SDK hides other exceptions' text). Checked end to end over stdio with mcp 2.2.0 (MCPServer) and
    1.30.0 (FastMCP). The legacy api/server.py (MatChat) is untouched and still reads data/materials.db.
+30. OPEN (found 2026-09-27, needs a decision): two n(633 nm) values exist for formula datasets. The family tables' n_633 evaluates
+   the dispersion formula exactly at 633 nm; optical_dispersion stores the formula SAMPLED, and everything that interpolates the
+   stored points (ML target_n_633nm, spectra, validation, consensus, materials_db.access) gets a slightly different number.
+   v0.14.0: 109 materials differ; most < 1e-6 relative, ~20 halides/chalcogenides 1e-5..3e-4, ZnTe (Li1984) 1.4e-3, TlBr (Palik)
+   1.2e-3. Options: (a) ML target_n_633nm takes the family n_633 where it exists (more accurate; changes 109 targets slightly);
+   (b) sample formula pages more densely at build (changes optical_dispersion rows); (c) leave and document. Currently (c); the
+   Datasette index shows the family value with n_633_origin.
+31. DONE: Datasette browsing (scripts/build_datasette.py -> release/browse-v<rel>/: symlink to the release sqlite, families.db
+   with material_index + every family table, metadata.json from the data dictionary with facets and 5 saved queries). Checked in
+   Datasette 0.65.5 (all pages/queries 200; a DELETE is refused). Not published: datasette publish cloudrun/vercel/fly is the
+   user's call.
 
 ## FOLLOW-UP (logged, NOT started): graphene / 2D carbon as its own family -- materialclass must NOT be 'polymer'
 - RI.info main/C, verified read-only: monolayer graphene = Weber 2010 (0.21-1.0 um, exfoliated flake, 3.4 A, on Si/98 nm SiO2), Song 2018 "Graphene"

@@ -14,6 +14,7 @@ versions follow the release tags. Counts are materials / optical datasets.
   1.1 metadata, a Hugging Face dataset card, Zenodo metadata; `CITATION.cff` at the repository root.
 - Read-only access layer (`materials_db.access`): a Python library, an HTTP API and an MCP server for AI assistants over a
   release (search, material records with sources, n/k at a wavelength without extrapolation, comparisons, read-only SQL).
+- Datasette browsing (`scripts/build_datasette.py`): described tables, a faceted material index, saved queries.
 
 ## [0.14.0] - 2026-09-27 (381 / 831)
 

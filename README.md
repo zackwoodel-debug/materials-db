@@ -78,6 +78,13 @@ like-for-like comparisons and read-only SQL. The release is found at `$MATERIALS
 
 The older `src/materials_db/api/server.py` (MatChat, stack builder) still reads the legacy `data/materials.db`.
 
+### Browse in a web browser (Datasette)
+
+`python3 scripts/build_datasette.py` prepares `release/browse-vX.Y.Z/` (the release file linked unchanged, a `families.db`
+with a one-row-per-material index and the family tables, and column descriptions from the data dictionary). Then
+`pip install datasette` and run the `datasette serve ...` command the script prints; saved queries include source points
+near a wavelength, a material's datasets and sources, datasets that disagree, and materials by n(633 nm).
+
 ### License
 
 Code: MIT (`LICENSE`). Data: CC BY 4.0, with attribution to the upstream sources (`DATA_LICENSE.md`).
