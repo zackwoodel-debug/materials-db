@@ -148,6 +148,15 @@ Generic loader: scripts/load_family_db.py (--family/--catalog/--selections/--db/
    EpoClad/EpoCore, IP-S/IP-Dip), else the material. split = sha256(group) mod 10 (8/1/1), fold = independent hash mod 5: stable
    across releases. v0.14.0: 345 groups, 303/42/36 materials. When adding a formula-less grade of an existing line, add it to
    PRODUCT_LINES. Regenerate after the feature matrix.
+28. DONE: ML package (scripts/package_ml_dataset.py -> release/ml-dataset-v<rel>/ + .zip, deterministic; CITATION.cff copied to
+   the root). materials/ and spectra/{train,validation,test}.parquet carry group/split/fold; croissant.json (Croissant 1.1)
+   validated with mlcroissant 1.1.0 (no warnings, all 381 + 813 records load, arrays of 128); README.md loads with HF
+   datasets (configs materials [default] and spectra). Neither tool is a dependency: validate in a throwaway venv.
+   Release order: SQLite release -> generate_ml_release_set -> generate_ml_spectra -> generate_ml_splits -> package_ml_dataset.
+   NOT uploaded. To publish (user's accounts):
+     Hugging Face: hf upload <user>/materials-db release/ml-dataset-v<rel> . --repo-type dataset
+     Zenodo: new upload, attach the zip, copy fields from .zenodo.json (or the REST API with a token); the DOI then goes in
+     CITATION.cff and the card.
 
 ## FOLLOW-UP (logged, NOT started): graphene / 2D carbon as its own family -- materialclass must NOT be 'polymer'
 - RI.info main/C, verified read-only: monolayer graphene = Weber 2010 (0.21-1.0 um, exfoliated flake, 3.4 A, on Si/98 nm SiO2), Song 2018 "Graphene"

@@ -1,0 +1,41 @@
+cff-version: 1.2.0
+message: If you use this dataset, cite it and the upstream sources in DATA_LICENSE.md.
+type: dataset
+title: "materials-db: optical constants and descriptors of materials, ML edition"
+version: "0.14.0"
+license: CC-BY-4.0
+repository-code: https://github.com/zackwoodel-debug/materials-db
+authors:
+  - family-names: Wodel
+    given-names: Zack
+keywords:
+  - "refractive index"
+  - "optical constants"
+  - "extinction coefficient"
+  - "materials science"
+  - "density"
+  - "materials informatics"
+  - "machine learning"
+  - "spectra"
+  - "dispersion"
+references:
+  - type: article
+    title: "M. N. Polyanskiy, Refractiveindex.info database of optical constants, Sci. Data 11, 94 (2024)"
+    authors:
+      - name: "M. N. Polyanskiy"
+    doi: 10.1038/s41597-023-02898-2
+  - type: article
+    title: "A. Jain et al., The Materials Project, APL Mater. 1, 011002 (2013)"
+    authors:
+      - name: "A. Jain et al."
+    doi: 10.1063/1.4812323
+  - type: article
+    title: "S. Kim et al., PubChem 2023 update, Nucleic Acids Res. 51, D1373 (2023)"
+    authors:
+      - name: "S. Kim et al."
+    doi: 10.1093/nar/gkac956
+  - type: article
+    title: "S. P. Ong et al., pymatgen, Comput. Mater. Sci. 68, 314 (2013)"
+    authors:
+      - name: "S. P. Ong et al."
+    doi: 10.1016/j.commatsci.2012.10.028
