@@ -480,3 +480,19 @@ def test_every_material_has_its_registry_id_and_the_package_lists_the_keys(relea
     listed = pd.read_csv(release["out"] / "material_registry.csv")
     assert dict(zip(listed.name, listed.material_id)) == ids and dict(zip(listed.name, listed.key)) == {n: keys[n] for n in ids}
     assert release["facts"]["material_ids"]["registered_now"] == []  # the committed registry already covers this build
+
+
+# ---------------------------------------------------------------- data dictionary (release_dictionary.py)
+
+def test_the_package_dictionary_describes_every_column_with_the_real_counts(release):
+    out = release["out"]
+    d = json.loads((out / "data_dictionary.json").read_text())
+    c = sqlite3.connect(str(release["db"]))
+    for t, spec in d["tables"].items():
+        cols = {r[1] for r in c.execute(f"PRAGMA table_xinfo({t})")}
+        assert {x["name"] for x in spec["columns"]} == cols and spec["rows"] == c.execute(f"SELECT COUNT(*) FROM {t}").fetchone()[0]
+    v = d["vocabularies"]
+    assert {"o-ray", "e-ray"} <= set(v["optical_axes"]) and "density_MP_DFT" in v["physical_quantities"]
+    assert sum(v["material_kinds"].values()) == c.execute("SELECT COUNT(*) FROM materials").fetchone()[0]
+    md = (out / "DATA_DICTIONARY.md").read_text()
+    assert "`wavelength_nm`" in md and "Label grammar" in md and (out / "CHANGELOG.md").exists()
