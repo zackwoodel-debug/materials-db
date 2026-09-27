@@ -96,6 +96,13 @@ Generic loader: scripts/load_family_db.py (--family/--catalog/--selections/--db/
    outputs byte-identical). Deferred: Loctite 3526, NOA 170, NOA 1348 (Iezzi 2020 films, cure state not stated) and NOA 61 Joseph
    (uncured). Immersion oils: k only, nothing to load. Cross-check: each matching liquid's n(633) equals its target material.
 
+20. DONE: liquid crystals (scripts/liquid_crystal_material_list.py, build_liquid_crystals_csv.py, load_liquid_crystals_db.py):
+   5CB and 5PCH (PubChem identity, molecular descriptors) + E7, E44, MLC-6241-000, MLC-6608, MLC-9200-000, MLC-9200-100, TL-216
+   (formula NULL), 45 datasets, o-ray / e-ray, Wu 1993 temperature series labelled Wu1993-<T>C (all below the clearing point).
+   Excluded: 5CB Wu-27.2C-e duplicates the 29.9 degC page (source error). listed_family.py now takes optional axis, tag_suffix and
+   PubChem identity (glass / optical-media outputs byte-identical). Test helper evaluates RI.info formulas 3 and 6 too.
+   Note: primaries of 5CB and E7 are Tkachenko 2006 (widest), whose temperature is not stated; 25 degC data (Li, Wu) are loaded.
+
 ## FOLLOW-UP (logged, NOT started): graphene / 2D carbon as its own family -- materialclass must NOT be 'polymer'
 - RI.info main/C, verified read-only: monolayer graphene = Weber 2010 (0.21-1.0 um, exfoliated flake, 3.4 A, on Si/98 nm SiO2), Song 2018 "Graphene"
   (0.193-1.69, CVD mono), Tikuisis 2023 (0.226-4.40, epitaxial on 6H-SiC), El-Sayed 2021 (0.24-1.0, CVD): four, not three. Song 2018 also holds 4 bulk-HOPG pages (graphite).

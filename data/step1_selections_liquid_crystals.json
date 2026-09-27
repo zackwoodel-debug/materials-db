@@ -1,0 +1,875 @@
+{
+ "5CB": {
+  "name": "5CB (4-pentyl-4'-cyanobiphenyl)",
+  "formula": "C18H19N",
+  "source": "liquid_crystal_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Tkachenko-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/5CB/nk/Tkachenko-o.yml",
+    "span_um": [
+     0.532,
+     1.7
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Ordinary ray (o).\n",
+    "temperature_c": null,
+    "tag": "Tkachenko2006",
+    "dataset_label": "Tkachenko2006 | o-ray",
+    "shelf": "other",
+    "book": "5CB"
+   },
+   {
+    "page": "Tkachenko-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/5CB/nk/Tkachenko-e.yml",
+    "span_um": [
+     0.532,
+     1.7
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Extraordinary ray (e).\n",
+    "temperature_c": null,
+    "tag": "Tkachenko2006",
+    "dataset_label": "Tkachenko2006 | e-ray",
+    "shelf": "other",
+    "book": "5CB"
+   },
+   {
+    "page": "Wu-25.1C-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/5CB/nk/Wu-25.1C-o.yml",
+    "span_um": [
+     0.4,
+     0.8
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "25.1 °C. Ordinary ray (o).\n",
+    "temperature_c": 25.1,
+    "tag": "Wu1993-25.1C",
+    "dataset_label": "Wu1993-25.1C | o-ray",
+    "shelf": "other",
+    "book": "5CB"
+   },
+   {
+    "page": "Wu-25.1C-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/5CB/nk/Wu-25.1C-e.yml",
+    "span_um": [
+     0.4,
+     0.8
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "25.1 °C. Extraordinary ray (e).\n",
+    "temperature_c": 25.1,
+    "tag": "Wu1993-25.1C",
+    "dataset_label": "Wu1993-25.1C | e-ray",
+    "shelf": "other",
+    "book": "5CB"
+   },
+   {
+    "page": "Wu-27.2C-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/5CB/nk/Wu-27.2C-o.yml",
+    "span_um": [
+     0.4,
+     0.8
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "27.2 °C. Ordinary ray (o).\n",
+    "temperature_c": 27.2,
+    "tag": "Wu1993-27.2C",
+    "dataset_label": "Wu1993-27.2C | o-ray",
+    "shelf": "other",
+    "book": "5CB"
+   },
+   {
+    "page": "Wu-29.9C-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/5CB/nk/Wu-29.9C-o.yml",
+    "span_um": [
+     0.4,
+     0.8
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "29.9 °C. Ordinary ray (o).\n",
+    "temperature_c": 29.9,
+    "tag": "Wu1993-29.9C",
+    "dataset_label": "Wu1993-29.9C | o-ray",
+    "shelf": "other",
+    "book": "5CB"
+   },
+   {
+    "page": "Wu-29.9C-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/5CB/nk/Wu-29.9C-e.yml",
+    "span_um": [
+     0.4,
+     0.8
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "29.9 °C. Extraordinary ray (e).\n",
+    "temperature_c": 29.9,
+    "tag": "Wu1993-29.9C",
+    "dataset_label": "Wu1993-29.9C | e-ray",
+    "shelf": "other",
+    "book": "5CB"
+   },
+   {
+    "page": "Li-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/5CB/nk/Li-o.yml",
+    "span_um": [
+     0.45,
+     0.656
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "25 °C. Ordinary ray (o).\n",
+    "temperature_c": 24.85,
+    "tag": "Li2005",
+    "dataset_label": "Li2005 | o-ray",
+    "shelf": "other",
+    "book": "5CB"
+   },
+   {
+    "page": "Li-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/5CB/nk/Li-e.yml",
+    "span_um": [
+     0.45,
+     0.656
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "25 °C. Extraordinary ray (e).\n",
+    "temperature_c": 24.85,
+    "tag": "Li2005",
+    "dataset_label": "Li2005 | e-ray",
+    "shelf": "other",
+    "book": "5CB"
+   },
+   {
+    "page": "Wu-32.6C-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/5CB/nk/Wu-32.6C-o.yml",
+    "span_um": [
+     0.4,
+     0.8
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "32.6 °C. Ordinary ray (o).\n",
+    "temperature_c": 32.6,
+    "tag": "Wu1993-32.6C",
+    "dataset_label": "Wu1993-32.6C | o-ray",
+    "shelf": "other",
+    "book": "5CB"
+   },
+   {
+    "page": "Wu-32.6C-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/5CB/nk/Wu-32.6C-e.yml",
+    "span_um": [
+     0.4,
+     0.8
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "32.6 °C. Extraordinary ray (e).\n",
+    "temperature_c": 32.6,
+    "tag": "Wu1993-32.6C",
+    "dataset_label": "Wu1993-32.6C | e-ray",
+    "shelf": "other",
+    "book": "5CB"
+   },
+   {
+    "page": "Wu-34.8C-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/5CB/nk/Wu-34.8C-o.yml",
+    "span_um": [
+     0.4,
+     0.8
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "34.8 °C. Ordinary ray (o).\n",
+    "temperature_c": 34.8,
+    "tag": "Wu1993-34.8C",
+    "dataset_label": "Wu1993-34.8C | o-ray",
+    "shelf": "other",
+    "book": "5CB"
+   },
+   {
+    "page": "Wu-34.8C-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/5CB/nk/Wu-34.8C-e.yml",
+    "span_um": [
+     0.4,
+     0.8
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "34.8 °C. Extraordinary ray (e).\n",
+    "temperature_c": 34.8,
+    "tag": "Wu1993-34.8C",
+    "dataset_label": "Wu1993-34.8C | e-ray",
+    "shelf": "other",
+    "book": "5CB"
+   }
+  ]
+ },
+ "5PCH": {
+  "name": "5PCH (4-trans-pentylcyclohexylcyanobenzene)",
+  "formula": "C18H25N",
+  "source": "liquid_crystal_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Wu-25.0C-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/5PCH/nk/Wu-25.0C-o.yml",
+    "span_um": [
+     0.4,
+     0.8
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "25.0 °C. Ordinary ray (o).\n",
+    "temperature_c": 25.0,
+    "tag": "Wu1993-25.0C",
+    "dataset_label": "Wu1993-25.0C | o-ray",
+    "shelf": "other",
+    "book": "5PCH"
+   },
+   {
+    "page": "Wu-25.0C-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/5PCH/nk/Wu-25.0C-e.yml",
+    "span_um": [
+     0.4,
+     0.8
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "25.0 °C. Extraordinary ray (e).\n",
+    "temperature_c": 25.0,
+    "tag": "Wu1993-25.0C",
+    "dataset_label": "Wu1993-25.0C | e-ray",
+    "shelf": "other",
+    "book": "5PCH"
+   },
+   {
+    "page": "Li-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/5PCH/nk/Li-o.yml",
+    "span_um": [
+     0.45,
+     0.656
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "25 °C. Ordinary ray (o).\n",
+    "temperature_c": 24.85,
+    "tag": "Li2005",
+    "dataset_label": "Li2005 | o-ray",
+    "shelf": "other",
+    "book": "5PCH"
+   },
+   {
+    "page": "Li-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/5PCH/nk/Li-e.yml",
+    "span_um": [
+     0.45,
+     0.656
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "25 °C. Extraordinary ray (e).\n",
+    "temperature_c": 24.85,
+    "tag": "Li2005",
+    "dataset_label": "Li2005 | e-ray",
+    "shelf": "other",
+    "book": "5PCH"
+   },
+   {
+    "page": "Wu-34.8C-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/5PCH/nk/Wu-34.8C-o.yml",
+    "span_um": [
+     0.4,
+     0.8
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "34.8 °C. Ordinary ray (o).\n",
+    "temperature_c": 34.8,
+    "tag": "Wu1993-34.8C",
+    "dataset_label": "Wu1993-34.8C | o-ray",
+    "shelf": "other",
+    "book": "5PCH"
+   },
+   {
+    "page": "Wu-34.8C-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/5PCH/nk/Wu-34.8C-e.yml",
+    "span_um": [
+     0.4,
+     0.8
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "34.8 °C. Extraordinary ray (e).\n",
+    "temperature_c": 34.8,
+    "tag": "Wu1993-34.8C",
+    "dataset_label": "Wu1993-34.8C | e-ray",
+    "shelf": "other",
+    "book": "5PCH"
+   },
+   {
+    "page": "Wu-40.1C-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/5PCH/nk/Wu-40.1C-o.yml",
+    "span_um": [
+     0.4,
+     0.8
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "40.1 °C. Ordinary ray (o).\n",
+    "temperature_c": 40.1,
+    "tag": "Wu1993-40.1C",
+    "dataset_label": "Wu1993-40.1C | o-ray",
+    "shelf": "other",
+    "book": "5PCH"
+   },
+   {
+    "page": "Wu-40.1C-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/5PCH/nk/Wu-40.1C-e.yml",
+    "span_um": [
+     0.4,
+     0.8
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "40.1 °C. Extraordinary ray (e).\n",
+    "temperature_c": 40.1,
+    "tag": "Wu1993-40.1C",
+    "dataset_label": "Wu1993-40.1C | e-ray",
+    "shelf": "other",
+    "book": "5PCH"
+   },
+   {
+    "page": "Wu-45.4C-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/5PCH/nk/Wu-45.4C-o.yml",
+    "span_um": [
+     0.4,
+     0.8
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "45.4 °C. Ordinary ray (o).\n",
+    "temperature_c": 45.4,
+    "tag": "Wu1993-45.4C",
+    "dataset_label": "Wu1993-45.4C | o-ray",
+    "shelf": "other",
+    "book": "5PCH"
+   },
+   {
+    "page": "Wu-45.4C-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/5PCH/nk/Wu-45.4C-e.yml",
+    "span_um": [
+     0.4,
+     0.8
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "45.4 °C. Extraordinary ray (e).\n",
+    "temperature_c": 45.4,
+    "tag": "Wu1993-45.4C",
+    "dataset_label": "Wu1993-45.4C | e-ray",
+    "shelf": "other",
+    "book": "5PCH"
+   },
+   {
+    "page": "Wu-50.8C-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/5PCH/nk/Wu-50.8C-o.yml",
+    "span_um": [
+     0.4,
+     0.8
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "50.8 °C. Ordinary ray (o).\n",
+    "temperature_c": 50.8,
+    "tag": "Wu1993-50.8C",
+    "dataset_label": "Wu1993-50.8C | o-ray",
+    "shelf": "other",
+    "book": "5PCH"
+   },
+   {
+    "page": "Wu-50.8C-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/5PCH/nk/Wu-50.8C-e.yml",
+    "span_um": [
+     0.4,
+     0.8
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "50.8 °C. Extraordinary ray (e).\n",
+    "temperature_c": 50.8,
+    "tag": "Wu1993-50.8C",
+    "dataset_label": "Wu1993-50.8C | e-ray",
+    "shelf": "other",
+    "book": "5PCH"
+   },
+   {
+    "page": "Wu-53.4C-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/5PCH/nk/Wu-53.4C-o.yml",
+    "span_um": [
+     0.4,
+     0.8
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "53.4 °C. Ordinary ray (o).\n",
+    "temperature_c": 53.4,
+    "tag": "Wu1993-53.4C",
+    "dataset_label": "Wu1993-53.4C | o-ray",
+    "shelf": "other",
+    "book": "5PCH"
+   },
+   {
+    "page": "Wu-53.4C-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/5PCH/nk/Wu-53.4C-e.yml",
+    "span_um": [
+     0.4,
+     0.8
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "53.4 °C. Extraordinary ray (e).\n",
+    "temperature_c": 53.4,
+    "tag": "Wu1993-53.4C",
+    "dataset_label": "Wu1993-53.4C | e-ray",
+    "shelf": "other",
+    "book": "5PCH"
+   },
+   {
+    "page": "Wu-30.4-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/5PCH/nk/Wu-30.4C-o.yml",
+    "span_um": [
+     0.4,
+     0.8
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "30.4 °C. Ordinary ray (o).\n",
+    "temperature_c": 30.4,
+    "tag": "Wu1993-30.4C",
+    "dataset_label": "Wu1993-30.4C | o-ray",
+    "shelf": "other",
+    "book": "5PCH"
+   },
+   {
+    "page": "Wu-30.4C-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/5PCH/nk/Wu-30.4C-e.yml",
+    "span_um": [
+     0.4,
+     0.8
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "30.4 °C. Extraordinary ray (e).\n",
+    "temperature_c": 30.4,
+    "tag": "Wu1993-30.4C",
+    "dataset_label": "Wu1993-30.4C | e-ray",
+    "shelf": "other",
+    "book": "5PCH"
+   }
+  ]
+ },
+ "E7": {
+  "name": "E7 liquid crystal mixture",
+  "formula": null,
+  "source": "liquid_crystal_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Tkachenko-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/E7/nk/Tkachenko-o.yml",
+    "span_um": [
+     0.532,
+     1.7
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Ordinary ray (o).\n",
+    "temperature_c": null,
+    "tag": "Tkachenko2006",
+    "dataset_label": "Tkachenko2006 | o-ray",
+    "shelf": "other",
+    "book": "E7"
+   },
+   {
+    "page": "Tkachenko-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/E7/nk/Tkachenko-e.yml",
+    "span_um": [
+     0.532,
+     1.7
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Extraordinary ray (e).\n",
+    "temperature_c": null,
+    "tag": "Tkachenko2006",
+    "dataset_label": "Tkachenko2006 | e-ray",
+    "shelf": "other",
+    "book": "E7"
+   },
+   {
+    "page": "Li-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/E7/nk/Li-o.yml",
+    "span_um": [
+     0.45,
+     0.656
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "25 °C. Ordinary ray (o).\n",
+    "temperature_c": 24.85,
+    "tag": "Li2005",
+    "dataset_label": "Li2005 | o-ray",
+    "shelf": "other",
+    "book": "E7"
+   },
+   {
+    "page": "Li-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/E7/nk/Li-e.yml",
+    "span_um": [
+     0.45,
+     0.656
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "25 °C. Extraordinary ray (e).\n",
+    "temperature_c": 24.85,
+    "tag": "Li2005",
+    "dataset_label": "Li2005 | e-ray",
+    "shelf": "other",
+    "book": "E7"
+   }
+  ]
+ },
+ "E44": {
+  "name": "E44 liquid crystal mixture",
+  "formula": null,
+  "source": "liquid_crystal_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Li-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/E44/nk/Li-o.yml",
+    "span_um": [
+     0.45,
+     0.656
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "25 °C. Ordinary ray (o).\n",
+    "temperature_c": 24.85,
+    "tag": "Li2005",
+    "dataset_label": "Li2005 | o-ray",
+    "shelf": "other",
+    "book": "E44"
+   },
+   {
+    "page": "Li-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/E44/nk/Li-e.yml",
+    "span_um": [
+     0.45,
+     0.656
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "25 °C. Extraordinary ray (e).\n",
+    "temperature_c": 24.85,
+    "tag": "Li2005",
+    "dataset_label": "Li2005 | e-ray",
+    "shelf": "other",
+    "book": "E44"
+   }
+  ]
+ },
+ "MLC-6241-000": {
+  "name": "MLC-6241-000 liquid crystal mixture",
+  "formula": null,
+  "source": "liquid_crystal_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Li-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/MLC-6241-000/nk/Li-o.yml",
+    "span_um": [
+     0.45,
+     0.656
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "25 °C. Ordinary ray (o).\n",
+    "temperature_c": 24.85,
+    "tag": "Li2005",
+    "dataset_label": "Li2005 | o-ray",
+    "shelf": "other",
+    "book": "MLC-6241-000"
+   },
+   {
+    "page": "Li-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/MLC-6241-000/nk/Li-e.yml",
+    "span_um": [
+     0.45,
+     0.656
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "25 °C. Extraordinary ray (e)\n",
+    "temperature_c": 24.85,
+    "tag": "Li2005",
+    "dataset_label": "Li2005 | e-ray",
+    "shelf": "other",
+    "book": "MLC-6241-000"
+   }
+  ]
+ },
+ "MLC-6608": {
+  "name": "MLC-6608 liquid crystal mixture",
+  "formula": null,
+  "source": "liquid_crystal_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Li-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/MLC-6608/nk/Li-o.yml",
+    "span_um": [
+     0.45,
+     0.656
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "25 °C. Ordinary ray (o).\n",
+    "temperature_c": 24.85,
+    "tag": "Li2005",
+    "dataset_label": "Li2005 | o-ray",
+    "shelf": "other",
+    "book": "MLC-6608"
+   },
+   {
+    "page": "Li-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/MLC-6608/nk/Li-e.yml",
+    "span_um": [
+     0.45,
+     0.656
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "25 °C. Extraordinary ray (e).\n",
+    "temperature_c": 24.85,
+    "tag": "Li2005",
+    "dataset_label": "Li2005 | e-ray",
+    "shelf": "other",
+    "book": "MLC-6608"
+   }
+  ]
+ },
+ "MLC-9200-000": {
+  "name": "MLC-9200-000 liquid crystal mixture",
+  "formula": null,
+  "source": "liquid_crystal_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Li-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/MLC-9200-000/nk/Li-o.yml",
+    "span_um": [
+     0.45,
+     0.656
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "25 °C. Ordinary ray (o).\n",
+    "temperature_c": 24.85,
+    "tag": "Li2005",
+    "dataset_label": "Li2005 | o-ray",
+    "shelf": "other",
+    "book": "MLC-9200-000"
+   },
+   {
+    "page": "Li-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/MLC-9200-000/nk/Li-e.yml",
+    "span_um": [
+     0.45,
+     0.656
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "25 °C. Extraordinary ray (e).\n",
+    "temperature_c": 24.85,
+    "tag": "Li2005",
+    "dataset_label": "Li2005 | e-ray",
+    "shelf": "other",
+    "book": "MLC-9200-000"
+   }
+  ]
+ },
+ "MLC-9200-100": {
+  "name": "MLC-9200-100 liquid crystal mixture",
+  "formula": null,
+  "source": "liquid_crystal_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Li-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/MLC-9200-100/nk/Li-o.yml",
+    "span_um": [
+     0.45,
+     0.656
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "25 °C. Ordinary ray (o).\n",
+    "temperature_c": 24.85,
+    "tag": "Li2005",
+    "dataset_label": "Li2005 | o-ray",
+    "shelf": "other",
+    "book": "MLC-9200-100"
+   },
+   {
+    "page": "Li-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/MLC-9200-100/nk/Li-e.yml",
+    "span_um": [
+     0.45,
+     0.656
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "25 °C. Extraordinary ray (e).\n",
+    "temperature_c": 24.85,
+    "tag": "Li2005",
+    "dataset_label": "Li2005 | e-ray",
+    "shelf": "other",
+    "book": "MLC-9200-100"
+   }
+  ]
+ },
+ "TL-216": {
+  "name": "TL-216 liquid crystal mixture",
+  "formula": null,
+  "source": "liquid_crystal_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Li-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/TL-216/nk/Li-o.yml",
+    "span_um": [
+     0.45,
+     0.656
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "25 °C. Ordinary ray (o).\n",
+    "temperature_c": 24.85,
+    "tag": "Li2005",
+    "dataset_label": "Li2005 | o-ray",
+    "shelf": "other",
+    "book": "TL-216"
+   },
+   {
+    "page": "Li-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "other/liquid crystals/TL-216/nk/Li-e.yml",
+    "span_um": [
+     0.45,
+     0.656
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "25 °C. Extraordinary ray (e).\n",
+    "temperature_c": 24.85,
+    "tag": "Li2005",
+    "dataset_label": "Li2005 | e-ray",
+    "shelf": "other",
+    "book": "TL-216"
+   }
+  ]
+ }
+}

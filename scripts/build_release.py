@@ -9,7 +9,7 @@ publish them as GitHub release assets, not commits).
 
 Stages, all reproducible from committed inputs (no API key, no network):
   1. base         copy data/materials_oxide_test.db (oxides, batch 2, batch 3b, pure elements; formula-4 remediated)
-  2. families     upsert nitride, polymer, inorganic3, halide, chalcogenide, liquid, semiconductor, inorganic4, glass and optical_media through load_family_db.run_family with the same
+  2. families     upsert nitride, polymer, inorganic3, halide, chalcogenide, liquid, semiconductor, inorganic4, glass, optical_media and liquid_crystal through load_family_db.run_family with the same
                   options as their wrappers (conflicts are reported, never overwritten)
   3. dedupe       physical rows a later family re-loaded with identical values (the five nitrides batch 2 already held): keep
                   one, preferring the source whose title/notes name the material, else the older source; then drop sources
@@ -60,8 +60,8 @@ import release_validation as rv  # noqa: E402
 
 BASE_DB = _ROOT / "data" / "materials_oxide_test.db"
 FAMILY_CSVS = ["oxides_50", "batch2_31", "batch3b_4", "pure_elements_50", "nitrides", "polymers", "inorganic3", "halides",
-               "chalcogenides", "liquids", "semiconductors", "inorganic4", "glasses", "optical_media"]
-GAP_CSVS = ["nitride_gaps", "polymer_gaps", "inorganic3_gaps", "halide_gaps", "chalcogenide_gaps", "liquid_gaps", "semiconductor_gaps", "inorganic4_gaps", "glass_gaps", "optical_media_gaps"]
+               "chalcogenides", "liquids", "semiconductors", "inorganic4", "glasses", "optical_media", "liquid_crystals"]
+GAP_CSVS = ["nitride_gaps", "polymer_gaps", "inorganic3_gaps", "halide_gaps", "chalcogenide_gaps", "liquid_gaps", "semiconductor_gaps", "inorganic4_gaps", "glass_gaps", "optical_media_gaps", "liquid_crystal_gaps"]
 DESCRIPTOR_INPUTS = ["mp_structural.json", "polymer_repeat_units.csv", "formula_issues.csv", "source_dois.json", "pubchem_titles.json", "mp_dielectric.json"]
 # Same allow-list as tests/test_family_optical_sanity.py (a test keeps them equal): measurement noise around k = 0 in tabulated sources.
 NEGATIVE_K_ALLOWED = {
@@ -85,6 +85,7 @@ def family_jobs():
     import load_halides_db as hal
     import load_inorganic3_db as i3
     import load_inorganic4_db as i4
+    import load_liquid_crystals_db as lcr
     import load_liquids_db as liq
     import load_nitrides_db as nit
     import load_optical_media_db as opm
@@ -96,7 +97,8 @@ def family_jobs():
             ("inorganic3", i3, lit(i3)), ("halide", hal, lit(hal)), ("chalcogenide", chl, lit(chl)),
             ("liquid", liq, dict(lit(liq), allow_null_formula=True)), ("semiconductor", sem, lit(sem)),
             ("inorganic4", i4, lit(i4)), ("glass", gla, dict(lit(gla), allow_null_formula=True)),
-            ("optical_media", opm, dict(lit(opm), allow_null_formula=True))]
+            ("optical_media", opm, dict(lit(opm), allow_null_formula=True)),
+            ("liquid_crystal", lcr, dict(lit(lcr), allow_null_formula=True))]
 
 
 def family_rows():
@@ -429,6 +431,10 @@ calculation overestimates by 30-60%.
 - Optical media: Cargille index-matching liquids (BK7, fused silica 06350 / 50350, acrylic, acrylic double; densities at 25 degC),
   Norland NOA 61 (cured), Eukitt and FluorSave mounting media. Uncured-adhesive data and films of unstated cure state are not
   loaded; the immersion-oil pages give k only.
+- Liquid crystals: 5CB and 5PCH (single compounds) and seven commercial mixtures (E7, E44, MLC-6241-000, MLC-6608, MLC-9200-000,
+  MLC-9200-100, TL-216). Ordinary and extraordinary rays are separate datasets (`o-ray` / `e-ray`); Wu 1993 temperature series
+  are labelled by temperature (Wu1993-25.1C) and carry it on every row. 5CB's "27.2 degC" e-ray page is excluded: it duplicates
+  the 29.9 degC page.
 - Primary dataset (the family tables' n_633 / k_633) in the automatically selected families (halides, chalcogenides,
   liquids, semiconductors): measured data before model fits of the dielectric function, then the widest range covering
   633 nm. A page is a model fit only when its source says so (scripts/dataset_kind.py). Model datasets (e.g. Adachi's) are

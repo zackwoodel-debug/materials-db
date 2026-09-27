@@ -61,33 +61,48 @@ def source_tag(shelf, book, page, title, path):
     return tag_of(page, title)
 
 
+AXIS_NAMES = {"o": "o-ray", "e": "e-ray"}
+
+
+def page_entry(entry):
+    """A listed page: (shelf, book, page, variant) or a dict with shelf, book, page and optional variant, axis ('o' / 'e') and
+    tag_suffix (e.g. a temperature, to keep a series of one paper apart: Wu1993-25.1C)."""
+    if isinstance(entry, dict):
+        return (entry["shelf"], entry["book"], entry["page"], entry.get("variant"), AXIS_NAMES.get(entry.get("axis"), entry.get("axis")),
+                entry.get("tag_suffix"))
+    shelf, book, page, variant = entry
+    return shelf, book, page, variant, None, None
+
+
 def build(MATERIALS, EXCLUDED_PAGES, OUT_OF_FAMILY, csv_stem, selections_stem, gaps_stem, formula_null_reason, density_null_reason,
           source_label):
     pages = catalog_pages()
     selections, rows, gaps = {}, [], []
     for i, mat in enumerate(MATERIALS, start=1):
         axes = []
-        for shelf, book, page, variant in mat["pages"]:
+        for entry in mat["pages"]:
+            shelf, book, page, variant, axis, suffix = page_entry(entry)
             if (shelf, book, page) in EXCLUDED_PAGES:
                 raise SystemExit(f"{page} is both listed and excluded")
             path, title = pages[(shelf, book, page)]
             s = scan_page(path)
-            tag = source_tag(shelf, book, page, title, path)
-            axes.append(dict(page=page, axis=None, phase=variant, data_path=path, span_um=s["span_um"], kind=s["kind"],
+            tag = source_tag(shelf, book, page, title, path) + (f"-{suffix}" if suffix else "")
+            axes.append(dict(page=page, axis=axis, phase=variant, data_path=path, span_um=s["span_um"], kind=s["kind"],
                              dispersion=s["dispersion"], comments=s["comments"], temperature_c=page_temperature_c(path, title + " " + s["comments"]),
-                             tag=tag, dataset_label=label_of(variant, tag, None), shelf=shelf, book=book))
+                             tag=tag, dataset_label=label_of(variant, tag, axis), shelf=shelf, book=book))
         axes.sort(key=lambda a: (not ambient(a), is_model_fit(a["data_path"]), not a["span_um"][0] <= 0.633 <= a["span_um"][1],
                                  a["span_um"][0] - a["span_um"][1]))
         labels = [a["dataset_label"] for a in axes]
         assert len(labels) == len(set(labels)), labels
-        selections[mat["key"]] = dict(name=mat["name"], formula=None, source=f"{source_label} (every listed page is its own dataset; "
+        selections[mat["key"]] = dict(name=mat["name"], formula=mat.get("formula"), source=f"{source_label} (every listed page is its own dataset; "
                                       "primary: ambient, measured before model fits, widest covering 633 nm)", axes=axes)
 
         first, flags = axes[0], []
         interp = base.interpolate_axis(first["data_path"])
         flags += [f"[{first['page']}] {f}" for f in interp.pop("flags")]
-        row = dict(idx=i, name=mat["name"], formula=None, polymorph=None, materialclass=mat["materialclass"], selection_key=mat["key"],
-                   ri_shelf=first["shelf"], ri_book=first["book"], ri_page_primary=first["page"], axis_primary=None,
+        row = dict(idx=i, name=mat["name"], formula=mat.get("formula"), polymorph=None, materialclass=mat["materialclass"],
+                   selection_key=mat["key"], ri_shelf=first["shelf"], ri_book=first["book"], ri_page_primary=first["page"],
+                   axis_primary=first["axis"],
                    n_633=exact_formula_n633(first["data_path"], interp["n_633"]), k_633=interp["k_633"],
                    ri_wl_min_nm=interp["wl_min_nm"], ri_wl_max_nm=interp["wl_max_nm"])
         for a in axes[1:]:
@@ -109,7 +124,12 @@ def build(MATERIALS, EXCLUDED_PAGES, OUT_OF_FAMILY, csv_stem, selections_stem, g
             flags.append(f"density {row['density_g_cm3']} g/cm3 stated by the manufacturer's datasheet ({mat['density_page'][2]})")
         else:
             flags.append(density_null_reason)
-        flags.append(formula_null_reason)
+        if mat.get("formula"):  # a single compound: identity from PubChem (checked against the formula by fetch_pubchem)
+            pc = base.fetch_pubchem(dict(idx=i, name=mat["name"], formula=mat["formula"], pubchem_name=mat.get("pubchem_name") or mat["name"]))
+            flags += pc.pop("flags")
+            row.update(pc)
+        else:
+            flags.append(formula_null_reason)
         if len(axes) > 1:
             flags.append(f"{len(axes)} datasets; n_633/k_633 are the primary ({first['dataset_label']})")
         if mat["note"]:

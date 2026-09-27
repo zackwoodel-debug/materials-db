@@ -1,0 +1,20 @@
+{
+  "family": "liquid_crystal",
+  "inserted": {
+    "materials": 9,
+    "physical_properties": 0,
+    "optical_dispersion": 22500,
+    "sources": 7
+  },
+  "unchanged": {
+    "materials": 0,
+    "physical_properties": 0,
+    "optical_dispersion": 0
+  },
+  "conflicts": [],
+  "skipped": [],
+  "warnings": [],
+  "notes": [],
+  "deferred": [],
+  "collapsed": []
+}
