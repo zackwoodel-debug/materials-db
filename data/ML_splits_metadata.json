@@ -1,6 +1,6 @@
 {
- "source_release": "0.14.0",
- "source_sqlite_sha256": "69765aa47e4a6e546716891cbf217db39dc4fb50c632da66e7bf2515fc5f6dec",
+ "source_release": "0.15.0",
+ "source_sqlite_sha256": "0cfe81e35ed503ff1351dd54e383fd1d1c24e2a50f864396e351987d50d574a0",
  "assignment": "sha256 of the group id: split = hash('split:'+group) mod 10 (0-7 train, 8 validation, 9 test); fold = hash('fold:'+group) mod 5",
  "product_lines": {
   "cargille-matching-liquids": [
