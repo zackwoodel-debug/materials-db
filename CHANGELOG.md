@@ -5,6 +5,13 @@ versions follow the release tags. Counts are materials / optical datasets.
 
 ## [Unreleased]
 
+### Fixed
+- Dispersion-formula datasets are sampled adaptively: interpolating the stored points is within 1e-6 of the formula in n
+  (0.1% of n-1 for gases), where the fixed 500-point grid was up to 4e-3 off at 633 nm (ZnTe, TlBr, alkali halides) and far
+  more elsewhere. Pages with a formula n and a tabulated k keep the table's own points, so k reproduces the table exactly
+  (was up to 2.8% off at 633 nm). n and k at 633 nm in the family tables now agree with the stored rows. Optical rows
+  719,720 -> 815,596; up to 7e-4 change in 633 nm consensus values; 3 new dataset comparisons.
+
 ### Added
 - Spectral ML set (`data/ML_release_spectra.parquet`, not part of the release package): one row per optical dataset with n and
   k on a 128-point log grid (200 nm - 25 um), masks where the dataset has no data or a gap > 1.5x, no extrapolation.

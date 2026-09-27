@@ -227,7 +227,10 @@ def test_loaded_db_integrity(loaded_db):
                             "OR raw_record_table LIKE '%Beliaev%' OR raw_record_table LIKE '%Vogt%'").fetchone()[0]
     assert conn.execute("SELECT COUNT(*) FROM materials WHERE formula='SiNx' OR name LIKE '%SiNx%'").fetchone()[0] == 0
     conn.close()
-    assert per_ds == {"amorphous | Luke2015": 500, "amorphous | Philipp1973": 500}
+    assert set(per_ds) == {"amorphous | Luke2015", "amorphous | Philipp1973"}
+    for label, rows in per_ds.items():  # every formula sample parse_file gives (adaptive: >= 500)
+        path = {"amorphous | Luke2015": "main/Si3N4/nk/Luke.yml", "amorphous | Philipp1973": "main/Si3N4/nk/Philipp.yml"}[label]
+        assert rows == len(base.parse_file(RI_DATA_ROOT / path)[0]) >= 500
     assert excluded == 0
     assert len(phys) == 5 and all(lbl.startswith("beta | ") for lbl, _ in phys)
     assert dict(phys)["beta | density_MP_DFT"] == "DFT (Materials Project)"

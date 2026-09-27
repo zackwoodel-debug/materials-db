@@ -74,7 +74,7 @@ def build_server(release=None):
     @_explained
     def get_nk_at(material: str, wavelength_nm: float, dataset_label: str = "", all_datasets: bool = False) -> dict:
         """n and k at one wavelength (nm), interpolated linearly between the dataset's stored points, never outside its
-        range (for a formula dataset the stored points are formula samples, so this can differ slightly from the exact formula). Default: the material's primary dataset; or name a dataset_label; or all_datasets=true for every dataset's value
+        range (a formula dataset is stored densely enough that this is within 1e-6 of the formula). Default: the material's primary dataset; or name a dataset_label; or all_datasets=true for every dataset's value
         side by side (with phase/axis/temperature, which must match before values are compared)."""
         return db.nk_at(material, wavelength_nm, dataset_label or None, all_datasets)
 

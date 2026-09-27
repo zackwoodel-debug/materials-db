@@ -19,6 +19,7 @@ optical_nk : id, material_id (FK), wavelength_nm, n, k, source_ref, temperature_
 
 import os
 import re
+import warnings
 import sqlite3
 import subprocess
 from pathlib import Path
@@ -41,7 +42,12 @@ REPO_DIR = str(_ROOT / "refractiveindex_db")
 
 WL_MIN_NM  = 200.0    # fetch window – UV
 WL_MAX_NM  = 3000.0   # fetch window – near-IR
-N_FORMULA  = 500      # sample points for formula-based entries
+N_FORMULA  = 500      # initial log-spaced samples of a formula block (sample_formula refines them)
+FORMULA_TOL = 1e-6    # a formula block is sampled until linear interpolation between samples is within this of the formula (n and k)
+FORMULA_TOL_REL_NM1 = 1e-3  # ... and within 0.1% of n-1 (gases: n-1 ~ 3e-4, where 1e-6 in n would be 0.3% of the refractivity)
+FORMULA_REFINE_N = (1e-3, 10.0)  # refine only where the formula is physical: the largest n of any formula dataset away from a pole
+                                 # is 6.4 (PbTe, Weiting 80 K); n > 10 or n^2 <= 0 is a Sellmeier pole, where no sampling is meaningful
+FORMULA_MAX_POINTS = 20000  # safety cap per block; a block that reaches it is reported (never silently coarse)
 HC_EV_NM   = 1239.84193  # hc in eV·nm (CODATA 2018)
 
 # ─── Materials manifest ───────────────────────────────────────────────────────
@@ -446,6 +452,57 @@ def eval_formula(
 
 # ─── YAML parser ──────────────────────────────────────────────────────────────
 
+class FormulaSamplingWarning(UserWarning):
+    pass
+
+
+def sample_formula(block: dict, lo_um: float, hi_um: float, tol: float = FORMULA_TOL, n0: int = N_FORMULA,
+                   max_points: int = FORMULA_MAX_POINTS, include_um=None) -> Tuple[np.ndarray, np.ndarray, Optional[np.ndarray]]:
+    """Wavelengths (um), n, k of a formula block, sampled so that LINEAR interpolation between neighbouring samples (what every
+    consumer of the stored rows does) stays within min(tol, FORMULA_TOL_REL_NM1 * |n-1|) of the formula for n (and tol for k):
+    start from n0 log-spaced points, then insert the midpoint of every interval whose midpoint misses by more, until none does.
+    Only PHYSICAL intervals are refined (n of both ends and the midpoint inside FORMULA_REFINE_N): next to a Sellmeier pole the
+    formula diverges or gives n^2 <= 0, and refining there only piles up meaningless samples (the base grid is kept as it is).
+    Intervals narrower than 1e-7 relative are not split. The old fixed grid (500 linear points) missed by up to ~4e-3 at 633 nm
+    near absorption edges (ZnTe, TlBr).
+    include_um: wavelengths that must be samples (a page's tabulated-k wavelengths: k is stored on the n samples, and with the
+    table's own points among them, interpolating the stored k reproduces the table exactly)."""
+    lam = np.geomspace(lo_um, hi_um, n0)
+    if include_um is not None and len(include_um):
+        extra = np.asarray(include_um, float)
+        lam = np.unique(np.concatenate([lam, extra[(extra >= lo_um) & (extra <= hi_um)]]))
+    n, k = eval_formula(block, lam)
+    min_width = 1e-7 * lam
+    for _ in range(60):
+        mid = 0.5 * (lam[:-1] + lam[1:])
+        nm, km = eval_formula(block, mid)
+        with np.errstate(invalid="ignore"):
+            err = np.abs(nm - 0.5 * (n[:-1] + n[1:]))
+            if k is not None and km is not None:
+                err = np.fmax(err, np.abs(km - 0.5 * (k[:-1] + k[1:])))
+        with np.errstate(invalid="ignore"):
+            lo_n, hi_n = FORMULA_REFINE_N
+            phys = lambda v: np.isfinite(v) & (v > lo_n) & (v < hi_n)  # noqa: E731
+            physical = phys(n[:-1]) & phys(n[1:]) & phys(nm)
+            limit = np.fmin(tol, FORMULA_TOL_REL_NM1 * np.abs(nm - 1.0))
+            bad = physical & ~(err <= limit) & ((lam[1:] - lam[:-1]) > min_width[:-1])
+        if not bad.any():
+            break
+        if len(lam) + int(bad.sum()) > max_points:
+            warnings.warn(f"formula sampling hit {max_points} points ({block.get('type')}, {lo_um}-{hi_um} um); "
+                          f"worst remaining interpolation error {np.nanmax(err):.2e}", FormulaSamplingWarning)
+            break
+        lam = np.concatenate([lam, mid[bad]])
+        n = np.concatenate([n, nm[bad]])
+        if k is not None:
+            k = np.concatenate([k, km[bad]])
+        order = np.argsort(lam)
+        lam, n = lam[order], n[order]
+        k = k[order] if k is not None else None
+        min_width = 1e-7 * lam
+    return lam, n, k
+
+
 def _parse_table(data_str: str, ncols: int) -> np.ndarray:
     rows = []
     for line in data_str.strip().splitlines():
@@ -502,6 +559,11 @@ def parse_file(
     k_wl: List[float] = []
     k_val: List[float] = []
 
+    k_table_um: List[float] = []  # tabulated-k wavelengths: made samples of a formula-n block of the same page (see sample_formula)
+    for block in raw.get("DATA", []):
+        if str(block.get("type", "")).strip() == "tabulated k":
+            k_table_um.extend(_parse_table(block["data"], 2)[:, 0].tolist())
+
     for block in raw.get("DATA", []):
         btype = str(block.get("type", "")).strip()
 
@@ -540,9 +602,8 @@ def parse_file(
             hi = min(float(parts[1]), wl_max_um)
             if lo >= hi:
                 continue
-            lam = np.linspace(lo, hi, N_FORMULA)
             try:
-                n_f, k_f = eval_formula(block, lam)
+                lam, n_f, k_f = sample_formula(block, lo, hi, include_um=k_table_um)
             except (ValueError, ZeroDivisionError, FloatingPointError) as exc:
                 print(f"    [formula warn] {exc}")
                 continue
