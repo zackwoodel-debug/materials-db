@@ -12,3 +12,4 @@ uvicorn>=0.29
 anthropic>=0.26
 rich>=13.0
 mp-api>=0.46
+mcp>=1.2  # optional: the MCP server (materials_db.access.mcp_server); works with 1.x and 2.x

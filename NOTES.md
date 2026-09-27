@@ -157,6 +157,13 @@ Generic loader: scripts/load_family_db.py (--family/--catalog/--selections/--db/
      Hugging Face: hf upload <user>/materials-db release/ml-dataset-v<rel> . --repo-type dataset
      Zenodo: new upload, attach the zip, copy fields from .zenodo.json (or the REST API with a token); the DOI then goes in
      CITATION.cff and the card.
+29. DONE: agent access (src/materials_db/access/: db.py library, http.py FastAPI, mcp_server.py). Read-only three ways: SQLite
+   mode=ro + PRAGMA query_only + an authorizer allowing only SELECT/READ/FUNCTION on ad-hoc SQL. n,k at a wavelength: LINEAR in
+   wavelength between the dataset's points, inside its range only -- the release's convention (family tables n_633, validation,
+   ML feature matrix; test checks 60 materials to 1e-9). Only the spectra grid uses log-wavelength. Primary = primary_pages()
+   (needs the repo's selection inputs; info() reports primary_unavailable otherwise). Ambiguous names raise with candidates
+   (MCP: ToolError, since the SDK hides other exceptions' text). Checked end to end over stdio with mcp 2.2.0 (MCPServer) and
+   1.30.0 (FastMCP). The legacy api/server.py (MatChat) is untouched and still reads data/materials.db.
 
 ## FOLLOW-UP (logged, NOT started): graphene / 2D carbon as its own family -- materialclass must NOT be 'polymer'
 - RI.info main/C, verified read-only: monolayer graphene = Weber 2010 (0.21-1.0 um, exfoliated flake, 3.4 A, on Si/98 nm SiO2), Song 2018 "Graphene"

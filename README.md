@@ -65,6 +65,19 @@ It also writes a CSV of every table, the family tables with their per-material f
 checksums. The output goes to `release/` (not committed); publish it as a GitHub release. The build runs offline and
 stops if any validation check fails. Descriptor inputs and their rules are in `data/descriptors/README.md`.
 
+### Access for programs and AI assistants
+
+`src/materials_db/access/` is a read-only query layer over a release: search, a material's full record with every optical
+dataset and its source, n and k at any wavelength (only inside a dataset's range, default the primary dataset), source points,
+like-for-like comparisons and read-only SQL. The release is found at `$MATERIALS_DB_RELEASE` or as the newest `release/materials-db-v*/`.
+
+- MCP server (Claude Code, Claude Desktop, any MCP client), after `pip install mcp`:
+  `claude mcp add materials-db -e PYTHONPATH="$PWD/src" -- python3 -m materials_db.access.mcp_server`
+- HTTP API with OpenAPI docs at `/docs`: `PYTHONPATH=src uvicorn materials_db.access.http:app`
+- Python: `from materials_db.access import ReleaseDB; ReleaseDB().nk_at("GaAs", 633)`
+
+The older `src/materials_db/api/server.py` (MatChat, stack builder) still reads the legacy `data/materials.db`.
+
 ### License
 
 Code: MIT (`LICENSE`). Data: CC BY 4.0, with attribution to the upstream sources (`DATA_LICENSE.md`).
