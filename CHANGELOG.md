@@ -5,6 +5,8 @@ versions follow the release tags. Counts are materials / optical datasets.
 
 ## [Unreleased]
 
+## [0.15.0] - 2026-09-27 (381 / 831)
+
 ### Fixed
 - Dispersion-formula datasets are sampled adaptively: interpolating the stored points is within 1e-6 of the formula in n
   (0.1% of n-1 for gases), where the fixed 500-point grid was up to 4e-3 off at 633 nm (ZnTe, TlBr, alkali halides) and far
