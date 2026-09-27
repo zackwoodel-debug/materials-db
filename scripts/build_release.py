@@ -9,7 +9,7 @@ publish them as GitHub release assets, not commits).
 
 Stages, all reproducible from committed inputs (no API key, no network):
   1. base         copy data/materials_oxide_test.db (oxides, batch 2, batch 3b, pure elements; formula-4 remediated)
-  2. families     upsert nitride, polymer, inorganic3, halide, chalcogenide, liquid, semiconductor, inorganic4, glass, optical_media, liquid_crystal and bio_media through load_family_db.run_family with the same
+  2. families     upsert nitride, polymer, inorganic3, halide, chalcogenide, liquid, semiconductor, inorganic4, glass, optical_media, liquid_crystal, bio_media and gas through load_family_db.run_family with the same
                   options as their wrappers (conflicts are reported, never overwritten)
   3. dedupe       physical rows a later family re-loaded with identical values (the five nitrides batch 2 already held): keep
                   one, preferring the source whose title/notes name the material, else the older source; then drop sources
@@ -60,8 +60,8 @@ import release_validation as rv  # noqa: E402
 
 BASE_DB = _ROOT / "data" / "materials_oxide_test.db"
 FAMILY_CSVS = ["oxides_50", "batch2_31", "batch3b_4", "pure_elements_50", "nitrides", "polymers", "inorganic3", "halides",
-               "chalcogenides", "liquids", "semiconductors", "inorganic4", "glasses", "optical_media", "liquid_crystals", "bio_media"]
-GAP_CSVS = ["nitride_gaps", "polymer_gaps", "inorganic3_gaps", "halide_gaps", "chalcogenide_gaps", "liquid_gaps", "semiconductor_gaps", "inorganic4_gaps", "glass_gaps", "optical_media_gaps", "liquid_crystal_gaps", "bio_media_gaps"]
+               "chalcogenides", "liquids", "semiconductors", "inorganic4", "glasses", "optical_media", "liquid_crystals", "bio_media", "gases"]
+GAP_CSVS = ["nitride_gaps", "polymer_gaps", "inorganic3_gaps", "halide_gaps", "chalcogenide_gaps", "liquid_gaps", "semiconductor_gaps", "inorganic4_gaps", "glass_gaps", "optical_media_gaps", "liquid_crystal_gaps", "bio_media_gaps", "gas_gaps"]
 DESCRIPTOR_INPUTS = ["mp_structural.json", "polymer_repeat_units.csv", "formula_issues.csv", "source_dois.json", "pubchem_titles.json", "mp_dielectric.json"]
 # Same allow-list as tests/test_family_optical_sanity.py (a test keeps them equal): measurement noise around k = 0 in tabulated sources.
 NEGATIVE_K_ALLOWED = {
@@ -83,6 +83,7 @@ class ReleaseError(RuntimeError):
 def family_jobs():
     import load_bio_media_db as bio
     import load_chalcogenides_db as chl
+    import load_gases_db as gas
     import load_glasses_db as gla
     import load_halides_db as hal
     import load_inorganic3_db as i3
@@ -101,7 +102,8 @@ def family_jobs():
             ("inorganic4", i4, lit(i4)), ("glass", gla, dict(lit(gla), allow_null_formula=True)),
             ("optical_media", opm, dict(lit(opm), allow_null_formula=True)),
             ("liquid_crystal", lcr, dict(lit(lcr), allow_null_formula=True)),
-            ("bio_media", bio, dict(lit(bio), allow_null_formula=True))]
+            ("bio_media", bio, dict(lit(bio), allow_null_formula=True)),
+            ("gas", gas, dict(lit(gas), allow_null_formula=True))]
 
 
 def family_rows():
@@ -323,7 +325,7 @@ def write_readme(path, version, facts, c, mp_version):
 
 Optical constants (n, k), densities, x-ray and neutron scattering length densities, and compositional, structural and
 molecular descriptors for **{n_mat} materials** (inorganic crystals, compound semiconductors, metals, substrate and window
-glasses, polymers, molecular liquids, biomolecules, liquid crystals and biological media): {c['datasets']} optical datasets and {c['tables']['optical_dispersion']:,} optical
+glasses, polymers, molecular liquids, biomolecules, liquid crystals, biological media and gases): {c['datasets']} optical datasets and {c['tables']['optical_dispersion']:,} optical
 data points. All of it is in one SQLite file, `materials-db-v{version}.sqlite`, and every table is also exported as CSV in `csv/`.
 
 Licence: **CC BY 4.0**. Cite this dataset and the upstream sources listed in `DATA_LICENSE.md` (refractiveindex.info,
@@ -442,6 +444,10 @@ calculation overestimates by 30-60%.
   plasma), ex-vivo adipose, liver and colon tissue (mucosa, submucosa, serosa); each variant its own dataset. Liu 2019's whole
   blood, as refractiveindex.info reconstructs it, gives n(633 nm) = 1.348, below typical whole-blood values (~1.38-1.40); see
   the family table flags. Water:glycerol mixtures await the composition convention.
+- Gases: air, N2, O2, rare gases, H2, D2, CO, CO2, NH3, SF6 and C1-C2 hydrocarbons. A gas's index depends on temperature and
+  pressure: the temperature is on every row and the pressure is in the variant label ("gas, 101.325 kPa", "gas, 100 kPa";
+  "gas" where the source states none). Argon, krypton and xenon also have liquid and solid datasets at cryogenic
+  temperatures, labelled by phase. The primary is always a gas at stated conditions.
 - Primary dataset (the family tables' n_633 / k_633) in the automatically selected families (halides, chalcogenides,
   liquids, semiconductors): measured data before model fits of the dielectric function, then the widest range covering
   633 nm. A page is a model fit only when its source says so (scripts/dataset_kind.py). Model datasets (e.g. Adachi's) are

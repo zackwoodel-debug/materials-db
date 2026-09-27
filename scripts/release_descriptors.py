@@ -141,7 +141,8 @@ MOLECULAR_FAMILIES = {"liquids"}
 GLASS_FAMILIES = {"glasses"}  # multicomponent glasses: no single formula, no crystal structure
 FORMULATION_FAMILIES = {"optical_media"}  # proprietary liquids / cured resins: no single formula, no crystal structure
 BIO_FAMILIES = {"bio_media"}  # biological fluids, tissues and buffers: mixtures, no formula, no crystal structure
-LC_FAMILIES = {"liquid_crystals"}  # single compounds are molecules (PubChem SMILES); the commercial mixtures are formulations  # families whose materials are discrete molecules (described by their PubChem SMILES)
+LC_FAMILIES = {"liquid_crystals"}
+GAS_FAMILIES = {"gases"}  # compound gases are molecules (PubChem SMILES); elemental gases are elements; air is a mixture  # single compounds are molecules (PubChem SMILES); the commercial mixtures are formulations  # families whose materials are discrete molecules (described by their PubChem SMILES)
 
 
 def descriptor_row(name, formula, family, csv_row, optical_labels, mp, units, issues, smiles=None):
@@ -166,7 +167,7 @@ def descriptor_row(name, formula, family, csv_row, optical_labels, mp, units, is
     elif is_polymer:
         doc["material_kind"] = "polymer"
         doc["molecular"] = dict(unavailable=why or "repeat-unit structure not curated")
-    elif family in MOLECULAR_FAMILIES | LC_FAMILIES and rf and smiles and len(re.findall(r"[A-Z][a-z]?", rf)) > 1:
+    elif family in MOLECULAR_FAMILIES | LC_FAMILIES | GAS_FAMILIES and rf and smiles and len(re.findall(r"[A-Z][a-z]?", rf)) > 1:
         cols.update(molecular(smiles))
         doc["material_kind"] = "molecule"
         doc["molecular"] = dict(basis="the molecule (PubChem isomeric SMILES; isotopes and stereochemistry as PubChem records them)",
@@ -174,6 +175,11 @@ def descriptor_row(name, formula, family, csv_row, optical_labels, mp, units, is
     elif family in LC_FAMILIES:
         doc["material_kind"] = "commercial formulation"
         doc["molecular"] = dict(unavailable="commercial liquid-crystal mixture: no single molecular structure")
+    elif family in GAS_FAMILIES and rf:
+        doc["molecular"] = dict(not_applicable="an elemental gas (single atoms or homonuclear molecules)")
+    elif family in GAS_FAMILIES:
+        doc["material_kind"] = "gas mixture"
+        doc["molecular"] = dict(not_applicable="a gas mixture, not a single molecule")
     elif family in FORMULATION_FAMILIES | BIO_FAMILIES:
         doc["molecular"] = dict(not_applicable="a mixture (commercial formulation, biological fluid, tissue or buffer), not a single molecule")
     elif family in MOLECULAR_FAMILIES and not rf:
@@ -199,6 +205,8 @@ def descriptor_row(name, formula, family, csv_row, optical_labels, mp, units, is
     elif family in FORMULATION_FAMILIES | LC_FAMILIES:
         doc["compositional"] = dict(unavailable="proprietary commercial formulation: no single formula")
         doc["material_kind"] = "commercial formulation"
+    elif family in GAS_FAMILIES:
+        doc["compositional"] = dict(unavailable="a gas mixture (dry air): no single formula")
     elif family in BIO_FAMILIES:
         doc["compositional"] = dict(unavailable="biological fluid, tissue or buffer: a mixture, no single formula")
         doc["material_kind"] = "biological or buffer mixture"
@@ -223,6 +231,8 @@ def descriptor_row(name, formula, family, csv_row, optical_labels, mp, units, is
         doc["structural"] = dict(not_applicable="liquid crystal: no crystal structure")
     elif family in BIO_FAMILIES:
         doc["structural"] = dict(not_applicable="biological fluid, tissue or buffer: no crystal structure")
+    elif family in GAS_FAMILIES:
+        doc["structural"] = dict(not_applicable="gas (liquid / solid only at cryogenic temperatures): no crystal structure is used")
     elif mp_id and mp_id in mp["entries"]:
         e = dict(mp["entries"][mp_id])
         e.pop("space_group_number_recomputed", None)

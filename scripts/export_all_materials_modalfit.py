@@ -54,6 +54,7 @@ FAMILIES = {
     "optical_media": ("materials_optical_media_test.db", ["optical_media.csv"], "modalfit_export_optical_media"),
     "liquid_crystal": ("materials_liquid_crystal_test.db", ["liquid_crystals.csv"], "modalfit_export_liquid_crystal"),
     "bio_media": ("materials_bio_media_test.db", ["bio_media.csv"], "modalfit_export_bio_media"),
+    "gas": ("materials_gas_test.db", ["gases.csv"], "modalfit_export_gas"),
 }
 OWNER_MARKER = ".modalfit_export_owned"  # written into an output dir this script created; only such a dir may be wiped
 

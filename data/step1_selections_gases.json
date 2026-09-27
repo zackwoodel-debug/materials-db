@@ -1,0 +1,1838 @@
+{
+ "Air": {
+  "name": "Air",
+  "formula": null,
+  "source": "gas_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Ciddor",
+    "axis": null,
+    "phase": "dry air (450 ppm CO2), 101.325 kPa",
+    "data_path": "other/mixed gases/air/nk/Ciddor.yml",
+    "span_um": [
+     0.23,
+     1.69
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Standard air: dry air at 15 °C, 101.325 kPa and with 450 ppm CO2 content.\n",
+    "temperature_c": 15.0,
+    "tag": "Ciddor1996",
+    "dataset_label": "dry air (450 ppm CO2), 101.325 kPa | Ciddor1996",
+    "shelf": "other",
+    "book": "air"
+   },
+   {
+    "page": "Birch",
+    "axis": null,
+    "phase": "dry air (450 ppm CO2), 101.325 kPa",
+    "data_path": "other/mixed gases/air/nk/Birch.yml",
+    "span_um": [
+     0.35,
+     0.65
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Standard air: dry air at 15 °C, 101.325 kPa and with 450 ppm CO2 content.\n",
+    "temperature_c": 15.0,
+    "tag": "Birch1994",
+    "dataset_label": "dry air (450 ppm CO2), 101.325 kPa | Birch1994",
+    "shelf": "other",
+    "book": "air"
+   },
+   {
+    "page": "Mathar-7.5",
+    "axis": null,
+    "phase": "dry air (370 ppm CO2), 101.325 kPa",
+    "data_path": "other/mixed gases/air/nk/Mathar-7.5.yml",
+    "span_um": [
+     7.5,
+     14.1
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Dry air at 15 °C, 101.325 kPa, 370 ppm CO2 content.\n",
+    "temperature_c": 15.0,
+    "tag": "Mathar2007-7.5um",
+    "dataset_label": "dry air (370 ppm CO2), 101.325 kPa | Mathar2007-7.5um",
+    "shelf": "other",
+    "book": "air"
+   },
+   {
+    "page": "Mathar-2.8",
+    "axis": null,
+    "phase": "dry air (370 ppm CO2), 101.325 kPa",
+    "data_path": "other/mixed gases/air/nk/Mathar-2.8.yml",
+    "span_um": [
+     2.8,
+     4.2
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Dry air at 15 °C, 101.325 kPa, 370 ppm CO2 content.\n",
+    "temperature_c": 15.0,
+    "tag": "Mathar2007-2.8um",
+    "dataset_label": "dry air (370 ppm CO2), 101.325 kPa | Mathar2007-2.8um",
+    "shelf": "other",
+    "book": "air"
+   },
+   {
+    "page": "Mathar-1.3",
+    "axis": null,
+    "phase": "dry air (370 ppm CO2), 101.325 kPa",
+    "data_path": "other/mixed gases/air/nk/Mathar-1.3.yml",
+    "span_um": [
+     1.3,
+     2.5
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Dry air at 15 °C, 101.325 kPa, 370 ppm CO2 content.\n",
+    "temperature_c": 15.0,
+    "tag": "Mathar2007-1.3um",
+    "dataset_label": "dry air (370 ppm CO2), 101.325 kPa | Mathar2007-1.3um",
+    "shelf": "other",
+    "book": "air"
+   },
+   {
+    "page": "Mathar-4.35",
+    "axis": null,
+    "phase": "dry air (370 ppm CO2), 101.325 kPa",
+    "data_path": "other/mixed gases/air/nk/Mathar-4.35.yml",
+    "span_um": [
+     4.35,
+     5.2
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Dry air at 15 °C, 101.325 kPa, 370 ppm CO2 content.\n",
+    "temperature_c": 15.0,
+    "tag": "Mathar2007-4.35um",
+    "dataset_label": "dry air (370 ppm CO2), 101.325 kPa | Mathar2007-4.35um",
+    "shelf": "other",
+    "book": "air"
+   },
+   {
+    "page": "Peck",
+    "axis": null,
+    "phase": "dry air (450 ppm CO2), 101.325 kPa",
+    "data_path": "other/mixed gases/air/nk/Peck.yml",
+    "span_um": [
+     0.185,
+     1.7
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Standard air: dry air at 15 °C, 101.325 kPa and with 450 ppm CO2 content.\n",
+    "temperature_c": 14.85,
+    "tag": "Peck1972",
+    "dataset_label": "dry air (450 ppm CO2), 101.325 kPa | Peck1972",
+    "shelf": "other",
+    "book": "air"
+   },
+   {
+    "page": "Borzsonyi",
+    "axis": null,
+    "phase": "air, 100 kPa",
+    "data_path": "other/mixed gases/air/nk/Borzsonyi.yml",
+    "span_um": [
+     0.4,
+     1.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "273 K (0 °C), 1000 mbar.\n",
+    "temperature_c": -0.15,
+    "tag": "Borzsonyi2008",
+    "dataset_label": "air, 100 kPa | Borzsonyi2008",
+    "shelf": "other",
+    "book": "air"
+   }
+  ]
+ },
+ "N2": {
+  "name": "Nitrogen",
+  "formula": "N2",
+  "source": "gas_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Peck-15C",
+    "axis": null,
+    "phase": "gas, 101.325 kPa",
+    "data_path": "main/N2/nk/Peck-15C.yml",
+    "span_um": [
+     0.4679,
+     2.0587
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "15 °C, 760 torr (101.325 kPa)\n",
+    "temperature_c": 15.0,
+    "tag": "Peck1966-15C",
+    "dataset_label": "gas, 101.325 kPa | Peck1966-15C",
+    "shelf": "main",
+    "book": "N2"
+   },
+   {
+    "page": "Peck-0C",
+    "axis": null,
+    "phase": "gas, 101.325 kPa",
+    "data_path": "main/N2/nk/Peck-0C.yml",
+    "span_um": [
+     0.4679,
+     2.0587
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Standard conditions: 0 °C, 760 torr (101.325 kPa).\n",
+    "temperature_c": 0.0,
+    "tag": "Peck1966-0C",
+    "dataset_label": "gas, 101.325 kPa | Peck1966-0C",
+    "shelf": "main",
+    "book": "N2"
+   },
+   {
+    "page": "Borzsonyi",
+    "axis": null,
+    "phase": "gas, 100 kPa",
+    "data_path": "main/N2/nk/Borzsonyi.yml",
+    "span_um": [
+     0.4,
+     1.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "273 K (0 °C), 1000 mbar.Dispersion formula may be usable down to ~0.2 µm.\n",
+    "temperature_c": -0.15,
+    "tag": "Borzsonyi2008",
+    "dataset_label": "gas, 100 kPa | Borzsonyi2008",
+    "shelf": "main",
+    "book": "N2"
+   },
+   {
+    "page": "Griesmann",
+    "axis": null,
+    "phase": "gas, 101.325 kPa",
+    "data_path": "main/N2/nk/Griesmann.yml",
+    "span_um": [
+     0.145,
+     0.27
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Standard conditions: 0 °C; 101 325 Pa.\n",
+    "temperature_c": 0.0,
+    "tag": "Griesmann1999",
+    "dataset_label": "gas, 101.325 kPa | Griesmann1999",
+    "shelf": "main",
+    "book": "N2"
+   }
+  ]
+ },
+ "O2": {
+  "name": "Oxygen",
+  "formula": "O2",
+  "source": "gas_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Zhang",
+    "axis": null,
+    "phase": "gas, 101.325 kPa",
+    "data_path": "main/O2/nk/Zhang.yml",
+    "span_um": [
+     0.4,
+     1.8
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Standard conditions: 20 °C, 101 325 Pa.\n",
+    "temperature_c": 19.85,
+    "tag": "Zhang2008",
+    "dataset_label": "gas, 101.325 kPa | Zhang2008",
+    "shelf": "main",
+    "book": "O2"
+   },
+   {
+    "page": "Smith",
+    "axis": null,
+    "phase": "gas, 101.325 kPa",
+    "data_path": "main/O2/nk/Smith.yml",
+    "span_um": [
+     0.1843,
+     0.28824
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Standard conditions: 0 °C (273.15 K), 760 torr (101.325 kPa).\n",
+    "temperature_c": 0.0,
+    "tag": "Smith1976",
+    "dataset_label": "gas, 101.325 kPa | Smith1976",
+    "shelf": "main",
+    "book": "O2"
+   }
+  ]
+ },
+ "Ar": {
+  "name": "Argon",
+  "formula": "Ar",
+  "source": "gas_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Peck-15C",
+    "axis": null,
+    "phase": "gas, 101.325 kPa",
+    "data_path": "main/Ar/nk/Peck-15C.yml",
+    "span_um": [
+     0.4679,
+     2.0587
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "15 °C, 760 torr (101.325 kPa)\n",
+    "temperature_c": 15.0,
+    "tag": "Peck1964-15C",
+    "dataset_label": "gas, 101.325 kPa | Peck1964-15C",
+    "shelf": "main",
+    "book": "Ar"
+   },
+   {
+    "page": "Peck-0C",
+    "axis": null,
+    "phase": "gas, 101.325 kPa",
+    "data_path": "main/Ar/nk/Peck-0C.yml",
+    "span_um": [
+     0.4679,
+     2.0587
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Standard conditions: 0 °C, 760 torr (101.325 kPa).\n",
+    "temperature_c": 0.0,
+    "tag": "Peck1964-0C",
+    "dataset_label": "gas, 101.325 kPa | Peck1964-0C",
+    "shelf": "main",
+    "book": "Ar"
+   },
+   {
+    "page": "Borzsonyi",
+    "axis": null,
+    "phase": "gas, 100 kPa",
+    "data_path": "main/Ar/nk/Borzsonyi.yml",
+    "span_um": [
+     0.4,
+     1.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "273 K (0 °C), 1000 mbar.Dispersion formula may be usable down to ~0.2 µm.\n",
+    "temperature_c": -0.15,
+    "tag": "Borzsonyi2008",
+    "dataset_label": "gas, 100 kPa | Borzsonyi2008",
+    "shelf": "main",
+    "book": "Ar"
+   },
+   {
+    "page": "Cuthbertson",
+    "axis": null,
+    "phase": "gas, 101.325 kPa",
+    "data_path": "main/Ar/nk/Cuthbertson.yml",
+    "span_um": [
+     0.48,
+     0.6708
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Standard conditions: 0 °C, 760 torr (101.325 kPa).\n",
+    "temperature_c": 0.0,
+    "tag": "Cuthbertson1910",
+    "dataset_label": "gas, 101.325 kPa | Cuthbertson1910",
+    "shelf": "main",
+    "book": "Ar"
+   },
+   {
+    "page": "Bideau-Mehu",
+    "axis": null,
+    "phase": "gas, 101.325 kPa",
+    "data_path": "main/Ar/nk/Bideau-Mehu.yml",
+    "span_um": [
+     0.1404,
+     0.5677
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Standard conditions. 0 °C, 760 torr (101.325 kPa).\n",
+    "temperature_c": 0.0,
+    "tag": "Bideau-Mehu1981",
+    "dataset_label": "gas, 101.325 kPa | Bideau-Mehu1981",
+    "shelf": "main",
+    "book": "Ar"
+   },
+   {
+    "page": "Larsen",
+    "axis": null,
+    "phase": "gas, 101.325 kPa",
+    "data_path": "main/Ar/nk/Larsen.yml",
+    "span_um": [
+     0.230283,
+     0.56774
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Standard conditions: 0 °C, 760 torr (101.325 kPa).\n",
+    "temperature_c": 0.0,
+    "tag": "Larsen1934",
+    "dataset_label": "gas, 101.325 kPa | Larsen1934",
+    "shelf": "main",
+    "book": "Ar"
+   },
+   {
+    "page": "Grace-liquid-90K",
+    "axis": null,
+    "phase": "liquid",
+    "data_path": "main/Ar/nk/Grace-liquid-90K.yml",
+    "span_um": [
+     0.117,
+     0.66
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Liquid argon at 90 K (-183.15 °C).\n",
+    "temperature_c": -183.15,
+    "tag": "Grace2017-90K",
+    "dataset_label": "liquid | Grace2017-90K",
+    "shelf": "main",
+    "book": "Ar"
+   },
+   {
+    "page": "Grace-liquid-83.81K",
+    "axis": null,
+    "phase": "liquid",
+    "data_path": "main/Ar/nk/Grace-liquid-83.81K.yml",
+    "span_um": [
+     0.117,
+     0.66
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Liquid argon at 83.81 K (-189.34 °C, melting point).\n",
+    "temperature_c": -189.34,
+    "tag": "Grace2017-83.81K",
+    "dataset_label": "liquid | Grace2017-83.81K",
+    "shelf": "main",
+    "book": "Ar"
+   },
+   {
+    "page": "Grace-solid-83.81K",
+    "axis": null,
+    "phase": "solid",
+    "data_path": "main/Ar/nk/Grace-solid-83.81K.yml",
+    "span_um": [
+     0.117,
+     0.66
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Solid argon at 83.81 K (-189.34 °C, melting point).\n",
+    "temperature_c": -189.34,
+    "tag": "Grace2017-83.81K",
+    "dataset_label": "solid | Grace2017-83.81K",
+    "shelf": "main",
+    "book": "Ar"
+   },
+   {
+    "page": "Grace-solid-20K",
+    "axis": null,
+    "phase": "solid",
+    "data_path": "main/Ar/nk/Grace-solid-20K.yml",
+    "span_um": [
+     0.117,
+     0.66
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Solid argon at 20 K (-253.15 °C).\n",
+    "temperature_c": -253.15,
+    "tag": "Grace2017-20K",
+    "dataset_label": "solid | Grace2017-20K",
+    "shelf": "main",
+    "book": "Ar"
+   },
+   {
+    "page": "Sinnock-liquid-90K",
+    "axis": null,
+    "phase": "liquid",
+    "data_path": "main/Ar/nk/Sinnock-liquid-90K.yml",
+    "span_um": [
+     0.3612,
+     0.6439
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Liquid argon at 90 K (-183.15 °C).\n",
+    "temperature_c": -183.15,
+    "tag": "Sinnock1969-90K",
+    "dataset_label": "liquid | Sinnock1969-90K",
+    "shelf": "main",
+    "book": "Ar"
+   },
+   {
+    "page": "Sinnock-liquid-88K",
+    "axis": null,
+    "phase": "liquid",
+    "data_path": "main/Ar/nk/Sinnock-liquid-88K.yml",
+    "span_um": [
+     0.3612,
+     0.6439
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Liquid argon at 88 K (-185.15 °C).\n",
+    "temperature_c": -185.15,
+    "tag": "Sinnock1969-88K",
+    "dataset_label": "liquid | Sinnock1969-88K",
+    "shelf": "main",
+    "book": "Ar"
+   },
+   {
+    "page": "Sinnock-liquid-86K",
+    "axis": null,
+    "phase": "liquid",
+    "data_path": "main/Ar/nk/Sinnock-liquid-86K.yml",
+    "span_um": [
+     0.3612,
+     0.6439
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Liquid argon at 86 K (-187.15 °C).\n",
+    "temperature_c": -187.15,
+    "tag": "Sinnock1969-86K",
+    "dataset_label": "liquid | Sinnock1969-86K",
+    "shelf": "main",
+    "book": "Ar"
+   },
+   {
+    "page": "Sinnock-liquid-83.81K",
+    "axis": null,
+    "phase": "liquid",
+    "data_path": "main/Ar/nk/Sinnock-liquid-83.81K.yml",
+    "span_um": [
+     0.3612,
+     0.6439
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Liquid argon at 83.81 K (-189.34 °C, melting point).\n",
+    "temperature_c": -189.34,
+    "tag": "Sinnock1969-83.81K",
+    "dataset_label": "liquid | Sinnock1969-83.81K",
+    "shelf": "main",
+    "book": "Ar"
+   },
+   {
+    "page": "Sinnock-solid-83.81K",
+    "axis": null,
+    "phase": "solid",
+    "data_path": "main/Ar/nk/Sinnock-solid-83.81K.yml",
+    "span_um": [
+     0.3612,
+     0.6439
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Solid argon at 83.81 K (-189.34 °C, melting point).\n",
+    "temperature_c": -189.34,
+    "tag": "Sinnock1969-83.81K",
+    "dataset_label": "solid | Sinnock1969-83.81K",
+    "shelf": "main",
+    "book": "Ar"
+   },
+   {
+    "page": "Sinnock-solid-80K",
+    "axis": null,
+    "phase": "solid",
+    "data_path": "main/Ar/nk/Sinnock-solid-80K.yml",
+    "span_um": [
+     0.3612,
+     0.6439
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Solid argon at 80 K (-193.15 °C).\n",
+    "temperature_c": -193.15,
+    "tag": "Sinnock1969-80K",
+    "dataset_label": "solid | Sinnock1969-80K",
+    "shelf": "main",
+    "book": "Ar"
+   },
+   {
+    "page": "Sinnock-solid-70K",
+    "axis": null,
+    "phase": "solid",
+    "data_path": "main/Ar/nk/Sinnock-solid-70K.yml",
+    "span_um": [
+     0.3612,
+     0.6439
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Solid argon at 70 K (-203.15 °C).\n",
+    "temperature_c": -203.15,
+    "tag": "Sinnock1969-70K",
+    "dataset_label": "solid | Sinnock1969-70K",
+    "shelf": "main",
+    "book": "Ar"
+   },
+   {
+    "page": "Sinnock-solid-60K",
+    "axis": null,
+    "phase": "solid",
+    "data_path": "main/Ar/nk/Sinnock-solid-60K.yml",
+    "span_um": [
+     0.3612,
+     0.6439
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Solid argon at 60 K (-213.15 °C).\n",
+    "temperature_c": -213.15,
+    "tag": "Sinnock1969-60K",
+    "dataset_label": "solid | Sinnock1969-60K",
+    "shelf": "main",
+    "book": "Ar"
+   },
+   {
+    "page": "Sinnock-solid-50K",
+    "axis": null,
+    "phase": "solid",
+    "data_path": "main/Ar/nk/Sinnock-solid-50K.yml",
+    "span_um": [
+     0.3612,
+     0.6439
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Solid argon at 50 K (-223.15 °C).\n",
+    "temperature_c": -223.15,
+    "tag": "Sinnock1969-50K",
+    "dataset_label": "solid | Sinnock1969-50K",
+    "shelf": "main",
+    "book": "Ar"
+   },
+   {
+    "page": "Sinnock-solid-40K",
+    "axis": null,
+    "phase": "solid",
+    "data_path": "main/Ar/nk/Sinnock-solid-40K.yml",
+    "span_um": [
+     0.3612,
+     0.6439
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Solid argon at 40 K (-233.15 °C).\n",
+    "temperature_c": -233.15,
+    "tag": "Sinnock1969-40K",
+    "dataset_label": "solid | Sinnock1969-40K",
+    "shelf": "main",
+    "book": "Ar"
+   },
+   {
+    "page": "Sinnock-solid-30K",
+    "axis": null,
+    "phase": "solid",
+    "data_path": "main/Ar/nk/Sinnock-solid-30K.yml",
+    "span_um": [
+     0.3612,
+     0.6439
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Solid argon at 30 K (-243.15 °C).\n",
+    "temperature_c": -243.15,
+    "tag": "Sinnock1969-30K",
+    "dataset_label": "solid | Sinnock1969-30K",
+    "shelf": "main",
+    "book": "Ar"
+   },
+   {
+    "page": "Sinnock-solid-20K",
+    "axis": null,
+    "phase": "solid",
+    "data_path": "main/Ar/nk/Sinnock-solid-20K.yml",
+    "span_um": [
+     0.3612,
+     0.6439
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Solid argon at 20 K (-253.15 °C).\n",
+    "temperature_c": -253.15,
+    "tag": "Sinnock1969-20K",
+    "dataset_label": "solid | Sinnock1969-20K",
+    "shelf": "main",
+    "book": "Ar"
+   }
+  ]
+ },
+ "He": {
+  "name": "Helium",
+  "formula": "He",
+  "source": "gas_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Mansfield",
+    "axis": null,
+    "phase": "gas, 101.325 kPa",
+    "data_path": "main/He/nk/Mansfield.yml",
+    "span_um": [
+     0.4801,
+     2.0586
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Standard conditions: 0 °C, 760 torr (101.325 kPa).\n",
+    "temperature_c": 0.0,
+    "tag": "Mansfield1969",
+    "dataset_label": "gas, 101.325 kPa | Mansfield1969",
+    "shelf": "main",
+    "book": "He"
+   },
+   {
+    "page": "Ermolov",
+    "axis": null,
+    "phase": "gas, 101.325 kPa",
+    "data_path": "main/He/nk/Ermolov.yml",
+    "span_um": [
+     0.09,
+     1.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Standard conditions. 0 °C, 760 torr (101.325 kPa).\n",
+    "temperature_c": 0.0,
+    "tag": "Ermolov2015",
+    "dataset_label": "gas, 101.325 kPa | Ermolov2015",
+    "shelf": "main",
+    "book": "He"
+   },
+   {
+    "page": "Borzsonyi",
+    "axis": null,
+    "phase": "gas, 100 kPa",
+    "data_path": "main/He/nk/Borzsonyi.yml",
+    "span_um": [
+     0.4,
+     1.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "273 K (0 °C), 1000 mbar.Dispersion formula may be usable down to ~0.2 µm.\n",
+    "temperature_c": -0.15,
+    "tag": "Borzsonyi2008",
+    "dataset_label": "gas, 100 kPa | Borzsonyi2008",
+    "shelf": "main",
+    "book": "He"
+   },
+   {
+    "page": "Cuthbertson",
+    "axis": null,
+    "phase": "gas, 101.325 kPa",
+    "data_path": "main/He/nk/Cuthbertson.yml",
+    "span_um": [
+     0.2753,
+     0.5462
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Standard conditions: 0 °C, 760 torr (101.325 kPa).\n",
+    "temperature_c": 0.0,
+    "tag": "Cuthbertson1936",
+    "dataset_label": "gas, 101.325 kPa | Cuthbertson1936",
+    "shelf": "main",
+    "book": "He"
+   },
+   {
+    "page": "Smith",
+    "axis": null,
+    "phase": "gas, 101.325 kPa",
+    "data_path": "main/He/nk/Smith.yml",
+    "span_um": [
+     0.16796,
+     0.28824
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Standard conditions: 0 °C (273.15 K), 760 torr (101.325 kPa).\n",
+    "temperature_c": 0.0,
+    "tag": "Smith1976",
+    "dataset_label": "gas, 101.325 kPa | Smith1976",
+    "shelf": "main",
+    "book": "He"
+   }
+  ]
+ },
+ "Ne": {
+  "name": "Neon",
+  "formula": "Ne",
+  "source": "gas_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Borzsonyi",
+    "axis": null,
+    "phase": "gas, 100 kPa",
+    "data_path": "main/Ne/nk/Borzsonyi.yml",
+    "span_um": [
+     0.4,
+     1.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "273 K (0 °C), 1000 mbar. Dispersion formula may be usable down to ~0.2 µm.\n",
+    "temperature_c": -0.15,
+    "tag": "Borzsonyi2008",
+    "dataset_label": "gas, 100 kPa | Borzsonyi2008",
+    "shelf": "main",
+    "book": "Ne"
+   },
+   {
+    "page": "Bideau-Mehu",
+    "axis": null,
+    "phase": "gas, 101.325 kPa",
+    "data_path": "main/Ne/nk/Bideau-Mehu.yml",
+    "span_um": [
+     0.1404,
+     0.5462
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Standard conditions: 0 °C, 760 torr (101.325 kPa).\n",
+    "temperature_c": 0.0,
+    "tag": "Bideau-Mehu1981",
+    "dataset_label": "gas, 101.325 kPa | Bideau-Mehu1981",
+    "shelf": "main",
+    "book": "Ne"
+   },
+   {
+    "page": "Cuthbertson",
+    "axis": null,
+    "phase": "gas, 101.325 kPa",
+    "data_path": "main/Ne/nk/Cuthbertson.yml",
+    "span_um": [
+     0.2894,
+     0.5462
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Standard conditions: 0 °C, 760 torr (101.325 kPa).\n",
+    "temperature_c": 0.0,
+    "tag": "Cuthbertson1936",
+    "dataset_label": "gas, 101.325 kPa | Cuthbertson1936",
+    "shelf": "main",
+    "book": "Ne"
+   }
+  ]
+ },
+ "Kr": {
+  "name": "Krypton",
+  "formula": "Kr",
+  "source": "gas_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Borzsonyi",
+    "axis": null,
+    "phase": "gas, 100 kPa",
+    "data_path": "main/Kr/nk/Borzsonyi.yml",
+    "span_um": [
+     0.4,
+     1.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "273 K (0 °C), 1000 mbar.Dispersion formula may be usable down to ~0.2 µm.\n",
+    "temperature_c": -0.15,
+    "tag": "Borzsonyi2008",
+    "dataset_label": "gas, 100 kPa | Borzsonyi2008",
+    "shelf": "main",
+    "book": "Kr"
+   },
+   {
+    "page": "Cuthbertson",
+    "axis": null,
+    "phase": "gas, 101.325 kPa",
+    "data_path": "main/Kr/nk/Cuthbertson.yml",
+    "span_um": [
+     0.48,
+     0.6708
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Standard conditions: 0 °C, 760 torr (101.325 kPa).\n",
+    "temperature_c": 0.0,
+    "tag": "Cuthbertson1910",
+    "dataset_label": "gas, 101.325 kPa | Cuthbertson1910",
+    "shelf": "main",
+    "book": "Kr"
+   },
+   {
+    "page": "Bideau-Mehu",
+    "axis": null,
+    "phase": "gas, 101.325 kPa",
+    "data_path": "main/Kr/nk/Bideau-Mehu.yml",
+    "span_um": [
+     0.1404,
+     0.6234
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Standard conditions: 0 °C, 760 torr (101.325 kPa).\n",
+    "temperature_c": 0.0,
+    "tag": "Bideau-Mehu1981",
+    "dataset_label": "gas, 101.325 kPa | Bideau-Mehu1981",
+    "shelf": "main",
+    "book": "Kr"
+   },
+   {
+    "page": "Smith",
+    "axis": null,
+    "phase": "gas, 101.325 kPa",
+    "data_path": "main/Kr/nk/Smith.yml",
+    "span_um": [
+     0.1641,
+     0.29806
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Standard conditions: 0 °C (273.15 K), 760 torr (101.325 kPa).\n",
+    "temperature_c": 0.0,
+    "tag": "Smith1976",
+    "dataset_label": "gas, 101.325 kPa | Smith1976",
+    "shelf": "main",
+    "book": "Kr"
+   },
+   {
+    "page": "Koch",
+    "axis": null,
+    "phase": "gas",
+    "data_path": "main/Kr/nk/Koch.yml",
+    "span_um": [
+     0.230209,
+     0.623437
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Wavelength is λair at 15 °C\n",
+    "temperature_c": null,
+    "tag": "Koch1949",
+    "dataset_label": "gas | Koch1949",
+    "shelf": "main",
+    "book": "Kr"
+   },
+   {
+    "page": "Sinnock-liquid-126K",
+    "axis": null,
+    "phase": "liquid",
+    "data_path": "main/Kr/nk/Sinnock-liquid-126K.yml",
+    "span_um": [
+     0.3631,
+     0.6439
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Liquid krypton at 126 K (-147.15 °C).\n",
+    "temperature_c": -147.15,
+    "tag": "Sinnock1969-126K",
+    "dataset_label": "liquid | Sinnock1969-126K",
+    "shelf": "main",
+    "book": "Kr"
+   },
+   {
+    "page": "Sinnock-liquid-122K",
+    "axis": null,
+    "phase": "liquid",
+    "data_path": "main/Kr/nk/Sinnock-liquid-122K.yml",
+    "span_um": [
+     0.3631,
+     0.6439
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Liquid krypton at 122 K (-151.15 °C).\n",
+    "temperature_c": -151.15,
+    "tag": "Sinnock1969-122K",
+    "dataset_label": "liquid | Sinnock1969-122K",
+    "shelf": "main",
+    "book": "Kr"
+   },
+   {
+    "page": "Sinnock-liquid-118K",
+    "axis": null,
+    "phase": "liquid",
+    "data_path": "main/Kr/nk/Sinnock-liquid-118K.yml",
+    "span_um": [
+     0.3631,
+     0.6439
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Liquid krypton at 118 K (-155.15 °C).\n",
+    "temperature_c": -155.15,
+    "tag": "Sinnock1969-118K",
+    "dataset_label": "liquid | Sinnock1969-118K",
+    "shelf": "main",
+    "book": "Kr"
+   },
+   {
+    "page": "Sinnock-liquid-115.95K",
+    "axis": null,
+    "phase": "liquid",
+    "data_path": "main/Kr/nk/Sinnock-liquid-115.95K.yml",
+    "span_um": [
+     0.3631,
+     0.6439
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Liquid krypton at 115.95 K (-157.20 °C, melting point).\n",
+    "temperature_c": -157.2,
+    "tag": "Sinnock1969-115.95K",
+    "dataset_label": "liquid | Sinnock1969-115.95K",
+    "shelf": "main",
+    "book": "Kr"
+   },
+   {
+    "page": "Sinnock-solid-115.95K",
+    "axis": null,
+    "phase": "solid",
+    "data_path": "main/Kr/nk/Sinnock-solid-115.95K.yml",
+    "span_um": [
+     0.3631,
+     0.6439
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Solid krypton at 115.95 K (-157.20 °C, melting point).\n",
+    "temperature_c": -157.2,
+    "tag": "Sinnock1969-115.95K",
+    "dataset_label": "solid | Sinnock1969-115.95K",
+    "shelf": "main",
+    "book": "Kr"
+   },
+   {
+    "page": "Sinnock-solid-105K",
+    "axis": null,
+    "phase": "solid",
+    "data_path": "main/Kr/nk/Sinnock-solid-105K.yml",
+    "span_um": [
+     0.3631,
+     0.6439
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Solid krypton at 105 K (-168.15 °C).\n",
+    "temperature_c": -168.15,
+    "tag": "Sinnock1969-105K",
+    "dataset_label": "solid | Sinnock1969-105K",
+    "shelf": "main",
+    "book": "Kr"
+   },
+   {
+    "page": "Sinnock-solid-95K",
+    "axis": null,
+    "phase": "solid",
+    "data_path": "main/Kr/nk/Sinnock-solid-95K.yml",
+    "span_um": [
+     0.3631,
+     0.6439
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Solid krypton at 95 K (-178.15 °C).\n",
+    "temperature_c": -178.15,
+    "tag": "Sinnock1969-95K",
+    "dataset_label": "solid | Sinnock1969-95K",
+    "shelf": "main",
+    "book": "Kr"
+   },
+   {
+    "page": "Sinnock-solid-85K",
+    "axis": null,
+    "phase": "solid",
+    "data_path": "main/Kr/nk/Sinnock-solid-85K.yml",
+    "span_um": [
+     0.3631,
+     0.6439
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Solid krypton at 85 K (-188.15 °C).\n",
+    "temperature_c": -188.15,
+    "tag": "Sinnock1969-85K",
+    "dataset_label": "solid | Sinnock1969-85K",
+    "shelf": "main",
+    "book": "Kr"
+   },
+   {
+    "page": "Sinnock-solid-75K",
+    "axis": null,
+    "phase": "solid",
+    "data_path": "main/Kr/nk/Sinnock-solid-75K.yml",
+    "span_um": [
+     0.3631,
+     0.6439
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Solid krypton at 75 K (-198.15 °C).\n",
+    "temperature_c": -198.15,
+    "tag": "Sinnock1969-75K",
+    "dataset_label": "solid | Sinnock1969-75K",
+    "shelf": "main",
+    "book": "Kr"
+   },
+   {
+    "page": "Sinnock-solid-67K",
+    "axis": null,
+    "phase": "solid",
+    "data_path": "main/Kr/nk/Sinnock-solid-67K.yml",
+    "span_um": [
+     0.3631,
+     0.6439
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Solid krypton at 67 K (-206.15 °C).\n",
+    "temperature_c": -206.15,
+    "tag": "Sinnock1969-67K",
+    "dataset_label": "solid | Sinnock1969-67K",
+    "shelf": "main",
+    "book": "Kr"
+   }
+  ]
+ },
+ "Xe": {
+  "name": "Xenon",
+  "formula": "Xe",
+  "source": "gas_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Borzsonyi",
+    "axis": null,
+    "phase": "gas, 100 kPa",
+    "data_path": "main/Xe/nk/Borzsonyi.yml",
+    "span_um": [
+     0.4,
+     1.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "273 K (0 °C), 1000 mbar.\nDispersion formula may be usable down to ~0.2 µm.\nThere is a typo in one of the coefficients of the dispersion formula given in the paper: 12.75e-6 should be 12.75e-3.\n",
+    "temperature_c": -0.15,
+    "tag": "Borzsonyi2008",
+    "dataset_label": "gas, 100 kPa | Borzsonyi2008",
+    "shelf": "main",
+    "book": "Xe"
+   },
+   {
+    "page": "Cuthbertson",
+    "axis": null,
+    "phase": "gas, 101.325 kPa",
+    "data_path": "main/Xe/nk/Cuthbertson.yml",
+    "span_um": [
+     0.48,
+     0.6708
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Standard conditions: 0 °C, 760 torr (101.325 kPa).\n",
+    "temperature_c": 0.0,
+    "tag": "Cuthbertson1910",
+    "dataset_label": "gas, 101.325 kPa | Cuthbertson1910",
+    "shelf": "main",
+    "book": "Xe"
+   },
+   {
+    "page": "Bideau-Mehu",
+    "axis": null,
+    "phase": "gas, 101.325 kPa",
+    "data_path": "main/Xe/nk/Bideau-Mehu.yml",
+    "span_um": [
+     0.1404,
+     0.6234
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Standard conditions: 0 °C, 760 torr (101.325 kPa).\n",
+    "temperature_c": 0.0,
+    "tag": "Bideau-Mehu1981",
+    "dataset_label": "gas, 101.325 kPa | Bideau-Mehu1981",
+    "shelf": "main",
+    "book": "Xe"
+   },
+   {
+    "page": "Koch",
+    "axis": null,
+    "phase": "gas",
+    "data_path": "main/Xe/nk/Koch.yml",
+    "span_um": [
+     0.230209,
+     0.623437
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Wavelength is λair at 15 °C\n",
+    "temperature_c": null,
+    "tag": "Koch1949",
+    "dataset_label": "gas | Koch1949",
+    "shelf": "main",
+    "book": "Xe"
+   },
+   {
+    "page": "Grace-liquid-178K",
+    "axis": null,
+    "phase": "liquid",
+    "data_path": "main/Xe/nk/Grace-liquid-178K.yml",
+    "span_um": [
+     0.157,
+     0.66
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Liquid xenon at 178 K (-95.15 °C).\n",
+    "temperature_c": -95.15,
+    "tag": "Grace2017-178K",
+    "dataset_label": "liquid | Grace2017-178K",
+    "shelf": "main",
+    "book": "Xe"
+   },
+   {
+    "page": "Grace-liquid-161.35K",
+    "axis": null,
+    "phase": "liquid",
+    "data_path": "main/Xe/nk/Grace-liquid-161.35K.yml",
+    "span_um": [
+     0.157,
+     0.66
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Liquid xenon at 161.35 K (-111.80 °C, melting point).\n",
+    "temperature_c": -111.8,
+    "tag": "Grace2017-161.35K",
+    "dataset_label": "liquid | Grace2017-161.35K",
+    "shelf": "main",
+    "book": "Xe"
+   },
+   {
+    "page": "Grace-solid-161.35K",
+    "axis": null,
+    "phase": "solid",
+    "data_path": "main/Xe/nk/Grace-solid-161.35K.yml",
+    "span_um": [
+     0.157,
+     0.66
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Solid xenon at 161.35 K (-111.80 °C, melting point).\n",
+    "temperature_c": -111.8,
+    "tag": "Grace2017-161.35K",
+    "dataset_label": "solid | Grace2017-161.35K",
+    "shelf": "main",
+    "book": "Xe"
+   },
+   {
+    "page": "Grace-solid-80K",
+    "axis": null,
+    "phase": "solid",
+    "data_path": "main/Xe/nk/Grace-solid-80K.yml",
+    "span_um": [
+     0.157,
+     0.66
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Solid xenon at 80 K (-193.15 °C).\n",
+    "temperature_c": -193.15,
+    "tag": "Grace2017-80K",
+    "dataset_label": "solid | Grace2017-80K",
+    "shelf": "main",
+    "book": "Xe"
+   },
+   {
+    "page": "Sinnock-liquid-178K",
+    "axis": null,
+    "phase": "liquid",
+    "data_path": "main/Xe/nk/Sinnock-liquid-178K.yml",
+    "span_um": [
+     0.3612,
+     0.6439
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Liquid xenon at 178 K (-95.15 °C).\n",
+    "temperature_c": -95.15,
+    "tag": "Sinnock1969-178K",
+    "dataset_label": "liquid | Sinnock1969-178K",
+    "shelf": "main",
+    "book": "Xe"
+   },
+   {
+    "page": "Sinnock-liquid-174K",
+    "axis": null,
+    "phase": "liquid",
+    "data_path": "main/Xe/nk/Sinnock-liquid-174K.yml",
+    "span_um": [
+     0.3612,
+     0.6439
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Liquid xenon at 174 K (-99.15 °C).\n",
+    "temperature_c": -99.15,
+    "tag": "Sinnock1969-174K",
+    "dataset_label": "liquid | Sinnock1969-174K",
+    "shelf": "main",
+    "book": "Xe"
+   },
+   {
+    "page": "Sinnock-liquid-170K",
+    "axis": null,
+    "phase": "liquid",
+    "data_path": "main/Xe/nk/Sinnock-liquid-170K.yml",
+    "span_um": [
+     0.3612,
+     0.6439
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Liquid xenon at 170 K (-103.15 °C).\n",
+    "temperature_c": -103.15,
+    "tag": "Sinnock1969-170K",
+    "dataset_label": "liquid | Sinnock1969-170K",
+    "shelf": "main",
+    "book": "Xe"
+   },
+   {
+    "page": "Sinnock-liquid-166K",
+    "axis": null,
+    "phase": "liquid",
+    "data_path": "main/Xe/nk/Sinnock-liquid-166K.yml",
+    "span_um": [
+     0.3612,
+     0.6439
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Liquid xenon at 166 K (-107.15 °C).\n",
+    "temperature_c": -107.15,
+    "tag": "Sinnock1969-166K",
+    "dataset_label": "liquid | Sinnock1969-166K",
+    "shelf": "main",
+    "book": "Xe"
+   },
+   {
+    "page": "Sinnock-liquid-161.35K",
+    "axis": null,
+    "phase": "liquid",
+    "data_path": "main/Xe/nk/Sinnock-liquid-161.35K.yml",
+    "span_um": [
+     0.3612,
+     0.6439
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Liquid xenon at 161.35 K (-111.80 °C, melting point).\n",
+    "temperature_c": -111.8,
+    "tag": "Sinnock1969-161.35K",
+    "dataset_label": "liquid | Sinnock1969-161.35K",
+    "shelf": "main",
+    "book": "Xe"
+   },
+   {
+    "page": "Sinnock-solid-161.35K",
+    "axis": null,
+    "phase": "solid",
+    "data_path": "main/Xe/nk/Sinnock-solid-161.35K.yml",
+    "span_um": [
+     0.3612,
+     0.6439
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Solid xenon at 161.35 K (-111.80 °C, melting point).\n",
+    "temperature_c": -111.8,
+    "tag": "Sinnock1969-161.35K",
+    "dataset_label": "solid | Sinnock1969-161.35K",
+    "shelf": "main",
+    "book": "Xe"
+   },
+   {
+    "page": "Sinnock-solid-150K",
+    "axis": null,
+    "phase": "solid",
+    "data_path": "main/Xe/nk/Sinnock-solid-150K.yml",
+    "span_um": [
+     0.3612,
+     0.6439
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Solid xenon at 150 K (-123.15 °C).\n",
+    "temperature_c": -123.15,
+    "tag": "Sinnock1969-150K",
+    "dataset_label": "solid | Sinnock1969-150K",
+    "shelf": "main",
+    "book": "Xe"
+   },
+   {
+    "page": "Sinnock-solid-140K",
+    "axis": null,
+    "phase": "solid",
+    "data_path": "main/Xe/nk/Sinnock-solid-140K.yml",
+    "span_um": [
+     0.3612,
+     0.6439
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Solid xenon at 140 K (-133.15 °C).\n",
+    "temperature_c": -133.15,
+    "tag": "Sinnock1969-140K",
+    "dataset_label": "solid | Sinnock1969-140K",
+    "shelf": "main",
+    "book": "Xe"
+   },
+   {
+    "page": "Sinnock-solid-130K",
+    "axis": null,
+    "phase": "solid",
+    "data_path": "main/Xe/nk/Sinnock-solid-130K.yml",
+    "span_um": [
+     0.3612,
+     0.6439
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Solid xenon at 130 K (-143.15 °C).\n",
+    "temperature_c": -143.15,
+    "tag": "Sinnock1969-130K",
+    "dataset_label": "solid | Sinnock1969-130K",
+    "shelf": "main",
+    "book": "Xe"
+   },
+   {
+    "page": "Sinnock-solid-120K",
+    "axis": null,
+    "phase": "solid",
+    "data_path": "main/Xe/nk/Sinnock-solid-120K.yml",
+    "span_um": [
+     0.3612,
+     0.6439
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Solid xenon at 120 K (-153.15 °C).\n",
+    "temperature_c": -153.15,
+    "tag": "Sinnock1969-120K",
+    "dataset_label": "solid | Sinnock1969-120K",
+    "shelf": "main",
+    "book": "Xe"
+   },
+   {
+    "page": "Sinnock-solid-110K",
+    "axis": null,
+    "phase": "solid",
+    "data_path": "main/Xe/nk/Sinnock-solid-110K.yml",
+    "span_um": [
+     0.3612,
+     0.6439
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Solid xenon at 110 K (-163.15 °C).\n",
+    "temperature_c": -163.15,
+    "tag": "Sinnock1969-110K",
+    "dataset_label": "solid | Sinnock1969-110K",
+    "shelf": "main",
+    "book": "Xe"
+   },
+   {
+    "page": "Sinnock-solid-100K",
+    "axis": null,
+    "phase": "solid",
+    "data_path": "main/Xe/nk/Sinnock-solid-100K.yml",
+    "span_um": [
+     0.3612,
+     0.6439
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Solid xenon at 100 K (-173.15 °C).\n",
+    "temperature_c": -173.15,
+    "tag": "Sinnock1969-100K",
+    "dataset_label": "solid | Sinnock1969-100K",
+    "shelf": "main",
+    "book": "Xe"
+   },
+   {
+    "page": "Sinnock-solid-90K",
+    "axis": null,
+    "phase": "solid",
+    "data_path": "main/Xe/nk/Sinnock-solid-90K.yml",
+    "span_um": [
+     0.3612,
+     0.6439
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Solid xenon at 90 K (-183.15 °C).\n",
+    "temperature_c": -183.15,
+    "tag": "Sinnock1969-90K",
+    "dataset_label": "solid | Sinnock1969-90K",
+    "shelf": "main",
+    "book": "Xe"
+   },
+   {
+    "page": "Sinnock-solid-80K",
+    "axis": null,
+    "phase": "solid",
+    "data_path": "main/Xe/nk/Sinnock-solid-80K.yml",
+    "span_um": [
+     0.3612,
+     0.6439
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Solid xenon at 80 K (-193.15 °C).\n",
+    "temperature_c": -193.15,
+    "tag": "Sinnock1969-80K",
+    "dataset_label": "solid | Sinnock1969-80K",
+    "shelf": "main",
+    "book": "Xe"
+   }
+  ]
+ },
+ "H2": {
+  "name": "Hydrogen",
+  "formula": "H2",
+  "source": "gas_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Peck",
+    "axis": null,
+    "phase": "gas, 101.325 kPa",
+    "data_path": "main/H2/nk/Peck.yml",
+    "span_um": [
+     0.168,
+     1.6945
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Standard conditions. 0 °C, 760 torr (101.325 kPa).\n",
+    "temperature_c": 0.0,
+    "tag": "Peck1977",
+    "dataset_label": "gas, 101.325 kPa | Peck1977",
+    "shelf": "main",
+    "book": "H2"
+   },
+   {
+    "page": "Smith",
+    "axis": null,
+    "phase": "gas, 101.325 kPa",
+    "data_path": "main/H2/nk/Smith.yml",
+    "span_um": [
+     0.16797,
+     0.28945
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Standard conditions: 0 °C (273.15 K), 760 torr (101.325 kPa).\n",
+    "temperature_c": 0.0,
+    "tag": "Smith1976",
+    "dataset_label": "gas, 101.325 kPa | Smith1976",
+    "shelf": "main",
+    "book": "H2"
+   },
+   {
+    "page": "Koch",
+    "axis": null,
+    "phase": "gas",
+    "data_path": "main/H2/nk/Koch.yml",
+    "span_um": [
+     0.2302,
+     0.5462
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "14 °C\n",
+    "temperature_c": 13.85,
+    "tag": "Koch1913",
+    "dataset_label": "gas | Koch1913",
+    "shelf": "main",
+    "book": "H2"
+   }
+  ]
+ },
+ "D2": {
+  "name": "Deuterium",
+  "formula": "D2",
+  "source": "gas_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Weber",
+    "axis": null,
+    "phase": "gas",
+    "data_path": "main/D2/nk/Weber.yml",
+    "span_um": [
+     0.230209,
+     0.579065
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "0 °C\n",
+    "temperature_c": 0.0,
+    "tag": "Weber",
+    "dataset_label": "gas | Weber",
+    "shelf": "main",
+    "book": "D2"
+   }
+  ]
+ },
+ "CO": {
+  "name": "Carbon monoxide",
+  "formula": "CO",
+  "source": "gas_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Smith",
+    "axis": null,
+    "phase": "gas, 101.325 kPa",
+    "data_path": "main/CO1/nk/Smith.yml",
+    "span_um": [
+     0.1672,
+     0.2894
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Standard conditions: 0 °C (273.15 K), 760 torr (101.325 kPa).\n",
+    "temperature_c": 0.0,
+    "tag": "Smith1976",
+    "dataset_label": "gas, 101.325 kPa | Smith1976",
+    "shelf": "main",
+    "book": "CO"
+   }
+  ]
+ },
+ "CO2": {
+  "name": "Carbon dioxide",
+  "formula": "CO2",
+  "source": "gas_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Bideau-Mehu",
+    "axis": null,
+    "phase": "gas, 101.325 kPa",
+    "data_path": "main/CO2/nk/Bideau-Mehu.yml",
+    "span_um": [
+     0.1807,
+     1.6945
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Standard conditions: 0 °C, 760 torr (101.325 kPa).\n",
+    "temperature_c": 0.0,
+    "tag": "Bideau-Mehu1973",
+    "dataset_label": "gas, 101.325 kPa | Bideau-Mehu1973",
+    "shelf": "main",
+    "book": "CO2"
+   },
+   {
+    "page": "Old",
+    "axis": null,
+    "phase": "gas, 101.325 kPa",
+    "data_path": "main/CO2/nk/Old.yml",
+    "span_um": [
+     0.480126,
+     1.817228
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Standard conditions: 0 °C, 760 torr (101.325 kPa).\n",
+    "temperature_c": 0.0,
+    "tag": "Old1971",
+    "dataset_label": "gas, 101.325 kPa | Old1971",
+    "shelf": "main",
+    "book": "CO2"
+   }
+  ]
+ },
+ "NH3": {
+  "name": "Ammonia",
+  "formula": "NH3",
+  "source": "gas_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Cuthbertson",
+    "axis": null,
+    "phase": "gas, 101.325 kPa",
+    "data_path": "main/NH3/nk/Cuthbertson.yml",
+    "span_um": [
+     0.47999,
+     0.670785
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "0 °C, 760 mm Hg.\n",
+    "temperature_c": 0.0,
+    "tag": "Cuthbertson1914",
+    "dataset_label": "gas, 101.325 kPa | Cuthbertson1914",
+    "shelf": "main",
+    "book": "NH3"
+   }
+  ]
+ },
+ "SF6": {
+  "name": "Sulfur hexafluoride",
+  "formula": "SF6",
+  "source": "gas_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Vukovic",
+    "axis": null,
+    "phase": "gas, 101.325 kPa",
+    "data_path": "main/SF6/nk/Vukovic.yml",
+    "span_um": [
+     0.6,
+     1.3
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Dispersion formula is based on refraction measurement at only two wavelengths: 0.633 µm and 1.3 µm \n",
+    "temperature_c": 14.85,
+    "tag": "Vukovic1996",
+    "dataset_label": "gas, 101.325 kPa | Vukovic1996",
+    "shelf": "main",
+    "book": "SF6"
+   }
+  ]
+ },
+ "CH4": {
+  "name": "Methane",
+  "formula": "CH4",
+  "source": "gas_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Loria",
+    "axis": null,
+    "phase": "gas, 101.325 kPa",
+    "data_path": "organic/CH4 - methane/nk/Loria.yml",
+    "span_um": [
+     0.529,
+     0.6585
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Standard conditions. 0 °C, 760 torr (101.325 kPa).\n",
+    "temperature_c": 0.0,
+    "tag": "Loria1909",
+    "dataset_label": "gas, 101.325 kPa | Loria1909",
+    "shelf": "organic",
+    "book": "methane"
+   },
+   {
+    "page": "Rollefson",
+    "axis": null,
+    "phase": "gas, 101.325 kPa",
+    "data_path": "organic/CH4 - methane/nk/Rollefson.yml",
+    "span_um": [
+     1.68,
+     14.8
+    ],
+    "kind": "n",
+    "dispersion": "tabulated",
+    "comments": "Gaseous methane at standard conditions. 0 °C, 760 torr (101.325 kPa).\n",
+    "temperature_c": 0.0,
+    "tag": "Rollefson1940",
+    "dataset_label": "gas, 101.325 kPa | Rollefson1940",
+    "shelf": "organic",
+    "book": "methane"
+   }
+  ]
+ },
+ "C2H6": {
+  "name": "Ethane",
+  "formula": "C2H6",
+  "source": "gas_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Loria",
+    "axis": null,
+    "phase": "gas, 101.325 kPa",
+    "data_path": "organic/C2H6 - ethane/nk/Loria.yml",
+    "span_um": [
+     0.523,
+     0.6677
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Standard conditions. 0 °C, 760 torr (101.325 kPa).\n",
+    "temperature_c": 0.0,
+    "tag": "Loria1909",
+    "dataset_label": "gas, 101.325 kPa | Loria1909",
+    "shelf": "organic",
+    "book": "ethane"
+   }
+  ]
+ },
+ "C2H4": {
+  "name": "Ethylene",
+  "formula": "C2H4",
+  "source": "gas_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Loria",
+    "axis": null,
+    "phase": "gas, 101.325 kPa",
+    "data_path": "organic/C2H4 - ethylene/nk/Loria.yml",
+    "span_um": [
+     0.523,
+     0.6677
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Standard conditions. 0 °C, 760 torr (101.325 kPa).\n",
+    "temperature_c": 0.0,
+    "tag": "Loria1909",
+    "dataset_label": "gas, 101.325 kPa | Loria1909",
+    "shelf": "organic",
+    "book": "ethylene"
+   }
+  ]
+ },
+ "C2H2": {
+  "name": "Acetylene",
+  "formula": "C2H2",
+  "source": "gas_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Loria",
+    "axis": null,
+    "phase": "gas, 101.325 kPa",
+    "data_path": "organic/C2H2 - acetylene/nk/Loria.yml",
+    "span_um": [
+     0.5461,
+     0.6708
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Standard conditions. 0 °C, 760 torr (101.325 kPa).\n",
+    "temperature_c": 0.0,
+    "tag": "Loria1909",
+    "dataset_label": "gas, 101.325 kPa | Loria1909",
+    "shelf": "organic",
+    "book": "acetylene"
+   }
+  ]
+ }
+}

@@ -1,0 +1,20 @@
+{
+  "family": "gas",
+  "inserted": {
+    "materials": 18,
+    "physical_properties": 0,
+    "optical_dispersion": 22659,
+    "sources": 32
+  },
+  "unchanged": {
+    "materials": 0,
+    "physical_properties": 0,
+    "optical_dispersion": 0
+  },
+  "conflicts": [],
+  "skipped": [],
+  "warnings": [],
+  "notes": [],
+  "deferred": [],
+  "collapsed": []
+}

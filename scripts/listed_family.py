@@ -66,12 +66,16 @@ AXIS_NAMES = {"o": "o-ray", "e": "e-ray"}
 
 def page_entry(entry):
     """A listed page: (shelf, book, page, variant) or a dict with shelf, book, page and optional variant, axis ('o' / 'e') and
-    tag_suffix (e.g. a temperature, to keep a series of one paper apart: Wu1993-25.1C)."""
+    tag_suffix (e.g. a temperature, to keep a series of one paper apart: Wu1993-25.1C), and an explicit temperature_c when the
+    page text's temperature is not the sample's (e.g. "wavelength is lambda_air at 15 degC"); None there means not stated."""
     if isinstance(entry, dict):
         return (entry["shelf"], entry["book"], entry["page"], entry.get("variant"), AXIS_NAMES.get(entry.get("axis"), entry.get("axis")),
-                entry.get("tag_suffix"))
+                entry.get("tag_suffix"), entry.get("temperature_c", AUTO))
     shelf, book, page, variant = entry
-    return shelf, book, page, variant, None, None
+    return shelf, book, page, variant, None, None, AUTO
+
+
+AUTO = object()  # temperature from the page (file name / CONDITIONS / text)
 
 
 def build(MATERIALS, EXCLUDED_PAGES, OUT_OF_FAMILY, csv_stem, selections_stem, gaps_stem, formula_null_reason, density_null_reason,
@@ -81,17 +85,19 @@ def build(MATERIALS, EXCLUDED_PAGES, OUT_OF_FAMILY, csv_stem, selections_stem, g
     for i, mat in enumerate(MATERIALS, start=1):
         axes = []
         for entry in mat["pages"]:
-            shelf, book, page, variant, axis, suffix = page_entry(entry)
+            shelf, book, page, variant, axis, suffix, temp = page_entry(entry)
             if (shelf, book, page) in EXCLUDED_PAGES:
                 raise SystemExit(f"{page} is both listed and excluded")
             path, title = pages[(shelf, book, page)]
             s = scan_page(path)
             tag = source_tag(shelf, book, page, title, path) + (f"-{suffix}" if suffix else "")
             axes.append(dict(page=page, axis=axis, phase=variant, data_path=path, span_um=s["span_um"], kind=s["kind"],
-                             dispersion=s["dispersion"], comments=s["comments"], temperature_c=page_temperature_c(path, title + " " + s["comments"]),
+                             dispersion=s["dispersion"], comments=s["comments"],
+                             temperature_c=page_temperature_c(path, title + " " + s["comments"]) if temp is AUTO else temp,
                              tag=tag, dataset_label=label_of(variant, tag, axis), shelf=shelf, book=book))
-        axes.sort(key=lambda a: (not ambient(a), is_model_fit(a["data_path"]), not a["span_um"][0] <= 0.633 <= a["span_um"][1],
-                                 a["span_um"][0] - a["span_um"][1]))
+        not_primary = set(mat.get("not_primary", ()))  # variants that must not be the primary (e.g. a gas at unstated conditions)
+        axes.sort(key=lambda a: (a["phase"] in not_primary, not ambient(a), is_model_fit(a["data_path"]),
+                                 not a["span_um"][0] <= 0.633 <= a["span_um"][1], a["span_um"][0] - a["span_um"][1]))
         labels = [a["dataset_label"] for a in axes]
         assert len(labels) == len(set(labels)), labels
         selections[mat["key"]] = dict(name=mat["name"], formula=mat.get("formula"), source=f"{source_label} (every listed page is its own dataset; "

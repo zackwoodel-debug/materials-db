@@ -27,7 +27,7 @@ FAMILY_WRAPPERS = {"nitride": "load_nitrides_db", "polymer": "load_polymers_db",
                    "chalcogenide": "load_chalcogenides_db", "liquid": "load_liquids_db", "semiconductor": "load_semiconductors_db",
                    "inorganic4": "load_inorganic4_db", "glass": "load_glasses_db",
                    "optical_media": "load_optical_media_db", "liquid_crystal": "load_liquid_crystals_db",
-                   "bio_media": "load_bio_media_db"}
+                   "bio_media": "load_bio_media_db", "gas": "load_gases_db"}
 
 
 def optical_violations(conn):
@@ -61,7 +61,7 @@ def family_dbs(tmp_path_factory):
     return dbs
 
 
-@pytest.mark.parametrize("fam", ["oxide", "nitride", "polymer", "inorganic3", "halide", "chalcogenide", "liquid", "semiconductor", "inorganic4", "glass", "optical_media", "liquid_crystal", "bio_media"])
+@pytest.mark.parametrize("fam", ["oxide", "nitride", "polymer", "inorganic3", "halide", "chalcogenide", "liquid", "semiconductor", "inorganic4", "glass", "optical_media", "liquid_crystal", "bio_media", "gas"])
 def test_family_has_no_floored_nonphysical_or_unexplained_negative_optical_rows(family_dbs, fam):
     conn = sqlite3.connect(f"{Path(family_dbs[fam]).as_uri()}?mode=ro", uri=True)
     assert conn.execute("SELECT COUNT(*) FROM optical_dispersion").fetchone()[0] > 1000
