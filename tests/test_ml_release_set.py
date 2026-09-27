@@ -101,3 +101,11 @@ def test_targets_match_release_independently():
     prim = dict(con.execute("SELECT m.name, COUNT(DISTINCT o.raw_record_table) FROM optical_dispersion o "
                             "JOIN materials m USING(material_id) GROUP BY m.name").fetchall())
     assert DF.set_index("meta_name").meta_n_optical_datasets.to_dict() == prim
+
+
+def test_an_element_property_the_release_leaves_out_is_nan_not_imputed():
+    """He, Ne, Ar have no Pauling electronegativity: the release omits it (unavailable_element_data); the ML set keeps NaN."""
+    at = DF.set_index("meta_name")
+    for gas in ("Helium", "Neon", "Argon"):
+        if gas in at.index:
+            assert np.isnan(at.at[gas, "feat_comp_electronegativity_pauling_mean"]) and not np.isnan(at.at[gas, "feat_comp_atomic_mass_mean"])

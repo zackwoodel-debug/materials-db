@@ -1,9 +1,9 @@
 {
-  "source_release": "0.11.0",
-  "source_release_git_commit": "54fac3e395252734e7dd77015fcddf86a931a572",
-  "source_sqlite": "materials-db-v0.11.0.sqlite",
-  "source_sqlite_sha256": "c3b61254b09d6049700cc261b6ecf69bed67de5cf16c2e762062c50f44747eea",
-  "n_materials": 361,
+  "source_release": "0.12.0",
+  "source_release_git_commit": "6b999903d149286551fe26c26c2361bc9e0c43fe",
+  "source_sqlite": "materials-db-v0.12.0.sqlite",
+  "source_sqlite_sha256": "1551d9bbf291f4ad31e0875b68d67c525390a4f78aa3be31a866f332a4f7edae",
+  "n_materials": 379,
   "optical_ref_wl_nm": 633.0,
   "scaled": false,
   "target_columns": [
@@ -12,7 +12,7 @@
     "target_density_g_cm3"
   ],
   "target_present": {
-    "target_n_633nm": 288,
+    "target_n_633nm": 304,
     "target_k_633nm": 109,
     "target_density_g_cm3": 263
   },
@@ -95,6 +95,7 @@
   "element_fraction_columns": [
     "feat_frac_Ag",
     "feat_frac_Al",
+    "feat_frac_Ar",
     "feat_frac_As",
     "feat_frac_Au",
     "feat_frac_B",
@@ -120,6 +121,7 @@
     "feat_frac_Gd",
     "feat_frac_Ge",
     "feat_frac_H",
+    "feat_frac_He",
     "feat_frac_Hf",
     "feat_frac_Hg",
     "feat_frac_Ho",
@@ -127,6 +129,7 @@
     "feat_frac_In",
     "feat_frac_Ir",
     "feat_frac_K",
+    "feat_frac_Kr",
     "feat_frac_La",
     "feat_frac_Li",
     "feat_frac_Lu",
@@ -136,6 +139,7 @@
     "feat_frac_N",
     "feat_frac_Na",
     "feat_frac_Nb",
+    "feat_frac_Ne",
     "feat_frac_Ni",
     "feat_frac_O",
     "feat_frac_Os",
@@ -164,6 +168,7 @@
     "feat_frac_Tm",
     "feat_frac_V",
     "feat_frac_W",
+    "feat_frac_Xe",
     "feat_frac_Y",
     "feat_frac_Yb",
     "feat_frac_Zn",
@@ -687,9 +692,9 @@
   "fp_radius": 2,
   "fp_note": "release 2048-bit Morgan fingerprint folded to 512 (identical to fpSize=512)",
   "block_present": {
-    "has_composition": 309,
+    "has_composition": 326,
     "has_structure": 193,
-    "has_molecular": 96
+    "has_molecular": 104
   },
   "per_family": {
     "liquids": 75,
@@ -698,9 +703,10 @@
     "polymers": 41,
     "batch2_31": 31,
     "halides": 21,
+    "gases": 18,
     "inorganic3": 16,
-    "chalcogenides": 16,
     "semiconductors": 16,
+    "chalcogenides": 16,
     "glasses": 11,
     "liquid_crystals": 9,
     "optical_media": 8,
