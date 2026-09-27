@@ -140,6 +140,7 @@ def _structural_scope(density_source, label_words):
 MOLECULAR_FAMILIES = {"liquids"}
 GLASS_FAMILIES = {"glasses"}  # multicomponent glasses: no single formula, no crystal structure
 FORMULATION_FAMILIES = {"optical_media"}  # proprietary liquids / cured resins: no single formula, no crystal structure
+BIO_FAMILIES = {"bio_media"}  # biological fluids, tissues and buffers: mixtures, no formula, no crystal structure
 LC_FAMILIES = {"liquid_crystals"}  # single compounds are molecules (PubChem SMILES); the commercial mixtures are formulations  # families whose materials are discrete molecules (described by their PubChem SMILES)
 
 
@@ -173,6 +174,8 @@ def descriptor_row(name, formula, family, csv_row, optical_labels, mp, units, is
     elif family in LC_FAMILIES:
         doc["material_kind"] = "commercial formulation"
         doc["molecular"] = dict(unavailable="commercial liquid-crystal mixture: no single molecular structure")
+    elif family in FORMULATION_FAMILIES | BIO_FAMILIES:
+        doc["molecular"] = dict(not_applicable="a mixture (commercial formulation, biological fluid, tissue or buffer), not a single molecule")
     elif family in MOLECULAR_FAMILIES and not rf:
         doc["material_kind"] = "biomacromolecule"
         doc["molecular"] = dict(unavailable=why or "no single molecular structure")
@@ -196,6 +199,9 @@ def descriptor_row(name, formula, family, csv_row, optical_labels, mp, units, is
     elif family in FORMULATION_FAMILIES | LC_FAMILIES:
         doc["compositional"] = dict(unavailable="proprietary commercial formulation: no single formula")
         doc["material_kind"] = "commercial formulation"
+    elif family in BIO_FAMILIES:
+        doc["compositional"] = dict(unavailable="biological fluid, tissue or buffer: a mixture, no single formula")
+        doc["material_kind"] = "biological or buffer mixture"
     else:
         doc["compositional"] = dict(unavailable=why or "no single molecular formula")
         doc.setdefault("material_kind", "polymer" if is_polymer else "unknown")
@@ -215,6 +221,8 @@ def descriptor_row(name, formula, family, csv_row, optical_labels, mp, units, is
         doc["structural"] = dict(not_applicable="liquid or cured resin formulation: no crystal structure")
     elif family in LC_FAMILIES:
         doc["structural"] = dict(not_applicable="liquid crystal: no crystal structure")
+    elif family in BIO_FAMILIES:
+        doc["structural"] = dict(not_applicable="biological fluid, tissue or buffer: no crystal structure")
     elif mp_id and mp_id in mp["entries"]:
         e = dict(mp["entries"][mp_id])
         e.pop("space_group_number_recomputed", None)
