@@ -1,0 +1,314 @@
+{
+ "PBS": {
+  "name": "Phosphate-buffered saline (PBS)",
+  "formula": null,
+  "source": "bio_media_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Barroso",
+    "axis": null,
+    "phase": "DPBS",
+    "data_path": "other/buffer solutions/PBS/nk/Barroso.yml",
+    "span_um": [
+     0.5,
+     1.1
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Dulbecco’s Phosphate Buffered Saline (DPBS, Sigma-Aldrich). 22 °C.\n",
+    "temperature_c": 21.85,
+    "tag": "Barroso2019",
+    "dataset_label": "DPBS | Barroso2019",
+    "shelf": "other",
+    "book": "PBS"
+   },
+   {
+    "page": "Barroso-EDTA-BSA",
+    "axis": null,
+    "phase": "DPBS + 2 mM EDTA + 0.5% BSA",
+    "data_path": "other/buffer solutions/PBS/nk/Barroso-EDTA-BSA.yml",
+    "span_um": [
+     0.5,
+     1.1
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "DPBS supplemented with 2mM Ethylenediaminetetraacetic acid (EDTA) and 0.5% bovine serum albumin (BSA). 22 °C.\n",
+    "temperature_c": 21.85,
+    "tag": "Barroso2019",
+    "dataset_label": "DPBS + 2 mM EDTA + 0.5% BSA | Barroso2019",
+    "shelf": "other",
+    "book": "PBS"
+   },
+   {
+    "page": "Janeiro",
+    "axis": null,
+    "phase": "10x PBS",
+    "data_path": "other/buffer solutions/PBS/nk/Janeiro.yml",
+    "span_um": [
+     1.15,
+     1.8
+    ],
+    "kind": "nk",
+    "dispersion": "formula+tabulated",
+    "comments": "10x water solution (P32060, RPI). Composition: 1.37 M sodium chloride, 27 mM potassium chloride, 101.4 mM sodium phosphate dibasic and 17.6 mM potassium phosphate monobasic (total: 1.516 M), where M stands for molar, a concentration unit defined as mol/L.\n",
+    "temperature_c": null,
+    "tag": "Janeiro2019",
+    "dataset_label": "10x PBS | Janeiro2019",
+    "shelf": "other",
+    "book": "PBS"
+   }
+  ]
+ },
+ "DMEM": {
+  "name": "Dulbecco's modified Eagle's medium (DMEM)",
+  "formula": null,
+  "source": "bio_media_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Barroso",
+    "axis": null,
+    "phase": "DMEM",
+    "data_path": "other/buffer solutions/BME/nk/Barroso.yml",
+    "span_um": [
+     0.5,
+     1.1
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Dulbecco’s Modified Eagle’s Medium (DMEM, Sigma-Aldrich) supplemented with 2 mM glutamine, 1 mM sodium pyruvate, and 1% penicillin-streptomycin. 22 °C.\n",
+    "temperature_c": 21.85,
+    "tag": "Barroso2019",
+    "dataset_label": "DMEM | Barroso2019",
+    "shelf": "other",
+    "book": "BME"
+   },
+   {
+    "page": "Barroso-FBS",
+    "axis": null,
+    "phase": "DMEM + 10% FBS",
+    "data_path": "other/buffer solutions/BME/nk/Barroso-FBS.yml",
+    "span_um": [
+     0.5,
+     1.1
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "DMEM (Sigma-Aldrich) supplemented with 10% fetal bovine serum (FBS), 2 mM glutamine, 1 mM sodium pyruvate, and 1% penicillin-streptomycin. 22 °C.\n",
+    "temperature_c": 21.85,
+    "tag": "Barroso2019",
+    "dataset_label": "DMEM + 10% FBS | Barroso2019",
+    "shelf": "other",
+    "book": "BME"
+   },
+   {
+    "page": "Barroso-HEPES-FBS",
+    "axis": null,
+    "phase": "HEPES-buffered DMEM + FBS",
+    "data_path": "other/buffer solutions/BME/nk/Barroso-HEPES-FBS.yml",
+    "span_um": [
+     0.5,
+     1.1
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "4-(2-hydroxyethyl)-1-piperazineethane-sulfonic acid (HEPES)-buffered DMEM (DMEM with 20 mM HEPES, 4 mM glutamine, 1mM sodium pyruvate, 10% FBS, 850mg/l NaHCO3). 22 °C.\n",
+    "temperature_c": 21.85,
+    "tag": "Barroso2019",
+    "dataset_label": "HEPES-buffered DMEM + FBS | Barroso2019",
+    "shelf": "other",
+    "book": "BME"
+   }
+  ]
+ },
+ "blood": {
+  "name": "Human blood",
+  "formula": null,
+  "source": "bio_media_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Liu",
+    "axis": null,
+    "phase": "whole blood",
+    "data_path": "other/human body/blood/nk/Liu.yml",
+    "span_um": [
+     0.4,
+     0.75
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "The second term of the Sellmeier equation presented in the original publication apparently contains an error and was omitted. The single-term equation reproduces the plot shown in Fig. 3(a) of the paper.\n",
+    "temperature_c": null,
+    "tag": "Liu2019",
+    "dataset_label": "whole blood | Liu2019",
+    "shelf": "other",
+    "book": "blood"
+   },
+   {
+    "page": "Liu-serum",
+    "axis": null,
+    "phase": "serum",
+    "data_path": "other/human body/blood/nk/Liu-serum.yml",
+    "span_um": [
+     0.4,
+     0.75
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "",
+    "temperature_c": null,
+    "tag": "Liu2019",
+    "dataset_label": "serum | Liu2019",
+    "shelf": "other",
+    "book": "blood"
+   },
+   {
+    "page": "Liu-plasma",
+    "axis": null,
+    "phase": "plasma",
+    "data_path": "other/human body/blood/nk/Liu-plasma.yml",
+    "span_um": [
+     0.4,
+     0.75
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "",
+    "temperature_c": null,
+    "tag": "Liu2019",
+    "dataset_label": "plasma | Liu2019",
+    "shelf": "other",
+    "book": "blood"
+   },
+   {
+    "page": "Rowe",
+    "axis": null,
+    "phase": "whole blood",
+    "data_path": "other/human body/blood/nk/Rowe.yml",
+    "span_um": [
+     2.0006,
+     14.987155
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "",
+    "temperature_c": null,
+    "tag": "Rowe2017",
+    "dataset_label": "whole blood | Rowe2017",
+    "shelf": "other",
+    "book": "blood"
+   }
+  ]
+ },
+ "adipose": {
+  "name": "Human adipose tissue",
+  "formula": null,
+  "source": "bio_media_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Yanina",
+    "axis": null,
+    "phase": null,
+    "data_path": "other/human body/adipose tissue/nk/Yanina.yml",
+    "span_um": [
+     0.475,
+     1.55
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Human abdominal adipose tissue at 23 °C (296 K). See the original publication for temperature-dependent data.\n",
+    "temperature_c": 22.85,
+    "tag": "Yanina2019",
+    "dataset_label": "Yanina2019",
+    "shelf": "other",
+    "book": "adipose_tissue"
+   }
+  ]
+ },
+ "liver": {
+  "name": "Human liver tissue",
+  "formula": null,
+  "source": "bio_media_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Giannios",
+    "axis": null,
+    "phase": null,
+    "data_path": "other/human body/liver/nk/Giannios.yml",
+    "span_um": [
+     0.45,
+     1.551
+    ],
+    "kind": "nk",
+    "dispersion": "formula+tabulated",
+    "comments": "24 °C ± 2 °C.\n",
+    "temperature_c": 24.0,
+    "tag": "Giannios2017",
+    "dataset_label": "Giannios2017",
+    "shelf": "other",
+    "book": "liver"
+   }
+  ]
+ },
+ "colon": {
+  "name": "Human colon tissue",
+  "formula": null,
+  "source": "bio_media_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Giannios-mucosa",
+    "axis": null,
+    "phase": "mucosa",
+    "data_path": "other/human body/colon/nk/Giannios-mucosa.yml",
+    "span_um": [
+     0.45,
+     1.551
+    ],
+    "kind": "nk",
+    "dispersion": "formula+tabulated",
+    "comments": "24 °C ± 2 °C.\n",
+    "temperature_c": 24.0,
+    "tag": "Giannios2017",
+    "dataset_label": "mucosa | Giannios2017",
+    "shelf": "other",
+    "book": "colon"
+   },
+   {
+    "page": "Giannios-submucosa",
+    "axis": null,
+    "phase": "submucosa",
+    "data_path": "other/human body/colon/nk/Giannios-submucosa.yml",
+    "span_um": [
+     0.45,
+     1.551
+    ],
+    "kind": "nk",
+    "dispersion": "formula+tabulated",
+    "comments": "24 °C ± 2 °C.\n",
+    "temperature_c": 24.0,
+    "tag": "Giannios2017",
+    "dataset_label": "submucosa | Giannios2017",
+    "shelf": "other",
+    "book": "colon"
+   },
+   {
+    "page": "Giannios-serosa",
+    "axis": null,
+    "phase": "serosa",
+    "data_path": "other/human body/colon/nk/Giannios-serosa.yml",
+    "span_um": [
+     0.45,
+     1.551
+    ],
+    "kind": "nk",
+    "dispersion": "formula+tabulated",
+    "comments": "24 °C ± 2 °C.\n",
+    "temperature_c": 24.0,
+    "tag": "Giannios2017",
+    "dataset_label": "serosa | Giannios2017",
+    "shelf": "other",
+    "book": "colon"
+   }
+  ]
+ }
+}

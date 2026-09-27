@@ -103,6 +103,16 @@ Generic loader: scripts/load_family_db.py (--family/--catalog/--selections/--db/
    PubChem identity (glass / optical-media outputs byte-identical). Test helper evaluates RI.info formulas 3 and 6 too.
    Note: primaries of 5CB and E7 are Tkachenko 2006 (widest), whose temperature is not stated; 25 degC data (Li, Wu) are loaded.
 
+21. DONE: biological media (scripts/bio_media_material_list.py, build_bio_media_csv.py, load_bio_media_db.py): PBS (DPBS, + EDTA
+   + BSA, 10x), DMEM (plain, + FBS, HEPES + FBS), human blood (whole blood Liu / Rowe, serum, plasma), adipose, liver, colon
+   (mucosa / submucosa / serosa); 6 materials, 15 datasets. CAUTION recorded: Liu 2019 whole blood as RI.info reconstructs it
+   gives n(633) = 1.348, near serum/plasma, below typical whole blood (~1.38-1.40). Rowe 2017 k noise (to -0.0049 at 2.07 /
+   2.33 um) allow-listed. DMEM + 10% FBS reads 0.001 below plain DMEM (within uncertainty). Deferred with the composition
+   convention: water:glycerol 20/50 wt%, heavy water:glycerol 25/50/75 wt% (source error: the 50/75 pages say "25 wt%").
+   Descriptor text fix: optical media's molecular note said "extended inorganic solid" (published in v0.9.0 / v0.10.0, a text
+   note, not a data value); now "a mixture ..., not a single molecule". (A material_kind slip made during this branch was
+   caught by the release test before any release.)
+
 ## FOLLOW-UP (logged, NOT started): graphene / 2D carbon as its own family -- materialclass must NOT be 'polymer'
 - RI.info main/C, verified read-only: monolayer graphene = Weber 2010 (0.21-1.0 um, exfoliated flake, 3.4 A, on Si/98 nm SiO2), Song 2018 "Graphene"
   (0.193-1.69, CVD mono), Tikuisis 2023 (0.226-4.40, epitaxial on 6H-SiC), El-Sayed 2021 (0.24-1.0, CVD): four, not three. Song 2018 also holds 4 bulk-HOPG pages (graphite).

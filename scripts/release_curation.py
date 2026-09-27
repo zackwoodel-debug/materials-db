@@ -44,7 +44,7 @@ NAME_SYNONYMS = {
     "nonanoic acid", "CLBO", "calcium magnesium carbonate", "D2O", "HDPE", "LLDPE", "3-methyl-1-butanol", "2-methyl-1-propanol",
     "2,2,4-trimethylpentane", "2-methylbutane", "galena", "cinnabar", "proustite", "LiCAF", "LGS", "LBO", "SCAM", "PDLA", "PNIPAM",
     "PCTFE", "PEI", "TPX", "AGSe", "AGS", "TAS", "YLF", "ZGP", "berlinite", "anhydrite", "KDP", "ADP", "KTP", "RTP", "BGG", "4-pentyl-4'-cyanobiphenyl",
-    "4-trans-pentylcyclohexylcyanobenzene",
+    "4-trans-pentylcyclohexylcyanobenzene", "PBS", "DMEM",
 }
 NAME_QUALIFIERS = {
     "hexagonal", "liquid", "rutile / anatase", "sodium salt, calf thymus", "polyimide film", "negative photoresist", "negative resist",
