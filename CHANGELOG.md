@@ -5,6 +5,8 @@ versions follow the release tags. Counts are materials / optical datasets.
 
 ## [Unreleased]
 
+## [0.20.0] - 2026-09-28 (2132 / 2608)
+
 ### Added
 - Glass catalogs: 1,675 optical glasses from SCHOTT, OHARA, HIKARI, CDGM, HOYA, SUMITA and LZOS (manufacturer Sellmeier formulas,
   internal-transmittance k, datasheet densities; nd, Vd, glass code, dPgF, thermal expansion and status in the family table).
