@@ -88,8 +88,10 @@ def test_series_members_join_their_anchor_group():
     for key, grp in group_of.items():
         if key.split(":", 1)[0] in gs.SERIES_FAMILIES:
             series = key.split(":", 1)[1].split("@")[0]
-            anchor = next((group_of[e] for e in ends[series] if e in group_of), None)
+            anchor = next((group_of[e] for e in ends[series] if e in group_of), None)  # the anchor's FINAL group
             assert grp == (anchor or f"series:{series}"), key
+    if "perovskites:MAPbX3@MAPbI3" in group_of:  # the 2D perovskites share 3D MAPbI3's group (their n -> infinity limit)
+        assert {g for k, g in group_of.items() if k.startswith(("perovskites:RP-", "perovskites:DJ-"))} <= {group_of["perovskites:MAPbX3@MAPbI3"]}
 
 
 def test_series_never_move_an_existing_material():

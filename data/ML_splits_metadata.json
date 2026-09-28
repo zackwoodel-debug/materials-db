@@ -1,6 +1,6 @@
 {
- "source_release": "0.18.0",
- "source_sqlite_sha256": "91fcb1f3ce0e13efc96980ea668501213b989e0ce148cca6ba4d4ca843df516e",
+ "source_release": "0.19.0",
+ "source_sqlite_sha256": "ddf3c361b9dbdb87086ca1fb34922423a3a27d90735b68f5aab16cb7e30a0309",
  "assignment": "sha256 of the group id: split = hash('split:'+group) mod 10 (0-7 train, 8 validation, 9 test); fold = hash('fold:'+group) mod 5",
  "product_lines": {
   "cargille-matching-liquids": [
@@ -31,13 +31,13 @@
  },
  "groups": 351,
  "multi_material_groups": 38,
- "materials_in_multi_material_groups": 135,
+ "materials_in_multi_material_groups": 144,
  "per_split": {
   "train": {
-   "materials": 344,
+   "materials": 353,
    "groups": 282,
-   "with_target_n_633nm": 283,
-   "with_target_k_633nm": 119,
+   "with_target_n_633nm": 292,
+   "with_target_k_633nm": 128,
    "with_target_density_g_cm3": 206
   },
   "validation": {
@@ -58,7 +58,7 @@
  "per_fold": {
   "0": 114,
   "1": 81,
-  "2": 77,
+  "2": 86,
   "3": 71,
   "4": 105
  },
@@ -150,7 +150,9 @@
   "CsPbX3": "series:CsPbX3",
   "MAPbX3": "series:MAPbX3",
   "CuZn": "comp:Cu1.0000",
-  "NiFe": "comp:Ni1.0000"
+  "NiFe": "comp:Ni1.0000",
+  "DJ-4AMP-MA": "series:MAPbX3",
+  "RP-BA-MA": "series:MAPbX3"
  },
  "series_end_members_outside_group": [
   {
@@ -408,8 +410,17 @@
    "perovskites:CsPbX3@CsPbCl3"
   ],
   "series:MAPbX3": [
+   "perovskites:DJ-4AMP-MA@m1",
+   "perovskites:DJ-4AMP-MA@m2",
+   "perovskites:DJ-4AMP-MA@m3",
+   "perovskites:DJ-4AMP-MA@m4",
    "perovskites:MAPbX3@MAPbBr3",
-   "perovskites:MAPbX3@MAPbI3"
+   "perovskites:MAPbX3@MAPbI3",
+   "perovskites:RP-BA-MA@n1",
+   "perovskites:RP-BA-MA@n2",
+   "perovskites:RP-BA-MA@n3",
+   "perovskites:RP-BA-MA@n4",
+   "perovskites:RP-BA-MA@n5"
   ]
  },
  "notes": [
