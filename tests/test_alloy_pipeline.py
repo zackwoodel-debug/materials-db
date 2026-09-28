@@ -204,3 +204,24 @@ def test_loader_reproduces_parse_file_and_is_idempotent(loaded):
     kw = dict(kw, fresh=False)
     again = fam.run_family(name, wrap.CSV_PATH, wrap.SELECTIONS_PATH, db, **kw)
     assert sum(again.inserted.values()) == 0 and not again.conflicts
+
+
+@pytest.mark.parametrize("key,a,b,pct", [("CuZn@Cu90", "Cu", "Zn", 90), ("CuZn@Cu85", "Cu", "Zn", 85), ("CuZn@Cu70", "Cu", "Zn", 70),
+                                         ("NiFe@Ni80Fe20", "Ni", "Fe", 80)])
+def test_metal_alloy_formula_and_the_atomic_vs_weight_bound(key, a, b, pct):
+    """The page says '% Cu' / '% Ni' without atomic or weight; the formula is within 1 at.% of BOTH readings (that is why these
+    alloys are loaded and Au-Ag, where the readings differ by up to 15 at.%, is not)."""
+    from pymatgen.core import Element
+    comment = _text(_yaml(SEL[key]["axes"][0]["data_path"]).get("COMMENTS"))
+    assert f"{pct}% " in comment and f"{100 - pct}% " in comment
+    na, nb = pct / Element(a).atomic_mass, (100 - pct) / Element(b).atomic_mass
+    by_weight, by_atom = na / (na + nb), pct / 100
+    x = _amounts(SEL[key]["formula"])[a]
+    assert abs(x - by_weight) < 0.01 and abs(x - by_atom) < 0.01, (key, x, by_weight, by_atom)
+    assert sum(_amounts(SEL[key]["formula"]).values()) == pytest.approx(1.0)
+
+
+def test_au_ag_stays_deferred_because_the_readings_differ():
+    from pymatgen.core import Element
+    na, nb = 50 / Element("Au").atomic_mass, 50 / Element("Ag").atomic_mass
+    assert abs(na / (na + nb) - 0.5) > 0.1 and not any(k.startswith("AuAg") for k in SEL)

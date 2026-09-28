@@ -501,8 +501,10 @@ calculation overestimates by 30-60%.
   and conducting oxides whose page gives no exact composition have no formula. End members (x = 0 or 1) are the existing pure
   materials. In the ML splits a series joins its first end member's group. Recorded source conflicts: AlGaAs Gadras-90 (90% vs
   x = 0.92, excluded), SiGe Jellison-48 (comment x = 0.28, CONDITIONS 0.48: 0.48 used), Mg:LiTaO3's '-o' page (comment says
-  extraordinary; its coefficients are the ordinary ray). Deferred: Au-Ag, brass and permalloy (atomic vs weight % not stated)
-  and 2D perovskites (the page's formula contradicts the standard one). Perovskite constants depend strongly on the sample.
+  extraordinary; its coefficients are the ordinary ray). Brass (Querry 1985 ingots, by weight) and permalloy (Ni80Fe20
+  target) pages do not say atomic or weight %, but for Cu-Zn and Ni-Fe the two readings differ by < 1 at.%. Deferred: Au-Ag
+  (the readings differ by up to 15 at.%, and its pages are model evaluations) and 2D perovskites (the page's formula
+  contradicts the standard one). Perovskite constants depend strongly on the sample.
 - Primary dataset (the family tables' n_633 / k_633) in the automatically selected families (halides, chalcogenides,
   liquids, semiconductors): measured data before model fits of the dielectric function, then the widest range covering
   633 nm. A page is a model fit only when its source says so (scripts/dataset_kind.py). A model fit covering 633 nm is primary

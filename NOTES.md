@@ -203,8 +203,12 @@ Generic loader: scripts/load_family_db.py (--family/--catalog/--selections/--db/
    Jellison-48, Mg:LiTaO3 -o page, Ferrini-0 'GaAs'). PubChem: MAPbI3, CsPbBr3 found; MAPbBr3, CsPbCl3 not found under any
    common name (identity from the formula). Descriptors: material_kind 'solid solution' / 'hybrid organic-inorganic
    perovskite' / 'doped crystal or conducting oxide'; no oxidation-state guess for fractional formulas (pymatgen needs integers).
-   DEFERRED (needs a decision): Au-Ag (Rioux 2014: 8 of 11 compositions are model interpolations; % basis not stated),
-   Cu-Zn brass, Ni-Fe permalloy (% basis), 2D HOIPs (page formula I3n-1 vs standard I3n+1), PEDOT:PSS / P3HT:PCBM blends.
+   DEFERRED (needs a decision): Au-Ag, 2D HOIPs (page formula I3n-1 vs standard I3n+1), PEDOT:PSS / P3HT:PCBM blends.
+   2026-09-27 (user: "1"): brass + permalloy LOADED (ids 445-448): % basis unstated, but at% vs wt% differ by < 1 at.% for
+   Cu-Zn (<= 0.6) and Ni-Fe (0.8) -- brass converted from wt% (ingots are specified by weight), permalloy Ni0.8Fe0.2 (target
+   notation). Au-Ag still deferred: readings differ by up to 14.6 at.% (Au50Ag50), and every Rioux page is the analytic model
+   evaluated at a composition; dataset_kind's title regex would NOT flag "An analytic model for the dielectric function" as a
+   model fit -- fix that before loading. Paper not reachable (Wiley 403; Mazur-group PDF removed; DTIC down for Querry).
 
 ## FOLLOW-UP (logged, NOT started): graphene / 2D carbon as its own family -- materialclass must NOT be 'polymer'
 - RI.info main/C, verified read-only: monolayer graphene = Weber 2010 (0.21-1.0 um, exfoliated flake, 3.4 A, on Si/98 nm SiO2), Song 2018 "Graphene"
