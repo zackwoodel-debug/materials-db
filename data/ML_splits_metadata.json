@@ -1,6 +1,6 @@
 {
- "source_release": "0.17.0",
- "source_sqlite_sha256": "f5d3b22fb9fcf24d8de7be9965ebc791087000db6676c1fc9fb661da4a806659",
+ "source_release": "0.18.0",
+ "source_sqlite_sha256": "91fcb1f3ce0e13efc96980ea668501213b989e0ce148cca6ba4d4ca843df516e",
  "assignment": "sha256 of the group id: split = hash('split:'+group) mod 10 (0-7 train, 8 validation, 9 test); fold = hash('fold:'+group) mod 5",
  "product_lines": {
   "cargille-matching-liquids": [
@@ -30,14 +30,14 @@
   ]
  },
  "groups": 351,
- "multi_material_groups": 36,
- "materials_in_multi_material_groups": 129,
+ "multi_material_groups": 38,
+ "materials_in_multi_material_groups": 135,
  "per_split": {
   "train": {
-   "materials": 340,
+   "materials": 344,
    "groups": 282,
-   "with_target_n_633nm": 279,
-   "with_target_k_633nm": 115,
+   "with_target_n_633nm": 283,
+   "with_target_k_633nm": 119,
    "with_target_density_g_cm3": 206
   },
   "validation": {
@@ -58,7 +58,7 @@
  "per_fold": {
   "0": 114,
   "1": 81,
-  "2": 73,
+  "2": 77,
   "3": 71,
   "4": 105
  },
@@ -89,6 +89,10 @@
    "liquids",
    "polymers"
   ],
+  "comp:Cu1.0000": [
+   "alloys",
+   "pure_elements_50"
+  ],
   "comp:Ga0.5000 P0.5000": [
    "alloys",
    "semiconductors"
@@ -108,6 +112,10 @@
   "comp:Li0.2000 O0.6000 Ta0.2000": [
    "alloys",
    "inorganic3"
+  ],
+  "comp:Ni1.0000": [
+   "alloys",
+   "pure_elements_50"
   ],
   "comp:O0.5000 Si0.5000": [
    "alloys",
@@ -140,7 +148,9 @@
   "YSZ": "series:YSZ",
   "ZnCdO": "comp:O0.5000 Zn0.5000",
   "CsPbX3": "series:CsPbX3",
-  "MAPbX3": "series:MAPbX3"
+  "MAPbX3": "series:MAPbX3",
+  "CuZn": "comp:Cu1.0000",
+  "NiFe": "comp:Ni1.0000"
  },
  "series_end_members_outside_group": [
   {
@@ -152,6 +162,11 @@
    "series": "AlGaSb",
    "end_member": "semiconductors:AlSb",
    "group": "comp:Al0.5000 Sb0.5000"
+  },
+  {
+   "series": "CuZn",
+   "end_member": "pure_elements_50:Zn@hcp",
+   "group": "comp:Zn1.0000"
   },
   {
    "series": "GaInP",
@@ -167,6 +182,11 @@
    "series": "KRS",
    "end_member": "halides:TlCl",
    "group": "comp:Cl0.5000 Tl0.5000"
+  },
+  {
+   "series": "NiFe",
+   "end_member": "pure_elements_50:Fe@bcc (alpha-Fe)",
+   "group": "comp:Fe1.0000"
   },
   {
    "series": "SiGe",
@@ -278,6 +298,12 @@
    "batch3b_4:C@diamond cubic",
    "batch3b_4:C@graphite"
   ],
+  "comp:Cu1.0000": [
+   "alloys:CuZn@Cu70",
+   "alloys:CuZn@Cu85",
+   "alloys:CuZn@Cu90",
+   "pure_elements_50:Cu@fcc"
+  ],
   "comp:Ga0.5000 P0.5000": [
    "alloys:GaInP@x0.49",
    "semiconductors:GaP"
@@ -308,6 +334,10 @@
   "comp:Li0.2000 O0.6000 Ta0.2000": [
    "alloys:Mg-LiTaO3@CLT-8mol",
    "inorganic3:LiTaO3"
+  ],
+  "comp:Ni1.0000": [
+   "alloys:NiFe@Ni80Fe20",
+   "pure_elements_50:Ni@fcc"
   ],
   "comp:O0.5000 Si0.5000": [
    "alloys:SiOx@x0.31",

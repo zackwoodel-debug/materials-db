@@ -443,3 +443,7 @@ material_id,meta_key,meta_name,meta_family,group,split,fold
 442,perovskites:CsPbX3@CsPbCl3,Cesium lead chloride (CsPbCl3),perovskites,series:CsPbX3,train,0
 443,perovskites:MAPbX3@MAPbBr3,Methylammonium lead bromide (MAPbBr3),perovskites,series:MAPbX3,train,2
 444,perovskites:MAPbX3@MAPbI3,Methylammonium lead iodide (MAPbI3),perovskites,series:MAPbX3,train,2
+445,alloys:CuZn@Cu70,"Brass, 70 wt% Cu",alloys,comp:Cu1.0000,train,2
+446,alloys:CuZn@Cu85,"Brass, 85 wt% Cu",alloys,comp:Cu1.0000,train,2
+447,alloys:CuZn@Cu90,"Brass, 90 wt% Cu",alloys,comp:Cu1.0000,train,2
+448,alloys:NiFe@Ni80Fe20,Permalloy Ni80Fe20,alloys,comp:Ni1.0000,train,2
