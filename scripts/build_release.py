@@ -314,7 +314,9 @@ def export_csvs(db_path, out_dir):
         header = [d[0] for d in cur.description]
         big = t == "optical_dispersion"
         path = out_dir / f"{t}.csv{'.gz' if big else ''}"
-        with (gzip.open(path, "wt", newline="", compresslevel=9) if big else open(path, "w", newline="")) as f:
+        # gzip with a fixed header timestamp (mtime=0): the same rows give the same bytes, so SHA256SUMS only changes with the data
+        with (io.TextIOWrapper(gzip.GzipFile(path, "wb", compresslevel=9, mtime=0), newline="") if big
+              else open(path, "w", newline="")) as f:
             w = csv.writer(f)
             w.writerow(header)
             n = 0
