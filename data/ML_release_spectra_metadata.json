@@ -1,8 +1,8 @@
 {
- "source_release": "0.19.0",
- "source_release_git_commit": "3bb82e3a15aa716d8e8c503aa8cf5953bffa7b68",
- "source_sqlite": "materials-db-v0.19.0.sqlite",
- "source_sqlite_sha256": "ddf3c361b9dbdb87086ca1fb34922423a3a27d90735b68f5aab16cb7e30a0309",
+ "source_release": "0.20.0",
+ "source_release_git_commit": "413efbc58be522a0542c04c99c3cd0afb6fec25e",
+ "source_sqlite": "materials-db-v0.20.0.sqlite",
+ "source_sqlite_sha256": "3c346db52d1c3b711621d0f03bbc783122c6c692750f00c3112922692ff7e4f3",
  "grid": {
   "unit": "nm",
   "spacing": "log",
@@ -141,11 +141,11 @@
   ]
  },
  "max_gap_ratio": 1.5,
- "datasets": 915,
- "materials": 441,
- "primary_datasets": 441,
+ "datasets": 2589,
+ "materials": 2115,
+ "primary_datasets": 2115,
  "model_fit_datasets": 45,
- "datasets_with_k": 341,
+ "datasets_with_k": 1962,
  "datasets_outside_grid": [
   {
    "material_id": 15,
@@ -254,6 +254,12 @@
    "dataset_label": "Parsons1971",
    "wl_min_nm": 54369.0,
    "wl_max_nm": 366030.0
+  },
+  {
+   "material_id": 1798,
+   "dataset_label": "SCHOTT2022",
+   "wl_min_nm": 587.6,
+   "wl_max_nm": 587.6
   }
  ],
  "notes": [

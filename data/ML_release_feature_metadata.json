@@ -1,9 +1,9 @@
 {
-  "source_release": "0.19.0",
-  "source_release_git_commit": "3bb82e3a15aa716d8e8c503aa8cf5953bffa7b68",
-  "source_sqlite": "materials-db-v0.19.0.sqlite",
-  "source_sqlite_sha256": "ddf3c361b9dbdb87086ca1fb34922423a3a27d90735b68f5aab16cb7e30a0309",
-  "n_materials": 457,
+  "source_release": "0.20.0",
+  "source_release_git_commit": "413efbc58be522a0542c04c99c3cd0afb6fec25e",
+  "source_sqlite": "materials-db-v0.20.0.sqlite",
+  "source_sqlite_sha256": "3c346db52d1c3b711621d0f03bbc783122c6c692750f00c3112922692ff7e4f3",
+  "n_materials": 2132,
   "optical_ref_wl_nm": 633.0,
   "scaled": false,
   "target_columns": [
@@ -12,9 +12,9 @@
     "target_density_g_cm3"
   ],
   "target_present": {
-    "target_n_633nm": 375,
-    "target_k_633nm": 171,
-    "target_density_g_cm3": 264
+    "target_n_633nm": 2049,
+    "target_k_633nm": 1792,
+    "target_density_g_cm3": 1826
   },
   "feature_columns": [
     "feat_comp_n_elements",
@@ -772,6 +772,7 @@
     "has_molecular": 104
   },
   "per_family": {
+    "glass_catalogs": 1675,
     "liquids": 75,
     "alloys": 61,
     "oxides_50": 50,
