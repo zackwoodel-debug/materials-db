@@ -1,6 +1,6 @@
 {
- "source_release": "0.19.0",
- "source_sqlite_sha256": "ddf3c361b9dbdb87086ca1fb34922423a3a27d90735b68f5aab16cb7e30a0309",
+ "source_release": "0.20.0",
+ "source_sqlite_sha256": "3c346db52d1c3b711621d0f03bbc783122c6c692750f00c3112922692ff7e4f3",
  "assignment": "sha256 of the group id: split = hash('split:'+group) mod 10 (0-7 train, 8 validation, 9 test); fold = hash('fold:'+group) mod 5",
  "product_lines": {
   "cargille-matching-liquids": [
@@ -29,38 +29,38 @@
    "polymers:IP-Dip"
   ]
  },
- "groups": 351,
- "multi_material_groups": 38,
- "materials_in_multi_material_groups": 144,
+ "groups": 1070,
+ "multi_material_groups": 340,
+ "materials_in_multi_material_groups": 1402,
  "per_split": {
   "train": {
-   "materials": 353,
-   "groups": 282,
-   "with_target_n_633nm": 292,
-   "with_target_k_633nm": 128,
-   "with_target_density_g_cm3": 206
+   "materials": 1615,
+   "groups": 840,
+   "with_target_n_633nm": 1553,
+   "with_target_k_633nm": 1347,
+   "with_target_density_g_cm3": 1380
   },
   "validation": {
-   "materials": 50,
-   "groups": 33,
-   "with_target_n_633nm": 37,
-   "with_target_k_633nm": 20,
-   "with_target_density_g_cm3": 28
+   "materials": 244,
+   "groups": 124,
+   "with_target_n_633nm": 231,
+   "with_target_k_633nm": 210,
+   "with_target_density_g_cm3": 211
   },
   "test": {
-   "materials": 54,
-   "groups": 36,
-   "with_target_n_633nm": 46,
-   "with_target_k_633nm": 23,
-   "with_target_density_g_cm3": 30
+   "materials": 273,
+   "groups": 106,
+   "with_target_n_633nm": 265,
+   "with_target_k_633nm": 235,
+   "with_target_density_g_cm3": 235
   }
  },
  "per_fold": {
-  "0": 114,
-  "1": 81,
-  "2": 86,
-  "3": 71,
-  "4": 105
+  "0": 467,
+  "1": 341,
+  "2": 457,
+  "3": 398,
+  "4": 469
  },
  "cross_family_groups": {
   "comp:As0.5000 Ga0.5000": [
@@ -128,6 +128,10 @@
   "comp:Si1.0000": [
    "alloys",
    "pure_elements_50"
+  ],
+  "key:glasses:N-BK7": [
+   "glass_catalogs",
+   "glasses"
   ]
  },
  "series_groups": {
@@ -371,6 +375,1868 @@
    "alloys:SiGe@x0.85",
    "alloys:SiGe@x0.98",
    "pure_elements_50:Si@diamond cubic"
+  ],
+  "glass:001255": [
+   "glass_catalogs:HIKARI-optical/E-LASFH17",
+   "glass_catalogs:HIKARI-optical/J-LASFH17",
+   "glass_catalogs:HIKARI-optical/J-LASFH17HS",
+   "glass_catalogs:HOYA-optical/TAFD40"
+  ],
+  "glass:001291": [
+   "glass_catalogs:HIKARI-optical/J-LASFH16",
+   "glass_catalogs:HOYA-optical/TAFD55"
+  ],
+  "glass:002193": [
+   "glass_catalogs:HOYA-optical/M-FDS2",
+   "glass_catalogs:HOYA-optical/MC-FDS2",
+   "glass_catalogs:HOYA-optical/MP-FDS2"
+  ],
+  "glass:003283": [
+   "glass_catalogs:CDGM-optical/H-ZLAF92",
+   "glass_catalogs:OHARA-optical/S-LAH79"
+  ],
+  "glass:139177+144178": [
+   "glass_catalogs:SUMITA-optical/K-PSFn214",
+   "glass_catalogs:SUMITA-optical/K-PSFn214(M)"
+  ],
+  "glass:143173+148173": [
+   "glass_catalogs:SUMITA-optical/K-PSFn173",
+   "glass_catalogs:SUMITA-optical/K-PSFn173(M)"
+  ],
+  "glass:433950+434950": [
+   "glass_catalogs:SUMITA-optical/K-CaFK95",
+   "glass_catalogs:SUMITA-optical/K-CaFK95(M)"
+  ],
+  "glass:434953": [
+   "glass_catalogs:HIKARI-misc/NICF-A",
+   "glass_catalogs:HIKARI-misc/NICF-U",
+   "glass_catalogs:HIKARI-misc/NICF-V"
+  ],
+  "glass:438945": [
+   "glass_catalogs:CDGM-optical/D-FK95",
+   "glass_catalogs:CDGM-optical/H-FK95N"
+  ],
+  "glass:439949+439950": [
+   "glass_catalogs:OHARA-optical/FPL53",
+   "glass_catalogs:OHARA-optical/S-FPL53"
+  ],
+  "glass:456903+457903": [
+   "glass_catalogs:CDGM-optical/H-FK71",
+   "glass_catalogs:HOYA-optical/FCD10",
+   "glass_catalogs:OHARA-optical/FPL52",
+   "glass_catalogs:OHARA-optical/S-FPL52"
+  ],
+  "glass:456913": [
+   "glass_catalogs:HIKARI-optical/E-FKH2",
+   "glass_catalogs:HIKARI-optical/Q-FK2S"
+  ],
+  "glass:457898+459900": [
+   "glass_catalogs:SUMITA-optical/K-PFK90",
+   "glass_catalogs:SUMITA-optical/K-PFK90(M)"
+  ],
+  "glass:458678": [
+   "glass_catalogs:HIKARI-misc/NIFS-A",
+   "glass_catalogs:HIKARI-misc/NIFS-S",
+   "glass_catalogs:HIKARI-misc/NIFS-U",
+   "glass_catalogs:SCHOTT-misc/LITHOSIL-Q"
+  ],
+  "glass:484850+486852": [
+   "glass_catalogs:SUMITA-optical/K-PFK85",
+   "glass_catalogs:SUMITA-optical/K-PFK85(M)"
+  ],
+  "glass:487702": [
+   "glass_catalogs:OHARA-optical/FSL5",
+   "glass_catalogs:OHARA-optical/S-FSL5"
+  ],
+  "glass:487703+487704": [
+   "glass_catalogs:CDGM-optical/D-QK3L",
+   "glass_catalogs:CDGM-optical/D-QK3L-25",
+   "glass_catalogs:CDGM-optical/H-QK3L",
+   "glass_catalogs:CDGM-optical/H-QK3LGTI",
+   "glass_catalogs:HIKARI-optical/E-FK5",
+   "glass_catalogs:HIKARI-optical/J-FK5",
+   "glass_catalogs:HOYA-optical/FC5",
+   "glass_catalogs:OHARA-optical/S-FSL5Y",
+   "glass_catalogs:SCHOTT-optical/N-FK5",
+   "glass_catalogs:SUMITA-optical/K-FK5"
+  ],
+  "glass:487845": [
+   "glass_catalogs:SCHOTT-optical/N-FK51",
+   "glass_catalogs:SCHOTT-optical/N-FK51A"
+  ],
+  "glass:495808+497815+497816": [
+   "glass_catalogs:CDGM-optical/D-FK61",
+   "glass_catalogs:CDGM-optical/D-FK61-25",
+   "glass_catalogs:CDGM-optical/D-FK61A",
+   "glass_catalogs:CDGM-optical/D-FK61A-25",
+   "glass_catalogs:CDGM-optical/H-FK61",
+   "glass_catalogs:CDGM-optical/H-FK61B",
+   "glass_catalogs:HIKARI-optical/E-FK01",
+   "glass_catalogs:HIKARI-optical/J-FK01A",
+   "glass_catalogs:HOYA-optical/FCD1",
+   "glass_catalogs:HOYA-optical/FCD1B",
+   "glass_catalogs:HOYA-optical/M-FCD1",
+   "glass_catalogs:HOYA-optical/MC-FCD1-M20",
+   "glass_catalogs:HOYA-optical/MP-FCD1-M20",
+   "glass_catalogs:OHARA-optical/FPL51",
+   "glass_catalogs:OHARA-optical/S-FPL51",
+   "glass_catalogs:SCHOTT-optical/N-PK52A",
+   "glass_catalogs:SUMITA-optical/K-PFK80",
+   "glass_catalogs:SUMITA-optical/K-PFK80(M)"
+  ],
+  "glass:501564": [
+   "glass_catalogs:OHARA-optical/FTL10",
+   "glass_catalogs:OHARA-optical/S-FTL10",
+   "glass_catalogs:SCHOTT-optical/K10"
+  ],
+  "glass:504668": [
+   "glass_catalogs:HIKARI-optical/PK1",
+   "glass_catalogs:OHARA-optical/BSL21"
+  ],
+  "glass:505704+507705": [
+   "glass_catalogs:SUMITA-optical/K-PG325",
+   "glass_catalogs:SUMITA-optical/K-PG325(M)"
+  ],
+  "glass:508526+512521": [
+   "glass_catalogs:SUMITA-optical/K-SKF6",
+   "glass_catalogs:SUMITA-optical/K-SKF6(M)"
+  ],
+  "glass:511605": [
+   "glass_catalogs:CDGM-optical/H-K6",
+   "glass_catalogs:OHARA-optical/NSL7"
+  ],
+  "glass:515633+518635": [
+   "glass_catalogs:CDGM-optical/D-K59",
+   "glass_catalogs:SUMITA-optical/K-PBK40",
+   "glass_catalogs:SUMITA-optical/K-PBK40(M)"
+  ],
+  "glass:516568+516569": [
+   "glass_catalogs:CDGM-optical/H-K8",
+   "glass_catalogs:OHARA-optical/NSL2",
+   "glass_catalogs:OHARA-optical/S-NSL2"
+  ],
+  "glass:516640": [
+   "glass_catalogs:CDGM-optical/D-K9-25",
+   "glass_catalogs:CDGM-optical/D-K9GT-25"
+  ],
+  "glass:516642+516643": [
+   "glass_catalogs:OHARA-optical/BSL7",
+   "glass_catalogs:OHARA-optical/BSL7Y"
+  ],
+  "glass:517521+517522": [
+   "glass_catalogs:CDGM-optical/H-KF6",
+   "glass_catalogs:HIKARI-optical/J-KF6",
+   "glass_catalogs:HOYA-optical/E-CF6"
+  ],
+  "glass:517523": [
+   "glass_catalogs:HIKARI-optical/E-KF6",
+   "glass_catalogs:HIKARI-optical/KF6"
+  ],
+  "glass:517524": [
+   "glass_catalogs:OHARA-optical/NSL36",
+   "glass_catalogs:OHARA-optical/S-NSL36"
+  ],
+  "glass:517696": [
+   "glass_catalogs:OHARA-optical/APL1",
+   "glass_catalogs:OHARA-optical/S-APL",
+   "glass_catalogs:OHARA-optical/S-APL1"
+  ],
+  "glass:518589+518590": [
+   "glass_catalogs:CDGM-optical/H-K10",
+   "glass_catalogs:HIKARI-optical/E-K3",
+   "glass_catalogs:HIKARI-optical/K3",
+   "glass_catalogs:HOYA-optical/E-C3",
+   "glass_catalogs:OHARA-optical/NSL3",
+   "glass_catalogs:OHARA-optical/S-NSL3"
+  ],
+  "glass:518650": [
+   "glass_catalogs:HIKARI-optical/PK2",
+   "glass_catalogs:OHARA-optical/BSL22"
+  ],
+  "glass:520622+522623+523623": [
+   "glass_catalogs:SUMITA-optical/K-PBK50",
+   "glass_catalogs:SUMITA-optical/K-PBK50(M)"
+  ],
+  "glass:520702+525704": [
+   "glass_catalogs:CDGM-optical/D-PK3",
+   "glass_catalogs:SUMITA-optical/K-PMK30",
+   "glass_catalogs:SUMITA-optical/K-PMK30(M)"
+  ],
+  "glass:522595": [
+   "glass_catalogs:CDGM-optical/H-K50",
+   "glass_catalogs:SCHOTT-optical/N-K5"
+  ],
+  "glass:522597": [
+   "glass_catalogs:HIKARI-optical/E-K5",
+   "glass_catalogs:HIKARI-optical/K5"
+  ],
+  "glass:522598": [
+   "glass_catalogs:OHARA-optical/NSL5",
+   "glass_catalogs:OHARA-optical/S-NSL5"
+  ],
+  "glass:532488+532489": [
+   "glass_catalogs:CDGM-optical/H-QF6A",
+   "glass_catalogs:CDGM-optical/QF6",
+   "glass_catalogs:HIKARI-optical/E-LLF6",
+   "glass_catalogs:HIKARI-optical/J-LLF6",
+   "glass_catalogs:HOYA-optical/E-FEL6",
+   "glass_catalogs:OHARA-optical/PBL6",
+   "glass_catalogs:OHARA-optical/S-TIL6"
+  ],
+  "glass:539627+542629+543629": [
+   "glass_catalogs:SUMITA-optical/K-PG375",
+   "glass_catalogs:SUMITA-optical/K-PG375(M)"
+  ],
+  "glass:540595": [
+   "glass_catalogs:HIKARI-optical/E-BAK2",
+   "glass_catalogs:HIKARI-optical/J-BAK2",
+   "glass_catalogs:OHARA-optical/BAL12",
+   "glass_catalogs:OHARA-optical/S-BAL12"
+  ],
+  "glass:540597": [
+   "glass_catalogs:CDGM-optical/H-BAK2",
+   "glass_catalogs:HIKARI-optical/BAK2",
+   "glass_catalogs:SCHOTT-optical/N-BAK2"
+  ],
+  "glass:541472": [
+   "glass_catalogs:CDGM-optical/H-QF8",
+   "glass_catalogs:CDGM-optical/QF8",
+   "glass_catalogs:HIKARI-optical/E-LLF2",
+   "glass_catalogs:HIKARI-optical/LLF2",
+   "glass_catalogs:HOYA-optical/E-FEL2",
+   "glass_catalogs:OHARA-optical/PBL2",
+   "glass_catalogs:OHARA-optical/S-TIL2"
+  ],
+  "glass:547536": [
+   "glass_catalogs:OHARA-optical/BAL5",
+   "glass_catalogs:SCHOTT-optical/N-BALF5"
+  ],
+  "glass:548458": [
+   "glass_catalogs:CDGM-optical/H-QF1",
+   "glass_catalogs:HIKARI-optical/E-LLF1",
+   "glass_catalogs:HOYA-optical/E-FEL1",
+   "glass_catalogs:OHARA-optical/PBL1",
+   "glass_catalogs:OHARA-optical/S-TIL1",
+   "glass_catalogs:SCHOTT-optical/LLF1"
+  ],
+  "glass:548459": [
+   "glass_catalogs:CDGM-optical/QF1",
+   "glass_catalogs:HIKARI-optical/LLF1",
+   "glass_catalogs:SCHOTT-optical/LLF1HTi"
+  ],
+  "glass:550719+552720": [
+   "glass_catalogs:SUMITA-optical/K-PSK500",
+   "glass_catalogs:SUMITA-optical/K-PSK500(M)"
+  ],
+  "glass:554717": [
+   "glass_catalogs:HOYA-optical/MC-FCD500-20",
+   "glass_catalogs:HOYA-optical/MP-FCD500-20"
+  ],
+  "glass:557587": [
+   "glass_catalogs:OHARA-optical/BAL15",
+   "glass_catalogs:OHARA-optical/BAL15Y"
+  ],
+  "glass:560610+566610": [
+   "glass_catalogs:SUMITA-optical/K-PSK11",
+   "glass_catalogs:SUMITA-optical/K-PSK11(M)"
+  ],
+  "glass:560612": [
+   "glass_catalogs:OHARA-optical/BAL50",
+   "glass_catalogs:OHARA-optical/S-BAL50"
+  ],
+  "glass:564607": [
+   "glass_catalogs:HIKARI-optical/E-SK11",
+   "glass_catalogs:HIKARI-optical/J-SK11",
+   "glass_catalogs:OHARA-optical/BAL41",
+   "glass_catalogs:OHARA-optical/S-BAL41"
+  ],
+  "glass:564608": [
+   "glass_catalogs:CDGM-optical/H-BAK6",
+   "glass_catalogs:HOYA-optical/BACD11",
+   "glass_catalogs:SCHOTT-optical/N-SK11"
+  ],
+  "glass:566713+569713": [
+   "glass_catalogs:CDGM-optical/D-ZPK7",
+   "glass_catalogs:CDGM-optical/H-ZPK7",
+   "glass_catalogs:SUMITA-optical/K-GFK70",
+   "glass_catalogs:SUMITA-optical/K-GFK70(M)"
+  ],
+  "glass:567427": [
+   "glass_catalogs:HIKARI-optical/E-LF6",
+   "glass_catalogs:HIKARI-optical/LF6"
+  ],
+  "glass:567428+567429": [
+   "glass_catalogs:CDGM-optical/H-QF56",
+   "glass_catalogs:HOYA-optical/E-FL6",
+   "glass_catalogs:OHARA-optical/PBL26",
+   "glass_catalogs:OHARA-optical/PBL26Y",
+   "glass_catalogs:OHARA-optical/S-TIL26"
+  ],
+  "glass:569560": [
+   "glass_catalogs:CDGM-optical/H-BAK7",
+   "glass_catalogs:CDGM-optical/H-BAK7GT",
+   "glass_catalogs:HIKARI-optical/BAK4",
+   "glass_catalogs:HIKARI-optical/J-BAK4",
+   "glass_catalogs:HOYA-optical/BAC4",
+   "glass_catalogs:SCHOTT-optical/N-BAK4",
+   "glass_catalogs:SCHOTT-optical/N-BAK4HT"
+  ],
+  "glass:569563+569564": [
+   "glass_catalogs:HIKARI-optical/E-BAK4",
+   "glass_catalogs:OHARA-optical/BAL14",
+   "glass_catalogs:OHARA-optical/S-BAL14"
+  ],
+  "glass:570494+570495": [
+   "glass_catalogs:CDGM-optical/BAF2",
+   "glass_catalogs:CDGM-optical/H-BAF2"
+  ],
+  "glass:571508": [
+   "glass_catalogs:OHARA-optical/BAL2",
+   "glass_catalogs:OHARA-optical/S-BAL2"
+  ],
+  "glass:571530": [
+   "glass_catalogs:OHARA-optical/BAL3",
+   "glass_catalogs:OHARA-optical/S-BAL3"
+  ],
+  "glass:572573+572575+572576+573575+573576+573577+573578": [
+   "glass_catalogs:CDGM-optical/H-BAK8",
+   "glass_catalogs:HIKARI-optical/J-BAK1",
+   "glass_catalogs:OHARA-optical/BAL11",
+   "glass_catalogs:OHARA-optical/S-BAL11",
+   "glass_catalogs:SCHOTT-optical/N-BAK1"
+  ],
+  "glass:575415": [
+   "glass_catalogs:CDGM-optical/H-QF3",
+   "glass_catalogs:HIKARI-optical/E-LF7",
+   "glass_catalogs:HIKARI-optical/J-LF7",
+   "glass_catalogs:HIKARI-optical/LF7",
+   "glass_catalogs:OHARA-optical/PBL27",
+   "glass_catalogs:OHARA-optical/S-TIL27"
+  ],
+  "glass:580537": [
+   "glass_catalogs:CDGM-optical/H-BAF3",
+   "glass_catalogs:HIKARI-optical/E-BALF4",
+   "glass_catalogs:HIKARI-optical/J-BALF4"
+  ],
+  "glass:581407+581408+581409": [
+   "glass_catalogs:CDGM-optical/H-QF50",
+   "glass_catalogs:CDGM-optical/H-QF50A",
+   "glass_catalogs:CDGM-optical/QF50",
+   "glass_catalogs:CDGM-optical/QF50GTI",
+   "glass_catalogs:HIKARI-optical/E-LF5",
+   "glass_catalogs:HIKARI-optical/LF5",
+   "glass_catalogs:HOYA-optical/E-FL5",
+   "glass_catalogs:OHARA-optical/PBL25",
+   "glass_catalogs:OHARA-optical/PBL25Y",
+   "glass_catalogs:OHARA-optical/S-TIL25",
+   "glass_catalogs:SCHOTT-optical/LF5",
+   "glass_catalogs:SCHOTT-optical/LF5HTi"
+  ],
+  "glass:583464": [
+   "glass_catalogs:OHARA-optical/BAM3",
+   "glass_catalogs:OHARA-optical/S-BAM3"
+  ],
+  "glass:583465": [
+   "glass_catalogs:CDGM-optical/BAF4",
+   "glass_catalogs:HIKARI-optical/BAF3",
+   "glass_catalogs:HIKARI-optical/E-BAF3",
+   "glass_catalogs:HIKARI-optical/J-BAF3"
+  ],
+  "glass:583466": [
+   "glass_catalogs:CDGM-optical/H-BAF4",
+   "glass_catalogs:SCHOTT-optical/N-BAF3"
+  ],
+  "glass:583594+586592": [
+   "glass_catalogs:CDGM-optical/D-ZK2",
+   "glass_catalogs:HIKARI-optical/E-SK12",
+   "glass_catalogs:HIKARI-optical/J-SK12",
+   "glass_catalogs:OHARA-optical/BAL42",
+   "glass_catalogs:OHARA-optical/L-BAL42",
+   "glass_catalogs:OHARA-optical/L-BAL42P",
+   "glass_catalogs:OHARA-optical/S-BAL42"
+  ],
+  "glass:583595": [
+   "glass_catalogs:CDGM-optical/H-ZK2",
+   "glass_catalogs:HIKARI-optical/Q-SK52S",
+   "glass_catalogs:HOYA-optical/M-BACD12",
+   "glass_catalogs:HOYA-optical/MC-BACD12",
+   "glass_catalogs:HOYA-optical/MP-BACD12"
+  ],
+  "glass:584592+587596": [
+   "glass_catalogs:CDGM-optical/D-ZK2L",
+   "glass_catalogs:SCHOTT-optical/P-SK57",
+   "glass_catalogs:SUMITA-optical/K-CSK120",
+   "glass_catalogs:SUMITA-optical/K-CSK120(M)"
+  ],
+  "glass:584595+587598": [
+   "glass_catalogs:SUMITA-optical/K-SKLD120",
+   "glass_catalogs:SUMITA-optical/K-SKLD120(M)"
+  ],
+  "glass:586595": [
+   "glass_catalogs:CDGM-optical/D-ZK2L-25",
+   "glass_catalogs:SCHOTT-optical/P-SK57Q1"
+  ],
+  "glass:586597": [
+   "glass_catalogs:HIKARI-optical/P-SK12S",
+   "glass_catalogs:OHARA-optical/L-BAL43"
+  ],
+  "glass:588606+592607": [
+   "glass_catalogs:CDGM-optical/D-ZK3L",
+   "glass_catalogs:SUMITA-optical/K-PSK100",
+   "glass_catalogs:SUMITA-optical/K-PSK100(M)"
+  ],
+  "glass:589611+589612+589613": [
+   "glass_catalogs:CDGM-optical/D-ZK3",
+   "glass_catalogs:CDGM-optical/H-ZK3",
+   "glass_catalogs:CDGM-optical/H-ZK3A",
+   "glass_catalogs:HIKARI-optical/E-SK5",
+   "glass_catalogs:HIKARI-optical/J-SK5",
+   "glass_catalogs:HIKARI-optical/P-SK5S",
+   "glass_catalogs:HIKARI-optical/Q-SK55S",
+   "glass_catalogs:HIKARI-optical/Q-SK5S",
+   "glass_catalogs:HOYA-optical/BACD5",
+   "glass_catalogs:HOYA-optical/M-BACD5N",
+   "glass_catalogs:HOYA-optical/MC-BACD5N",
+   "glass_catalogs:HOYA-optical/MP-BACD5N",
+   "glass_catalogs:OHARA-optical/BAL35",
+   "glass_catalogs:OHARA-optical/BAL35Y",
+   "glass_catalogs:OHARA-optical/L-BAL35",
+   "glass_catalogs:OHARA-optical/S-BAL35",
+   "glass_catalogs:SCHOTT-optical/N-SK5",
+   "glass_catalogs:SCHOTT-optical/P-SK58A",
+   "glass_catalogs:SUMITA-optical/K-SK5"
+  ],
+  "glass:590683+592683": [
+   "glass_catalogs:CDGM-optical/D-ZPK5-25",
+   "glass_catalogs:SUMITA-optical/K-GFK68",
+   "glass_catalogs:SUMITA-optical/K-GFK68(M)"
+  ],
+  "glass:592677+595678": [
+   "glass_catalogs:SUMITA-optical/K-PSK400",
+   "glass_catalogs:SUMITA-optical/K-PSK400(M)"
+  ],
+  "glass:593353": [
+   "glass_catalogs:HIKARI-optical/E-F16",
+   "glass_catalogs:HIKARI-optical/J-F16",
+   "glass_catalogs:OHARA-optical/FTM16",
+   "glass_catalogs:OHARA-optical/S-FTM16"
+  ],
+  "glass:593670": [
+   "glass_catalogs:HIKARI-optical/J-PSKH4",
+   "glass_catalogs:HOYA-optical/MC-PCD51-70",
+   "glass_catalogs:HOYA-optical/MP-PCD51-70",
+   "glass_catalogs:HOYA-optical/PCD51"
+  ],
+  "glass:593679": [
+   "glass_catalogs:HIKARI-optical/E-PSKH1",
+   "glass_catalogs:HIKARI-optical/J-PSKH1",
+   "glass_catalogs:HIKARI-optical/P-PSKH1S",
+   "glass_catalogs:HIKARI-optical/Q-PSKH1S"
+  ],
+  "glass:593683": [
+   "glass_catalogs:CDGM-optical/D-ZPK5",
+   "glass_catalogs:CDGM-optical/H-ZPK5"
+  ],
+  "glass:593686": [
+   "glass_catalogs:HOYA-optical/FCD505",
+   "glass_catalogs:HOYA-optical/FCD515"
+  ],
+  "glass:596392": [
+   "glass_catalogs:CDGM-optical/H-QF14",
+   "glass_catalogs:HIKARI-optical/E-F8",
+   "glass_catalogs:HIKARI-optical/F8",
+   "glass_catalogs:HIKARI-optical/J-F8",
+   "glass_catalogs:HOYA-optical/E-F8",
+   "glass_catalogs:OHARA-optical/PBM8",
+   "glass_catalogs:OHARA-optical/S-TIM8"
+  ],
+  "glass:597653+599656+600656": [
+   "glass_catalogs:SUMITA-optical/K-PSK300",
+   "glass_catalogs:SUMITA-optical/K-PSK300(M)"
+  ],
+  "glass:603380": [
+   "glass_catalogs:CDGM-optical/F1",
+   "glass_catalogs:CDGM-optical/H-F1",
+   "glass_catalogs:HIKARI-optical/E-F5",
+   "glass_catalogs:HIKARI-optical/J-F5",
+   "glass_catalogs:HOYA-optical/E-F5",
+   "glass_catalogs:OHARA-optical/PBM5",
+   "glass_catalogs:OHARA-optical/S-TIM5",
+   "glass_catalogs:SCHOTT-optical/F5"
+  ],
+  "glass:603606+603607": [
+   "glass_catalogs:CDGM-optical/H-ZK14",
+   "glass_catalogs:HIKARI-optical/E-SK14",
+   "glass_catalogs:HIKARI-optical/J-SK14",
+   "glass_catalogs:HOYA-optical/BACD14",
+   "glass_catalogs:OHARA-optical/BSM14",
+   "glass_catalogs:OHARA-optical/BSM51Y",
+   "glass_catalogs:OHARA-optical/S-BSM14",
+   "glass_catalogs:SCHOTT-optical/N-SK14",
+   "glass_catalogs:SUMITA-optical/K-SK14"
+  ],
+  "glass:603654+603655": [
+   "glass_catalogs:CDGM-optical/H-ZPK2A",
+   "glass_catalogs:HIKARI-optical/E-PSK03",
+   "glass_catalogs:HIKARI-optical/J-PSK03",
+   "glass_catalogs:OHARA-optical/PHM53",
+   "glass_catalogs:OHARA-optical/S-PHM53"
+  ],
+  "glass:606437": [
+   "glass_catalogs:OHARA-optical/BAM4",
+   "glass_catalogs:OHARA-optical/S-BAM4",
+   "glass_catalogs:SCHOTT-optical/N-BAF4"
+  ],
+  "glass:606438": [
+   "glass_catalogs:HIKARI-optical/BAF4",
+   "glass_catalogs:HIKARI-optical/E-BAF4"
+  ],
+  "glass:606439": [
+   "glass_catalogs:CDGM-optical/BAF5",
+   "glass_catalogs:CDGM-optical/H-BAF5"
+  ],
+  "glass:607566+607567": [
+   "glass_catalogs:CDGM-optical/H-ZK50",
+   "glass_catalogs:CDGM-optical/H-ZK50GT",
+   "glass_catalogs:HIKARI-optical/E-SK2",
+   "glass_catalogs:HIKARI-optical/J-SK2",
+   "glass_catalogs:HIKARI-optical/SK2",
+   "glass_catalogs:HOYA-optical/BACD2",
+   "glass_catalogs:SCHOTT-optical/N-SK2",
+   "glass_catalogs:SCHOTT-optical/N-SK2HT"
+  ],
+  "glass:607568": [
+   "glass_catalogs:OHARA-optical/BSM2",
+   "glass_catalogs:OHARA-optical/S-BSM2"
+  ],
+  "glass:607572+610579": [
+   "glass_catalogs:SCHOTT-optical/P-SK60",
+   "glass_catalogs:SUMITA-optical/K-VC79",
+   "glass_catalogs:SUMITA-optical/K-VC79(M)"
+  ],
+  "glass:611589+613590": [
+   "glass_catalogs:SUMITA-optical/K-PSK200",
+   "glass_catalogs:SUMITA-optical/K-PSK200(M)"
+  ],
+  "glass:613370": [
+   "glass_catalogs:CDGM-optical/F2",
+   "glass_catalogs:CDGM-optical/H-F2",
+   "glass_catalogs:HIKARI-optical/E-F3",
+   "glass_catalogs:HIKARI-optical/F3",
+   "glass_catalogs:HOYA-optical/E-F3",
+   "glass_catalogs:OHARA-optical/PBM3",
+   "glass_catalogs:OHARA-optical/S-TIM3"
+  ],
+  "glass:613443": [
+   "glass_catalogs:HIKARI-optical/KZFS4",
+   "glass_catalogs:OHARA-optical/BPM51",
+   "glass_catalogs:OHARA-optical/S-NBM51",
+   "glass_catalogs:SCHOTT-optical/KZFSN4"
+  ],
+  "glass:613444": [
+   "glass_catalogs:HIKARI-optical/KZFH1",
+   "glass_catalogs:HOYA-optical/E-ADF10"
+  ],
+  "glass:613445": [
+   "glass_catalogs:HIKARI-optical/E-KZFH1",
+   "glass_catalogs:HIKARI-optical/J-KZFH1",
+   "glass_catalogs:SCHOTT-optical/N-KZFS4",
+   "glass_catalogs:SCHOTT-optical/N-KZFS4HT"
+  ],
+  "glass:613585": [
+   "glass_catalogs:HIKARI-optical/J-SK4",
+   "glass_catalogs:HIKARI-optical/SK4"
+  ],
+  "glass:613586": [
+   "glass_catalogs:CDGM-optical/H-ZK6",
+   "glass_catalogs:HOYA-optical/BACD4",
+   "glass_catalogs:SCHOTT-optical/N-SK4",
+   "glass_catalogs:SUMITA-optical/K-SK4"
+  ],
+  "glass:613587+613588": [
+   "glass_catalogs:HIKARI-optical/E-SK4",
+   "glass_catalogs:OHARA-optical/BSM4",
+   "glass_catalogs:OHARA-optical/S-BSM4"
+  ],
+  "glass:614400": [
+   "glass_catalogs:CDGM-optical/BAF7",
+   "glass_catalogs:CDGM-optical/H-BAF7"
+  ],
+  "glass:614550": [
+   "glass_catalogs:OHARA-optical/BSM9",
+   "glass_catalogs:OHARA-optical/S-BSM9"
+  ],
+  "glass:614551": [
+   "glass_catalogs:CDGM-optical/H-ZK8",
+   "glass_catalogs:HIKARI-optical/SK9"
+  ],
+  "glass:617366": [
+   "glass_catalogs:CDGM-optical/F3",
+   "glass_catalogs:OHARA-optical/PBM4"
+  ],
+  "glass:617540+617541": [
+   "glass_catalogs:HIKARI-optical/E-SSK1",
+   "glass_catalogs:HIKARI-optical/J-SSK1",
+   "glass_catalogs:HIKARI-optical/SSK1",
+   "glass_catalogs:OHARA-optical/BSM21",
+   "glass_catalogs:OHARA-optical/S-BSM21",
+   "glass_catalogs:SUMITA-optical/K-SSK1"
+  ],
+  "glass:617628": [
+   "glass_catalogs:OHARA-optical/PHM51",
+   "glass_catalogs:OHARA-optical/S-PHM51"
+  ],
+  "glass:618498": [
+   "glass_catalogs:HIKARI-optical/E-SSK8",
+   "glass_catalogs:HIKARI-optical/J-SSK8",
+   "glass_catalogs:HIKARI-optical/SSK8",
+   "glass_catalogs:OHARA-optical/BSM28",
+   "glass_catalogs:OHARA-optical/S-BSM28",
+   "glass_catalogs:SCHOTT-optical/N-SSK8"
+  ],
+  "glass:618550+618551": [
+   "glass_catalogs:OHARA-optical/BSM24",
+   "glass_catalogs:SUMITA-optical/K-SSK4"
+  ],
+  "glass:618633+618634": [
+   "glass_catalogs:CDGM-optical/H-ZPK1A",
+   "glass_catalogs:HIKARI-optical/E-PSK02",
+   "glass_catalogs:HIKARI-optical/J-PSK02",
+   "glass_catalogs:HOYA-optical/PCD4",
+   "glass_catalogs:OHARA-optical/PHM52",
+   "glass_catalogs:OHARA-optical/S-PHM52",
+   "glass_catalogs:SCHOTT-optical/N-PSK53A",
+   "glass_catalogs:SUMITA-optical/K-PSKn2"
+  ],
+  "glass:619638+619639": [
+   "glass_catalogs:HOYA-optical/M-PCD4",
+   "glass_catalogs:HOYA-optical/MC-PCD4-40",
+   "glass_catalogs:HOYA-optical/MP-PCD4-40"
+  ],
+  "glass:620363+620364": [
+   "glass_catalogs:CDGM-optical/F4",
+   "glass_catalogs:CDGM-optical/F4GTI",
+   "glass_catalogs:CDGM-optical/H-F4",
+   "glass_catalogs:HIKARI-optical/E-F2",
+   "glass_catalogs:HIKARI-optical/F2",
+   "glass_catalogs:HIKARI-optical/J-F2",
+   "glass_catalogs:HOYA-optical/E-F2",
+   "glass_catalogs:OHARA-optical/PBM2",
+   "glass_catalogs:OHARA-optical/PBM2Y",
+   "glass_catalogs:OHARA-optical/S-TIM2",
+   "glass_catalogs:SCHOTT-optical/F2",
+   "glass_catalogs:SCHOTT-optical/F2HT",
+   "glass_catalogs:SCHOTT-optical/N-F2"
+  ],
+  "glass:620603+620604": [
+   "glass_catalogs:CDGM-optical/H-ZK9A",
+   "glass_catalogs:CDGM-optical/H-ZK9B",
+   "glass_catalogs:HIKARI-optical/E-SK16",
+   "glass_catalogs:HIKARI-optical/SK16",
+   "glass_catalogs:HOYA-optical/BACD16",
+   "glass_catalogs:OHARA-optical/BSM16",
+   "glass_catalogs:OHARA-optical/BSM16C",
+   "glass_catalogs:OHARA-optical/S-BSM16",
+   "glass_catalogs:SCHOTT-optical/N-SK16",
+   "glass_catalogs:SUMITA-optical/K-SK16RH"
+  ],
+  "glass:621359": [
+   "glass_catalogs:OHARA-optical/PBM11",
+   "glass_catalogs:OHARA-optical/TIM11"
+  ],
+  "glass:622532": [
+   "glass_catalogs:CDGM-optical/H-ZBAF1",
+   "glass_catalogs:OHARA-optical/BSM22",
+   "glass_catalogs:OHARA-optical/S-BSM22"
+  ],
+  "glass:623569": [
+   "glass_catalogs:CDGM-optical/H-ZK10L",
+   "glass_catalogs:HOYA-optical/E-BACD10"
+  ],
+  "glass:623570+623571": [
+   "glass_catalogs:HIKARI-optical/E-SK10",
+   "glass_catalogs:HIKARI-optical/J-SK10",
+   "glass_catalogs:OHARA-optical/BSM10",
+   "glass_catalogs:OHARA-optical/S-BSM10",
+   "glass_catalogs:SCHOTT-optical/N-SK10"
+  ],
+  "glass:623581+623582": [
+   "glass_catalogs:CDGM-optical/D-ZK21-25",
+   "glass_catalogs:CDGM-optical/H-ZK21",
+   "glass_catalogs:HIKARI-optical/E-SK15",
+   "glass_catalogs:HIKARI-optical/J-SK15",
+   "glass_catalogs:HIKARI-optical/SK15",
+   "glass_catalogs:HOYA-optical/BACD15",
+   "glass_catalogs:HOYA-optical/M-BACD15",
+   "glass_catalogs:HOYA-optical/MP-BACD15",
+   "glass_catalogs:OHARA-optical/BSM15",
+   "glass_catalogs:OHARA-optical/S-BSM15",
+   "glass_catalogs:SUMITA-optical/K-SK15"
+  ],
+  "glass:624359": [
+   "glass_catalogs:CDGM-optical/F5",
+   "glass_catalogs:CDGM-optical/H-F5"
+  ],
+  "glass:624470+624471": [
+   "glass_catalogs:HIKARI-optical/BAF8",
+   "glass_catalogs:HIKARI-optical/E-BAF8",
+   "glass_catalogs:HIKARI-optical/J-BAF8",
+   "glass_catalogs:HOYA-optical/E-BAF8",
+   "glass_catalogs:OHARA-optical/BAM8",
+   "glass_catalogs:SUMITA-optical/K-BaF8"
+  ],
+  "glass:626356": [
+   "glass_catalogs:HIKARI-optical/E-F1",
+   "glass_catalogs:HIKARI-optical/F1"
+  ],
+  "glass:626357": [
+   "glass_catalogs:CDGM-optical/F13",
+   "glass_catalogs:CDGM-optical/H-F13",
+   "glass_catalogs:HIKARI-optical/J-F1",
+   "glass_catalogs:HOYA-optical/E-F1",
+   "glass_catalogs:OHARA-optical/PBM1",
+   "glass_catalogs:OHARA-optical/S-TIM1"
+  ],
+  "glass:628632+632638": [
+   "glass_catalogs:SUMITA-optical/K-LaFK60",
+   "glass_catalogs:SUMITA-optical/K-LaFK60(M)"
+  ],
+  "glass:636354": [
+   "glass_catalogs:CDGM-optical/F7",
+   "glass_catalogs:OHARA-optical/PBM6",
+   "glass_catalogs:OHARA-optical/S-TIM6"
+  ],
+  "glass:639449": [
+   "glass_catalogs:HIKARI-optical/E-BAF12",
+   "glass_catalogs:OHARA-optical/BAM12",
+   "glass_catalogs:OHARA-optical/S-BAM12"
+  ],
+  "glass:639554+639555": [
+   "glass_catalogs:CDGM-optical/H-ZK11",
+   "glass_catalogs:HIKARI-optical/E-SK18",
+   "glass_catalogs:HIKARI-optical/SK18",
+   "glass_catalogs:HOYA-optical/BACD18",
+   "glass_catalogs:OHARA-optical/BSM18",
+   "glass_catalogs:OHARA-optical/S-BSM18",
+   "glass_catalogs:SUMITA-optical/K-SK18",
+   "glass_catalogs:SUMITA-optical/K-SK18RH"
+  ],
+  "glass:640345": [
+   "glass_catalogs:CDGM-optical/H-F51",
+   "glass_catalogs:HIKARI-optical/J-SF7",
+   "glass_catalogs:OHARA-optical/PBM27",
+   "glass_catalogs:OHARA-optical/S-TIM27"
+  ],
+  "glass:640346": [
+   "glass_catalogs:HIKARI-optical/E-SF7",
+   "glass_catalogs:HIKARI-optical/SF7",
+   "glass_catalogs:HOYA-optical/E-FD7"
+  ],
+  "glass:640601": [
+   "glass_catalogs:HIKARI-optical/E-LAK01",
+   "glass_catalogs:OHARA-optical/BSM81",
+   "glass_catalogs:OHARA-optical/S-BSM81",
+   "glass_catalogs:SCHOTT-optical/N-LAK21"
+  ],
+  "glass:640602": [
+   "glass_catalogs:CDGM-optical/H-LAK4L",
+   "glass_catalogs:HIKARI-optical/J-LAK01",
+   "glass_catalogs:HOYA-optical/LACL60"
+  ],
+  "glass:641569": [
+   "glass_catalogs:OHARA-optical/BSM93",
+   "glass_catalogs:OHARA-optical/S-BSM93"
+  ],
+  "glass:642584+643584": [
+   "glass_catalogs:OHARA-optical/BSM36",
+   "glass_catalogs:OHARA-optical/S-BSM36"
+  ],
+  "glass:648338+648339": [
+   "glass_catalogs:CDGM-optical/H-ZF1",
+   "glass_catalogs:CDGM-optical/H-ZF1A",
+   "glass_catalogs:CDGM-optical/ZF1",
+   "glass_catalogs:HIKARI-optical/E-SF2",
+   "glass_catalogs:HIKARI-optical/SF12",
+   "glass_catalogs:HIKARI-optical/SF2",
+   "glass_catalogs:HOYA-optical/E-FD2",
+   "glass_catalogs:OHARA-optical/PBM22",
+   "glass_catalogs:OHARA-optical/S-TIM22",
+   "glass_catalogs:SCHOTT-optical/N-SF2",
+   "glass_catalogs:SCHOTT-optical/SF2"
+  ],
+  "glass:648530+649530": [
+   "glass_catalogs:HOYA-optical/E-BACED20",
+   "glass_catalogs:OHARA-optical/BSM71",
+   "glass_catalogs:OHARA-optical/S-BSM71"
+  ],
+  "glass:651559": [
+   "glass_catalogs:CDGM-optical/H-LAK10",
+   "glass_catalogs:SCHOTT-optical/N-LAK22"
+  ],
+  "glass:651562": [
+   "glass_catalogs:HIKARI-optical/E-LAK04",
+   "glass_catalogs:HIKARI-optical/J-LAK04",
+   "glass_catalogs:HIKARI-optical/LAK04",
+   "glass_catalogs:OHARA-optical/LAL54",
+   "glass_catalogs:OHARA-optical/S-LAL54",
+   "glass_catalogs:OHARA-optical/S-LAL54Q"
+  ],
+  "glass:652584": [
+   "glass_catalogs:CDGM-optical/H-LAK50A",
+   "glass_catalogs:HOYA-optical/LAC7"
+  ],
+  "glass:652585+652586": [
+   "glass_catalogs:HIKARI-optical/E-LAK7",
+   "glass_catalogs:HIKARI-optical/J-LAK7",
+   "glass_catalogs:HIKARI-optical/J-LAK7R",
+   "glass_catalogs:HIKARI-optical/LAK7",
+   "glass_catalogs:OHARA-optical/LAL7",
+   "glass_catalogs:OHARA-optical/S-LAL7",
+   "glass_catalogs:SCHOTT-optical/N-LAK7"
+  ],
+  "glass:652622+657623": [
+   "glass_catalogs:SUMITA-optical/K-LaFK65",
+   "glass_catalogs:SUMITA-optical/K-LaFK65(M)"
+  ],
+  "glass:653368+658369": [
+   "glass_catalogs:SUMITA-optical/K-PG395",
+   "glass_catalogs:SUMITA-optical/K-PG395(M)"
+  ],
+  "glass:654397": [
+   "glass_catalogs:OHARA-optical/BPH5",
+   "glass_catalogs:OHARA-optical/S-NBH5",
+   "glass_catalogs:SCHOTT-optical/N-KZFS5"
+  ],
+  "glass:658509": [
+   "glass_catalogs:CDGM-optical/H-ZBAF50",
+   "glass_catalogs:HIKARI-optical/E-SSK5",
+   "glass_catalogs:HOYA-optical/BACED5",
+   "glass_catalogs:OHARA-optical/BSM25",
+   "glass_catalogs:OHARA-optical/S-BSM25",
+   "glass_catalogs:SCHOTT-optical/N-SSK5"
+  ],
+  "glass:658573": [
+   "glass_catalogs:OHARA-optical/LAL11",
+   "glass_catalogs:OHARA-optical/S-LAL11",
+   "glass_catalogs:SUMITA-optical/K-LaK11"
+  ],
+  "glass:664359": [
+   "glass_catalogs:HIKARI-optical/BASF2",
+   "glass_catalogs:HIKARI-optical/E-BASF2",
+   "glass_catalogs:HIKARI-optical/J-BASF2"
+  ],
+  "glass:664472+665473": [
+   "glass_catalogs:SUMITA-optical/K-LCV93",
+   "glass_catalogs:SUMITA-optical/K-LCV93(M)"
+  ],
+  "glass:666551+670554": [
+   "glass_catalogs:SUMITA-optical/K-VC78",
+   "glass_catalogs:SUMITA-optical/K-VC78(M)"
+  ],
+  "glass:667330+667331": [
+   "glass_catalogs:CDGM-optical/H-ZF39",
+   "glass_catalogs:OHARA-optical/PBM39",
+   "glass_catalogs:OHARA-optical/S-TIM39",
+   "glass_catalogs:SCHOTT-optical/N-SF19"
+  ],
+  "glass:667483": [
+   "glass_catalogs:HIKARI-optical/E-BAF11",
+   "glass_catalogs:HIKARI-optical/J-BAF11",
+   "glass_catalogs:HOYA-optical/BAF11",
+   "glass_catalogs:OHARA-optical/BAH11",
+   "glass_catalogs:OHARA-optical/S-BAH11"
+  ],
+  "glass:667484": [
+   "glass_catalogs:CDGM-optical/H-ZBAF16",
+   "glass_catalogs:HIKARI-optical/BAF11"
+  ],
+  "glass:668419+668420": [
+   "glass_catalogs:CDGM-optical/ZBAF17",
+   "glass_catalogs:HIKARI-optical/BASF6",
+   "glass_catalogs:HIKARI-optical/E-BASF6",
+   "glass_catalogs:HIKARI-optical/J-BASF6",
+   "glass_catalogs:OHARA-optical/BAH26"
+  ],
+  "glass:670393": [
+   "glass_catalogs:OHARA-optical/BAH32",
+   "glass_catalogs:OHARA-optical/S-BAH32"
+  ],
+  "glass:670470+670471+670472+670473": [
+   "glass_catalogs:CDGM-optical/H-ZBAF52",
+   "glass_catalogs:HIKARI-optical/BAF10",
+   "glass_catalogs:HIKARI-optical/E-BAF10",
+   "glass_catalogs:HIKARI-optical/J-BAF10",
+   "glass_catalogs:HOYA-optical/BAF10",
+   "glass_catalogs:OHARA-optical/BAH10",
+   "glass_catalogs:OHARA-optical/S-BAH10",
+   "glass_catalogs:SCHOTT-optical/N-BAF10"
+  ],
+  "glass:670517+670518": [
+   "glass_catalogs:CDGM-optical/H-LAK67",
+   "glass_catalogs:SUMITA-optical/K-LaKn7"
+  ],
+  "glass:670573": [
+   "glass_catalogs:HIKARI-optical/E-LAK02",
+   "glass_catalogs:HIKARI-optical/J-LAK02",
+   "glass_catalogs:OHARA-optical/LAL52",
+   "glass_catalogs:OHARA-optical/S-LAL52"
+  ],
+  "glass:673321": [
+   "glass_catalogs:HIKARI-optical/E-SF5",
+   "glass_catalogs:OHARA-optical/PBM25",
+   "glass_catalogs:OHARA-optical/S-TIM25"
+  ],
+  "glass:673322+673323": [
+   "glass_catalogs:CDGM-optical/H-ZF2",
+   "glass_catalogs:CDGM-optical/ZF2",
+   "glass_catalogs:HIKARI-optical/J-SF5",
+   "glass_catalogs:HIKARI-optical/SF5",
+   "glass_catalogs:HOYA-optical/E-FD5",
+   "glass_catalogs:SCHOTT-optical/N-SF5",
+   "glass_catalogs:SCHOTT-optical/SF5"
+  ],
+  "glass:678507": [
+   "glass_catalogs:HIKARI-optical/E-LAK06",
+   "glass_catalogs:HIKARI-optical/J-LAK06",
+   "glass_catalogs:OHARA-optical/LAL56",
+   "glass_catalogs:OHARA-optical/S-LAL56"
+  ],
+  "glass:678549": [
+   "glass_catalogs:CDGM-optical/D-LAK5",
+   "glass_catalogs:HIKARI-optical/Q-LAK52S",
+   "glass_catalogs:OHARA-optical/L-LAL12",
+   "glass_catalogs:SCHOTT-optical/LAKL12"
+  ],
+  "glass:678553": [
+   "glass_catalogs:HIKARI-optical/J-LAK12",
+   "glass_catalogs:OHARA-optical/LAL12",
+   "glass_catalogs:OHARA-optical/S-LAL12"
+  ],
+  "glass:678554": [
+   "glass_catalogs:HIKARI-optical/E-LAK12",
+   "glass_catalogs:HIKARI-optical/LAK12"
+  ],
+  "glass:678555": [
+   "glass_catalogs:CDGM-optical/H-LAK5A",
+   "glass_catalogs:HOYA-optical/LAC12",
+   "glass_catalogs:SUMITA-optical/K-LaK12"
+  ],
+  "glass:683445": [
+   "glass_catalogs:CDGM-optical/ZBAF51",
+   "glass_catalogs:SUMITA-optical/K-BaFn1"
+  ],
+  "glass:687341+693337": [
+   "glass_catalogs:SUMITA-optical/K-CD45",
+   "glass_catalogs:SUMITA-optical/K-CD45(M)"
+  ],
+  "glass:689310+689311+695307": [
+   "glass_catalogs:CDGM-optical/D-ZF10",
+   "glass_catalogs:HIKARI-optical/E-SF8",
+   "glass_catalogs:HIKARI-optical/SF8",
+   "glass_catalogs:OHARA-optical/L-TIM28",
+   "glass_catalogs:OHARA-optical/L-TIM28P",
+   "glass_catalogs:OHARA-optical/PBM28",
+   "glass_catalogs:OHARA-optical/PBM28W",
+   "glass_catalogs:OHARA-optical/S-TIM28",
+   "glass_catalogs:SUMITA-optical/K-SFLD8"
+  ],
+  "glass:689312+689313": [
+   "glass_catalogs:CDGM-optical/H-ZF10",
+   "glass_catalogs:CDGM-optical/ZF10",
+   "glass_catalogs:HIKARI-optical/J-SF8",
+   "glass_catalogs:HOYA-optical/E-FD8",
+   "glass_catalogs:HOYA-optical/M-FD80",
+   "glass_catalogs:HOYA-optical/MP-FD80",
+   "glass_catalogs:SCHOTT-optical/N-SF8",
+   "glass_catalogs:SCHOTT-optical/P-SF8"
+  ],
+  "glass:689558+694563": [
+   "glass_catalogs:SUMITA-optical/K-LaFK55",
+   "glass_catalogs:SUMITA-optical/K-LaFK55(M)"
+  ],
+  "glass:690529+694531": [
+   "glass_catalogs:CDGM-optical/D-LAK6",
+   "glass_catalogs:SUMITA-optical/K-VC80",
+   "glass_catalogs:SUMITA-optical/K-VC80(M)"
+  ],
+  "glass:691547": [
+   "glass_catalogs:HOYA-optical/LAC9",
+   "glass_catalogs:SCHOTT-optical/N-LAK9"
+  ],
+  "glass:691548": [
+   "glass_catalogs:CDGM-optical/H-LAK59A",
+   "glass_catalogs:HIKARI-optical/E-LAK9",
+   "glass_catalogs:HIKARI-optical/LAK9",
+   "glass_catalogs:OHARA-optical/LAL9",
+   "glass_catalogs:OHARA-optical/S-LAL9",
+   "glass_catalogs:SCHOTT-optical/LAK9G15",
+   "glass_catalogs:SUMITA-optical/K-LaK9"
+  ],
+  "glass:691584+696590": [
+   "glass_catalogs:SUMITA-optical/K-LaFK58",
+   "glass_catalogs:SUMITA-optical/K-LaFK58(M)"
+  ],
+  "glass:693508+694508": [
+   "glass_catalogs:OHARA-optical/LAL58",
+   "glass_catalogs:OHARA-optical/S-LAL58"
+  ],
+  "glass:693532+694532": [
+   "glass_catalogs:HIKARI-optical/E-LAK13",
+   "glass_catalogs:HIKARI-optical/J-LAK13",
+   "glass_catalogs:HOYA-optical/M-LAC130",
+   "glass_catalogs:HOYA-optical/MC-LAC130",
+   "glass_catalogs:HOYA-optical/MP-LAC130",
+   "glass_catalogs:OHARA-optical/L-LAL13",
+   "glass_catalogs:OHARA-optical/LAL13",
+   "glass_catalogs:OHARA-optical/S-LAL13",
+   "glass_catalogs:SCHOTT-optical/P-LAK35"
+  ],
+  "glass:695422": [
+   "glass_catalogs:OHARA-optical/BAH54",
+   "glass_catalogs:OHARA-optical/S-BAH54"
+  ],
+  "glass:697485": [
+   "glass_catalogs:HIKARI-optical/E-LAF09",
+   "glass_catalogs:HIKARI-optical/LAF09",
+   "glass_catalogs:OHARA-optical/LAM59",
+   "glass_catalogs:OHARA-optical/S-LAM59"
+  ],
+  "glass:697555": [
+   "glass_catalogs:CDGM-optical/H-LAK51A",
+   "glass_catalogs:HIKARI-optical/E-LAK14",
+   "glass_catalogs:HIKARI-optical/J-LAK14",
+   "glass_catalogs:HOYA-optical/LAC14",
+   "glass_catalogs:HOYA-optical/M-LAC14",
+   "glass_catalogs:OHARA-optical/LAL14",
+   "glass_catalogs:OHARA-optical/S-LAL14"
+  ],
+  "glass:699300+699301": [
+   "glass_catalogs:CDGM-optical/H-ZF11",
+   "glass_catalogs:CDGM-optical/ZF11",
+   "glass_catalogs:HIKARI-optical/E-SF15",
+   "glass_catalogs:HIKARI-optical/J-SF15",
+   "glass_catalogs:HIKARI-optical/SF15",
+   "glass_catalogs:HOYA-optical/E-FD15",
+   "glass_catalogs:OHARA-optical/PBM35",
+   "glass_catalogs:OHARA-optical/S-TIM35",
+   "glass_catalogs:SCHOTT-optical/SF15"
+  ],
+  "glass:700481": [
+   "glass_catalogs:CDGM-optical/H-LAF51",
+   "glass_catalogs:HIKARI-optical/E-LAF01",
+   "glass_catalogs:HIKARI-optical/J-LAF01",
+   "glass_catalogs:OHARA-optical/LAM51",
+   "glass_catalogs:OHARA-optical/S-LAM51"
+  ],
+  "glass:702411+702412": [
+   "glass_catalogs:CDGM-optical/H-ZBAF20",
+   "glass_catalogs:HIKARI-optical/BASF7",
+   "glass_catalogs:HIKARI-optical/E-BASF7",
+   "glass_catalogs:HOYA-optical/BAFD7",
+   "glass_catalogs:OHARA-optical/BAH27",
+   "glass_catalogs:OHARA-optical/BAH77",
+   "glass_catalogs:OHARA-optical/S-BAH27"
+  ],
+  "glass:706302": [
+   "glass_catalogs:OHARA-optical/S-TIH20",
+   "glass_catalogs:SCHOTT-optical/N-SF64"
+  ],
+  "glass:711389+714389": [
+   "glass_catalogs:SUMITA-optical/K-ZnSF8",
+   "glass_catalogs:SUMITA-optical/K-ZnSF8(M)"
+  ],
+  "glass:713538": [
+   "glass_catalogs:CDGM-optical/H-LAK7A",
+   "glass_catalogs:OHARA-optical/LAL8",
+   "glass_catalogs:SCHOTT-optical/N-LAK8"
+  ],
+  "glass:713539+713540": [
+   "glass_catalogs:HIKARI-optical/E-LAK8",
+   "glass_catalogs:HIKARI-optical/J-LAK8",
+   "glass_catalogs:HOYA-optical/LAC8",
+   "glass_catalogs:HOYA-optical/M-LAC8",
+   "glass_catalogs:HOYA-optical/MP-LAC8-30",
+   "glass_catalogs:OHARA-optical/S-LAL8",
+   "glass_catalogs:SUMITA-optical/K-LaK8"
+  ],
+  "glass:715296+722292+723292": [
+   "glass_catalogs:OHARA-optical/PBH18",
+   "glass_catalogs:OHARA-optical/S-TIH18",
+   "glass_catalogs:SCHOTT-optical/P-SF69",
+   "glass_catalogs:SUMITA-optical/K-CD120",
+   "glass_catalogs:SUMITA-optical/K-CD120(M)"
+  ],
+  "glass:717295": [
+   "glass_catalogs:CDGM-optical/H-ZF3",
+   "glass_catalogs:CDGM-optical/ZF3",
+   "glass_catalogs:HIKARI-optical/E-SF1",
+   "glass_catalogs:HIKARI-optical/SF1",
+   "glass_catalogs:HOYA-optical/E-FD1",
+   "glass_catalogs:OHARA-optical/PBH1",
+   "glass_catalogs:OHARA-optical/S-TIH1",
+   "glass_catalogs:SCHOTT-optical/SF1",
+   "glass_catalogs:SUMITA-optical/K-SFLD1"
+  ],
+  "glass:717296": [
+   "glass_catalogs:HIKARI-optical/J-SF1",
+   "glass_catalogs:SCHOTT-optical/N-SF1"
+  ],
+  "glass:717479": [
+   "glass_catalogs:CDGM-optical/H-LAF2",
+   "glass_catalogs:HIKARI-optical/E-LAF3",
+   "glass_catalogs:OHARA-optical/LAM3",
+   "glass_catalogs:OHARA-optical/S-LAM3"
+  ],
+  "glass:717480": [
+   "glass_catalogs:HIKARI-optical/J-LAF3",
+   "glass_catalogs:HOYA-optical/LAF3",
+   "glass_catalogs:SCHOTT-optical/N-LAF3"
+  ],
+  "glass:720347": [
+   "glass_catalogs:OHARA-optical/BPH8",
+   "glass_catalogs:OHARA-optical/S-NBH8",
+   "glass_catalogs:SCHOTT-optical/N-KZFS8"
+  ],
+  "glass:720420": [
+   "glass_catalogs:OHARA-optical/LAM58",
+   "glass_catalogs:OHARA-optical/S-LAM58"
+  ],
+  "glass:720437": [
+   "glass_catalogs:CDGM-optical/H-LAF62",
+   "glass_catalogs:HIKARI-optical/E-LAF02",
+   "glass_catalogs:OHARA-optical/LAM52",
+   "glass_catalogs:OHARA-optical/S-LAM52"
+  ],
+  "glass:720460": [
+   "glass_catalogs:OHARA-optical/LAM61",
+   "glass_catalogs:OHARA-optical/S-LAM61",
+   "glass_catalogs:SUMITA-optical/K-LaFn11"
+  ],
+  "glass:720502": [
+   "glass_catalogs:HIKARI-optical/E-LAK10",
+   "glass_catalogs:OHARA-optical/S-LAL10"
+  ],
+  "glass:720503": [
+   "glass_catalogs:CDGM-optical/H-LAK8A",
+   "glass_catalogs:CDGM-optical/H-LAK8B",
+   "glass_catalogs:HIKARI-optical/J-LAK10",
+   "glass_catalogs:HOYA-optical/LAC10",
+   "glass_catalogs:OHARA-optical/LAL10",
+   "glass_catalogs:SUMITA-optical/K-LaK10"
+  ],
+  "glass:723379+723380": [
+   "glass_catalogs:CDGM-optical/H-ZBAF21",
+   "glass_catalogs:HIKARI-optical/BASF8",
+   "glass_catalogs:HIKARI-optical/E-BASF8",
+   "glass_catalogs:HIKARI-optical/J-BASF8",
+   "glass_catalogs:HOYA-optical/BAFD8",
+   "glass_catalogs:OHARA-optical/BAH28",
+   "glass_catalogs:OHARA-optical/BAH78",
+   "glass_catalogs:OHARA-optical/S-BAH28"
+  ],
+  "glass:726536": [
+   "glass_catalogs:OHARA-optical/LAL60",
+   "glass_catalogs:OHARA-optical/S-LAL60"
+  ],
+  "glass:728283+728284+728285": [
+   "glass_catalogs:CDGM-optical/H-ZF4A",
+   "glass_catalogs:CDGM-optical/H-ZF4AGT",
+   "glass_catalogs:CDGM-optical/ZF4",
+   "glass_catalogs:HIKARI-optical/E-SF10",
+   "glass_catalogs:HIKARI-optical/J-SF10",
+   "glass_catalogs:HIKARI-optical/SF10",
+   "glass_catalogs:HOYA-optical/E-FD10",
+   "glass_catalogs:OHARA-optical/PBH10",
+   "glass_catalogs:OHARA-optical/S-TIH10",
+   "glass_catalogs:SCHOTT-optical/N-SF10",
+   "glass_catalogs:SCHOTT-optical/SF10"
+  ],
+  "glass:729547": [
+   "glass_catalogs:CDGM-optical/H-LAK52",
+   "glass_catalogs:HIKARI-optical/E-LAK18",
+   "glass_catalogs:HOYA-optical/TAC8",
+   "glass_catalogs:OHARA-optical/LAL18",
+   "glass_catalogs:OHARA-optical/S-LAL18",
+   "glass_catalogs:SUMITA-optical/K-LaK18"
+  ],
+  "glass:731405": [
+   "glass_catalogs:CDGM-optical/D-LAF79",
+   "glass_catalogs:HOYA-optical/M-LAF81",
+   "glass_catalogs:HOYA-optical/MP-LAF81",
+   "glass_catalogs:OHARA-optical/L-LAM69"
+  ],
+  "glass:734515": [
+   "glass_catalogs:CDGM-optical/H-LAK54",
+   "glass_catalogs:HIKARI-optical/E-LAK09",
+   "glass_catalogs:HIKARI-optical/J-LAK09",
+   "glass_catalogs:HIKARI-optical/LAK09",
+   "glass_catalogs:OHARA-optical/LAL59",
+   "glass_catalogs:OHARA-optical/S-LAL59"
+  ],
+  "glass:738323": [
+   "glass_catalogs:OHARA-optical/S-NBH53",
+   "glass_catalogs:OHARA-optical/S-NBH53V"
+  ],
+  "glass:740283": [
+   "glass_catalogs:CDGM-optical/H-ZF5",
+   "glass_catalogs:OHARA-optical/PBH3",
+   "glass_catalogs:OHARA-optical/PBH3W",
+   "glass_catalogs:OHARA-optical/S-TIH3"
+  ],
+  "glass:741278": [
+   "glass_catalogs:CDGM-optical/H-ZF50",
+   "glass_catalogs:CDGM-optical/ZF50",
+   "glass_catalogs:HIKARI-optical/E-SF13",
+   "glass_catalogs:HOYA-optical/E-FD13",
+   "glass_catalogs:OHARA-optical/PBH13",
+   "glass_catalogs:OHARA-optical/PBH13W",
+   "glass_catalogs:OHARA-optical/S-TIH13"
+  ],
+  "glass:741526+741527": [
+   "glass_catalogs:CDGM-optical/H-LAK61",
+   "glass_catalogs:HIKARI-optical/E-LAK011",
+   "glass_catalogs:HIKARI-optical/LAK011",
+   "glass_catalogs:HOYA-optical/TAC2",
+   "glass_catalogs:OHARA-optical/LAL61",
+   "glass_catalogs:OHARA-optical/S-LAL61",
+   "glass_catalogs:SUMITA-optical/K-LaKn14"
+  ],
+  "glass:743492": [
+   "glass_catalogs:CDGM-optical/H-LAF53",
+   "glass_catalogs:HIKARI-optical/Q-LAF010S",
+   "glass_catalogs:HOYA-optical/NBF1",
+   "glass_catalogs:SUMITA-optical/K-LaFn5"
+  ],
+  "glass:743493": [
+   "glass_catalogs:CDGM-optical/D-LAF53",
+   "glass_catalogs:HIKARI-optical/E-LAF010",
+   "glass_catalogs:HIKARI-optical/J-LAF010",
+   "glass_catalogs:HIKARI-optical/P-LAF010S",
+   "glass_catalogs:HOYA-optical/M-NBF1",
+   "glass_catalogs:HOYA-optical/MC-NBF1",
+   "glass_catalogs:HOYA-optical/MP-NBF1",
+   "glass_catalogs:OHARA-optical/L-LAM60",
+   "glass_catalogs:OHARA-optical/LAM60",
+   "glass_catalogs:OHARA-optical/S-LAM60"
+  ],
+  "glass:743494": [
+   "glass_catalogs:HIKARI-optical/Q-LAFPH1S",
+   "glass_catalogs:SCHOTT-optical/N-LAF35"
+  ],
+  "glass:744448+744449": [
+   "glass_catalogs:CDGM-optical/H-LAF3B",
+   "glass_catalogs:HIKARI-optical/E-LAF2",
+   "glass_catalogs:HIKARI-optical/J-LAF2",
+   "glass_catalogs:HOYA-optical/LAF2",
+   "glass_catalogs:OHARA-optical/LAM2",
+   "glass_catalogs:OHARA-optical/S-LAM2",
+   "glass_catalogs:SCHOTT-optical/N-LAF2",
+   "glass_catalogs:SUMITA-optical/K-LaF2"
+  ],
+  "glass:749353+750353": [
+   "glass_catalogs:HIKARI-optical/E-LAF7",
+   "glass_catalogs:OHARA-optical/LAM7",
+   "glass_catalogs:OHARA-optical/S-LAM7",
+   "glass_catalogs:OHARA-optical/S-NBH51"
+  ],
+  "glass:750350": [
+   "glass_catalogs:CDGM-optical/H-LAF4",
+   "glass_catalogs:CDGM-optical/H-LAF4GT",
+   "glass_catalogs:HOYA-optical/E-LAF7",
+   "glass_catalogs:SCHOTT-optical/LAFN7"
+  ],
+  "glass:750352": [
+   "glass_catalogs:HIKARI-optical/J-LAF7",
+   "glass_catalogs:HIKARI-optical/LAF7"
+  ],
+  "glass:750454+756456": [
+   "glass_catalogs:SUMITA-optical/K-VC82",
+   "glass_catalogs:SUMITA-optical/K-VC82(M)"
+  ],
+  "glass:755275": [
+   "glass_catalogs:CDGM-optical/H-ZF6",
+   "glass_catalogs:CDGM-optical/ZF6",
+   "glass_catalogs:HIKARI-optical/E-SF4",
+   "glass_catalogs:HOYA-optical/E-FD4",
+   "glass_catalogs:OHARA-optical/PBH4",
+   "glass_catalogs:OHARA-optical/PBH4W",
+   "glass_catalogs:OHARA-optical/S-TIH4",
+   "glass_catalogs:SUMITA-optical/K-SFLD4"
+  ],
+  "glass:755276": [
+   "glass_catalogs:HIKARI-optical/J-SF4",
+   "glass_catalogs:HIKARI-optical/SF4",
+   "glass_catalogs:SCHOTT-optical/SF4"
+  ],
+  "glass:755523": [
+   "glass_catalogs:CDGM-optical/H-LAK53A",
+   "glass_catalogs:CDGM-optical/H-LAK53B",
+   "glass_catalogs:HIKARI-optical/E-LASKH2",
+   "glass_catalogs:HIKARI-optical/J-LASKH2",
+   "glass_catalogs:HOYA-optical/TAC6",
+   "glass_catalogs:OHARA-optical/S-LAH97",
+   "glass_catalogs:OHARA-optical/S-YGH51",
+   "glass_catalogs:OHARA-optical/YGH51",
+   "glass_catalogs:SCHOTT-optical/N-LAK33B"
+  ],
+  "glass:757478": [
+   "glass_catalogs:HIKARI-optical/E-LAF04",
+   "glass_catalogs:OHARA-optical/LAM54",
+   "glass_catalogs:OHARA-optical/S-LAM54"
+  ],
+  "glass:762265": [
+   "glass_catalogs:OHARA-optical/S-TIH14",
+   "glass_catalogs:OHARA-optical/TIH14",
+   "glass_catalogs:SCHOTT-optical/N-SF14",
+   "glass_catalogs:SCHOTT-optical/SF14",
+   "glass_catalogs:SUMITA-optical/K-SFLD14"
+  ],
+  "glass:762266": [
+   "glass_catalogs:CDGM-optical/H-ZF12",
+   "glass_catalogs:CDGM-optical/ZF12",
+   "glass_catalogs:HIKARI-optical/E-SF14",
+   "glass_catalogs:HIKARI-optical/J-SF14",
+   "glass_catalogs:HIKARI-optical/SF14",
+   "glass_catalogs:HOYA-optical/FD140",
+   "glass_catalogs:OHARA-optical/PBH14",
+   "glass_catalogs:OHARA-optical/PBH14W"
+  ],
+  "glass:762271": [
+   "glass_catalogs:OHARA-optical/PBH25",
+   "glass_catalogs:OHARA-optical/PBH25W"
+  ],
+  "glass:762401": [
+   "glass_catalogs:CDGM-optical/H-LAF55",
+   "glass_catalogs:HIKARI-optical/E-LAF05",
+   "glass_catalogs:HIKARI-optical/J-LAF05",
+   "glass_catalogs:OHARA-optical/LAM55",
+   "glass_catalogs:OHARA-optical/S-LAM55"
+  ],
+  "glass:762496+766498": [
+   "glass_catalogs:SUMITA-optical/K-LaFK50T",
+   "glass_catalogs:SUMITA-optical/K-LaFK50T(M)"
+  ],
+  "glass:767468": [
+   "glass_catalogs:HIKARI-optical/E-LASFH2",
+   "glass_catalogs:HIKARI-optical/J-LASFH2"
+  ],
+  "glass:768497+772500": [
+   "glass_catalogs:SUMITA-optical/K-LaFK50",
+   "glass_catalogs:SUMITA-optical/K-LaFK50(M)"
+  ],
+  "glass:769493": [
+   "glass_catalogs:HOYA-optical/MC-TAF101-100",
+   "glass_catalogs:HOYA-optical/MP-TAF101-100"
+  ],
+  "glass:772495+773495": [
+   "glass_catalogs:CDGM-optical/D-LAF50-25",
+   "glass_catalogs:HOYA-optical/M-TAF1",
+   "glass_catalogs:HOYA-optical/M-TAF105",
+   "glass_catalogs:HOYA-optical/MC-TAF1",
+   "glass_catalogs:HOYA-optical/MC-TAF105",
+   "glass_catalogs:HOYA-optical/MP-TAF105"
+  ],
+  "glass:772496+773496": [
+   "glass_catalogs:CDGM-optical/H-LAF50B",
+   "glass_catalogs:HIKARI-optical/E-LASF016",
+   "glass_catalogs:HIKARI-optical/J-LASF016",
+   "glass_catalogs:HOYA-optical/TAF1",
+   "glass_catalogs:OHARA-optical/LAH66",
+   "glass_catalogs:OHARA-optical/S-LAH66",
+   "glass_catalogs:SCHOTT-optical/N-LAF34",
+   "glass_catalogs:SUMITA-optical/K-LaSFn7"
+  ],
+  "glass:774472": [
+   "glass_catalogs:HOYA-optical/M-TAF401",
+   "glass_catalogs:HOYA-optical/MC-TAF401",
+   "glass_catalogs:HOYA-optical/MP-TAF401"
+  ],
+  "glass:774473": [
+   "glass_catalogs:HIKARI-optical/P-LASFH11S",
+   "glass_catalogs:HIKARI-optical/Q-LASFH11S"
+  ],
+  "glass:785256+785257+785258+785259": [
+   "glass_catalogs:CDGM-optical/H-ZF13",
+   "glass_catalogs:CDGM-optical/H-ZF13GT",
+   "glass_catalogs:CDGM-optical/ZF13",
+   "glass_catalogs:HIKARI-optical/E-SF11",
+   "glass_catalogs:HIKARI-optical/J-SF11",
+   "glass_catalogs:HIKARI-optical/SF11",
+   "glass_catalogs:HOYA-optical/FD110",
+   "glass_catalogs:OHARA-optical/PBH11",
+   "glass_catalogs:OHARA-optical/PBH11W",
+   "glass_catalogs:OHARA-optical/S-TIH11",
+   "glass_catalogs:OHARA-optical/TIH11",
+   "glass_catalogs:SCHOTT-optical/N-SF11",
+   "glass_catalogs:SCHOTT-optical/SF11",
+   "glass_catalogs:SUMITA-optical/K-SFLD11"
+  ],
+  "glass:785261": [
+   "glass_catalogs:CDGM-optical/ZF51",
+   "glass_catalogs:SCHOTT-optical/N-SF56",
+   "glass_catalogs:SCHOTT-optical/SF56A"
+  ],
+  "glass:785262": [
+   "glass_catalogs:HIKARI-optical/SFS3",
+   "glass_catalogs:OHARA-optical/PBH23",
+   "glass_catalogs:OHARA-optical/PBH23W"
+  ],
+  "glass:785263": [
+   "glass_catalogs:HIKARI-optical/E-SFS3",
+   "glass_catalogs:HIKARI-optical/J-SFS3",
+   "glass_catalogs:OHARA-optical/S-TIH23",
+   "glass_catalogs:OHARA-optical/TIH23"
+  ],
+  "glass:786442": [
+   "glass_catalogs:CDGM-optical/H-LAF52",
+   "glass_catalogs:HIKARI-optical/E-LASF01",
+   "glass_catalogs:HIKARI-optical/J-LASF01",
+   "glass_catalogs:HIKARI-optical/LASF01",
+   "glass_catalogs:OHARA-optical/LAH51",
+   "glass_catalogs:OHARA-optical/S-LAH51"
+  ],
+  "glass:786500+787500": [
+   "glass_catalogs:OHARA-optical/S-YGH52",
+   "glass_catalogs:OHARA-optical/YGH52"
+  ],
+  "glass:788474": [
+   "glass_catalogs:HIKARI-optical/E-LASF014",
+   "glass_catalogs:HIKARI-optical/J-LASF014",
+   "glass_catalogs:OHARA-optical/LAH64",
+   "glass_catalogs:OHARA-optical/S-LAH64",
+   "glass_catalogs:SUMITA-optical/K-LaSFn16"
+  ],
+  "glass:788475": [
+   "glass_catalogs:CDGM-optical/H-LAF10LA",
+   "glass_catalogs:HOYA-optical/TAF4",
+   "glass_catalogs:SCHOTT-optical/N-LAF21"
+  ],
+  "glass:791450": [
+   "glass_catalogs:HIKARI-optical/P-LASFH12S",
+   "glass_catalogs:HIKARI-optical/Q-LASFH12S"
+  ],
+  "glass:794419+799418": [
+   "glass_catalogs:SUMITA-optical/K-VC179",
+   "glass_catalogs:SUMITA-optical/K-VC179(M)"
+  ],
+  "glass:795287": [
+   "glass_catalogs:HIKARI-optical/E-LAFH3",
+   "glass_catalogs:HIKARI-optical/J-LAFH3",
+   "glass_catalogs:HIKARI-optical/J-LAFH3HS"
+  ],
+  "glass:795453": [
+   "glass_catalogs:HIKARI-optical/E-LASF017",
+   "glass_catalogs:HIKARI-optical/J-LASF017",
+   "glass_catalogs:HIKARI-optical/Q-LASFPH3S",
+   "glass_catalogs:OHARA-optical/LAH67",
+   "glass_catalogs:OHARA-optical/S-LAH67"
+  ],
+  "glass:799435+804436": [
+   "glass_catalogs:SUMITA-optical/K-VC100",
+   "glass_catalogs:SUMITA-optical/K-VC100(M)"
+  ],
+  "glass:800422+800423": [
+   "glass_catalogs:CDGM-optical/H-LAF54",
+   "glass_catalogs:HIKARI-optical/E-LASF02",
+   "glass_catalogs:HIKARI-optical/LASF02",
+   "glass_catalogs:HOYA-optical/NBFD12",
+   "glass_catalogs:OHARA-optical/LAH52",
+   "glass_catalogs:OHARA-optical/S-LAH52",
+   "glass_catalogs:OHARA-optical/S-LAH52Q",
+   "glass_catalogs:SUMITA-optical/K-LaSFn3"
+  ],
+  "glass:801349": [
+   "glass_catalogs:HIKARI-optical/J-LAF016",
+   "glass_catalogs:HIKARI-optical/J-LAF016HS"
+  ],
+  "glass:801350": [
+   "glass_catalogs:CDGM-optical/H-ZLAF66",
+   "glass_catalogs:CDGM-optical/H-ZLAF66GT",
+   "glass_catalogs:HIKARI-optical/E-LAF016",
+   "glass_catalogs:OHARA-optical/LAM66",
+   "glass_catalogs:OHARA-optical/S-LAM66",
+   "glass_catalogs:SCHOTT-optical/N-LASF45",
+   "glass_catalogs:SCHOTT-optical/N-LASF45HT"
+  ],
+  "glass:802455": [
+   "glass_catalogs:CDGM-optical/D-ZLAF50-25",
+   "glass_catalogs:HOYA-optical/MC-TAF31-15",
+   "glass_catalogs:HOYA-optical/MP-TAF31-15"
+  ],
+  "glass:804396+805396": [
+   "glass_catalogs:CDGM-optical/H-ZLAF51",
+   "glass_catalogs:HIKARI-optical/E-LASF013",
+   "glass_catalogs:HIKARI-optical/J-LASF013",
+   "glass_catalogs:HOYA-optical/NBFD3",
+   "glass_catalogs:OHARA-optical/LAH63",
+   "glass_catalogs:OHARA-optical/S-LAH63",
+   "glass_catalogs:OHARA-optical/S-LAH63Q",
+   "glass_catalogs:SUMITA-optical/K-LaSFn2"
+  ],
+  "glass:804465": [
+   "glass_catalogs:HOYA-optical/TAF3",
+   "glass_catalogs:HOYA-optical/TAF3D",
+   "glass_catalogs:OHARA-optical/S-LAH65VS",
+   "glass_catalogs:SCHOTT-optical/N-LASF44"
+  ],
+  "glass:804466": [
+   "glass_catalogs:CDGM-optical/H-ZLAF50D",
+   "glass_catalogs:CDGM-optical/H-ZLAF50E",
+   "glass_catalogs:HIKARI-optical/E-LASF015",
+   "glass_catalogs:HIKARI-optical/J-LASF015",
+   "glass_catalogs:OHARA-optical/LAH65",
+   "glass_catalogs:OHARA-optical/S-LAH65",
+   "glass_catalogs:OHARA-optical/S-LAH65V",
+   "glass_catalogs:SUMITA-optical/K-LaSFn6"
+  ],
+  "glass:805254": [
+   "glass_catalogs:HIKARI-optical/E-SF6",
+   "glass_catalogs:HIKARI-optical/J-SF6",
+   "glass_catalogs:HIKARI-optical/J-SF6HS",
+   "glass_catalogs:HIKARI-optical/SF6",
+   "glass_catalogs:OHARA-optical/PBH6",
+   "glass_catalogs:OHARA-optical/PBH6W",
+   "glass_catalogs:OHARA-optical/S-TIH6",
+   "glass_catalogs:OHARA-optical/TIH6",
+   "glass_catalogs:SCHOTT-optical/N-SF6",
+   "glass_catalogs:SCHOTT-optical/N-SF6HT",
+   "glass_catalogs:SCHOTT-optical/N-SF6HTultra",
+   "glass_catalogs:SCHOTT-optical/SF6",
+   "glass_catalogs:SCHOTT-optical/SFL6",
+   "glass_catalogs:SUMITA-optical/K-SFLD6"
+  ],
+  "glass:805255": [
+   "glass_catalogs:CDGM-optical/H-ZF7LA",
+   "glass_catalogs:CDGM-optical/H-ZF7LAGT",
+   "glass_catalogs:CDGM-optical/ZF7L",
+   "glass_catalogs:CDGM-optical/ZF7LGT",
+   "glass_catalogs:HOYA-optical/FD60",
+   "glass_catalogs:HOYA-optical/FD60-W"
+  ],
+  "glass:806333": [
+   "glass_catalogs:CDGM-optical/H-ZLAF56B",
+   "glass_catalogs:HIKARI-optical/E-LASFH6",
+   "glass_catalogs:HIKARI-optical/J-LASFH6",
+   "glass_catalogs:HIKARI-optical/LASFH6",
+   "glass_catalogs:HOYA-optical/NBFD15",
+   "glass_catalogs:HOYA-optical/NBFD15-W"
+  ],
+  "glass:806407": [
+   "glass_catalogs:HIKARI-optical/Q-LASF03S",
+   "glass_catalogs:HOYA-optical/M-NBFD130",
+   "glass_catalogs:HOYA-optical/MP-NBFD130",
+   "glass_catalogs:HOYA-optical/NBFD13",
+   "glass_catalogs:SUMITA-optical/K-LaSFn1"
+  ],
+  "glass:806409+806410+810410": [
+   "glass_catalogs:CDGM-optical/D-ZLAF52LA",
+   "glass_catalogs:CDGM-optical/H-ZLAF52",
+   "glass_catalogs:CDGM-optical/H-ZLAF52A",
+   "glass_catalogs:HIKARI-optical/E-LASF03",
+   "glass_catalogs:HIKARI-optical/J-LASF03",
+   "glass_catalogs:OHARA-optical/L-LAH53",
+   "glass_catalogs:OHARA-optical/LAH53",
+   "glass_catalogs:OHARA-optical/S-LAH53",
+   "glass_catalogs:OHARA-optical/S-LAH53V",
+   "glass_catalogs:SCHOTT-optical/P-LASF47",
+   "glass_catalogs:SUMITA-optical/K-VC89",
+   "glass_catalogs:SUMITA-optical/K-VC89(M)"
+  ],
+  "glass:806411+811411": [
+   "glass_catalogs:SUMITA-optical/K-VC181",
+   "glass_catalogs:SUMITA-optical/K-VC181(M)"
+  ],
+  "glass:808227": [
+   "glass_catalogs:CDGM-optical/H-ZF71",
+   "glass_catalogs:CDGM-optical/H-ZF71GT",
+   "glass_catalogs:HIKARI-optical/J-SFH1"
+  ],
+  "glass:808228": [
+   "glass_catalogs:HIKARI-optical/E-SFH1",
+   "glass_catalogs:HOYA-optical/FD225",
+   "glass_catalogs:OHARA-optical/S-NPH1",
+   "glass_catalogs:OHARA-optical/S-NPH1W"
+  ],
+  "glass:809410": [
+   "glass_catalogs:CDGM-optical/D-ZLAF52LA-25",
+   "glass_catalogs:CDGM-optical/D-ZLAF81"
+  ],
+  "glass:815444+816444": [
+   "glass_catalogs:OHARA-optical/LAH54",
+   "glass_catalogs:OHARA-optical/S-LAH54",
+   "glass_catalogs:SUMITA-optical/K-LaSFn10"
+  ],
+  "glass:816465+816466": [
+   "glass_catalogs:CDGM-optical/H-ZLAF69",
+   "glass_catalogs:CDGM-optical/H-ZLAF69A",
+   "glass_catalogs:HIKARI-optical/E-LASF09",
+   "glass_catalogs:HIKARI-optical/J-LASF09",
+   "glass_catalogs:HIKARI-optical/J-LASF09A",
+   "glass_catalogs:HOYA-optical/TAF5",
+   "glass_catalogs:OHARA-optical/LAH59",
+   "glass_catalogs:OHARA-optical/S-LAH59"
+  ],
+  "glass:821427": [
+   "glass_catalogs:CDGM-optical/D-ZLAF61-25",
+   "glass_catalogs:HIKARI-optical/P-LASFH19S",
+   "glass_catalogs:HIKARI-optical/Q-LASFH19S",
+   "glass_catalogs:HOYA-optical/M-TAFD51",
+   "glass_catalogs:HOYA-optical/MC-TAFD51-50",
+   "glass_catalogs:HOYA-optical/MP-TAFD51-50"
+  ],
+  "glass:822240": [
+   "glass_catalogs:HOYA-optical/MC-FDS910-50",
+   "glass_catalogs:HOYA-optical/MP-FDS910-50"
+  ],
+  "glass:834240+839239": [
+   "glass_catalogs:SUMITA-optical/K-PSFn3",
+   "glass_catalogs:SUMITA-optical/K-PSFn3(M)"
+  ],
+  "glass:834372": [
+   "glass_catalogs:CDGM-optical/H-ZLAF53B",
+   "glass_catalogs:CDGM-optical/H-ZLAF53BGT",
+   "glass_catalogs:HIKARI-optical/E-LASF010",
+   "glass_catalogs:HIKARI-optical/J-LASF010",
+   "glass_catalogs:OHARA-optical/LAH60",
+   "glass_catalogs:OHARA-optical/S-LAH60",
+   "glass_catalogs:OHARA-optical/S-LAH60V"
+  ],
+  "glass:834373": [
+   "glass_catalogs:HIKARI-optical/LASF010",
+   "glass_catalogs:HOYA-optical/M-NBFD10",
+   "glass_catalogs:HOYA-optical/NBFD10",
+   "glass_catalogs:SCHOTT-optical/N-LASF40",
+   "glass_catalogs:SUMITA-optical/K-LaSFn14"
+  ],
+  "glass:835427": [
+   "glass_catalogs:CDGM-optical/H-ZLAF55C",
+   "glass_catalogs:CDGM-optical/H-ZLAF55D",
+   "glass_catalogs:HIKARI-optical/E-LASF05",
+   "glass_catalogs:HIKARI-optical/J-LASF05",
+   "glass_catalogs:HIKARI-optical/J-LASF05HS",
+   "glass_catalogs:HOYA-optical/TAFD5F",
+   "glass_catalogs:HOYA-optical/TAFD5G",
+   "glass_catalogs:OHARA-optical/LAH55",
+   "glass_catalogs:OHARA-optical/S-LAH55",
+   "glass_catalogs:OHARA-optical/S-LAH55V",
+   "glass_catalogs:OHARA-optical/S-LAH55VS",
+   "glass_catalogs:SUMITA-optical/K-LaSFn8"
+  ],
+  "glass:839248+844248": [
+   "glass_catalogs:SUMITA-optical/K-PSFn4",
+   "glass_catalogs:SUMITA-optical/K-PSFn4(M)"
+  ],
+  "glass:846415+851416": [
+   "glass_catalogs:SUMITA-optical/K-VC99",
+   "glass_catalogs:SUMITA-optical/K-VC99(M)"
+  ],
+  "glass:847238": [
+   "glass_catalogs:CDGM-optical/H-ZF52",
+   "glass_catalogs:CDGM-optical/H-ZF52A",
+   "glass_catalogs:CDGM-optical/H-ZF52GT",
+   "glass_catalogs:CDGM-optical/H-ZF52TT",
+   "glass_catalogs:CDGM-optical/ZF52",
+   "glass_catalogs:HIKARI-optical/E-SF03",
+   "glass_catalogs:HIKARI-optical/J-SF03",
+   "glass_catalogs:HIKARI-optical/J-SF03HS",
+   "glass_catalogs:HOYA-optical/FDS90",
+   "glass_catalogs:HOYA-optical/FDS90-SG",
+   "glass_catalogs:OHARA-optical/L-TIH53",
+   "glass_catalogs:OHARA-optical/S-TIH53",
+   "glass_catalogs:OHARA-optical/S-TIH53W",
+   "glass_catalogs:OHARA-optical/TIH53",
+   "glass_catalogs:SCHOTT-optical/N-SF57",
+   "glass_catalogs:SCHOTT-optical/N-SF57HT",
+   "glass_catalogs:SCHOTT-optical/N-SF57HTultra",
+   "glass_catalogs:SCHOTT-optical/SF57",
+   "glass_catalogs:SCHOTT-optical/SF57HTultra"
+  ],
+  "glass:847239": [
+   "glass_catalogs:HIKARI-optical/SF03",
+   "glass_catalogs:HOYA-optical/FDS90(P)",
+   "glass_catalogs:OHARA-optical/PBH53",
+   "glass_catalogs:OHARA-optical/PBH53W",
+   "glass_catalogs:OHARA-optical/S-NPH53",
+   "glass_catalogs:SUMITA-optical/K-SFLDn3"
+  ],
+  "glass:849389+853390": [
+   "glass_catalogs:SUMITA-optical/K-VC90",
+   "glass_catalogs:SUMITA-optical/K-VC90(M)"
+  ],
+  "glass:849405+854406+855406": [
+   "glass_catalogs:CDGM-optical/D-ZLAF85L",
+   "glass_catalogs:CDGM-optical/D-ZLAF85LS",
+   "glass_catalogs:SUMITA-optical/K-VC185",
+   "glass_catalogs:SUMITA-optical/K-VC185(M)"
+  ],
+  "glass:850300": [
+   "glass_catalogs:CDGM-optical/H-ZLAF76A",
+   "glass_catalogs:OHARA-optical/S-NBH57"
+  ],
+  "glass:850322": [
+   "glass_catalogs:CDGM-optical/H-ZLAF71AGT",
+   "glass_catalogs:SCHOTT-optical/LASFN9",
+   "glass_catalogs:SCHOTT-optical/N-LASF9",
+   "glass_catalogs:SCHOTT-optical/N-LASF9HT"
+  ],
+  "glass:850323": [
+   "glass_catalogs:CDGM-optical/H-ZLAF71",
+   "glass_catalogs:HIKARI-optical/E-LASF021",
+   "glass_catalogs:OHARA-optical/LAH71",
+   "glass_catalogs:OHARA-optical/S-LAH71"
+  ],
+  "glass:850324": [
+   "glass_catalogs:HIKARI-optical/J-LASF021",
+   "glass_catalogs:HIKARI-optical/J-LASF021HS",
+   "glass_catalogs:SUMITA-optical/K-LaSFn21"
+  ],
+  "glass:851400": [
+   "glass_catalogs:HIKARI-optical/P-LASFH18S",
+   "glass_catalogs:HIKARI-optical/Q-LASFH18S"
+  ],
+  "glass:851401": [
+   "glass_catalogs:CDGM-optical/D-ZLAF85A-25",
+   "glass_catalogs:HIKARI-optical/Q-LASFH58S",
+   "glass_catalogs:HOYA-optical/M-TAFD305",
+   "glass_catalogs:HOYA-optical/MC-TAFD305",
+   "glass_catalogs:HOYA-optical/MP-TAFD305"
+  ],
+  "glass:854404": [
+   "glass_catalogs:OHARA-optical/L-LAH85",
+   "glass_catalogs:OHARA-optical/L-LAH85V"
+  ],
+  "glass:861231": [
+   "glass_catalogs:HIKARI-optical/E-SFH2",
+   "glass_catalogs:HIKARI-optical/J-SFH2"
+  ],
+  "glass:874353": [
+   "glass_catalogs:OHARA-optical/LAH75",
+   "glass_catalogs:OHARA-optical/S-LAH75"
+  ],
+  "glass:882349+887350": [
+   "glass_catalogs:SUMITA-optical/K-VC91",
+   "glass_catalogs:SUMITA-optical/K-VC91(M)"
+  ],
+  "glass:882372": [
+   "glass_catalogs:HOYA-optical/M-TAFD307",
+   "glass_catalogs:HOYA-optical/MC-TAFD307",
+   "glass_catalogs:HOYA-optical/MP-TAFD307"
+  ],
+  "glass:883407": [
+   "glass_catalogs:HIKARI-optical/J-LASF08",
+   "glass_catalogs:HIKARI-optical/J-LASF08A"
+  ],
+  "glass:883408+883409": [
+   "glass_catalogs:CDGM-optical/H-ZLAF68B",
+   "glass_catalogs:CDGM-optical/H-ZLAF68C",
+   "glass_catalogs:HIKARI-optical/E-LASF08",
+   "glass_catalogs:HOYA-optical/TAFD30",
+   "glass_catalogs:OHARA-optical/LAH58",
+   "glass_catalogs:OHARA-optical/S-LAH58",
+   "glass_catalogs:SCHOTT-optical/N-LASF31A",
+   "glass_catalogs:SUMITA-optical/K-LaSFn17"
+  ],
+  "glass:899213+907212": [
+   "glass_catalogs:SUMITA-optical/K-PSFn1",
+   "glass_catalogs:SUMITA-optical/K-PSFn1(M)"
+  ],
+  "glass:900374": [
+   "glass_catalogs:HOYA-optical/TAFD37",
+   "glass_catalogs:HOYA-optical/TAFD37A"
+  ],
+  "glass:901315+901316": [
+   "glass_catalogs:OHARA-optical/LAH78",
+   "glass_catalogs:SCHOTT-optical/N-LASF46"
+  ],
+  "glass:902253": [
+   "glass_catalogs:HIKARI-optical/J-LASFH24",
+   "glass_catalogs:HIKARI-optical/J-LASFH24HS"
+  ],
+  "glass:903357": [
+   "glass_catalogs:HIKARI-optical/E-LASFH9",
+   "glass_catalogs:HIKARI-optical/J-LASFH9"
+  ],
+  "glass:904313": [
+   "glass_catalogs:CDGM-optical/H-ZLAF75A",
+   "glass_catalogs:HIKARI-optical/E-LASFH13",
+   "glass_catalogs:HIKARI-optical/J-LASFH13",
+   "glass_catalogs:HIKARI-optical/J-LASFH13HS",
+   "glass_catalogs:HOYA-optical/TAFD25",
+   "glass_catalogs:OHARA-optical/S-LAH95",
+   "glass_catalogs:SCHOTT-optical/N-LASF46A",
+   "glass_catalogs:SCHOTT-optical/N-LASF46B"
+  ],
+  "glass:911352+911353": [
+   "glass_catalogs:CDGM-optical/H-ZLAF4LA",
+   "glass_catalogs:CDGM-optical/H-ZLAF4LB",
+   "glass_catalogs:HOYA-optical/TAFD35",
+   "glass_catalogs:SUMITA-optical/K-LaSFn23"
+  ],
+  "glass:916224+921224": [
+   "glass_catalogs:SUMITA-optical/K-PSFn5",
+   "glass_catalogs:SUMITA-optical/K-PSFn5(M)"
+  ],
+  "glass:923189": [
+   "glass_catalogs:CDGM-optical/H-ZF72A",
+   "glass_catalogs:CDGM-optical/H-ZF72AGT",
+   "glass_catalogs:OHARA-optical/S-NPH2"
+  ],
+  "glass:923209": [
+   "glass_catalogs:CDGM-optical/H-ZF62",
+   "glass_catalogs:CDGM-optical/H-ZF62GT",
+   "glass_catalogs:HOYA-optical/E-FDS1",
+   "glass_catalogs:HOYA-optical/E-FDS1-W",
+   "glass_catalogs:HOYA-optical/M-FDS1",
+   "glass_catalogs:HOYA-optical/MP-FDS1",
+   "glass_catalogs:OHARA-optical/PBH21",
+   "glass_catalogs:SCHOTT-optical/N-SF66",
+   "glass_catalogs:SCHOTT-optical/SF66"
+  ],
+  "glass:946179": [
+   "glass_catalogs:CDGM-optical/H-ZF88",
+   "glass_catalogs:CDGM-optical/H-ZF88GT"
+  ],
+  "glass:946180": [
+   "glass_catalogs:HOYA-optical/FDS18",
+   "glass_catalogs:HOYA-optical/FDS18-W"
+  ],
+  "glass:950294": [
+   "glass_catalogs:HIKARI-optical/E-LASFH15",
+   "glass_catalogs:HIKARI-optical/J-LASFH15"
+  ],
+  "glass:952298": [
+   "glass_catalogs:HOYA-optical/M-TAFD405",
+   "glass_catalogs:HOYA-optical/MP-TAFD405"
+  ],
+  "glass:954323": [
+   "glass_catalogs:CDGM-optical/H-ZLAF89L",
+   "glass_catalogs:HIKARI-optical/J-LASFH21",
+   "glass_catalogs:HOYA-optical/TAFD45"
+  ],
+  "glass:959175": [
+   "glass_catalogs:CDGM-optical/H-ZF73",
+   "glass_catalogs:CDGM-optical/H-ZF73GT",
+   "glass_catalogs:OHARA-optical/S-NPH3"
+  ],
+  "key:glasses:N-BK7": [
+   "glass_catalogs:CDGM-optical/D-K9",
+   "glass_catalogs:CDGM-optical/D-K9GT",
+   "glass_catalogs:CDGM-optical/H-K9L",
+   "glass_catalogs:CDGM-optical/H-K9LA",
+   "glass_catalogs:CDGM-optical/H-K9LAGT",
+   "glass_catalogs:CDGM-optical/H-K9LGT",
+   "glass_catalogs:CDGM-optical/H-K9Lstar",
+   "glass_catalogs:HIKARI-optical/E-BK7",
+   "glass_catalogs:HIKARI-optical/J-BK7A",
+   "glass_catalogs:HOYA-optical/BSC7",
+   "glass_catalogs:LZOS-optical/K8",
+   "glass_catalogs:OHARA-optical/L-BSL7",
+   "glass_catalogs:OHARA-optical/S-BSL7",
+   "glass_catalogs:SCHOTT-optical/N-BK7HT",
+   "glass_catalogs:SCHOTT-optical/N-BK7HTi",
+   "glass_catalogs:SCHOTT-optical/P-BK7",
+   "glass_catalogs:SUMITA-optical/K-BK7",
+   "glasses:N-BK7"
   ],
   "line:cargille-matching-liquids": [
    "optical_media:Cargille-06350",

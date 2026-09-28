@@ -68,8 +68,9 @@ def test_targets_physical_and_inside_measured_range():
     assert ((n.meta_primary_wl_min_nm <= 633) & (n.meta_primary_wl_max_nm >= 633)).all()  # never extrapolated
     k = DF.dropna(subset=["target_k_633nm"])
     assert (k.loc[k.target_k_633nm < 0, "meta_primary_has_negative_k"]).all()  # only ever the source's own value
-    assert set(DF.loc[DF.meta_primary_has_negative_k, "meta_name"]) == {  # Querry's far-IR tails and Sarkar's resist fit
-        "Copper(I) oxide", "Hematite", "Micro resist ma-N 1407 (negative resist)"}
+    assert set(DF.loc[DF.meta_primary_has_negative_k, "meta_name"]) == {  # Querry's far-IR tails, Sarkar's resist fit and one
+        "Copper(I) oxide", "Hematite", "Micro resist ma-N 1407 (negative resist)",  # tabulated-k point in each HIKARI table
+        "HIKARI SK2", "HIKARI LAK09"}
     d = DF.dropna(subset=["target_density_g_cm3"])
     assert d.target_density_g_cm3.between(0.05, 25).all() and d.meta_density_kind.notna().all()
     assert DF.loc[DF.target_density_g_cm3.isna(), "meta_density_kind"].isna().all()
