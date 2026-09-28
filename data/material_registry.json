@@ -1,7 +1,7 @@
 {
  "description": "Permanent material ids (scripts/material_registry.py). Never edit an id; never reuse one.",
  "seeded_from": "materials-db v0.13.0",
- "next_id": 382,
+ "next_id": 445,
  "materials": {
   "oxides_50:Al2O3@corundum/sapphire": {
    "id": 1,
@@ -1907,6 +1907,321 @@
    "id": 381,
    "name": "Acetylene",
    "registered_in": "0.13.0"
+  },
+  "alloys:AZO@AZO": {
+   "id": 382,
+   "name": "Aluminium-doped zinc oxide (AZO)",
+   "registered_in": "0.17.0"
+  },
+  "alloys:AgGaInS2@x0.14": {
+   "id": 383,
+   "name": "Silver gallium indium sulfide AgGa0.86In0.14S2",
+   "registered_in": "0.17.0"
+  },
+  "alloys:AlGaAs@x0.097": {
+   "id": 384,
+   "name": "Aluminium gallium arsenide Al0.097Ga0.903As",
+   "registered_in": "0.17.0"
+  },
+  "alloys:AlGaAs@x0.099": {
+   "id": 385,
+   "name": "Aluminium gallium arsenide Al0.099Ga0.901As",
+   "registered_in": "0.17.0"
+  },
+  "alloys:AlGaAs@x0.198": {
+   "id": 386,
+   "name": "Aluminium gallium arsenide Al0.198Ga0.802As",
+   "registered_in": "0.17.0"
+  },
+  "alloys:AlGaAs@x0.219": {
+   "id": 387,
+   "name": "Aluminium gallium arsenide Al0.219Ga0.781As",
+   "registered_in": "0.17.0"
+  },
+  "alloys:AlGaAs@x0.315": {
+   "id": 388,
+   "name": "Aluminium gallium arsenide Al0.315Ga0.685As",
+   "registered_in": "0.17.0"
+  },
+  "alloys:AlGaAs@x0.32": {
+   "id": 389,
+   "name": "Aluminium gallium arsenide Al0.32Ga0.68As",
+   "registered_in": "0.17.0"
+  },
+  "alloys:AlGaAs@x0.342": {
+   "id": 390,
+   "name": "Aluminium gallium arsenide Al0.342Ga0.658As",
+   "registered_in": "0.17.0"
+  },
+  "alloys:AlGaAs@x0.411": {
+   "id": 391,
+   "name": "Aluminium gallium arsenide Al0.411Ga0.589As",
+   "registered_in": "0.17.0"
+  },
+  "alloys:AlGaAs@x0.419": {
+   "id": 392,
+   "name": "Aluminium gallium arsenide Al0.419Ga0.581As",
+   "registered_in": "0.17.0"
+  },
+  "alloys:AlGaAs@x0.452": {
+   "id": 393,
+   "name": "Aluminium gallium arsenide Al0.452Ga0.548As",
+   "registered_in": "0.17.0"
+  },
+  "alloys:AlGaAs@x0.491": {
+   "id": 394,
+   "name": "Aluminium gallium arsenide Al0.491Ga0.509As",
+   "registered_in": "0.17.0"
+  },
+  "alloys:AlGaAs@x0.53": {
+   "id": 395,
+   "name": "Aluminium gallium arsenide Al0.53Ga0.47As",
+   "registered_in": "0.17.0"
+  },
+  "alloys:AlGaAs@x0.59": {
+   "id": 396,
+   "name": "Aluminium gallium arsenide Al0.59Ga0.41As",
+   "registered_in": "0.17.0"
+  },
+  "alloys:AlGaAs@x0.7": {
+   "id": 397,
+   "name": "Aluminium gallium arsenide Al0.7Ga0.3As",
+   "registered_in": "0.17.0"
+  },
+  "alloys:AlGaAs@x0.804": {
+   "id": 398,
+   "name": "Aluminium gallium arsenide Al0.804Ga0.196As",
+   "registered_in": "0.17.0"
+  },
+  "alloys:AlGaAs@x0.929": {
+   "id": 399,
+   "name": "Aluminium gallium arsenide Al0.929Ga0.071As",
+   "registered_in": "0.17.0"
+  },
+  "alloys:AlGaSb@x0.1": {
+   "id": 400,
+   "name": "Aluminium gallium antimonide Al0.1Ga0.9Sb",
+   "registered_in": "0.17.0"
+  },
+  "alloys:AlGaSb@x0.3": {
+   "id": 401,
+   "name": "Aluminium gallium antimonide Al0.3Ga0.7Sb",
+   "registered_in": "0.17.0"
+  },
+  "alloys:AlGaSb@x0.5": {
+   "id": 402,
+   "name": "Aluminium gallium antimonide Al0.5Ga0.5Sb",
+   "registered_in": "0.17.0"
+  },
+  "alloys:AlON@N5.88": {
+   "id": 403,
+   "name": "Aluminium oxynitride (ALON), 5.88 at.% N",
+   "registered_in": "0.17.0"
+  },
+  "alloys:AlON@N6.53": {
+   "id": 404,
+   "name": "Aluminium oxynitride (ALON), 6.53 at.% N",
+   "registered_in": "0.17.0"
+  },
+  "alloys:AlON@N6.69": {
+   "id": 405,
+   "name": "Aluminium oxynitride (ALON), 6.69 at.% N",
+   "registered_in": "0.17.0"
+  },
+  "alloys:AlON@N7.17": {
+   "id": 406,
+   "name": "Aluminium oxynitride (ALON), 7.17 at.% N",
+   "registered_in": "0.17.0"
+  },
+  "alloys:GaInP@x0.49": {
+   "id": 407,
+   "name": "Gallium indium phosphide Ga0.51In0.49P",
+   "registered_in": "0.17.0"
+  },
+  "alloys:ITO@ITO": {
+   "id": 408,
+   "name": "Indium tin oxide (ITO)",
+   "registered_in": "0.17.0"
+  },
+  "alloys:InGaAs@x0.47": {
+   "id": 409,
+   "name": "Indium gallium arsenide In0.53Ga0.47As",
+   "registered_in": "0.17.0"
+  },
+  "alloys:InGaAs@x0.48": {
+   "id": 410,
+   "name": "Indium gallium arsenide In0.52Ga0.48As",
+   "registered_in": "0.17.0"
+  },
+  "alloys:KRS@KRS-5": {
+   "id": 411,
+   "name": "Thallium bromide iodide (KRS-5)",
+   "registered_in": "0.17.0"
+  },
+  "alloys:KRS@KRS-6": {
+   "id": 412,
+   "name": "Thallium bromide chloride (KRS-6)",
+   "registered_in": "0.17.0"
+  },
+  "alloys:Mg-LiTaO3@CLT-8mol": {
+   "id": 413,
+   "name": "Lithium tantalate, congruent, 8 mol% Mg",
+   "registered_in": "0.17.0"
+  },
+  "alloys:MgO-LiNbO3@CLN-5mol": {
+   "id": 414,
+   "name": "Lithium niobate, congruent, 5 mol% MgO",
+   "registered_in": "0.17.0"
+  },
+  "alloys:MgO-LiNbO3@SLN-1mol": {
+   "id": 415,
+   "name": "Lithium niobate, stoichiometric, 1 mol% MgO",
+   "registered_in": "0.17.0"
+  },
+  "alloys:SiGe@x0.11": {
+   "id": 416,
+   "name": "Silicon-germanium Si0.11Ge0.89",
+   "registered_in": "0.17.0"
+  },
+  "alloys:SiGe@x0.2": {
+   "id": 417,
+   "name": "Silicon-germanium Si0.2Ge0.8",
+   "registered_in": "0.17.0"
+  },
+  "alloys:SiGe@x0.28": {
+   "id": 418,
+   "name": "Silicon-germanium Si0.28Ge0.72",
+   "registered_in": "0.17.0"
+  },
+  "alloys:SiGe@x0.47": {
+   "id": 419,
+   "name": "Silicon-germanium Si0.47Ge0.53",
+   "registered_in": "0.17.0"
+  },
+  "alloys:SiGe@x0.48": {
+   "id": 420,
+   "name": "Silicon-germanium Si0.48Ge0.52",
+   "registered_in": "0.17.0"
+  },
+  "alloys:SiGe@x0.65": {
+   "id": 421,
+   "name": "Silicon-germanium Si0.65Ge0.35",
+   "registered_in": "0.17.0"
+  },
+  "alloys:SiGe@x0.85": {
+   "id": 422,
+   "name": "Silicon-germanium Si0.85Ge0.15",
+   "registered_in": "0.17.0"
+  },
+  "alloys:SiGe@x0.98": {
+   "id": 423,
+   "name": "Silicon-germanium Si0.98Ge0.02",
+   "registered_in": "0.17.0"
+  },
+  "alloys:SiOx@x0.31": {
+   "id": 424,
+   "name": "Silicon suboxide SiO0.31",
+   "registered_in": "0.17.0"
+  },
+  "alloys:SiOx@x0.61": {
+   "id": 425,
+   "name": "Silicon suboxide SiO0.61",
+   "registered_in": "0.17.0"
+  },
+  "alloys:SiOx@x1.10": {
+   "id": 426,
+   "name": "Silicon suboxide SiO1.10",
+   "registered_in": "0.17.0"
+  },
+  "alloys:SiOx@x1.71": {
+   "id": 427,
+   "name": "Silicon suboxide SiO1.71",
+   "registered_in": "0.17.0"
+  },
+  "alloys:SiOx@x1.89": {
+   "id": 428,
+   "name": "Silicon suboxide SiO1.89",
+   "registered_in": "0.17.0"
+  },
+  "alloys:SiOx@x1.92": {
+   "id": 429,
+   "name": "Silicon suboxide SiO1.92",
+   "registered_in": "0.17.0"
+  },
+  "alloys:YSH@9.8mol": {
+   "id": 430,
+   "name": "Yttria-stabilized hafnia (9.8 mol% Y2O3)",
+   "registered_in": "0.17.0"
+  },
+  "alloys:YSZ@12mol": {
+   "id": 431,
+   "name": "Yttria-stabilized zirconia (12 mol% Y2O3)",
+   "registered_in": "0.17.0"
+  },
+  "alloys:ZnCdO@x0.1": {
+   "id": 432,
+   "name": "Zinc cadmium oxide Zn0.1Cd0.9O",
+   "registered_in": "0.17.0"
+  },
+  "alloys:ZnCdO@x0.25": {
+   "id": 433,
+   "name": "Zinc cadmium oxide Zn0.25Cd0.75O",
+   "registered_in": "0.17.0"
+  },
+  "alloys:ZnCdO@x0.4": {
+   "id": 434,
+   "name": "Zinc cadmium oxide Zn0.4Cd0.6O",
+   "registered_in": "0.17.0"
+  },
+  "alloys:ZnCdO@x0.5": {
+   "id": 435,
+   "name": "Zinc cadmium oxide Zn0.5Cd0.5O",
+   "registered_in": "0.17.0"
+  },
+  "alloys:ZnCdO@x0.63": {
+   "id": 436,
+   "name": "Zinc cadmium oxide Zn0.63Cd0.37O",
+   "registered_in": "0.17.0"
+  },
+  "alloys:ZnCdO@x0.75": {
+   "id": 437,
+   "name": "Zinc cadmium oxide Zn0.75Cd0.25O",
+   "registered_in": "0.17.0"
+  },
+  "alloys:ZnCdO@x0.9": {
+   "id": 438,
+   "name": "Zinc cadmium oxide Zn0.9Cd0.1O",
+   "registered_in": "0.17.0"
+  },
+  "perovskites:CsPbX3@CsPbBr1.3Cl1.7": {
+   "id": 439,
+   "name": "Cesium lead bromide chloride CsPbBr1.3Cl1.7",
+   "registered_in": "0.17.0"
+  },
+  "perovskites:CsPbX3@CsPbBr1.8Cl1.2": {
+   "id": 440,
+   "name": "Cesium lead bromide chloride CsPbBr1.8Cl1.2",
+   "registered_in": "0.17.0"
+  },
+  "perovskites:CsPbX3@CsPbBr3": {
+   "id": 441,
+   "name": "Cesium lead bromide (CsPbBr3)",
+   "registered_in": "0.17.0"
+  },
+  "perovskites:CsPbX3@CsPbCl3": {
+   "id": 442,
+   "name": "Cesium lead chloride (CsPbCl3)",
+   "registered_in": "0.17.0"
+  },
+  "perovskites:MAPbX3@MAPbBr3": {
+   "id": 443,
+   "name": "Methylammonium lead bromide (MAPbBr3)",
+   "registered_in": "0.17.0"
+  },
+  "perovskites:MAPbX3@MAPbI3": {
+   "id": 444,
+   "name": "Methylammonium lead iodide (MAPbI3)",
+   "registered_in": "0.17.0"
   }
  }
 }
