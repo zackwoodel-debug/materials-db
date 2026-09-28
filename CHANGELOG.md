@@ -5,6 +5,8 @@ versions follow the release tags. Counts are materials / optical datasets.
 
 ## [Unreleased]
 
+## [0.16.0] - 2026-09-27 (381 / 831)
+
 ### Added
 - Descriptors v2 (in `descriptor_json`; no schema change). Compositional: first ionization energy, electron affinity, molar
   volume, van der Waals radius, valence electrons (all and per s/p/d/f), s/p/d/f block fractions. Molecular: Crippen molar
