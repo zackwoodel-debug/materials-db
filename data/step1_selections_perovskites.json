@@ -310,5 +310,230 @@
     "book": "CsPb_BrCl_3"
    }
   ]
+ },
+ "RP-BA-MA@n1": {
+  "name": "Ruddlesden-Popper 2D perovskite BA2 MA0 Pb1 I4, n = 1",
+  "formula": "C8H24N2Pb1I4",
+  "source": "perovskite_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Song-RP1",
+    "axis": null,
+    "phase": "spin-coated film on glass",
+    "data_path": "other/perovskite/2D HOIP/nk/Song-RP1.yml",
+    "span_um": [
+     0.370914,
+     1.68702
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Two-dimensional (2D) hybrid organic−inorganic perovskite (HOIP) semiconductor. Ruddlesden–Popper (RP) phase. (BA)2(MA)n-1PbnI3n-1,where BA = CH3(CH2)3NH3, MA = CH3NH3, and n determines the thickness of the lead−iodide perovskite layer.n = 1\n",
+    "temperature_c": null,
+    "tag": "Song2021",
+    "dataset_label": "spin-coated film on glass | Song2021",
+    "shelf": "other",
+    "book": "2D_HOIP"
+   }
+  ]
+ },
+ "RP-BA-MA@n2": {
+  "name": "Ruddlesden-Popper 2D perovskite BA2 MA1 Pb2 I7, n = 2",
+  "formula": "C9H30N3Pb2I7",
+  "source": "perovskite_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Song-RP2",
+    "axis": null,
+    "phase": "spin-coated film on glass",
+    "data_path": "other/perovskite/2D HOIP/nk/Song-RP2.yml",
+    "span_um": [
+     0.370914,
+     1.68702
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Two-dimensional (2D) hybrid organic−inorganic perovskite (HOIP) semiconductor. Ruddlesden–Popper (RP) phase. (BA)2(MA)n-1PbnI3n-1,where BA = CH3(CH2)3NH3, MA = CH3NH3, and n determines the thickness of the lead−iodide perovskite layer.n = 2\n",
+    "temperature_c": null,
+    "tag": "Song2021",
+    "dataset_label": "spin-coated film on glass | Song2021",
+    "shelf": "other",
+    "book": "2D_HOIP"
+   }
+  ]
+ },
+ "RP-BA-MA@n3": {
+  "name": "Ruddlesden-Popper 2D perovskite BA2 MA2 Pb3 I10, n = 3",
+  "formula": "C10H36N4Pb3I10",
+  "source": "perovskite_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Song-RP3",
+    "axis": null,
+    "phase": "spin-coated film on glass",
+    "data_path": "other/perovskite/2D HOIP/nk/Song-RP3.yml",
+    "span_um": [
+     0.370914,
+     1.68702
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Two-dimensional (2D) hybrid organic−inorganic perovskite (HOIP) semiconductor. Ruddlesden–Popper (RP) phase. (BA)2(MA)n-1PbnI3n-1,where BA = CH3(CH2)3NH3, MA = CH3NH3, and n determines the thickness of the lead−iodide perovskite layer.n = 3\n",
+    "temperature_c": null,
+    "tag": "Song2021",
+    "dataset_label": "spin-coated film on glass | Song2021",
+    "shelf": "other",
+    "book": "2D_HOIP"
+   }
+  ]
+ },
+ "RP-BA-MA@n4": {
+  "name": "Ruddlesden-Popper 2D perovskite BA2 MA3 Pb4 I13, n = 4",
+  "formula": "C11H42N5Pb4I13",
+  "source": "perovskite_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Song-RP4",
+    "axis": null,
+    "phase": "spin-coated film on glass",
+    "data_path": "other/perovskite/2D HOIP/nk/Song-RP4.yml",
+    "span_um": [
+     0.370914,
+     1.68702
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Two-dimensional (2D) hybrid organic−inorganic perovskite (HOIP) semiconductor. Ruddlesden–Popper (RP) phase. (BA)2(MA)n-1PbnI3n-1,where BA = CH3(CH2)3NH3, MA = CH3NH3, and n determines the thickness of the lead−iodide perovskite layer.n = 4\n",
+    "temperature_c": null,
+    "tag": "Song2021",
+    "dataset_label": "spin-coated film on glass | Song2021",
+    "shelf": "other",
+    "book": "2D_HOIP"
+   }
+  ]
+ },
+ "RP-BA-MA@n5": {
+  "name": "Ruddlesden-Popper 2D perovskite BA2 MA4 Pb5 I16, n = 5",
+  "formula": "C12H48N6Pb5I16",
+  "source": "perovskite_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Song-RP5",
+    "axis": null,
+    "phase": "spin-coated film on glass",
+    "data_path": "other/perovskite/2D HOIP/nk/Song-RP5.yml",
+    "span_um": [
+     0.370914,
+     1.68702
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Two-dimensional (2D) hybrid organic−inorganic perovskite (HOIP) semiconductor. Ruddlesden–Popper (RP) phase. (BA)2(MA)n-1PbnI3n-1,where BA = CH3(CH2)3NH3, MA = CH3NH3, and n determines the thickness of the lead−iodide perovskite layer.n = 5\n",
+    "temperature_c": null,
+    "tag": "Song2021",
+    "dataset_label": "spin-coated film on glass | Song2021",
+    "shelf": "other",
+    "book": "2D_HOIP"
+   }
+  ]
+ },
+ "DJ-4AMP-MA@m1": {
+  "name": "Dion-Jacobson 2D perovskite 4AMP MA0 Pb1 I4, m = 1",
+  "formula": "C6H16N2Pb1I4",
+  "source": "perovskite_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Song-DJ1",
+    "axis": null,
+    "phase": "spin-coated film on glass",
+    "data_path": "other/perovskite/2D HOIP/nk/Song-DJ1.yml",
+    "span_um": [
+     0.370914,
+     1.68702
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Two-dimensional (2D) hybrid organic−inorganic perovskite (HOIP) semiconductor. Dion−Jacobson (DJ) phase. A'(MA)m-1PbmI3m+1,where A' = 4−(aminomethyl)piperidinium (4AMP), MA = CH3NH3, and m determines the thickness of the lead−iodide perovskite layer.m = 1\n",
+    "temperature_c": null,
+    "tag": "Song2021",
+    "dataset_label": "spin-coated film on glass | Song2021",
+    "shelf": "other",
+    "book": "2D_HOIP"
+   }
+  ]
+ },
+ "DJ-4AMP-MA@m2": {
+  "name": "Dion-Jacobson 2D perovskite 4AMP MA1 Pb2 I7, m = 2",
+  "formula": "C7H22N3Pb2I7",
+  "source": "perovskite_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Song-DJ2",
+    "axis": null,
+    "phase": "spin-coated film on glass",
+    "data_path": "other/perovskite/2D HOIP/nk/Song-DJ2.yml",
+    "span_um": [
+     0.370914,
+     1.68702
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Two-dimensional (2D) hybrid organic−inorganic perovskite (HOIP) semiconductor. Dion−Jacobson (DJ) phase. A'(MA)m-1PbmI3m+1,where A' = 4−(aminomethyl)piperidinium (4AMP), MA = CH3NH3, and m determines the thickness of the lead−iodide perovskite layer.m = 2\n",
+    "temperature_c": null,
+    "tag": "Song2021",
+    "dataset_label": "spin-coated film on glass | Song2021",
+    "shelf": "other",
+    "book": "2D_HOIP"
+   }
+  ]
+ },
+ "DJ-4AMP-MA@m3": {
+  "name": "Dion-Jacobson 2D perovskite 4AMP MA2 Pb3 I10, m = 3",
+  "formula": "C8H28N4Pb3I10",
+  "source": "perovskite_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Song-DJ3",
+    "axis": null,
+    "phase": "spin-coated film on glass",
+    "data_path": "other/perovskite/2D HOIP/nk/Song-DJ3.yml",
+    "span_um": [
+     0.370914,
+     1.68702
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Two-dimensional (2D) hybrid organic−inorganic perovskite (HOIP) semiconductor. Dion−Jacobson (DJ) phase. A'(MA)m-1PbmI3m+1,where A' = 4−(aminomethyl)piperidinium (4AMP), MA = CH3NH3, and m determines the thickness of the lead−iodide perovskite layer.m = 3\n",
+    "temperature_c": null,
+    "tag": "Song2021",
+    "dataset_label": "spin-coated film on glass | Song2021",
+    "shelf": "other",
+    "book": "2D_HOIP"
+   }
+  ]
+ },
+ "DJ-4AMP-MA@m4": {
+  "name": "Dion-Jacobson 2D perovskite 4AMP MA3 Pb4 I13, m = 4",
+  "formula": "C9H34N5Pb4I13",
+  "source": "perovskite_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Song-DJ4",
+    "axis": null,
+    "phase": "spin-coated film on glass",
+    "data_path": "other/perovskite/2D HOIP/nk/Song-DJ4.yml",
+    "span_um": [
+     0.370914,
+     1.68702
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Two-dimensional (2D) hybrid organic−inorganic perovskite (HOIP) semiconductor. Dion−Jacobson (DJ) phase. A'(MA)m-1PbmI3m+1,where A' = 4−(aminomethyl)piperidinium (4AMP), MA = CH3NH3, and m determines the thickness of the lead−iodide perovskite layer.m = 4\n",
+    "temperature_c": null,
+    "tag": "Song2021",
+    "dataset_label": "spin-coated film on glass | Song2021",
+    "shelf": "other",
+    "book": "2D_HOIP"
+   }
+  ]
  }
 }

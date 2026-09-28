@@ -153,7 +153,6 @@ OUT_OF_FAMILY = {
     "other/Au-Ag": "deferred: the pages do not say whether % is atomic or by weight, and for Au-Ag the readings differ by up to "
                    "15 at.% (Au50Ag50 by weight is Au0.354Ag0.646); every page is Rioux 2014's analytic model evaluated at a "
                    "composition (fitted to five measured films), not a measurement. The paper was not accessible to check",
-    "other/2D_HOIP": "deferred: the page's Ruddlesden-Popper formula (BA)2(MA)n-1PbnI3n-1 contradicts the standard I3n+1",
     "other/CH3NH3PbI3 Leguy-hydrated": "see the perovskites family (the hydrate is a different compound)",
 }
 # ML splits: a series and its end members are one group (keys of materials in other families)

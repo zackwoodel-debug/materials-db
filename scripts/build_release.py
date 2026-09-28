@@ -503,8 +503,10 @@ calculation overestimates by 30-60%.
   x = 0.92, excluded), SiGe Jellison-48 (comment x = 0.28, CONDITIONS 0.48: 0.48 used), Mg:LiTaO3's '-o' page (comment says
   extraordinary; its coefficients are the ordinary ray). Brass (Querry 1985 ingots, by weight) and permalloy (Ni80Fe20
   target) pages do not say atomic or weight %, but for Cu-Zn and Ni-Fe the two readings differ by < 1 at.%. Deferred: Au-Ag
-  (the readings differ by up to 15 at.%, and its pages are model evaluations) and 2D perovskites (the page's formula
-  contradicts the standard one). Perovskite constants depend strongly on the sample.
+  (the readings differ by up to 15 at.%, and its pages are model evaluations). 2D perovskites (Song 2021: Ruddlesden-Popper
+  (BA)2(MA)n-1PbnI3n+1, n = 1-5, and Dion-Jacobson (4AMP)(MA)m-1PbmI3m+1, m = 1-4, films on glass): the formula follows from
+  charge neutrality of the ions the page names; the page's RP formula 'I3n-1' is a typo (it would leave the crystal +2
+  charged). They are layered and anisotropic, and these are effective film constants. Perovskite constants depend strongly on the sample.
 - Primary dataset (the family tables' n_633 / k_633) in the automatically selected families (halides, chalcogenides,
   liquids, semiconductors): measured data before model fits of the dielectric function, then the widest range covering
   633 nm. A page is a model fit only when its source says so (scripts/dataset_kind.py). A model fit covering 633 nm is primary

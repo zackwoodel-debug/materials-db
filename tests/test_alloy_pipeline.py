@@ -225,3 +225,52 @@ def test_au_ag_stays_deferred_because_the_readings_differ():
     from pymatgen.core import Element
     na, nb = 50 / Element("Au").atomic_mass, 50 / Element("Ag").atomic_mass
     assert abs(na / (na + nb) - 0.5) > 0.1 and not any(k.startswith("AuAg") for k in SEL)
+
+
+# ---------------------------------------------------------------- 2D perovskites (Song 2021)
+
+ORGANIC = {"BA": ("C4H12N", 1), "MA": ("CH6N", 1), "4AMP": ("C6H16N2", 2)}  # the cations the pages name, and their charges
+
+
+def _2d(prefix):
+    return sorted(((int(re.search(r"@[nm](\d)", k).group(1)), k, v) for k, v in SEL.items() if k.startswith(prefix)))
+
+
+@pytest.mark.parametrize("prefix,spacer", [("RP-BA-MA@", ("BA", 2)), ("DJ-4AMP-MA@", ("4AMP", 1))])
+def test_2d_perovskite_formulas_are_charge_neutral(prefix, spacer):
+    """(spacer)(MA)n-1 Pb_n I_x with the page's own ions: x must be 3n+1 (the RP page's 'I3n-1' leaves +2 and is a typo)."""
+    from pymatgen.core import Composition
+    for n, key, v in _2d(prefix):
+        name, count = spacer
+        unit = Composition(ORGANIC[name][0]) * count + Composition(ORGANIC["MA"][0]) * (n - 1) + Composition(f"Pb{n}I{3 * n + 1}")
+        assert Composition(v["formula"]) == unit, key
+        charge = ORGANIC[name][1] * count + (n - 1) + 2 * n - (3 * n + 1)
+        assert charge == 0
+        assert ORGANIC[name][1] * count + (n - 1) + 2 * n - (3 * n - 1) == 2  # the page's RP formula would not be neutral
+    if prefix.startswith("RP"):
+        comment = _text(_yaml(SEL[f"{prefix}n1"]["axes"][0]["data_path"]).get("COMMENTS"))
+        assert "I3n-1" in comment.replace(" ", "")  # the typo is really on the page (recorded in the material note)
+
+
+def _edge_and_n1500(key):
+    fod.WL_MIN_NM, fod.WL_MAX_NM = 0.01, 2_000_000.0
+    wl, n, k, *_ = fod.parse_file(RI / "data" / SEL[key]["axes"][0]["data_path"])
+    return wl[np.where(k >= 0.05)[0].max()], float(np.interp(1500, wl, n))
+
+
+def test_2d_perovskites_are_confined_versions_of_mapbi3():
+    """Quantum and dielectric confinement: every 2D film has a wider gap (bluer absorption edge) and a lower transparent-region
+    index than 3D MAPbI3 (Phillips 2015 film: edge 783 nm, n(1500 nm) 2.24); both approach it as the layers thicken. Dion-Jacobson
+    m = 1..4 is strictly monotone in both; Ruddlesden-Popper is monotone from n = 1 to 2, while n >= 3 films can contain other
+    phases (the material note), so no strict order is asserted there."""
+    fod.WL_MIN_NM, fod.WL_MAX_NM = 0.01, 2_000_000.0
+    ph = next(a for a in SEL["MAPbX3@MAPbI3"]["axes"] if a["tag"] == "Phillips2015")
+    wl, n, k, *_ = fod.parse_file(RI / "data" / ph["data_path"])
+    edge3d, n3d = wl[np.where(k >= 0.05)[0].max()], float(np.interp(1500, wl, n))
+    for prefix in ("RP-BA-MA@", "DJ-4AMP-MA@"):
+        vals = [_edge_and_n1500(key) for _, key, _ in _2d(prefix)]
+        assert all(e < edge3d and n15 < n3d for e, n15 in vals), prefix
+        edges, ns = zip(*vals)
+        assert edges[1] > edges[0] and ns[1] > ns[0], prefix
+        if prefix.startswith("DJ"):
+            assert all(b > a for a, b in zip(edges, edges[1:])) and all(b > a for a, b in zip(ns, ns[1:]))

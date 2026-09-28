@@ -47,7 +47,8 @@ SERIES_NO_FORMULA = SERIES[SERIES.formula.isna()]  # doped crystals / TCOs whose
 _frac = lambda f: bool(re.search(r"\d\.\d", f))  # noqa: E731
 _has_carbon = lambda f: "C" in re.findall(r"[A-Z][a-z]?", f)  # noqa: E731  (the element, not the C of Cd, Cs, Cl)
 SOLID_SOLUTIONS = SERIES[SERIES.formula.notna() & SERIES.formula.fillna("").map(_frac) & ~SERIES.formula.fillna("").map(_has_carbon)]
-HYBRID_PEROVSKITES = SERIES[SERIES.formula.fillna("").str.contains("CH3NH3")]
+HYBRID_PEROVSKITES = SERIES[SERIES.formula.fillna("").map(_has_carbon)]  # an organic cation: MAPbX3 and the 2D perovskites
+
 
 
 @pytest.fixture(scope="module")
@@ -78,7 +79,7 @@ def descriptors(release):
 def test_every_family_material_is_in_the_release_once_and_nothing_else_is(release):
     names = [n for (n,) in q(release, "SELECT name FROM materials")]
     expected = set(br.family_rows())
-    assert len(names) == len(set(names)) == len(expected) == N_MATERIALS == 448 and set(names) == expected
+    assert len(names) == len(set(names)) == len(expected) == N_MATERIALS == 457 and set(names) == expected
     assert not set(BENCHMARK_ONLY) & set(names)  # the legacy benchmark rows are not merged
 
 

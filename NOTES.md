@@ -203,7 +203,12 @@ Generic loader: scripts/load_family_db.py (--family/--catalog/--selections/--db/
    Jellison-48, Mg:LiTaO3 -o page, Ferrini-0 'GaAs'). PubChem: MAPbI3, CsPbBr3 found; MAPbBr3, CsPbCl3 not found under any
    common name (identity from the formula). Descriptors: material_kind 'solid solution' / 'hybrid organic-inorganic
    perovskite' / 'doped crystal or conducting oxide'; no oxidation-state guess for fractional formulas (pymatgen needs integers).
-   DEFERRED (needs a decision): Au-Ag, 2D HOIPs (page formula I3n-1 vs standard I3n+1), PEDOT:PSS / P3HT:PCBM blends.
+   DEFERRED (needs a decision): Au-Ag, PEDOT:PSS / P3HT:PCBM blends.
+   2026-09-27: 2D HOIPs LOADED (ids 449-457): formula from charge neutrality of the page's own ions (BA+, MA+, 4AMP2+, Pb2+, I-)
+   -> RP I3n+1 (the page's I3n-1 leaves +2: typo), DJ I3m+1 (as written). Physics checks (tests): every 2D film has a wider gap
+   and lower n(1500 nm) than 3D MAPbI3; DJ edge 2.31 -> 1.84 eV and n(1500) 2.02 -> 2.11 strictly monotone; RP n = 3 edge
+   (1.80 eV) below n = 4 (1.86): an absorption tail from 633 nm, consistent with mixed phases in n >= 3 RP films -- no strict RP
+   order asserted. n(633) itself is NOT monotone (the edge crosses 633 nm between n = 3 and 4: Kramers-Kronig, not an error).
    2026-09-27 (user: "1"): brass + permalloy LOADED (ids 445-448): % basis unstated, but at% vs wt% differ by < 1 at.% for
    Cu-Zn (<= 0.6) and Ni-Fe (0.8) -- brass converted from wt% (ingots are specified by weight), permalloy Ni0.8Fe0.2 (target
    notation). Au-Ag still deferred: readings differ by up to 14.6 at.% (Au50Ag50), and every Rioux page is the analytic model
