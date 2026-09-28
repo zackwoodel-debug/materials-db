@@ -5,6 +5,10 @@ versions follow the release tags. Counts are materials / optical datasets.
 
 ## [Unreleased]
 
+### Added
+- Brass (90, 85 and 70 wt% Cu; Querry 1985) and permalloy Ni80Fe20 (four film variants; Tikuisis 2017). Their pages do not say
+  atomic or weight %, but for Cu-Zn and Ni-Fe the readings differ by < 1 at.%. Au-Ag stays deferred (up to 15 at.%).
+
 ## [0.17.0] - 2026-09-27 (444 / 917)
 
 ### Added

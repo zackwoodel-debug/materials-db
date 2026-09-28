@@ -1,7 +1,7 @@
 {
  "description": "Permanent material ids (scripts/material_registry.py). Never edit an id; never reuse one.",
  "seeded_from": "materials-db v0.13.0",
- "next_id": 445,
+ "next_id": 449,
  "materials": {
   "oxides_50:Al2O3@corundum/sapphire": {
    "id": 1,
@@ -2222,6 +2222,26 @@
    "id": 444,
    "name": "Methylammonium lead iodide (MAPbI3)",
    "registered_in": "0.17.0"
+  },
+  "alloys:CuZn@Cu70": {
+   "id": 445,
+   "name": "Brass, 70 wt% Cu",
+   "registered_in": "0.18.0"
+  },
+  "alloys:CuZn@Cu85": {
+   "id": 446,
+   "name": "Brass, 85 wt% Cu",
+   "registered_in": "0.18.0"
+  },
+  "alloys:CuZn@Cu90": {
+   "id": 447,
+   "name": "Brass, 90 wt% Cu",
+   "registered_in": "0.18.0"
+  },
+  "alloys:NiFe@Ni80Fe20": {
+   "id": 448,
+   "name": "Permalloy Ni80Fe20",
+   "registered_in": "0.18.0"
   }
  }
 }

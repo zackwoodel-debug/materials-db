@@ -118,6 +118,18 @@ MATERIALS = [
                  "deposition and carrier density: compare variants only knowingly"),
     _series("AZO", "AZO", "Aluminium-doped zinc oxide (AZO)", None, [_p("Al-ZnO", "Treharne", "sputtered film on soda-lime glass")],
             "transparent conducting oxide", note="approx. 2 wt% Al (the page): formula NULL"),
+    # --- metal alloys. The pages give "% Cu" / "% Ni" without saying atomic or weight; for Cu-Zn and Ni-Fe the two readings differ
+    # by < 1 at.% (near-equal atomic masses), so the formula is safe either way (tests/test_alloy_pipeline.py checks the bound).
+    *[_series("CuZn", f"Cu{w}", f"Brass, {w} wt% Cu", f, [_p("Cu-Zn", f"Querry-Cu{w}Zn{100 - w}", "ingot")], "metal alloy",
+              note=f"Querry 1985 'brass ingot ({w} Cu/{100 - w} Zn)': brass is specified by weight, converted to the atomic formula {f} "
+                   "(read as atomic % instead it would differ by < 0.7 at.%)")
+      for w, f in ((90, "Cu0.9026Zn0.0974"), (85, "Cu0.8536Zn0.1464"), (70, "Cu0.706Zn0.294"))],
+    _series("NiFe", "Ni80Fe20", "Permalloy Ni80Fe20", "Ni0.8Fe0.2",
+            [_p("Ni-Fe", "Tikuisis_bare150nm", "150 nm film, bare (2.3 nm oxide)"), _p("Ni-Fe", "Tikuisis_gold150nm", "150 nm film, 3 nm Au cap"),
+             _p("Ni-Fe", "Tikuisis_bare10nm", "10 nm film, bare (4 nm oxide)"), _p("Ni-Fe", "Tikuisis_gold10nm", "10 nm film, 3 nm Au cap")],
+            "metal alloy", note="ion-beam sputtered from a Ni80Fe20 target (Tikuisis 2017): the nominal target composition, not a measured "
+                                "film composition; read as weight % it would be Ni0.792Fe0.208 (0.8 at.% apart). The 10 nm films' "
+                                "constants are effective values of a thin film: compare the 150 nm variants with bulk"),
     *[_series("AlON", f"N{n}", f"Aluminium oxynitride (ALON), {n} at.% N", None, [_p("AlN-Al2O3", f"Hartnett-{n}")], "oxynitride ceramic",
               note=f"{n} at.% nitrogen (the page): formula NULL (Al:O not stated)")
       for n in ("5.88", "6.53", "6.69", "7.17")],
@@ -138,8 +150,9 @@ EXCLUDED_PAGES = {
     (_O, "Al-ZnO", "Shkondin"): "AZO nanopillars: an effective medium of a nanostructure, not the material",
 }
 OUT_OF_FAMILY = {
-    "other/Au-Ag, Cu-Zn, Ni-Fe": "deferred: the pages do not say whether % is atomic or by weight (for Au-Ag a ~2x difference in "
-                                 "formula), and Rioux 2014's eight intermediate Au-Ag compositions are model interpolations",
+    "other/Au-Ag": "deferred: the pages do not say whether % is atomic or by weight, and for Au-Ag the readings differ by up to "
+                   "15 at.% (Au50Ag50 by weight is Au0.354Ag0.646); every page is Rioux 2014's analytic model evaluated at a "
+                   "composition (fitted to five measured films), not a measurement. The paper was not accessible to check",
     "other/2D_HOIP": "deferred: the page's Ruddlesden-Popper formula (BA)2(MA)n-1PbnI3n-1 contradicts the standard I3n+1",
     "other/CH3NH3PbI3 Leguy-hydrated": "see the perovskites family (the hydrate is a different compound)",
 }
@@ -151,5 +164,6 @@ SERIES_END_MEMBERS = {
     "ZnCdO": ["oxides_50:ZnO@wurtzite"], "SiOx": ["oxides_50:SiO@amorphous", "oxides_50:SiO2@amorphous"],
     "KRS": ["halides:TlBr", "halides:TlCl"], "YSZ": [], "YSH": ["oxides_50:HfO2"],
     "MgO-LiNbO3": ["oxides_50:LiNbO3"], "Mg-LiTaO3": ["inorganic3:LiTaO3"], "ITO": [], "AZO": ["oxides_50:ZnO@wurtzite"],
-    "AlON": [], "AgGaInS2": [],
+    "AlON": [], "AgGaInS2": [], "CuZn": ["pure_elements_50:Cu@fcc", "pure_elements_50:Zn@hcp"],
+    "NiFe": ["pure_elements_50:Ni@fcc", "pure_elements_50:Fe@bcc (alpha-Fe)"],
 }

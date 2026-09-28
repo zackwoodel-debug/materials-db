@@ -1576,6 +1576,160 @@
    }
   ]
  },
+ "CuZn@Cu90": {
+  "name": "Brass, 90 wt% Cu",
+  "formula": "Cu0.9026Zn0.0974",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Querry-Cu90Zn10",
+    "axis": null,
+    "phase": "ingot",
+    "data_path": "other/alloys/Cu-Zn/nk/Querry-Cu90Zn10.yml",
+    "span_um": [
+     0.21,
+     55.5556
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "90% Cu, 10% Zn.\n",
+    "temperature_c": null,
+    "tag": "Querry1985",
+    "dataset_label": "ingot | Querry1985",
+    "shelf": "other",
+    "book": "Cu-Zn"
+   }
+  ]
+ },
+ "CuZn@Cu85": {
+  "name": "Brass, 85 wt% Cu",
+  "formula": "Cu0.8536Zn0.1464",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Querry-Cu85Zn15",
+    "axis": null,
+    "phase": "ingot",
+    "data_path": "other/alloys/Cu-Zn/nk/Querry-Cu85Zn15.yml",
+    "span_um": [
+     0.21,
+     55.5556
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "85% Cu, 15% Zn.\n",
+    "temperature_c": null,
+    "tag": "Querry1985",
+    "dataset_label": "ingot | Querry1985",
+    "shelf": "other",
+    "book": "Cu-Zn"
+   }
+  ]
+ },
+ "CuZn@Cu70": {
+  "name": "Brass, 70 wt% Cu",
+  "formula": "Cu0.706Zn0.294",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Querry-Cu70Zn30",
+    "axis": null,
+    "phase": "ingot",
+    "data_path": "other/alloys/Cu-Zn/nk/Querry-Cu70Zn30.yml",
+    "span_um": [
+     0.21,
+     55.5556
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "70% Cu, 30% Zn.\n",
+    "temperature_c": null,
+    "tag": "Querry1985",
+    "dataset_label": "ingot | Querry1985",
+    "shelf": "other",
+    "book": "Cu-Zn"
+   }
+  ]
+ },
+ "NiFe@Ni80Fe20": {
+  "name": "Permalloy Ni80Fe20",
+  "formula": "Ni0.8Fe0.2",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Tikuisis_bare150nm",
+    "axis": null,
+    "phase": "150 nm film, bare (2.3 nm oxide)",
+    "data_path": "other/alloys/Ni-Fe/nk/Tikuisis_bare150nm.yml",
+    "span_um": [
+     0.193,
+     1.69
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "150 nm thick bare Permalloy (80% nickel, 20% iron) film with 2.3 nm oxide layer on top. Room temperature. Obtained by multi-angle spectroscopic ellipsometry.\n",
+    "temperature_c": null,
+    "tag": "Tikuisis2017",
+    "dataset_label": "150 nm film, bare (2.3 nm oxide) | Tikuisis2017",
+    "shelf": "other",
+    "book": "Ni-Fe"
+   },
+   {
+    "page": "Tikuisis_gold150nm",
+    "axis": null,
+    "phase": "150 nm film, 3 nm Au cap",
+    "data_path": "other/alloys/Ni-Fe/nk/Tikuisis_gold150nm.yml",
+    "span_um": [
+     0.193,
+     1.69
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "150 nm thick Permalloy (80% nickel, 20% iron) film with 3 nm protective gold layer on top. Room temperature. Obtained by multi-angle spectroscopic ellipsometry.\n",
+    "temperature_c": null,
+    "tag": "Tikuisis2017",
+    "dataset_label": "150 nm film, 3 nm Au cap | Tikuisis2017",
+    "shelf": "other",
+    "book": "Ni-Fe"
+   },
+   {
+    "page": "Tikuisis_bare10nm",
+    "axis": null,
+    "phase": "10 nm film, bare (4 nm oxide)",
+    "data_path": "other/alloys/Ni-Fe/nk/Tikuisis_bare10nm.yml",
+    "span_um": [
+     0.193,
+     1.69
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "10 nm thick bare Permalloy (80% nickel, 20% iron) film with 4 nm oxide layer on top. Room temperature. Obtained by multi-angle spectroscopic ellipsometry.\n",
+    "temperature_c": null,
+    "tag": "Tikuisis2017",
+    "dataset_label": "10 nm film, bare (4 nm oxide) | Tikuisis2017",
+    "shelf": "other",
+    "book": "Ni-Fe"
+   },
+   {
+    "page": "Tikuisis_gold10nm",
+    "axis": null,
+    "phase": "10 nm film, 3 nm Au cap",
+    "data_path": "other/alloys/Ni-Fe/nk/Tikuisis_gold10nm.yml",
+    "span_um": [
+     0.193,
+     1.69
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "10 nm thick Permalloy (80% nickel, 20% iron) film with protective 3 nm thick gold layer on top. Room temperature. Obtained by multi-angle spectroscopic ellipsometry.\n",
+    "temperature_c": null,
+    "tag": "Tikuisis2017",
+    "dataset_label": "10 nm film, 3 nm Au cap | Tikuisis2017",
+    "shelf": "other",
+    "book": "Ni-Fe"
+   }
+  ]
+ },
  "AlON@N5.88": {
   "name": "Aluminium oxynitride (ALON), 5.88 at.% N",
   "formula": null,
