@@ -38,8 +38,24 @@ def other_families_data_paths():
     return paths
 
 
+def other_families_excluded_pages():
+    """{(shelf, book, page): reason} of every page another family excluded on review (its *_gaps.csv, gap_kind excluded_page)."""
+    import pandas as pd
+    out = {}
+    for f in sorted((_ROOT / "data").glob("*_gaps.csv")):
+        if f.name == "glass_catalog_gaps.csv":
+            continue
+        g = pd.read_csv(f)
+        if {"key", "gap_kind", "reason"} <= set(g.columns):
+            for key, reason in g.loc[g.gap_kind == "excluded_page", ["key", "reason"]].values:
+                parts = str(key).split("/")
+                if len(parts) == 3:
+                    out[tuple(parts)] = reason
+    return out
+
+
 def main():
-    mats, skipped = materials(other_families_data_paths())
+    mats, skipped = materials(other_families_data_paths(), other_families_excluded_pages())
     excluded = dict(skipped)
     out_of_family = {f"popular_glass/{book}": "not loaded: its pages are the catalog pages themselves (the same data files); used as "
                                                "the list of cross-maker equivalents for the ML splits" for book in popular_equivalents()}
@@ -49,7 +65,7 @@ def main():
           source_label="glass_catalog_list.py (manufacturer catalog, generated)")
     import pandas as pd  # the pages another family already holds are recorded, not silently dropped
     gaps = pd.read_csv(_ROOT / "data" / "glass_catalog_gaps.csv")
-    extra = pd.DataFrame([dict(key=f"{s}/{b}/{p}", name=p, gap_kind="already_loaded", reason=why) for (s, b, p), why in excluded.items()])
+    extra = pd.DataFrame([dict(key=f"{s}/{b}/{p}", name=p, gap_kind=kind, reason=why) for (s, b, p), (kind, why) in excluded.items()])
     pd.concat([gaps, extra], ignore_index=True).to_csv(_ROOT / "data" / "glass_catalog_gaps.csv", index=False)
 
 

@@ -13,3 +13,6 @@ specs/SCHOTT-misc/B270,B270,already_loaded,already a material of another family 
 specs/SCHOTT-misc/AF32ECO,AF32ECO,already_loaded,already a material of another family (same data file)
 specs/SCHOTT-misc/D263TECO,D263TECO,already_loaded,already a material of another family (same data file)
 specs/SCHOTT-misc/BOROFLOAT33,BOROFLOAT33,already_loaded,already a material of another family (same data file)
+specs/SCHOTT-misc/DURAN,DURAN,excluded_page,"excluded by another family on review: one refractive-index point only (n = 1.473 at 587.6 nm) plus k digitised from a transmission figure: no dispersion. Its PROPERTIES say nd = 1.527, contradicting its own n; the page itself says to use BOROFLOAT 33's data (loaded)"
+specs/SCHOTT-misc/LITHOSIL-Q,LITHOSIL-Q,excluded_page,excluded by another family on review: obsolete fused silica grade; fused silica is the amorphous dataset of SiO2
+specs/SCHOTT-misc/LITHOTEC-CAF2,LITHOTEC-CAF2,excluded_page,excluded by another family on review: obsolete CaF2 crystal grade; CaF2 is already a material

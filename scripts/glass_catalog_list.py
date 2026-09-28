@@ -76,8 +76,11 @@ def extras(props, comments):
                 catalog_comment=comment)
 
 
-def materials(already_loaded):
-    """One entry per catalog glass not loaded by another family. already_loaded: data paths of every other family."""
+def materials(already_loaded, excluded_elsewhere=None):
+    """One entry per catalog glass that no other family loads OR EXCLUDED. already_loaded: data paths of every other family;
+    excluded_elsewhere: {(shelf, book, page): reason} of pages another family excluded on review (e.g. SCHOTT DURAN, one
+    inconsistent point: the glasses family's decision stands). Returns (materials, {page: (gap_kind, reason)})."""
+    excluded_elsewhere = excluded_elsewhere or {}
     out, skipped, seen = [], {}, set()
     for book in BOOKS:
         maker = book.split("-")[0]
@@ -86,7 +89,11 @@ def materials(already_loaded):
                 continue
             seen.add(p["data"])
             if p["data"] in already_loaded:
-                skipped[("specs", book, p["PAGE"])] = "already a material of another family (same data file)"
+                skipped[("specs", book, p["PAGE"])] = ("already_loaded", "already a material of another family (same data file)")
+                continue
+            if ("specs", book, p["PAGE"]) in excluded_elsewhere:
+                skipped[("specs", book, p["PAGE"])] = ("excluded_page", "excluded by another family on review: "
+                                                       + excluded_elsewhere[("specs", book, p["PAGE"])])
                 continue
             d = page_yaml(p["data"])
             props = d.get("PROPERTIES") or {}

@@ -234,3 +234,11 @@ Generic loader: scripts/load_family_db.py (--family/--catalog/--selections/--db/
     have a datasheet code of the base glass but post-moulding nd/Vd: glass_code_from_nd kept, splits union both codes.
     Splits: 759 classes; a class with a glasses-family datasheet glass is anchored to it (BK7 class -> glasses:N-BK7).
     COST: 2,132 materials, 1.75 M optical rows, sqlite 315 MB, full build ~10 min (was 2.5), test_release_build much slower.
+
+35. DONE (2026-09-28): v0.20.0 regression found by scripts/analyze_db.py (a 1-point "spectrum"): glass catalogs re-admitted
+    SCHOTT DURAN, LITHOSIL-Q, LITHOTEC-CAF2, which data/glass_gaps.csv excluded on review. build_glass_catalogs_csv now reads
+    every family's *_gaps.csv excluded_page rows (gap_kind excluded_page in glass_catalog_gaps.csv, reason quoted). Registry:
+    the three keep ids 1798-1800 with retired_in 0.20.1 + retired_reason (test: registry = current keys + marked-retired keys).
+    Splits: glass classes are now built over the WHOLE catalog from each page's own PROPERTIES (not the repo CSV), so a class
+    never depends on which glasses a release holds; reproduces the committed v0.20.0 splits exactly.
+
