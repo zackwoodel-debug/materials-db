@@ -56,6 +56,71 @@ PRODUCT_LINES = {
 
 
 SERIES_FAMILIES = ("alloys", "perovskites")
+GLASS_CATALOG_FAMILY = "glass_catalogs"
+
+
+def glass_classes(keys):
+    """Optical-equivalence classes of catalog glasses (v0.20.0): the same 6-digit glass code (nd, Vd), or listed together on one of
+    refractiveindex.info's popular_glass pages (its own cross-maker equivalents: N-BK7 ~ S-BSL7 ~ H-K9L ~ ...). A class that
+    contains one of the glasses family's datasheet glasses (N-BK7, B 270, ...) is anchored to that material (it never moves).
+    Returns {catalog key: ('anchor', legacy key) | ('class', class id)}."""
+    sys.path.insert(0, str(_ROOT / "scripts"))
+    import yaml
+    from glass_catalog_list import RI, glass_code, popular_equivalents
+    cat = pd.read_csv(_ROOT / "data" / "glass_catalogs.csv", dtype={"glass_code": str, "glass_code_from_nd": str})
+    code = {f"{GLASS_CATALOG_FAMILY}:{k}": (c.split(".")[0] if isinstance(c, str) else None) for k, c in zip(cat.selection_key, cat.glass_code)}
+    # a moulding grade also carries the code of its own (post-moulding) nd / Vd: it joins both classes
+    code_nd = {f"{GLASS_CATALOG_FAMILY}:{k}": c for k, c in zip(cat.selection_key, cat.glass_code_from_nd) if isinstance(c, str)}
+    by_path = {}
+    for fam, fname in ((GLASS_CATALOG_FAMILY, "step1_selections_glass_catalogs.json"), ("glasses", "step1_selections_glasses.json")):
+        for k, v in json.loads((_ROOT / "data" / fname).read_text()).items():
+            for a in v["axes"]:
+                by_path[a["data_path"]] = f"{fam}:{k}"
+    legacy_code = {}
+    for path, key in by_path.items():
+        if key.startswith("glasses:"):
+            c = glass_code((yaml.safe_load(open(RI / "data" / path)).get("PROPERTIES") or {}))
+            if c:
+                legacy_code[key] = c
+    parent = {}
+
+    def find(x):
+        parent.setdefault(x, x)
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+
+    def union(a, b):
+        ra, rb = find(a), find(b)
+        if ra != rb:
+            parent[max(ra, rb)] = min(ra, rb)
+
+    for k, c in code.items():
+        find(k)
+        if c:
+            union(k, f"code:{c}")
+        if k in code_nd:
+            union(k, f"code:{code_nd[k]}")
+    for k, c in legacy_code.items():
+        union(k, f"code:{c}")
+    for paths in popular_equivalents().values():
+        members = [by_path[p] for p in paths if p in by_path]
+        for m in members[1:]:
+            union(members[0], m)
+    comps = {}
+    for x in list(parent):
+        comps.setdefault(find(x), []).append(x)
+    out = {}
+    for members in comps.values():
+        legacy = sorted(m for m in members if m.startswith("glasses:"))
+        codes = sorted(m[5:] for m in members if m.startswith("code:"))
+        cid = ("anchor", legacy[0]) if legacy else ("class", "glass:" + ("+".join(codes) if codes else
+                                                                          sorted(m for m in members if m.startswith(GLASS_CATALOG_FAMILY))[0]))
+        for m in members:
+            if m.startswith(GLASS_CATALOG_FAMILY + ":") and m in keys:
+                out[m] = cid
+    return out
 
 
 def series_end_members():
@@ -92,6 +157,7 @@ def assign(df, strict=True):
         base[r.meta_key] = (f"line:{line_of[r.meta_key]}" if r.meta_key in line_of else f"comp:{ck}" if ck else f"key:{r.meta_key}")
     ends = series_end_members()
     family_of = dict(zip(df.meta_key, df.meta_family))
+    glass = glass_classes(set(df.meta_key)) if (df.meta_family == GLASS_CATALOG_FAMILY).any() else {}
 
     def final_group(key, seen=()):
         """A series member takes its first present end member's FINAL group: when that end member is itself a series member
@@ -116,6 +182,9 @@ def assign(df, strict=True):
             gid = f"comp:{ck}" if ck else f"key:{r.meta_key}"
         if r.meta_family in SERIES_FAMILIES:
             gid = final_group(r.meta_key)
+        elif r.meta_family == GLASS_CATALOG_FAMILY:
+            kind, ref = glass[r.meta_key]
+            gid = base[ref] if kind == "anchor" and ref in base else (f"key:{ref}" if kind == "anchor" else ref)
         rows.append(dict(material_id=r.material_id, meta_key=r.meta_key, meta_name=r.meta_name, meta_family=r.meta_family, group=gid,
                          split=SPLITS[_hash(gid, "split") % 10], fold=_hash(gid, "fold") % N_FOLDS))
     return pd.DataFrame(rows).sort_values("material_id").reset_index(drop=True)

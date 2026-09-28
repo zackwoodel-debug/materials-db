@@ -1,0 +1,15 @@
+key,name,gap_kind,reason
+popular_glass/BK7,popular_glass/BK7,out_of_family,not loaded: its pages are the catalog pages themselves (the same data files); used as the list of cross-maker equivalents for the ML splits
+popular_glass/BAF10,popular_glass/BAF10,out_of_family,not loaded: its pages are the catalog pages themselves (the same data files); used as the list of cross-maker equivalents for the ML splits
+popular_glass/BAK1,popular_glass/BAK1,out_of_family,not loaded: its pages are the catalog pages themselves (the same data files); used as the list of cross-maker equivalents for the ML splits
+popular_glass/FK51A,popular_glass/FK51A,out_of_family,not loaded: its pages are the catalog pages themselves (the same data files); used as the list of cross-maker equivalents for the ML splits
+popular_glass/LASF9,popular_glass/LASF9,out_of_family,not loaded: its pages are the catalog pages themselves (the same data files); used as the list of cross-maker equivalents for the ML splits
+popular_glass/SF5,popular_glass/SF5,out_of_family,not loaded: its pages are the catalog pages themselves (the same data files); used as the list of cross-maker equivalents for the ML splits
+popular_glass/SF10,popular_glass/SF10,out_of_family,not loaded: its pages are the catalog pages themselves (the same data files); used as the list of cross-maker equivalents for the ML splits
+popular_glass/SF11,popular_glass/SF11,out_of_family,not loaded: its pages are the catalog pages themselves (the same data files); used as the list of cross-maker equivalents for the ML splits
+specs/SCHOTT-optical/N-BK7,N-BK7,already_loaded,already a material of another family (same data file)
+specs/SCHOTT-misc/ZERODUR,ZERODUR,already_loaded,already a material of another family (same data file)
+specs/SCHOTT-misc/B270,B270,already_loaded,already a material of another family (same data file)
+specs/SCHOTT-misc/AF32ECO,AF32ECO,already_loaded,already a material of another family (same data file)
+specs/SCHOTT-misc/D263TECO,D263TECO,already_loaded,already a material of another family (same data file)
+specs/SCHOTT-misc/BOROFLOAT33,BOROFLOAT33,already_loaded,already a material of another family (same data file)

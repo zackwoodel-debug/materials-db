@@ -237,7 +237,7 @@ def _structural_scope(density_source, label_words):
 
 
 MOLECULAR_FAMILIES = {"liquids"}
-GLASS_FAMILIES = {"glasses"}  # multicomponent glasses: no single formula, no crystal structure
+GLASS_FAMILIES = {"glasses", "glass_catalogs"}  # multicomponent glasses: no single formula, no crystal structure
 FORMULATION_FAMILIES = {"optical_media"}  # proprietary liquids / cured resins: no single formula, no crystal structure
 BIO_FAMILIES = {"bio_media"}  # biological fluids, tissues and buffers: mixtures, no formula, no crystal structure
 LC_FAMILIES = {"liquid_crystals"}

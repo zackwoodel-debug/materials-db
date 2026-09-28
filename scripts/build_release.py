@@ -65,8 +65,8 @@ import release_validation as rv  # noqa: E402
 BASE_DB = _ROOT / "data" / "materials_oxide_test.db"
 FAMILY_CSVS = ["oxides_50", "batch2_31", "batch3b_4", "pure_elements_50", "nitrides", "polymers", "inorganic3", "halides",
                "chalcogenides", "liquids", "semiconductors", "inorganic4", "glasses", "optical_media", "liquid_crystals", "bio_media", "gases",
-               "alloys", "perovskites"]
-GAP_CSVS = ["nitride_gaps", "polymer_gaps", "inorganic3_gaps", "halide_gaps", "chalcogenide_gaps", "liquid_gaps", "semiconductor_gaps", "inorganic4_gaps", "glass_gaps", "optical_media_gaps", "liquid_crystal_gaps", "bio_media_gaps", "gas_gaps", "alloy_gaps", "perovskite_gaps"]
+               "alloys", "perovskites", "glass_catalogs"]
+GAP_CSVS = ["nitride_gaps", "polymer_gaps", "inorganic3_gaps", "halide_gaps", "chalcogenide_gaps", "liquid_gaps", "semiconductor_gaps", "inorganic4_gaps", "glass_gaps", "optical_media_gaps", "liquid_crystal_gaps", "bio_media_gaps", "gas_gaps", "alloy_gaps", "perovskite_gaps", "glass_catalog_gaps"]
 DESCRIPTOR_INPUTS = ["mp_structural.json", "polymer_repeat_units.csv", "formula_issues.csv", "source_dois.json", "pubchem_titles.json", "mp_dielectric.json",
                      "mp_structure_extras.json"]
 # Same allow-list as tests/test_family_optical_sanity.py (a test keeps them equal): measurement noise around k = 0 in tabulated sources.
@@ -76,6 +76,8 @@ NEGATIVE_K_ALLOWED = {
     ("Micro resist ma-N 1407 (negative resist)", "Sarkar2019"): -0.03,
     ("Gallium phosphide", "Jellison1992"): -0.003,
     ("Human blood", "whole blood | Rowe2017"): -0.005,
+    ("HIKARI SK2", "HIKARI2017"): -4e-6,  # one tabulated k at 0.7 um (-3.7e-6) in the catalog's own internal-transmittance table
+    ("HIKARI LAK09", "HIKARI2017"): -1.4e-5,  # one tabulated k at 0.7 um (-1.38e-5), likewise
 }
 N_MIN = 1e-3
 BUILD_INPUTS = ["data", "scripts", "src", "DATA_LICENSE.md", "CHANGELOG.md"]  # what the build reads; other files (e.g. NOTES.md) cannot change the release
@@ -91,6 +93,7 @@ def family_jobs():
     import load_bio_media_db as bio
     import load_chalcogenides_db as chl
     import load_gases_db as gas
+    import load_glass_catalogs_db as glc
     import load_glasses_db as gla
     import load_halides_db as hal
     import load_inorganic3_db as i3
@@ -113,7 +116,8 @@ def family_jobs():
             ("bio_media", bio, dict(lit(bio), allow_null_formula=True)),
             ("gas", gas, dict(lit(gas), allow_null_formula=True)),
             ("alloy", aly, dict(lit(aly), allow_null_formula=True)),
-            ("perovskite", prv, dict(lit(prv), allow_null_formula=True))]
+            ("perovskite", prv, dict(lit(prv), allow_null_formula=True)),
+            ("glass_catalog", glc, dict(lit(glc), allow_null_formula=True))]
 
 
 def family_rows():
@@ -343,8 +347,8 @@ def write_readme(path, version, facts, c, mp_version):
 
 Optical constants (n, k), densities, x-ray and neutron scattering length densities, and compositional, structural and
 molecular descriptors for **{n_mat} materials** (inorganic crystals, compound semiconductors, metals, substrate and window
-glasses, polymers, molecular liquids, biomolecules, liquid crystals, biological media, gases, semiconductor and oxide alloys
-and halide perovskites): {c['datasets']} optical datasets and {c['tables']['optical_dispersion']:,} optical
+glasses including 1,675 manufacturer catalog glasses, polymers, molecular liquids, biomolecules, liquid crystals, biological
+media, gases, semiconductor and oxide alloys and halide perovskites): {c['datasets']} optical datasets and {c['tables']['optical_dispersion']:,} optical
 data points. All of it is in one SQLite file, `materials-db-v{version}.sqlite`, and every table is also exported as CSV in `csv/`.
 
 Licence: **CC BY 4.0**. Cite this dataset and the upstream sources listed in `DATA_LICENSE.md` (refractiveindex.info,
@@ -494,6 +498,14 @@ calculation overestimates by 30-60%.
   pressure: the temperature is on every row and the pressure is in the variant label ("gas, 101.325 kPa", "gas, 100 kPa";
   "gas" where the source states none). Argon, krypton and xenon also have liquid and solid datasets at cryogenic
   temperatures, labelled by phase. The primary is always a gas at stated conditions.
+- Glass catalogs: 1,675 manufacturer optical glasses (SCHOTT, OHARA, HIKARI, CDGM, HOYA, SUMITA, LZOS), one material per
+  catalog glass, named by maker ("OHARA S-BSL7"), no formula (compositions are proprietary). n is the maker's Sellmeier-type
+  formula, k its internal-transmittance table, density the datasheet's; the family table adds nd, Vd, glass code, dPgF,
+  thermal expansion and catalog status. The formula reproduces each datasheet's separately stated nd and Vd to the datasheet's
+  rounding (1,622 glasses: nd within 4e-5, Vd within 0.23). Precision-moulding grades (SUMITA '(M)', OHARA '...P') give nd / Vd
+  after moulding but the base glass's code: both codes are kept. HIKARI SK2 and LAK09 each have one negative k in the maker's
+  own table (kept, allow-listed). In the ML splits, optical equivalents share a group across makers (same glass code, or listed
+  together on refractiveindex.info's popular-glass pages); the BK7 class joins N-BK7.
 - Alloys and perovskites: composition series (AlGaAs at 16 compositions, AlGaSb, SiGe, ZnCdO, SiOx), lattice-matched InGaAs,
   GaInP and AgGa0.86In0.14S2, KRS-5 / KRS-6, yttria-stabilized zirconia and hafnia, MgO:LiNbO3, Mg:LiTaO3, ITO, AZO and AlON; and
   MAPbI3, MAPbBr3, CsPbBr3, CsPbCl3 and mixed CsPb(Br,Cl)3. Each composition is its own material with the fractional formula its

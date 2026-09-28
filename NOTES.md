@@ -225,3 +225,12 @@ Generic loader: scripts/load_family_db.py (--family/--catalog/--selections/--db/
   If not, document a schema limitation; do not import.
 - Other 2D candidates: MoS2, WS2, MoSe2, WSe2, black phosphorus. Explicit compounds only, no generic "TMD".
 
+34. DONE (2026-09-28): glass catalogs family (glass_catalog_list.py generates the list from catalog-nk.yml; build via
+    listed_family with an `extra` hook for datasheet columns; load_glass_catalogs_db.py). 1,675 glasses (17 catalog pages are
+    listed twice: loaded once; 6 pages already in the glasses family skipped; popular_glass = aliases of catalog files, used
+    as cross-maker equivalents). Checks: formula vs datasheet nd (<= 3.8e-5) and Vd (<= 0.23) for 1,622 glasses; density ==
+    datasheet; negative k only HIKARI SK2 / LAK09 (one table point each, allow-listed). Glass code: 6 digits, zero-padded
+    (YAML reads 005210 as 5210; nd >= 2 keeps the last three digits); 49 precision-moulding grades (SUMITA (M), OHARA L-...P)
+    have a datasheet code of the base glass but post-moulding nd/Vd: glass_code_from_nd kept, splits union both codes.
+    Splits: 759 classes; a class with a glasses-family datasheet glass is anchored to it (BK7 class -> glasses:N-BK7).
+    COST: 2,132 materials, 1.75 M optical rows, sqlite 315 MB, full build ~10 min (was 2.5), test_release_build much slower.
