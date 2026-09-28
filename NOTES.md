@@ -188,6 +188,13 @@ Generic loader: scripts/load_family_db.py (--family/--catalog/--selections/--db/
    with material_index + every family table, metadata.json from the data dictionary with facets and 5 saved queries). Checked in
    Datasette 0.65.5 (all pages/queries 200; a DELETE is refused). Not published: datasette publish cloudrun/vercel/fly is the
    user's call.
+32. DONE: descriptors v2 (release_descriptors.py SCHEMA_TAG v2; fetch_mp_structure_extras.py -> mp_structure_extras.json, MP
+   2026.04.13, 194/194 entries, 153 with elastic tensors, 0.5 MB, structures kept so tests recompute). Checks: valence = Z - Z(core)
+   for Z 1-94; NIST IE/EA; Crippen MR vs Lorentz-Lorenz of measured n and density, 39 liquids r 0.9992, median 0.9%, max 4.7%
+   (styrene) -- also a cross-check of the stored n and densities; CrystalNN recomputed from cached structures; Poisson ratio
+   consistent with K, G. Oxidation-state guesses are for reading only (GST top guess Ge+4/Sb+1 is wrong; 48 alternatives) and
+   are NOT ML features. generate_ml_release_set emits v2 columns only for v2 releases (a v1 release regenerates identically).
+   Not added: atomic polarizability (needs the mendeleev package), molecular descriptors of crystals, anything derived from n.
 
 ## FOLLOW-UP (logged, NOT started): graphene / 2D carbon as its own family -- materialclass must NOT be 'polymer'
 - RI.info main/C, verified read-only: monolayer graphene = Weber 2010 (0.21-1.0 um, exfoliated flake, 3.4 A, on Si/98 nm SiO2), Song 2018 "Graphene"

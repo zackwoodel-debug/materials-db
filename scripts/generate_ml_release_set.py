@@ -52,7 +52,10 @@ FP_BITS = 512
 FAMILY_ORDER = ["oxides_50", "batch2_31", "batch3b_4", "pure_elements_50", "nitrides", "polymers", "inorganic3", "halides",
                 "chalcogenides", "liquids", "semiconductors", "inorganic4", "glasses", "optical_media",
                 "liquid_crystals", "bio_media", "gases"]
-COMP_PROPS = ["atomic_mass", "atomic_number", "atomic_radius", "electronegativity_pauling", "group", "mendeleev_number", "period"]
+COMP_PROPS_V1 = ["atomic_mass", "atomic_number", "atomic_radius", "electronegativity_pauling", "group", "mendeleev_number", "period"]
+COMP_PROPS_V2 = ["first_ionization_energy", "electron_affinity", "molar_volume", "van_der_waals_radius", "valence_electrons",
+                 "valence_s_electrons", "valence_p_electrons", "valence_d_electrons", "valence_f_electrons"]
+BLOCKS = ["s", "p", "d", "f"]
 COMP_STATS = ["min", "max", "mean", "range", "mean_abs_deviation"]
 COMP_SCALARS = ["n_elements", "atoms_per_formula_unit", "stoichiometry_l2_norm", "stoichiometry_l3_norm"]
 STRUCT_NUMERIC = ["space_group_number", "lattice_a_angstrom", "lattice_b_angstrom", "lattice_c_angstrom", "lattice_alpha_deg",
@@ -60,8 +63,14 @@ STRUCT_NUMERIC = ["space_group_number", "lattice_a_angstrom", "lattice_b_angstro
                   "conventional_cell_sites", "primitive_cell_sites", "formula_units_per_conventional_cell",
                   "volume_per_atom_angstrom3", "formation_energy_ev_per_atom", "energy_above_hull_ev_per_atom", "band_gap_ev"]
 STRUCT_BOOL = ["band_gap_is_direct", "is_metal", "is_magnetic"]
+STRUCT_LOCAL = ["coordination_number_mean", "coordination_number_min", "coordination_number_max", "bond_length_mean_angstrom",
+                "bond_length_min_angstrom", "packing_fraction"]  # structural.local_environment (v2)
+STRUCT_ELASTIC = ["bulk_modulus_vrh_gpa", "shear_modulus_vrh_gpa", "universal_anisotropy", "poisson_ratio"]  # structural.elastic (v2)
 CRYSTAL_SYSTEMS = ["Cubic", "Hexagonal", "Monoclinic", "Orthorhombic", "Tetragonal", "Triclinic", "Trigonal"]
 MOLECULAR_COLS = ["tpsa", "logp", "rotatable_bonds", "hbond_donors", "hbond_acceptors", "aromatic_rings"]
+MOL_EXTENDED = ["molar_refractivity_crippen", "average_mol_weight", "valence_electrons", "fraction_csp3", "heteroatoms", "rings",
+                "aromatic_atom_fraction", "formal_charge", "labute_asa", "bertz_ct", "balaban_j", "kappa1", "kappa2", "kappa3",
+                "chi0v", "chi1v"]  # descriptor_json molecular.extended (v2)
 FORMULA_COLS = ["exact_mass", "heavy_atom_count"]  # defined for any formula unit, molecular or not
 
 
@@ -184,6 +193,7 @@ def build(release_dir):
 
         dj = json.loads(desc.at[mid, "descriptor_json"])
         comp, struct, mol = dj["compositional"], dj["structural"], dj["molecular"]
+        v2 = dj["descriptor_schema"] != "materials-db descriptors v1"  # a v1 release (<= 0.15.0) gives exactly its old columns
         rec = dict(material_id=mid, meta_key=stable_key.get(name), meta_name=name, meta_formula=m["formula"], meta_family=fam,
                    meta_material_class=dj.get("material_class"), meta_material_kind=dj.get("material_kind"),
                    meta_primary_dataset=hit[0], meta_primary_dataset_label=prim["dataset_label"].iloc[0],
@@ -204,9 +214,12 @@ def build(release_dir):
         if rec["has_composition"]:
             for c in COMP_SCALARS:
                 rec[f"feat_comp_{c}"] = float(comp[c])
-            for p in COMP_PROPS:  # a property undefined for an element (e.g. Pauling electronegativity of He, Ne, Ar) stays NaN
+            for p in COMP_PROPS_V1 + (COMP_PROPS_V2 if v2 else []):  # a property undefined for an element (e.g. Pauling electronegativity of He, Ne, Ar) stays NaN
                 for s in COMP_STATS:
                     rec[f"feat_comp_{p}_{s}"] = float(comp[p][s]) if p in comp else np.nan
+            if v2:
+                for b in BLOCKS:
+                    rec[f"feat_comp_block_fraction_{b}"] = float(comp["block_fractions"][b])
             for el, frac in comp["element_fractions"].items():
                 rec[f"feat_frac_{el}"] = float(frac)
 
@@ -220,6 +233,11 @@ def build(release_dir):
                 rec[f"feat_struct_{c}"] = float(struct[c]) if struct.get(c) is not None else np.nan
             for cs in CRYSTAL_SYSTEMS:
                 rec[f"feat_struct_system_{cs.lower()}"] = float(struct["crystal_system"] == cs)
+            loc, ela = struct.get("local_environment") or {}, struct.get("elastic") or {}
+            for c in STRUCT_LOCAL if v2 else []:
+                rec[f"feat_struct_{c}"] = float(loc[c]) if loc.get(c) is not None else np.nan
+            for c in STRUCT_ELASTIC if v2 else []:  # NaN where MP has no elastic tensor for the entry
+                rec[f"feat_struct_{c}"] = float(ela[c]) if ela.get(c) is not None else np.nan
 
         for c in FORMULA_COLS:
             v = desc.at[mid, c]
@@ -229,6 +247,9 @@ def build(release_dir):
         for c in MOLECULAR_COLS:
             v = desc.at[mid, c]
             rec[f"feat_mol_{c}"] = float(v) if pd.notna(v) else np.nan
+        ext = mol.get("extended") or {}
+        for c in MOL_EXTENDED if v2 else []:  # molar refractivity is from structure alone (Crippen atom contributions), never from a measured n
+            rec[f"feat_mol_{c}"] = float(ext[c]) if c in ext else np.nan
         records.append(rec)
         fps.append(fold(fp) if isinstance(fp, str) else np.full(FP_BITS, np.nan))
 
