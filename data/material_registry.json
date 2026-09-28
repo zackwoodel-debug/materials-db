@@ -1,7 +1,7 @@
 {
  "description": "Permanent material ids (scripts/material_registry.py). Never edit an id; never reuse one.",
  "seeded_from": "materials-db v0.13.0",
- "next_id": 449,
+ "next_id": 458,
  "materials": {
   "oxides_50:Al2O3@corundum/sapphire": {
    "id": 1,
@@ -2242,6 +2242,51 @@
    "id": 448,
    "name": "Permalloy Ni80Fe20",
    "registered_in": "0.18.0"
+  },
+  "perovskites:DJ-4AMP-MA@m1": {
+   "id": 449,
+   "name": "Dion-Jacobson 2D perovskite 4AMP MA0 Pb1 I4, m = 1",
+   "registered_in": "0.19.0"
+  },
+  "perovskites:DJ-4AMP-MA@m2": {
+   "id": 450,
+   "name": "Dion-Jacobson 2D perovskite 4AMP MA1 Pb2 I7, m = 2",
+   "registered_in": "0.19.0"
+  },
+  "perovskites:DJ-4AMP-MA@m3": {
+   "id": 451,
+   "name": "Dion-Jacobson 2D perovskite 4AMP MA2 Pb3 I10, m = 3",
+   "registered_in": "0.19.0"
+  },
+  "perovskites:DJ-4AMP-MA@m4": {
+   "id": 452,
+   "name": "Dion-Jacobson 2D perovskite 4AMP MA3 Pb4 I13, m = 4",
+   "registered_in": "0.19.0"
+  },
+  "perovskites:RP-BA-MA@n1": {
+   "id": 453,
+   "name": "Ruddlesden-Popper 2D perovskite BA2 MA0 Pb1 I4, n = 1",
+   "registered_in": "0.19.0"
+  },
+  "perovskites:RP-BA-MA@n2": {
+   "id": 454,
+   "name": "Ruddlesden-Popper 2D perovskite BA2 MA1 Pb2 I7, n = 2",
+   "registered_in": "0.19.0"
+  },
+  "perovskites:RP-BA-MA@n3": {
+   "id": 455,
+   "name": "Ruddlesden-Popper 2D perovskite BA2 MA2 Pb3 I10, n = 3",
+   "registered_in": "0.19.0"
+  },
+  "perovskites:RP-BA-MA@n4": {
+   "id": 456,
+   "name": "Ruddlesden-Popper 2D perovskite BA2 MA3 Pb4 I13, n = 4",
+   "registered_in": "0.19.0"
+  },
+  "perovskites:RP-BA-MA@n5": {
+   "id": 457,
+   "name": "Ruddlesden-Popper 2D perovskite BA2 MA4 Pb5 I16, n = 5",
+   "registered_in": "0.19.0"
   }
  }
 }

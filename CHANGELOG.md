@@ -5,6 +5,11 @@ versions follow the release tags. Counts are materials / optical datasets.
 
 ## [Unreleased]
 
+### Added
+- 2D perovskites (Song 2021, films on glass): Ruddlesden-Popper (BA)2(MA)n-1PbnI3n+1, n = 1-5, and Dion-Jacobson
+  (4AMP)(MA)m-1PbmI3m+1, m = 1-4. Formulas from charge neutrality of the ions the source names (its RP formula 'I3n-1' is a
+  typo). Both series share 3D MAPbI3's ML split group (their n -> infinity limit).
+
 ## [0.18.0] - 2026-09-27 (448 / 924)
 
 ### Added

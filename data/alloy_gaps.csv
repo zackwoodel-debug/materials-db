@@ -11,5 +11,4 @@ other/GaP-InP/Kaneko,Kaneko,excluded_page,"composition not stated (GaInP films o
 other/In2O3-SnO2/Konig-EMA,Konig-EMA,excluded_page,"a 2 nm surface-roughness layer (effective-medium model), not ITO"
 other/Al-ZnO/Shkondin,Shkondin,excluded_page,"AZO nanopillars: an effective medium of a nanostructure, not the material"
 other/Au-Ag,other/Au-Ag,out_of_family,"deferred: the pages do not say whether % is atomic or by weight, and for Au-Ag the readings differ by up to 15 at.% (Au50Ag50 by weight is Au0.354Ag0.646); every page is Rioux 2014's analytic model evaluated at a composition (fitted to five measured films), not a measurement. The paper was not accessible to check"
-other/2D_HOIP,other/2D_HOIP,out_of_family,deferred: the page's Ruddlesden-Popper formula (BA)2(MA)n-1PbnI3n-1 contradicts the standard I3n+1
 other/CH3NH3PbI3 Leguy-hydrated,other/CH3NH3PbI3 Leguy-hydrated,out_of_family,see the perovskites family (the hydrate is a different compound)
