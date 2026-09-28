@@ -66,7 +66,8 @@ BASE_DB = _ROOT / "data" / "materials_oxide_test.db"
 FAMILY_CSVS = ["oxides_50", "batch2_31", "batch3b_4", "pure_elements_50", "nitrides", "polymers", "inorganic3", "halides",
                "chalcogenides", "liquids", "semiconductors", "inorganic4", "glasses", "optical_media", "liquid_crystals", "bio_media", "gases"]
 GAP_CSVS = ["nitride_gaps", "polymer_gaps", "inorganic3_gaps", "halide_gaps", "chalcogenide_gaps", "liquid_gaps", "semiconductor_gaps", "inorganic4_gaps", "glass_gaps", "optical_media_gaps", "liquid_crystal_gaps", "bio_media_gaps", "gas_gaps"]
-DESCRIPTOR_INPUTS = ["mp_structural.json", "polymer_repeat_units.csv", "formula_issues.csv", "source_dois.json", "pubchem_titles.json", "mp_dielectric.json"]
+DESCRIPTOR_INPUTS = ["mp_structural.json", "polymer_repeat_units.csv", "formula_issues.csv", "source_dois.json", "pubchem_titles.json", "mp_dielectric.json",
+                     "mp_structure_extras.json"]
 # Same allow-list as tests/test_family_optical_sanity.py (a test keeps them equal): measurement noise around k = 0 in tabulated sources.
 NEGATIVE_K_ALLOWED = {
     ("Copper(I) oxide", "cuprite | Querry1985"): -0.03,
@@ -369,14 +370,24 @@ Every material has a row, and nothing is guessed or zero-filled. A descriptor th
 is NULL, and `descriptor_json` explains why.
 
 - **compositional** ({cov.get('compositional', 0)}/{n_mat}): element-property statistics of the formula (mean, min, max,
-  range and mean absolute deviation of atomic number, mass, Pauling electronegativity, period, group, Mendeleev number and
-  atomic radius) plus stoichiometric norms. Polymers are described per repeat unit.
+  range and mean absolute deviation of atomic number, mass, Pauling electronegativity, period, group, Mendeleev number,
+  atomic radius, first ionization energy, electron affinity, molar volume, van der Waals radius and valence electrons in all
+  and per s/p/d/f, counted outside the noble-gas core) plus stoichiometric norms and the atom fraction per s/p/d/f block.
+  Polymers are described per repeat unit.
+- **chemistry** (inorganic compounds): Pauling ionic character of the most polar element pair, and pymatgen's most probable
+  charge-balanced oxidation states with the number of alternatives. The oxidation states are a **guess** (Ge2Sb2Te5's top
+  guess is wrong), for reading only; they are not ML features.
 - **structural** ({cov.get('structural', 0)}/{n_mat}): space group, crystal system, conventional-cell lattice parameters, Z,
-  cell volume, DFT density, energy above hull, formation energy and band gap. These come from Materials Project database
-  {mp_version} and are **calculated, not measured**. `applies_to` says whether the entry is the material itself or only a
+  cell volume, DFT density, energy above hull, formation energy and band gap; from the entry's own structure, CrystalNN
+  coordination numbers, nearest-neighbour bond lengths and the atomic-radius packing fraction; and, where MP has an elastic
+  tensor, bulk and shear modulus (Voigt-Reuss-Hill), anisotropy and Poisson ratio. These come from Materials Project database
+  {mp_version} and are **calculated, not measured** (DFT bond lengths run ~1% long, moduli low, as usual for GGA). `applies_to` says whether the entry is the material itself or only a
   crystalline reference for a film or amorphous sample.
 - **molecular** ({cov.get('molecular', 0)}/{n_mat}): RDKit exact mass, TPSA, logP, rotatable bonds, H-bond donors and
-  acceptors, aromatic rings and a Morgan fingerprint (radius 2, 2048 bits). These are computed on molecules (liquids and
+  acceptors, aromatic rings and a Morgan fingerprint (radius 2, 2048 bits); in `descriptor_json` also the Crippen molar
+  refractivity (polarizability from structure alone: it matches the Lorentz-Lorenz molar refraction of the measured n and
+  density of 39 liquids to a median 0.9%), sp3 fraction, valence electrons, ring, heteroatom and aromatic-atom counts, charge
+  and topological indices (Kappa, Chi, Balaban J, Bertz). These are computed on molecules (liquids and
   biomolecules, from PubChem's SMILES) and on polymer repeat units, each checked against the source's formula. They are not computed for inorganic solids, because those are not
   molecules; exact mass and heavy-atom count still come from their formula.
 

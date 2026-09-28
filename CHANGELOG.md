@@ -5,6 +5,13 @@ versions follow the release tags. Counts are materials / optical datasets.
 
 ## [Unreleased]
 
+### Added
+- Descriptors v2 (in `descriptor_json`; no schema change). Compositional: first ionization energy, electron affinity, molar
+  volume, van der Waals radius, valence electrons (all and per s/p/d/f), s/p/d/f block fractions. Molecular: Crippen molar
+  refractivity, sp3 fraction, valence electrons, ring / heteroatom / aromatic-atom counts, charge, topological indices.
+  Chemistry: Pauling ionic character and oxidation-state guesses (labelled as guesses). Structural (194 MP entries): CrystalNN
+  coordination, bond lengths, packing fraction; elastic moduli for 153. The ML feature matrix gains 75 columns.
+
 ## [0.15.0] - 2026-09-27 (381 / 831)
 
 ### Fixed
