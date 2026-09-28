@@ -14,6 +14,10 @@ Groups: materials a model cannot tell apart, or that are grades of one product, 
                                H2O / D2O. Composition features are identical for them, so splitting them apart leaks the target.
   * line:<name>                one product line or one kind of natural material without a formula (PRODUCT_LINES).
   * key:<stable key>           every other material is its own group.
+  * composition series (alloys, perovskites; v0.17.0): every member of a series (AlGaAs x = 0.097 ... 0.929) joins the group of
+    the series' FIRST end member already in the release (AlGaAs -> GaAs's group), or series:<name> when none is. Existing
+    materials never move (the stability promise below), so a second end member (AlAs) may sit in another group: those are
+    listed in the metadata (series_end_members_outside_group) for anyone who wants a strict series split.
 Rows of the spectra set (axes, phases, temperatures, sources of one material) follow their material_id.
 
 Assignment: from sha256 of the group id, so a material keeps its split in every later release; a new material never moves an
@@ -50,6 +54,16 @@ PRODUCT_LINES = {
 }
 
 
+SERIES_FAMILIES = ("alloys", "perovskites")
+
+
+def series_end_members():
+    sys.path.insert(0, str(_ROOT / "scripts"))
+    from alloy_material_list import SERIES_END_MEMBERS as a
+    from perovskite_material_list import SERIES_END_MEMBERS as p
+    return {**a, **p}
+
+
 class SplitError(RuntimeError):
     pass
 
@@ -71,6 +85,11 @@ def assign(df, strict=True):
     if unknown and strict:
         raise SplitError(f"PRODUCT_LINES names keys not in the feature matrix: {unknown}")
     rows = []
+    base = {}
+    for r in df.itertuples(index=False):  # composition / product-line / own-key groups, before series
+        ck = composition_key(r._asdict(), frac)
+        base[r.meta_key] = (f"line:{line_of[r.meta_key]}" if r.meta_key in line_of else f"comp:{ck}" if ck else f"key:{r.meta_key}")
+    ends = series_end_members()
     for r in df.itertuples(index=False):
         ck = composition_key(r._asdict(), frac)
         if r.meta_key in line_of:
@@ -79,6 +98,12 @@ def assign(df, strict=True):
             gid = f"line:{line_of[r.meta_key]}"
         else:
             gid = f"comp:{ck}" if ck else f"key:{r.meta_key}"
+        if r.meta_family in SERIES_FAMILIES:
+            series = r.meta_key.split(":", 1)[1].split("@")[0]
+            if series not in ends:
+                raise SplitError(f"{r.meta_key}: series {series!r} has no SERIES_END_MEMBERS entry")
+            anchor = next((base[k] for k in ends[series] if k in base), None)
+            gid = anchor or f"series:{series}"
         rows.append(dict(material_id=r.material_id, meta_key=r.meta_key, meta_name=r.meta_name, meta_family=r.meta_family, group=gid,
                          split=SPLITS[_hash(gid, "split") % 10], fold=_hash(gid, "fold") % N_FOLDS))
     return pd.DataFrame(rows).sort_values("material_id").reset_index(drop=True)
@@ -93,12 +118,22 @@ def summary(splits, features):
         per_split[s] = dict(materials=len(ids), groups=int(splits.loc[splits.split == s, "group"].nunique()),
                             **{f"with_{t}": int(f.loc[ids, t].notna().sum()) for t in targets})
     fams = splits.groupby("group").meta_family.agg(lambda x: sorted(set(x)))
+    ends = series_end_members()
+    group_of = dict(zip(splits.meta_key, splits.group))
+    series_groups, outside = {}, []
+    for k, g in group_of.items():
+        if k.split(":", 1)[0] in SERIES_FAMILIES:
+            s = k.split(":", 1)[1].split("@")[0]
+            series_groups[s] = g
+    for s, g in sorted(series_groups.items()):
+        outside += [dict(series=s, end_member=e, group=group_of[e]) for e in ends.get(s, []) if e in group_of and group_of[e] != g]
     multi = splits.groupby("group").size()
     return dict(
         groups=int(splits.group.nunique()), multi_material_groups=int((multi > 1).sum()),
         materials_in_multi_material_groups=int(multi[multi > 1].sum()), per_split=per_split,
         per_fold={int(k): int(v) for k, v in splits.fold.value_counts().sort_index().items()},
         cross_family_groups={g: v for g, v in fams.items() if len(v) > 1},
+        series_groups=series_groups, series_end_members_outside_group=outside,
         group_members={g: sorted(splits.loc[splits.group == g, "meta_key"]) for g in multi[multi > 1].index})
 
 

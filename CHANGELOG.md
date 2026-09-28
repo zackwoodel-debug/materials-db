@@ -5,6 +5,13 @@ versions follow the release tags. Counts are materials / optical datasets.
 
 ## [Unreleased]
 
+### Added
+- Alloys (57 materials): AlGaAs (16 compositions), AlGaSb, SiGe, ZnCdO, SiOx series; InGaAs, GaInP, AgGa0.86In0.14S2; KRS-5,
+  KRS-6; yttria-stabilized zirconia and hafnia; MgO:LiNbO3, Mg:LiTaO3, ITO, AZO, AlON. Each composition is its own material
+  with the fractional formula its page states; doped crystals without an exact composition have no formula.
+- Perovskites (6): MAPbI3, MAPbBr3, CsPbBr3, CsPbCl3, CsPbBr1.3Cl1.7, CsPbBr1.8Cl1.2.
+- ML splits: a composition series joins its first end member's group; no existing material moves.
+
 ## [0.16.0] - 2026-09-27 (381 / 831)
 
 ### Added

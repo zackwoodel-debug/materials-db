@@ -1,0 +1,314 @@
+{
+ "MAPbX3@MAPbI3": {
+  "name": "Methylammonium lead iodide (MAPbI3)",
+  "formula": "CH3NH3PbI3",
+  "source": "perovskite_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Phillips",
+    "axis": null,
+    "phase": "vapour-deposited film on Si",
+    "data_path": "other/perovskite/CH3NH3PbI3/nk/Phillips.yml",
+    "span_um": [
+     0.300009583,
+     1.501320923
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "A MAPI film was deposited onto a silicon wafer using a two-step vapour reaction phase process and a variable-angle ellipsometer used to take amplitude and phase change measurements. The refractive index and extinction coefficient was extracted from a multi-oscillator model fit to the ellipsometry data, as a function of wavelength, from 300 to 1500 nm\n",
+    "temperature_c": null,
+    "tag": "Phillips2015",
+    "dataset_label": "vapour-deposited film on Si | Phillips2015",
+    "shelf": "other",
+    "book": "CH3NH3PbI3"
+   },
+   {
+    "page": "Ball",
+    "axis": null,
+    "phase": "film",
+    "data_path": "other/perovskite/CH3NH3PbI3/nk/Ball.yml",
+    "span_um": [
+     0.301,
+     0.899
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "",
+    "temperature_c": null,
+    "tag": "Ball2015",
+    "dataset_label": "film | Ball2015",
+    "shelf": "other",
+    "book": "CH3NH3PbI3"
+   },
+   {
+    "page": "Leguy",
+    "axis": null,
+    "phase": "single crystal",
+    "data_path": "other/perovskite/CH3NH3PbI3/nk/Leguy.yml",
+    "span_um": [
+     0.249,
+     0.789
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Single crystal CH3NH3PbI3; orientation unknown; room temperature; critical point model used for fit, 249 nm - 789 nm - fit not reliable for sub-bandgap region - see reference\n",
+    "temperature_c": null,
+    "tag": "Leguy2015",
+    "dataset_label": "single crystal | Leguy2015",
+    "shelf": "other",
+    "book": "CH3NH3PbI3"
+   }
+  ]
+ },
+ "MAPbX3@MAPbBr3": {
+  "name": "Methylammonium lead bromide (MAPbBr3)",
+  "formula": "CH3NH3PbBr3",
+  "source": "perovskite_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Ishteev",
+    "axis": null,
+    "phase": "single crystal",
+    "data_path": "other/perovskite/CH3NH3PbBr3/nk/Ishteev.yml",
+    "span_um": [
+     0.29,
+     3.3
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Single crystal MAPbBr3.\n",
+    "temperature_c": null,
+    "tag": "Ishteev2022",
+    "dataset_label": "single crystal | Ishteev2022",
+    "shelf": "other",
+    "book": "CH3NH3PbBr3"
+   },
+   {
+    "page": "McCleese",
+    "axis": null,
+    "phase": "single crystal, <100>",
+    "data_path": "other/perovskite/CH3NH3PbBr3/nk/McCleese.yml",
+    "span_um": [
+     0.2,
+     2.5
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Crystal  orientation: ; Solution-grown single crystal;  Room temperature.\n",
+    "temperature_c": null,
+    "tag": "McCleese2024",
+    "dataset_label": "single crystal, <100> | McCleese2024",
+    "shelf": "other",
+    "book": "CH3NH3PbBr3"
+   }
+  ]
+ },
+ "CsPbX3@CsPbBr3": {
+  "name": "Cesium lead bromide (CsPbBr3)",
+  "formula": "CsPbBr3",
+  "source": "perovskite_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Brennan",
+    "axis": null,
+    "phase": "Bridgman crystal, <251>",
+    "data_path": "other/perovskite/CsPbBr3/nk/Brennan.yml",
+    "span_um": [
+     0.2,
+     2.5
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Likely crystal  orientation: ; Bridgman-grown, polished crystal; Room temperature.\n",
+    "temperature_c": null,
+    "tag": "Brennan2024",
+    "dataset_label": "Bridgman crystal, <251> | Brennan2024",
+    "shelf": "other",
+    "book": "CsPbBr3"
+   },
+   {
+    "page": "Ermolaev-o",
+    "axis": "o-ray",
+    "phase": "single crystal",
+    "data_path": "other/perovskite/CsPbBr3/nk/Ermolaev-o.yml",
+    "span_um": [
+     0.5,
+     0.949
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "CsPbBr3 monocrystal. Ordinary ray (o).\n",
+    "temperature_c": null,
+    "tag": "Ermolaev2023",
+    "dataset_label": "single crystal | Ermolaev2023 | o-ray",
+    "shelf": "other",
+    "book": "CsPbBr3"
+   },
+   {
+    "page": "Ermolaev-e",
+    "axis": "e-ray",
+    "phase": "single crystal",
+    "data_path": "other/perovskite/CsPbBr3/nk/Ermolaev-e.yml",
+    "span_um": [
+     0.5,
+     0.949
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "CsPbBr3 monocrystal. Extraordinary ray (e).\n",
+    "temperature_c": null,
+    "tag": "Ermolaev2023",
+    "dataset_label": "single crystal | Ermolaev2023 | e-ray",
+    "shelf": "other",
+    "book": "CsPbBr3"
+   }
+  ]
+ },
+ "CsPbX3@CsPbCl3": {
+  "name": "Cesium lead chloride (CsPbCl3)",
+  "formula": "CsPbCl3",
+  "source": "perovskite_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Zhang",
+    "axis": null,
+    "phase": "198 nm vapour-deposited film on glass",
+    "data_path": "other/perovskite/CsPbCl3/nk/Zhang.yml",
+    "span_um": [
+     0.193,
+     1.69
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Vapor-deposited thin film. Film thickness: 198 nm; Room temperature\n",
+    "temperature_c": null,
+    "tag": "Zhang2023",
+    "dataset_label": "198 nm vapour-deposited film on glass | Zhang2023",
+    "shelf": "other",
+    "book": "CsPbCl3"
+   },
+   {
+    "page": "Ermolaev-o",
+    "axis": "o-ray",
+    "phase": "single crystal",
+    "data_path": "other/perovskite/CsPbCl3/nk/Ermolaev-o.yml",
+    "span_um": [
+     0.4,
+     0.8
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "CsPbCl3 monocrystal. Ordinary ray (o).\n",
+    "temperature_c": null,
+    "tag": "Ermolaev2023",
+    "dataset_label": "single crystal | Ermolaev2023 | o-ray",
+    "shelf": "other",
+    "book": "CsPbCl3"
+   },
+   {
+    "page": "Ermolaev-e",
+    "axis": "e-ray",
+    "phase": "single crystal",
+    "data_path": "other/perovskite/CsPbCl3/nk/Ermolaev-e.yml",
+    "span_um": [
+     0.4,
+     0.8
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "CsPbCl3 monocrystal. Extraordinary ray (e).\n",
+    "temperature_c": null,
+    "tag": "Ermolaev2023",
+    "dataset_label": "single crystal | Ermolaev2023 | e-ray",
+    "shelf": "other",
+    "book": "CsPbCl3"
+   }
+  ]
+ },
+ "CsPbX3@CsPbBr1.3Cl1.7": {
+  "name": "Cesium lead bromide chloride CsPbBr1.3Cl1.7",
+  "formula": "CsPbBr1.3Cl1.7",
+  "source": "perovskite_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Ermolaev-Br1.3Cl1.7-o",
+    "axis": "o-ray",
+    "phase": "single crystal",
+    "data_path": "other/perovskite/CsPb(Br,Cl)3/nk/Ermolaev-Br1.3Cl1.7-o.yml",
+    "span_um": [
+     0.455,
+     0.5
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "CsPbBr1.3Cl1.7 monocrystal. Ordinary ray (o).\n",
+    "temperature_c": null,
+    "tag": "Ermolaev2023",
+    "dataset_label": "single crystal | Ermolaev2023 | o-ray",
+    "shelf": "other",
+    "book": "CsPb_BrCl_3"
+   },
+   {
+    "page": "Ermolaev-Br1.3Cl1.7-e",
+    "axis": "e-ray",
+    "phase": "single crystal",
+    "data_path": "other/perovskite/CsPb(Br,Cl)3/nk/Ermolaev-Br1.3Cl1.7-e.yml",
+    "span_um": [
+     0.455,
+     0.5
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "CsPbBr1.3Cl1.7 monocrystal. Extraordinary ray (e).\n",
+    "temperature_c": null,
+    "tag": "Ermolaev2023",
+    "dataset_label": "single crystal | Ermolaev2023 | e-ray",
+    "shelf": "other",
+    "book": "CsPb_BrCl_3"
+   }
+  ]
+ },
+ "CsPbX3@CsPbBr1.8Cl1.2": {
+  "name": "Cesium lead bromide chloride CsPbBr1.8Cl1.2",
+  "formula": "CsPbBr1.8Cl1.2",
+  "source": "perovskite_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Ermolaev-Br1.8Cl1.2-o",
+    "axis": "o-ray",
+    "phase": "single crystal",
+    "data_path": "other/perovskite/CsPb(Br,Cl)3/nk/Ermolaev-Br1.8Cl1.2-o.yml",
+    "span_um": [
+     0.464,
+     0.7
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "CsPbBr1.8Cl1.2 monocrystal. Ordinary ray (o).\n",
+    "temperature_c": null,
+    "tag": "Ermolaev2023",
+    "dataset_label": "single crystal | Ermolaev2023 | o-ray",
+    "shelf": "other",
+    "book": "CsPb_BrCl_3"
+   },
+   {
+    "page": "Ermolaev-Br1.8Cl1.2-e",
+    "axis": "e-ray",
+    "phase": "single crystal",
+    "data_path": "other/perovskite/CsPb(Br,Cl)3/nk/Ermolaev-Br1.8Cl1.2-e.yml",
+    "span_um": [
+     0.464,
+     0.7
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "CsPbBr1.8Cl1.2 monocrystal. Extraordinary ray (e).\n",
+    "temperature_c": null,
+    "tag": "Ermolaev2023",
+    "dataset_label": "single crystal | Ermolaev2023 | e-ray",
+    "shelf": "other",
+    "book": "CsPb_BrCl_3"
+   }
+  ]
+ }
+}

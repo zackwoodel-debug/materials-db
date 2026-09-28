@@ -62,3 +62,9 @@ data/materials_bio_media_test.db
 
 # regenerable from data/gases.csv + data/step1_selections_gases.json (scripts/load_gases_db.py)
 data/materials_gas_test.db
+
+# regenerable from data/alloys.csv + data/step1_selections_alloys.json (scripts/load_alloys_db.py)
+data/materials_alloy_test.db
+
+# regenerable from data/perovskites.csv + data/step1_selections_perovskites.json (scripts/load_perovskites_db.py)
+data/materials_perovskite_test.db

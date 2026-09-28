@@ -45,12 +45,14 @@ NAME_SYNONYMS = {
     "2,2,4-trimethylpentane", "2-methylbutane", "galena", "cinnabar", "proustite", "LiCAF", "LGS", "LBO", "SCAM", "PDLA", "PNIPAM",
     "PCTFE", "PEI", "TPX", "AGSe", "AGS", "TAS", "YLF", "ZGP", "berlinite", "anhydrite", "KDP", "ADP", "KTP", "RTP", "BGG", "4-pentyl-4'-cyanobiphenyl",
     "4-trans-pentylcyclohexylcyanobenzene", "PBS", "DMEM", "GST",
+    "AZO", "ITO", "KRS-5", "KRS-6", "CsPbBr3", "CsPbCl3", "MAPbBr3", "MAPbI3",  # alloys / perovskites (v0.17.0)
 }
 NAME_QUALIFIERS = {
     "hexagonal", "liquid", "rutile / anatase", "sodium salt, calf thymus", "polyimide film", "negative photoresist", "negative resist",
     "copolymer resist", "epoxy photoresist", "cured", "Mitsubishi", "Tomson", "DuPont ionomer resin", "cyclo olefin polymer",
     "Dow Corning, 5:1 mass ratio", "Dow Corning, 10:1 mass ratio", "Dow Corning, 15:1 mass ratio", "Dow Corning, 20:1 mass ratio",
     "Antheraea assamensis", "Antheraea mylitta", "Bombyx mori", "Samia ricini", "SCHOTT", "Corning", "LZOS",
+    "9.8 mol% Y2O3", "12 mol% Y2O3",
 }
 SPELLINGS = [("aluminium", "aluminum"), ("caesium", "cesium"), ("sulphide", "sulfide"), ("sulphate", "sulfate"), ("sulphur", "sulfur")]
 

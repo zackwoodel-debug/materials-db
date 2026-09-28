@@ -1,0 +1,1679 @@
+{
+ "AlGaAs@x0.097": {
+  "name": "Aluminium gallium arsenide Al0.097Ga0.903As",
+  "formula": "Al0.097Ga0.903As",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Papatryfonos-9.7",
+    "axis": null,
+    "phase": null,
+    "data_path": "other/semiconductor alloys/AlAs-GaAs/nk/Papatryfonos-9.7.yml",
+    "span_um": [
+     0.26049,
+     1.87868
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "AlxGa1-xAs; x = 0.097\n",
+    "temperature_c": null,
+    "tag": "Papatryfonos2021",
+    "dataset_label": "Papatryfonos2021",
+    "shelf": "other",
+    "book": "AlAs-GaAs"
+   }
+  ]
+ },
+ "AlGaAs@x0.099": {
+  "name": "Aluminium gallium arsenide Al0.099Ga0.901As",
+  "formula": "Al0.099Ga0.901As",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Aspnes-9.9",
+    "axis": null,
+    "phase": null,
+    "data_path": "other/semiconductor alloys/AlAs-GaAs/nk/Aspnes-9.9.yml",
+    "span_um": [
+     0.2066,
+     0.8266
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "AlxGa1-xAs; x = 0.099\n",
+    "temperature_c": null,
+    "tag": "Aspnes1986",
+    "dataset_label": "Aspnes1986",
+    "shelf": "other",
+    "book": "AlAs-GaAs"
+   }
+  ]
+ },
+ "AlGaAs@x0.198": {
+  "name": "Aluminium gallium arsenide Al0.198Ga0.802As",
+  "formula": "Al0.198Ga0.802As",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Aspnes-19.8",
+    "axis": null,
+    "phase": null,
+    "data_path": "other/semiconductor alloys/AlAs-GaAs/nk/Aspnes-19.8.yml",
+    "span_um": [
+     0.2066,
+     0.8266
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "AlxGa1-xAs; x = 0.198\n",
+    "temperature_c": null,
+    "tag": "Aspnes1986",
+    "dataset_label": "Aspnes1986",
+    "shelf": "other",
+    "book": "AlAs-GaAs"
+   }
+  ]
+ },
+ "AlGaAs@x0.219": {
+  "name": "Aluminium gallium arsenide Al0.219Ga0.781As",
+  "formula": "Al0.219Ga0.781As",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Papatryfonos-21.9",
+    "axis": null,
+    "phase": null,
+    "data_path": "other/semiconductor alloys/AlAs-GaAs/nk/Papatryfonos-21.9.yml",
+    "span_um": [
+     0.26049,
+     1.87868
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "AlxGa1-xAs; x = 0.219\n",
+    "temperature_c": null,
+    "tag": "Papatryfonos2021",
+    "dataset_label": "Papatryfonos2021",
+    "shelf": "other",
+    "book": "AlAs-GaAs"
+   }
+  ]
+ },
+ "AlGaAs@x0.315": {
+  "name": "Aluminium gallium arsenide Al0.315Ga0.685As",
+  "formula": "Al0.315Ga0.685As",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Aspnes-31.5",
+    "axis": null,
+    "phase": null,
+    "data_path": "other/semiconductor alloys/AlAs-GaAs/nk/Aspnes-31.5.yml",
+    "span_um": [
+     0.2066,
+     0.8266
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "AlxGa1-xAs; x = 0.315\n",
+    "temperature_c": null,
+    "tag": "Aspnes1986",
+    "dataset_label": "Aspnes1986",
+    "shelf": "other",
+    "book": "AlAs-GaAs"
+   },
+   {
+    "page": "Adachi-0.315",
+    "axis": null,
+    "phase": null,
+    "data_path": "other/semiconductor alloys/AlAs-GaAs/nk/Adachi-0.315.yml",
+    "span_um": [
+     0.20664,
+     12.398
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "AlxGa1-xAs; x=0.315\n",
+    "temperature_c": null,
+    "tag": "Adachi1989",
+    "dataset_label": "Adachi1989",
+    "shelf": "other",
+    "book": "AlAs-GaAs"
+   }
+  ]
+ },
+ "AlGaAs@x0.32": {
+  "name": "Aluminium gallium arsenide Al0.32Ga0.68As",
+  "formula": "Al0.32Ga0.68As",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Gadras-32",
+    "axis": null,
+    "phase": null,
+    "data_path": "other/semiconductor alloys/AlAs-GaAs/nk/Gadras-32.yml",
+    "span_um": [
+     0.4502291,
+     1.399642
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "AlxGa1-xAs; x=0.32; 600 °C\n",
+    "temperature_c": 599.85,
+    "tag": "Gadras2025",
+    "dataset_label": "Gadras2025",
+    "shelf": "other",
+    "book": "AlAs-GaAs"
+   }
+  ]
+ },
+ "AlGaAs@x0.342": {
+  "name": "Aluminium gallium arsenide Al0.342Ga0.658As",
+  "formula": "Al0.342Ga0.658As",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Papatryfonos-34.2",
+    "axis": null,
+    "phase": null,
+    "data_path": "other/semiconductor alloys/AlAs-GaAs/nk/Papatryfonos-34.2.yml",
+    "span_um": [
+     0.26049,
+     1.87868
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "AlxGa1-xAs; x = 0.342\n",
+    "temperature_c": null,
+    "tag": "Papatryfonos2021",
+    "dataset_label": "Papatryfonos2021",
+    "shelf": "other",
+    "book": "AlAs-GaAs"
+   }
+  ]
+ },
+ "AlGaAs@x0.411": {
+  "name": "Aluminium gallium arsenide Al0.411Ga0.589As",
+  "formula": "Al0.411Ga0.589As",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Papatryfonos-41.1",
+    "axis": null,
+    "phase": null,
+    "data_path": "other/semiconductor alloys/AlAs-GaAs/nk/Papatryfonos-41.1.yml",
+    "span_um": [
+     0.26049,
+     1.87868
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "AlxGa1-xAs; x = 0.411\n",
+    "temperature_c": null,
+    "tag": "Papatryfonos2021",
+    "dataset_label": "Papatryfonos2021",
+    "shelf": "other",
+    "book": "AlAs-GaAs"
+   }
+  ]
+ },
+ "AlGaAs@x0.419": {
+  "name": "Aluminium gallium arsenide Al0.419Ga0.581As",
+  "formula": "Al0.419Ga0.581As",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Aspnes-41.9",
+    "axis": null,
+    "phase": null,
+    "data_path": "other/semiconductor alloys/AlAs-GaAs/nk/Aspnes-41.9.yml",
+    "span_um": [
+     0.2066,
+     0.8266
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "AlxGa1-xAs; x = 0.419\n",
+    "temperature_c": null,
+    "tag": "Aspnes1986",
+    "dataset_label": "Aspnes1986",
+    "shelf": "other",
+    "book": "AlAs-GaAs"
+   }
+  ]
+ },
+ "AlGaAs@x0.452": {
+  "name": "Aluminium gallium arsenide Al0.452Ga0.548As",
+  "formula": "Al0.452Ga0.548As",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Papatryfonos-45.2",
+    "axis": null,
+    "phase": null,
+    "data_path": "other/semiconductor alloys/AlAs-GaAs/nk/Papatryfonos-45.2.yml",
+    "span_um": [
+     0.26049,
+     1.87868
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "AlxGa1-xAs; x = 0.452\n",
+    "temperature_c": null,
+    "tag": "Papatryfonos2021",
+    "dataset_label": "Papatryfonos2021",
+    "shelf": "other",
+    "book": "AlAs-GaAs"
+   }
+  ]
+ },
+ "AlGaAs@x0.491": {
+  "name": "Aluminium gallium arsenide Al0.491Ga0.509As",
+  "formula": "Al0.491Ga0.509As",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Aspnes-49.1",
+    "axis": null,
+    "phase": null,
+    "data_path": "other/semiconductor alloys/AlAs-GaAs/nk/Aspnes-49.1.yml",
+    "span_um": [
+     0.2066,
+     0.8266
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "AlxGa1-xAs; x = 0.491\n",
+    "temperature_c": null,
+    "tag": "Aspnes1986",
+    "dataset_label": "Aspnes1986",
+    "shelf": "other",
+    "book": "AlAs-GaAs"
+   }
+  ]
+ },
+ "AlGaAs@x0.53": {
+  "name": "Aluminium gallium arsenide Al0.53Ga0.47As",
+  "formula": "Al0.53Ga0.47As",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Gadras-53",
+    "axis": null,
+    "phase": null,
+    "data_path": "other/semiconductor alloys/AlAs-GaAs/nk/Gadras-53.yml",
+    "span_um": [
+     0.4502291,
+     1.399642
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "AlxGa1-xAs; x=0.53; 600 °C\n",
+    "temperature_c": 599.85,
+    "tag": "Gadras2025",
+    "dataset_label": "Gadras2025",
+    "shelf": "other",
+    "book": "AlAs-GaAs"
+   }
+  ]
+ },
+ "AlGaAs@x0.59": {
+  "name": "Aluminium gallium arsenide Al0.59Ga0.41As",
+  "formula": "Al0.59Ga0.41As",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Aspnes-59.0",
+    "axis": null,
+    "phase": null,
+    "data_path": "other/semiconductor alloys/AlAs-GaAs/nk/Aspnes-59.0.yml",
+    "span_um": [
+     0.2066,
+     0.8266
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "AlxGa1-xAs; x = 0.590\n",
+    "temperature_c": null,
+    "tag": "Aspnes1986",
+    "dataset_label": "Aspnes1986",
+    "shelf": "other",
+    "book": "AlAs-GaAs"
+   }
+  ]
+ },
+ "AlGaAs@x0.7": {
+  "name": "Aluminium gallium arsenide Al0.7Ga0.3As",
+  "formula": "Al0.7Ga0.3As",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Aspnes-70.0",
+    "axis": null,
+    "phase": null,
+    "data_path": "other/semiconductor alloys/AlAs-GaAs/nk/Aspnes-70.0.yml",
+    "span_um": [
+     0.2066,
+     0.8266
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "AlxGa1-xAs; x = 0.700\n",
+    "temperature_c": null,
+    "tag": "Aspnes1986",
+    "dataset_label": "Aspnes1986",
+    "shelf": "other",
+    "book": "AlAs-GaAs"
+   },
+   {
+    "page": "Adachi-0.700",
+    "axis": null,
+    "phase": null,
+    "data_path": "other/semiconductor alloys/AlAs-GaAs/nk/Adachi-0.700.yml",
+    "span_um": [
+     0.20664,
+     12.398
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "AlxGa1-xAs; x=0.700\n",
+    "temperature_c": null,
+    "tag": "Adachi1989",
+    "dataset_label": "Adachi1989",
+    "shelf": "other",
+    "book": "AlAs-GaAs"
+   }
+  ]
+ },
+ "AlGaAs@x0.804": {
+  "name": "Aluminium gallium arsenide Al0.804Ga0.196As",
+  "formula": "Al0.804Ga0.196As",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Aspnes-80.4",
+    "axis": null,
+    "phase": null,
+    "data_path": "other/semiconductor alloys/AlAs-GaAs/nk/Aspnes-80.4.yml",
+    "span_um": [
+     0.2066,
+     0.8266
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "AlxGa1-xAs; x = 0.804\n",
+    "temperature_c": null,
+    "tag": "Aspnes1986",
+    "dataset_label": "Aspnes1986",
+    "shelf": "other",
+    "book": "AlAs-GaAs"
+   }
+  ]
+ },
+ "AlGaAs@x0.929": {
+  "name": "Aluminium gallium arsenide Al0.929Ga0.071As",
+  "formula": "Al0.929Ga0.071As",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Perner-92.9",
+    "axis": null,
+    "phase": null,
+    "data_path": "other/semiconductor alloys/AlAs-GaAs/nk/Perner-92.9.yml",
+    "span_um": [
+     2.0,
+     7.1
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Al0.929Ga0.071As (interpolation for other alloy ratios possible). Relative standard uncertainty ≤3.3×10-4 over whole range. Measured in a high-purity GaAs/AlGaAs crystalline thin-film multilayer. Sample grown via molecular beam epitaxy on GaAs seed wafer. Optical measurements at 2.21 mbar and 22 °C.\n",
+    "temperature_c": 21.85,
+    "tag": "Perner2023",
+    "dataset_label": "Perner2023",
+    "shelf": "other",
+    "book": "AlAs-GaAs"
+   }
+  ]
+ },
+ "AlGaSb@x0.1": {
+  "name": "Aluminium gallium antimonide Al0.1Ga0.9Sb",
+  "formula": "Al0.1Ga0.9Sb",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Ferrini-10",
+    "axis": null,
+    "phase": "MBE film on GaSb",
+    "data_path": "other/semiconductor alloys/AlSb-GaSb/nk/Ferrini-10.yml",
+    "span_um": [
+     0.207,
+     2.48
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "AlxGa1−xSb, x = 0.1. Thin film grown by molecular beam epitaxy on a GaSb substrate.\n",
+    "temperature_c": null,
+    "tag": "Ferrini1998",
+    "dataset_label": "MBE film on GaSb | Ferrini1998",
+    "shelf": "other",
+    "book": "AlSb-GaSb"
+   }
+  ]
+ },
+ "AlGaSb@x0.3": {
+  "name": "Aluminium gallium antimonide Al0.3Ga0.7Sb",
+  "formula": "Al0.3Ga0.7Sb",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Ferrini-30",
+    "axis": null,
+    "phase": "MBE film on GaSb",
+    "data_path": "other/semiconductor alloys/AlSb-GaSb/nk/Ferrini-30.yml",
+    "span_um": [
+     0.207,
+     2.48
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "AlxGa1−xSb, x = 0.3. Thin film grown by molecular beam epitaxy on a GaSb substrate.\n",
+    "temperature_c": null,
+    "tag": "Ferrini1998",
+    "dataset_label": "MBE film on GaSb | Ferrini1998",
+    "shelf": "other",
+    "book": "AlSb-GaSb"
+   }
+  ]
+ },
+ "AlGaSb@x0.5": {
+  "name": "Aluminium gallium antimonide Al0.5Ga0.5Sb",
+  "formula": "Al0.5Ga0.5Sb",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Ferrini-50",
+    "axis": null,
+    "phase": "MBE film on GaSb",
+    "data_path": "other/semiconductor alloys/AlSb-GaSb/nk/Ferrini-50.yml",
+    "span_um": [
+     0.207,
+     2.48
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "AlxGa1−xSb, x = 0.5. Thin film grown by molecular beam epitaxy on a GaSb substrate.\n",
+    "temperature_c": null,
+    "tag": "Ferrini1998",
+    "dataset_label": "MBE film on GaSb | Ferrini1998",
+    "shelf": "other",
+    "book": "AlSb-GaSb"
+   }
+  ]
+ },
+ "SiGe@x0.11": {
+  "name": "Silicon-germanium Si0.11Ge0.89",
+  "formula": "Si0.11Ge0.89",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Jellison-11",
+    "axis": null,
+    "phase": "8 um film on Ge",
+    "data_path": "other/semiconductor alloys/Si-Ge/nk/Jellison-11.yml",
+    "span_um": [
+     0.24,
+     0.84
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "SixGe1-x, x = 0.11. 8-μm film grown on Ge substrate.\n",
+    "temperature_c": null,
+    "tag": "Jellison1993",
+    "dataset_label": "8 um film on Ge | Jellison1993",
+    "shelf": "other",
+    "book": "Si-Ge"
+   }
+  ]
+ },
+ "SiGe@x0.2": {
+  "name": "Silicon-germanium Si0.2Ge0.8",
+  "formula": "Si0.2Ge0.8",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Jellison-20",
+    "axis": null,
+    "phase": "8 um film on Ge",
+    "data_path": "other/semiconductor alloys/Si-Ge/nk/Jellison-20.yml",
+    "span_um": [
+     0.24,
+     0.84
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "SixGe1-x, x = 0.20. 8-μm film grown on Ge substrate.\n",
+    "temperature_c": null,
+    "tag": "Jellison1993",
+    "dataset_label": "8 um film on Ge | Jellison1993",
+    "shelf": "other",
+    "book": "Si-Ge"
+   }
+  ]
+ },
+ "SiGe@x0.28": {
+  "name": "Silicon-germanium Si0.28Ge0.72",
+  "formula": "Si0.28Ge0.72",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Jellison-28",
+    "axis": null,
+    "phase": "8 um film on Ge",
+    "data_path": "other/semiconductor alloys/Si-Ge/nk/Jellison-28.yml",
+    "span_um": [
+     0.24,
+     0.84
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "SixGe1-x, x = 0.28. 8-μm film grown on Ge substrate.\n",
+    "temperature_c": null,
+    "tag": "Jellison1993",
+    "dataset_label": "8 um film on Ge | Jellison1993",
+    "shelf": "other",
+    "book": "Si-Ge"
+   }
+  ]
+ },
+ "SiGe@x0.48": {
+  "name": "Silicon-germanium Si0.48Ge0.52",
+  "formula": "Si0.48Ge0.52",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Jellison-48",
+    "axis": null,
+    "phase": "4 um film on Ge",
+    "data_path": "other/semiconductor alloys/Si-Ge/nk/Jellison-48.yml",
+    "span_um": [
+     0.24,
+     0.84
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "SixGe1-x, x = 0.28. 4-μm film grown on Ge substrate.\n",
+    "temperature_c": null,
+    "tag": "Jellison1993",
+    "dataset_label": "4 um film on Ge | Jellison1993",
+    "shelf": "other",
+    "book": "Si-Ge"
+   }
+  ]
+ },
+ "SiGe@x0.47": {
+  "name": "Silicon-germanium Si0.47Ge0.53",
+  "formula": "Si0.47Ge0.53",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Jellison-47",
+    "axis": null,
+    "phase": "7 um film on Si",
+    "data_path": "other/semiconductor alloys/Si-Ge/nk/Jellison-47.yml",
+    "span_um": [
+     0.24,
+     0.84
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "SixGe1-x, x = 0.47. 7-μm film grown on Si substrate.\n",
+    "temperature_c": null,
+    "tag": "Jellison1993",
+    "dataset_label": "7 um film on Si | Jellison1993",
+    "shelf": "other",
+    "book": "Si-Ge"
+   }
+  ]
+ },
+ "SiGe@x0.65": {
+  "name": "Silicon-germanium Si0.65Ge0.35",
+  "formula": "Si0.65Ge0.35",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Jellison-65",
+    "axis": null,
+    "phase": "8 um film on Si",
+    "data_path": "other/semiconductor alloys/Si-Ge/nk/Jellison-65.yml",
+    "span_um": [
+     0.24,
+     0.84
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "SixGe1-x, x = 0.65. 8-μm film grown on Si substrate.\n",
+    "temperature_c": null,
+    "tag": "Jellison1993",
+    "dataset_label": "8 um film on Si | Jellison1993",
+    "shelf": "other",
+    "book": "Si-Ge"
+   }
+  ]
+ },
+ "SiGe@x0.85": {
+  "name": "Silicon-germanium Si0.85Ge0.15",
+  "formula": "Si0.85Ge0.15",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Jellison-85",
+    "axis": null,
+    "phase": "7 um film on Si",
+    "data_path": "other/semiconductor alloys/Si-Ge/nk/Jellison-85.yml",
+    "span_um": [
+     0.24,
+     0.84
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "SixGe1-x, x = 0.85. 7-μm film grown on Si substrate.\n",
+    "temperature_c": null,
+    "tag": "Jellison1993",
+    "dataset_label": "7 um film on Si | Jellison1993",
+    "shelf": "other",
+    "book": "Si-Ge"
+   }
+  ]
+ },
+ "SiGe@x0.98": {
+  "name": "Silicon-germanium Si0.98Ge0.02",
+  "formula": "Si0.98Ge0.02",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Jellison-98",
+    "axis": null,
+    "phase": "8 um film on Si",
+    "data_path": "other/semiconductor alloys/Si-Ge/nk/Jellison-98.yml",
+    "span_um": [
+     0.24,
+     0.84
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "SixGe1-x, x = 0.98. 8-μm film grown on Si substrate.\n",
+    "temperature_c": null,
+    "tag": "Jellison1993",
+    "dataset_label": "8 um film on Si | Jellison1993",
+    "shelf": "other",
+    "book": "Si-Ge"
+   }
+  ]
+ },
+ "InGaAs@x0.48": {
+  "name": "Indium gallium arsenide In0.52Ga0.48As",
+  "formula": "In0.52Ga0.48As",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Adachi",
+    "axis": null,
+    "phase": null,
+    "data_path": "other/semiconductor alloys/GaAs-InAs/nk/Adachi.yml",
+    "span_um": [
+     0.20664,
+     12.398
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "In1-xGaxAs; x=0.48\n",
+    "temperature_c": null,
+    "tag": "Adachi1989",
+    "dataset_label": "Adachi1989",
+    "shelf": "other",
+    "book": "GaAs-InAs"
+   }
+  ]
+ },
+ "InGaAs@x0.47": {
+  "name": "Indium gallium arsenide In0.53Ga0.47As",
+  "formula": "In0.53Ga0.47As",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Le",
+    "axis": null,
+    "phase": "310 nm film on Ge",
+    "data_path": "other/semiconductor alloys/GaAs-InAs/nk/Le.yml",
+    "span_um": [
+     16.66817,
+     48.77473
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "In1-xGaxAs; x=0.47. Thin film: 310 nm. Room temperature.\n",
+    "temperature_c": null,
+    "tag": "Le2022",
+    "dataset_label": "310 nm film on Ge | Le2022",
+    "shelf": "other",
+    "book": "GaAs-InAs"
+   }
+  ]
+ },
+ "GaInP@x0.49": {
+  "name": "Gallium indium phosphide Ga0.51In0.49P",
+  "formula": "Ga0.51In0.49P",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Schubert",
+    "axis": null,
+    "phase": null,
+    "data_path": "other/semiconductor alloys/GaP-InP/nk/Schubert.yml",
+    "span_um": [
+     0.24961,
+     0.95395
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Ga0.51In0.49P; Eg=1.85±0.2 eV; Room temperature.\n",
+    "temperature_c": null,
+    "tag": "Schubert1995",
+    "dataset_label": "Schubert1995",
+    "shelf": "other",
+    "book": "GaP-InP"
+   },
+   {
+    "page": "Ferrini-UV-VIS",
+    "axis": null,
+    "phase": "3.15 um MOVPE film on GaAs",
+    "data_path": "other/semiconductor alloys/GaP-InP/nk/Ferrini-UV-VIS.yml",
+    "span_um": [
+     0.2254,
+     0.6525
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Ga0.51In0.49P. Undoped lattice matched film grown lattice matched on GaAs substrates, by metal-organic vapour phase epitaxy (MOVPE) at 700 °C.\n",
+    "temperature_c": 700.0,
+    "tag": "Ferrini2002-UV-VIS",
+    "dataset_label": "3.15 um MOVPE film on GaAs | Ferrini2002-UV-VIS",
+    "shelf": "other",
+    "book": "GaP-InP"
+   },
+   {
+    "page": "Ferrini-IR",
+    "axis": null,
+    "phase": "3.15 um MOVPE film on GaAs",
+    "data_path": "other/semiconductor alloys/GaP-InP/nk/Ferrini-IR.yml",
+    "span_um": [
+     0.689,
+     24.8
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Ga0.51In0.49P. Undoped lattice matched film grown lattice matched on GaAs substrates, by metal-organic vapour phase epitaxy (MOVPE) at 700 °C.\n",
+    "temperature_c": 700.0,
+    "tag": "Ferrini2002-IR",
+    "dataset_label": "3.15 um MOVPE film on GaAs | Ferrini2002-IR",
+    "shelf": "other",
+    "book": "GaP-InP"
+   },
+   {
+    "page": "Ferrini-far-IR",
+    "axis": null,
+    "phase": "3.15 um MOVPE film on GaAs",
+    "data_path": "other/semiconductor alloys/GaP-InP/nk/Ferrini-far-IR.yml",
+    "span_um": [
+     15.498025,
+     123.984197
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Ga0.51In0.49P. Undoped lattice matched film grown lattice matched on GaAs substrates, by metal-organic vapour phase epitaxy (MOVPE) at 700 °C.\n",
+    "temperature_c": 700.0,
+    "tag": "Ferrini2002-far-IR",
+    "dataset_label": "3.15 um MOVPE film on GaAs | Ferrini2002-far-IR",
+    "shelf": "other",
+    "book": "GaP-InP"
+   }
+  ]
+ },
+ "AgGaInS2@x0.14": {
+  "name": "Silver gallium indium sulfide AgGa0.86In0.14S2",
+  "formula": "AgGa0.86In0.14S2",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Kato-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "other/mixed crystals/AgGaS2-AgInS2/nk/Kato-o.yml",
+    "span_um": [
+     0.565,
+     10.6
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "AgGa0.86In0.14S2. Ordinary ray (o). Room temperature.\n",
+    "temperature_c": null,
+    "tag": "Kato2021",
+    "dataset_label": "Kato2021 | o-ray",
+    "shelf": "other",
+    "book": "AgGaS2-AgInS2"
+   },
+   {
+    "page": "Kato-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "other/mixed crystals/AgGaS2-AgInS2/nk/Kato-e.yml",
+    "span_um": [
+     0.565,
+     10.6
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "AgGa0.86In0.14S2. Extraordinary ray (e). Room temperature.\n",
+    "temperature_c": null,
+    "tag": "Kato2021",
+    "dataset_label": "Kato2021 | e-ray",
+    "shelf": "other",
+    "book": "AgGaS2-AgInS2"
+   }
+  ]
+ },
+ "ZnCdO@x0.1": {
+  "name": "Zinc cadmium oxide Zn0.1Cd0.9O",
+  "formula": "Zn0.1Cd0.9O",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Aguilar-10",
+    "axis": null,
+    "phase": "thin film",
+    "data_path": "other/mixed crystals/ZnO-CdO/nk/Aguilar-10.yml",
+    "span_um": [
+     0.3,
+     3.2
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Zn0.1Cd0.9O (10% ZnO, 90% CdO) thin film.\n",
+    "temperature_c": null,
+    "tag": "Aguilar2019",
+    "dataset_label": "thin film | Aguilar2019",
+    "shelf": "other",
+    "book": "ZnO-CdO"
+   }
+  ]
+ },
+ "ZnCdO@x0.25": {
+  "name": "Zinc cadmium oxide Zn0.25Cd0.75O",
+  "formula": "Zn0.25Cd0.75O",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Aguilar-25",
+    "axis": null,
+    "phase": "thin film",
+    "data_path": "other/mixed crystals/ZnO-CdO/nk/Aguilar-25.yml",
+    "span_um": [
+     0.3,
+     3.2
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Zn0.25Cd0.75O (25% ZnO, 75% CdO) thin film.\n",
+    "temperature_c": null,
+    "tag": "Aguilar2019",
+    "dataset_label": "thin film | Aguilar2019",
+    "shelf": "other",
+    "book": "ZnO-CdO"
+   }
+  ]
+ },
+ "ZnCdO@x0.4": {
+  "name": "Zinc cadmium oxide Zn0.4Cd0.6O",
+  "formula": "Zn0.4Cd0.6O",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Aguilar-40",
+    "axis": null,
+    "phase": "thin film",
+    "data_path": "other/mixed crystals/ZnO-CdO/nk/Aguilar-40.yml",
+    "span_um": [
+     0.3,
+     3.2
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Zn0.4Cd0.6O (40% ZnO, 60% CdO) thin film.\n",
+    "temperature_c": null,
+    "tag": "Aguilar2019",
+    "dataset_label": "thin film | Aguilar2019",
+    "shelf": "other",
+    "book": "ZnO-CdO"
+   }
+  ]
+ },
+ "ZnCdO@x0.5": {
+  "name": "Zinc cadmium oxide Zn0.5Cd0.5O",
+  "formula": "Zn0.5Cd0.5O",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Aguilar-50",
+    "axis": null,
+    "phase": "thin film",
+    "data_path": "other/mixed crystals/ZnO-CdO/nk/Aguilar-50.yml",
+    "span_um": [
+     0.3,
+     3.2
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Zn0.5Cd0.5O (50% ZnO, 50% CdO) thin film.\n",
+    "temperature_c": null,
+    "tag": "Aguilar2019",
+    "dataset_label": "thin film | Aguilar2019",
+    "shelf": "other",
+    "book": "ZnO-CdO"
+   }
+  ]
+ },
+ "ZnCdO@x0.63": {
+  "name": "Zinc cadmium oxide Zn0.63Cd0.37O",
+  "formula": "Zn0.63Cd0.37O",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Aguilar-63",
+    "axis": null,
+    "phase": "thin film",
+    "data_path": "other/mixed crystals/ZnO-CdO/nk/Aguilar-63.yml",
+    "span_um": [
+     0.3,
+     3.2
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Zn0.63Cd0.37O (63% ZnO, 37% CdO) thin film.\n",
+    "temperature_c": null,
+    "tag": "Aguilar2019",
+    "dataset_label": "thin film | Aguilar2019",
+    "shelf": "other",
+    "book": "ZnO-CdO"
+   }
+  ]
+ },
+ "ZnCdO@x0.75": {
+  "name": "Zinc cadmium oxide Zn0.75Cd0.25O",
+  "formula": "Zn0.75Cd0.25O",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Aguilar-75",
+    "axis": null,
+    "phase": "thin film",
+    "data_path": "other/mixed crystals/ZnO-CdO/nk/Aguilar-75.yml",
+    "span_um": [
+     0.3,
+     3.2
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Zn0.75Cd0.25O (75% ZnO, 25% CdO) thin film.\n",
+    "temperature_c": null,
+    "tag": "Aguilar2019",
+    "dataset_label": "thin film | Aguilar2019",
+    "shelf": "other",
+    "book": "ZnO-CdO"
+   }
+  ]
+ },
+ "ZnCdO@x0.9": {
+  "name": "Zinc cadmium oxide Zn0.9Cd0.1O",
+  "formula": "Zn0.9Cd0.1O",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Aguilar-90",
+    "axis": null,
+    "phase": "thin film",
+    "data_path": "other/mixed crystals/ZnO-CdO/nk/Aguilar-90.yml",
+    "span_um": [
+     0.3,
+     3.2
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Zn0.9Cd0.1O (90% ZnO, 10% CdO) thin film.\n",
+    "temperature_c": null,
+    "tag": "Aguilar2019",
+    "dataset_label": "thin film | Aguilar2019",
+    "shelf": "other",
+    "book": "ZnO-CdO"
+   }
+  ]
+ },
+ "SiOx@x0.31": {
+  "name": "Silicon suboxide SiO0.31",
+  "formula": "SiO0.31",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Herguedas-SiO0.31",
+    "axis": null,
+    "phase": "sputtered film",
+    "data_path": "other/non-stoichiometric compounds/Si-O/nk/Herguedas-SiO0.31.yml",
+    "span_um": [
+     5.0,
+     25.0
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "SiO0.31. Sputtered Si with 10 sccm O2 and 190 sccm Ar, which is equivalent to a oxygen partial pressure of 1.1 &times; 10-4 mbar and a total pressure of 1.8 &times; 10-3 mbar. Room temperature.\n",
+    "temperature_c": null,
+    "tag": "Herguedas2023",
+    "dataset_label": "sputtered film | Herguedas2023",
+    "shelf": "other",
+    "book": "Si-O"
+   }
+  ]
+ },
+ "SiOx@x0.61": {
+  "name": "Silicon suboxide SiO0.61",
+  "formula": "SiO0.61",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Herguedas-SiO0.61",
+    "axis": null,
+    "phase": "sputtered film",
+    "data_path": "other/non-stoichiometric compounds/Si-O/nk/Herguedas-SiO0.61.yml",
+    "span_um": [
+     5.0,
+     25.0
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "SiO0.61. Sputtered Si with 20 sccm O2 and 180 sccm Ar, which is equivalent to a oxygen partial pressure of 1.8 &times; 10-4 mbar and a total pressure of 1.8 &times; 10-3 mbar. Room temperature.\n",
+    "temperature_c": null,
+    "tag": "Herguedas2023",
+    "dataset_label": "sputtered film | Herguedas2023",
+    "shelf": "other",
+    "book": "Si-O"
+   }
+  ]
+ },
+ "SiOx@x1.10": {
+  "name": "Silicon suboxide SiO1.10",
+  "formula": "SiO1.10",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Herguedas-SiO1.10",
+    "axis": null,
+    "phase": "sputtered film",
+    "data_path": "other/non-stoichiometric compounds/Si-O/nk/Herguedas-SiO1.10.yml",
+    "span_um": [
+     5.0,
+     25.0
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "SiO1.10. Sputtered Si with 30 sccm O2 and 170 sccm Ar, which is equivalent to a oxygen partial pressure of 2.5 &times; 10-4 mbar and a total pressure of 1.8 &times; 10-3 mbar. Room temperature.\n",
+    "temperature_c": null,
+    "tag": "Herguedas2023",
+    "dataset_label": "sputtered film | Herguedas2023",
+    "shelf": "other",
+    "book": "Si-O"
+   }
+  ]
+ },
+ "SiOx@x1.71": {
+  "name": "Silicon suboxide SiO1.71",
+  "formula": "SiO1.71",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Herguedas-SiO1.71",
+    "axis": null,
+    "phase": "sputtered film",
+    "data_path": "other/non-stoichiometric compounds/Si-O/nk/Herguedas-SiO1.71.yml",
+    "span_um": [
+     5.0,
+     25.0
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "SiO1.71. Sputtered Si with 40 sccm O2 and 160 sccm Ar, which is equivalent to a oxygen partial pressure of 3.2 &times; 10-4 mbar and a total pressure of 1.7 &times; 10-3 mbar. Room temperature.\n",
+    "temperature_c": null,
+    "tag": "Herguedas2023",
+    "dataset_label": "sputtered film | Herguedas2023",
+    "shelf": "other",
+    "book": "Si-O"
+   }
+  ]
+ },
+ "SiOx@x1.89": {
+  "name": "Silicon suboxide SiO1.89",
+  "formula": "SiO1.89",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Herguedas-SiO1.89",
+    "axis": null,
+    "phase": "sputtered film",
+    "data_path": "other/non-stoichiometric compounds/Si-O/nk/Herguedas-SiO1.89.yml",
+    "span_um": [
+     5.0,
+     25.0
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "SiO1.89. Sputtered Si with 80 sccm O2 and 120 sccm Ar, which is equivalent to a oxygen partial pressure of 5.9 &times; 10-4 mbar and a total pressure of 1.6 &times; 10-3 mbar. Room temperature.\n",
+    "temperature_c": null,
+    "tag": "Herguedas2023",
+    "dataset_label": "sputtered film | Herguedas2023",
+    "shelf": "other",
+    "book": "Si-O"
+   }
+  ]
+ },
+ "SiOx@x1.92": {
+  "name": "Silicon suboxide SiO1.92",
+  "formula": "SiO1.92",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Herguedas-SiO1.92",
+    "axis": null,
+    "phase": "sputtered film",
+    "data_path": "other/non-stoichiometric compounds/Si-O/nk/Herguedas-SiO1.92.yml",
+    "span_um": [
+     5.0,
+     25.0
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "SiO1.92. Sputtered Si with 120 sccm O2 and 80 sccm Ar, which is equivalent to a oxygen partial pressure of 7.3 &times; 10-4 mbar and a total pressure of 1.5 &times; 10-3 mbar. Room temperature.\n",
+    "temperature_c": null,
+    "tag": "Herguedas2023",
+    "dataset_label": "sputtered film | Herguedas2023",
+    "shelf": "other",
+    "book": "Si-O"
+   }
+  ]
+ },
+ "KRS@KRS-5": {
+  "name": "Thallium bromide iodide (KRS-5)",
+  "formula": "TlBr0.457I0.543",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Rodney",
+    "axis": null,
+    "phase": null,
+    "data_path": "other/mixed crystals/TlBr-TlI/nk/Rodney.yml",
+    "span_um": [
+     0.577,
+     39.38
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Mixed crystal: 45.7 M% of TlBr and 54.3 M% of TlI. 25 °C.\n",
+    "temperature_c": 25.0,
+    "tag": "Rodney1956",
+    "dataset_label": "Rodney1956",
+    "shelf": "other",
+    "book": "TlBr-TlI"
+   }
+  ]
+ },
+ "KRS@KRS-6": {
+  "name": "Thallium bromide chloride (KRS-6)",
+  "formula": null,
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Hettner",
+    "axis": null,
+    "phase": null,
+    "data_path": "other/mixed crystals/TlBr-TlCl/nk/Hettner.yml",
+    "span_um": [
+     0.6,
+     24.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "",
+    "temperature_c": null,
+    "tag": "Hettner1948",
+    "dataset_label": "Hettner1948",
+    "shelf": "other",
+    "book": "TlBr-TlCl"
+   }
+  ]
+ },
+ "YSZ@12mol": {
+  "name": "Yttria-stabilized zirconia (12 mol% Y2O3)",
+  "formula": "Zr0.88Y0.24O2.12",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Wood",
+    "axis": null,
+    "phase": "cubic, single crystal",
+    "data_path": "other/mixed crystals/ZrO2-Y2O3/nk/Wood.yml",
+    "span_um": [
+     0.361,
+     5.135
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Cubic zirconiza; 25 °C; Y2O3 content: 12.0 mol %\n",
+    "temperature_c": 25.0,
+    "tag": "Wood1982",
+    "dataset_label": "cubic, single crystal | Wood1982",
+    "shelf": "other",
+    "book": "ZrO2-Y2O3"
+   }
+  ]
+ },
+ "YSH@9.8mol": {
+  "name": "Yttria-stabilized hafnia (9.8 mol% Y2O3)",
+  "formula": "Hf0.902Y0.196O2.098",
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Wood",
+    "axis": null,
+    "phase": "cubic, single crystal",
+    "data_path": "other/mixed crystals/HfO2-Y2O3/nk/Wood.yml",
+    "span_um": [
+     0.365,
+     5.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Cubic hafnia; 20 °C; Y2O3 content: 9.8 mol. %\n",
+    "temperature_c": 20.0,
+    "tag": "Wood1990",
+    "dataset_label": "cubic, single crystal | Wood1990",
+    "shelf": "other",
+    "book": "HfO2-Y2O3"
+   }
+  ]
+ },
+ "MgO-LiNbO3@CLN-5mol": {
+  "name": "Lithium niobate, congruent, 5 mol% MgO",
+  "formula": null,
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Zelmon-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "other/doped crystals/MgO-LiNbO3/nk/Zelmon-o.yml",
+    "span_um": [
+     0.4,
+     5.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "21 °C. Ordinary ray (o). Congruently grown lithium niobate (CLN) doped with 5 mol. % MgO.\nIn the original publication, the ordinary and extraordinary Sellmeier coefficients appear to be interchanged. The coefficients are presented here with no and ne swapped to match the measured dispersion and the known negative uniaxial behavior of MgO:LiNbO3.\n",
+    "temperature_c": 20.85,
+    "tag": "Zelmon1997",
+    "dataset_label": "Zelmon1997 | o-ray",
+    "shelf": "other",
+    "book": "MgO-LiNbO3"
+   },
+   {
+    "page": "Zelmon-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "other/doped crystals/MgO-LiNbO3/nk/Zelmon-e.yml",
+    "span_um": [
+     0.4,
+     5.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "21 °C. Extraordinary ray (e). Congruently grown lithium niobate (CLN) doped with 5 mol. % MgO.\nIn the original publication, the ordinary and extraordinary Sellmeier coefficients appear to be interchanged. The coefficients are presented here with no and ne swapped to match the measured dispersion and the known negative uniaxial behavior of MgO:LiNbO3.\n",
+    "temperature_c": 20.85,
+    "tag": "Zelmon1997",
+    "dataset_label": "Zelmon1997 | e-ray",
+    "shelf": "other",
+    "book": "MgO-LiNbO3"
+   },
+   {
+    "page": "Gayer-5-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "other/doped crystals/MgO-LiNbO3/nk/Gayer-5-e.yml",
+    "span_um": [
+     0.5,
+     4.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "24.5 °C. Extraordinary ray (e). Congruently grown lithium niobate (CLN) doped with 5 mol. % MgO. See the original publication for temperature-dependent refractive index equations.\n",
+    "temperature_c": 24.5,
+    "tag": "Gayer2008",
+    "dataset_label": "Gayer2008 | e-ray",
+    "shelf": "other",
+    "book": "MgO-LiNbO3"
+   },
+   {
+    "page": "Gayer-5-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "other/doped crystals/MgO-LiNbO3/nk/Gayer-5-o.yml",
+    "span_um": [
+     0.5,
+     1.7
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "24.5 °C. Ordinary ray (o). Congruently grown lithium niobate (CLN) doped with 5 mol. % MgO. See the original publication for temperature-dependent refractive index equations.\n",
+    "temperature_c": 24.5,
+    "tag": "Gayer2008",
+    "dataset_label": "Gayer2008 | o-ray",
+    "shelf": "other",
+    "book": "MgO-LiNbO3"
+   }
+  ]
+ },
+ "MgO-LiNbO3@SLN-1mol": {
+  "name": "Lithium niobate, stoichiometric, 1 mol% MgO",
+  "formula": null,
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Gayer-1-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "other/doped crystals/MgO-LiNbO3/nk/Gayer-1-e.yml",
+    "span_um": [
+     0.5,
+     4.0
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "24.5 °C. Extraordinary ray (e). Congruently grown lithium niobate SLN) doped with 1 mol. % MgO. See the original publication for temperature-dependent refractive index equations.\n",
+    "temperature_c": 24.5,
+    "tag": "Gayer2008",
+    "dataset_label": "Gayer2008 | e-ray",
+    "shelf": "other",
+    "book": "MgO-LiNbO3"
+   }
+  ]
+ },
+ "Mg-LiTaO3@CLT-8mol": {
+  "name": "Lithium tantalate, congruent, 8 mol% Mg",
+  "formula": null,
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Moutzouris-o",
+    "axis": "o-ray",
+    "phase": null,
+    "data_path": "other/doped crystals/Mg-LiTaO3/nk/Moutzouris-o.yml",
+    "span_um": [
+     0.45,
+     1.551
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "8 mol% Mg-doped congruent lithium tantalate (MCLT). Extraordinary ray(e). 22 °C (see the original publication for temperature-dependent dispersion formula).\n",
+    "temperature_c": 22.0,
+    "tag": "Moutzouris2011",
+    "dataset_label": "Moutzouris2011 | o-ray",
+    "shelf": "other",
+    "book": "Mg-LiTaO3"
+   },
+   {
+    "page": "Moutzouris-e",
+    "axis": "e-ray",
+    "phase": null,
+    "data_path": "other/doped crystals/Mg-LiTaO3/nk/Moutzouris-e.yml",
+    "span_um": [
+     0.45,
+     1.551
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "8 mol% Mg-doped congruent lithium tantalate (MCLT). Extraordinary ray(e). 22 °C (see the original publication for temperature-dependent dispersion formula).\n",
+    "temperature_c": 22.0,
+    "tag": "Moutzouris2011",
+    "dataset_label": "Moutzouris2011 | e-ray",
+    "shelf": "other",
+    "book": "Mg-LiTaO3"
+   }
+  ]
+ },
+ "ITO@ITO": {
+  "name": "Indium tin oxide (ITO)",
+  "formula": null,
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Minenkov-glass",
+    "axis": null,
+    "phase": "110 nm film on glass",
+    "data_path": "other/mixed crystals/In2O3-SnO2/nk/Minenkov-glass.yml",
+    "span_um": [
+     0.19146,
+     1.68869
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "110 nm thick ITO layer on glass type XY15S purchased from Xinyan Technology LTD.\n",
+    "temperature_c": null,
+    "tag": "Minenkov2024",
+    "dataset_label": "110 nm film on glass | Minenkov2024",
+    "shelf": "other",
+    "book": "In2O3-SnO2"
+   },
+   {
+    "page": "Minenkov-wafer-top",
+    "axis": null,
+    "phase": "88 nm graded film on SiO2/Si, top",
+    "data_path": "other/mixed crystals/In2O3-SnO2/nk/Minenkov-wafer-top.yml",
+    "span_um": [
+     0.19146,
+     1.68869
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "88 nm thick sputter-coated, graded ITO layer on a SiO2-Si wafer. Top part of the layer.\n",
+    "temperature_c": null,
+    "tag": "Minenkov2024",
+    "dataset_label": "88 nm graded film on SiO2/Si, top | Minenkov2024",
+    "shelf": "other",
+    "book": "In2O3-SnO2"
+   },
+   {
+    "page": "Minenkov-wafer-bottom",
+    "axis": null,
+    "phase": "88 nm graded film on SiO2/Si, bottom",
+    "data_path": "other/mixed crystals/In2O3-SnO2/nk/Minenkov-wafer-bottom.yml",
+    "span_um": [
+     0.19146,
+     1.68869
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "88 nm thick sputter-coated, graded ITO layer on a SiO2-Si wafer. Bottom part of the layer.\n",
+    "temperature_c": null,
+    "tag": "Minenkov2024",
+    "dataset_label": "88 nm graded film on SiO2/Si, bottom | Minenkov2024",
+    "shelf": "other",
+    "book": "In2O3-SnO2"
+   },
+   {
+    "page": "Konig",
+    "axis": null,
+    "phase": "72 nm film on BK7",
+    "data_path": "other/mixed crystals/In2O3-SnO2/nk/Konig.yml",
+    "span_um": [
+     0.25157,
+     1.0
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "72 nm ITO film on BK7 glass substrate. Purchased from Delta Technology (CG-60IN-CUV), 15–25 ohms. ITO includes a separate roughness layer (see \\with EMA\")\"\n",
+    "temperature_c": null,
+    "tag": "Konig2014",
+    "dataset_label": "72 nm film on BK7 | Konig2014",
+    "shelf": "other",
+    "book": "In2O3-SnO2"
+   },
+   {
+    "page": "Moerland",
+    "axis": null,
+    "phase": "17 nm film on D263M",
+    "data_path": "other/mixed crystals/In2O3-SnO2/nk/Moerland.yml",
+    "span_um": [
+     0.401047791,
+     0.99996106
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "17 nm ITO film on D263M glass substrate. Purchased from Optics Balzers. Surface roughness (1 sigma) = 0.4 nm. Variable angle spectroscopic ellipsometry data + normal-incidence transmittance data fitted over the 400 to 900 nm range.\n",
+    "temperature_c": null,
+    "tag": "Moerland2016",
+    "dataset_label": "17 nm film on D263M | Moerland2016",
+    "shelf": "other",
+    "book": "In2O3-SnO2"
+   }
+  ]
+ },
+ "AZO@AZO": {
+  "name": "Aluminium-doped zinc oxide (AZO)",
+  "formula": null,
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Treharne",
+    "axis": null,
+    "phase": "sputtered film on soda-lime glass",
+    "data_path": "other/doped crystals/Al-ZnO/nk/Treharne.yml",
+    "span_um": [
+     0.3,
+     0.9
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "An Al doped ZnO film (approx 2% wt. Al) was deposited on to a soda-lime glass substrate using RF magnetron sputtering. The resultant film had a resistivity of 4.7x10-4 Ω·cm. A variable-angle ellipsometer was used to take amplitude and phase change measurements. The refractive index and extinction coefficient was extracted from a multi-oscillator model fit to the ellipsometry data, as a function of wavelength, from 300 to 900 nm\n",
+    "temperature_c": null,
+    "tag": "Treharne2011",
+    "dataset_label": "sputtered film on soda-lime glass | Treharne2011",
+    "shelf": "other",
+    "book": "Al-ZnO"
+   }
+  ]
+ },
+ "AlON@N5.88": {
+  "name": "Aluminium oxynitride (ALON), 5.88 at.% N",
+  "formula": null,
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Hartnett-5.88",
+    "axis": null,
+    "phase": null,
+    "data_path": "other/semiconductor alloys/AlN-Al2O3/nk/Hartnett-5.88.yml",
+    "span_um": [
+     0.24,
+     5.6
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Nitrogen content: 5.88 at.%\n",
+    "temperature_c": null,
+    "tag": "Hartnett1998",
+    "dataset_label": "Hartnett1998",
+    "shelf": "other",
+    "book": "AlN-Al2O3"
+   }
+  ]
+ },
+ "AlON@N6.53": {
+  "name": "Aluminium oxynitride (ALON), 6.53 at.% N",
+  "formula": null,
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Hartnett-6.53",
+    "axis": null,
+    "phase": null,
+    "data_path": "other/semiconductor alloys/AlN-Al2O3/nk/Hartnett-6.53.yml",
+    "span_um": [
+     0.24,
+     5.6
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Nitrogen content: 6.53 at.%\n",
+    "temperature_c": null,
+    "tag": "Hartnett1998",
+    "dataset_label": "Hartnett1998",
+    "shelf": "other",
+    "book": "AlN-Al2O3"
+   }
+  ]
+ },
+ "AlON@N6.69": {
+  "name": "Aluminium oxynitride (ALON), 6.69 at.% N",
+  "formula": null,
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Hartnett-6.69",
+    "axis": null,
+    "phase": null,
+    "data_path": "other/semiconductor alloys/AlN-Al2O3/nk/Hartnett-6.69.yml",
+    "span_um": [
+     0.24,
+     5.6
+    ],
+    "kind": "n",
+    "dispersion": "formula",
+    "comments": "Nitrogen content: 6.69 at.%\n",
+    "temperature_c": null,
+    "tag": "Hartnett1998",
+    "dataset_label": "Hartnett1998",
+    "shelf": "other",
+    "book": "AlN-Al2O3"
+   }
+  ]
+ },
+ "AlON@N7.17": {
+  "name": "Aluminium oxynitride (ALON), 7.17 at.% N",
+  "formula": null,
+  "source": "alloy_material_list.py (every listed page is its own dataset; primary: ambient, measured before model fits, widest covering 633 nm)",
+  "axes": [
+   {
+    "page": "Hartnett-7.17",
+    "axis": null,
+    "phase": null,
+    "data_path": "other/semiconductor alloys/AlN-Al2O3/nk/Hartnett-7.17.yml",
+    "span_um": [
+     0.24,
+     5.6
+    ],
+    "kind": "nk",
+    "dispersion": "tabulated",
+    "comments": "Nitrogen content: 7.17 at.%\n",
+    "temperature_c": null,
+    "tag": "Hartnett1998",
+    "dataset_label": "Hartnett1998",
+    "shelf": "other",
+    "book": "AlN-Al2O3"
+   }
+  ]
+ }
+}

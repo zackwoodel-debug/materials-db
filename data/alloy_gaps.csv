@@ -1,0 +1,15 @@
+key,name,gap_kind,reason
+other/AlAs-GaAs/Aspnes-0,Aspnes-0,excluded_page,"end member (x = 0): the pure compound is already a material (GaAs, with Aspnes 1986)"
+other/AlAs-GaAs/Papatryfonos-0,Papatryfonos-0,excluded_page,"end member (x = 0): the pure compound is already a material (GaAs, with Papatryfonos 2021)"
+other/AlAs-GaAs/Gadras-0,Gadras-0,excluded_page,"end member (x = 0): the pure compound is already a material (GaAs, with Gadras 2025 at 600 degC)"
+other/AlAs-GaAs/Gadras-100,Gadras-100,excluded_page,end member (x = 1): the pure compound is already a material (AlAs)
+other/AlAs-GaAs/Perner-0,Perner-0,excluded_page,"end member (x = 0): the pure compound is already a material (GaAs, with Perner 2023)"
+other/AlAs-GaAs/Gadras-90,Gadras-90,excluded_page,"composition contradicts itself: the page name says 90% Al, its comment x = 0.92"
+other/AlSb-GaSb/Ferrini-0,Ferrini-0,excluded_page,end member (x = 0): the pure compound is already a material (GaSb); its comment calls it GaAs
+other/ZnO-CdO/Aguilar-100,Aguilar-100,excluded_page,end member (x = 1): the pure compound is already a material (ZnO)
+other/GaP-InP/Kaneko,Kaneko,excluded_page,"composition not stated (GaInP films on GaAs, 580 and 851 nm)"
+other/In2O3-SnO2/Konig-EMA,Konig-EMA,excluded_page,"a 2 nm surface-roughness layer (effective-medium model), not ITO"
+other/Al-ZnO/Shkondin,Shkondin,excluded_page,"AZO nanopillars: an effective medium of a nanostructure, not the material"
+"other/Au-Ag, Cu-Zn, Ni-Fe","other/Au-Ag, Cu-Zn, Ni-Fe",out_of_family,"deferred: the pages do not say whether % is atomic or by weight (for Au-Ag a ~2x difference in formula), and Rioux 2014's eight intermediate Au-Ag compositions are model interpolations"
+other/2D_HOIP,other/2D_HOIP,out_of_family,deferred: the page's Ruddlesden-Popper formula (BA)2(MA)n-1PbnI3n-1 contradicts the standard I3n+1
+other/CH3NH3PbI3 Leguy-hydrated,other/CH3NH3PbI3 Leguy-hydrated,out_of_family,see the perovskites family (the hydrate is a different compound)

@@ -64,8 +64,9 @@ import release_validation as rv  # noqa: E402
 
 BASE_DB = _ROOT / "data" / "materials_oxide_test.db"
 FAMILY_CSVS = ["oxides_50", "batch2_31", "batch3b_4", "pure_elements_50", "nitrides", "polymers", "inorganic3", "halides",
-               "chalcogenides", "liquids", "semiconductors", "inorganic4", "glasses", "optical_media", "liquid_crystals", "bio_media", "gases"]
-GAP_CSVS = ["nitride_gaps", "polymer_gaps", "inorganic3_gaps", "halide_gaps", "chalcogenide_gaps", "liquid_gaps", "semiconductor_gaps", "inorganic4_gaps", "glass_gaps", "optical_media_gaps", "liquid_crystal_gaps", "bio_media_gaps", "gas_gaps"]
+               "chalcogenides", "liquids", "semiconductors", "inorganic4", "glasses", "optical_media", "liquid_crystals", "bio_media", "gases",
+               "alloys", "perovskites"]
+GAP_CSVS = ["nitride_gaps", "polymer_gaps", "inorganic3_gaps", "halide_gaps", "chalcogenide_gaps", "liquid_gaps", "semiconductor_gaps", "inorganic4_gaps", "glass_gaps", "optical_media_gaps", "liquid_crystal_gaps", "bio_media_gaps", "gas_gaps", "alloy_gaps", "perovskite_gaps"]
 DESCRIPTOR_INPUTS = ["mp_structural.json", "polymer_repeat_units.csv", "formula_issues.csv", "source_dois.json", "pubchem_titles.json", "mp_dielectric.json",
                      "mp_structure_extras.json"]
 # Same allow-list as tests/test_family_optical_sanity.py (a test keeps them equal): measurement noise around k = 0 in tabulated sources.
@@ -86,6 +87,7 @@ class ReleaseError(RuntimeError):
 
 
 def family_jobs():
+    import load_alloys_db as aly
     import load_bio_media_db as bio
     import load_chalcogenides_db as chl
     import load_gases_db as gas
@@ -97,6 +99,7 @@ def family_jobs():
     import load_liquids_db as liq
     import load_nitrides_db as nit
     import load_optical_media_db as opm
+    import load_perovskites_db as prv
     import load_polymers_db as pol  # noqa: F401  (kwargs below mirror its main())
     import load_semiconductors_db as sem
     lit = lambda m: dict(literature_title=m.LITERATURE_TITLE, literature_technique=m.LITERATURE_TECHNIQUE, literature_note=m.LITERATURE_NOTE)
@@ -108,7 +111,9 @@ def family_jobs():
             ("optical_media", opm, dict(lit(opm), allow_null_formula=True)),
             ("liquid_crystal", lcr, dict(lit(lcr), allow_null_formula=True)),
             ("bio_media", bio, dict(lit(bio), allow_null_formula=True)),
-            ("gas", gas, dict(lit(gas), allow_null_formula=True))]
+            ("gas", gas, dict(lit(gas), allow_null_formula=True)),
+            ("alloy", aly, dict(lit(aly), allow_null_formula=True)),
+            ("perovskite", prv, dict(lit(prv), allow_null_formula=True))]
 
 
 def family_rows():
@@ -338,7 +343,8 @@ def write_readme(path, version, facts, c, mp_version):
 
 Optical constants (n, k), densities, x-ray and neutron scattering length densities, and compositional, structural and
 molecular descriptors for **{n_mat} materials** (inorganic crystals, compound semiconductors, metals, substrate and window
-glasses, polymers, molecular liquids, biomolecules, liquid crystals, biological media and gases): {c['datasets']} optical datasets and {c['tables']['optical_dispersion']:,} optical
+glasses, polymers, molecular liquids, biomolecules, liquid crystals, biological media, gases, semiconductor and oxide alloys
+and halide perovskites): {c['datasets']} optical datasets and {c['tables']['optical_dispersion']:,} optical
 data points. All of it is in one SQLite file, `materials-db-v{version}.sqlite`, and every table is also exported as CSV in `csv/`.
 
 Licence: **CC BY 4.0**. Cite this dataset and the upstream sources listed in `DATA_LICENSE.md` (refractiveindex.info,
@@ -488,6 +494,15 @@ calculation overestimates by 30-60%.
   pressure: the temperature is on every row and the pressure is in the variant label ("gas, 101.325 kPa", "gas, 100 kPa";
   "gas" where the source states none). Argon, krypton and xenon also have liquid and solid datasets at cryogenic
   temperatures, labelled by phase. The primary is always a gas at stated conditions.
+- Alloys and perovskites: composition series (AlGaAs at 16 compositions, AlGaSb, SiGe, ZnCdO, SiOx), lattice-matched InGaAs,
+  GaInP and AgGa0.86In0.14S2, KRS-5 / KRS-6, yttria-stabilized zirconia and hafnia, MgO:LiNbO3, Mg:LiTaO3, ITO, AZO and AlON; and
+  MAPbI3, MAPbBr3, CsPbBr3, CsPbCl3 and mixed CsPb(Br,Cl)3. Each composition is its own material with the fractional formula its
+  page states (x, or an exact mol% conversion); preparation (substrate, thickness, crystal vs film) is the variant. Doped crystals
+  and conducting oxides whose page gives no exact composition have no formula. End members (x = 0 or 1) are the existing pure
+  materials. In the ML splits a series joins its first end member's group. Recorded source conflicts: AlGaAs Gadras-90 (90% vs
+  x = 0.92, excluded), SiGe Jellison-48 (comment x = 0.28, CONDITIONS 0.48: 0.48 used), Mg:LiTaO3's '-o' page (comment says
+  extraordinary; its coefficients are the ordinary ray). Deferred: Au-Ag, brass and permalloy (atomic vs weight % not stated)
+  and 2D perovskites (the page's formula contradicts the standard one). Perovskite constants depend strongly on the sample.
 - Primary dataset (the family tables' n_633 / k_633) in the automatically selected families (halides, chalcogenides,
   liquids, semiconductors): measured data before model fits of the dielectric function, then the widest range covering
   633 nm. A page is a model fit only when its source says so (scripts/dataset_kind.py). A model fit covering 633 nm is primary

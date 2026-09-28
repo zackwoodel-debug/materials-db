@@ -131,7 +131,11 @@ def build(MATERIALS, EXCLUDED_PAGES, OUT_OF_FAMILY, csv_stem, selections_stem, g
             flags.append(f"density {row['density_g_cm3']} g/cm3 stated by the manufacturer's datasheet ({mat['density_page'][2]})")
         else:
             flags.append(density_null_reason)
-        if mat.get("formula"):  # a single compound: identity from PubChem (checked against the formula by fetch_pubchem)
+        if mat.get("series"):  # a composition series (alloys, perovskites): the ML splits keep a series together
+            row["series"] = mat["series"]
+        if mat.get("formula") and mat.get("pubchem", True) is False:
+            flags.append("identity from the formula alone: a solid solution / non-stoichiometric composition has no PubChem compound record")
+        elif mat.get("formula"):  # a single compound: identity from PubChem (checked against the formula by fetch_pubchem)
             pc = base.fetch_pubchem(dict(idx=i, name=mat["name"], formula=mat["formula"], pubchem_name=mat.get("pubchem_name") or mat["name"]))
             flags += pc.pop("flags")
             row.update(pc)

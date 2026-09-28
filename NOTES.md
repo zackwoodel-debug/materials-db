@@ -195,6 +195,16 @@ Generic loader: scripts/load_family_db.py (--family/--catalog/--selections/--db/
    consistent with K, G. Oxidation-state guesses are for reading only (GST top guess Ge+4/Sb+1 is wrong; 48 alternatives) and
    are NOT ML features. generate_ml_release_set emits v2 columns only for v2 releases (a v1 release regenerates identically).
    Not added: atomic polarizability (needs the mendeleev package), molecular descriptors of crystals, anything derived from n.
+33. DONE: alloys + perovskites families (alloy_material_list.py, perovskite_material_list.py via listed_family.py; loaders
+   load_alloys_db.py / load_perovskites_db.py). 63 materials (ids 382-444, registered_in 0.17.0), 86 datasets. Rules (user,
+   2026-09-27): each composition its own material, fractional formula from the page (x or exact mol% conversion), never
+   guessed; preparation = variant; end members not loaded (already materials); a series joins its first end member's split
+   group (existing materials never move; second end members listed in splits metadata). Source conflicts recorded (Gadras-90,
+   Jellison-48, Mg:LiTaO3 -o page, Ferrini-0 'GaAs'). PubChem: MAPbI3, CsPbBr3 found; MAPbBr3, CsPbCl3 not found under any
+   common name (identity from the formula). Descriptors: material_kind 'solid solution' / 'hybrid organic-inorganic
+   perovskite' / 'doped crystal or conducting oxide'; no oxidation-state guess for fractional formulas (pymatgen needs integers).
+   DEFERRED (needs a decision): Au-Ag (Rioux 2014: 8 of 11 compositions are model interpolations; % basis not stated),
+   Cu-Zn brass, Ni-Fe permalloy (% basis), 2D HOIPs (page formula I3n-1 vs standard I3n+1), PEDOT:PSS / P3HT:PCBM blends.
 
 ## FOLLOW-UP (logged, NOT started): graphene / 2D carbon as its own family -- materialclass must NOT be 'polymer'
 - RI.info main/C, verified read-only: monolayer graphene = Weber 2010 (0.21-1.0 um, exfoliated flake, 3.4 A, on Si/98 nm SiO2), Song 2018 "Graphene"

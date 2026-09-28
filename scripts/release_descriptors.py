@@ -124,6 +124,11 @@ def compositional(formula):
     return out
 
 
+def _formula_amounts(formula):
+    from pymatgen.core import Composition
+    return list(Composition(formula).values())
+
+
 def chemistry(formula):
     """Inorganic compounds: Pauling ionic character of the most polar pair, and the oxidation-state guess (a guess)."""
     from pymatgen.core import Composition
@@ -134,6 +139,11 @@ def chemistry(formula):
         dx = max(xs) - min(xs)
         out["max_electronegativity_difference"] = round(dx, 6)
         out["pauling_ionic_character"] = round(1 - math.exp(-dx ** 2 / 4), 6)  # Pauling: 1 - exp(-(dX)^2 / 4)
+    if any(abs(v - round(v)) > 1e-9 for v in comp.values()):
+        out["oxidation_state_guess"] = None
+        out["oxidation_state_note"] = ("not attempted: a fractional composition (solid solution); its end members' oxidation "
+                                       "states apply")
+        return out
     with warnings.catch_warnings():
         warnings.simplefilter("ignore")
         guesses = comp.oxi_state_guesses()
@@ -231,6 +241,7 @@ GLASS_FAMILIES = {"glasses"}  # multicomponent glasses: no single formula, no cr
 FORMULATION_FAMILIES = {"optical_media"}  # proprietary liquids / cured resins: no single formula, no crystal structure
 BIO_FAMILIES = {"bio_media"}  # biological fluids, tissues and buffers: mixtures, no formula, no crystal structure
 LC_FAMILIES = {"liquid_crystals"}
+SERIES_FAMILIES = {"alloys", "perovskites"}  # solid solutions, doped crystals, TCOs and halide perovskites (v0.17.0)
 GAS_FAMILIES = {"gases"}  # compound gases are molecules (PubChem SMILES); elemental gases are elements; air is a mixture  # single compounds are molecules (PubChem SMILES); the commercial mixtures are formulations  # families whose materials are discrete molecules (described by their PubChem SMILES)
 
 
@@ -288,6 +299,10 @@ def descriptor_row(name, formula, family, csv_row, optical_labels, mp, units, is
         doc["compositional"] = comp
         if not is_polymer and doc.get("material_kind") != "molecule":
             doc["material_kind"] = "element" if comp["n_elements"] == 1 else "inorganic compound"
+            if family in SERIES_FAMILIES:  # a fractional formula is a solid solution; C in a halide perovskite is its organic cation
+                doc["material_kind"] = ("hybrid organic-inorganic perovskite" if "C" in comp["element_fractions"] else
+                                        "solid solution" if any(abs(v - round(v)) > 1e-9 for v in _formula_amounts(rf)) else
+                                        "inorganic compound")
         if cols["exact_mass"] is None:
             cols["exact_mass"], cols["heavy_atom_count"] = formula_mass_and_heavy_atoms(rf)
     elif family in GLASS_FAMILIES:
@@ -301,12 +316,16 @@ def descriptor_row(name, formula, family, csv_row, optical_labels, mp, units, is
     elif family in BIO_FAMILIES:
         doc["compositional"] = dict(unavailable="biological fluid, tissue or buffer: a mixture, no single formula")
         doc["material_kind"] = "biological or buffer mixture"
+    elif family in SERIES_FAMILIES:
+        doc["compositional"] = dict(unavailable="doped crystal or conducting oxide: the source gives no exact composition "
+                                                "(the dopant level is in the name)")
+        doc["material_kind"] = "doped crystal or conducting oxide"
     else:
         doc["compositional"] = dict(unavailable=why or "no single molecular formula")
         doc.setdefault("material_kind", "polymer" if is_polymer else "unknown")
 
-    # chemistry (v2): inorganic compounds only
-    if doc.get("material_kind") == "inorganic compound":
+    # chemistry (v2): inorganic compounds and solid solutions only
+    if doc.get("material_kind") in ("inorganic compound", "solid solution"):
         doc["chemistry"] = chemistry(rf)
     elif doc.get("material_kind") == "element":
         doc["chemistry"] = dict(not_applicable="an element: no bond polarity, oxidation state 0")

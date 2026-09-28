@@ -77,3 +77,21 @@ def test_sizes_near_nominal_and_metadata_consistent():
 def test_spectra_rows_inherit_their_material_split():
     spec = pd.read_parquet(ROOT / "data" / "ML_release_spectra.parquet", columns=["material_id"])
     assert set(spec.material_id) <= set(SPLITS.material_id)
+
+
+def test_series_members_join_their_anchor_group():
+    """A composition series (alloys, perovskites) shares the group of its first end member in the release, else series:<name>."""
+    ends = gs.series_end_members()
+    group_of = dict(zip(SPLITS.meta_key, SPLITS.group))
+    for key, grp in group_of.items():
+        if key.split(":", 1)[0] in gs.SERIES_FAMILIES:
+            series = key.split(":", 1)[1].split("@")[0]
+            anchor = next((group_of[e] for e in ends[series] if e in group_of), None)
+            assert grp == (anchor or f"series:{series}"), key
+
+
+def test_series_never_move_an_existing_material():
+    """The series rule only places series members: every other material's group is what it would be without any series."""
+    without = gs.assign(FEATURES[~FEATURES.meta_family.isin(gs.SERIES_FAMILIES)], strict=False).set_index("material_id")
+    full = SPLITS.set_index("material_id").loc[without.index]
+    assert (without.group == full.group).all() and (without.split == full.split).all()
