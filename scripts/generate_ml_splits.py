@@ -17,7 +17,8 @@ Groups: materials a model cannot tell apart, or that are grades of one product, 
   * composition series (alloys, perovskites; v0.17.0): every member of a series (AlGaAs x = 0.097 ... 0.929) joins the group of
     the series' FIRST end member already in the release (AlGaAs -> GaAs's group), or series:<name> when none is. Existing
     materials never move (the stability promise below), so a second end member (AlAs) may sit in another group: those are
-    listed in the metadata (series_end_members_outside_group) for anyone who wants a strict series split.
+    listed in the metadata (series_end_members_outside_group) for anyone who wants a strict series split. A series member's
+    group therefore depends on its anchor being in the release (materials never leave a release in practice).
 Rows of the spectra set (axes, phases, temperatures, sources of one material) follow their material_id.
 
 Assignment: from sha256 of the group id, so a material keeps its split in every later release; a new material never moves an

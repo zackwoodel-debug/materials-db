@@ -49,8 +49,10 @@ def test_known_near_duplicates_are_together(keys):
 
 
 def test_assignment_depends_only_on_the_group_id():
-    """Dropping materials (a smaller or different release) never moves the others."""
+    """Dropping materials (a smaller or different release) never moves the others -- except a series member whose anchor end
+    member was dropped (its group is the anchor's; without it, series:<name>): tested by the series tests below."""
     sub = gs.assign(FEATURES.sample(frac=0.5, random_state=1), strict=False).set_index("material_id")
+    sub = sub[~sub.meta_family.isin(gs.SERIES_FAMILIES)]
     full = SPLITS.set_index("material_id").loc[sub.index]
     assert (sub.split == full.split).all() and (sub.fold == full.fold).all()
 

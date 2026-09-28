@@ -1,6 +1,6 @@
 {
- "source_release": "0.16.0",
- "source_sqlite_sha256": "2a95ce0ce9450363ce0c1bd72a7088383b51742bc0cd20ed4c8c7f099395dacf",
+ "source_release": "0.17.0",
+ "source_sqlite_sha256": "f5d3b22fb9fcf24d8de7be9965ebc791087000db6676c1fc9fb661da4a806659",
  "assignment": "sha256 of the group id: split = hash('split:'+group) mod 10 (0-7 train, 8 validation, 9 test); fold = hash('fold:'+group) mod 5",
  "product_lines": {
   "cargille-matching-liquids": [
@@ -29,40 +29,52 @@
    "polymers:IP-Dip"
   ]
  },
- "groups": 345,
- "multi_material_groups": 22,
- "materials_in_multi_material_groups": 58,
+ "groups": 351,
+ "multi_material_groups": 36,
+ "materials_in_multi_material_groups": 129,
  "per_split": {
   "train": {
-   "materials": 303,
-   "groups": 276,
-   "with_target_n_633nm": 250,
-   "with_target_k_633nm": 93,
+   "materials": 340,
+   "groups": 282,
+   "with_target_n_633nm": 279,
+   "with_target_k_633nm": 115,
    "with_target_density_g_cm3": 206
   },
   "validation": {
-   "materials": 42,
+   "materials": 50,
    "groups": 33,
-   "with_target_n_633nm": 29,
-   "with_target_k_633nm": 12,
+   "with_target_n_633nm": 37,
+   "with_target_k_633nm": 20,
    "with_target_density_g_cm3": 28
   },
   "test": {
-   "materials": 36,
+   "materials": 54,
    "groups": 36,
-   "with_target_n_633nm": 29,
-   "with_target_k_633nm": 8,
+   "with_target_n_633nm": 46,
+   "with_target_k_633nm": 23,
    "with_target_density_g_cm3": 30
   }
  },
  "per_fold": {
-  "0": 88,
-  "1": 79,
-  "2": 70,
-  "3": 66,
-  "4": 78
+  "0": 114,
+  "1": 81,
+  "2": 73,
+  "3": 71,
+  "4": 105
  },
  "cross_family_groups": {
+  "comp:As0.5000 Ga0.5000": [
+   "alloys",
+   "semiconductors"
+  ],
+  "comp:As0.5000 In0.5000": [
+   "alloys",
+   "semiconductors"
+  ],
+  "comp:Br0.5000 Tl0.5000": [
+   "alloys",
+   "halides"
+  ],
   "comp:C0.2857 H0.5714 O0.1429": [
    "liquids",
    "polymers"
@@ -76,9 +88,127 @@
    "gases",
    "liquids",
    "polymers"
+  ],
+  "comp:Ga0.5000 P0.5000": [
+   "alloys",
+   "semiconductors"
+  ],
+  "comp:Ga0.5000 Sb0.5000": [
+   "alloys",
+   "semiconductors"
+  ],
+  "comp:Hf0.3333 O0.6667": [
+   "alloys",
+   "oxides_50"
+  ],
+  "comp:Li0.2000 Nb0.2000 O0.6000": [
+   "alloys",
+   "oxides_50"
+  ],
+  "comp:Li0.2000 O0.6000 Ta0.2000": [
+   "alloys",
+   "inorganic3"
+  ],
+  "comp:O0.5000 Si0.5000": [
+   "alloys",
+   "oxides_50"
+  ],
+  "comp:O0.5000 Zn0.5000": [
+   "alloys",
+   "oxides_50"
+  ],
+  "comp:Si1.0000": [
+   "alloys",
+   "pure_elements_50"
   ]
  },
+ "series_groups": {
+  "AZO": "comp:O0.5000 Zn0.5000",
+  "AgGaInS2": "series:AgGaInS2",
+  "AlGaAs": "comp:As0.5000 Ga0.5000",
+  "AlGaSb": "comp:Ga0.5000 Sb0.5000",
+  "AlON": "series:AlON",
+  "GaInP": "comp:Ga0.5000 P0.5000",
+  "ITO": "series:ITO",
+  "InGaAs": "comp:As0.5000 In0.5000",
+  "KRS": "comp:Br0.5000 Tl0.5000",
+  "Mg-LiTaO3": "comp:Li0.2000 O0.6000 Ta0.2000",
+  "MgO-LiNbO3": "comp:Li0.2000 Nb0.2000 O0.6000",
+  "SiGe": "comp:Si1.0000",
+  "SiOx": "comp:O0.5000 Si0.5000",
+  "YSH": "comp:Hf0.3333 O0.6667",
+  "YSZ": "series:YSZ",
+  "ZnCdO": "comp:O0.5000 Zn0.5000",
+  "CsPbX3": "series:CsPbX3",
+  "MAPbX3": "series:MAPbX3"
+ },
+ "series_end_members_outside_group": [
+  {
+   "series": "AlGaAs",
+   "end_member": "semiconductors:AlAs",
+   "group": "comp:Al0.5000 As0.5000"
+  },
+  {
+   "series": "AlGaSb",
+   "end_member": "semiconductors:AlSb",
+   "group": "comp:Al0.5000 Sb0.5000"
+  },
+  {
+   "series": "GaInP",
+   "end_member": "semiconductors:InP",
+   "group": "comp:In0.5000 P0.5000"
+  },
+  {
+   "series": "InGaAs",
+   "end_member": "semiconductors:GaAs",
+   "group": "comp:As0.5000 Ga0.5000"
+  },
+  {
+   "series": "KRS",
+   "end_member": "halides:TlCl",
+   "group": "comp:Cl0.5000 Tl0.5000"
+  },
+  {
+   "series": "SiGe",
+   "end_member": "pure_elements_50:Ge@diamond cubic",
+   "group": "comp:Ge1.0000"
+  },
+  {
+   "series": "SiOx",
+   "end_member": "oxides_50:SiO2@amorphous",
+   "group": "comp:O0.6667 Si0.3333"
+  }
+ ],
  "group_members": {
+  "comp:As0.5000 Ga0.5000": [
+   "alloys:AlGaAs@x0.097",
+   "alloys:AlGaAs@x0.099",
+   "alloys:AlGaAs@x0.198",
+   "alloys:AlGaAs@x0.219",
+   "alloys:AlGaAs@x0.315",
+   "alloys:AlGaAs@x0.32",
+   "alloys:AlGaAs@x0.342",
+   "alloys:AlGaAs@x0.411",
+   "alloys:AlGaAs@x0.419",
+   "alloys:AlGaAs@x0.452",
+   "alloys:AlGaAs@x0.491",
+   "alloys:AlGaAs@x0.53",
+   "alloys:AlGaAs@x0.59",
+   "alloys:AlGaAs@x0.7",
+   "alloys:AlGaAs@x0.804",
+   "alloys:AlGaAs@x0.929",
+   "semiconductors:GaAs"
+  ],
+  "comp:As0.5000 In0.5000": [
+   "alloys:InGaAs@x0.47",
+   "alloys:InGaAs@x0.48",
+   "semiconductors:InAs"
+  ],
+  "comp:Br0.5000 Tl0.5000": [
+   "alloys:KRS@KRS-5",
+   "alloys:KRS@KRS-6",
+   "halides:TlBr"
+  ],
   "comp:C0.2000 H0.6000 O0.1000 Si0.1000": [
    "polymers:PDMS-10-1",
    "polymers:PDMS-15-1",
@@ -148,6 +278,16 @@
    "batch3b_4:C@diamond cubic",
    "batch3b_4:C@graphite"
   ],
+  "comp:Ga0.5000 P0.5000": [
+   "alloys:GaInP@x0.49",
+   "semiconductors:GaP"
+  ],
+  "comp:Ga0.5000 Sb0.5000": [
+   "alloys:AlGaSb@x0.1",
+   "alloys:AlGaSb@x0.3",
+   "alloys:AlGaSb@x0.5",
+   "semiconductors:GaSb"
+  ],
   "comp:H0.6667 O0.3333": [
    "liquids:D2O",
    "liquids:H2O"
@@ -155,6 +295,50 @@
   "comp:H1.0000": [
    "gases:D2",
    "gases:H2"
+  ],
+  "comp:Hf0.3333 O0.6667": [
+   "alloys:YSH@9.8mol",
+   "oxides_50:HfO2"
+  ],
+  "comp:Li0.2000 Nb0.2000 O0.6000": [
+   "alloys:MgO-LiNbO3@CLN-5mol",
+   "alloys:MgO-LiNbO3@SLN-1mol",
+   "oxides_50:LiNbO3"
+  ],
+  "comp:Li0.2000 O0.6000 Ta0.2000": [
+   "alloys:Mg-LiTaO3@CLT-8mol",
+   "inorganic3:LiTaO3"
+  ],
+  "comp:O0.5000 Si0.5000": [
+   "alloys:SiOx@x0.31",
+   "alloys:SiOx@x0.61",
+   "alloys:SiOx@x1.10",
+   "alloys:SiOx@x1.71",
+   "alloys:SiOx@x1.89",
+   "alloys:SiOx@x1.92",
+   "oxides_50:SiO@amorphous"
+  ],
+  "comp:O0.5000 Zn0.5000": [
+   "alloys:AZO@AZO",
+   "alloys:ZnCdO@x0.1",
+   "alloys:ZnCdO@x0.25",
+   "alloys:ZnCdO@x0.4",
+   "alloys:ZnCdO@x0.5",
+   "alloys:ZnCdO@x0.63",
+   "alloys:ZnCdO@x0.75",
+   "alloys:ZnCdO@x0.9",
+   "oxides_50:ZnO@wurtzite"
+  ],
+  "comp:Si1.0000": [
+   "alloys:SiGe@x0.11",
+   "alloys:SiGe@x0.2",
+   "alloys:SiGe@x0.28",
+   "alloys:SiGe@x0.47",
+   "alloys:SiGe@x0.48",
+   "alloys:SiGe@x0.65",
+   "alloys:SiGe@x0.85",
+   "alloys:SiGe@x0.98",
+   "pure_elements_50:Si@diamond cubic"
   ],
   "line:cargille-matching-liquids": [
    "optical_media:Cargille-06350",
@@ -180,6 +364,22 @@
    "liquids:silk-Am",
    "liquids:silk-Bm",
    "liquids:silk-Sr"
+  ],
+  "series:AlON": [
+   "alloys:AlON@N5.88",
+   "alloys:AlON@N6.53",
+   "alloys:AlON@N6.69",
+   "alloys:AlON@N7.17"
+  ],
+  "series:CsPbX3": [
+   "perovskites:CsPbX3@CsPbBr1.3Cl1.7",
+   "perovskites:CsPbX3@CsPbBr1.8Cl1.2",
+   "perovskites:CsPbX3@CsPbBr3",
+   "perovskites:CsPbX3@CsPbCl3"
+  ],
+  "series:MAPbX3": [
+   "perovskites:MAPbX3@MAPbBr3",
+   "perovskites:MAPbX3@MAPbI3"
   ]
  },
  "notes": [

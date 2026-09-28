@@ -1,9 +1,9 @@
 {
-  "source_release": "0.16.0",
-  "source_release_git_commit": "9def1b1c4cb567a2be776b0ff3eab599ef115de2",
-  "source_sqlite": "materials-db-v0.16.0.sqlite",
-  "source_sqlite_sha256": "2a95ce0ce9450363ce0c1bd72a7088383b51742bc0cd20ed4c8c7f099395dacf",
-  "n_materials": 381,
+  "source_release": "0.17.0",
+  "source_release_git_commit": "8fd016c49c4f90bee87eee05a557d48b12be423d",
+  "source_sqlite": "materials-db-v0.17.0.sqlite",
+  "source_sqlite_sha256": "f5d3b22fb9fcf24d8de7be9965ebc791087000db6676c1fc9fb661da4a806659",
+  "n_materials": 444,
   "optical_ref_wl_nm": 633.0,
   "scaled": false,
   "target_columns": [
@@ -12,8 +12,8 @@
     "target_density_g_cm3"
   ],
   "target_present": {
-    "target_n_633nm": 308,
-    "target_k_633nm": 113,
+    "target_n_633nm": 362,
+    "target_k_633nm": 158,
     "target_density_g_cm3": 264
   },
   "feature_columns": [
@@ -767,30 +767,32 @@
   "fp_radius": 2,
   "fp_note": "release 2048-bit Morgan fingerprint folded to 512 (identical to fpSize=512)",
   "block_present": {
-    "has_composition": 328,
+    "has_composition": 381,
     "has_structure": 194,
     "has_molecular": 104
   },
   "per_family": {
     "liquids": 75,
+    "alloys": 57,
     "oxides_50": 50,
     "pure_elements_50": 50,
     "polymers": 41,
     "batch2_31": 31,
     "halides": 21,
     "gases": 18,
-    "semiconductors": 17,
     "chalcogenides": 17,
+    "semiconductors": 17,
     "inorganic3": 16,
     "glasses": 11,
     "liquid_crystals": 9,
     "optical_media": 8,
     "inorganic4": 6,
     "bio_media": 6,
+    "perovskites": 6,
     "batch3b_4": 4,
     "nitrides": 1
   },
-  "n633_max_rel_dev_vs_family_tables": 4.05866092219727e-07,
+  "n633_max_rel_dev_vs_family_tables": 4.435327322850347e-07,
   "notes": [
     "Primary optical dataset per material; n,k interpolated inside its range only, never extrapolated.",
     "Missing values are NaN, never imputed; has_* flags say which descriptor blocks exist.",

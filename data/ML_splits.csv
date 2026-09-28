@@ -380,3 +380,66 @@ material_id,meta_key,meta_name,meta_family,group,split,fold
 379,gases:C2H6,Ethane,gases,comp:C0.2500 H0.7500,train,0
 380,gases:C2H4,Ethylene,gases,comp:C0.3333 H0.6667,validation,3
 381,gases:C2H2,Acetylene,gases,comp:C0.5000 H0.5000,train,1
+382,alloys:AZO@AZO,Aluminium-doped zinc oxide (AZO),alloys,comp:O0.5000 Zn0.5000,train,0
+383,alloys:AgGaInS2@x0.14,Silver gallium indium sulfide AgGa0.86In0.14S2,alloys,series:AgGaInS2,train,3
+384,alloys:AlGaAs@x0.097,Aluminium gallium arsenide Al0.097Ga0.903As,alloys,comp:As0.5000 Ga0.5000,test,4
+385,alloys:AlGaAs@x0.099,Aluminium gallium arsenide Al0.099Ga0.901As,alloys,comp:As0.5000 Ga0.5000,test,4
+386,alloys:AlGaAs@x0.198,Aluminium gallium arsenide Al0.198Ga0.802As,alloys,comp:As0.5000 Ga0.5000,test,4
+387,alloys:AlGaAs@x0.219,Aluminium gallium arsenide Al0.219Ga0.781As,alloys,comp:As0.5000 Ga0.5000,test,4
+388,alloys:AlGaAs@x0.315,Aluminium gallium arsenide Al0.315Ga0.685As,alloys,comp:As0.5000 Ga0.5000,test,4
+389,alloys:AlGaAs@x0.32,Aluminium gallium arsenide Al0.32Ga0.68As,alloys,comp:As0.5000 Ga0.5000,test,4
+390,alloys:AlGaAs@x0.342,Aluminium gallium arsenide Al0.342Ga0.658As,alloys,comp:As0.5000 Ga0.5000,test,4
+391,alloys:AlGaAs@x0.411,Aluminium gallium arsenide Al0.411Ga0.589As,alloys,comp:As0.5000 Ga0.5000,test,4
+392,alloys:AlGaAs@x0.419,Aluminium gallium arsenide Al0.419Ga0.581As,alloys,comp:As0.5000 Ga0.5000,test,4
+393,alloys:AlGaAs@x0.452,Aluminium gallium arsenide Al0.452Ga0.548As,alloys,comp:As0.5000 Ga0.5000,test,4
+394,alloys:AlGaAs@x0.491,Aluminium gallium arsenide Al0.491Ga0.509As,alloys,comp:As0.5000 Ga0.5000,test,4
+395,alloys:AlGaAs@x0.53,Aluminium gallium arsenide Al0.53Ga0.47As,alloys,comp:As0.5000 Ga0.5000,test,4
+396,alloys:AlGaAs@x0.59,Aluminium gallium arsenide Al0.59Ga0.41As,alloys,comp:As0.5000 Ga0.5000,test,4
+397,alloys:AlGaAs@x0.7,Aluminium gallium arsenide Al0.7Ga0.3As,alloys,comp:As0.5000 Ga0.5000,test,4
+398,alloys:AlGaAs@x0.804,Aluminium gallium arsenide Al0.804Ga0.196As,alloys,comp:As0.5000 Ga0.5000,test,4
+399,alloys:AlGaAs@x0.929,Aluminium gallium arsenide Al0.929Ga0.071As,alloys,comp:As0.5000 Ga0.5000,test,4
+400,alloys:AlGaSb@x0.1,Aluminium gallium antimonide Al0.1Ga0.9Sb,alloys,comp:Ga0.5000 Sb0.5000,train,0
+401,alloys:AlGaSb@x0.3,Aluminium gallium antimonide Al0.3Ga0.7Sb,alloys,comp:Ga0.5000 Sb0.5000,train,0
+402,alloys:AlGaSb@x0.5,Aluminium gallium antimonide Al0.5Ga0.5Sb,alloys,comp:Ga0.5000 Sb0.5000,train,0
+403,alloys:AlON@N5.88,"Aluminium oxynitride (ALON), 5.88 at.% N",alloys,series:AlON,train,3
+404,alloys:AlON@N6.53,"Aluminium oxynitride (ALON), 6.53 at.% N",alloys,series:AlON,train,3
+405,alloys:AlON@N6.69,"Aluminium oxynitride (ALON), 6.69 at.% N",alloys,series:AlON,train,3
+406,alloys:AlON@N7.17,"Aluminium oxynitride (ALON), 7.17 at.% N",alloys,series:AlON,train,3
+407,alloys:GaInP@x0.49,Gallium indium phosphide Ga0.51In0.49P,alloys,comp:Ga0.5000 P0.5000,train,4
+408,alloys:ITO@ITO,Indium tin oxide (ITO),alloys,series:ITO,train,0
+409,alloys:InGaAs@x0.47,Indium gallium arsenide In0.53Ga0.47As,alloys,comp:As0.5000 In0.5000,train,1
+410,alloys:InGaAs@x0.48,Indium gallium arsenide In0.52Ga0.48As,alloys,comp:As0.5000 In0.5000,train,1
+411,alloys:KRS@KRS-5,Thallium bromide iodide (KRS-5),alloys,comp:Br0.5000 Tl0.5000,train,0
+412,alloys:KRS@KRS-6,Thallium bromide chloride (KRS-6),alloys,comp:Br0.5000 Tl0.5000,train,0
+413,alloys:Mg-LiTaO3@CLT-8mol,"Lithium tantalate, congruent, 8 mol% Mg",alloys,comp:Li0.2000 O0.6000 Ta0.2000,test,4
+414,alloys:MgO-LiNbO3@CLN-5mol,"Lithium niobate, congruent, 5 mol% MgO",alloys,comp:Li0.2000 Nb0.2000 O0.6000,train,0
+415,alloys:MgO-LiNbO3@SLN-1mol,"Lithium niobate, stoichiometric, 1 mol% MgO",alloys,comp:Li0.2000 Nb0.2000 O0.6000,train,0
+416,alloys:SiGe@x0.11,Silicon-germanium Si0.11Ge0.89,alloys,comp:Si1.0000,validation,4
+417,alloys:SiGe@x0.2,Silicon-germanium Si0.2Ge0.8,alloys,comp:Si1.0000,validation,4
+418,alloys:SiGe@x0.28,Silicon-germanium Si0.28Ge0.72,alloys,comp:Si1.0000,validation,4
+419,alloys:SiGe@x0.47,Silicon-germanium Si0.47Ge0.53,alloys,comp:Si1.0000,validation,4
+420,alloys:SiGe@x0.48,Silicon-germanium Si0.48Ge0.52,alloys,comp:Si1.0000,validation,4
+421,alloys:SiGe@x0.65,Silicon-germanium Si0.65Ge0.35,alloys,comp:Si1.0000,validation,4
+422,alloys:SiGe@x0.85,Silicon-germanium Si0.85Ge0.15,alloys,comp:Si1.0000,validation,4
+423,alloys:SiGe@x0.98,Silicon-germanium Si0.98Ge0.02,alloys,comp:Si1.0000,validation,4
+424,alloys:SiOx@x0.31,Silicon suboxide SiO0.31,alloys,comp:O0.5000 Si0.5000,train,0
+425,alloys:SiOx@x0.61,Silicon suboxide SiO0.61,alloys,comp:O0.5000 Si0.5000,train,0
+426,alloys:SiOx@x1.10,Silicon suboxide SiO1.10,alloys,comp:O0.5000 Si0.5000,train,0
+427,alloys:SiOx@x1.71,Silicon suboxide SiO1.71,alloys,comp:O0.5000 Si0.5000,train,0
+428,alloys:SiOx@x1.89,Silicon suboxide SiO1.89,alloys,comp:O0.5000 Si0.5000,train,0
+429,alloys:SiOx@x1.92,Silicon suboxide SiO1.92,alloys,comp:O0.5000 Si0.5000,train,0
+430,alloys:YSH@9.8mol,Yttria-stabilized hafnia (9.8 mol% Y2O3),alloys,comp:Hf0.3333 O0.6667,test,2
+431,alloys:YSZ@12mol,Yttria-stabilized zirconia (12 mol% Y2O3),alloys,series:YSZ,train,4
+432,alloys:ZnCdO@x0.1,Zinc cadmium oxide Zn0.1Cd0.9O,alloys,comp:O0.5000 Zn0.5000,train,0
+433,alloys:ZnCdO@x0.25,Zinc cadmium oxide Zn0.25Cd0.75O,alloys,comp:O0.5000 Zn0.5000,train,0
+434,alloys:ZnCdO@x0.4,Zinc cadmium oxide Zn0.4Cd0.6O,alloys,comp:O0.5000 Zn0.5000,train,0
+435,alloys:ZnCdO@x0.5,Zinc cadmium oxide Zn0.5Cd0.5O,alloys,comp:O0.5000 Zn0.5000,train,0
+436,alloys:ZnCdO@x0.63,Zinc cadmium oxide Zn0.63Cd0.37O,alloys,comp:O0.5000 Zn0.5000,train,0
+437,alloys:ZnCdO@x0.75,Zinc cadmium oxide Zn0.75Cd0.25O,alloys,comp:O0.5000 Zn0.5000,train,0
+438,alloys:ZnCdO@x0.9,Zinc cadmium oxide Zn0.9Cd0.1O,alloys,comp:O0.5000 Zn0.5000,train,0
+439,perovskites:CsPbX3@CsPbBr1.3Cl1.7,Cesium lead bromide chloride CsPbBr1.3Cl1.7,perovskites,series:CsPbX3,train,0
+440,perovskites:CsPbX3@CsPbBr1.8Cl1.2,Cesium lead bromide chloride CsPbBr1.8Cl1.2,perovskites,series:CsPbX3,train,0
+441,perovskites:CsPbX3@CsPbBr3,Cesium lead bromide (CsPbBr3),perovskites,series:CsPbX3,train,0
+442,perovskites:CsPbX3@CsPbCl3,Cesium lead chloride (CsPbCl3),perovskites,series:CsPbX3,train,0
+443,perovskites:MAPbX3@MAPbBr3,Methylammonium lead bromide (MAPbBr3),perovskites,series:MAPbX3,train,2
+444,perovskites:MAPbX3@MAPbI3,Methylammonium lead iodide (MAPbI3),perovskites,series:MAPbX3,train,2
