@@ -68,3 +68,6 @@ data/materials_alloy_test.db
 
 # regenerable from data/perovskites.csv + data/step1_selections_perovskites.json (scripts/load_perovskites_db.py)
 data/materials_perovskite_test.db
+
+# regenerable from data/glass_catalogs.csv + data/step1_selections_glass_catalogs.json (scripts/load_glass_catalogs_db.py)
+data/materials_glass_catalog_test.db

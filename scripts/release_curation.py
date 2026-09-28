@@ -53,6 +53,7 @@ NAME_QUALIFIERS = {
     "Dow Corning, 5:1 mass ratio", "Dow Corning, 10:1 mass ratio", "Dow Corning, 15:1 mass ratio", "Dow Corning, 20:1 mass ratio",
     "Antheraea assamensis", "Antheraea mylitta", "Bombyx mori", "Samia ricini", "SCHOTT", "Corning", "LZOS",
     "9.8 mol% Y2O3", "12 mol% Y2O3",
+    "M", "P",  # glass-catalog name suffixes: moulding / precision-moulding grades (SUMITA K-PSK11(M), HOYA FDS90(P))
 }
 SPELLINGS = [("aluminium", "aluminum"), ("caesium", "cesium"), ("sulphide", "sulfide"), ("sulphate", "sulfate"), ("sulphur", "sulfur")]
 

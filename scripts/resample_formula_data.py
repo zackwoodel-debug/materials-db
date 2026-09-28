@@ -185,7 +185,7 @@ FAMILY_CSVS = {  # family CSV -> its selections (dataset_label -> data_path); bu
         ("nitrides", "nitrides"), ("inorganic3", "inorganic3"), ("halides", "halides"), ("chalcogenides", "chalcogenides"),
         ("semiconductors", "semiconductors"), ("inorganic4", "inorganic4"), ("liquids", "liquids"), ("glasses", "glasses"),
         ("optical_media", "optical_media"), ("liquid_crystals", "liquid_crystals"), ("bio_media", "bio_media"), ("gases", "gases"),
-        ("alloys", "alloys"), ("perovskites", "perovskites"))}
+        ("alloys", "alloys"), ("perovskites", "perovskites"), ("glass_catalogs", "glass_catalogs"))}
 FLAG_VALUE = re.compile(r"(additional (?:source|dataset) )([^:;]+?)(: n\(633 nm\)=)([-\d.eE+]+|None)((?:, k=)([-\d.eE+]+))?")
 
 

@@ -131,6 +131,7 @@ def build(MATERIALS, EXCLUDED_PAGES, OUT_OF_FAMILY, csv_stem, selections_stem, g
             flags.append(f"density {row['density_g_cm3']} g/cm3 stated by the manufacturer's datasheet ({mat['density_page'][2]})")
         else:
             flags.append(density_null_reason)
+        row.update(mat.get("extra") or {})  # datasheet columns (glass catalogs: nd, Vd, glass code, dPgF, thermal expansion, status)
         if mat.get("series"):  # a composition series (alloys, perovskites): the ML splits keep a series together
             row["series"] = mat["series"]
         if mat.get("formula") and mat.get("pubchem", True) is False:
