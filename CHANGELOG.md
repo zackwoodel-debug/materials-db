@@ -5,6 +5,8 @@ versions follow the release tags. Counts are materials / optical datasets.
 
 ## [Unreleased]
 
+## [0.17.0] - 2026-09-27 (444 / 917)
+
 ### Added
 - Alloys (57 materials): AlGaAs (16 compositions), AlGaSb, SiGe, ZnCdO, SiOx series; InGaAs, GaInP, AgGa0.86In0.14S2; KRS-5,
   KRS-6; yttria-stabilized zirconia and hafnia; MgO:LiNbO3, Mg:LiTaO3, ITO, AZO, AlON. Each composition is its own material
