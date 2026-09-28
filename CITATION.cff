@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: If you use this dataset, cite it and the upstream sources in DATA_LICENSE.md.
 type: dataset
 title: "materials-db: optical constants and descriptors of materials, ML edition"
-version: "0.16.0"
+version: "0.17.0"
 license: CC-BY-4.0
 repository-code: https://github.com/zackwoodel-debug/materials-db
 authors:
