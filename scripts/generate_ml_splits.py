@@ -66,16 +66,28 @@ def glass_classes(keys):
     Returns {catalog key: ('anchor', legacy key) | ('class', class id)}."""
     sys.path.insert(0, str(_ROOT / "scripts"))
     import yaml
-    from glass_catalog_list import RI, glass_code, popular_equivalents
-    cat = pd.read_csv(_ROOT / "data" / "glass_catalogs.csv", dtype={"glass_code": str, "glass_code_from_nd": str})
-    code = {f"{GLASS_CATALOG_FAMILY}:{k}": (c.split(".")[0] if isinstance(c, str) else None) for k, c in zip(cat.selection_key, cat.glass_code)}
-    # a moulding grade also carries the code of its own (post-moulding) nd / Vd: it joins both classes
-    code_nd = {f"{GLASS_CATALOG_FAMILY}:{k}": c for k, c in zip(cat.selection_key, cat.glass_code_from_nd) if isinstance(c, str)}
-    by_path = {}
-    for fam, fname in ((GLASS_CATALOG_FAMILY, "step1_selections_glass_catalogs.json"), ("glasses", "step1_selections_glasses.json")):
-        for k, v in json.loads((_ROOT / "data" / fname).read_text()).items():
-            for a in v["axes"]:
-                by_path[a["data_path"]] = f"{fam}:{k}"
+    from glass_catalog_list import RI, catalog, code_from_nd, glass_code, popular_equivalents
+    # each catalog glass's codes come from its own page (the key is "<BOOK>/<page>"): the classes follow the keys of the release
+    # being split, not the repository's current catalog table (v0.20.0 held three pages v0.20.1 withdrew)
+    # classes are built over the WHOLE catalog (every page of every catalog book), then looked up for the keys asked: a class never
+    # depends on which glasses a release (or a subset) holds, so no glass moves when another is added or withdrawn
+    from glass_catalog_list import BOOKS
+    page_path = {(book, p["PAGE"]): p["data"] for (shelf, book), pages in catalog().items() if shelf == "specs" for p in pages}
+    universe = {f"{GLASS_CATALOG_FAMILY}:{b}/{p}" for (b, p) in page_path if b in BOOKS}
+    code, code_nd, by_path = {}, {}, {}
+    for key in sorted(universe | {k for k in keys if k.startswith(GLASS_CATALOG_FAMILY + ":")}):
+        book, page = key.split(":", 1)[1].split("/", 1)
+        path = page_path.get((book, page))
+        props = (yaml.safe_load(open(RI / "data" / path)).get("PROPERTIES") or {}) if path else {}
+        code[key] = glass_code(props)
+        own = code_from_nd(props)
+        if own and code[key] and own != code[key]:  # a moulding grade: the base glass's code AND its own nd / Vd's
+            code_nd[key] = own
+        if path:
+            by_path[path] = key
+    for k, v in json.loads((_ROOT / "data" / "step1_selections_glasses.json").read_text()).items():
+        for a in v["axes"]:
+            by_path[a["data_path"]] = f"glasses:{k}"
     legacy_code = {}
     for path, key in by_path.items():
         if key.startswith("glasses:"):

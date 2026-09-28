@@ -72,7 +72,9 @@ def test_a_removed_material_keeps_its_id_retired(tmp_path):
 def test_committed_registry_covers_every_family_material_with_unique_ids():
     import build_release as br
     keys = mreg.keys_by_name(br.family_rows())
-    assert set(keys.values()) == set(REG["materials"])
+    retired = {k for k, v in REG["materials"].items() if v.get("retired_in")}  # left the release; the id is never reused
+    assert set(keys.values()) == set(REG["materials"]) - retired and not set(keys.values()) & retired
+    assert all(REG["materials"][k].get("retired_reason") for k in retired)
     ids = [v["id"] for v in REG["materials"].values()]
     assert len(ids) == len(set(ids)) and REG["next_id"] > max(ids)
 

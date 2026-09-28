@@ -33,11 +33,26 @@ def _page(key):
 
 def test_every_catalog_page_is_loaded_skipped_or_a_duplicate_listing():
     loaded = {a["data_path"] for v in SEL.values() for a in v["axes"]}
-    skipped = set(GAPS[GAPS.gap_kind == "already_loaded"].key)
+    skipped = set(GAPS[GAPS.gap_kind.isin(["already_loaded", "excluded_page"])].key)
     for book in gl.BOOKS:
         for p in gl.catalog()[("specs", book)]:
             assert p["data"] in loaded or f"specs/{book}/{p['PAGE']}" in skipped, (book, p["PAGE"])
-    assert len(SEL) == len(loaded) == 1675  # 17 pages are listed twice in the catalog (same file): loaded once
+    assert len(SEL) == len(loaded) == 1672  # 17 pages are listed twice in the catalog (same file): loaded once
+
+
+def test_a_page_another_family_excluded_stays_excluded():
+    """v0.20.0 re-admitted SCHOTT DURAN, LITHOSIL-Q and LITHOTEC-CAF2, which the glasses family had excluded on review (found by
+    scripts/analyze_db.py: DURAN is a one-point 'spectrum'). Every other family's excluded page must stay out of the catalogs."""
+    import glob
+    excluded = set()
+    for f in glob.glob(str(DATA / "*_gaps.csv")):
+        if not f.endswith("glass_catalog_gaps.csv"):
+            g = pd.read_csv(f)
+            if "gap_kind" in g:
+                excluded |= set(g.loc[g.gap_kind == "excluded_page", "key"].astype(str))
+    loaded = {f"specs/{a['book']}/{a['page']}" for v in SEL.values() for a in v["axes"]}
+    assert {"specs/SCHOTT-misc/DURAN", "specs/SCHOTT-misc/LITHOSIL-Q", "specs/SCHOTT-misc/LITHOTEC-CAF2"} <= excluded
+    assert not loaded & excluded
 
 
 def test_popular_glass_pages_are_catalog_pages():

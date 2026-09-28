@@ -8991,17 +8991,23 @@
   "glass_catalogs:SCHOTT-misc/DURAN": {
    "id": 1798,
    "name": "SCHOTT DURAN",
-   "registered_in": "0.20.0"
+   "registered_in": "0.20.0",
+   "retired_in": "0.20.1",
+   "retired_reason": "re-admitted by the glass catalogs in v0.20.0 although the glasses family had excluded the page on review (data/glass_gaps.csv); withdrawn"
   },
   "glass_catalogs:SCHOTT-misc/LITHOSIL-Q": {
    "id": 1799,
    "name": "SCHOTT LITHOSIL-Q",
-   "registered_in": "0.20.0"
+   "registered_in": "0.20.0",
+   "retired_in": "0.20.1",
+   "retired_reason": "re-admitted by the glass catalogs in v0.20.0 although the glasses family had excluded the page on review (data/glass_gaps.csv); withdrawn"
   },
   "glass_catalogs:SCHOTT-misc/LITHOTEC-CAF2": {
    "id": 1800,
    "name": "SCHOTT LITHOTEC-CAF2",
-   "registered_in": "0.20.0"
+   "registered_in": "0.20.0",
+   "retired_in": "0.20.1",
+   "retired_reason": "re-admitted by the glass catalogs in v0.20.0 although the glasses family had excluded the page on review (data/glass_gaps.csv); withdrawn"
   },
   "glass_catalogs:SCHOTT-optical/BAFN6": {
    "id": 1801,

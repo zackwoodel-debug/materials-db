@@ -129,8 +129,28 @@ def primary_pages(release_dir):
             axes = sel[fam].get(name) or []
             page = r.get("ri_page_primary")
             hit = [path for pg, path in axes if pg == page] if pd.notna(page) else [path for _, path in axes[:1]]
+            if not hit and pd.notna(page) and pd.notna(r.get("ri_shelf")) and pd.notna(r.get("ri_book")):
+                # a material the current selections no longer hold (withdrawn after that release, e.g. v0.20.0's SCHOTT DURAN):
+                # its family table names shelf / book / page, which refractiveindex.info's catalog resolves to the exact file
+                path = _catalog_paths().get((r["ri_shelf"], r["ri_book"], page))
+                hit = [path] if path else []
             out[name] = (fam, hit[0] if hit else None)
     return out
+
+
+_CATALOG = {}
+
+
+def _catalog_paths():
+    """(shelf, book, page) -> data path, from refractiveindex.info's catalog-nk.yml (cached)."""
+    if not _CATALOG:
+        import yaml
+        for e in yaml.safe_load(open(_ROOT / "refractiveindex_db" / "database" / "catalog-nk.yml")):
+            for b in e.get("content", []):
+                for p in b.get("content", []) if "BOOK" in b else []:
+                    if isinstance(p, dict) and p.get("data"):
+                        _CATALOG.setdefault((e["SHELF"], b["BOOK"], p["PAGE"]), p["data"])
+    return _CATALOG
 
 
 def n_k_at(rows, wl):
