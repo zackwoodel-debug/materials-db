@@ -91,6 +91,21 @@ def assign(df, strict=True):
         ck = composition_key(r._asdict(), frac)
         base[r.meta_key] = (f"line:{line_of[r.meta_key]}" if r.meta_key in line_of else f"comp:{ck}" if ck else f"key:{r.meta_key}")
     ends = series_end_members()
+    family_of = dict(zip(df.meta_key, df.meta_family))
+
+    def final_group(key, seen=()):
+        """A series member takes its first present end member's FINAL group: when that end member is itself a series member
+        (the 2D perovskites -> MAPbI3 -> series:MAPbX3), follow it through."""
+        if family_of.get(key) not in SERIES_FAMILIES:
+            return base[key]
+        series = key.split(":", 1)[1].split("@")[0]
+        if series not in ends:
+            raise SplitError(f"{key}: series {series!r} has no SERIES_END_MEMBERS entry")
+        if key in seen:
+            raise SplitError(f"series anchors form a cycle: {seen + (key,)}")
+        anchor = next((k for k in ends[series] if k in base), None)
+        return final_group(anchor, seen + (key,)) if anchor else f"series:{series}"
+
     for r in df.itertuples(index=False):
         ck = composition_key(r._asdict(), frac)
         if r.meta_key in line_of:
@@ -100,11 +115,7 @@ def assign(df, strict=True):
         else:
             gid = f"comp:{ck}" if ck else f"key:{r.meta_key}"
         if r.meta_family in SERIES_FAMILIES:
-            series = r.meta_key.split(":", 1)[1].split("@")[0]
-            if series not in ends:
-                raise SplitError(f"{r.meta_key}: series {series!r} has no SERIES_END_MEMBERS entry")
-            anchor = next((base[k] for k in ends[series] if k in base), None)
-            gid = anchor or f"series:{series}"
+            gid = final_group(r.meta_key)
         rows.append(dict(material_id=r.material_id, meta_key=r.meta_key, meta_name=r.meta_name, meta_family=r.meta_family, group=gid,
                          split=SPLITS[_hash(gid, "split") % 10], fold=_hash(gid, "fold") % N_FOLDS))
     return pd.DataFrame(rows).sort_values("material_id").reset_index(drop=True)

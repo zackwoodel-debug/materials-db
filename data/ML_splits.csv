@@ -447,3 +447,12 @@ material_id,meta_key,meta_name,meta_family,group,split,fold
 446,alloys:CuZn@Cu85,"Brass, 85 wt% Cu",alloys,comp:Cu1.0000,train,2
 447,alloys:CuZn@Cu90,"Brass, 90 wt% Cu",alloys,comp:Cu1.0000,train,2
 448,alloys:NiFe@Ni80Fe20,Permalloy Ni80Fe20,alloys,comp:Ni1.0000,train,2
+449,perovskites:DJ-4AMP-MA@m1,"Dion-Jacobson 2D perovskite 4AMP MA0 Pb1 I4, m = 1",perovskites,series:MAPbX3,train,2
+450,perovskites:DJ-4AMP-MA@m2,"Dion-Jacobson 2D perovskite 4AMP MA1 Pb2 I7, m = 2",perovskites,series:MAPbX3,train,2
+451,perovskites:DJ-4AMP-MA@m3,"Dion-Jacobson 2D perovskite 4AMP MA2 Pb3 I10, m = 3",perovskites,series:MAPbX3,train,2
+452,perovskites:DJ-4AMP-MA@m4,"Dion-Jacobson 2D perovskite 4AMP MA3 Pb4 I13, m = 4",perovskites,series:MAPbX3,train,2
+453,perovskites:RP-BA-MA@n1,"Ruddlesden-Popper 2D perovskite BA2 MA0 Pb1 I4, n = 1",perovskites,series:MAPbX3,train,2
+454,perovskites:RP-BA-MA@n2,"Ruddlesden-Popper 2D perovskite BA2 MA1 Pb2 I7, n = 2",perovskites,series:MAPbX3,train,2
+455,perovskites:RP-BA-MA@n3,"Ruddlesden-Popper 2D perovskite BA2 MA2 Pb3 I10, n = 3",perovskites,series:MAPbX3,train,2
+456,perovskites:RP-BA-MA@n4,"Ruddlesden-Popper 2D perovskite BA2 MA3 Pb4 I13, n = 4",perovskites,series:MAPbX3,train,2
+457,perovskites:RP-BA-MA@n5,"Ruddlesden-Popper 2D perovskite BA2 MA4 Pb5 I16, n = 5",perovskites,series:MAPbX3,train,2
