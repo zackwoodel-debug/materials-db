@@ -5,6 +5,8 @@ versions follow the release tags. Counts are materials / optical datasets.
 
 ## [Unreleased]
 
+## [0.20.1] - 2026-09-29 (2129 / 2605)
+
 ### Fixed
 - The glass catalogs re-admitted three SCHOTT pages the glasses family had excluded on review (DURAN: one inconsistent
   refractive-index point; LITHOSIL-Q and LITHOTEC-CAF2: obsolete grades of materials already present). They are withdrawn;
