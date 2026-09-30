@@ -63,7 +63,7 @@ def health():
         )
 
     try:
-        conn = sqlite3.connect(_DB_PATH)
+        conn = sqlite3.connect(f"file:{_DB_PATH}?mode=ro", uri=True)
 
         tables = [
             r[0]
