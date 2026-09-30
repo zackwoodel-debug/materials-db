@@ -47,6 +47,7 @@ DEFAULT_DB = _ROOT / "data" / "materials_oxide_test.db"
 # TMDCs, etc.) extends it (materials_db.export.citations) rather than starting
 # its own dict, so no batch has to re-litigate what an earlier one settled.
 from materials_db.export.citations import RESOLVED_OPTICAL_SOURCE_CITATION  # noqa: F401 (re-exported)
+from materials_db.export.mp_ids import lookup as lookup_mp_id
 from materials_db.pipeline.process_condition import (
     BULK_ELEMENTAL_APPROXIMATION, DENSITY_VERIFIED, DENSITY_BULK_APPROXIMATION,
     bulk_approximation_density_bounds, verified_density_bounds,
@@ -358,24 +359,13 @@ def _lookup_mp_id(material_formula: str) -> Optional[str]:
     function failing loudly). Globbing removes the recurring failure mode
     instead of patching this instance of it. Returns None (never raises)
     if no CSV has a match -- this is supplementary provenance, not a
-    required field."""
-    import glob as _glob
-    import pandas as pd
-    for csv_path_str in sorted(_glob.glob(str(_ROOT / "data" / "*.csv"))):
-        csv_path = Path(csv_path_str)
-        try:
-            df = pd.read_csv(csv_path)
-            if "formula" not in df.columns or "mp_id" not in df.columns:
-                continue
-            match = df[df["formula"] == material_formula]
-            if match.empty:
-                continue
-            val = match.iloc[0].get("mp_id")
-            if pd.notna(val):
-                return str(val)
-        except Exception:
-            continue
-    return None
+    required field.
+
+    Since ADR 0001 the same rule (glob, filename-agnostic) runs once in
+    materials_db.export.mp_ids.build_map, whose output ships in the wheel
+    (mp_ids.json), so an installed export finds the same id as a checkout;
+    export_layer also records WHY an id is missing (mp_id_status)."""
+    return lookup_mp_id(material_formula)[0]
 
 
 # ---------------------------------------------------------------------------
@@ -492,7 +482,7 @@ def export_layer(db, material_name: str, dataset_label: Optional[str] = None, *,
         resolved = RESOLVED_OPTICAL_SOURCE_CITATION.get(formula)
         if optical_citation is not None and resolved is not None:
             optical_citation = dict(optical_citation, verification_note=resolved["verification_note"])
-        mp_id = _lookup_mp_id(formula)
+        mp_id, mp_id_status = lookup_mp_id(formula)
 
         density_confidence = _density_confidence(phys["density_dataset_label"])
         density_bounds = (bulk_approximation_density_bounds(u["density_g_cm3"])
@@ -531,6 +521,7 @@ def export_layer(db, material_name: str, dataset_label: Optional[str] = None, *,
                 "dataset_label": phys["density_dataset_label"],
                 "optical_dataset_label": opt_label,
                 "mp_id": mp_id,
+                "mp_id_status": mp_id_status,  # found | no_mp_entry_recorded | formula_not_in_family_tables | id_map_unavailable
                 "density_confidence": density_confidence,
                 "density_source": density_citation,
                 "optical_source": optical_citation,

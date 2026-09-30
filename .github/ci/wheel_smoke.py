@@ -28,7 +28,7 @@ OPTIONAL_EXTRA_MODULES = {
     "materials_db.launch": "uvicorn",
 }
 # package data the installed code reads; it must be in the wheel
-REQUIRED_PACKAGE_DATA = ["core/schema.sql", "core/seed_manual.sql", "chat/ui.html"]
+REQUIRED_PACKAGE_DATA = ["core/schema.sql", "core/seed_manual.sql", "chat/ui.html", "export/mp_ids.json"]
 # generic top-level names the wheel must NOT install (src/db, src/ml, src/pipeline are checkout-only legacy code)
 FORBIDDEN_TOP_LEVEL = ["db", "ml", "pipeline", "src"]
 

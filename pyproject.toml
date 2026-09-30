@@ -35,7 +35,7 @@ where = ["src"]
 include = ["materials_db*"]
 
 [tool.setuptools.package-data]
-materials_db = ["core/*.sql", "chat/*.html"]
+materials_db = ["core/*.sql", "chat/*.html", "export/mp_ids.json"]
 
 [tool.ruff]
 extend-exclude = ["release", "refractiveindex_db", ".venv-modalfit-launcher", "build", "dist"]
