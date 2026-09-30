@@ -28,6 +28,9 @@ def main(path):
         s = c.find("skipped")
         if s is not None:
             reason = (s.get("message") or "").removeprefix("Skipped: ").strip()
+            if reason == "collection skipped":  # a module-level skip: pytest puts "(path, line, 'Skipped: <reason>')" in the text
+                m = re.search(r"'Skipped: (.*)'\)$", (s.text or "").strip())
+                reason = m.group(1) if m else reason
             skipped.append(reason)
             if not any(re.match(p, reason) for p in ALLOWED):
                 bad.append(f"{name}: {reason!r}")
