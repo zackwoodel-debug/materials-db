@@ -71,3 +71,8 @@ data/materials_perovskite_test.db
 
 # regenerable from data/glass_catalogs.csv + data/step1_selections_glass_catalogs.json (scripts/load_glass_catalogs_db.py)
 data/materials_glass_catalog_test.db
+
+# Python build output (setuptools writes these on every wheel/editable build; never commit)
+build/
+dist/
+*.egg-info/
