@@ -30,3 +30,11 @@ dev = ["pytest", "httpx", "ruff"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.ruff]
+extend-exclude = ["release", "refractiveindex_db", ".venv-modalfit-launcher", "build", "dist"]
+
+[tool.ruff.lint]
+# A small baseline that the repository already meets (0 violations on 2026-09-29), enforced in CI. Not enforced yet:
+# F401 unused imports (51) and F841 unused variables (14); `ruff format` (215 of 258 files would be reformatted).
+select = ["E9", "F63", "F7", "F82", "F811", "E711", "E712", "E722", "F403", "F405", "B006", "PLE"]

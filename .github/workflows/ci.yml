@@ -1,0 +1,137 @@
+# CI for materials-db. Configured and exercised locally step by step (see the Phase 1 report); remote execution is pending.
+#
+# fast           every push / PR: ruff baseline, the test suite (with a skip gate), and a wheel install smoke test.
+# offline-build  manual: the full release build (build_db + package, version 0.0.0-ci) into a temp dir; fails on any validation
+#                failure or if the build changes the checkout. ~10 min.
+# mcp            manual, after offline-build: installs the mcp extra and runs the access-layer tests (library, HTTP, MCP) against
+#                the package offline-build produced.
+#
+# External input: the tests and the build read the refractiveindex.info YAML database, which is not in this repository
+# (refractiveindex_db/ is gitignored). Every job checks it out at the commit the current release was built from
+# (MANIFEST.json refractiveindex_info_commit of v0.20.1). No other network access beyond installing the locked dependencies;
+# no API keys; scripts/setup.sh is never run.
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHON_VERSION: "3.14"
+  UV_VERSION: "0.10.7"
+  RI_REPOSITORY: polyanskiy/refractiveindex.info-database
+  RI_COMMIT: c5c2f188e848453def5970e347399d653df2ffc2
+
+jobs:
+  fast:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check out refractiveindex.info at the pinned commit
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.RI_REPOSITORY }}
+          ref: ${{ env.RI_COMMIT }}
+          path: refractiveindex_db
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: Install the locked dependency set (hash-checked)
+        run: |
+          python -m pip install "uv==${UV_VERSION}"
+          uv venv "$RUNNER_TEMP/venv"
+          VIRTUAL_ENV="$RUNNER_TEMP/venv" uv pip sync --require-hashes requirements.lock
+      - name: Ruff (lint baseline from pyproject.toml; no formatting enforced)
+        run: '"$RUNNER_TEMP/venv/bin/ruff" check .'
+      - name: Tests
+        run: '"$RUNNER_TEMP/venv/bin/python" -m pytest tests -q -rs -p no:cacheprovider --junitxml="$RUNNER_TEMP/junit.xml"'
+      - name: Skip gate (only the documented no-release / no-mcp skips are allowed)
+        if: always()
+        run: '"$RUNNER_TEMP/venv/bin/python" .github/ci/check_skips.py "$RUNNER_TEMP/junit.xml"'
+      - name: Build the wheel from tracked files only
+        run: |
+          mkdir -p "$RUNNER_TEMP/src" "$RUNNER_TEMP/dist"
+          git archive --format=tar HEAD | tar -x -C "$RUNNER_TEMP/src"
+          python -m uv build --wheel --out-dir "$RUNNER_TEMP/dist" "$RUNNER_TEMP/src"
+      - name: Wheel smoke test (installed wheel, no PYTHONPATH, run outside the checkout)
+        run: |
+          uv venv "$RUNNER_TEMP/wheelvenv"
+          VIRTUAL_ENV="$RUNNER_TEMP/wheelvenv" uv pip sync --require-hashes requirements.lock
+          VIRTUAL_ENV="$RUNNER_TEMP/wheelvenv" uv pip install --no-deps "$RUNNER_TEMP"/dist/*.whl
+          VIRTUAL_ENV="$RUNNER_TEMP/wheelvenv" uv pip check
+          VERSION=$(python -c "import tomllib; print(tomllib.load(open('pyproject.toml','rb'))['project']['version'])")
+          cp .github/ci/wheel_smoke.py "$RUNNER_TEMP/wheel_smoke.py"
+          cd "$RUNNER_TEMP" && "$RUNNER_TEMP/wheelvenv/bin/python" -I wheel_smoke.py "$VERSION"
+
+  offline-build:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check out refractiveindex.info at the pinned commit
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.RI_REPOSITORY }}
+          ref: ${{ env.RI_COMMIT }}
+          path: refractiveindex_db
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: Install the locked dependency set (hash-checked)
+        run: |
+          python -m pip install "uv==${UV_VERSION}"
+          uv venv "$RUNNER_TEMP/venv"
+          VIRTUAL_ENV="$RUNNER_TEMP/venv" uv pip sync --require-hashes requirements.lock
+      - name: Full offline release build (0.0.0-ci) and checkout-unchanged check
+        run: '"$RUNNER_TEMP/venv/bin/python" .github/ci/offline_build.py --keep "$RUNNER_TEMP/package"'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: release-0.0.0-ci
+          path: ${{ runner.temp }}/package
+          retention-days: 3
+
+  mcp:
+    needs: offline-build
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check out refractiveindex.info at the pinned commit
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.RI_REPOSITORY }}
+          ref: ${{ env.RI_COMMIT }}
+          path: refractiveindex_db
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: Install the locked dependency set plus the mcp extra
+        run: |
+          python -m pip install "uv==${UV_VERSION}"
+          uv venv "$RUNNER_TEMP/venv"
+          VIRTUAL_ENV="$RUNNER_TEMP/venv" uv pip sync --require-hashes requirements.lock
+          # mcp is not in requirements.lock (it was not installed where the suite passed); the pyproject extra's bound applies
+          VIRTUAL_ENV="$RUNNER_TEMP/venv" uv pip install "mcp>=1.2"
+      - uses: actions/download-artifact@v4
+        with:
+          name: release-0.0.0-ci
+          path: ${{ runner.temp }}/package
+      - name: Access-layer tests, including the MCP server, against the built package
+        run: |
+          MATERIALS_DB_RELEASE="$RUNNER_TEMP/package/materials-db-v0.0.0-ci" \
+            "$RUNNER_TEMP/venv/bin/python" -m pytest tests/test_access.py -q -rs -p no:cacheprovider --junitxml="$RUNNER_TEMP/junit.xml"
+      - name: The MCP test must have run, not skipped
+        run: |
+          "$RUNNER_TEMP/venv/bin/python" - "$RUNNER_TEMP/junit.xml" <<'EOF'
+          import sys, xml.etree.ElementTree as ET
+          cases = {c.get("name"): c for c in ET.parse(sys.argv[1]).getroot().iter("testcase")}
+          c = cases.get("test_mcp_server_tools")
+          ok = c is not None and not list(c)
+          print("test_mcp_server_tools:", "passed" if ok else "missing, skipped or failed")
+          sys.exit(0 if ok else 1)
+          EOF
