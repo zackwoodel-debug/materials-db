@@ -1,7 +1,7 @@
 """Import every module of the INSTALLED materials_db wheel, with no help from the checkout (run with `python -I` from a directory
-outside the repository; no PYTHONPATH). Known Phase 2 defects are listed below and checked STRICTLY: an unexpected failure fails, and a
-known defect that stops reproducing also fails, so this list is updated when Phase 2 fixes it. Dependencies installing is not the
-same as the wheel's features working; the known defects are the gap.
+outside the repository; no PYTHONPATH). Every module must import except the documented checkout-only ones and modules whose
+optional extra is absent, each of which must fail for exactly that recorded reason (checked STRICTLY both ways). Required package
+data must be present and no generic top-level package may be installed.
 
     python -I .github/ci/wheel_smoke.py <expected software version>
 """
@@ -12,22 +12,25 @@ import contextlib
 import pathlib
 import sys
 
-# module -> text its import error must contain. Source: Phase 0.2 (clean-venv wheel install, 2026-09-29).
-KNOWN_IMPORT_DEFECTS = {
-    "materials_db.export.modalfit": "No module named 'oxide_material_list'",           # sys.path.insert into scripts/
-    "materials_db.launcher.catalog": "No module named 'oxide_material_list'",          # via export.modalfit
-    "materials_db.launcher.library_export": "No module named 'oxide_material_list'",   # via export.modalfit
-    "materials_db.launcher.modalfit_bridge": "No module named 'verify_modalfit_pin'",  # sys.path.insert into scripts/
-    "materials_db.launch": "SystemExit",       # expects data/materials.db next to the package (checkout-only)
-    "materials_db.verify": "SystemExit",       # likewise
-    "materials_db.verify_all": "No module named 'src'",                                 # imports the checkout's src.* packages
+# Modules that need a materials-db checkout by design (documented in docs/installation.md): module -> text its import error must
+# contain when installed from a wheel. verify_all.py is the checkout's self-test harness and imports the legacy src.db /
+# src.pipeline packages, which are deliberately not installed.
+CHECKOUT_ONLY_MODULES = {
+    "materials_db.verify_all": "No module named 'src'",
 }
+# Phase 2 fixed every recorded import defect; a new failure outside the two lists here is a regression.
+KNOWN_IMPORT_DEFECTS = {}
 # modules that need an optional extra: without it the import must fail on exactly that extra, with it the import must work
-OPTIONAL_EXTRA_MODULES = {"materials_db.access.mcp_server": "mcp"}
-# files the checkout has but the wheel does not ship (package data not declared)
-KNOWN_MISSING_PACKAGE_DATA = ["core/schema.sql", "core/seed_manual.sql", "chat/ui.html"]
-# generic top-level packages the wheel installs next to materials_db (src/db, src/ml, src/pipeline)
-KNOWN_LEAKED_TOP_LEVEL = ["db", "ml", "pipeline"]
+OPTIONAL_EXTRA_MODULES = {
+    "materials_db.access.mcp_server": "mcp",
+    "materials_db.access.http": "fastapi",
+    "materials_db.api.server": "fastapi",
+    "materials_db.launch": "uvicorn",
+}
+# package data the installed code reads; it must be in the wheel
+REQUIRED_PACKAGE_DATA = ["core/schema.sql", "core/seed_manual.sql", "chat/ui.html"]
+# generic top-level names the wheel must NOT install (src/db, src/ml, src/pipeline are checkout-only legacy code)
+FORBIDDEN_TOP_LEVEL = ["db", "ml", "pipeline", "src"]
 
 
 def main(expected_version):
@@ -51,26 +54,26 @@ def main(expected_version):
             error = None
         except BaseException as exc:  # noqa: BLE001 -- SystemExit is one of the recorded defects
             error = f"{type(exc).__name__}: {exc}"
-        known = KNOWN_IMPORT_DEFECTS.get(name)
+        known = KNOWN_IMPORT_DEFECTS.get(name) or CHECKOUT_ONLY_MODULES.get(name)
         extra = OPTIONAL_EXTRA_MODULES.get(name)
         if extra and importlib.util.find_spec(extra) is None:
             known = f"No module named '{extra}'"  # the extra is not installed in this job
         if error is None and known:
-            problems.append(f"{name} now imports: remove it from KNOWN_IMPORT_DEFECTS")  # (an extra's module cannot import without it)
+            problems.append(f"{name} now imports: remove it from its list")
         elif error is not None and not known:
             problems.append(f"{name}: {error}")
         elif error is not None and known not in error:
             problems.append(f"{name}: expected '{known}', got {error}")
         ok += error is None
-    for rel in KNOWN_MISSING_PACKAGE_DATA:
-        if (pkg / rel).exists():
-            problems.append(f"{rel} is now shipped: remove it from KNOWN_MISSING_PACKAGE_DATA")
-    for top in KNOWN_LEAKED_TOP_LEVEL:
-        if importlib.util.find_spec(top) is None:
-            problems.append(f"top-level '{top}' is no longer installed: remove it from KNOWN_LEAKED_TOP_LEVEL")
+    for rel in REQUIRED_PACKAGE_DATA:
+        if not (pkg / rel).is_file():
+            problems.append(f"package data {rel} is missing from the wheel")
+    for top in FORBIDDEN_TOP_LEVEL:
+        if importlib.util.find_spec(top) is not None:
+            problems.append(f"the environment has a top-level '{top}' package (the wheel must not install it)")
 
-    print(f"wheel smoke: {len(modules)} modules, {ok} import, {len(KNOWN_IMPORT_DEFECTS)} known defects reproduced as recorded; "
-          f"missing package data {KNOWN_MISSING_PACKAGE_DATA}; leaked top-level packages {KNOWN_LEAKED_TOP_LEVEL}")
+    print(f"wheel smoke: {len(modules)} modules, {ok} import; checkout-only as documented: {sorted(CHECKOUT_ONLY_MODULES)}; "
+          f"package data present: {REQUIRED_PACKAGE_DATA}; no top-level {FORBIDDEN_TOP_LEVEL}")
     for p in problems:
         print("PROBLEM:", p)
     return 1 if problems else 0

@@ -26,10 +26,16 @@ mcp = ["mcp>=1.2"]
 release = ["materials_db[ingest]", "pymatgen", "mp-api>=0.46", "scipy", "pyarrow", "python-dotenv"]
 # scripts/ exploratory analysis and figures (not needed by the release build or the tests)
 analysis = ["matplotlib>=3.8", "seaborn>=0.13", "missingno>=0.5", "statsmodels>=0.14"]
-dev = ["pytest", "httpx", "ruff"]
+dev = ["pytest", "httpx", "ruff", "setuptools>=61.0"]  # setuptools: the build backend, so tests can build the wheel offline
 
 [tool.setuptools.packages.find]
 where = ["src"]
+# only the materials_db package; src/db, src/ml and src/pipeline are legacy checkout code (verify_all.py imports src.db and
+# src.pipeline) and must not be installed as generic top-level packages
+include = ["materials_db*"]
+
+[tool.setuptools.package-data]
+materials_db = ["core/*.sql", "chat/*.html"]
 
 [tool.ruff]
 extend-exclude = ["release", "refractiveindex_db", ".venv-modalfit-launcher", "build", "dist"]
