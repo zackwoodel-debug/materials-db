@@ -34,6 +34,7 @@ def test_oxide_gaps_hold_exactly_the_recorded_entries():
     got = {(k, g): c for k, g, c in GAPS[["key", "gap_kind", "phase3_case"]].values}
     assert got == EXPECTED
     assert GAPS["reason"].notna().all() and GAPS["evidence"].notna().all()
+    assert GAPS["source_lookup_2026_09_30"].notna().all()  # each entry records what the 2026-09-30 literature lookup found
     # only excluded_page rows are consumed by other builders (glass catalogs); these entries must not exclude anything
     assert "excluded_page" not in set(GAPS["gap_kind"])
 

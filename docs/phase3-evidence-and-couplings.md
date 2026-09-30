@@ -91,6 +91,10 @@ The category-error fix (moving "amorphous" out of polymorph) and the density dec
 representation. Phase 4A (`oxide_density_labels_and_polymorph`) is to resolve the density rows first, then clear polymorph with
 declared label changes, re-key selections if needed, and rebuild the base DB under a strict parity gate.
 
+## Source lookups (2026-09-30)
+
+A literature lookup for the blocked rows is recorded per entry in `data/oxide_gaps.csv` (column `source_lookup_2026_09_30`), with its verification level. In short: Franta 2024 and Hass 1954 still state no structure (Nb2O5 stays Case D, SiO Case B; Hass 1954 does describe its samples as evaporated films); Venkataraj 2001 states its own films are amorphous (GIXRD), which concerns the density sample only; candidate sources for the SiO2 and Ta2O5 densities could not be verified (publisher pages refused automated access) and the Ta2O5 candidate gives 7.98, not 7.90; nothing primary was found for GeO2 3.65 or SiO 2.13. No classification, label or value changed as a result.
+
 ## Deferred, not addressed here
 
 - `mp_id` packaging (Phase 4): installed and checkout ModalFit exports are not equivalent.
