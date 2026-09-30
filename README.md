@@ -10,34 +10,29 @@ Raw YAML dispersion files from the refractiveindex.info repository are parsed an
 
 ### Layout
 
+Main parts only (`tests/test_readme_layout.py` checks every path listed here exists and every `materials_db` subpackage is listed).
+
 ```
 materials-db/
-├── .gitignore
-├── README.md
-├── requirements.txt
-├── pyproject.toml
-├── data/
-│   ├── materials.db
-│   └── xrr_simulation_output.csv
-├── docs/
-│   └── database_expansion_plan.md
-├── scripts/
-│   ├── git-ai-commit.sh
-│   ├── run_matchat.sh
-│   └── setup.sh
+├── pyproject.toml            dependencies (core + extras) and the software version
+├── requirements.lock         the tested, hash-pinned dependency set
+├── .github/                  CI workflow and its helper scripts
+├── data/                     curated inputs: family tables (*.csv), selections (step1_selections*.json), gaps (*_gaps.csv),
+│                             the release's base DB (materials_oxide_test.db), the legacy DB (materials.db), ML sets
+├── docs/                     design notes, ADRs (docs/adr/), installation.md, versioning.md
+├── scripts/                  release build (build_release.py), family pipelines, descriptors, ML sets (checkout-only)
+├── tests/                    the test suite
 └── src/
-    └── materials_db/
-        ├── __init__.py
-        ├── init_db.py
-        ├── launch.py
-        ├── verify.py
-        ├── verify_all.py
-        ├── api/
-        ├── calculators/
-        ├── chat/
-        ├── core/
-        ├── pipeline/
-        └── simulation/
+    └── materials_db/         the installable package
+        ├── access/           read-only library, HTTP API and MCP server over a release
+        ├── api/              legacy MatChat FastAPI server
+        ├── calculators/      XRR / SLD calculators
+        ├── chat/             MatChat web UI
+        ├── core/             legacy DB schema, audit, SQL agent, read-only SQL guard
+        ├── export/           ModalFit export (citations, pin check, mp_id map)
+        ├── launcher/         ModalFit launcher and material-library export
+        ├── pipeline/         ingestion, process conditions, stack export
+        └── simulation/       Parratt XRR simulation
 ```
 
 ### Quickstart
@@ -55,7 +50,7 @@ What works from an installed wheel and what needs a checkout: `docs/installation
 
 1. `python -m materials_db.core.audit` — a presence check on the legacy `data/materials.db` only: it prints each table's row count and "Audit passed" if the file exists and at least one row exists. It does not check values, units or provenance, and run as a script it exits 0 even when it prints a failure, so it is not a quality gate. The release build's validation stages (`scripts/build_release.py`) and the test suite are where data is checked.
 2. `PYTHONPATH=.:src python3 src/materials_db/verify_all.py` — 34 checks covering DB round-trips, CSV parsing, SLD values, stack export and Parratt physics (TER plateau, high-Q decay); exits 0 on success.
-3. `sqlite3 data/materials.db "SELECT * FROM spr_data LIMIT 5;"` — should return n and k values at 633, 785, and 980 nm for at least Water and Gold; NULL means no optical data within 10 nm of the target wavelength.
+3. `sqlite3 release/materials-db-vX.Y.Z/materials-db-vX.Y.Z.sqlite "SELECT material_name, wavelength_nm, n, k, temperature_c FROM spr_data WHERE material_name = 'Gold' LIMIT 5;"` — `spr_data` is a view of the release (not of the legacy `data/materials.db`, whose convenience view is `materials_flat`): every optical row between 600 and 1000 nm. It does not carry `dataset_label`, so one material can return several datasets at the same wavelength (e.g. "Water" includes amorphous and crystalline ice at 10–150 K); filter by `temperature_c`, or query `optical_dispersion` with its `dataset_label`.
 
 ### Downloadable dataset (releases)
 
