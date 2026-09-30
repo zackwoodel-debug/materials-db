@@ -125,44 +125,11 @@ MATERIALS_50 = [
          pubchem_name="Zinc oxide", ri_aliases=["ZnO"]),
 ]
 
-# Optical-source triage resolution record (formerly PENDING_TRIAGE_PHYSICAL_
-# POLYMORPH, held out of MATERIALS_50 pending per-material verification --
-# now resolved and folded into the list above). Each phase call was checked
-# against the specific measurement condition stated in the optical source
-# itself, not inferred from the physical-properties pick:
-#   VO2   -> M1 (insulating): Beaini et al., 70nm film measured at 25 C,
-#            below VO2's ~68 C metal-insulator transition -- monoclinic M1.
-#   TeO2  -> paratellurite: Uchida 1971 paper title states this directly
-#            ("Optical properties of single-crystal paratellurite (TeO2)").
-#   Ta2O5 -> amorphous: Bright et al.'s RI.info COMMENTS field states
-#            "Amorphous thin film" explicitly -- NOT a crystalline phase name.
-# Full citations below, carried into each exported layer's provenance
-# (materials_db.export.modalfit) so a future reader can see the phase label
-# was verified against a stated measurement condition, not inferred.
-RESOLVED_OPTICAL_SOURCE_CITATION = {
-    "VO2": dict(
-        doi="10.1016/j.solmat.2019.110260",
-        title="Thermochromic VO2-based smart radiator devices with ultralow "
-              "refractive index cavities for increased performance",
-        authors="Beaini, R.; Baloukas, B.; Loquai, S.; Klemberg-Sapieha, J.E.; Martinu, L.",
-        journal="Solar Energy Materials and Solar Cells", year=2020,
-        verification_note="70nm film measured at 25 C, below VO2's ~68 C metal-insulator "
-                           "transition -- confirms monoclinic M1 (insulating) phase.",
-    ),
-    "TeO2": dict(
-        doi="10.1103/PhysRevB.4.3736",
-        title="Optical properties of single-crystal paratellurite (TeO2)",
-        authors="Uchida, N.",
-        journal="Physical Review B", year=1971,
-        verification_note="Paper title explicitly names the measured phase: paratellurite.",
-    ),
-    "Ta2O5": dict(
-        doi="10.1063/1.4819325",
-        title="Infrared optical properties of amorphous and nanocrystalline Ta2O5 thin films",
-        authors="Bright, T.J.; Watjen, J.I.; Zhang, Z.M.; Muratore, C.; Voevodin, A.A.; "
-                "Koukis, D.I.; Tanner, D.B.; Arenas, D.J.",
-        journal="Journal of Applied Physics", year=2013,
-        verification_note="RI.info's COMMENTS field for this dataset states \"Amorphous thin "
-                           "film\" explicitly -- not a crystalline phase name.",
-    ),
-}
+# Optical-source triage resolution record (formerly PENDING_TRIAGE_PHYSICAL_POLYMORPH): VO2 -> M1, TeO2 -> paratellurite,
+# Ta2O5 -> amorphous, each checked against its optical source's stated measurement condition. The full record and citations
+# now live in the package (src/materials_db/export/citations.py) so the installed exporter does not import scripts/.
+import sys as _sys
+from pathlib import Path as _Path
+
+_sys.path.insert(0, str(_Path(__file__).resolve().parents[1] / "src"))
+from materials_db.export.citations import OXIDE_RESOLVED_OPTICAL_SOURCE_CITATION as RESOLVED_OPTICAL_SOURCE_CITATION  # noqa: E402,F401
