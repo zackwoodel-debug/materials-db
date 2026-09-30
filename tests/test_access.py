@@ -140,5 +140,13 @@ def test_mcp_server_tools():
         tools = {t.name: t for t in await server.list_tools()}
         assert set(tools) == {"database_info", "search_materials", "get_material", "get_nk_at", "get_optical_data",
                               "compare_datasets", "run_sql"}
-        assert all(t.annotations.readOnlyHint for t in tools.values())
+        assert all(_read_only_hint(t.annotations) is True for t in tools.values())
     asyncio.run(run())
+
+
+def _read_only_hint(annotations):
+    """The tool's read-only hint under either SDK's field name (mcp 1.x readOnlyHint, 2.x read_only_hint); neither is a failure."""
+    for name in ("readOnlyHint", "read_only_hint"):
+        if hasattr(annotations, name):
+            return getattr(annotations, name)
+    raise AssertionError(f"no read-only hint on {annotations!r}")

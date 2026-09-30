@@ -8,7 +8,9 @@
 #
 # External input: the tests and the build read the refractiveindex.info YAML database, which is not in this repository
 # (refractiveindex_db/ is gitignored). Every job checks it out at the commit the current release was built from
-# (MANIFEST.json refractiveindex_info_commit of v0.20.1). No other network access beyond installing the locked dependencies;
+# (MANIFEST.json refractiveindex_info_commit of v0.20.1); this pinned fetch was accepted as the one external data input
+# (2026-09-29, instead of vendoring ~56 MB). Update RI_COMMIT only together with a release built from the new commit.
+# No other network access beyond installing the locked dependencies;
 # no API keys; scripts/setup.sh is never run.
 name: CI
 
