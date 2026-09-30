@@ -350,6 +350,8 @@ def test_package_files_checksums_and_counts(release):
         with (gzip.open(path, "rt", newline="") if path.suffix == ".gz" else open(path, newline="")) as f:
             assert sum(1 for _ in csv.reader(f)) - 1 == n == m["csv_rows"][path.name], t
     assert m["license"] == "CC-BY-4.0" and m["materials_project_database_version"] and m["refractiveindex_info_commit"]
+    # the tested dependency set the build ran against is identified by hash (requirements.lock header says how it was made)
+    assert m["dependency_lock"] == dict(file="requirements.lock", sha256=hashlib.sha256((ROOT / "requirements.lock").read_bytes()).hexdigest())
     with zipfile.ZipFile(release["zip"]) as z:
         assert {Path(n).relative_to(out.name).as_posix() for n in z.namelist()} == {p.relative_to(out).as_posix() for p in out.rglob("*") if p.is_file()}
 
