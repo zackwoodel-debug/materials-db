@@ -13,7 +13,11 @@ import sqlite3
 from datetime import date
 from pathlib import Path
 
-from materials_db.core.schema import get_schema_summary
+from materials_db.core.readonly import QueryTimeout, execute_read_only
+from materials_db.core.schema import _FLAT_VIEW, get_schema_summary
+
+MAX_ROWS = 1000        # rows a query may return to the agent (more are dropped and the answer says so)
+QUERY_TIMEOUT_S = 10.0  # seconds a query may run before SQLite interrupts it
 
 log = logging.getLogger(__name__)
 
@@ -280,14 +284,17 @@ class SQLAgent:
 
         self._db_path = Path(db_path).resolve()
 
-        # Writable connection for one-time VIEW creation and schema introspection.
-        _setup = sqlite3.connect(db_path)
-        self.schema_summary = get_schema_summary(_setup)
-        _setup.close()
-
-        # Read-only connection used for all query execution.
+        # One read-only connection for everything (materials_db.core.readonly): nothing the agent does can write the file.
+        # A database without the materials_flat convenience view gets it in this connection's TEMP schema (in memory).
         self._conn = sqlite3.connect(f"file:{self._db_path}?mode=ro", uri=True)
         self._conn.row_factory = sqlite3.Row
+        if not self._conn.execute("SELECT 1 FROM sqlite_master WHERE name = 'materials_flat'").fetchone():
+            try:
+                self._conn.execute(_FLAT_VIEW.replace("CREATE VIEW", "CREATE TEMP VIEW", 1))
+            except sqlite3.Error:
+                pass  # a referenced table is missing: no view, as before
+        self.schema_summary = get_schema_summary(self._conn)
+        self._conn.execute("PRAGMA query_only = ON")
 
         # ── LLM backend swap: Anthropic cloud → local Ollama (openai-compatible) ──
         from openai import OpenAI  # noqa: PLC0415
@@ -404,11 +411,18 @@ class SQLAgent:
                 "confidence": "no_data",
             }
 
-        # Step d: execute against the read-only connection.
+        # Step d: execute read-only, under the authorizer, the row cap and the time cap.
         try:
-            cursor = self._conn.execute(sql)
-            col_names = [desc[0] for desc in (cursor.description or [])]
-            rows: list[dict] = [dict(zip(col_names, r)) for r in cursor.fetchall()]
+            col_names, raw_rows, truncated = execute_read_only(self._conn, sql, max_rows=MAX_ROWS, timeout_s=QUERY_TIMEOUT_S)
+            rows: list[dict] = [dict(zip(col_names, r)) for r in raw_rows]
+        except QueryTimeout:
+            return {
+                "answer": f"That query ran longer than {QUERY_TIMEOUT_S:g} s and was stopped.",
+                "sql": sql,
+                "rows": [],
+                "tables_used": _tables_from_sql(sql),
+                "confidence": "no_data",
+            }
         except Exception:
             return {
                 "answer": "I do not have data on that.",
@@ -426,7 +440,8 @@ class SQLAgent:
         answer_prompt = (
             f"Question: {question}\n"
             f"SQL: {sql}\n"
-            f"Results: {json.dumps(rows, default=str)}"
+            f"Results{f' (only the first {MAX_ROWS} rows; more were not returned)' if truncated else ''}: "
+            f"{json.dumps(rows, default=str)}"
         )
         answer = self._call_llm(
             _ANSWER_SYSTEM,
@@ -441,4 +456,5 @@ class SQLAgent:
             "rows": rows,
             "tables_used": _tables_from_sql(sql),
             "confidence": _confidence(sql, rows),
+            "truncated": truncated,
         }

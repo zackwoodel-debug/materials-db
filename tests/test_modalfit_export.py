@@ -115,16 +115,19 @@ class TestLookupMpIdCoversEveryBatch:
         function twice (once when batch2_28.csv was first written, again
         when it was renamed to batch2_31.csv) -- prove the CURRENT
         (glob-based) implementation doesn't care what a CSV is named at
-        all, so a future rename can't reintroduce the same bug shape."""
-        import materials_db.export.modalfit as modalfit_mod
+        all, so a future rename can't reintroduce the same bug shape.
+        Since ADR 0001 the glob runs in mp_ids.build_map (its output is the
+        packaged mp_ids.json, kept fresh by tests/test_mp_id_map.py), so the
+        guard is checked there: an arbitrarily named new CSV is picked up."""
         import pandas as pd
+        from materials_db.export.mp_ids import build_map
 
-        monkeypatch.setattr(modalfit_mod, "_ROOT", tmp_path)
         (tmp_path / "data").mkdir()
         pd.DataFrame([{"formula": "Zzzz9", "mp_id": "mp-999999", "name": "Fake"}]).to_csv(
             tmp_path / "data" / "whatever_this_file_is_called_2027.csv", index=False
         )
-        assert modalfit_mod._lookup_mp_id("Zzzz9") == "mp-999999"
+        ids, files = build_map(tmp_path / "data")
+        assert ids == {"Zzzz9": "mp-999999"} and files == ["whatever_this_file_is_called_2027.csv"]
 
 
 class TestClassifyMaterialType:

@@ -14,14 +14,18 @@ import venv
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "src"))  # the checkout side of the parity check
 MODULES = [
     "materials_db.export.modalfit", "materials_db.export.citations", "materials_db.export.modalfit_pin",
     "materials_db.launcher.catalog", "materials_db.launcher.library_export", "materials_db.launcher.modalfit_bridge",
     "materials_db.launcher.ambient", "materials_db.access.db", "materials_db.access.checkout",
 ]
+# installed and checkout exports must agree field by field (docs/adr/0001); one oxide, one batch-2 and one element material
+PARITY_MATERIALS = ["Aluminium oxide / sapphire", "Zinc sulfide", "Silicon"]
 PROBE = """
 import importlib, importlib.resources, json, sys
 mods = %r
+PARITY_MATERIALS = %r
 out = {"sys_path": sys.path, "errors": {}}
 for m in mods:
     try:
@@ -39,8 +43,8 @@ out["data"] = {p: importlib.resources.files("materials_db").joinpath(p).is_file(
 out["checkout"] = str(checkout.repository_root())
 import sqlite3
 from materials_db.export.modalfit import export_layer
-layer = export_layer(sqlite3.connect(f"file:{sys.argv[1]}?mode=ro", uri=True), "Aluminium oxide / sapphire")
-out["sapphire_mp_id"] = layer["materials_db"]["mp_id"]
+con = sqlite3.connect(f"file:{sys.argv[1]}?mode=ro", uri=True)
+out["layers"] = {n: export_layer(con, n) for n in PARITY_MATERIALS}
 print(json.dumps(out))
 """
 
@@ -75,7 +79,7 @@ def test_installed_wheel_imports_export_launcher_and_access_without_the_checkout
     (Path(purelib) / "_parent_env_dependencies.pth").write_text("\n".join(parent_sites) + "\n")
     subprocess.run([py, "-m", "pip", "install", "--no-deps", "--no-index", "-q", str(wheel)], check=True, capture_output=True)
 
-    run = subprocess.run([py, "-I", "-c", PROBE % MODULES, str(ROOT / "data" / "materials_oxide_test.db")], cwd=work,
+    run = subprocess.run([py, "-I", "-c", PROBE % (MODULES, PARITY_MATERIALS), str(ROOT / "data" / "materials_oxide_test.db")], cwd=work,
                          capture_output=True, text=True)
     assert run.returncode == 0, run.stderr
     out = json.loads(run.stdout.strip().splitlines()[-1])  # the exporter logs its approximations to stdout first
@@ -84,8 +88,15 @@ def test_installed_wheel_imports_export_launcher_and_access_without_the_checkout
     assert out["citations"] == ["As2S3", "HgS", "Ta2O5", "TeO2", "VO2"]
     assert out["data"] == {"core/schema.sql": True, "core/seed_manual.sql": True, "chat/ui.html": True}
     assert out["checkout"] == "None"  # an installed wheel has no checkout; checkout-only features report themselves unavailable
-    # documented limitation (docs/installation.md): installed, the mp_id lookup has no data/*.csv to read, so the id is missing
-    # (in a checkout the same export gives mp-1143; every other exported field and the n,k file were identical when checked)
-    assert out["sapphire_mp_id"] is None
+    # installed == checkout, field by field (ADR 0001: the mp_id map ships in the wheel); the checkout export runs in this process
+    import sqlite3
+    from materials_db.export.modalfit import export_layer
+    checkout_dir = tmp_path / "checkout_export"
+    checkout_dir.mkdir()
+    con = sqlite3.connect(f"file:{ROOT / 'data' / 'materials_oxide_test.db'}?mode=ro", uri=True)
+    checkout = {n: export_layer(con, n, nk_csv_dir=checkout_dir) for n in PARITY_MATERIALS}
+    assert json.loads(json.dumps(checkout)) == out["layers"]
+    assert out["layers"]["Aluminium oxide / sapphire"]["materials_db"]["mp_id"] == "mp-1143"
+    assert all(layer["materials_db"]["mp_id_status"] for layer in out["layers"].values())
     import tomllib
     assert out["version"] == tomllib.loads((ROOT / "pyproject.toml").read_text())["project"]["version"]

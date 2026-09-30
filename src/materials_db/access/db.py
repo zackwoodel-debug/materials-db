@@ -25,6 +25,7 @@ from pathlib import Path
 import pandas as pd
 
 from materials_db.access.checkout import load_script
+from materials_db.core.readonly import READ_ACTIONS, authorizer
 
 _ROOT = Path(__file__).resolve().parents[3]
 MAX_ROWS = 1000
@@ -74,15 +75,8 @@ def _records(df):
     return [{k: _clean(v) for k, v in r.items()} for r in df.to_dict("records")]
 
 
-_READ_ACTIONS = {sqlite3.SQLITE_SELECT, sqlite3.SQLITE_READ, sqlite3.SQLITE_FUNCTION}
-
-
-def _authorizer(action, arg1, arg2, dbname, source):
-    if action in _READ_ACTIONS:
-        return sqlite3.SQLITE_OK
-    if action == sqlite3.SQLITE_PRAGMA and arg1 in ("table_info", "table_list", "index_list", "foreign_key_list") and arg2 is None:
-        return sqlite3.SQLITE_OK
-    return sqlite3.SQLITE_DENY
+_READ_ACTIONS = READ_ACTIONS  # shared read-only guard: materials_db.core.readonly
+_authorizer = authorizer
 
 
 class ReleaseDB:

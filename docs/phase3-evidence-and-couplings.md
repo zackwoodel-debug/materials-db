@@ -97,7 +97,7 @@ A literature lookup for the blocked rows is recorded per entry in `data/oxide_ga
 
 ## Deferred, not addressed here
 
-- `mp_id` packaging (Phase 4): installed and checkout ModalFit exports are not equivalent.
+- `mp_id` packaging (Phase 4): installed and checkout ModalFit exports were not equivalent. Resolved on 2026-09-30 by ADR 0001.
 - The ModalFit exporter fills unmeasured k with 0.0: an open scientific-correctness issue conflicting with guardrail 1 (unknown k
   is not zero). Existing zero-filled exports are not evidence the semantics are correct.
 - The unsynced vendored citation copies in `modalfit_db_export/citations.py` and `modalfit_export.py` (Phase 6).

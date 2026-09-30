@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "materials_db"
-version = "0.2.0"
+version = "0.3.0"
 # Core: imported unconditionally by the package's own modules (calculators, simulation, access, export, core).
 # Lower bounds are the ones requirements.txt already stated; no upper bounds (the tested set is pinned in requirements.lock).
 dependencies = [
@@ -35,7 +35,7 @@ where = ["src"]
 include = ["materials_db*"]
 
 [tool.setuptools.package-data]
-materials_db = ["core/*.sql", "chat/*.html"]
+materials_db = ["core/*.sql", "chat/*.html", "export/mp_ids.json"]
 
 [tool.ruff]
 extend-exclude = ["release", "refractiveindex_db", ".venv-modalfit-launcher", "build", "dist"]

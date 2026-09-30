@@ -16,10 +16,10 @@ Checked by `tests/test_wheel_install.py` (fresh venv, `python -I`, no checkout o
 | Feature | Module | Notes |
 |---|---|---|
 | Read-only access to a release (library, HTTP, MCP) | `materials_db.access` (`db`, `http` with `api`, `mcp_server` with `mcp`) | Point it at a release with `$MATERIALS_DB_RELEASE` (folder or `.sqlite`). **Primary-dataset selection and the model-fit flag need a checkout** (below): without one, `ReleaseDB.info()["primary_unavailable"]` says so and callers must name a dataset; nothing is guessed. |
-| ModalFit export | `materials_db.export.modalfit`, `.citations`, `.modalfit_pin` | Pass the database explicitly (`export_layer(db, ...)`); `DEFAULT_DB` points into a checkout. **Limitation:** the Materials Project id lookup (`_lookup_mp_id`) reads the checkout's `data/*.csv`; installed, it finds none and exports `mp_id` as missing for every material, so **installed and checkout exports are not equivalent**. Use a checkout for exports that need `mp_id`. (Deferred to Phase 4: whether to refuse or explicitly flag the missing id, and whether the id may be redistributed as package data.) |
+| ModalFit export | `materials_db.export.modalfit`, `.citations`, `.modalfit_pin`, `.mp_ids` | Pass the database explicitly (`export_layer(db, ...)`); `DEFAULT_DB` points into a checkout. Materials Project ids come from the packaged map `export/mp_ids.json` (derived from the family tables; ADR 0001), so installed and checkout exports are equivalent (`tests/test_wheel_install.py` compares them field by field). Each layer records `mp_id_status` (`found`, `no_mp_entry_recorded`, `formula_not_in_family_tables`, `id_map_unavailable`), so a missing id always says why. |
 | ModalFit launcher | `materials_db.launcher` | Set `$MODALFIT_PATH` to the ModalFit clone; the `.modalfit_path` file is looked up in a checkout. |
 | XRR calculators and Parratt simulation | `materials_db.calculators`, `materials_db.simulation` | Pass `--db`; the default is a checkout's `data/materials.db`. |
-| Package data | `core/schema.sql`, `core/seed_manual.sql`, `chat/ui.html` | Shipped in the wheel. |
+| Package data | `core/schema.sql`, `core/seed_manual.sql`, `chat/ui.html`, `export/mp_ids.json` | Shipped in the wheel. |
 
 ## Needs a checkout
 
