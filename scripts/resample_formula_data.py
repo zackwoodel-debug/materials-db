@@ -137,7 +137,7 @@ def resample_db(db_path, apply):
     return out
 
 
-def resample_csv(path, apply, pages):
+def resample_csv(path, apply, pages, raise_on_unexplained=True):
     raw = open(path, newline="").read()
     rows = list(csv.reader(io.StringIO(raw, newline="")))
     buf = io.StringIO()
@@ -171,6 +171,8 @@ def resample_csv(path, apply, pages):
                     r[ix[col]] = "" if val is None else repr(val)
                 else:
                     out["unexplained"].append(dict(row=label, column=col, old=old, new=val, data_path=cand[0]))
+    if (out["unexplained"] or out["unresolved"]) and not raise_on_unexplained:
+        return out  # report mode (scripts/report_cross_platform_floats.py): nothing is written
     if out["unexplained"] or out["unresolved"]:
         raise ResampleError(f"{path.name}: {len(out['unexplained'])} unexplained cell differences, {len(out['unresolved'])} unresolved pages: "
                             f"{(out['unexplained'] + out['unresolved'])[:3]}")
@@ -209,7 +211,7 @@ def _fmt(v):
     return "None" if v is None else repr(v)
 
 
-def refresh_family_csv(path, selections_path, apply):
+def refresh_family_csv(path, selections_path, apply, raise_on_unexplained=True):
     """n_633 / k_633 cells (+ axis 2/3) and the 'additional dataset X: n(633 nm)=.., k=..' flag values of a family CSV. Each
     published number must equal what the builder computed from the OLD sampling (interpolated or exact, whichever it is), which
     proves the number -> dataset mapping; it is then replaced by the same computation on the new sampling. An exact-formula n
@@ -299,6 +301,8 @@ def refresh_family_csv(path, selections_path, apply):
                     out["flags_updated"].append(dict(row=name, label=label, old=m.group(0), new=text))
                 return text
             r[ix["flags"]] = FLAG_VALUE.sub(fix, r[ix["flags"]])
+    if out["unexplained"] and not raise_on_unexplained:
+        return out  # report mode (scripts/report_cross_platform_floats.py): nothing is written
     if out["unexplained"]:
         raise ResampleError(f"{path.name}: {len(out['unexplained'])} unexplained values: {out['unexplained'][:3]}")
     if apply and (out["cells_updated"] or out["flags_updated"]):
