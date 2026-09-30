@@ -20,10 +20,11 @@ import math
 import os
 import re
 import sqlite3
-import sys
 from pathlib import Path
 
 import pandas as pd
+
+from materials_db.access.checkout import load_script
 
 _ROOT = Path(__file__).resolve().parents[3]
 MAX_ROWS = 1000
@@ -126,9 +127,7 @@ class ReleaseDB:
         """material_id -> raw_record_table of the primary dataset, resolved exactly as the ML sets do (needs the repository's
         selection inputs; without them there is no primary and callers must name a dataset)."""
         try:
-            sys.path.insert(0, str(_ROOT / "scripts"))
-            from generate_ml_release_set import primary_pages
-            pages = primary_pages(self.release_dir)
+            pages = load_script("generate_ml_release_set").primary_pages(self.release_dir)
         except Exception as exc:  # e.g. a downloaded release without the repository's selection inputs: reported by info()
             self.primary_unavailable = f"{type(exc).__name__}: {exc}"
             return {}
@@ -138,8 +137,7 @@ class ReleaseDB:
 
     def _model_fit(self, table):
         try:
-            from dataset_kind import model_fit_reason
-            return model_fit_reason(table) is not None
+            return load_script("dataset_kind").model_fit_reason(table) is not None
         except Exception:
             return None
 
