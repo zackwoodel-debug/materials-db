@@ -49,6 +49,8 @@ python -m materials_db.calculators.simulate_xrr --stack "Vacuum,PMMA:120,Gold:25
 python -m materials_db.calculators.xrr_engine --material PMMA
 ```
 
+What works from an installed wheel and what needs a checkout: `docs/installation.md`. Note: `init_db` is currently broken (its step paths predate the `src/` layout; see that document) and aborts at step 1.
+
 `init_db.py` runs the full four-step pipeline (schema → fetch → seed → audit) and hard-stops on any failure. Subsequent runs are safe because seeding uses `INSERT OR IGNORE` and fetching clears and repopulates the optical tables.
 
 ### Verification checklist

@@ -37,27 +37,20 @@ import csv
 import json
 import re
 import sqlite3
-import sys
 from pathlib import Path
 from typing import Optional
 
 _ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_DB = _ROOT / "data" / "materials_oxide_test.db"
 
-sys.path.insert(0, str(_ROOT / "scripts"))
-from oxide_material_list import RESOLVED_OPTICAL_SOURCE_CITATION as _OXIDE_CITATIONS  # noqa: E402
-from fluoride_nitride_sulfide_material_list import (  # noqa: E402
-    RESOLVED_OPTICAL_SOURCE_CITATION as _BATCH2_CITATIONS,
-)
-from materials_db.pipeline.process_condition import (  # noqa: E402
+# Single merged citation lookup across every batch -- a later batch (metals,
+# TMDCs, etc.) extends it (materials_db.export.citations) rather than starting
+# its own dict, so no batch has to re-litigate what an earlier one settled.
+from materials_db.export.citations import RESOLVED_OPTICAL_SOURCE_CITATION  # noqa: F401 (re-exported)
+from materials_db.pipeline.process_condition import (
     BULK_ELEMENTAL_APPROXIMATION, DENSITY_VERIFIED, DENSITY_BULK_APPROXIMATION,
     bulk_approximation_density_bounds, verified_density_bounds,
 )
-
-# Single merged citation lookup across every batch -- a later batch (metals,
-# TMDCs, etc.) extends this same way rather than starting its own dict, so
-# no batch has to re-litigate what an earlier one already settled.
-RESOLVED_OPTICAL_SOURCE_CITATION = {**_OXIDE_CITATIONS, **_BATCH2_CITATIONS}
 
 # Historical note: substrate used to be a fixed, non-DB-sourced Si
 # placeholder here (density_g_cm3=2.329, xray_sld_real=20.0620,

@@ -459,41 +459,11 @@ LITERATURE_DENSITY = {
 }
 
 # ---------------------------------------------------------------------------
-# RESOLVED_OPTICAL_SOURCE_CITATION -- the exact pattern from
-# scripts/oxide_material_list.py (VO2/TeO2/Ta2O5), extended here so a future
-# batch (e.g. metals, or a TMDC/layer-count batch) doesn't re-litigate what
-# this one settled.
+# RESOLVED_OPTICAL_SOURCE_CITATION (As2S3, HgS): the full record and citations now live in the package
+# (src/materials_db/export/citations.py) so the installed exporter does not import scripts/.
 # ---------------------------------------------------------------------------
+import sys as _sys
+from pathlib import Path as _Path
 
-RESOLVED_OPTICAL_SOURCE_CITATION = {
-    "As2S3": dict(
-        doi=None,
-        title="AMTIR-6 (As2S3) product datasheet",
-        authors="Amorphous Materials, Inc.",
-        journal=None, year=None,
-        verification_note=(
-            "Reuses the SiO2 quartz-vs-fused-silica resolution verbatim. RI.info's "
-            "'Slavich' dataset (biaxial alpha/beta/gamma) is necessarily CRYSTALLINE "
-            "(orpiment) since biaxial optics require an ordered crystal -- switched "
-            "default to 'Rodney' (Rodney, Malitson, King 1958), whose COMMENTS state "
-            "'Arsenic trisulfide glass. 25 C' explicitly, meeting the same evidentiary bar "
-            "as Ta2O5's 'Amorphous thin film' COMMENTS. Independently corroborated: "
-            "'Synowicki' (2004) titles its dataset 'a-As2S3' (amorphous notation), "
-            "contrasted directly against 'c-ZrO2'/'c-MgO' in the SAME paper."
-        ),
-    ),
-    "HgS": dict(
-        doi=None,
-        title="Bond, W. L. et al. 1967 (RI.info page COMMENTS: 'alpha-HgS')",
-        authors="Bond, W.L. et al.",
-        journal=None, year=1967,
-        verification_note=(
-            "RI.info's own page name states the measured phase directly: 'Bond et al. "
-            "1967: alpha-HgS' (cinnabar). Cross-checked against MP (not just trusted from "
-            "the page name alone) -- MP's lowest-energy_above_hull entry is metacinnabar "
-            "(F-43m #216, a DIFFERENT phase), so this needed the same EXPECTED_SPACEGROUP "
-            "override treatment as CeF3/BN despite the RI.info metadata already stating "
-            "the correct phase name."
-        ),
-    ),
-}
+_sys.path.insert(0, str(_Path(__file__).resolve().parents[1] / "src"))
+from materials_db.export.citations import BATCH2_RESOLVED_OPTICAL_SOURCE_CITATION as RESOLVED_OPTICAL_SOURCE_CITATION  # noqa: E402,F401
