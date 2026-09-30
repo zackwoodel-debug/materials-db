@@ -13,6 +13,7 @@ once by hand (see modalfit_bridge.py's own docstring) and is not
 re-derived as an automated test.
 """
 
+import importlib.util
 import sys
 from pathlib import Path
 
@@ -66,8 +67,14 @@ class TestCheckTkVersion:
     def test_missing_tkinter_entirely_raises_a_clear_error(self, monkeypatch):
         """This dev environment's actual default Python has no tkinter
         at all -- exercised directly, not simulated, by removing any
-        cached tkinter module and letting the real import fail."""
+        cached tkinter module and letting the real import fail. On a
+        Python that does have Tk (e.g. GitHub's CI Python, Tk 8.6) the
+        same import is made to fail by blocking it in sys.modules (None
+        makes `import tkinter` raise ImportError), so the assertion is
+        identical on both."""
         monkeypatch.delitem(sys.modules, "tkinter", raising=False)
+        if importlib.util.find_spec("tkinter") is not None:
+            monkeypatch.setitem(sys.modules, "tkinter", None)
         with pytest.raises(ModalFitBridgeError, match="no Tk support at all"):
             check_tk_version()
 
