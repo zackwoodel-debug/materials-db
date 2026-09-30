@@ -46,6 +46,7 @@ NAME_SYNONYMS = {
     "PCTFE", "PEI", "TPX", "AGSe", "AGS", "TAS", "YLF", "ZGP", "berlinite", "anhydrite", "KDP", "ADP", "KTP", "RTP", "BGG", "4-pentyl-4'-cyanobiphenyl",
     "4-trans-pentylcyclohexylcyanobenzene", "PBS", "DMEM", "GST",
     "AZO", "ITO", "KRS-5", "KRS-6", "CsPbBr3", "CsPbCl3", "MAPbBr3", "MAPbI3",  # alloys / perovskites (v0.17.0)
+    "fused silica",  # material 38, "Silicon dioxide (fused silica)" (v0.20.2)
 }
 NAME_QUALIFIERS = {
     "hexagonal", "liquid", "rutile / anatase", "sodium salt, calf thymus", "polyimide film", "negative photoresist", "negative resist",

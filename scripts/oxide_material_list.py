@@ -97,7 +97,7 @@ MATERIALS_50 = [
          pubchem_name="Scandium oxide", ri_aliases=["Sc2O3"]),
     dict(idx=37, name="Silicon monoxide", formula="SiO", polymorph="amorphous",
          pubchem_name="Silicon monoxide", ri_aliases=["SiO"]),
-    dict(idx=38, name="Silicon dioxide / quartz", formula="SiO2", polymorph="amorphous",
+    dict(idx=38, name="Silicon dioxide (fused silica)", formula="SiO2", polymorph="amorphous",
          pubchem_name="Silicon dioxide", ri_aliases=["SiO2"]),
     dict(idx=39, name="Tantalum pentoxide", formula="Ta2O5", polymorph="amorphous",
          pubchem_name="Tantalum pentoxide", ri_aliases=["Ta2O5"]),

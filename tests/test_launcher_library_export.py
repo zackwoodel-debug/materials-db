@@ -69,7 +69,7 @@ class TestBuildLibraryEntry:
         entry is applied -- not just its optical/scattering data."""
         cases = [
             ("Silicon", None, "silicon"),
-            ("Silicon dioxide / quartz", "amorphous", "silicon_oxide"),
+            ("Silicon dioxide (fused silica)", "amorphous", "silicon_oxide"),
             ("Gold", None, "gold"),
             ("Aluminium oxide / sapphire", "corundum/sapphire", "sapphire"),
         ]

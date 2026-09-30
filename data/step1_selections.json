@@ -819,7 +819,7 @@
   },
   "SiO2": {
     "idx": 38,
-    "name": "Silicon dioxide / quartz",
+    "name": "Silicon dioxide (fused silica)",
     "polymorph": "amorphous",
     "effective_polymorph": "amorphous",
     "amorphous_default": true,

@@ -5,6 +5,19 @@ versions follow the release tags. Counts are materials / optical datasets.
 
 ## [Unreleased]
 
+## [0.20.2] - 2026-09-30 (2129 / 2605)
+
+### Fixed
+- Material 38 identity: it was named "Silicon dioxide / quartz" with CAS 14464-46-1, which is cristobalite (NIST Chemistry
+  WebBook), while its only dataset (Malitson 1965) is fused silica. It is now "Silicon dioxide (fused silica)" with CAS
+  60676-86-0 (Silica, vitreous); its synonym "quartz" (derived from the old name) is gone and "fused silica" is added. Its id
+  (38), stable key and every value are unchanged.
+
+### Changed
+- The `spr_data` view gains `dataset_label` and `raw_record_table` (its last two columns), so datasets of different phases,
+  variants or axes at one wavelength can be told apart (e.g. "Water" includes amorphous and crystalline ice at 10-150 K).
+  Existing columns and rows are unchanged.
+
 ## [0.20.1] - 2026-09-29 (2129 / 2605)
 
 ### Fixed

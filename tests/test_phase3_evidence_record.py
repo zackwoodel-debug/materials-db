@@ -26,7 +26,7 @@ EXPECTED = {  # (stable key, gap_kind) -> phase3 case
     ("oxides_50:Ta2O5@amorphous", "density_provenance"): "blocked",
     ("oxides_50:SiO@amorphous", "density_provenance"): "blocked",
     ("oxides_50:Nb2O5@amorphous", "density_provenance"): "blocked",
-    ("oxides_50:SiO2@amorphous", "identity_conflict"): "deferred (tracked task material38_identity_correction)",
+    ("oxides_50:SiO2@amorphous", "identity_conflict"): "resolved in v0.20.2",
 }
 
 
@@ -67,7 +67,8 @@ def test_quoted_evidence_is_verbatim_in_its_source():
     nb_inference = ("amorphous inferred from the Franta 2024 RI.info dataset's deposition method -- magnetron sputtering, no anneal step "
                     "mentioned in its RI.info comments; the Franta paper itself was not directly accessed to confirm")
     assert nb_inference in notes["Nb2O5"] and nb_inference in flags[33] and nb_inference in evidence
-    assert "took first/primary (14464-46-1)" in flags[38] and "took first/primary (14464-46-1)" in evidence
+    assert "took first/primary (14464-46-1)" in evidence  # the pre-v0.20.2 state, kept as the gap's evidence
+    assert "60676-86-0" in flags[38] and "first/primary (14464-46-1)" not in flags[38]  # corrected in v0.20.2
     comment_text = " ".join(line.strip().lstrip("#").strip() for line in build.splitlines() if line.strip().startswith("#"))
     assert "SiO confirmed manually" in comment_text  # a comment wrapped across two lines, compared re-joined
 
@@ -79,9 +80,9 @@ def test_quoted_evidence_is_verbatim_in_its_source():
 
 
 def test_tracked_tasks_record_the_blocking_chain():
-    for task in ("oxide_density_labels_and_polymorph", "density_provenance_upgrade", "material38_identity_correction",
-                 "oxide_amorphous_migration"):
+    for task in ("oxide_density_labels_and_polymorph", "density_provenance_upgrade", "oxide_amorphous_migration"):
         assert task in open_tasks() and task in DOC
+    assert task_detail("material38_identity_correction")["status"] == "done"  # resolved in v0.20.2
     assert task_detail("oxide_amorphous_migration")["blocking_on"] == "oxide_density_labels_and_polymorph"
     assert task_detail("oxide_density_labels_and_polymorph")["blocking_on"] == "density_provenance_upgrade"
     assert set(task_detail("density_provenance_upgrade")["affected_materials"]) == {"SiO2", "GeO2", "Ta2O5", "SiO", "Nb2O5"}

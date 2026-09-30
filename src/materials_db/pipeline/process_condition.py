@@ -380,9 +380,10 @@ TRACKED_OPEN_TASKS = {
             "data/oxides_50.csv (name, cas_number, flags)",
             "material synonyms / release curation (a rename touches synonyms; the registry id must not change)",
         ],
-        cost_estimate="Small, once the correct CAS is confirmed from a primary registry record.",
+        cost_estimate=("Done in dataset release v0.20.2 (maintainer decision 2026-09-30): renamed 'Silicon dioxide (fused "
+                       "silica)', CAS 60676-86-0 (NIST WebBook: 'Silica, vitreous'; 14464-46-1 is 'cristobalite'); id 38 kept."),
         blocking_on=None,
-        status="open",
+        status="done",
     ),
     "cross_platform_float_reproducibility": dict(
         description=(
