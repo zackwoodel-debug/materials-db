@@ -47,14 +47,13 @@ blank window -- see its docstring.
 
 import importlib.util
 import os
-import sys
 from pathlib import Path
 from typing import Optional
 from unittest.mock import patch
 
+from materials_db.export.modalfit_pin import check_pin
+
 _ROOT = Path(__file__).resolve().parents[3]
-sys.path.insert(0, str(_ROOT / "scripts"))
-from verify_modalfit_pin import check_pin  # noqa: E402
 
 MODALFIT_PATH_ENV_VAR = "MODALFIT_PATH"
 MODALFIT_PATH_CONFIG_FILE = _ROOT / ".modalfit_path"
