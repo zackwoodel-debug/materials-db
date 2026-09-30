@@ -1,15 +1,4 @@
-numpy>=1.24
-pandas>=2.0
-matplotlib>=3.8
-seaborn>=0.13
-missingno>=0.5
-statsmodels>=0.14
-rdkit>=2024.3
-Chemical-Descriptors>=1.1
-PyYAML>=6.0
-fastapi>=0.110
-uvicorn>=0.29
-anthropic>=0.26
-rich>=13.0
-mp-api>=0.46
-mcp>=1.2  # optional: the MCP server (materials_db.access.mcp_server); works with 1.x and 2.x
+# Dependencies are declared in pyproject.toml (core + extras: ingest, api, mcp, release, analysis, dev).
+# The tested, hash-pinned set is requirements.lock; see its header for how it was produced.
+# Everything the release build and the test suite need, from a checkout:
+-e .[ingest,api,release,dev]

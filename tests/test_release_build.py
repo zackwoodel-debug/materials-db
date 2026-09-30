@@ -350,6 +350,20 @@ def test_package_files_checksums_and_counts(release):
         with (gzip.open(path, "rt", newline="") if path.suffix == ".gz" else open(path, newline="")) as f:
             assert sum(1 for _ in csv.reader(f)) - 1 == n == m["csv_rows"][path.name], t
     assert m["license"] == "CC-BY-4.0" and m["materials_project_database_version"] and m["refractiveindex_info_commit"]
+    # the tested dependency set the build ran against is identified by hash (requirements.lock header says how it was made)
+    assert m["dependency_lock"] == dict(file="requirements.lock", sha256=hashlib.sha256((ROOT / "requirements.lock").read_bytes()).hexdigest())
+
+
+def test_dataset_version_is_single_sourced_and_the_manifest_records_the_software_version(release):
+    # docs/versioning.md: the dataset version comes only from --version; the software version only from pyproject.toml
+    import materials_db
+    out, m = release["out"], json.loads((release["out"] / "MANIFEST.json").read_text())
+    version = m["version"]
+    assert version == "0.0.0-test" and out.name == f"materials-db-v{version}" and release["zip"].name == f"materials-db-v{version}.zip"
+    assert (out / f"materials-db-v{version}.sqlite").is_file()
+    assert (out / "README.md").read_text().splitlines()[0] == f"# materials-db v{version}"
+    assert json.loads((out / "data_dictionary.json").read_text())["version"] == version
+    assert m["software"]["materials_db"] == materials_db.__version__
     with zipfile.ZipFile(release["zip"]) as z:
         assert {Path(n).relative_to(out.name).as_posix() for n in z.namelist()} == {p.relative_to(out).as_posix() for p in out.rglob("*") if p.is_file()}
 

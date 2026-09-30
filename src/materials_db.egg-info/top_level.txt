@@ -1,4 +1,0 @@
-db
-materials_db
-ml
-pipeline

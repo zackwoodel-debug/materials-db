@@ -80,7 +80,7 @@ NEGATIVE_K_ALLOWED = {
     ("HIKARI LAK09", "HIKARI2017"): -1.4e-5,  # one tabulated k at 0.7 um (-1.38e-5), likewise
 }
 N_MIN = 1e-3
-BUILD_INPUTS = ["data", "scripts", "src", "DATA_LICENSE.md", "CHANGELOG.md"]  # what the build reads; other files (e.g. NOTES.md) cannot change the release
+BUILD_INPUTS = ["data", "scripts", "src", "DATA_LICENSE.md", "CHANGELOG.md", "pyproject.toml", "requirements.lock"]  # what the build reads; other files (e.g. NOTES.md) cannot change the release
 RI_DATA = _ROOT / "refractiveindex_db" / "database" / "data"
 
 
@@ -570,13 +570,15 @@ def package(db_path, version, facts, out_root=None):
     import periodictable
     import pymatgen.core
     import rdkit
+    import materials_db
     manifest = dict(
         dataset="materials-db", version=version, license="CC-BY-4.0",
         built_utc=datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         git_commit=_git("rev-parse", "HEAD"), git_worktree_clean=_git("status", "--porcelain", "--untracked-files=no", "--", *BUILD_INPUTS) == "",
         refractiveindex_info_commit=_git("rev-parse", "HEAD", cwd=_ROOT / "refractiveindex_db"),
         materials_project_database_version=mp_version,
-        software=dict(python=sys.version.split()[0], rdkit=rdkit.__version__, pymatgen=pymatgen.core.__version__, periodictable=periodictable.__version__),
+        software=dict(materials_db=materials_db.__version__, python=sys.version.split()[0], rdkit=rdkit.__version__, pymatgen=pymatgen.core.__version__, periodictable=periodictable.__version__),
+        dependency_lock=dict(file="requirements.lock", sha256=_sha256(_ROOT / "requirements.lock")),
         counts=c, csv_rows=csv_rows, **facts)
     (out / "MANIFEST.json").write_text(json.dumps(manifest, indent=1, default=str) + "\n")
     files = sorted(p for p in out.rglob("*") if p.is_file() and p.name != "SHA256SUMS")

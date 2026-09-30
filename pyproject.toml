@@ -4,7 +4,37 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "materials_db"
-version = "0.1.0"
+version = "0.2.0"
+# Core: imported unconditionally by the package's own modules (calculators, simulation, access, export, core).
+# Lower bounds are the ones requirements.txt already stated; no upper bounds (the tested set is pinned in requirements.lock).
+dependencies = [
+    "numpy>=1.24",
+    "pandas>=2.0",
+    "periodictable",
+    "pydantic",
+    "rich>=13.0",
+]
+
+[project.optional-dependencies]
+# materials_db.pipeline.fetch_* (refractiveindex.info YAML parsing, PubChem / web lookups, RDKit identity)
+ingest = ["PyYAML>=6.0", "requests", "rdkit>=2024.3"]
+# materials_db.api (FastAPI server + local-LLM SQL agent via an OpenAI-compatible client) and materials_db.access.http
+api = ["fastapi>=0.110", "uvicorn>=0.29", "openai"]
+# materials_db.access.mcp_server; works with mcp 1.x and 2.x
+mcp = ["mcp>=1.2"]
+# scripts/ release build, family pipelines, descriptors and ML sets (checkout-only, not part of the installed package)
+release = ["materials_db[ingest]", "pymatgen", "mp-api>=0.46", "scipy", "pyarrow", "python-dotenv"]
+# scripts/ exploratory analysis and figures (not needed by the release build or the tests)
+analysis = ["matplotlib>=3.8", "seaborn>=0.13", "missingno>=0.5", "statsmodels>=0.14"]
+dev = ["pytest", "httpx", "ruff"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.ruff]
+extend-exclude = ["release", "refractiveindex_db", ".venv-modalfit-launcher", "build", "dist"]
+
+[tool.ruff.lint]
+# A small baseline that the repository already meets (0 violations on 2026-09-29), enforced in CI. Not enforced yet:
+# F401 unused imports (51) and F841 unused variables (14); `ruff format` (215 of 258 files would be reformatted).
+select = ["E9", "F63", "F7", "F82", "F811", "E711", "E712", "E722", "F403", "F405", "B006", "PLE"]
