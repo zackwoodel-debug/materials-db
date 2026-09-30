@@ -1,65 +1,26 @@
 #!/usr/bin/env python3
 """
-init_db.py
-Full database initialisation pipeline. Run from the project root.
+init_db.py -- DEPRECATED; does nothing but explain itself.
 
-Steps (sequential, hard-fail on any nonzero exit):
-  1. core/schema.sql          — create tables, indexes, spr_data view
-  2. pipeline/fetch_optical_data.py — clone RI.info, parse, populate DB
-  3. core/seed_manual.sql     — unique indexes + manual-entry inserts
-  4. core/audit.py            — integrity checks and DPPC auto-remediation
+It used to rebuild the legacy data/materials.db in four steps (core/schema.sql; pipeline/fetch_optical_data.py, which cloned
+refractiveindex.info and repopulated the optical tables; core/seed_manual.sql; core/audit.py). Its step paths predate the src/
+layout, so since the June 2026 src/ migration it aborted at step 1. It is deliberately not repaired: a working version would
+fetch from the network and rewrite the legacy database that verify_all.py and the guard tests read.
+
+The maintained database is the release, built offline from the committed inputs:
+    python3 scripts/build_release.py --version X.Y.Z
+(see README "Downloadable dataset" and docs/installation.md).
 """
-
-import sqlite3
-import subprocess
 import sys
-from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
-DB   = ROOT / "data" / "materials.db"
-
-
-def run_sql_file(db_path: Path, sql_path: Path) -> None:
-    conn = sqlite3.connect(str(db_path))
-    # Enable foreign keys
-    conn.execute("PRAGMA foreign_keys = ON")
-    with open(sql_path, "r", encoding="utf-8") as f:
-        sql = f.read()
-    conn.executescript(sql)
-    conn.commit()
-    conn.close()
+MESSAGE = ("materials_db.init_db is deprecated and does nothing: it rebuilt the legacy data/materials.db and has been broken "
+           "since the src/ migration. Build the maintained database with `python3 scripts/build_release.py --version X.Y.Z` "
+           "(see README, 'Downloadable dataset').")
 
 
-def step(label: str, cmd: list[str] | None = None, sql_path: Path | None = None) -> None:
-    print(f"[ ] Running: {label} ...", flush=True)
-    try:
-        if sql_path is not None:
-            run_sql_file(DB, sql_path)
-        elif cmd is not None:
-            result = subprocess.run(cmd, cwd=str(ROOT))
-            if result.returncode != 0:
-                raise RuntimeError(f"Subprocess returned exit code {result.returncode}")
-        print("[✓] Done\n", flush=True)
-    except Exception as exc:
-        print(f"[✗] Failed — abort: {exc}", flush=True)
-        sys.exit(1)
+def main():
+    sys.exit(MESSAGE)
 
 
 if __name__ == "__main__":
-    step(
-        "1/4  core/schema.sql (tables + view)",
-        sql_path=ROOT / "core" / "schema.sql",
-    )
-    step(
-        "2/4  pipeline/fetch_optical_data.py",
-        cmd=[sys.executable, str(ROOT / "pipeline" / "fetch_optical_data.py")],
-    )
-    step(
-        "3/4  core/seed_manual.sql (unique indexes + manual inserts)",
-        sql_path=ROOT / "core" / "seed_manual.sql",
-    )
-    step(
-        "4/4  core/audit.py",
-        cmd=[sys.executable, str(ROOT / "core" / "audit.py")],
-    )
-    print("Pipeline complete.")
+    main()

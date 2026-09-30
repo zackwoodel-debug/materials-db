@@ -32,7 +32,7 @@ jobs:
   fast:
     # macOS arm64: the platform the tracked data and requirements.lock were produced on. On Linux x86_64 one formula-sampled
     # value recomputes 1 ulp differently (TiN k_633 in data/nitrides.csv), so test_formula_sampling's exact "tracked data is
-    # the computation" check holds only on the reference platform (full Linux extent unmeasured). The
+    # the computation" check holds only on the reference platform; tracked as cross_platform_float_reproducibility. The
     # offline-build and mcp jobs stay on Linux and show the release build validates there.
     runs-on: macos-15
     steps:

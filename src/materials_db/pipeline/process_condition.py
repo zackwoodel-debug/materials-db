@@ -265,7 +265,10 @@ TRACKED_OPEN_TASKS = {
             "3 dependent call sites above, plus a full-suite + full-export re-verification pass. "
             "Contained, half-day scale."
         ),
-        blocking_on=None,  # not blocked on anything -- deliberately deferred, not stuck
+        # Phase 3 (2026-09-30) found this cannot be done on its own: the loader builds every physical-property label from
+        # this same polymorph field, so clearing it changes 20 density/SLD labels (see oxide_density_labels_and_polymorph
+        # and docs/phase3-evidence-and-couplings.md).
+        blocking_on="oxide_density_labels_and_polymorph",
         status="open",  # "open" | "done" | "wont_do" -- update in place, don't delete silently
     ),
     "mp_density_crosscheck_compounds": dict(
@@ -313,6 +316,94 @@ TRACKED_OPEN_TASKS = {
             "lanthanide/actinide-containing compounds, magnetic materials -- the same profile "
             "that flagged Ce/Yb) rather than working through the list in an arbitrary order."
         ),
+        blocking_on=None,
+        status="open",
+    ),
+    # --- recorded by Phase 3 (2026-09-30); evidence in docs/phase3-evidence-and-couplings.md and data/oxide_gaps.csv ---
+    "oxide_density_labels_and_polymorph": dict(
+        description=(
+            "Phase 4A. Clearing polymorph=\"amorphous\" (Nb2O5, SiO, SiO2, Ta2O5) and deciding the semantics of their density "
+            "records must be done together. The family loader (scripts/load_family_db.py run_family -> load_physical_fn) builds "
+            "every physical-property label from the family CSV's polymorph via label_join(csv_polymorph, ...), so clearing it "
+            "changes 20 labels (density + 4 SLD rows per material, e.g. 'amorphous | density_literature' -> "
+            "'density_literature'; values unchanged). Proven by rebuilding the oxide family in scratch. Also: selection_key "
+            "cannot on its own keep the registry keys, because it is also the key into data/step1_selections.json (keyed by "
+            "formula): a partial column is rejected (CatalogError: blank selection_key), a full column misses every lookup "
+            "unless the selections file is re-keyed. Do it as one change with declared label changes, ids kept, and a strict "
+            "parity rebuild of the base DB."
+        ),
+        affected_materials=["Nb2O5", "SiO", "SiO2", "Ta2O5"],
+        affected_call_sites=[
+            "data/oxides_50.csv (polymorph; any selection_key column)",
+            "data/step1_selections.json (keys, polymorph / effective_polymorph; re-keyed if selection_key is used)",
+            "data/materials_oxide_test.db (tracked base DB: rebuilt, parity-proven)",
+            "scripts/oxide_material_list.py (polymorph fields)",
+            "data/material_registry.json (only if keys cannot be kept; ids must not change)",
+        ],
+        cost_estimate=(
+            "Moderate: first resolve density_provenance_upgrade (or decide the density labels explicitly), then one "
+            "coordinated edit of the call sites above, a base-DB rebuild and a full logical parity comparison."
+        ),
+        blocking_on="density_provenance_upgrade",
+        status="open",
+    ),
+    "density_provenance_upgrade": dict(
+        description=(
+            "The five oxide literature densities (SiO2 2.20, GeO2 3.65, Ta2O5 7.90, SiO 2.13, Nb2O5 4.45 g/cm3) state a "
+            "structural basis (fused / vitreous / amorphous) that is not backed by a primary source: four cite only the "
+            "placeholder 'Literature density estimate' source ('verify against a primary source before relying on it', no "
+            "DOI); Nb2O5's cited source (Venkataraj 2001) states no structure and 'amorphous' was inferred by this repo. "
+            "Blocked in Phase 3; each needs a primary source with a DOI for its sample's structure and density before its "
+            "label or state is upgraded. data/oxide_gaps.csv rows with gap_kind density_provenance."
+        ),
+        affected_materials=["SiO2", "GeO2", "Ta2O5", "SiO", "Nb2O5"],
+        affected_call_sites=[
+            "scripts/build_oxides_csv.py (LITERATURE_DENSITY notes and citations)",
+            "data/oxides_50.csv (density_source, flags)",
+            "data/oxide_gaps.csv (density_provenance rows: close them when resolved)",
+        ],
+        cost_estimate="Five primary-literature lookups (one per material), then Phase 4A.",
+        blocking_on=None,
+        status="open",
+    ),
+    "material38_identity_correction": dict(
+        description=(
+            "Material 38 (key oxides_50:SiO2@amorphous) is named 'Silicon dioxide / quartz' and carries CAS 14464-46-1, "
+            "auto-picked as the first of 60 PubChem CAS numbers and believed to denote cristobalite (not verified offline). Its "
+            "only dataset, Malitson 1965, is fused silica ('Fused silica, 20 C'). The identity metadata contradicts the data. "
+            "Deliberately not changed in Phase 3 (scoped to labels / dataset structure). data/oxide_gaps.csv gap_kind "
+            "identity_conflict."
+        ),
+        affected_materials=["SiO2"],
+        affected_call_sites=[
+            "scripts/oxide_material_list.py (name, pubchem_name)",
+            "data/oxides_50.csv (name, cas_number, flags)",
+            "material synonyms / release curation (a rename touches synonyms; the registry id must not change)",
+        ],
+        cost_estimate="Small, once the correct CAS is confirmed from a primary registry record.",
+        blocking_on=None,
+        status="open",
+    ),
+    "cross_platform_float_reproducibility": dict(
+        description=(
+            "Found by the first CI run on Linux x86_64 (GitHub, 2026-09-30): tests/test_formula_sampling.py::"
+            "test_tracked_data_is_on_the_new_sampling recomputes Titanium nitride k_633 in data/nitrides.csv as "
+            "2.7609820996613452 where the tracked (macOS arm64-computed) value is 2.760982099661345: a last-place "
+            "floating-point difference in the formula evaluation. The check stops at the first file with a difference, so "
+            "the full extent on Linux is unmeasured. Scientifically negligible, but it means tracked numbers are exactly "
+            "reproducible only on the reference platform (macOS arm64, where the data and requirements.lock were produced). "
+            "The fast CI job therefore runs on macOS; the Linux offline build still validates (2,129 materials, 1,753,649 "
+            "optical rows). Decision needed: measure the full Linux extent, then either declare macOS arm64 the reference "
+            "platform for exact checks or adopt a documented cross-platform tolerance (which would relax a check: needs "
+            "explicit approval)."
+        ),
+        affected_materials=["TiN"],
+        affected_call_sites=[
+            "tests/test_formula_sampling.py (exact tracked-data check)",
+            "scripts/resample_formula_data.py (the recomputation)",
+            ".github/workflows/ci.yml (fast job on macos-15)",
+        ],
+        cost_estimate="Small to measure (one Linux run over every tracked CSV); the policy decision is the maintainer's.",
         blocking_on=None,
         status="open",
     ),
