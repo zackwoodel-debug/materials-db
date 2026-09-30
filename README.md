@@ -53,8 +53,8 @@ python -m materials_db.calculators.xrr_engine --material PMMA
 
 ### Verification checklist
 
-1. `python -m materials_db.core.audit` — all checks should print PASS or WARN; any FAIL indicates a missing material row or a broken unit-conversion in the fetch pipeline.
-2. `python -m materials_db.verify_all` — 15 assertions covering DB round-trips, CSV parsing, and Parratt physics (TER plateau, high-Q decay); exits 0 on success.
+1. `python -m materials_db.core.audit` — a presence check on the legacy `data/materials.db` only: it prints each table's row count and "Audit passed" if the file exists and at least one row exists. It does not check values, units or provenance, and run as a script it exits 0 even when it prints a failure, so it is not a quality gate. The release build's validation stages (`scripts/build_release.py`) and the test suite are where data is checked.
+2. `PYTHONPATH=.:src python3 src/materials_db/verify_all.py` — 34 checks covering DB round-trips, CSV parsing, SLD values, stack export and Parratt physics (TER plateau, high-Q decay); exits 0 on success.
 3. `sqlite3 data/materials.db "SELECT * FROM spr_data LIMIT 5;"` — should return n and k values at 633, 785, and 980 nm for at least Water and Gold; NULL means no optical data within 10 nm of the target wavelength.
 
 ### Downloadable dataset (releases)
@@ -84,6 +84,10 @@ The older `src/materials_db/api/server.py` (MatChat, stack builder) still reads 
 with a one-row-per-material index and the family tables, and column descriptions from the data dictionary). Then
 `pip install datasette` and run the `datasette serve ...` command the script prints; saved queries include source points
 near a wavelength, a material's datasets and sources, datasets that disagree, and materials by n(633 nm).
+
+### Generated files at the repository root
+
+`analysis_dataset.csv`, `correlation_summary.csv`, `correlation_summary_dielectric.csv`, `migration_report.md`, `schema_audit.md` and `ER_diagram.png` are outputs of the analysis and migration scripts that write them (`scripts/materials_analysis.py`, `scripts/enrich_and_reanalyze.py`, `scripts/dielectric_enrich_analyze.py`, `migration_scripts/`). They stay committed as the record of those runs: `analysis_dataset.csv` is also an input (`scripts/analysis_publication.py` reads it; `migrations/001_constraints_indexes.sql` names it), and `updated_sql_schema.sql` is a curated schema that three tests read. Do not ignore or delete them in bulk; replace one only by rerunning the script that writes it, and commit the new version with that script's change. Release packages (`release/`), the per-family test databases a loader rebuilds (listed in `.gitignore`; the release's base `data/materials_oxide_test.db` is tracked) and build output (`build/`, `dist/`, `*.egg-info/`) are regenerable and ignored.
 
 ### License
 
