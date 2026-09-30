@@ -384,6 +384,29 @@ TRACKED_OPEN_TASKS = {
         blocking_on=None,
         status="open",
     ),
+    "cross_platform_float_reproducibility": dict(
+        description=(
+            "Found by the first CI run on Linux x86_64 (GitHub, 2026-09-30): tests/test_formula_sampling.py::"
+            "test_tracked_data_is_on_the_new_sampling recomputes Titanium nitride k_633 in data/nitrides.csv as "
+            "2.7609820996613452 where the tracked (macOS arm64-computed) value is 2.760982099661345: a last-place "
+            "floating-point difference in the formula evaluation. The check stops at the first file with a difference, so "
+            "the full extent on Linux is unmeasured. Scientifically negligible, but it means tracked numbers are exactly "
+            "reproducible only on the reference platform (macOS arm64, where the data and requirements.lock were produced). "
+            "The fast CI job therefore runs on macOS; the Linux offline build still validates (2,129 materials, 1,753,649 "
+            "optical rows). Decision needed: measure the full Linux extent, then either declare macOS arm64 the reference "
+            "platform for exact checks or adopt a documented cross-platform tolerance (which would relax a check: needs "
+            "explicit approval)."
+        ),
+        affected_materials=["TiN"],
+        affected_call_sites=[
+            "tests/test_formula_sampling.py (exact tracked-data check)",
+            "scripts/resample_formula_data.py (the recomputation)",
+            ".github/workflows/ci.yml (fast job on macos-15)",
+        ],
+        cost_estimate="Small to measure (one Linux run over every tracked CSV); the policy decision is the maintainer's.",
+        blocking_on=None,
+        status="open",
+    ),
 }
 
 
