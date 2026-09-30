@@ -141,3 +141,31 @@ jobs:
           print("test_mcp_server_tools:", "passed" if ok else "missing, skipped or failed")
           sys.exit(0 if ok else 1)
           EOF
+
+  float-report:
+    # Measurement only (never fails on differences): lists every tracked formula-sampled value Linux x86_64 recomputes
+    # differently from the macOS arm64 reference (TRACKED_OPEN_TASKS cross_platform_float_reproducibility).
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check out refractiveindex.info at the pinned commit
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.RI_REPOSITORY }}
+          ref: ${{ env.RI_COMMIT }}
+          path: refractiveindex_db
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: Install the locked dependency set (hash-checked)
+        run: |
+          python -m pip install "uv==${UV_VERSION}"
+          uv venv "$RUNNER_TEMP/venv"
+          VIRTUAL_ENV="$RUNNER_TEMP/venv" uv pip sync --require-hashes requirements.lock
+      - name: Report cross-platform float differences
+        run: '"$RUNNER_TEMP/venv/bin/python" scripts/report_cross_platform_floats.py | tee "$RUNNER_TEMP/float_report.json"'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: float-report-linux
+          path: ${{ runner.temp }}/float_report.json
