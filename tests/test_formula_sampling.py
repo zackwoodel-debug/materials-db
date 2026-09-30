@@ -103,7 +103,8 @@ def test_include_um_only_adds_points():
 
 
 def test_tracked_data_is_on_the_new_sampling():
-    """Nothing left to resample: the tracked base DB and every family CSV already match (the tool is idempotent)."""
+    """Nothing left to resample: the tracked base DB and every family CSV already match (the tool is idempotent).
+    Exact on the reference platform (macOS arm64, docs/versioning.md); Linux differs in the last place for 62 CSV values."""
     db = rs.resample_db(rs.DEFAULT_DBS[0], apply=False)
     assert db["datasets"] == [] and len(db["already_new"]) == 98
     pages = rs.rf4._catalog_pages()

@@ -20,3 +20,12 @@ Rules
 - Tests check consistency within each axis, never equality between axes: `tests/test_versioning.py` (software) and
   `tests/test_release_build.py` (dataset version single-sourced across a built package; the manifest records the
   software version).
+
+## Reference platform
+
+Tracked numbers produced by the formula sampling (`scripts/resample_formula_data.py`, the family CSVs and the base DB) are exact
+only on the platform that produced them: **macOS arm64**, with `requirements.lock`. Other platforms can differ in the last
+floating-point place: Linux x86_64 recomputes 62 family-CSV values differently, all at most 2.2e-16 relative, and the base DB
+identically (measured 2026-09-30, `scripts/report_cross_platform_floats.py`). Decision (2026-09-30): exact tracked-data checks
+run on the reference platform (the fast CI job uses `macos-15`); no cross-platform tolerance is adopted. The manual
+`float-report` CI job re-measures Linux. The release build itself validates on Linux (the `offline-build` job).
