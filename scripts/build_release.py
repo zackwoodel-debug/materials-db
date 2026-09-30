@@ -570,13 +570,14 @@ def package(db_path, version, facts, out_root=None):
     import periodictable
     import pymatgen.core
     import rdkit
+    import materials_db
     manifest = dict(
         dataset="materials-db", version=version, license="CC-BY-4.0",
         built_utc=datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         git_commit=_git("rev-parse", "HEAD"), git_worktree_clean=_git("status", "--porcelain", "--untracked-files=no", "--", *BUILD_INPUTS) == "",
         refractiveindex_info_commit=_git("rev-parse", "HEAD", cwd=_ROOT / "refractiveindex_db"),
         materials_project_database_version=mp_version,
-        software=dict(python=sys.version.split()[0], rdkit=rdkit.__version__, pymatgen=pymatgen.core.__version__, periodictable=periodictable.__version__),
+        software=dict(materials_db=materials_db.__version__, python=sys.version.split()[0], rdkit=rdkit.__version__, pymatgen=pymatgen.core.__version__, periodictable=periodictable.__version__),
         dependency_lock=dict(file="requirements.lock", sha256=_sha256(_ROOT / "requirements.lock")),
         counts=c, csv_rows=csv_rows, **facts)
     (out / "MANIFEST.json").write_text(json.dumps(manifest, indent=1, default=str) + "\n")
