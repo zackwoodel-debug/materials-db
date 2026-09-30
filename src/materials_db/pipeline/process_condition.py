@@ -389,13 +389,15 @@ TRACKED_OPEN_TASKS = {
             "Found by the first CI run on Linux x86_64 (GitHub, 2026-09-30): tests/test_formula_sampling.py::"
             "test_tracked_data_is_on_the_new_sampling recomputes Titanium nitride k_633 in data/nitrides.csv as "
             "2.7609820996613452 where the tracked (macOS arm64-computed) value is 2.760982099661345: a last-place "
-            "floating-point difference in the formula evaluation. The check stops at the first file with a difference, so "
-            "the full extent on Linux is unmeasured. Scientifically negligible, but it means tracked numbers are exactly "
+            "floating-point difference in the formula evaluation. Measured 2026-09-30 by the float-report CI job "
+            "(scripts/report_cross_platform_floats.py, Linux x86_64, Python 3.14.7): the base DB matches exactly (98 formula "
+            "datasets); 62 family-CSV values differ (glass_catalogs 58; nitrides, liquids, glasses, liquid_crystals 1 each), "
+            "all at most 2.2e-16 relative (median 1.6e-16): one unit in the last place. macOS arm64: 0. Scientifically "
+            "negligible, but it means tracked numbers are exactly "
             "reproducible only on the reference platform (macOS arm64, where the data and requirements.lock were produced). "
             "The fast CI job therefore runs on macOS; the Linux offline build still validates (2,129 materials, 1,753,649 "
-            "optical rows). Decision needed: measure the full Linux extent, then either declare macOS arm64 the reference "
-            "platform for exact checks or adopt a documented cross-platform tolerance (which would relax a check: needs "
-            "explicit approval)."
+            "optical rows). Decision needed: declare macOS arm64 the reference platform for exact checks, or adopt a documented "
+            "cross-platform tolerance of a few ulp (which would relax a check: needs explicit approval)."
         ),
         affected_materials=["TiN"],
         affected_call_sites=[
@@ -403,7 +405,7 @@ TRACKED_OPEN_TASKS = {
             "scripts/resample_formula_data.py (the recomputation)",
             ".github/workflows/ci.yml (fast job on macos-15)",
         ],
-        cost_estimate="Small to measure (one Linux run over every tracked CSV); the policy decision is the maintainer's.",
+        cost_estimate="Measured; only the policy decision remains (the maintainer's).",
         blocking_on=None,
         status="open",
     ),
