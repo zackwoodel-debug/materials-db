@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "materials_db"
-version = "0.2.0"
+version = "0.3.0"
 # Core: imported unconditionally by the package's own modules (calculators, simulation, access, export, core).
 # Lower bounds are the ones requirements.txt already stated; no upper bounds (the tested set is pinned in requirements.lock).
 dependencies = [
