@@ -407,6 +407,26 @@ TRACKED_OPEN_TASKS = {
         blocking_on=None,
         status="open",
     ),
+    "spr_data_view_lacks_dataset_label": dict(
+        description=(
+            "The release view spr_data (every optical_dispersion row from 600 to 1000 nm) exposes material_name, wavelength, n, "
+            "k, eps and temperature_c but not dataset_label, the only place a dataset's phase / variant / axis is recorded. One "
+            "material can therefore return several datasets at one wavelength that the view cannot tell apart except by "
+            "temperature: at 632.378 nm 'Water' returns amorphous ice (Kofman 2019, 10-130 K, n 1.19-1.30) and crystalline ice "
+            "(150 K). This breaks the release's own comparability rule (compare only equal variant/phase, axis, temperature). "
+            "Fix: add dataset_label (and raw_record_table) to the view. It changes the published schema, so it goes in a new "
+            "dataset release with a CHANGELOG entry; the maintainer decides when."
+        ),
+        affected_materials=["H2O"],
+        affected_call_sites=[
+            "scripts/build_release.py / the release schema (spr_data view definition)",
+            "src/materials_db/core/schema.sql (the legacy DDL defines a same-named view)",
+            "tests/test_property_inventory.py, tests/test_datasette.py (reference spr_data)",
+        ],
+        cost_estimate="Small: one view definition, the data dictionary entry, and a release.",
+        blocking_on=None,
+        status="open",
+    ),
 }
 
 
