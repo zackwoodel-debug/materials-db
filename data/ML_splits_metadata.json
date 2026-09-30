@@ -1,6 +1,6 @@
 {
- "source_release": "0.20.0",
- "source_sqlite_sha256": "3c346db52d1c3b711621d0f03bbc783122c6c692750f00c3112922692ff7e4f3",
+ "source_release": "0.20.1",
+ "source_sqlite_sha256": "611722e001cd540166434f98e7bbfa9340787091280346488da957e92eecd636",
  "assignment": "sha256 of the group id: split = hash('split:'+group) mod 10 (0-7 train, 8 validation, 9 test); fold = hash('fold:'+group) mod 5",
  "product_lines": {
   "cargille-matching-liquids": [
@@ -29,16 +29,16 @@
    "polymers:IP-Dip"
   ]
  },
- "groups": 1070,
+ "groups": 1068,
  "multi_material_groups": 340,
- "materials_in_multi_material_groups": 1402,
+ "materials_in_multi_material_groups": 1401,
  "per_split": {
   "train": {
-   "materials": 1615,
-   "groups": 840,
-   "with_target_n_633nm": 1553,
-   "with_target_k_633nm": 1347,
-   "with_target_density_g_cm3": 1380
+   "materials": 1612,
+   "groups": 838,
+   "with_target_n_633nm": 1551,
+   "with_target_k_633nm": 1345,
+   "with_target_density_g_cm3": 1377
   },
   "validation": {
    "materials": 244,
@@ -58,9 +58,9 @@
  "per_fold": {
   "0": 467,
   "1": 341,
-  "2": 457,
-  "3": 398,
-  "4": 469
+  "2": 456,
+  "3": 397,
+  "4": 468
  },
  "cross_family_groups": {
   "comp:As0.5000 Ga0.5000": [
@@ -437,8 +437,7 @@
   "glass:458678": [
    "glass_catalogs:HIKARI-misc/NIFS-A",
    "glass_catalogs:HIKARI-misc/NIFS-S",
-   "glass_catalogs:HIKARI-misc/NIFS-U",
-   "glass_catalogs:SCHOTT-misc/LITHOSIL-Q"
+   "glass_catalogs:HIKARI-misc/NIFS-U"
   ],
   "glass:484850+486852": [
    "glass_catalogs:SUMITA-optical/K-PFK85",

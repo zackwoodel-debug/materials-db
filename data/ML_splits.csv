@@ -1796,9 +1796,6 @@ material_id,meta_key,meta_name,meta_family,group,split,fold
 1795,glass_catalogs:OHARA-optical/TPH55,OHARA TPH55,glass_catalogs,glass:756251,validation,3
 1796,glass_catalogs:OHARA-optical/YGH51,OHARA YGH51,glass_catalogs,glass:755523,train,0
 1797,glass_catalogs:OHARA-optical/YGH52,OHARA YGH52,glass_catalogs,glass:786500+787500,test,4
-1798,glass_catalogs:SCHOTT-misc/DURAN,SCHOTT DURAN,glass_catalogs,glass:527586,train,3
-1799,glass_catalogs:SCHOTT-misc/LITHOSIL-Q,SCHOTT LITHOSIL-Q,glass_catalogs,glass:458678,train,2
-1800,glass_catalogs:SCHOTT-misc/LITHOTEC-CAF2,SCHOTT LITHOTEC-CAF2,glass_catalogs,glass:434952,train,4
 1801,glass_catalogs:SCHOTT-optical/BAFN6,SCHOTT BAFN6,glass_catalogs,glass:589484+589485,train,1
 1802,glass_catalogs:SCHOTT-optical/BK7G18,SCHOTT BK7G18,glass_catalogs,glass:520636,train,2
 1803,glass_catalogs:SCHOTT-optical/F2,SCHOTT F2,glass_catalogs,glass:620363+620364,train,1
