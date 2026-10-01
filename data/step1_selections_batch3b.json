@@ -46,14 +46,14 @@
  },
  "Boron": {
   "name": "Boron",
-  "polymorph": "amorphous",
-  "effective_polymorph": "amorphous",
+  "polymorph": null,
+  "effective_polymorph": null,
   "axes": [
    {
     "page": "Fernandez-Perea",
     "axis": null,
     "data_path": "main/B/nk/Fernandez-Perea.yml",
-    "dataset_label": "amorphous | FernandezPerea2007"
+    "dataset_label": "FernandezPerea2007"
    }
   ]
  }

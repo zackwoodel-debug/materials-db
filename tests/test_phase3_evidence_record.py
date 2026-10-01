@@ -80,11 +80,10 @@ def test_quoted_evidence_is_verbatim_in_its_source():
 
 
 def test_tracked_tasks_record_the_blocking_chain():
-    for task in ("oxide_density_labels_and_polymorph", "density_provenance_upgrade", "oxide_amorphous_migration"):
-        assert task in open_tasks() and task in DOC
+    assert "density_provenance_upgrade" in open_tasks() and "density_provenance_upgrade" in DOC  # still open after v0.21.0
+    for task in ("oxide_density_labels_and_polymorph", "oxide_amorphous_migration"):  # done in v0.21.0
+        assert task in DOC and task_detail(task)["status"] == "done"
     assert task_detail("material38_identity_correction")["status"] == "done"  # resolved in v0.20.2
-    assert task_detail("oxide_amorphous_migration")["blocking_on"] == "oxide_density_labels_and_polymorph"
-    assert task_detail("oxide_density_labels_and_polymorph")["blocking_on"] == "density_provenance_upgrade"
     assert set(task_detail("density_provenance_upgrade")["affected_materials"]) == {"SiO2", "GeO2", "Ta2O5", "SiO", "Nb2O5"}
     assert set(task_detail("oxide_density_labels_and_polymorph")["affected_materials"]) == {"Nb2O5", "SiO", "SiO2", "Ta2O5"}
     assert task_detail("material38_identity_correction")["affected_materials"] == ["SiO2"]

@@ -1,8 +1,8 @@
 {
- "source_release": "0.20.2",
- "source_release_git_commit": "e015f149932846b1dc62f59586d51247b949daa6",
- "source_sqlite": "materials-db-v0.20.2.sqlite",
- "source_sqlite_sha256": "f0f8260483394b8df9fa1d5b9b12187e7fab4349dc7f377c3ae3b7b30013a59d",
+ "source_release": "0.21.0",
+ "source_release_git_commit": "dc7d5992f40fd75a9d81c46c4ccafd1b15f82ba3",
+ "source_sqlite": "materials-db-v0.21.0.sqlite",
+ "source_sqlite_sha256": "e3cb687fa7df68c6c67d8df1d80d5813e96c666543f0e1bed82214b129a11fe1",
  "grid": {
   "unit": "nm",
   "spacing": "log",
@@ -203,7 +203,7 @@
   },
   {
    "material_id": 135,
-   "dataset_label": "amorphous | FernandezPerea2007",
+   "dataset_label": "FernandezPerea2007",
    "wl_min_nm": 1.378047,
    "wl_max_nm": 180.999976
   },

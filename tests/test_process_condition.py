@@ -155,15 +155,17 @@ class TestTrackedOpenTasks:
     item in the repo -- not just a note left in a conversation -- same
     treatment as EXCLUSION_STATE's blocking_on queries."""
 
-    def test_oxide_amorphous_migration_is_open(self):
-        assert "oxide_amorphous_migration" in open_tasks()
+    def test_oxide_amorphous_migration_is_done_not_deleted(self):
+        # completed in dataset release v0.21.0; a finished task stays in the registry with status "done"
+        assert "oxide_amorphous_migration" not in open_tasks()
+        assert task_detail("oxide_amorphous_migration")["status"] == "done"
 
     def test_task_detail_has_scope_and_cost(self):
         detail = task_detail("oxide_amorphous_migration")
         assert set(detail["affected_materials"]) == {"Nb2O5", "SiO", "SiO2", "Ta2O5", "GeO2"}
         assert len(detail["affected_call_sites"]) >= 3
         assert detail["cost_estimate"]
-        assert detail["status"] == "open"
+        assert detail["status"] == "done"
 
     def test_unknown_task_raises(self):
         with pytest.raises(ValueError, match="Unrecognized task id"):

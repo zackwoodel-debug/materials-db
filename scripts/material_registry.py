@@ -15,6 +15,9 @@ Rules
   * A new material is registered only on request (build_release.py --register-new): it gets next_id, in key order. The registry
     file then has to be committed with the change that adds the material.
   * An id is never reused: a material that leaves the release keeps its entry (reported as absent in the manifest).
+  * key_aliases (derived key -> registered key): when a correction changes the key a material DERIVES (e.g. v0.21.0 cleared
+    polymorph="amorphous", so oxides_50:SiO2@amorphous now derives as oxides_50:SiO2), the alias maps it to the registered key,
+    so the id and the stable key are kept and nothing is minted or retired. An alias never shadows a registered key.
 
 Seeded from the published v0.13.0 (its ids became permanent):
     python3 scripts/material_registry.py --seed-from release/materials-db-v0.13.0
@@ -50,11 +53,22 @@ def material_key(stem, row):
     return f"{stem}:{_clean(row.get('formula'))}" + (f"@{poly}" if poly else "")
 
 
-def keys_by_name(family_rows):
-    """material name -> stable key; raises if two materials would share a key."""
+def key_aliases(reg):
+    aliases = reg.get("key_aliases", {})
+    for derived, registered in aliases.items():
+        if derived in reg["materials"] or registered not in reg["materials"]:
+            raise RegistryError(f"key alias {derived!r} -> {registered!r}: must map an unregistered derived key to a registered key")
+    return aliases
+
+
+def keys_by_name(family_rows, aliases=None):
+    """material name -> stable key (a derived key with an alias resolves to its registered key); raises if two materials would
+    share a key."""
+    aliases = key_aliases(load()) if aliases is None else aliases
     out, seen = {}, {}
     for name, (stem, row) in family_rows.items():
         k = material_key(stem, row or {})
+        k = aliases.get(k, k)
         if k in seen:
             raise RegistryError(f"stable key {k!r} would name both {seen[k]!r} and {name!r}")
         seen[k] = name
@@ -74,7 +88,7 @@ def save(reg, path=REGISTRY):
 def assign(conn, family_rows, version, register_new=False, path=REGISTRY):
     """Renumber every material of the build to its registry id. Returns facts for the manifest."""
     reg = load(path)
-    keys = keys_by_name(family_rows)
+    keys = keys_by_name(family_rows, key_aliases(reg))
     mats = conn.execute("SELECT material_id, name FROM materials").fetchall()
     unregistered = sorted(keys[name] for _, name in mats if keys[name] not in reg["materials"])
     registered_now = []

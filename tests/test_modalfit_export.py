@@ -188,8 +188,8 @@ class TestExportStackLabelDisambiguation:
         )
         film_labels = [e["label"] for e in out["stack"] if e.get("role") not in ("ambient", "substrate")]
         assert len(film_labels) == len(set(film_labels)), f"duplicate labels: {film_labels}"
-        assert film_labels[0] == "SiO2_amorphous"
-        assert film_labels[2] == "SiO2_amorphous#2"
+        assert film_labels[0] == "SiO2"  # no "_amorphous" suffix since v0.21.0 (structure is not a polymorph)
+        assert film_labels[2] == "SiO2#2"
 
         # Both sidecar files must exist and be distinct -- the second
         # write must not have overwritten the first.

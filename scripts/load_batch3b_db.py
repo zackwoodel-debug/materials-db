@@ -56,9 +56,8 @@ BULK_APPROX_SOURCE = dict(
     notes="Used for Sn: density_source=bulk_elemental_approximation, i.e. Materials Project's bulk-crystal DFT density (mp_id per "
           "material in data/batch3b_4.csv) standing in for a thin-film sample whose own density is not stated. Calculated, not "
           "measured. See the flags column in data/batch3b_4.csv.")
-# The original loader's density-citation notes name data/oxides_50.csv although these flags are in data/batch3b_4.csv; kept
-# verbatim so the rebuilt rows are identical (logged for correction in a dataset release, not changed in a loader refactor).
-CITATION_CATALOG_NAME = "oxides_50.csv"
+# Density-citation notes name this batch's own catalog (until v0.21.0 they wrongly named data/oxides_50.csv).
+CITATION_CATALOG_NAME = "batch3b_4.csv"
 
 
 def main(argv=()):

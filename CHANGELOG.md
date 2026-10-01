@@ -5,6 +5,24 @@ versions follow the release tags. Counts are materials / optical datasets.
 
 ## [Unreleased]
 
+## [0.21.0] - 2026-10-01 (2129 / 2605)
+
+### Changed
+- "Amorphous" is no longer stored as a polymorph (it is a structure / process condition). Structure is now written in the
+  process-condition grammar, `structure:amorphous`, only on datasets whose own evidence states it, and dropped where it does not:
+  - SiO2 (Malitson 1965, "Fused silica"), Ta2O5 (Bright 2013, "Amporphous thin film"), GeO2 (Fleming 1984, "Fused germania"):
+    `structure:amorphous | <source>`.
+  - Nb2O5 (Franta 2024), SiO (Hass 1954), Boron (Fernandez-Perea 2007): the label is the source tag alone; their structure is not
+    stated (recorded as gaps).
+  - The density and SLD labels of Nb2O5, SiO, SiO2, Ta2O5 and Boron lose their `amorphous | ` prefix: their structural basis is not
+    cited. Every value is unchanged.
+- Old labels keep working (ModalFit export, the `SiO2[amorphous]` XRR stack syntax, the access layer) through an alias table;
+  material ids and stable keys are unchanged (registry key aliases). Consensus `property_name`s and exported ModalFit layer names
+  follow the new labels (e.g. `SiO2_amorphous` -> `SiO2`).
+
+### Fixed
+- Two batch-3b density citations (graphite, boron) named `data/oxides_50.csv`; they now name `data/batch3b_4.csv`.
+
 ## [0.20.2] - 2026-09-30 (2129 / 2605)
 
 ### Fixed
