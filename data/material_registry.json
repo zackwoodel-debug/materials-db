@@ -10669,5 +10669,12 @@
    "name": "SUMITA K-ZnSF8(M)",
    "registered_in": "0.20.0"
   }
+ },
+ "key_aliases": {
+  "oxides_50:Nb2O5": "oxides_50:Nb2O5@amorphous",
+  "oxides_50:SiO": "oxides_50:SiO@amorphous",
+  "oxides_50:SiO2": "oxides_50:SiO2@amorphous",
+  "oxides_50:Ta2O5": "oxides_50:Ta2O5@amorphous",
+  "batch3b_4:B": "batch3b_4:B@amorphous"
  }
 }

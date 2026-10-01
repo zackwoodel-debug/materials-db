@@ -566,7 +566,7 @@ MATERIALS_PURE_ELEMENTS += [
          pubchem_name="Tin", ri_aliases=["Sn"],
          ri_axes=[_axis("Golovashkin-293K", "main/Sn/nk/Golovashkin-293K.yml", "Golovashkin1964",
                         process_condition=format_process_condition(temperature="293K"))]),
-    dict(idx=263, name="Boron", formula="B", polymorph="amorphous",
+    dict(idx=263, name="Boron", formula="B", polymorph=None,
          pubchem_name="Boron", ri_aliases=["B"],
          ri_axes=[_axis("Fernandez-Perea", "main/B/nk/Fernandez-Perea.yml", "FernandezPerea2007",
                         process_condition=format_process_condition(deposition="evaporated"))]),

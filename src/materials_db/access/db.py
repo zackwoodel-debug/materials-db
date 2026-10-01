@@ -25,6 +25,7 @@ from pathlib import Path
 import pandas as pd
 
 from materials_db.access.checkout import load_script
+from materials_db.core import label_aliases
 from materials_db.core.readonly import READ_ACTIONS, authorizer
 
 _ROOT = Path(__file__).resolve().parents[3]
@@ -174,6 +175,9 @@ class ReleaseDB:
                 raise AccessError(f"material {mid} has no primary dataset here; name one of: {sorted(ds.dataset_label)}")
             return hit.iloc[0]
         hit = ds[ds.dataset_label == label]
+        if hit.empty:  # an old label renamed in a dataset release (materials_db.core.label_aliases) still resolves
+            formula = self.materials.loc[mid].formula if mid in self.materials.index else None
+            hit = ds[ds.dataset_label == label_aliases.resolve(_clean(formula), label)]
         if hit.empty:
             raise AccessError(f"material {mid} has no dataset {label!r}; its datasets: {sorted(ds.dataset_label)}")
         return hit.iloc[0]

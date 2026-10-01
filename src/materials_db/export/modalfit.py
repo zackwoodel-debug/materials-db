@@ -48,9 +48,10 @@ DEFAULT_DB = _ROOT / "data" / "materials_oxide_test.db"
 # its own dict, so no batch has to re-litigate what an earlier one settled.
 from materials_db.export.citations import RESOLVED_OPTICAL_SOURCE_CITATION  # noqa: F401 (re-exported)
 from materials_db.export.mp_ids import lookup as lookup_mp_id
+from materials_db.core import label_aliases
 from materials_db.pipeline.process_condition import (
     BULK_ELEMENTAL_APPROXIMATION, DENSITY_VERIFIED, DENSITY_BULK_APPROXIMATION,
-    bulk_approximation_density_bounds, verified_density_bounds,
+    bulk_approximation_density_bounds, verified_density_bounds, looks_like_process_condition,
 )
 
 # Historical note: substrate used to be a fixed, non-DB-sourced Si
@@ -190,6 +191,8 @@ def _polymorph_prefix(dataset_label: str) -> Optional[str]:
     first = dataset_label.split(" | ", 1)[0]
     if any(first.startswith(m) for m in _QUANTITY_MARKERS) or _SOURCE_LABEL_RE.match(first):
         return None
+    if looks_like_process_condition(first):  # e.g. "structure:amorphous": a process condition, by definition not a polymorph
+        return None
     return first
 
 
@@ -205,6 +208,23 @@ def _density_confidence(density_dataset_label: Optional[str]) -> str:
     if density_dataset_label and BULK_ELEMENTAL_APPROXIMATION in density_dataset_label:
         return DENSITY_BULK_APPROXIMATION
     return DENSITY_VERIFIED
+
+
+def _resolve_physical_for_label(conn, material_id, formula, material_label, dataset_label):
+    """(resolved dataset_label, physical properties) for a requested label, the same way on every export path: an old label
+    renamed in a dataset release resolves through materials_db.core.label_aliases; a label with no polymorph prefix (a source
+    tag, or a process condition such as structure:amorphous) selects the prefix-less density rows of a material that only has
+    those, and must then name one of its optical datasets exactly (_resolve_optical_axis)."""
+    dataset_label = label_aliases.resolve(formula, dataset_label)
+    phys_label = dataset_label
+    if dataset_label and _polymorph_prefix(dataset_label) is None and _physical_prefixes(conn, material_id) == {None}:
+        phys_label = None
+    return dataset_label, _resolve_physical_properties(conn, material_id, material_label, phys_label)
+
+
+def _physical_prefixes(conn, material_id):
+    return {_polymorph_prefix(r[0]) for r in conn.execute(
+        "SELECT DISTINCT dataset_label FROM physical_properties WHERE material_id = ?", (material_id,))}
 
 
 def _resolve_physical_properties(conn, material_id, material_label, dataset_label):
@@ -275,6 +295,8 @@ def _resolve_optical_axis(conn, material_id, material_label, polymorph_prefix, d
         raise ExportError(f"'{material_label}' has no optical_dispersion rows at all.")
 
     candidates = [l for l in labels if _polymorph_prefix(l) == polymorph_prefix]
+    if dataset_label and _polymorph_prefix(dataset_label) is None and dataset_label not in candidates:
+        raise ExportError(f"'{material_label}' has no optical dataset '{dataset_label}'. Available: {labels}")
     if not candidates:
         raise ExportError(
             f"'{material_label}' has optical_dispersion data, but none under polymorph "
@@ -449,8 +471,7 @@ def export_layer(db, material_name: str, dataset_label: Optional[str] = None, *,
         if mat_row is None:
             raise ExportError(f"Material '{material_name}' not found in {db}")
         material_id, db_name, formula = mat_row
-
-        phys = _resolve_physical_properties(conn, material_id, material_name, dataset_label)
+        dataset_label, phys = _resolve_physical_for_label(conn, material_id, formula, material_name, dataset_label)
         opt_label, nk_rows, opt_source_id = _resolve_optical_axis(conn, material_id, material_name,
                                                                     phys["polymorph"], dataset_label)
 
@@ -632,7 +653,7 @@ def export_stack(db, layers: list, *, ambient="air", substrate: str = "Silicon",
         if sub_mat_row is None:
             raise ExportError(f"Substrate material '{substrate}' not found in {db}")
         _sub_material_id, _sub_db_name, sub_formula = sub_mat_row
-        sub_phys = _resolve_physical_properties(conn, _sub_material_id, substrate, substrate_dataset_label)
+        _, sub_phys = _resolve_physical_for_label(conn, _sub_material_id, sub_formula, substrate, substrate_dataset_label)
         substrate_label = f"{sub_formula}_{sub_phys['polymorph']}" if sub_phys["polymorph"] else sub_formula
 
         # Resolve every FILM layer's label next, using the exact same
@@ -655,7 +676,7 @@ def export_stack(db, layers: list, *, ambient="air", substrate: str = "Silicon",
             if spec.get("label"):
                 base_label = spec["label"]
             else:
-                phys = _resolve_physical_properties(conn, material_id, spec["material"], spec.get("dataset_label"))
+                _, phys = _resolve_physical_for_label(conn, material_id, formula, spec["material"], spec.get("dataset_label"))
                 base_label = f"{formula}_{phys['polymorph']}" if phys["polymorph"] else formula
             seen_counts[base_label] = seen_counts.get(base_label, 0) + 1
             occurrence = seen_counts[base_label]

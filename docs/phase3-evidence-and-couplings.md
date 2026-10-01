@@ -1,5 +1,8 @@
 # Phase 3: oxide "amorphous" evidence, and why the fix was not implemented
 
+> **Update 2026-10-01:** the fix was implemented in dataset release v0.21.0 (Phase 4A, option (iii): structure in the
+> process-condition grammar on Case A datasets only; `docs/release-0.21.0-expected-diff.md`). The record below is kept as written.
+
 Status (2026-09-30): **the oxide_amorphous_migration fix was not implemented.** This phase recorded the evidence, the per-dataset
 decisions and the couplings that block the fix under the current rules. No data, label, registry, selection-file or database
 change was made. `data/materials.db` (SHA-1 229b951…) and `data/materials_oxide_test.db` (SHA-1 720dddf…) are unchanged.

@@ -46,6 +46,7 @@ from typing import Optional
 import periodictable
 
 from materials_db.calculators.sld_calculator import NA
+from materials_db.core import label_aliases
 
 _ROOT = Path(__file__).resolve().parents[3]
 
@@ -151,6 +152,7 @@ def read_material(db_path: str, name: str, dataset_label: Optional[str] = None) 
             if mat_row is None:
                 raise ValueError(f"Material '{name}' not found in {db_path}")
             material_id, formula = mat_row
+            dataset_label = label_aliases.resolve(formula, dataset_label)  # e.g. SiO2[amorphous]: renamed in v0.21.0
 
             query = ("SELECT density_g_cm3, dataset_label FROM physical_properties "
                       "WHERE material_id = ? AND density_g_cm3 IS NOT NULL")

@@ -53,6 +53,18 @@ PROCESS_CONDITION_AXES = (
                     # Conflating the two was the first mistake this axis's own design almost made.
 )
 
+# The values of the "structure" axis (grain / microstructure state, listed in the comment above). A polymorph field never holds
+# one: amorphousness is a process condition, not a crystal structure (tests/test_structure_not_in_polymorph.py).
+STRUCTURE_VALUES = ("amorphous", "polycrystalline", "single_crystal")
+
+
+def is_structure_value(value) -> bool:
+    """True if `value` names a structure state (case, spaces and hyphens normalised: "Single crystal" -> single_crystal)."""
+    if not isinstance(value, str):
+        return False
+    return value.strip().lower().replace(" ", "_").replace("-", "_") in STRUCTURE_VALUES
+
+
 _AXIS_VALUE_RE_FRAGMENT = r"[A-Za-z0-9_.]+"
 
 
@@ -256,20 +268,9 @@ TRACKED_OPEN_TASKS = {
             "tests/test_modalfit_export.py::TestExportStackLabelDisambiguation (uses SiO2/"
             "\"amorphous\" as its fixture)",
         ],
-        cost_estimate=(
-            "Small-to-moderate, not a five-minute edit: no open design questions (unlike "
-            "inventing process_condition itself), but requires editing 2 data files + 1 "
-            "canonical module, then a MANDATORY full DB rebuild in sequence (load_oxides_db.py's "
-            "fresh_db() wipes and recreates the DB from scratch; batch 2 and the pure-element "
-            "triage are appended on top and would need re-appending after), plus updating the "
-            "3 dependent call sites above, plus a full-suite + full-export re-verification pass. "
-            "Contained, half-day scale."
-        ),
-        # Phase 3 (2026-09-30) found this cannot be done on its own: the loader builds every physical-property label from
-        # this same polymorph field, so clearing it changes 20 density/SLD labels (see oxide_density_labels_and_polymorph
-        # and docs/phase3-evidence-and-couplings.md).
-        blocking_on="oxide_density_labels_and_polymorph",
-        status="open",  # "open" | "done" | "wont_do" -- update in place, don't delete silently
+        cost_estimate='Done in dataset release v0.21.0 (option (iii); docs/release-0.21.0-expected-diff.md).',
+        blocking_on=None,
+        status="done",  # "open" | "done" | "wont_do" -- update in place, don't delete silently
     ),
     "mp_density_crosscheck_compounds": dict(
         description=(
@@ -340,12 +341,9 @@ TRACKED_OPEN_TASKS = {
             "scripts/oxide_material_list.py (polymorph fields)",
             "data/material_registry.json (only if keys cannot be kept; ids must not change)",
         ],
-        cost_estimate=(
-            "Moderate: first resolve density_provenance_upgrade (or decide the density labels explicitly), then one "
-            "coordinated edit of the call sites above, a base-DB rebuild and a full logical parity comparison."
-        ),
-        blocking_on="density_provenance_upgrade",
-        status="open",
+        cost_estimate='Done in v0.21.0: polymorph cleared, 25 density/SLD labels declared, ids kept by registry key aliases, base DB updated and proven equal to a regeneration from its inputs.',
+        blocking_on=None,
+        status="done",
     ),
     "density_provenance_upgrade": dict(
         description=(
@@ -427,7 +425,23 @@ TRACKED_OPEN_TASKS = {
             "src/materials_db/core/schema.sql (the legacy DDL defines a same-named view)",
             "tests/test_property_inventory.py, tests/test_datasette.py (reference spr_data)",
         ],
-        cost_estimate="Small: one view definition, the data dictionary entry, and a release.",
+        cost_estimate="Done in dataset release v0.20.2 (spr_data gained dataset_label and raw_record_table).",
+        blocking_on=None,
+        status="done",
+    ),
+    "as2s3_amorphous_in_polymorph": dict(
+        description=(
+            "As2S3 (batch 2) still carries polymorph='amorphous', the same category error v0.21.0 fixed for four oxides and "
+            "Boron; left out of that release's approved scope. Evidence is strong (Rodney 1958 COMMENTS 'Arsenic trisulfide "
+            "glass. 25 C'; scripts/fluoride_nitride_sulfide_material_list.py citation table), so it is a Case A: same change "
+            "pattern (structure:amorphous on its optical label, polymorph cleared, density labels without the prefix, a "
+            "registry key alias). The structure-in-polymorph test lists it as the one explicit exception until then."
+        ),
+        affected_materials=["As2S3"],
+        affected_call_sites=["scripts/fluoride_nitride_sulfide_material_list.py", "data/batch2_31.csv",
+                             "data/materials_oxide_test.db", "data/material_registry.json (key alias)",
+                             "src/materials_db/core/label_aliases.py"],
+        cost_estimate="Small: the v0.21.0 pattern for one material, in a dataset release.",
         blocking_on=None,
         status="open",
     ),
@@ -441,9 +455,9 @@ TRACKED_OPEN_TASKS = {
         ),
         affected_materials=["C", "B"],
         affected_call_sites=["scripts/load_batch3b_db.py (CITATION_CATALOG_NAME)", "data/materials_oxide_test.db (2 source notes)"],
-        cost_estimate="Small: one constant, a base-DB rebuild with a declared 2-row diff, a release.",
+        cost_estimate='Done in v0.21.0: the two notes name data/batch3b_4.csv.',
         blocking_on=None,
-        status="open",
+        status="done",
     ),
     "boron_amorphous_in_polymorph": dict(
         description=(
@@ -454,9 +468,9 @@ TRACKED_OPEN_TASKS = {
         ),
         affected_materials=["B"],
         affected_call_sites=["scripts/pure_element_material_list.py", "data/batch3b_4.csv", "data/step1_selections_batch3b.json"],
-        cost_estimate="Part of Phase 4A.",
-        blocking_on="oxide_density_labels_and_polymorph",
-        status="open",
+        cost_estimate="Done in v0.21.0 with the oxides: structure not stated on its page, so its labels drop 'amorphous' (gap in data/batch3b_gaps.csv).",
+        blocking_on=None,
+        status="done",
     ),
 }
 

@@ -454,7 +454,7 @@
         "axis": "none (isotropic/cubic/amorphous)",
         "data_path": "main/GeO2/nk/Fleming.yml",
         "wl_range": "0.360-4.300 um",
-        "dataset_label": "Fleming1984"
+        "dataset_label": "structure:amorphous | Fleming1984"
       }
     ]
   },
@@ -714,8 +714,8 @@
   "Nb2O5": {
     "idx": 33,
     "name": "Niobium pentoxide",
-    "polymorph": "amorphous",
-    "effective_polymorph": "amorphous",
+    "polymorph": null,
+    "effective_polymorph": null,
     "amorphous_default": false,
     "default_paper": "Franta et al. 2024: n,k 0.120\u2013399 \u00b5m",
     "axes": [
@@ -724,7 +724,7 @@
         "axis": "none (isotropic/cubic/amorphous)",
         "data_path": "main/Nb2O5/nk/Franta.yml",
         "wl_range": "0.120-399.362 um",
-        "dataset_label": "amorphous | Franta2024"
+        "dataset_label": "Franta2024"
       }
     ]
   },
@@ -803,8 +803,8 @@
   "SiO": {
     "idx": 37,
     "name": "Silicon monoxide",
-    "polymorph": "amorphous",
-    "effective_polymorph": "amorphous",
+    "polymorph": null,
+    "effective_polymorph": null,
     "amorphous_default": false,
     "default_paper": "Hass and Salzberg 1954: n,k 0.24\u201314.0 \u00b5m",
     "axes": [
@@ -813,15 +813,15 @@
         "axis": "none (isotropic/cubic/amorphous)",
         "data_path": "main/SiO/nk/Hass.yml",
         "wl_range": "0.240-14.000 um",
-        "dataset_label": "amorphous | Hass1954"
+        "dataset_label": "Hass1954"
       }
     ]
   },
   "SiO2": {
     "idx": 38,
     "name": "Silicon dioxide (fused silica)",
-    "polymorph": "amorphous",
-    "effective_polymorph": "amorphous",
+    "polymorph": null,
+    "effective_polymorph": null,
     "amorphous_default": true,
     "default_paper": "Malitson 1965: n 0.21\u20136.7 \u00b5m",
     "axes": [
@@ -830,15 +830,15 @@
         "axis": "none (isotropic/cubic/amorphous)",
         "data_path": "main/SiO2/nk/Malitson.yml",
         "wl_range": "0.210-6.700 um",
-        "dataset_label": "amorphous | Malitson1965"
+        "dataset_label": "structure:amorphous | Malitson1965"
       }
     ]
   },
   "Ta2O5": {
     "idx": 39,
     "name": "Tantalum pentoxide",
-    "polymorph": "amorphous",
-    "effective_polymorph": "amorphous",
+    "polymorph": null,
+    "effective_polymorph": null,
     "amorphous_default": true,
     "default_paper": "Bright et al. 2013: n,k 0.5\u20131000 \u00b5m",
     "axes": [
@@ -847,7 +847,7 @@
         "axis": "none (isotropic/cubic/amorphous)",
         "data_path": "main/Ta2O5/nk/Bright-amorphous.yml",
         "wl_range": "0.500-1000.000 um",
-        "dataset_label": "amorphous | Bright2013"
+        "dataset_label": "structure:amorphous | Bright2013"
       }
     ]
   },

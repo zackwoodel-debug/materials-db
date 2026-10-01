@@ -23,6 +23,7 @@ _ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(_ROOT / "src"))
 
 from materials_db.calculators.simulate_xrr import parratt  # noqa: E402
+from materials_db.core import label_aliases  # noqa: E402
 
 DB_PATH = _ROOT / "data" / "materials_oxide_test.db"
 
@@ -45,11 +46,13 @@ def read_layer_by_dataset_label(conn, formula: str, dataset_label_prefix: str) -
         raise ValueError(f"No materials row for formula={formula}")
     material_id, name = mat_row
 
+    prefix = label_aliases.resolve(formula, dataset_label_prefix)  # SiO2 "amorphous" -> no polymorph since v0.21.0
+
     def get_value(column, label_suffix):
         row = conn.execute(
             f"SELECT {column} FROM physical_properties "
             f"WHERE material_id = ? AND dataset_label = ?",
-            (material_id, f"{dataset_label_prefix} | {label_suffix}"),
+            (material_id, f"{prefix} | {label_suffix}" if prefix else label_suffix),
         ).fetchone()
         return row[0] if row else None
 
