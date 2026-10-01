@@ -56,6 +56,12 @@ NAME_QUALIFIERS = {
     "9.8 mol% Y2O3", "12 mol% Y2O3",
     "M", "P",  # glass-catalog name suffixes: moulding / precision-moulding grades (SUMITA K-PSK11(M), HOYA FDS90(P))
 }
+# Book-title names that do not describe the material using that book (reviewed; reason per entry). The book title names the
+# whole book, whose pages can be different phases of one compound.
+BOOK_NAME_EXCLUSIONS = {
+    ("main", "SiO2", "Quartz"): "the SiO2 book holds quartz and fused-silica pages; material 38, its only user, is fused silica "
+                                "(Malitson 1965; v0.20.2)",
+}
 SPELLINGS = [("aluminium", "aluminum"), ("caesium", "cesium"), ("sulphide", "sulfide"), ("sulphate", "sulfate"), ("sulphur", "sulfur")]
 
 
@@ -208,7 +214,8 @@ def populate_synonyms(conn, family_rows, titles_path=PUBCHEM_TITLES, catalog=RI_
         for bk in books_of[mid]:
             if materials_in_book[bk] == {mid}:
                 for s in bnames.get(bk, []):
-                    add(mid, s, "refractiveindex.info book")
+                    if (*bk, s) not in BOOK_NAME_EXCLUSIONS:
+                        add(mid, s, "refractiveindex.info book")
         row = (family_rows.get(name) or (None, {}))[1] or {}
         abbr = row.get("abbreviation")
         if isinstance(abbr, str) and abbr.strip():
