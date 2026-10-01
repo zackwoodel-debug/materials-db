@@ -98,7 +98,10 @@ def _clean(v):
     return None if v is None or (isinstance(v, float) and math.isnan(v)) or pd.isna(v) else v
 
 
-def load_catalog(path, allow_null_formula=False) -> pd.DataFrame:
+def load_catalog(path, allow_null_formula=False, selection_key_column=None, allow_duplicate_inchikey=False) -> pd.DataFrame:
+    """selection_key_column: key the selections by this catalog column when there is no selection_key column (e.g. "name" for
+    a family whose materials share a formula). allow_duplicate_inchikey: let catalog rows share an InChIKey (the family
+    stores NULL for the later one: run_family on_duplicate_inchikey="store_null")."""
     path = Path(path)
     if not path.exists():
         raise CatalogError(f"catalog not found: {path}")
@@ -122,7 +125,7 @@ def load_catalog(path, allow_null_formula=False) -> pd.DataFrame:
         if len(blank):
             raise CatalogError(f"catalog {path.name}: blank {col} in row(s) {list(blank.index + 2)}")
     if "selection_key" not in df.columns:
-        df["selection_key"] = df["formula"]
+        df["selection_key"] = df[selection_key_column] if selection_key_column else df["formula"]
     blank_key = df[df["selection_key"].isna() | (df["selection_key"].astype(str).str.strip() == "")]
     if len(blank_key):
         raise CatalogError(f"catalog {path.name}: blank selection_key in row(s) {list(blank_key.index + 2)}")
@@ -130,7 +133,7 @@ def load_catalog(path, allow_null_formula=False) -> pd.DataFrame:
         dup = df[df[col].duplicated(keep=False)][col].unique().tolist()
         if dup:
             raise CatalogError(f"catalog {path.name}: duplicate {col}: {dup}")
-    if "inchikey" in df.columns:
+    if "inchikey" in df.columns and not allow_duplicate_inchikey:
         dup = df["inchikey"].dropna()
         dup = dup[dup.duplicated(keep=False)].unique().tolist()
         if dup:
@@ -422,8 +425,10 @@ def load_physical_properties(conn, material_id, row, mp_source_id, literature_so
 # material upsert
 # ---------------------------------------------------------------------------
 
-def upsert_material(conn, report, row):
-    """Return (material_id, is_new), or (None, False) if the row collides and must be skipped."""
+def upsert_material(conn, report, row, on_duplicate_inchikey="skip"):
+    """Return (material_id, is_new), or (None, False) if the row collides and must be skipped. on_duplicate_inchikey="store_null"
+    instead inserts the row with a NULL InChIKey when another material already has it (PubChem gives carbon allotropes one
+    InChIKey; the UNIQUE column allows any number of NULLs, and the name identifies the row)."""
     vals = dict(
         formula=_clean(row.get("formula")),
         smiles=_clean(row.get("smiles")),
@@ -443,7 +448,10 @@ def upsert_material(conn, report, row):
         return ex[0], False
     if vals["inchikey"]:
         other = conn.execute("SELECT name FROM materials WHERE inchikey = ?", (vals["inchikey"],)).fetchone()
-        if other:
+        if other and on_duplicate_inchikey == "store_null":
+            report.notes.append(f"{row['name']}: InChIKey {vals['inchikey']} already belongs to {other[0]}; stored NULL")
+            vals["inchikey"] = None
+        elif other:
             report.conflicts.append(dict(kind="duplicate_inchikey", name=row["name"], inchikey=vals["inchikey"],
                                          existing_name=other[0], action="material skipped, existing row kept"))
             report.skipped.append(dict(name=row["name"], reason="duplicate inchikey of " + other[0]))
@@ -482,10 +490,22 @@ def _open_db(db_path, schema_path, fresh, dry_run):
 def run_family(family, catalog_path, selections_path, db_path, *, fresh=False, dry_run=False, strict=False,
                report_path=None, load_physical_fn=None, literature_note=None, literature_title=None,
                literature_technique=None, schema_path=SCHEMA_PATH, allow_null_formula=False, reference_sources=True,
-               collapse_block_duplicates=False) -> Report:
+               collapse_block_duplicates=False, selection_key_column=None, on_duplicate_inchikey="skip",
+               reuse_existing_source_rows=True, named_source_fields=None, bulk_approx_source=None,
+               citation_catalog_name=None) -> Report:
+    """Family-specific policies are passed explicitly by each family's thin wrapper; every default reproduces the
+    behaviour all families had before these options existed:
+      selection_key_column / on_duplicate_inchikey   see load_catalog / upsert_material
+      reuse_existing_source_rows=False   never reuse a source row from before this run, and create the named sources as new
+                                         rows (DOI sources are still matched by DOI), as the original batch-3b loader did
+      named_source_fields                {"pubchem"|"periodictable"|"mp": {field: value}} overriding those named sources' fields
+      bulk_approx_source                 fields of a source for bulk_elemental_approximation densities, created after the
+                                         literature source and passed to load_physical_fn as bulk_approx_source_id
+      citation_catalog_name              the catalog file named in density-citation source notes (default: this catalog)"""
     catalog_path = Path(catalog_path)
     load_physical_fn = load_physical_fn or load_physical_properties
-    df = load_catalog(catalog_path, allow_null_formula=allow_null_formula)
+    df = load_catalog(catalog_path, allow_null_formula=allow_null_formula, selection_key_column=selection_key_column,
+                      allow_duplicate_inchikey=on_duplicate_inchikey == "store_null")
     selections = load_selections(selections_path)
     report = Report(family)
     deferred_keys = {k for k, v in selections.items() if isinstance(v, dict) and v.get("deferred") is True}
@@ -502,38 +522,49 @@ def run_family(family, catalog_path, selections_path, db_path, *, fresh=False, d
     conn = _open_db(db_path, schema_path, fresh, dry_run)
     conn.execute("PRAGMA foreign_keys = ON")
     sources_before, max_source_id = conn.execute("SELECT COUNT(*), MAX(source_id) FROM sources").fetchone()
-    source_cache = {PREEXISTING_SOURCE_KEY: max_source_id or 0}
+    source_cache = {PREEXISTING_SOURCE_KEY: max_source_id or 0} if reuse_existing_source_rows else {}
+    overrides = named_source_fields or {}
+
+    def named(key, title, **fields):
+        fields.update(overrides.get(key, {}))
+        title = fields.pop("title", title)
+        if reuse_existing_source_rows:
+            return get_or_create_named_source(conn, source_cache, key, title, **fields)
+        return get_or_create_source(conn, source_cache, key, title=title, **fields)
+    bulk_approx_source_id = None
 
     mp_source_id = periodictable_source_id = literature_source_id = None
     try:
         if reference_sources:
-            mp_source_id = get_or_create_named_source(
-                conn, source_cache, "mp", "Materials Project",
+            mp_source_id = named(
+                "mp", "Materials Project",
                 authors="Materials Project Consortium", year=2013, technique="DFT (Materials Project)",
                 url="https://materialsproject.org", doi="10.1063/1.4812323",
                 notes="mp-api queries against the Materials Project summary endpoint; see mp_id/mp_space_group/"
                       f"mp_energy_above_hull_ev provenance recorded per-material in data/{catalog_path.name} and "
                       "data/raw_cache/mp/*.json")
-            get_or_create_named_source(  # pubchem: registered so the source row exists; no numeric rows cite it
-                conn, source_cache, "pubchem", "PubChem",
+            named(  # pubchem: registered so the source row exists; no numeric rows cite it
+                "pubchem", "PubChem",
                 authors="National Center for Biotechnology Information", year=2024,
                 technique="PubChem PUG REST/PUG-View", url="https://pubchem.ncbi.nlm.nih.gov",
                 notes="cid/smiles/inchikey/molecular_weight/CAS from PubChem PUG REST + PUG-View CAS heading; "
                       "raw responses cached under data/raw_cache/pubchem/")
-            periodictable_source_id = get_or_create_named_source(
-                conn, source_cache, "periodictable",
+            periodictable_source_id = named(
+                "periodictable",
                 "periodictable: x-ray and neutron scattering length density calculation",
                 authors="periodictable Python package", technique="calculated",
                 url="https://periodictable.readthedocs.io",
                 notes=f"xray_sld at {XRAY_ENERGY_EV} eV (Cu K-alpha, {XRAY_WAVELENGTH_NM} nm); "
                       f"neutron_sld at {NEUTRON_WAVELENGTH_NM} nm (thermal, 2200 m/s reference), natural isotopic abundance")
-            literature_source_id = get_or_create_named_source(
-                conn, source_cache, "literature_density",
+            literature_source_id = named(
+                "literature_density",
                 literature_title or f"Literature density estimate ({family} materials with no trustworthy MP structure)",
                 technique=literature_technique or "literature",
                 notes=literature_note or f"Literature densities for {family} materials with no MP structure -- see the "
                                          f"flags column in data/{catalog_path.name} per material; verify against a "
                                          "primary source before relying on it.")
+            if bulk_approx_source:
+                bulk_approx_source_id = get_or_create_source(conn, source_cache, "bulk_approx_density", **bulk_approx_source)
 
         for _, row in df.iterrows():
             key = row["selection_key"]
@@ -548,13 +579,14 @@ def run_family(family, catalog_path, selections_path, db_path, *, fresh=False, d
                                     f"properties ({csv_polymorph!r}) for {key} -- their dataset_label prefixes "
                                     "will not match")
 
-            material_id, _new = upsert_material(conn, report, row)
+            material_id, _new = upsert_material(conn, report, row, on_duplicate_inchikey=on_duplicate_inchikey)
             if material_id is None:
                 continue
 
+            extra = dict(bulk_approx_source_id=bulk_approx_source_id) if bulk_approx_source_id else {}
             load_physical_fn(conn, material_id, row, mp_source_id, literature_source_id, periodictable_source_id,
                              csv_polymorph, source_cache=source_cache, get_source_fn=get_or_create_source,
-                             report=report, catalog_name=catalog_path.name)
+                             report=report, catalog_name=citation_catalog_name or catalog_path.name, **extra)
 
             if not (isinstance(sel, dict) and sel.get("axes")):
                 reason = ("no selection entry" if key not in selections else
