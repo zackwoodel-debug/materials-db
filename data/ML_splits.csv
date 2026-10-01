@@ -36,7 +36,7 @@ material_id,meta_key,meta_name,meta_family,group,split,fold
 35,oxides_50:LiNbO3,Lithium niobate,oxides_50,comp:Li0.2000 Nb0.2000 O0.6000,train,0
 36,oxides_50:Sc2O3@bixbyite,Scandium oxide,oxides_50,comp:O0.6000 Sc0.4000,train,0
 37,oxides_50:SiO@amorphous,Silicon monoxide,oxides_50,comp:O0.5000 Si0.5000,train,0
-38,oxides_50:SiO2@amorphous,Silicon dioxide / quartz,oxides_50,comp:O0.6667 Si0.3333,train,1
+38,oxides_50:SiO2@amorphous,Silicon dioxide (fused silica),oxides_50,comp:O0.6667 Si0.3333,train,1
 39,oxides_50:Ta2O5@amorphous,Tantalum pentoxide,oxides_50,comp:O0.7143 Ta0.2857,train,4
 40,oxides_50:Tb3Ga5O12@garnet,TGG,oxides_50,comp:Ga0.2500 O0.6000 Tb0.1500,train,2
 41,oxides_50:TeO2@paratellurite,Tellurium dioxide,oxides_50,comp:O0.6667 Te0.3333,train,1

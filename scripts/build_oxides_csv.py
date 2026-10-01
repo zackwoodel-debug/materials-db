@@ -71,6 +71,14 @@ MATERIALS = [{k: v for k, v in m.items() if k != "ri_aliases"} for m in MATERIAL
 # dataset is an unannealed sputtered film, almost certainly amorphous).
 # Density must come from literature/experimental-lattice-parameter
 # calculation, not MP, for all of these.
+# idx -> (CAS, flag): the PubChem record for SiO2 (CID 24261) lists 60 CAS numbers and its first/primary one, 14464-46-1, is
+# cristobalite (NIST Chemistry WebBook, SRD 69); material 38's only dataset is fused silica (Malitson 1965), whose CAS is
+# 60676-86-0, "Silica, vitreous" (NIST WebBook), checked 2026-09-30 (dataset release v0.20.2).
+CAS_OVERRIDE = {
+    38: ("60676-86-0", "CAS 60676-86-0 (Silica, vitreous; NIST Chemistry WebBook) set explicitly: PubChem CID 24261 lists 60 CAS "
+         "numbers and its first, 14464-46-1, is cristobalite, not the fused silica this material's data describe"),
+}
+
 FORCE_NO_MP = {"SiO", "SiO2", "GeO2", "Ta2O5", "CaGdAlO4", "CaYAlO4", "Nb2O5"}
 
 LITERATURE_DENSITY = {
@@ -531,6 +539,9 @@ def main():
 
             pc = fetch_pubchem(mat)
             flags += pc.pop("flags")
+            if mat["idx"] in CAS_OVERRIDE:  # PubChem's first/primary CAS is wrong for this sample: see CAS_OVERRIDE
+                pc["cas_number"], why = CAS_OVERRIDE[mat["idx"]]
+                flags = [f for f in flags if "CAS numbers in PUG-View record" not in f] + [why]
             row.update(pc)
 
             mpd = fetch_mp(mat, mpr)

@@ -163,7 +163,9 @@ SELECT
     o.eps_real,
     o.eps_imag,
     o.temperature_c,
-    o.source_id
+    o.source_id,
+    o.dataset_label,      -- which dataset (phase / variant / axis): v0.20.2
+    o.raw_record_table    -- its source file
 FROM materials m
 JOIN optical_dispersion o ON o.material_id = m.material_id
 WHERE o.wavelength_nm BETWEEN 600.0 AND 1000.0;

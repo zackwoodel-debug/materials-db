@@ -380,9 +380,10 @@ TRACKED_OPEN_TASKS = {
             "data/oxides_50.csv (name, cas_number, flags)",
             "material synonyms / release curation (a rename touches synonyms; the registry id must not change)",
         ],
-        cost_estimate="Small, once the correct CAS is confirmed from a primary registry record.",
+        cost_estimate=("Done in dataset release v0.20.2 (maintainer decision 2026-09-30): renamed 'Silicon dioxide (fused "
+                       "silica)', CAS 60676-86-0 (NIST WebBook: 'Silica, vitreous'; 14464-46-1 is 'cristobalite'); id 38 kept."),
         blocking_on=None,
-        status="open",
+        status="done",
     ),
     "cross_platform_float_reproducibility": dict(
         description=(
@@ -396,8 +397,9 @@ TRACKED_OPEN_TASKS = {
             "negligible, but it means tracked numbers are exactly "
             "reproducible only on the reference platform (macOS arm64, where the data and requirements.lock were produced). "
             "The fast CI job therefore runs on macOS; the Linux offline build still validates (2,129 materials, 1,753,649 "
-            "optical rows). Decision needed: declare macOS arm64 the reference platform for exact checks, or adopt a documented "
-            "cross-platform tolerance of a few ulp (which would relax a check: needs explicit approval)."
+            "optical rows). DECIDED 2026-09-30 (maintainer): macOS arm64 is the reference platform for exact tracked-data "
+            "checks; no cross-platform tolerance is adopted (no check is relaxed). Documented in docs/versioning.md "
+            "('Reference platform'); the fast CI job runs there, and the float-report job re-measures Linux on demand."
         ),
         affected_materials=["TiN"],
         affected_call_sites=[
@@ -405,9 +407,9 @@ TRACKED_OPEN_TASKS = {
             "scripts/resample_formula_data.py (the recomputation)",
             ".github/workflows/ci.yml (fast job on macos-15)",
         ],
-        cost_estimate="Measured; only the policy decision remains (the maintainer's).",
+        cost_estimate="Done: measured and decided.",
         blocking_on=None,
-        status="open",
+        status="done",
     ),
     "spr_data_view_lacks_dataset_label": dict(
         description=(
