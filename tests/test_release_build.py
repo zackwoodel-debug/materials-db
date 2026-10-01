@@ -354,6 +354,13 @@ def test_package_files_checksums_and_counts(release):
     assert m["dependency_lock"] == dict(file="requirements.lock", sha256=hashlib.sha256((ROOT / "requirements.lock").read_bytes()).hexdigest())
 
 
+def test_manifest_records_every_invariant_and_every_fail_invariant_holds(release):
+    from materials_db.core.invariants import INVARIANTS
+    m = json.loads((release["out"] / "MANIFEST.json").read_text())["invariants"]
+    assert set(m) == {i.name for i in INVARIANTS if i.scope == "release"}
+    assert all(v["holds"] for v in m.values() if v["severity"] == "FAIL")
+
+
 def test_dataset_version_is_single_sourced_and_the_manifest_records_the_software_version(release):
     # docs/versioning.md: the dataset version comes only from --version; the software version only from pyproject.toml
     import materials_db
