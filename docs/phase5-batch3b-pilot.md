@@ -15,7 +15,7 @@ unchanged):
 | keyed by name (Diamond and Graphite share formula "C") | `run_family(selection_key_column="name")` |
 | shared InChIKey stored as NULL for the later allotrope | `run_family(on_duplicate_inchikey="store_null")` (default `"skip"`) |
 | the batch's own source rows, never reusing an earlier row | `run_family(reuse_existing_source_rows=False, named_source_fields=..., bulk_approx_source=...)` (defaults: reuse) |
-| density-citation notes as the original loader wrote them | `run_family(citation_catalog_name="oxides_50.csv")`; the text is wrong (tracked: `batch3b_citation_notes_name_wrong_catalog`) |
+| density-citation notes naming the batch's catalog | `run_family(citation_catalog_name="batch3b_4.csv")` (v0.21.0; before it the notes wrongly named `oxides_50.csv`) |
 | append only onto the 131-material state | the wrapper's precondition, as before |
 
 ## Parity
@@ -39,5 +39,5 @@ unchanged):
 2. The builders (`build_*_csv.py`) are a different layer: they query PubChem and Materials Project (network, API key) and write
    the family CSVs. Twelve are standalone; consolidating them is a separate project and needs cached responses to be testable
    offline.
-3. Findings to resolve separately: the wrong catalog name in two batch-3b citation notes; Boron's "amorphous" in its polymorph slot
-   (`boron_amorphous_in_polymorph`, with Phase 4A).
+3. Findings resolved in v0.21.0 (docs/release-0.21.0-expected-diff.md): the wrong catalog name in two batch-3b citation notes;
+   Boron's "amorphous" in its polymorph slot.
