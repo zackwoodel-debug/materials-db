@@ -10,6 +10,8 @@ More tests (round-trip, dataset_label disambiguation, missing-density
 error, SLD-agreement tolerance) are added in Step 4 per MODALFIT_INTEGRATION.md.
 """
 
+import csv
+import sqlite3
 import sys
 from pathlib import Path
 
@@ -457,3 +459,28 @@ class TestWholeCatalogAsSubstrateOrFilm:
         assert not failures, f"{len(failures)}/{len(rows)} materials failed as a film layer:\n" + "\n".join(
             f"  {name}: {msg}" for name, msg in failures
         )
+
+
+class TestKStatusIsRecorded:
+    """An unmeasured k is written as 0.0 in the n,k file (ModalFit's loader needs numbers), so the layer records how much of k
+    is that assumption: an unmeasured k is not a measured zero."""
+
+    @staticmethod
+    def _layer(tmp_path, name, label=None):
+        conn = sqlite3.connect(f"file:{ROOT / 'data' / 'materials_oxide_test.db'}?mode=ro", uri=True)
+        return export_layer(conn, name, label, nk_csv_dir=tmp_path)
+
+    def test_n_only_dataset_is_not_measured(self, tmp_path):
+        layer = self._layer(tmp_path, "Aluminium oxide / sapphire")
+        assert (layer["materials_db"]["k_status"], layer["materials_db"]["k_filled_fraction"]) == ("not_measured", 1.0)
+        rows = list(csv.reader(open(tmp_path / layer["optical"]["params"]["file"])))[1:]
+        assert rows and all(float(k) == 0.0 for _, _, k in rows)  # the file still holds numbers; the layer says they are not data
+
+    def test_dataset_with_k_everywhere_is_measured(self, tmp_path):
+        layer = self._layer(tmp_path, "Gold")
+        assert (layer["materials_db"]["k_status"], layer["materials_db"]["k_filled_fraction"]) == ("measured", 0.0)
+
+    def test_dataset_with_k_on_part_of_its_range_is_partially_measured(self, tmp_path):
+        layer = self._layer(tmp_path, "Ytterbium(III) fluoride")
+        assert layer["materials_db"]["k_status"] == "partially_measured"
+        assert layer["materials_db"]["k_filled_fraction"] == pytest.approx(0.663774)

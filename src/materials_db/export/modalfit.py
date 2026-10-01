@@ -372,7 +372,7 @@ def _lookup_mp_id(material_formula: str) -> Optional[str]:
 # Sidecar n,k CSV
 # ---------------------------------------------------------------------------
 
-def _write_nk_csv(path: Path, rows) -> None:
+def _write_nk_csv(path: Path, rows) -> int:
     """physics.py's nk_tabulated() loads this with np.loadtxt(...), which
     requires every cell to parse as a float -- an empty string for a
     missing k (many of our RI.info datasets are n-only) crashes with
@@ -380,7 +380,9 @@ def _write_nk_csv(path: Path, rows) -> None:
     0.0 for missing k (a transparent/non-absorbing approximation, physically
     reasonable for the visible-range oxide data this exporter targets) and
     flag it in the returned row count so callers can see how many were
-    defaulted rather than measured."""
+    defaulted rather than measured. The count is also recorded in the layer
+    (materials_db.k_status / k_filled_fraction): an unmeasured k is not a
+    measured zero, and a reader of the export must be able to tell."""
     path.parent.mkdir(parents=True, exist_ok=True)
     n_k_defaulted = 0
     with open(path, "w", newline="") as f:
@@ -393,6 +395,7 @@ def _write_nk_csv(path: Path, rows) -> None:
     if n_k_defaulted:
         print(f"[modalfit export] {path.name}: {n_k_defaulted}/{len(rows)} rows had no "
               f"measured k, defaulted to 0.0 (transparent/non-absorbing approximation)")
+    return n_k_defaulted
 
 
 # ---------------------------------------------------------------------------
@@ -475,7 +478,9 @@ def export_layer(db, material_name: str, dataset_label: Optional[str] = None, *,
         # tracks the full label string, not the sanitized filename). Same
         # sanitizer as export_all_materials_modalfit.py's _safe_dirname().
         nk_filename = re.sub(r"[^A-Za-z0-9_.-]+", "_", label) + "_nk.csv"
-        _write_nk_csv(Path(nk_csv_dir) / nk_filename, nk_rows)
+        n_k_filled = _write_nk_csv(Path(nk_csv_dir) / nk_filename, nk_rows)
+        k_status = ("measured" if n_k_filled == 0 else "not_measured" if n_k_filled == len(nk_rows)
+                    else "partially_measured")
 
         density_citation = _source_citation(conn, phys["density_source_id"])
         optical_citation = _source_citation(conn, opt_source_id)
@@ -522,6 +527,9 @@ def export_layer(db, material_name: str, dataset_label: Optional[str] = None, *,
                 "optical_dataset_label": opt_label,
                 "mp_id": mp_id,
                 "mp_id_status": mp_id_status,  # found | no_mp_entry_recorded | formula_not_in_family_tables | id_map_unavailable
+                # k written as 0.0 where the dataset has no k (the n,k file must be all numbers): how much of it is an assumption
+                "k_status": k_status,  # measured | partially_measured | not_measured
+                "k_filled_fraction": round(n_k_filled / len(nk_rows), 6) if nk_rows else None,
                 "density_confidence": density_confidence,
                 "density_source": density_citation,
                 "optical_source": optical_citation,
