@@ -1,8 +1,8 @@
 {
-  "source_release": "0.21.0",
-  "source_release_git_commit": "dc7d5992f40fd75a9d81c46c4ccafd1b15f82ba3",
-  "source_sqlite": "materials-db-v0.21.0.sqlite",
-  "source_sqlite_sha256": "e3cb687fa7df68c6c67d8df1d80d5813e96c666543f0e1bed82214b129a11fe1",
+  "source_release": "0.22.0",
+  "source_release_git_commit": "a624aaaa766578e82d496774c73403dd8a41ef84",
+  "source_sqlite": "materials-db-v0.22.0.sqlite",
+  "source_sqlite_sha256": "6295f0dda5f7e0d0d8d43d8575d1936a94ba022dc340535975b8b883aecaec0b",
   "n_materials": 2129,
   "optical_ref_wl_nm": 633.0,
   "scaled": false,
