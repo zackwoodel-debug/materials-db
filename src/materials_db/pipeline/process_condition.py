@@ -431,6 +431,33 @@ TRACKED_OPEN_TASKS = {
         blocking_on=None,
         status="open",
     ),
+    "batch3b_citation_notes_name_wrong_catalog": dict(
+        description=(
+            "Found by the Phase 5 pilot: the batch-3b density-citation sources (Graphite: 'First-principles determination of "
+            "the structural, vibrational and thermodynamic properties of diamond, graphite, and derivatives'; Boron: 'Optical "
+            "constants of electron-beam evaporated boron films ...') say 'See flags column in data/oxides_50.csv', but those "
+            "flags are in data/batch3b_4.csv. Kept verbatim by the refactored loader (load_batch3b_db.CITATION_CATALOG_NAME) so "
+            "the base DB stays reproducible; fix it in a dataset release (two source notes)."
+        ),
+        affected_materials=["C", "B"],
+        affected_call_sites=["scripts/load_batch3b_db.py (CITATION_CATALOG_NAME)", "data/materials_oxide_test.db (2 source notes)"],
+        cost_estimate="Small: one constant, a base-DB rebuild with a declared 2-row diff, a release.",
+        blocking_on=None,
+        status="open",
+    ),
+    "boron_amorphous_in_polymorph": dict(
+        description=(
+            "Found by the Phase 5 pilot: Boron (batch 3b) carries polymorph='amorphous', the same category error as the oxides "
+            "(oxide_amorphous_migration): amorphousness is a structure / process condition, not a polymorph. Its dataset "
+            "(Fernandez-Perea 2007, 'electron-beam evaporated boron films') and density note ('consistent with amorphous boron') "
+            "need the same per-dataset evidence review before any change; handle with Phase 4A."
+        ),
+        affected_materials=["B"],
+        affected_call_sites=["scripts/pure_element_material_list.py", "data/batch3b_4.csv", "data/step1_selections_batch3b.json"],
+        cost_estimate="Part of Phase 4A.",
+        blocking_on="oxide_density_labels_and_polymorph",
+        status="open",
+    ),
 }
 
 

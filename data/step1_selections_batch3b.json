@@ -1,0 +1,60 @@
+{
+ "Diamond": {
+  "name": "Diamond",
+  "polymorph": "diamond cubic",
+  "effective_polymorph": "diamond cubic",
+  "axes": [
+   {
+    "page": "Taylor",
+    "axis": null,
+    "data_path": "main/C/nk/Taylor.yml",
+    "dataset_label": "diamond cubic | Taylor2023"
+   }
+  ]
+ },
+ "Graphite": {
+  "name": "Graphite",
+  "polymorph": "graphite",
+  "effective_polymorph": "graphite",
+  "axes": [
+   {
+    "page": "Djurisic-o",
+    "axis": "o-ray",
+    "data_path": "main/C/nk/Djurisic-o.yml",
+    "dataset_label": "graphite | Djurisic1999 | o-ray"
+   },
+   {
+    "page": "Djurisic-e",
+    "axis": "e-ray",
+    "data_path": "main/C/nk/Djurisic-e.yml",
+    "dataset_label": "graphite | Djurisic1999 | e-ray"
+   }
+  ]
+ },
+ "Tin": {
+  "name": "Tin",
+  "polymorph": "beta-Sn (tetragonal)",
+  "effective_polymorph": "beta-Sn (tetragonal)",
+  "axes": [
+   {
+    "page": "Golovashkin-293K",
+    "axis": null,
+    "data_path": "main/Sn/nk/Golovashkin-293K.yml",
+    "dataset_label": "beta-Sn (tetragonal) | Golovashkin1964"
+   }
+  ]
+ },
+ "Boron": {
+  "name": "Boron",
+  "polymorph": "amorphous",
+  "effective_polymorph": "amorphous",
+  "axes": [
+   {
+    "page": "Fernandez-Perea",
+    "axis": null,
+    "data_path": "main/B/nk/Fernandez-Perea.yml",
+    "dataset_label": "amorphous | FernandezPerea2007"
+   }
+  ]
+ }
+}
