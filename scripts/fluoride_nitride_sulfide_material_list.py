@@ -214,7 +214,9 @@ MATERIALS_31 = [
                   _axis("Barker-e", "main/GaN/nk/Barker-e.yml", "Barker1973", axis="e-ray")]),
 
     # ---- Sulfides (7 processable; EuS excluded, see EXCLUSION_STATE) ----
-    dict(idx=72, name="Arsenic trisulfide", formula="As2S3", polymorph="amorphous",
+    # "amorphous" is a structure, not a polymorph (v0.22.0): Rodney 1958 COMMENTS "Arsenic trisulfide glass" and the AMTIR-6
+    # density datasheet ("amorphous As40S60 glass") both state it, so every label carries structure:amorphous.
+    dict(idx=72, name="Arsenic trisulfide", formula="As2S3", polymorph=None, structure="amorphous",
          pubchem_name="Arsenic trisulfide", ri_aliases=["As2S3"],
          ri_axes=[_axis("Rodney", "main/As2S3/nk/Rodney.yml", "Rodney1958")]),
     dict(idx=73, name="Cadmium sulfide", formula="CdS", polymorph="greenockite",

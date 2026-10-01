@@ -23,6 +23,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import sqlite3
 import load_oxides_db as base  # noqa: E402
 from fluoride_nitride_sulfide_material_list import MATERIALS_31  # noqa: E402
+from materials_db.pipeline.process_condition import format_process_condition  # noqa: E402
 
 CSV_PATH = _ROOT / "data" / "batch2_31.csv"
 
@@ -92,7 +93,9 @@ def main():
         for _, row in df.iterrows():
             formula = row["formula"]
             mat = _BY_FORMULA[formula]
-            effective_polymorph = mat["polymorph"]
+            # the label prefix: the polymorph, or a structure the evidence states (process-condition grammar, never a polymorph)
+            effective_polymorph = mat["polymorph"] or (format_process_condition(structure=mat["structure"])
+                                                        if mat.get("structure") else None)
 
             cur = conn.execute(
                 "INSERT INTO materials (name, formula, smiles, inchikey, molecular_weight, cas_number, pubchem_cid) "

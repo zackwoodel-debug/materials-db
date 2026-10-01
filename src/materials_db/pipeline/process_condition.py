@@ -441,9 +441,10 @@ TRACKED_OPEN_TASKS = {
         affected_call_sites=["scripts/fluoride_nitride_sulfide_material_list.py", "data/batch2_31.csv",
                              "data/materials_oxide_test.db", "data/material_registry.json (key alias)",
                              "src/materials_db/core/label_aliases.py"],
-        cost_estimate="Small: the v0.21.0 pattern for one material, in a dataset release.",
+        cost_estimate="Done in v0.22.0 (docs/release-0.22.0-expected-diff.md): optical and density labels carry "
+                      "structure:amorphous (the density datasheet states the glass too), polymorph cleared, key alias added.",
         blocking_on=None,
-        status="open",
+        status="done",
     ),
     "batch3b_citation_notes_name_wrong_catalog": dict(
         description=(

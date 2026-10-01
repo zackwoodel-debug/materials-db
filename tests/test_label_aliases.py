@@ -53,6 +53,8 @@ def test_export_with_old_or_new_labels_gives_the_same_layer(tmp_path, label):
     ("Niobium pentoxide", "amorphous | Franta2024", "Franta2024"),
     ("Silicon monoxide", "amorphous", "Hass1954"),
     ("Boron", "amorphous | FernandezPerea2007", "FernandezPerea2007"),
+    ("Arsenic trisulfide", "amorphous | Rodney1958", "structure:amorphous | Rodney1958"),
+    ("Arsenic trisulfide", "amorphous", "structure:amorphous | Rodney1958"),
 ])
 def test_other_relabelled_materials_export_through_their_old_labels(tmp_path, name, old, new):
     assert export_layer(_con(), name, old, nk_csv_dir=tmp_path)["materials_db"]["optical_dataset_label"] == new
@@ -67,6 +69,18 @@ def test_a_wrong_label_still_raises(tmp_path, label):
 def test_xrr_stack_syntax_with_the_old_label_reads_the_same_density():
     from materials_db.calculators.xrr_engine import read_material
     assert read_material(str(BASE), "SiO2", "amorphous") == read_material(str(BASE), "SiO2") == ("SiO2", 2.2)
+    assert read_material(str(BASE), "As2S3", "amorphous") == read_material(str(BASE), "As2S3") == ("As2S3", 3.2)
+
+
+def test_as2s3_density_carries_the_structure_its_datasheet_states(tmp_path):
+    """v0.22.0: unlike the v0.21.0 oxides (density basis uncited), As2S3's density is from a datasheet for amorphous As40S60
+    glass, so its density and SLD rows say structure:amorphous, and still pair with the optical dataset."""
+    labels = {label for (label,) in _con().execute(
+        "SELECT dataset_label FROM physical_properties JOIN materials USING (material_id) WHERE formula = 'As2S3'")}
+    assert len(labels) == 5 and all(label.startswith("structure:amorphous | ") for label in labels)
+    layer = export_layer(_con(), "Arsenic trisulfide", nk_csv_dir=tmp_path)["materials_db"]
+    assert layer["dataset_label"] == "structure:amorphous | density_literature"
+    assert layer["optical_dataset_label"] == "structure:amorphous | Rodney1958"
 
 
 def test_access_layer_resolves_old_labels_in_a_release_that_has_the_new_ones():
@@ -90,7 +104,8 @@ def test_registry_keys_and_ids_are_unchanged_through_the_key_aliases():
     reg = mreg.load()
     keys = mreg.keys_by_name(br.family_rows())
     for name, key, mid in [(SIO2, "oxides_50:SiO2@amorphous", 38), ("Boron", "batch3b_4:B@amorphous", 135),
-                           ("Niobium pentoxide", "oxides_50:Nb2O5@amorphous", 33)]:
+                           ("Niobium pentoxide", "oxides_50:Nb2O5@amorphous", 33),
+                           ("Arsenic trisulfide", "batch2_31:As2S3@amorphous", 72)]:
         assert keys[name] == key and reg["materials"][key]["id"] == mid
 
 
@@ -105,7 +120,7 @@ def test_a_key_alias_may_not_shadow_a_registered_key_or_point_nowhere():
         mreg.key_aliases(reg)
 
 
-KNOWN_EXCEPTIONS = {("batch2_31.csv", "Arsenic trisulfide")}  # tracked: as2s3_amorphous_in_polymorph
+KNOWN_EXCEPTIONS = set()  # As2S3, the last one, moved to structure:amorphous in v0.22.0
 
 
 def test_no_polymorph_field_holds_a_structure_state():
@@ -117,7 +132,7 @@ def test_no_polymorph_field_holds_a_structure_state():
             continue
         if "polymorph" in df.columns and "name" in df.columns:
             found |= {(Path(path).name, n) for n, p in zip(df["name"], df["polymorph"]) if is_structure_value(p)}
-    assert found == KNOWN_EXCEPTIONS  # strict both ways: a new case fails, and so does fixing As2S3 without updating this
+    assert found == KNOWN_EXCEPTIONS
 
 
 @pytest.mark.parametrize("value, expected", [("amorphous", True), ("Single crystal", True), ("poly-crystalline", False),

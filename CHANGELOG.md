@@ -5,6 +5,18 @@ versions follow the release tags. Counts are materials / optical datasets.
 
 ## [Unreleased]
 
+## [0.22.0] - 2026-10-01 (2129 / 2605)
+
+### Changed
+- As2S3 (Arsenic trisulfide, id 72), the one material v0.21.0 left with "amorphous" in its polymorph slot, now uses the same
+  structure grammar. Its optical dataset (Rodney 1958, "Arsenic trisulfide glass") is `structure:amorphous | Rodney1958`. Its
+  density and SLD rows are `structure:amorphous | ...` too, because the density source (the AMTIR-6 datasheet) is for amorphous
+  As40S60 glass. The consensus row is `n_633nm | structure:amorphous`. Every value is unchanged. No material's polymorph field
+  holds a structure state any more.
+- Old labels keep working (`amorphous | Rodney1958`, `As2S3[amorphous]`, `export_layer(..., "amorphous")`) through the alias
+  table. Id 72 and the stable key `batch2_31:As2S3@amorphous` are unchanged. The ModalFit layer name is `As2S3` (was
+  `As2S3_amorphous`).
+
 ## [0.21.0] - 2026-10-01 (2129 / 2605)
 
 ### Changed
