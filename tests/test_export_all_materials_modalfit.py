@@ -140,9 +140,9 @@ def test_prepare_out_dir_wipes_only_its_own_and_accepts_new_or_empty(tmp_path):
 
 def test_halide_family_exports_every_material_end_to_end(tmp_path):
     """Regression: halide optical labels carried no polymorph while the physical row did, so every halide was skipped."""
-    import load_family_db  # noqa: F401  (scripts dir is on sys.path via other tests)
     pytest.importorskip("pandas")
-    sys.path.insert(0, str(ROOT / "scripts"))
+    sys.path.insert(0, str(ROOT / "scripts"))  # before importing a scripts/ module: the test must not depend on test order
+    import load_family_db  # noqa: F401
     import load_halides_db as wrap
     import load_family_db as fam
     db = tmp_path / "materials_halide_test.db"
