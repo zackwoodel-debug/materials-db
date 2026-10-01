@@ -56,6 +56,7 @@ sys.path.insert(0, str(_ROOT / "src"))
 
 import load_family_db as fam  # noqa: E402
 import material_registry as mreg  # noqa: E402
+from materials_db.core import invariants  # noqa: E402
 import release_curation as rcur  # noqa: E402
 import release_descriptors as rd  # noqa: E402
 import release_dictionary as rdict  # noqa: E402
@@ -225,9 +226,12 @@ def validate(conn):
                              "density_g_cm3, xray_sld, neutron_sld, dielectric_constant HAVING COUNT(*) > 1)").fetchone()[0]
     if phys_dups:
         problems.append(f"{phys_dups} duplicated physical_properties groups")
+    invariant_results = invariants.evaluate(conn, "release", dict(negative_k_allowed=NEGATIVE_K_ALLOWED))
+    for inv, violations in invariants.failures(invariant_results):  # FAIL invariants block the release (docs/INVARIANTS.md)
+        problems.append(f"invariant {inv.name}: {violations[0]}")
     if problems:
         raise ReleaseError(f"{len(problems)} validation problem(s): " + "; ".join(problems[:10]))
-    return source_repeats
+    return source_repeats, invariants.summary(invariant_results)
 
 
 def source_repeat_count(data_path, wavelength_nm):
@@ -272,13 +276,13 @@ def build_db(db_path, version="unreleased", register_new=False):
         cross_source = rv.populate(conn)
         coverage = populate_descriptors(conn)
         dielectric = rdl.populate(conn)
-    source_repeats = validate(conn)
+    source_repeats, invariant_summary = validate(conn)
     conn.execute("VACUUM")
     conn.close()
     return dict(family_merges=merged, removed_duplicate_physical_rows=removed, removed_unreferenced_sources=orphans,
                 descriptor_coverage=coverage, cross_source_validation=cross_source, source_curation=sources, synonyms=synonyms,
                 dielectric=dielectric, material_ids=material_ids,
-                optical_wavelengths_repeated_in_source=source_repeats)
+                optical_wavelengths_repeated_in_source=source_repeats, invariants=invariant_summary)
 
 
 # ---------------------------------------------------------------- packaging

@@ -52,6 +52,13 @@ def run_audit() -> bool:
             f"[bold green]✓ Audit passed.[/bold green] "
             f"{len(tables)} tables · {total:,} total rows."
         )
+        # Invariants of the legacy DB (docs/INVARIANTS.md): reported, never a failure here.
+        from materials_db.core.invariants import evaluate
+        conn = sqlite3.connect(f"file:{_DB}?mode=ro", uri=True)
+        for inv, violations in evaluate(conn, "legacy"):
+            for v in violations:
+                _con.print(f"[yellow]WARN[/yellow] {inv.name}: {v}")
+        conn.close()
         return True
 
     except Exception as exc:
